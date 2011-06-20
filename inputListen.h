@@ -9,6 +9,10 @@
 #define inputListen_h_h_h_h
 
 
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#include  "UITouch.h"
+
 
 
 
@@ -25,7 +29,7 @@ public:
     
     ~InputListen();
     
-    void  setupInput(Ogre::RenderWindow* pRenderWindow);
+    void  setupInput();
     
     
     
@@ -49,8 +53,7 @@ protected:
     protected:
     
     
-    Ogre::RenderWindow* mWindow;
-
+   
     
     
 

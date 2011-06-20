@@ -19,12 +19,13 @@
 //#include "inputListen.h"
 #include "Accelerometer.h"
 
+#include "inputListen.h"
 
 
 class ofxiPhoneVideoGrabber;
 
 
-class Application //:public InputListen
+class Application :public InputListen
 {
     
 public:

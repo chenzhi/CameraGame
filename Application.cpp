@@ -109,7 +109,7 @@ void Application::initScene()
 /**初始化输入设备*/
 void Application::initInputDevice()
 {
-    //this->setupInput(m_pRenderWindow);
+    InputListen::setupInput();
     
     m_Accelerometer =[[Accelerometer alloc] init];
     
