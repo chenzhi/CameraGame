@@ -16,7 +16,7 @@
 
 
 
-class InputListen :public OIS::MultiTouchListener,OIS::JoyStickListener
+class InputListen 
 {
     
 public:
@@ -43,46 +43,12 @@ protected:
     
 protected:
     
-    /** @remarks Joystick axis moved event */
-    virtual bool axisMoved( const OIS::JoyStickEvent &arg, int axis );
     
-    //-- Not so common control events, so are not required --//
-    //! Joystick Event, and sliderID
-    virtual bool sliderMoved( const OIS::JoyStickEvent &, int index);
-    
-    //! Joystick Event, and povID
-    virtual bool povMoved( const OIS::JoyStickEvent &arg, int index);    
-    
-    //! Joystick Event, and Vector3ID
-    virtual bool vector3Moved( const OIS::JoyStickEvent &arg, int index);
-    
-    /** @remarks Joystick button down event */
-    virtual bool buttonPressed( const OIS::JoyStickEvent &arg, int button ){return true;}
-    
-    /** @remarks Joystick button up event */
-    virtual bool buttonReleased( const OIS::JoyStickEvent &arg, int button) {return true;}
-    
-       
-    
-    protected:
-    
-    virtual bool touchMoved( const OIS::MultiTouchEvent &arg );
-    
-    virtual bool touchPressed( const OIS::MultiTouchEvent &arg );
-    
-    virtual bool touchReleased( const OIS::MultiTouchEvent &arg );
-    
-    virtual bool touchCancelled( const OIS::MultiTouchEvent &arg );
-
     
     
     protected:
     
     
-    OIS::InputManager* mInputMgr;   // OIS input manager
-
-    OIS::MultiTouch* mMouse;        // multitouch device
-    OIS::JoyStick* mAccelerometer;  // accelerometer device
     Ogre::RenderWindow* mWindow;
 
     

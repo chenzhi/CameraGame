@@ -198,14 +198,14 @@ void Application::initResource()
 /**初始化摄像头*/
 void Application::initVideo()
 {
-    
-#if defined  __arm__
-    int width=512,height=512;
-    m_pVideo.initGrabber(width,height);
-    
+   
+#ifndef __arm__
+    m_pVideoTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture", "General", Ogre::TEX_TYPE_2D, 512, 512, 1, 1,Ogre::PF_R8G8B8); 
 
+#else
+    int width=512,height=512;
     
-    m_pVideoTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture", "General", Ogre::TEX_TYPE_2D, width, height, 1, 1,Ogre::PF_R8G8B8); 
+    m_pVideo.initGrabber(width,height);
     
     width=m_pVideoTexture->getWidth();
     height=m_pVideoTexture->getHeight();
@@ -313,7 +313,7 @@ void Application::initBackGround()
                         bool vertexShadowBuffer = true, bool indexShadowBuffer = true);
 */
     
-    float distance=200.0f;
+    float distance=1000.0f;
     float width=0,height=0;
     Ogre::Vector3 camPos=m_pCameraNode->getPosition();
     float fovy= m_pCamera->getFOVy().valueRadians()*0.5f;
@@ -323,14 +323,18 @@ void Application::initBackGround()
 #if defined  __arm__
     float videowidth=m_pVideo.getWidth();
     float videoheight=m_pVideo.getHeight();
+    float textWidth=m_pVideoTexture->getWidth();
+    float texheight=m_pVideoTexture->getHeight();
 #else
     float videowidth=480;
     float videoheight=360;
+    float textWidth=512;
+    float texheight=512;
+    
 #endif
 
     
-    float textWidth=m_pVideoTexture->getWidth();
-    float texheight=m_pVideoTexture->getHeight();
+   
     Ogre::Plane plane(Ogre::Vector3(0.0f,0.0f,1.0f),Ogre::Vector3(0.0f,0.0f,0.0f));
     Ogre::MeshPtr pMesh= Ogre::MeshManager::getSingleton().
     createPlane("backVideo", "General", plane,1,1,1,1,false,1,videowidth/textWidth,videoheight/texheight);

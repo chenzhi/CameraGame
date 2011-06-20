@@ -200,7 +200,7 @@ public:
 	{
 		callback = 0;
 		setForceSmoothing(0.0f);					// little bit of smoothing for force
-		setOrientationSmoothing(0.7f);				// lots of smoothing for orientation / matrix
+		setOrientationSmoothing(0.9f);				// lots of smoothing for orientation / matrix
 	}
 	
 	// call this to set it all up
