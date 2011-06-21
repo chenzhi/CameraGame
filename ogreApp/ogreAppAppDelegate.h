@@ -23,7 +23,7 @@
 @interface ogreAppAppDelegate : NSObject <UIApplicationDelegate> 
 {
     NSTimer*  m_pTimer;    
-    Application m_Application;
+    Application* m_Application;
     id m_DisplayLink;
     NSDate* m_pDate;
     NSTimeInterval m_LastFrameTime;

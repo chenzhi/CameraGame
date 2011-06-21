@@ -8,5 +8,7 @@
  */
 
 #include "ofPoint.h"
-
-template<> ofxAccelerometerHandler* Ogre::Singleton<ofxAccelerometerHandler>::ms_Singleton=NULL;
+namespace Ogre
+{
+    template<> ofxAccelerometerHandler* Ogre::Singleton<ofxAccelerometerHandler>::ms_Singleton=NULL;
+}

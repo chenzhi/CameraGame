@@ -12,6 +12,9 @@
 
 @implementation UITouchView
 
+
+@synthesize  m_pListen;
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
 {
    
@@ -29,6 +32,10 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
 {
+    if(m_pListen!=NULL)
+    {
+        m_pListen->TouchBegan();
+    }
     return ; 
 }
 

@@ -10,13 +10,20 @@
 #import <UIKit/UIKit.h>
 
 
+#include "inputListen.h"
+
+
+//class InputListen;
+
 @interface UITouchView : UIView
 {
     
+    InputListen* m_pListen;
     
 }
 
 
+@property(nonatomic) InputListen* m_pListen;
 
 
 

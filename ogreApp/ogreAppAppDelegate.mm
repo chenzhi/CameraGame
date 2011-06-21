@@ -34,9 +34,10 @@
     NSAutoreleasePool* pool=[[NSAutoreleasePool alloc] init];
     try
     {
-        m_Application.init();
-        Ogre::Root::getSingleton().getRenderSystem()->_initRenderTargets();
-        Ogre::Root::getSingleton().clearEventTimes();
+        m_Application=new Application();
+        m_Application->init();
+       
+       
         
     }catch(Ogre::Exception& e)
     {
@@ -119,7 +120,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-       [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:)
                                                  name:UIDeviceOrientationDidChangeNotification object:nil];
 }
@@ -143,16 +144,19 @@
         m_pTimer = nil;
     }
     
-    m_Application.destory();    
+    m_Application->destory();
+    delete m_Application;
+    m_Application=NULL;
+    
 }
 
 
 -(void)orientationChanged:(NSNotification*)notification
 {
     return ;
-    size_t v=0;
-    Ogre::Root::getSingleton().getAutoCreatedWindow()->getCustomAttribute("VIEW",&v);
-    [(UIView*)v setNeedsLayout];
+   // size_t v=0;
+   // Ogre::Root::getSingleton().getAutoCreatedWindow()->getCustomAttribute("VIEW",&v);
+   // [(UIView*)v setNeedsLayout];
 }
 
 
@@ -164,12 +168,12 @@
         NSTimeInterval currentFrameTime=-[m_pDate timeIntervalSinceNow];
         NSTimeInterval differenceinSeconds=currentFrameTime-m_LastFrameTime;
         m_LastFrameTime=currentFrameTime;
-        m_Application.update((float)differenceinSeconds);
+        m_Application->update((float)differenceinSeconds);
         
     }else
     {
     
-        m_Application.update((float) [m_pTimer timeInterval]);
+        m_Application->update((float) [m_pTimer timeInterval]);
     }
 }
 

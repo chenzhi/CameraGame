@@ -21,11 +21,13 @@
 
 #include "inputListen.h"
 
+#include "BulletManager.h"
+
 
 class ofxiPhoneVideoGrabber;
 
 
-class Application :public InputListen
+class Application :public Ogre::Singleton<Application>, InputListen
 {
     
 public:
@@ -71,6 +73,15 @@ public:
     void destroyInputDevice();
     
     
+    /**返回场景管理器*/
+    Ogre::SceneManager* getMainSceneManager()const {return m_pSceneManager;}
+    
+    
+protected:
+    
+    /**开始按下*/
+    virtual void TouchBegan();
+
     
     
 protected:
@@ -122,6 +133,10 @@ protected:
    
     
     Accelerometer*  m_Accelerometer;
+    
+    
+    ///测试子弹
+    BulletManager*        m_pBulletManager;
     
     
     

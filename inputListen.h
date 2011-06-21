@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#include  "UITouch.h"
+
 
 
 
@@ -31,10 +31,13 @@ public:
     
     void  setupInput();
     
-    
+    /**开始按下*/
+    virtual void TouchBegan() {}
     
     /**获取输入数据*/
     void Captuer();  
+    
+    
     
 protected:
     
@@ -45,7 +48,7 @@ protected:
     void  destroyInputDevices();
     
     
-protected:
+
     
     
     

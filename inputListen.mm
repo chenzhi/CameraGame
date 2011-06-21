@@ -8,7 +8,7 @@
 
 #include "inputListen.h"
 
-
+#include "UITouch.h"
 
 
 InputListen::InputListen()
@@ -40,6 +40,7 @@ void InputListen::setupInput()
     [pUITouch becomeFirstResponder];
     [pUITouch setMultipleTouchEnabled:YES];
     [pUITouch setExclusiveTouch:YES];
+    pUITouch.m_pListen=this;
 }
 
 

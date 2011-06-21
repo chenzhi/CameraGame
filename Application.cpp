@@ -10,6 +10,13 @@
 #include "OgreGLESPlugin.h"
 #include "OgreParticleFXPlugin.h"
 
+
+namespace Ogre
+{
+  template<> Application* Ogre::Singleton<Application>::ms_Singleton=0;  
+}
+
+
 Application::Application()
 :m_pRoot(NULL ),m_pRenderWindow(NULL),m_pViewPort(NULL),m_pCamera(NULL),
 m_pSceneManager(NULL),m_pFileSystem(NULL),m_pEntity(NULL),m_BackGround(NULL)
@@ -65,6 +72,8 @@ bool Application::initOgreRender()
     m_pRenderWindow->addViewport(m_pCamera);
     m_pViewPort=m_pRenderWindow->getViewport(0);
     
+    Ogre::Root::getSingleton().getRenderSystem()->_initRenderTargets();
+    Ogre::Root::getSingleton().clearEventTimes();
     
     m_pCameraNode=m_pSceneManager->getRootSceneNode()->createChildSceneNode();
     m_pCameraNode->attachObject(m_pCamera);
@@ -102,6 +111,8 @@ void Application::initScene()
     initVideo();
     
     initBackGround();
+    
+    m_pBulletManager= new BulletManager(NULL);
     
 }
 
@@ -144,6 +155,11 @@ void Application::update(float time)
     //InputListen::Captuer();
     
     updateAccelerometer();
+    
+    if(m_pBulletManager!=NULL)
+    {
+        m_pBulletManager->update(time);
+    }
     
     m_pRoot->renderOneFrame(time);
 }
@@ -203,7 +219,11 @@ void Application::initVideo()
     m_pVideoTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture", "General", Ogre::TEX_TYPE_2D, 512, 512, 1, 1,Ogre::PF_R8G8B8); 
 
 #else
+    
+    
     int width=512,height=512;
+    
+    m_pVideoTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture", "General", Ogre::TEX_TYPE_2D, width, height, 1, 1,Ogre::PF_R8G8B8); 
     
     m_pVideo.initGrabber(width,height);
     
@@ -350,4 +370,16 @@ void Application::initBackGround()
     pBackGroundMaterial->getTechnique(0)->getPass(0)->createTextureUnitState()->setTextureName(m_pVideoTexture->getName());
     m_BackGround->getSubEntity(0)->setMaterialName(pBackGroundMaterial->getName());
     
+}
+
+
+//-------------------------------------------------------
+void Application::TouchBegan()
+{
+    if(m_pBulletManager!=NULL)
+    {
+        Ogre::Matrix3 matrix= m_pCameraNode->getLocalAxes();
+        
+        m_pBulletManager->fire(m_pCameraNode->getPosition(),Ogre::Vector3(matrix[0][2],matrix[1][2],matrix[2][2]));
+    }
 }
