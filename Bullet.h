@@ -16,6 +16,7 @@ class Bullet
     protected:
     
     public:
+    
     enum BulletState
     {
       BS_NONE,

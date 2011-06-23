@@ -23,7 +23,7 @@ public:
     /**
       *@param pCameraNode 子弹发射的摄像机
       */
-    BulletManager(Ogre::SceneNode* pCameraNode);
+    BulletManager();
     
     ~BulletManager();
     
@@ -48,8 +48,7 @@ protected:
 protected:
     
     
-    Ogre::SceneNode*   m_pCameraNode;///发射子弹的摄像机
-    
+      
     float         m_FireTime;///发射周期
     
     float         m_LastFireTime;///上一张的发射时间

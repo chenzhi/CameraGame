@@ -12,15 +12,16 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
+#include "ofPoint.h"
+
+#import  "Accelerometer.h"
+
+class ofxAccelerometerHandler;
 
 
 
 
-
-
-
-
-class InputListen 
+class InputListen :public Ogre::Singleton<InputListen>
 {
     
 public:
@@ -32,12 +33,19 @@ public:
     void  setupInput();
     
     /**开始按下*/
-    virtual void TouchBegan() {}
+    void TouchBegan();
     
     /**获取输入数据*/
     void Captuer();  
     
     
+    const Ogre::Vector3&  getAccelerometerData()const ;
+    
+    const Ogre::Vector3&  getGyroscopeData()const;
+    
+    Ogre::Vector3  getSmoothAccelerometer();
+    
+    Ogre::Vector3  getSmoothGyroscope();
     
 protected:
     
@@ -57,6 +65,15 @@ protected:
     
     
    
+    Accelerometer* m_pAccelerometer;
+    
+    ofxAccelerometerHandler*        m_AccelerHander;
+    ofxAccelerometerHandler*        m_GyroHander;
+
+    
+    
+    Ogre::Vector3  m_AccelerometerData;
+    Ogre::Vector3  m_GyroscopeData;
     
     
 

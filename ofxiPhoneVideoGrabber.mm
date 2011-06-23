@@ -17,6 +17,7 @@
 @implementation iPhoneVideoGrabber
 
 @synthesize captureSession	= _captureSession;
+@synthesize grabberPtr;
 
 #pragma mark -
 #pragma mark Initialization
@@ -130,6 +131,8 @@
 	[self.captureSession stopRunning];
 }
 
+
+
 -(CGImageRef)getCurrentFrame
 {
 	return currentFrame;
@@ -146,7 +149,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	
 	//printf("capturing!\n");	
 	
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	//NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
     /*Lock the image buffer*/
@@ -178,7 +181,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	
 	grabberPtr->updatePixelsCB(currentFrame);
 	
-	[pool drain];
+	//[pool drain];
 } 
 
 #pragma mark -
@@ -192,16 +195,28 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 @end
 
 
+
+
+namespace Ogre
+{
+    template<> ofxiPhoneVideoGrabber* Ogre::Singleton<ofxiPhoneVideoGrabber>::ms_Singleton=0;
+    
+}
+
+
 ofxiPhoneVideoGrabber::ofxiPhoneVideoGrabber()
 {
 	fps		= 15;
-	grabber = [iPhoneVideoGrabber alloc];
+	grabber = [[iPhoneVideoGrabber alloc] init];
+    grabber.grabberPtr = this;
+    
 	pixels	= NULL;
 }
 
 ofxiPhoneVideoGrabber::~ofxiPhoneVideoGrabber()
 {
 	[grabber stopCapture];
+    [grabber release];
 	clear();
 }
 		
@@ -223,7 +238,8 @@ void ofxiPhoneVideoGrabber::initGrabber(int w, int h)
 {
 
 	[grabber initCapture:fps capWidth:w capHeight:h];
-	grabber->grabberPtr = this;
+    
+	
 	
 	width	= grabber->width;
 	height	= grabber->height;
@@ -301,6 +317,19 @@ bool ofxiPhoneVideoGrabber::convertCGImageToPixels(CGImageRef & ref, unsigned ch
 					
 	free(pixelsTmp);
 	return true;
+}
+
+
+/**停止获取图像*/
+void ofxiPhoneVideoGrabber::stopCapture()
+{
+    [grabber stopCapture];
+}
+
+/**开始获取图像*/
+void ofxiPhoneVideoGrabber::startCapture()
+{
+    [grabber startCapture];
 }
 
 #endif	// (__arm__) compile only for ARM

@@ -193,7 +193,7 @@ public:
 
 typedef void (*ofxAccelCB)(ofPoint& point);			// typedef for accelerometer callback
 
-class ofxAccelerometerHandler :public Ogre::Singleton<ofxAccelerometerHandler>
+class ofxAccelerometerHandler 
 {
 public:
 	ofxAccelerometerHandler() 

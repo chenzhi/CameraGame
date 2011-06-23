@@ -16,8 +16,7 @@ template<> BulletManager* Ogre::Singleton<BulletManager>::ms_Singleton=NULL;
 
 
 //---------------------------------------------------
-BulletManager::BulletManager(Ogre::SceneNode* pCameraNode)
-:m_pCameraNode(pCameraNode)
+BulletManager::BulletManager()
 {
     init();
 }

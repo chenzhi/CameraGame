@@ -16,18 +16,15 @@
 
 #include "FileSystemLayerImpl.h"
 #include  "ofxiPhoneVideoGrabber.h"
-//#include "inputListen.h"
 #include "Accelerometer.h"
-
 #include "inputListen.h"
-
-#include "BulletManager.h"
+#include "stateMachine.h"
 
 
 class ofxiPhoneVideoGrabber;
 
 
-class Application :public Ogre::Singleton<Application>, InputListen
+class Application :public Ogre::Singleton<Application>, StateMachine
 {
     
 public:
@@ -72,16 +69,37 @@ public:
     /***/
     void destroyInputDevice();
     
+    /**返回场景的的主摄像机节点*/
+    Ogre::SceneNode* getMainCameraNode()const {return m_pCameraNode;}
+    
+    
+    /**返回主摄像*/
+    Ogre::Camera*   getMainCamera()const{return m_pCamera;}
+
+    
     
     /**返回场景管理器*/
     Ogre::SceneManager* getMainSceneManager()const {return m_pSceneManager;}
     
     
+    /**开始按下*/
+    void TouchBegan();
+
+    
 protected:
     
-    /**开始按下*/
-    virtual void TouchBegan();
+    /**初始化函数，一般在这个函数里注册所有的状态
+     *在这个函数里需要手动指定当前活动状态。同时调用活动状态的begin函数
+     */
+	virtual void  initState();
+    
 
+    
+    
+    
+protected:
+    
+   
     
     
 protected:
@@ -89,18 +107,11 @@ protected:
     /**初始化场景*/
     void initScene();
     
-    /**初始化摄像头*/
-    void initVideo();
+       
+ 
     
-    /**更新摄像头*/
-    void updateVideo();
-    
-    /**更新重车计数据，控制摄像头运动*/
-    void updateAccelerometer();
-    
-    /**初始背影板*/
-    void initBackGround();
-    
+       
+      
     Ogre::Root* m_pRoot;
     
   //  Ogre::StaticPluginLoader mStaticPluginLoader;
@@ -118,25 +129,12 @@ protected:
     OgreBites::FileSystemLayerImpl*    m_pFileSystem;
     
     
-#if defined  __arm__
-  
-    ofxiPhoneVideoGrabber m_pVideo;
-#endif
+
+    InputListen*            m_pInputListen;
     
-    Ogre::TexturePtr    m_pVideoTexture;
-    
-    Ogre::Entity*      m_pEntity;
-    
-    ///背影板
-    Ogre::Entity*      m_BackGround;
-    
-   
-    
-    Accelerometer*  m_Accelerometer;
+    //Accelerometer*  m_Accelerometer;
     
     
-    ///测试子弹
-    BulletManager*        m_pBulletManager;
     
     
     

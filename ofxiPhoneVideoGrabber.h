@@ -44,19 +44,22 @@ class ofxiPhoneVideoGrabber;
 
 -(CGImageRef)getCurrentFrame;
 
+
 @property (nonatomic, retain) AVCaptureSession *captureSession;
+@property (nonatomic)ofxiPhoneVideoGrabber * grabberPtr;
+
 
 @end
 
 
 
 
-class ofxiPhoneVideoGrabber //: public ofBaseHasPixels, ofBaseDraws
+class ofxiPhoneVideoGrabber : public Ogre::Singleton<ofxiPhoneVideoGrabber>
 {
 
 	public:		
-		ofxiPhoneVideoGrabber();
-		~ofxiPhoneVideoGrabber();
+    ofxiPhoneVideoGrabber();
+    ~ofxiPhoneVideoGrabber();
 		
 		void clear();
 		void setCaptureRate(int capRate);
@@ -75,10 +78,18 @@ class ofxiPhoneVideoGrabber //: public ofBaseHasPixels, ofBaseDraws
 		float getHeight(){
 			return height;
 		}
+    
+    /**停止获取图像*/
+    void stopCapture();
+    
+    /**开始获取图像*/
+    void startCapture();
 	
 	protected:
 		
 		bool convertCGImageToPixels(CGImageRef & ref, unsigned char * pixels);
+    
+    
 		int width, height;
 	
 		bool bUpdateTex;

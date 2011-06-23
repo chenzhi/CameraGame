@@ -14,41 +14,107 @@
 
 
 @implementation Accelerometer
-//@synthesize	m_pController;
+@synthesize	motionManager,m_IsSupperAccelerometer,m_IsSupeGyroscope;
+
+
 -(Accelerometer*) init 
 {
-	if(self = 	[super init]) {
-		UIAccelerometer *paccelerometer = [UIAccelerometer sharedAccelerometer];
-		paccelerometer.delegate = self;
-		paccelerometer.updateInterval = 1.0f/60.0f;
+	if(self = [super init])
+    {
 		
-		m_pOFHander =new ofxAccelerometerHandler();
-	}
+       
+        self.motionManager = [[[CMMotionManager alloc] init] autorelease];
+        
+        m_IsSupeGyroscope=motionManager.gyroAvailable;
+        m_IsSupperAccelerometer=motionManager.accelerometerAvailable;
+        if (motionManager.accelerometerAvailable) 
+        {
+            motionManager.accelerometerUpdateInterval = 1.0/30.0;
+           
+        }
+        
+        
+        if (motionManager.gyroAvailable) 
+        {
+            motionManager.gyroUpdateInterval = 1.0/30.0;
+           // [motionManager startGyroUpdates];
+        } 
+        
+		
+		}
 	return self;
 }
 
 -(void) dealloc
 {
-	[super	 dealloc];
-    UIAccelerometer *paccelerometer = [UIAccelerometer sharedAccelerometer];
-    paccelerometer.delegate = nil;
-    delete m_pOFHander;
-	//delete m_pController;
+    [super dealloc];
+    [self.motionManager release];
+   	//delete m_pController;
 }
 
 
--(void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration*)accel
+
+-(BOOL) startCaptureAccelerometer
 {
-	
-	m_pOFHander->update(accel.x, accel.y, accel.z);
-	
-	//float * pMatrix=m_pOFHander->getMatrix();
-    
-	//[m_pController.m_pXText setText:[NSString stringWithFormat:@"x:%.2f,%.2f,%.2f", pMatrix[0], pMatrix[1], pMatrix[2] ]];
-	//[m_pController.m_pYText setText:[NSString stringWithFormat:@"y:%.2f,%.2f,%.2f", pMatrix[4], pMatrix[5], pMatrix[6] ]];
-	//[m_pController.m_pZText setText:[NSString stringWithFormat:@"z:%.2f,%.2f,%.2f", pMatrix[8], pMatrix[9], pMatrix[10] ]];
-	
+    if(m_IsSupperAccelerometer==YES)
+    {
+     [motionManager startAccelerometerUpdates];
+     return YES;
+    }
+    return NO;
 }
+
+-(BOOL) startCaptureGyroscope
+{
+    if(m_IsSupeGyroscope==YES)
+    {
+        [motionManager startGyroUpdates];
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+
+
+
+-(BOOL) getAccelerometerX:(float&)x Y:(float&)y Z:(float&)z
+{
+    if(m_IsSupperAccelerometer==NO)
+    {
+        return NO;
+    }
+    
+    CMAccelerometerData *accelerometerData = motionManager.accelerometerData;
+    x= accelerometerData.acceleration.x;
+    y= accelerometerData.acceleration.y;
+    z= accelerometerData.acceleration.z;
+    return YES;
+    
+}
+
+
+-(BOOL) getGroyscopeX:(float&)x Y:(float&)y Z:(float&)z
+{
+    if(m_IsSupeGyroscope==NO)
+    {
+        return NO;
+    }
+    
+    CMGyroData *gyroData = motionManager.gyroData;
+    
+    x=gyroData.rotationRate.x;
+    y=gyroData.rotationRate.y;
+    z=gyroData.rotationRate.z;
+    
+    return YES;
+
+}
+
+
+
+
 
 
 

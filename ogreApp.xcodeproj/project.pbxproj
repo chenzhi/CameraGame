@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7701CF6413B1B69200D39C17 /* CaptureFaceGS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7701CF6213B1B69200D39C17 /* CaptureFaceGS.cpp */; };
+		7701CF6813B1C0F600D39C17 /* stateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7701CF6613B1C0F600D39C17 /* stateMachine.cpp */; };
+		7701CF6B13B1DA2100D39C17 /* WarGS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7701CF6913B1DA2100D39C17 /* WarGS.cpp */; };
 		771FA83A13AB177B001C73C8 /* ofxiPhoneVideoGrabber.mm in Sources */ = {isa = PBXBuildFile; fileRef = 771FA83913AB177B001C73C8 /* ofxiPhoneVideoGrabber.mm */; };
 		771FA83C13AB1884001C73C8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771FA83B13AB1884001C73C8 /* CoreVideo.framework */; };
 		771FA83E13AB18DC001C73C8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771FA83D13AB18DC001C73C8 /* CoreMedia.framework */; };
@@ -16,24 +19,15 @@
 		773945BC13AB028B001E735C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773945BB13AB028B001E735C /* AVFoundation.framework */; };
 		7775627413B03582003849ED /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7775627013B03582003849ED /* Bullet.cpp */; };
 		7775627513B03582003849ED /* BulletManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7775627213B03582003849ED /* BulletManager.cpp */; };
-		7782827D13AF49BD00466BD6 /* inputListen.h in Sources */ = {isa = PBXBuildFile; fileRef = 77C17BD713AF48650067B857 /* inputListen.h */; };
-		7782827E13AF49BD00466BD6 /* ofPoint.h in Sources */ = {isa = PBXBuildFile; fileRef = 77C17B5813AED3A90067B857 /* ofPoint.h */; };
-		7782827F13AF49BD00466BD6 /* ofxiPhoneVideoGrabber.h in Sources */ = {isa = PBXBuildFile; fileRef = 771FA83813AB177B001C73C8 /* ofxiPhoneVideoGrabber.h */; };
-		7782828013AF49BD00466BD6 /* FileSystemLayerImpl.h in Sources */ = {isa = PBXBuildFile; fileRef = 77979F4213AAE3C00040265C /* FileSystemLayerImpl.h */; };
-		7782828113AF49BD00466BD6 /* FileSystemLayer.h in Sources */ = {isa = PBXBuildFile; fileRef = 77979F4013AAE3920040265C /* FileSystemLayer.h */; };
-		7782828213AF49BD00466BD6 /* OgreStaticPluginLoader.h in Sources */ = {isa = PBXBuildFile; fileRef = 88CBFD4113A8B0E600EBCDB6 /* OgreStaticPluginLoader.h */; };
-		7782828313AF49BD00466BD6 /* Application.h in Sources */ = {isa = PBXBuildFile; fileRef = 8896C1A113A8869C000DA13C /* Application.h */; };
-		7782828413AF49BD00466BD6 /* Accelerometer.h in Sources */ = {isa = PBXBuildFile; fileRef = 77C02E6813AB57EE00978D57 /* Accelerometer.h */; };
-		7782828513AF49BD00466BD6 /* ogreAppAppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 8896C18D13A88233000DA13C /* ogreAppAppDelegate.h */; };
-		7782828613AF49BD00466BD6 /* ogreAppViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 8896C19313A88233000DA13C /* ogreAppViewController.h */; };
 		7782828A13AF4A8D00466BD6 /* UITouch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7782828913AF4A8D00466BD6 /* UITouch.mm */; };
 		77910B9013AA0D0300ACEE73 /* ogre.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8D13AA0D0300ACEE73 /* ogre.cfg */; };
 		77910B9113AA0D0300ACEE73 /* plugins.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8E13AA0D0300ACEE73 /* plugins.cfg */; };
 		77910B9213AA0D0300ACEE73 /* resources.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8F13AA0D0300ACEE73 /* resources.cfg */; };
 		77979F4413AAE3DC0040265C /* FileSystemLayerImpl_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 77979F4313AAE3DC0040265C /* FileSystemLayerImpl_iPhone.mm */; };
+		77A8B4F813B1770600D40305 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A8B4F713B1770600D40305 /* CoreMotion.framework */; };
+		77A8B4FF13B19A7E00D40305 /* GameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A8B4FE13B19A7E00D40305 /* GameState.cpp */; };
 		77C02E6A13AB57EE00978D57 /* Accelerometer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 77C02E6913AB57EE00978D57 /* Accelerometer.mm */; };
 		77C17B5913AED3A90067B857 /* ofPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C17B5713AED3A90067B857 /* ofPoint.cpp */; };
-		77C17BD413AF42FA0067B857 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C17BD313AF42FA0067B857 /* AddressBook.framework */; };
 		77C17BD813AF48650067B857 /* inputListen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 77C17BD613AF48650067B857 /* inputListen.mm */; };
 		8896C17F13A88233000DA13C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C17E13A88233000DA13C /* UIKit.framework */; };
 		8896C18113A88233000DA13C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18013A88233000DA13C /* Foundation.framework */; };
@@ -47,6 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7701CF6213B1B69200D39C17 /* CaptureFaceGS.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = CaptureFaceGS.cpp; sourceTree = "<group>"; };
+		7701CF6313B1B69200D39C17 /* CaptureFaceGS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureFaceGS.h; sourceTree = "<group>"; };
+		7701CF6513B1BC3400D39C17 /* state.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = state.h; sourceTree = "<group>"; };
+		7701CF6613B1C0F600D39C17 /* stateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stateMachine.cpp; sourceTree = "<group>"; };
+		7701CF6713B1C0F600D39C17 /* stateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stateMachine.h; sourceTree = "<group>"; };
+		7701CF6913B1DA2100D39C17 /* WarGS.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = WarGS.cpp; sourceTree = "<group>"; };
+		7701CF6A13B1DA2100D39C17 /* WarGS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarGS.h; sourceTree = "<group>"; };
 		771FA83813AB177B001C73C8 /* ofxiPhoneVideoGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxiPhoneVideoGrabber.h; sourceTree = "<group>"; };
 		771FA83913AB177B001C73C8 /* ofxiPhoneVideoGrabber.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxiPhoneVideoGrabber.mm; sourceTree = "<group>"; };
 		771FA83B13AB1884001C73C8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -67,11 +68,14 @@
 		77979F4013AAE3920040265C /* FileSystemLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemLayer.h; sourceTree = "<group>"; };
 		77979F4213AAE3C00040265C /* FileSystemLayerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemLayerImpl.h; sourceTree = "<group>"; };
 		77979F4313AAE3DC0040265C /* FileSystemLayerImpl_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FileSystemLayerImpl_iPhone.mm; sourceTree = "<group>"; };
+		77A2646C13B2CCF300894A24 /* SdkTrays.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SdkTrays.h; sourceTree = "<group>"; };
+		77A8B4F713B1770600D40305 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		77A8B4FD13B1991200D40305 /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
+		77A8B4FE13B19A7E00D40305 /* GameState.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = GameState.cpp; sourceTree = "<group>"; };
 		77C02E6813AB57EE00978D57 /* Accelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accelerometer.h; sourceTree = "<group>"; };
 		77C02E6913AB57EE00978D57 /* Accelerometer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Accelerometer.mm; sourceTree = "<group>"; };
 		77C17B5713AED3A90067B857 /* ofPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofPoint.cpp; sourceTree = "<group>"; };
 		77C17B5813AED3A90067B857 /* ofPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofPoint.h; sourceTree = "<group>"; };
-		77C17BD313AF42FA0067B857 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		77C17BD613AF48650067B857 /* inputListen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = inputListen.mm; sourceTree = "<group>"; };
 		77C17BD713AF48650067B857 /* inputListen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inputListen.h; sourceTree = "<group>"; };
 		8896C17A13A88232000DA13C /* ogreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ogreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77C17BD413AF42FA0067B857 /* AddressBook.framework in Frameworks */,
+				77A8B4F813B1770600D40305 /* CoreMotion.framework in Frameworks */,
 				771FA90113AB2561001C73C8 /* libboost_date_time.a in Frameworks */,
 				771FA90213AB2562001C73C8 /* libboost_thread.a in Frameworks */,
 				771FA83E13AB18DC001C73C8 /* CoreMedia.framework in Frameworks */,
@@ -112,10 +116,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7701CF6013B1B66700D39C17 /* gameState */ = {
+			isa = PBXGroup;
+			children = (
+				7775627013B03582003849ED /* Bullet.cpp */,
+				7775627113B03582003849ED /* Bullet.h */,
+				7775627213B03582003849ED /* BulletManager.cpp */,
+				7775627313B03582003849ED /* BulletManager.h */,
+				77A8B4FE13B19A7E00D40305 /* GameState.cpp */,
+				77A8B4FD13B1991200D40305 /* GameState.h */,
+				7701CF6613B1C0F600D39C17 /* stateMachine.cpp */,
+				7701CF6713B1C0F600D39C17 /* stateMachine.h */,
+				7701CF6513B1BC3400D39C17 /* state.h */,
+				7701CF6213B1B69200D39C17 /* CaptureFaceGS.cpp */,
+				7701CF6313B1B69200D39C17 /* CaptureFaceGS.h */,
+				7701CF6913B1DA2100D39C17 /* WarGS.cpp */,
+				7701CF6A13B1DA2100D39C17 /* WarGS.h */,
+			);
+			name = gameState;
+			sourceTree = "<group>";
+		};
 		8896C16F13A88232000DA13C = {
 			isa = PBXGroup;
 			children = (
-				77C17BD313AF42FA0067B857 /* AddressBook.framework */,
+				7701CF6013B1B66700D39C17 /* gameState */,
 				88CBFD3E13A8ABA600EBCDB6 /* Resources */,
 				8896C1A313A88DAD000DA13C /* source */,
 				8896C18413A88233000DA13C /* ogreApp */,
@@ -135,6 +159,7 @@
 		8896C17D13A88233000DA13C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77A8B4F713B1770600D40305 /* CoreMotion.framework */,
 				771FA83D13AB18DC001C73C8 /* CoreMedia.framework */,
 				771FA8FF13AB2560001C73C8 /* libboost_date_time.a */,
 				771FA90013AB2560001C73C8 /* libboost_thread.a */,
@@ -174,10 +199,7 @@
 		8896C1A313A88DAD000DA13C /* source */ = {
 			isa = PBXGroup;
 			children = (
-				7775627013B03582003849ED /* Bullet.cpp */,
-				7775627113B03582003849ED /* Bullet.h */,
-				7775627213B03582003849ED /* BulletManager.cpp */,
-				7775627313B03582003849ED /* BulletManager.h */,
+				77A2646C13B2CCF300894A24 /* SdkTrays.h */,
 				77C17BD613AF48650067B857 /* inputListen.mm */,
 				77C17BD713AF48650067B857 /* inputListen.h */,
 				77C17B5713AED3A90067B857 /* ofPoint.cpp */,
@@ -273,16 +295,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7782827D13AF49BD00466BD6 /* inputListen.h in Sources */,
-				7782827E13AF49BD00466BD6 /* ofPoint.h in Sources */,
-				7782827F13AF49BD00466BD6 /* ofxiPhoneVideoGrabber.h in Sources */,
-				7782828013AF49BD00466BD6 /* FileSystemLayerImpl.h in Sources */,
-				7782828113AF49BD00466BD6 /* FileSystemLayer.h in Sources */,
-				7782828213AF49BD00466BD6 /* OgreStaticPluginLoader.h in Sources */,
-				7782828313AF49BD00466BD6 /* Application.h in Sources */,
-				7782828413AF49BD00466BD6 /* Accelerometer.h in Sources */,
-				7782828513AF49BD00466BD6 /* ogreAppAppDelegate.h in Sources */,
-				7782828613AF49BD00466BD6 /* ogreAppViewController.h in Sources */,
 				8896C18F13A88233000DA13C /* ogreAppAppDelegate.mm in Sources */,
 				8896C19513A88233000DA13C /* ogreAppViewController.mm in Sources */,
 				8896C1A213A8869C000DA13C /* Application.cpp in Sources */,
@@ -294,6 +306,10 @@
 				7782828A13AF4A8D00466BD6 /* UITouch.mm in Sources */,
 				7775627413B03582003849ED /* Bullet.cpp in Sources */,
 				7775627513B03582003849ED /* BulletManager.cpp in Sources */,
+				77A8B4FF13B19A7E00D40305 /* GameState.cpp in Sources */,
+				7701CF6413B1B69200D39C17 /* CaptureFaceGS.cpp in Sources */,
+				7701CF6813B1C0F600D39C17 /* stateMachine.cpp in Sources */,
+				7701CF6B13B1DA2100D39C17 /* WarGS.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +347,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: workroom zero (9N3UP734RR)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -340,6 +357,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
 				SDKROOT = iphoneos;
 			};
 			name = DeviceDebug;
@@ -442,6 +461,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -451,6 +471,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
 				SDKROOT = iphoneos;
 			};
 			name = SimuatorDebug;
@@ -589,7 +610,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: workroom zero (9N3UP734RR)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -598,6 +620,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -606,13 +630,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: workroom zero (9N3UP734RR)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FFB16AAE-80EB-4952-9646-D0D877519575";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -712,7 +739,6 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Debug/libfreetype.a",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libFreeImage.a",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libzzip.a",
-					/usr/lib/libz.dylib,
 					"-framework",
 					OpenGLES,
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_thread.a",
