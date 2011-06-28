@@ -1,5 +1,5 @@
-﻿#ifndef __GameState_hpp__
-#define __GameState_hpp__
+﻿#pragma once
+
 
 #include "state.h"
 
@@ -58,4 +58,3 @@ protected:
     
 };
 
-#endif 

@@ -30,6 +30,7 @@ class ofxiPhoneVideoGrabber;
 	
 	int width;
 	int height;
+    int fps;
 	
 	ofxiPhoneVideoGrabber * grabberPtr;
 	
@@ -58,7 +59,7 @@ class ofxiPhoneVideoGrabber : public Ogre::Singleton<ofxiPhoneVideoGrabber>
 {
 
 	public:		
-    ofxiPhoneVideoGrabber();
+    ofxiPhoneVideoGrabber(int width,int height);
     ~ofxiPhoneVideoGrabber();
 		
 		void clear();
@@ -72,11 +73,13 @@ class ofxiPhoneVideoGrabber : public Ogre::Singleton<ofxiPhoneVideoGrabber>
 		unsigned char * getPixels(){
 			return pixels;
 		}
-		float getWidth(){
-			return width;
+		float getWidth() const 
+        {
+			return m_width;
 		}
-		float getHeight(){
-			return height;
+		float getHeight() const 
+        {
+			return m_height;
 		}
     
     /**停止获取图像*/
@@ -84,20 +87,50 @@ class ofxiPhoneVideoGrabber : public Ogre::Singleton<ofxiPhoneVideoGrabber>
     
     /**开始获取图像*/
     void startCapture();
+    
+    bool isUpdate()const {return m_bUpdateTex;}
+    
+    bool converImageBufferToPixels(CVImageBufferRef& pBuffer);
 	
+    ///每帧更新
+    void update();
+    
+    /**返回获取的图像，
+     */
+    Ogre::TexturePtr getOgreTexture() const ;
+    
+    
+    
 	protected:
+    
+    /**初始化ogre贴图*/
+    void initOgreTexture();
+    
+    /**更新ogre贴图*/
+    void updateOgreTexture();
+    
 		
-		bool convertCGImageToPixels(CGImageRef & ref, unsigned char * pixels);
+    bool convertCGImageToPixels(CGImageRef & ref, unsigned char * pixels);
+    
+   
+    
+    protected:
     
     
-		int width, height;
+    int m_width, m_height;
 	
-		bool bUpdateTex;
-		int fps;
+    bool m_bUpdateTex;
+    
+    int fps;
 		//ofTexture tex;
     
-        unsigned char * pixels;
-		iPhoneVideoGrabber * grabber;
+    unsigned char * pixels;
+    iPhoneVideoGrabber * grabber;
+    
+    ////ogre 接口
+    Ogre::TexturePtr m_pTexture;
+    
+    bool       m_isCapture;
 };
 
 

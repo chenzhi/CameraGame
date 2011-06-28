@@ -8,6 +8,7 @@
 
 
 
+
 #if __IPHONE_OS_VERSION_MIN_REQUIRED > __IPHONE_3_2
 
 
@@ -33,6 +34,9 @@
 	return self;
 }
 
+
+
+//--------------------------------------------------------
 - (void)initCapture:(int)framerate capWidth:(int)w capHeight:(int)h
 {
 	/*We setup the input*/
@@ -50,6 +54,7 @@
 	 In this example we set a min frame duration of 1/10 seconds so a maximum framerate of 10fps. We say that
 	 we are not able to process more than 10 frames per second.*/
 	captureOutput.minFrameDuration = CMTimeMake(1, framerate);
+    fps=framerate;
 	
 	/*We create a serial queue to handle the processing of our frames*/
 	dispatch_queue_t queue;
@@ -97,12 +102,14 @@
 	
 }
 
+
+//--------------------------------------------------------
 -(void) startCapture
 {
 
 	if( !bInitCalled )
     {
-		[self initCapture:15 capWidth:480 capHeight:320];
+		[self initCapture:fps capWidth:width capHeight:height];
 	}
 
 	[self.captureSession startRunning];
@@ -114,6 +121,8 @@
 
 }
 
+
+//--------------------------------------------------------
 -(void) lockExposureAndFocus
 {
 
@@ -126,18 +135,23 @@
 	
 }
 
+
+//--------------------------------------------------------
 -(void)stopCapture
 {
 	[self.captureSession stopRunning];
+    
 }
 
 
-
+//--------------------------------------------------------
 -(CGImageRef)getCurrentFrame
 {
 	return currentFrame;
 }
 
+
+//--------------------------------------------------------
 #pragma mark -
 #pragma mark AVCaptureSession delegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput 
@@ -149,7 +163,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	
 	//printf("capturing!\n");	
 	
-	//NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
     /*Lock the image buffer*/
@@ -181,7 +195,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	
 	grabberPtr->updatePixelsCB(currentFrame);
 	
-	//[pool drain];
+	[pool drain];
 } 
 
 #pragma mark -
@@ -204,22 +218,28 @@ namespace Ogre
 }
 
 
-ofxiPhoneVideoGrabber::ofxiPhoneVideoGrabber()
+//--------------------------------------------------------
+ofxiPhoneVideoGrabber::ofxiPhoneVideoGrabber(int width,int height)
 {
-	fps		= 15;
+	fps		= 30;
 	grabber = [[iPhoneVideoGrabber alloc] init];
     grabber.grabberPtr = this;
-    
+    m_width=width;
+    m_height=height;
 	pixels	= NULL;
+    
+    initGrabber(m_width,m_height);
 }
 
+//--------------------------------------------------------
 ofxiPhoneVideoGrabber::~ofxiPhoneVideoGrabber()
 {
 	[grabber stopCapture];
     [grabber release];
 	clear();
 }
-		
+
+//--------------------------------------------------------
 void ofxiPhoneVideoGrabber::clear()
 {
 	if( pixels != NULL ){
@@ -229,11 +249,13 @@ void ofxiPhoneVideoGrabber::clear()
 	//tex.clear();
 }
 
+//--------------------------------------------------------
 void ofxiPhoneVideoGrabber::setCaptureRate(int capRate)
 {
 	fps = capRate;
 }
 
+//--------------------------------------------------------
 void ofxiPhoneVideoGrabber::initGrabber(int w, int h)
 {
 
@@ -241,42 +263,49 @@ void ofxiPhoneVideoGrabber::initGrabber(int w, int h)
     
 	
 	
-	width	= grabber->width;
-	height	= grabber->height;
+	m_width	= grabber->width;
+	m_height	= grabber->height;
 	
 	clear();
 	
-	pixels = new unsigned char[width * width * 3];
-	memset(pixels, 0, width*height*3);
+	pixels = new unsigned char[m_width * m_height * 3];
+	memset(pixels, 0, m_width*m_height*3);
 	
 	//tex.allocate(width, height, GL_RGB);
 		
 	[grabber startCapture];
+    m_isCapture=true;
 	
-	bUpdateTex = true;
+	m_bUpdateTex = true;
+    
+    ///初始化纹理
+    initOgreTexture();
 }
 
+//--------------------------------------------------------
 void ofxiPhoneVideoGrabber::updatePixelsCB( CGImageRef & ref )
 {
-	bUpdateTex = convertCGImageToPixels(ref, pixels);
+	m_bUpdateTex = convertCGImageToPixels(ref, pixels);
 }
-		
+	
+//--------------------------------------------------------
 void ofxiPhoneVideoGrabber::draw(float x, float y)
 {
-	draw(x, y, width, height);
+	draw(x, y, m_width, m_height);
 }
 
+//--------------------------------------------------------
 void ofxiPhoneVideoGrabber::draw(float x, float y, float w, float h)
 {
-	if( bUpdateTex )
+	if( m_bUpdateTex )
     {
 		//tex.loadData(pixels, w, h, GL_RGB);
-		bUpdateTex = false;
+		m_bUpdateTex = false;
 	}
 	//tex.draw(x, y, w, h);
 }
 
-
+//--------------------------------------------------------
 bool ofxiPhoneVideoGrabber::convertCGImageToPixels(CGImageRef & ref, unsigned char * pixels)
 {
 	CGContextRef spriteContext;
@@ -286,9 +315,12 @@ bool ofxiPhoneVideoGrabber::convertCGImageToPixels(CGImageRef & ref, unsigned ch
 	
 	int w			= CGImageGetWidth(ref);
 	int h			= CGImageGetHeight(ref);
+    
 	
 	// Allocated memory needed for the bitmap context
 	//GLubyte *pixelsTmp	= (GLubyte *) malloc(w * h * bytesPerPixel);
+    
+    
     unsigned char *pixelsTmp	= (unsigned char *) malloc(w * h * bytesPerPixel);
 	
 	// Uses the bitmatp creation function provided by the Core Graphics framework. 
@@ -320,16 +352,116 @@ bool ofxiPhoneVideoGrabber::convertCGImageToPixels(CGImageRef & ref, unsigned ch
 }
 
 
-/**停止获取图像*/
+//--------------------------------------------------------
 void ofxiPhoneVideoGrabber::stopCapture()
 {
     [grabber stopCapture];
+    m_isCapture=false;
 }
 
-/**开始获取图像*/
+//--------------------------------------------------------
 void ofxiPhoneVideoGrabber::startCapture()
 {
     [grabber startCapture];
+    m_isCapture=true;
+}
+
+
+
+//--------------------------------------------------------
+Ogre::TexturePtr ofxiPhoneVideoGrabber::getOgreTexture() const 
+{
+    return m_pTexture;
+    
+}
+
+
+//--------------------------------------------------------
+void ofxiPhoneVideoGrabber::initOgreTexture()
+{
+    if(m_pTexture.isNull()==false)
+    {
+        Ogre::TextureManager::getSingleton().remove(m_pTexture->getName());
+        m_pTexture.setNull();
+    }
+    
+        
+    m_pTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture_ofxiPhoneVideoGrabber", "General", 
+    Ogre::TEX_TYPE_2D, m_width, m_height, 1, 1,Ogre::PF_R8G8B8); 
+    
+    return ;
+    
+}
+
+
+//--------------------------------------------------------
+void ofxiPhoneVideoGrabber::updateOgreTexture()
+{
+    if(m_isCapture==false)
+    {
+        return ;
+    }
+    
+    if(m_pTexture.isNull())
+        return ;
+    
+    
+    
+    if(isUpdate())
+    {
+        
+        unsigned char* pPixel=getPixels();
+        
+        Ogre::HardwarePixelBufferSharedPtr pPixelBuff= m_pTexture->getBuffer(0,0);
+        int yoffset=m_pTexture->getHeight()-m_height;
+        if(pPixelBuff.isNull()==false)
+        {
+            pPixelBuff->lock(Ogre::HardwareBuffer::HBL_DISCARD);
+            const Ogre::PixelBox &pb = pPixelBuff->getCurrentLock();
+            
+            // size_t height = pb.getHeight();
+            // size_t width = pb.getWidth();
+            // size_t depth = pb.getDepth();
+            size_t rowPitch = pb.rowPitch;
+            // size_t slicePitch = pb.slicePitch;
+            size_t pixelSize=Ogre::PixelUtil::getNumElemBits(pb.format);
+            pixelSize/=8;
+            
+            rowPitch*=pixelSize;
+            Ogre::uint8 *data = static_cast<Ogre::uint8*>(pb.data);
+            
+            for(int i=0;i<m_height ;++i)
+            {
+                unsigned char* pRow=pPixel+i*m_width*3;
+                unsigned char* ptarget=data+(i+yoffset)*rowPitch;
+                
+                memcpy(ptarget,pRow,m_width*pixelSize);
+            }
+            
+            pPixelBuff->unlock();
+            
+        }
+        
+        
+        
+        ///重置状态
+        m_bUpdateTex=false;
+
+        
+    }
+    
+    
+    
+}
+
+
+//--------------------------------------------------------
+void ofxiPhoneVideoGrabber::update()
+{
+    if(isUpdate()&&m_isCapture)
+    {
+        updateOgreTexture();
+    }
 }
 
 #endif	// (__arm__) compile only for ARM

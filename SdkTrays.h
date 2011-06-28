@@ -32,6 +32,7 @@
 #include "OgreFontManager.h"
 #include "OgreBorderPanelOverlayElement.h"
 #include "OgreTextAreaOverlayElement.h"
+
 #include <math.h>
 
 #if OGRE_COMPILER == OGRE_COMPILER_MSVC
@@ -39,8 +40,7 @@
 #   pragma warning (disable : 4244)
 #endif
 
-namespace OgreBites
-{
+
 	enum TrayLocation   // enumerator values for widget tray anchoring locations
 	{
 		TL_TOPLEFT,
@@ -794,7 +794,8 @@ namespace OgreBites
 			else 
 			{
 				Ogre::String desc = "Menu \"" + getName() + "\" contains no item \"" + item + "\".";
-				OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "SelectMenu::removeItem");
+				//OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "SelectMenu::removeItem");
+                throw("SelectMenu::removeItem");
 			}
 		}
 
@@ -823,7 +824,8 @@ namespace OgreBites
 			{
 				Ogre::String desc = "Menu \"" + getName() + "\" contains no item at position " +
 					Ogre::StringConverter::toString(index) + ".";
-				OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "SelectMenu::removeItem");
+				//OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "SelectMenu::removeItem");
+                throw("SelectMenu::removeItem");
 			}
 		}
 
@@ -840,7 +842,8 @@ namespace OgreBites
 			{
 				Ogre::String desc = "Menu \"" + getName() + "\" contains no item at position " +
 					Ogre::StringConverter::toString(index) + ".";
-				OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "SelectMenu::selectItem");
+				//OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "SelectMenu::selectItem");
+                throw("SelectMenu::selectItem");
 			}
 
 			mSelectionIndex = index;
@@ -861,7 +864,8 @@ namespace OgreBites
 			}
 
 			Ogre::String desc = "Menu \"" + getName() + "\" contains no item \"" + item + "\".";
-			OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "SelectMenu::selectItem");
+			//OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "SelectMenu::selectItem");
+            //throw();
 		}
 
 		Ogre::DisplayString getSelectedItem()
@@ -869,7 +873,7 @@ namespace OgreBites
 			if (mSelectionIndex == -1)
 			{
 				Ogre::String desc = "Menu \"" + getName() + "\" has no item selected.";
-				OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "SelectMenu::getSelectedItem");
+				//OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "SelectMenu::getSelectedItem");
 				return "";
 			}
 			else return mItems[mSelectionIndex];
@@ -1429,7 +1433,7 @@ namespace OgreBites
 			}
 
 			Ogre::String desc = "ParamsPanel \"" + getName() + "\" has no parameter \"" + paramName.asUTF8() + "\".";
-			OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "ParamsPanel::setParamValue");
+			//OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "ParamsPanel::setParamValue");
 		}
 
 		void setParamValue(unsigned int index, const Ogre::DisplayString& paramValue)
@@ -1438,7 +1442,7 @@ namespace OgreBites
 			{
 				Ogre::String desc = "ParamsPanel \"" + getName() + "\" has no parameter at position " +
 					Ogre::StringConverter::toString(index) + ".";
-				OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "ParamsPanel::setParamValue");
+				//OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "ParamsPanel::setParamValue");
 			}
 
 			mValues[index] = paramValue.asUTF8();
@@ -1453,7 +1457,7 @@ namespace OgreBites
 			}
 			
 			Ogre::String desc = "ParamsPanel \"" + getName() + "\" has no parameter \"" + paramName.asUTF8() + "\".";
-			OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "ParamsPanel::getParamValue");
+			//OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "ParamsPanel::getParamValue");
 			return "";
 		}
 
@@ -1463,7 +1467,7 @@ namespace OgreBites
 			{
 				Ogre::String desc = "ParamsPanel \"" + getName() + "\" has no parameter at position " +
 					Ogre::StringConverter::toString(index) + ".";
-				OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "ParamsPanel::getParamValue");
+				//OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, desc, "ParamsPanel::getParamValue");
 			}
 			
 			return mValues[index];
@@ -1695,11 +1699,11 @@ namespace OgreBites
 		| Creates backdrop, cursor, and trays.
 		-----------------------------------------------------------------------------*/
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
-		SdkTrayManager(const Ogre::String& name, Ogre::RenderWindow* window, OIS::MultiTouch* mouse, SdkTrayListener* listener = 0) :
+		SdkTrayManager(const Ogre::String& name, Ogre::RenderWindow* window, SdkTrayListener* listener = 0) :
 #else
 		SdkTrayManager(const Ogre::String& name, Ogre::RenderWindow* window, OIS::Mouse* mouse, SdkTrayListener* listener = 0) :
 #endif
-		  mName(name), mWindow(window), mMouse(mouse), mWidgetDeathRow(), mListener(listener), mWidgetPadding(8),
+		  mName(name), mWindow(window), mWidgetDeathRow(), mListener(listener), mWidgetPadding(8),
                 mWidgetSpacing(2), mTrayPadding(0), mTrayDrag(false), mExpandedMenu(0), mDialog(0), mOk(0), mYes(0),
                 mNo(0), mCursorWasVisible(false), mFpsLabel(0), mStatsPanel(0), mLogo(0), mLoadBar(0),
 				mGroupInitProportion(0.0f), mGroupLoadProportion(0.0f), mLoadInc(0.0f)
@@ -1757,7 +1761,8 @@ namespace OgreBites
 			adjustTrays();
 			
 			showTrays();
-			showCursor();
+			//showCursor();
+            hideCursor();
 		}
 
 		/*-----------------------------------------------------------------------------
@@ -1870,7 +1875,7 @@ namespace OgreBites
 			if (!mCursorLayer->isVisible())
 			{
 				mCursorLayer->show();
-				refreshCursor();
+				//refreshCursor();
 			}
 		}
 
@@ -1895,7 +1900,9 @@ namespace OgreBites
 		| because if the tray manager has been cut off from mouse events for a time,
 		| the cursor position will be out of date.
 		-----------------------------------------------------------------------------*/
-		void refreshCursor()
+		
+        /*
+        void refreshCursor()
 		{
 #if OGRE_NO_VIEWPORT_ORIENTATIONMODE == 0
             // TODO:
@@ -1911,6 +1918,7 @@ namespace OgreBites
 #endif
 		}
 
+         //*/
 		void showTrays()
 		{
 			mTraysLayer->show();
@@ -2587,8 +2595,10 @@ namespace OgreBites
 		-----------------------------------------------------------------------------*/
 		void destroyWidget(Widget* widget)
 		{
-			if (!widget) OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, "Widget does not exist.", "TrayManager::destroyWidget");
-
+			if (!widget)
+            {
+                //OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, "Widget does not exist.", "TrayManager::destroyWidget");
+            }
 			// in case special widgets are destroyed manually, set them to 0
 			if (widget == mLogo) mLogo = 0;
 			else if (widget == mStatsPanel) mStatsPanel = 0;
@@ -2646,7 +2656,9 @@ namespace OgreBites
 		-----------------------------------------------------------------------------*/
 		void moveWidgetToTray(Widget* widget, TrayLocation trayLoc, int place = -1)
 		{
-			if (!widget) OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, "Widget does not exist.", "TrayManager::moveWidgetToTray");
+			if (!widget) 
+               // OGRE_EXCEPT(Ogre::Exception::ERR_ITEM_NOT_FOUND, "Widget does not exist.", "TrayManager::moveWidgetToTray");
+            throw("Widget does not exist. TrayManager::moveWidgetToTray");
 
 			// remove widget from old tray
 			WidgetList& wList = mWidgets[widget->getTrayLocation()];
@@ -2738,7 +2750,7 @@ namespace OgreBites
 		| Process frame events. Updates frame statistics widget set and deletes
 		| all widgets queued for destruction.
 		-----------------------------------------------------------------------------*/
-		bool frameRenderingQueued(const Ogre::FrameEvent& evt)
+		bool frameRenderingQueued()
 		{
 			for (unsigned int i = 0; i < mWidgetDeathRow.size(); i++)
 			{
@@ -2901,6 +2913,9 @@ namespace OgreBites
 		| Processes mouse button down events. Returns true if the event was
 		| consumed and should not be passed on to other handlers.
 		-----------------------------------------------------------------------------*/
+        
+        
+        /*
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
 		bool injectMouseDown(const OIS::MultiTouchEvent& evt)
 #else
@@ -2980,10 +2995,14 @@ namespace OgreBites
 			return true;   // a tray click is not to be handled by another party
 		}
 
+         
+         //*/
 		/*-----------------------------------------------------------------------------
 		| Processes mouse button up events. Returns true if the event was
 		| consumed and should not be passed on to other handlers.
 		-----------------------------------------------------------------------------*/
+        
+        /*
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
 		bool injectMouseUp(const OIS::MultiTouchEvent& evt)
 #else
@@ -3038,10 +3057,13 @@ namespace OgreBites
 			return true;         // this click did originate in this tray, so don't pass it on
 		}
 
+         //*/
 		/*-----------------------------------------------------------------------------
 		| Updates cursor position. Returns true if the event was
 		| consumed and should not be passed on to other handlers.
 		-----------------------------------------------------------------------------*/
+        
+        /*
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
 		bool injectMouseMove(const OIS::MultiTouchEvent& evt)
 #else
@@ -3089,6 +3111,8 @@ namespace OgreBites
 			return false;
 		}
 
+         
+         //*/
     protected:
 
 		/*-----------------------------------------------------------------------------
@@ -3120,7 +3144,7 @@ namespace OgreBites
 		Ogre::String mName;                   // name of this tray system
 		Ogre::RenderWindow* mWindow;          // render window
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
-		OIS::MultiTouch* mMouse;              // multitouch device
+		//OIS::MultiTouch* mMouse;              // multitouch device
 #else
 		OIS::Mouse* mMouse;                   // mouse device
 #endif
@@ -3154,6 +3178,6 @@ namespace OgreBites
 		Ogre::Real mLoadInc;                  // loading increment
 		Ogre::GuiHorizontalAlignment mTrayWidgetAlign[10];   // tray widget alignments
     };
-}
+
 
 #endif

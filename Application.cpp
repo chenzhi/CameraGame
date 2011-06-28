@@ -12,6 +12,7 @@
 #include  "CaptureFaceGS.h"
 #include "GameState.h"
 #include  "WarGS.h"
+#include  "SdkTrays.h"
 
 namespace Ogre
 {
@@ -91,7 +92,8 @@ bool Application::initOgreRender()
     m_pRenderWindow=m_pRoot->initialise(true);
     m_pSceneManager = m_pRoot->createSceneManager(Ogre::ST_GENERIC, "DummyScene");
     m_pCamera = m_pSceneManager->createCamera("MainCamera");
-    m_pCamera->setFarClipDistance(5000);
+    m_pCamera->setFarClipDistance(1000);
+    m_pCamera->setNearClipDistance(1.0f);
     m_pRenderWindow->addViewport(m_pCamera);
     m_pViewPort=m_pRenderWindow->getViewport(0);
     
@@ -100,7 +102,7 @@ bool Application::initOgreRender()
     
     m_pCameraNode=m_pSceneManager->getRootSceneNode()->createChildSceneNode();
     m_pCameraNode->attachObject(m_pCamera);
-    m_pCameraNode->setPosition(0.0f,0.0f,200.0f);
+    m_pCameraNode->setPosition(0.0f,0.0f,3.0f);
     
     if(m_pViewPort!=NULL)
     {
@@ -116,8 +118,12 @@ bool Application::initOgreRender()
     initScene();
     
     
+    m_pUIManager =new SdkTrayManager("MainUI",m_pRenderWindow);
+    m_pUIManager->showFrameStats(TL_BOTTOMLEFT);
+    
+    
 #ifdef __arm__
-    new ofxiPhoneVideoGrabber();
+    new ofxiPhoneVideoGrabber(480,320);
 #endif
     
 
@@ -128,8 +134,11 @@ bool Application::initOgreRender()
 void Application::initScene()
 {
 
-    Ogre::Entity* pEntity= m_pSceneManager->createEntity("Head", "ogrehead.mesh");
-    pEntity->setVisible(false);
+   m_pSceneManager->createEntity("Head", "CameraHead.mesh");
+   // pEntity->setVisible(true);
+    //m_pSceneManager->getRootSceneNode()->createChildSceneNode()->attachObject(pEntity);
+    
+   // Ogre::Light* pLight=m_pSceneManager->createLight("mainLight");
     
 }
 
@@ -158,6 +167,7 @@ void Application::destroyInputDevice()
 void Application::destroyOgreRender()
 {
     delete m_pFileSystem;
+    delete m_pUIManager;
    // mStaticPluginLoader.unload();
     OGRE_DELETE m_pRoot;
     
@@ -176,8 +186,16 @@ void Application::update(float time)
     //updateVideo();
     m_pInputListen->Captuer();
 
+    m_pUIManager->frameRenderingQueued();
       
     m_pRoot->renderOneFrame(time);
+    
+    
+    
+#ifdef __arm__
+    ofxiPhoneVideoGrabber::getSingleton().update();
+#endif
+    
 }
 
 //----------------------------------------------

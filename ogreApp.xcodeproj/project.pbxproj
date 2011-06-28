@@ -20,6 +20,7 @@
 		7775627413B03582003849ED /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7775627013B03582003849ED /* Bullet.cpp */; };
 		7775627513B03582003849ED /* BulletManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7775627213B03582003849ED /* BulletManager.cpp */; };
 		7782828A13AF4A8D00466BD6 /* UITouch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7782828913AF4A8D00466BD6 /* UITouch.mm */; };
+		778F9E1D13B8337700E1706D /* enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778F9E1B13B8337700E1706D /* enemy.cpp */; };
 		77910B9013AA0D0300ACEE73 /* ogre.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8D13AA0D0300ACEE73 /* ogre.cfg */; };
 		77910B9113AA0D0300ACEE73 /* plugins.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8E13AA0D0300ACEE73 /* plugins.cfg */; };
 		77910B9213AA0D0300ACEE73 /* resources.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8F13AA0D0300ACEE73 /* resources.cfg */; };
@@ -62,6 +63,8 @@
 		7775627313B03582003849ED /* BulletManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletManager.h; sourceTree = "<group>"; };
 		7782828813AF4A8D00466BD6 /* UITouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouch.h; sourceTree = "<group>"; };
 		7782828913AF4A8D00466BD6 /* UITouch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UITouch.mm; sourceTree = "<group>"; };
+		778F9E1B13B8337700E1706D /* enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = enemy.cpp; sourceTree = "<group>"; };
+		778F9E1C13B8337700E1706D /* enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enemy.h; sourceTree = "<group>"; };
 		77910B8D13AA0D0300ACEE73 /* ogre.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ogre.cfg; path = Resources/ogre.cfg; sourceTree = "<group>"; };
 		77910B8E13AA0D0300ACEE73 /* plugins.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plugins.cfg; path = Resources/plugins.cfg; sourceTree = "<group>"; };
 		77910B8F13AA0D0300ACEE73 /* resources.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = resources.cfg; path = Resources/resources.cfg; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 		7701CF6013B1B66700D39C17 /* gameState */ = {
 			isa = PBXGroup;
 			children = (
+				778F9E1B13B8337700E1706D /* enemy.cpp */,
+				778F9E1C13B8337700E1706D /* enemy.h */,
 				7775627013B03582003849ED /* Bullet.cpp */,
 				7775627113B03582003849ED /* Bullet.h */,
 				7775627213B03582003849ED /* BulletManager.cpp */,
@@ -136,9 +141,17 @@
 			name = gameState;
 			sourceTree = "<group>";
 		};
+		77BDDF2113B46A0600818C67 /* collisionManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = collisionManager;
+			sourceTree = "<group>";
+		};
 		8896C16F13A88232000DA13C = {
 			isa = PBXGroup;
 			children = (
+				77BDDF2113B46A0600818C67 /* collisionManager */,
 				7701CF6013B1B66700D39C17 /* gameState */,
 				88CBFD3E13A8ABA600EBCDB6 /* Resources */,
 				8896C1A313A88DAD000DA13C /* source */,
@@ -310,6 +323,7 @@
 				7701CF6413B1B69200D39C17 /* CaptureFaceGS.cpp in Sources */,
 				7701CF6813B1C0F600D39C17 /* stateMachine.cpp in Sources */,
 				7701CF6B13B1DA2100D39C17 /* WarGS.cpp in Sources */,
+				778F9E1D13B8337700E1706D /* enemy.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +363,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: workroom zero (9N3UP734RR)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -400,6 +415,7 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/Samples/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Paging/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Terrain/include",
+					"\"$(SRCROOT)/Bullet/src\"",
 				);
 				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
@@ -463,6 +479,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -513,6 +530,7 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/Samples/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Paging/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Terrain/include",
+					"\"$(SRCROOT)/Bullet/src\"",
 				);
 				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
@@ -612,6 +630,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: workroom zero (9N3UP734RR)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -632,6 +651,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: workroom zero (9N3UP734RR)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -681,6 +701,7 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/Samples/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Paging/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Terrain/include",
+					"\"$(SRCROOT)/Bullet/src\"",
 				);
 				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
@@ -787,6 +808,7 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/Samples/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Paging/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Terrain/include",
+					"\"$(SRCROOT)/Bullet/src\"",
 				);
 				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;

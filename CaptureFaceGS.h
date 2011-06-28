@@ -56,8 +56,6 @@ protected:
     /**初始化摄像头*/
     void initVideo();
 
-    
-    
     /**更新摄像头*/
     void updateVideo();
     
@@ -74,9 +72,12 @@ protected:
     
     Ogre::TexturePtr   m_pVideoTexture;
     
+    
+    Ogre::Overlay*     m_pCaptureOverlay;
+    
 #if defined  __arm__
 
-    ofxiPhoneVideoGrabber* m_pVideo;
+    //ofxiPhoneVideoGrabber* m_pVideo;
 #endif
     
     

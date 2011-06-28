@@ -12,7 +12,7 @@
 
 
 CaptureFaceGS::CaptureFaceGS( )
-:GameState(ST_CAPTUREFACE)
+:GameState(ST_CAPTUREFACE),m_pCaptureOverlay(NULL)
 {
     
 }
@@ -33,6 +33,11 @@ void  CaptureFaceGS::begin( )
     initBackGround(); 
     
    
+    m_pCaptureOverlay=Ogre::OverlayManager::getSingleton().getByName("CaptureFace");
+    if(m_pCaptureOverlay!=NULL)
+    {
+        m_pCaptureOverlay->show();
+    }
     
     
 }
@@ -43,14 +48,25 @@ void  CaptureFaceGS::end( )
 {
     GameState::end();
     
+    if(m_pCaptureOverlay!=NULL)
+    {
+        
+        m_pCaptureOverlay->hide();
+    }
+    
+    if(m_BackGround!=NULL)
+    {
+        //m_BackGround->setVisible(false);
+    }
+    
     
 #if defined  __arm__
-    m_pVideo->stopCapture();
+   // m_pVideo->stopCapture();
+    //ofxiPhoneVideoGrabber::getSingleton().stopCapture();
     
 #endif    
     
     
-   // m_BackGround->setVisible(false);
 }
 
 
@@ -58,7 +74,7 @@ void  CaptureFaceGS::end( )
 StateType CaptureFaceGS::update(float time)
 {
     
-    updateVideo();
+   // updateVideo();
     
     return GameState::update(time);
     
@@ -97,8 +113,8 @@ void CaptureFaceGS::initBackGround()
     width=Application::getSingleton().getMainCamera()->getAspectRatio()*height;
     
 #if defined  __arm__
-    float videowidth=m_pVideo->getWidth();
-    float videoheight=m_pVideo->getHeight();
+    float videowidth=ofxiPhoneVideoGrabber::getSingleton().getWidth();
+    float videoheight=ofxiPhoneVideoGrabber::getSingleton().getHeight();
     float textWidth=m_pVideoTexture->getWidth();
     float texheight=m_pVideoTexture->getHeight();
 #else
@@ -125,11 +141,22 @@ void CaptureFaceGS::initBackGround()
     Ogre::MaterialPtr pBackGroundMaterial=Ogre::MaterialManager::getSingleton().create("BackGroundVideomat", "General");
     
     Ogre::Pass*pPass=pBackGroundMaterial->getTechnique(0)->getPass(0);
-    pPass->createTextureUnitState()->setTextureName(m_pVideoTexture->getName());
+    
+#if defined  __arm__
+    Ogre::TexturePtr pVideoTexture=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture();
+    pPass->createTextureUnitState()->setTextureName(pVideoTexture->getName());
+#else
+    pPass->createTextureUnitState()->setTextureName("videoTexture_ofxiPhoneVideoGrabber");
+
+#endif
     pPass->setAmbient(Ogre::ColourValue(1.0f,1.0f,1.0f,1.0f));
     
     
     m_BackGround->getSubEntity(0)->setMaterialName(pBackGroundMaterial->getName());
+    
+#ifndef __arm__
+    m_BackGround->setVisible(false);
+#endif
 }
 
 
@@ -138,33 +165,9 @@ void CaptureFaceGS::initBackGround()
 void CaptureFaceGS::initVideo()
 {
     
-#ifndef __arm__
-    m_pVideoTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture", "General", Ogre::TEX_TYPE_2D, 512, 512, 1, 1,Ogre::PF_R8G8B8); 
+    m_pVideoTexture=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture();
+    return ;
     
-#else
-    
-    
-    int width=512,height=512;
-    
-    m_pVideoTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture", "General", Ogre::TEX_TYPE_2D, width, height, 1, 1,Ogre::PF_R8G8B8); 
-    
-    m_pVideo= ofxiPhoneVideoGrabber::getSingletonPtr();
-    
-    m_pVideo->initGrabber(width,height);
-    //m_pVideo.stopCapture();
-    
-    width=m_pVideoTexture->getWidth();
-    height=m_pVideoTexture->getHeight();
-    
-    //Ogre::MaterialPtr pMaterial=Ogre::MaterialManager::getSingleton().getByName("Ogre/Skin");
-    //if(pMaterial.isNull()==false)
-    ////{
-    //  pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName("videoTexture");
-    //}
-    
-    return;
-#endif
-
 }
 
 
@@ -172,53 +175,9 @@ void CaptureFaceGS::initVideo()
 void CaptureFaceGS::updateVideo()
 {
     
-    
-    
-#if defined  __arm__
-    
-    int width=m_pVideo->getWidth();
-    int height=m_pVideo->getHeight();
-    
-    m_pVideo->draw(0,0);
-    
-    unsigned char* pPixel=m_pVideo->getPixels();
-    
-    Ogre::HardwarePixelBufferSharedPtr pPixelBuff= m_pVideoTexture->getBuffer(0,0);
-    int yoffset=m_pVideoTexture->getHeight()-height;
-	if(pPixelBuff.isNull()==false)
-	{
-        pPixelBuff->lock(Ogre::HardwareBuffer::HBL_DISCARD);
-        const Ogre::PixelBox &pb = pPixelBuff->getCurrentLock();
-        
-        // size_t height = pb.getHeight();
-        // size_t width = pb.getWidth();
-        // size_t depth = pb.getDepth();
-        size_t rowPitch = pb.rowPitch;
-        // size_t slicePitch = pb.slicePitch;
-        size_t pixelSize=Ogre::PixelUtil::getNumElemBits(pb.format);
-        pixelSize/=8;
-        
-        rowPitch*=pixelSize;
-        Ogre::uint8 *data = static_cast<Ogre::uint8*>(pb.data);
-        
-        for(int i=0;i<height ;++i)
-        {
-            unsigned char* pRow=pPixel+i*width*3;
-            for(int j=0;j<width;++j)
-            {
-                data[(i+yoffset)*rowPitch+j*pixelSize]=pRow[j*3];
-                data[(i+yoffset)*rowPitch+j*pixelSize+1]=pRow[j*3+1];
-                data[(i+yoffset)*rowPitch+j*pixelSize+2]=pRow[j*3+2];
-            }
-        }
-        
-        pPixelBuff->unlock();
-        
-    }
-    
-#endif
-    
     return ;
+    
+
 }
 
 

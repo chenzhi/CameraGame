@@ -8,6 +8,10 @@
 
 #include "BulletManager.h"
 #include  "Bullet.h"
+#include  "Application.h"
+#include  "enemy.h"
+
+
 namespace Ogre 
 {
 template<> BulletManager* Ogre::Singleton<BulletManager>::ms_Singleton=NULL;
@@ -17,7 +21,10 @@ template<> BulletManager* Ogre::Singleton<BulletManager>::ms_Singleton=NULL;
 
 //---------------------------------------------------
 BulletManager::BulletManager()
+:m_pSceneMrg(NULL)
 {
+    
+    m_pSceneMrg=Application::getSingleton().getMainSceneManager();
     init();
 }
 
@@ -25,6 +32,7 @@ BulletManager::BulletManager()
 BulletManager::~BulletManager()
 {
     destroy();
+    destroyAllEnemy();
 }
 
 
@@ -33,7 +41,7 @@ void BulletManager::init()
 {
     for(int i=0; i<10; ++i)
     {
-        m_BulletCollect.push_back(new Bullet());
+        m_BulletCollect.push_back(new Bullet(m_pSceneMrg));
     }
     
 }
@@ -60,6 +68,9 @@ void BulletManager::update(float time)
     {
         m_BulletCollect[i]->update(time);
     }
+    
+    
+    updateEnemy(time);
     
     return ;
 }
@@ -91,4 +102,60 @@ Bullet* BulletManager::getBullet()
     
     return NULL;
 
+}
+
+//---------------------------------------------------
+Enemy* BulletManager::createEnemy(const Ogre::Vector3& pos)
+{
+    Enemy* pEnemy=  new Enemy("CameraHead.mesh",pos,m_pSceneMrg);
+    
+    m_EnemyCollect.push_back(pEnemy);
+    
+    return pEnemy;
+}
+
+
+//---------------------------------------------------
+Enemy* BulletManager::getEnemyByEntityName(const std::string& name) const 
+{
+    EnemyCollect::const_iterator it=m_EnemyCollect.begin();
+    EnemyCollect::const_iterator endit=m_EnemyCollect.end();
+    
+    for(;it!=endit;++it)
+    {
+        if( (*it)->getEntityName()==name)
+        {
+            return *it;
+        }
+    }
+    
+    return NULL;
+}
+
+//---------------------------------------------------
+void  BulletManager::destroyAllEnemy()
+{
+    EnemyCollect::const_iterator it=m_EnemyCollect.begin();
+    EnemyCollect::const_iterator endit=m_EnemyCollect.end();
+    
+    for(;it!=endit;++it)
+    {
+        delete (*it);
+    }
+    m_EnemyCollect.clear();
+    return ;
+}
+
+
+///每帧更新敌人
+void  BulletManager::updateEnemy(float time)
+{
+    EnemyCollect::const_iterator it=m_EnemyCollect.begin();
+    EnemyCollect::const_iterator endit=m_EnemyCollect.end();
+    
+    for(;it!=endit;++it)
+    {
+        (*it)->update(time);
+    }
+    return ;
 }

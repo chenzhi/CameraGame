@@ -57,6 +57,8 @@ protected:
     Ogre::Entity*      m_pHeadEntity;
     
     
+    Ogre::AnimationState*  m_pAniState;
+    
     
     
     

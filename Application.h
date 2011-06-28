@@ -22,7 +22,7 @@
 
 
 class ofxiPhoneVideoGrabber;
-
+class SdkTrayManager;
 
 class Application :public Ogre::Singleton<Application>, StateMachine
 {
@@ -132,7 +132,7 @@ protected:
 
     InputListen*            m_pInputListen;
     
-    //Accelerometer*  m_Accelerometer;
+    SdkTrayManager*           m_pUIManager;
     
     
     

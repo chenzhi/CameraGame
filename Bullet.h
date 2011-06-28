@@ -9,6 +9,9 @@
 #define Bullet_h_h_h_h_
 
 
+#include  "enemy.h"
+
+
 class Bullet
 {
     
@@ -24,7 +27,7 @@ class Bullet
     };
 
     
-    Bullet();
+    Bullet(Ogre::SceneManager* pSceneMrg);
     
     ~Bullet();
     
@@ -55,6 +58,18 @@ class Bullet
     void reset();
     
     
+protected:  
+    
+    /**判断是否击中目标
+     *@param dir 子弹飞行的方向
+     *@param length 子弹在一帧内分行的长度
+     *@warning 只做外框盒检查
+     */
+    void updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float length);    
+    
+    
+    
+    
 protected:
     Ogre::Entity*      m_pEntity;
     Ogre::SceneNode*   m_pNode;
@@ -66,6 +81,9 @@ protected:
     float         m_LiftTime;///生命周期 
     float         m_CurrentTime;///当前生命时期 
     float         m_Speed; ///子弹的速度
+    
+    Ogre::SceneManager*  m_pSceneMrg;
+    Ogre::RaySceneQuery*  m_pRayQuery;
     
     BulletState      m_State;
     

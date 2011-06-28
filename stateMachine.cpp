@@ -2,6 +2,8 @@
 #include "stateMachine.h"
 
 
+
+
 StateMachine::StateMachine()
 :m_pcurrentState(NULL)
 {
