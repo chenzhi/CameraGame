@@ -27,7 +27,7 @@ m_pSceneMrg(pSceneMrg),m_pRayQuery(NULL)
     
     ///默认不显示
     m_pNode->setVisible(false);
-    m_pNode->setScale(Ogre::Vector3(0.01f,0.01f,0.01f));
+    m_pNode->setScale(Ogre::Vector3(0.003f,0.003f,0.003f));
     
     
 }
@@ -60,7 +60,7 @@ void Bullet::update(float time)
     
     Ogre::Vector3 dir=power.normalisedCopy();    
     
-    updateHit(m_pNode->_getDerivedPosition(), power, power.length());
+    updateHit(m_pNode->_getDerivedPosition(), dir, power.length());
     
     
     m_pNode->translate(power);
@@ -154,13 +154,22 @@ void Bullet::updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float l
     
     if(result.empty())
     {
+        Ogre::LogManager::getSingleton().logMessage("can't hit can't pick any object");
         return ;
     }
     
     
     Ogre::RaySceneQueryResultEntry pickEnemy=result.at(0);
-    if(pickEnemy.distance>length)
+    if(result.size()>1)
     {
+        Ogre::String name0=result.at(0).movable->getName();
+        Ogre::String name1=result.at(1).movable->getName();
+        
+    }
+    if(pickEnemy.distance>length*2.0f)
+    {
+        
+        Ogre::LogManager::getSingleton().logMessage("can't hit   it is to length");
         return ;
     }
     
@@ -171,8 +180,14 @@ void Bullet::updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float l
         return ;
     }
     
+    Ogre::Vector3 hitPos=pos+dir*pickEnemy.distance;
     
-    pEnemy->onHit(Ogre::Vector3(0,0,0), this);
+    pEnemy->onHit(hitPos, this);
+    
+    
+    ///击中后重置子弹
+    reset();
+    
     return;
     
     

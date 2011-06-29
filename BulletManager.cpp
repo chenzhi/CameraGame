@@ -21,7 +21,7 @@ template<> BulletManager* Ogre::Singleton<BulletManager>::ms_Singleton=NULL;
 
 //---------------------------------------------------
 BulletManager::BulletManager()
-:m_pSceneMrg(NULL)
+:m_pSceneMrg(NULL),m_GameBegan(false)
 {
     
     m_pSceneMrg=Application::getSingleton().getMainSceneManager();
@@ -44,6 +44,7 @@ void BulletManager::init()
         m_BulletCollect.push_back(new Bullet(m_pSceneMrg));
     }
     
+       
 }
 
 
@@ -63,6 +64,13 @@ void BulletManager::fire(const Ogre::Vector3& pos,const Ogre::Vector3& dir)
 //---------------------------------------------------
 void BulletManager::update(float time)
 {
+    
+    if(m_GameBegan==false)
+    {
+        return ;
+    }
+
+    
     size_t size=m_BulletCollect.size();
     for(size_t i=0;i<size;++i)
     {
@@ -108,6 +116,7 @@ Bullet* BulletManager::getBullet()
 Enemy* BulletManager::createEnemy(const Ogre::Vector3& pos)
 {
     Enemy* pEnemy=  new Enemy("CameraHead.mesh",pos,m_pSceneMrg);
+    pEnemy->reset(pos);
     
     m_EnemyCollect.push_back(pEnemy);
     
@@ -147,7 +156,7 @@ void  BulletManager::destroyAllEnemy()
 }
 
 
-///每帧更新敌人
+//----------------------------------------------
 void  BulletManager::updateEnemy(float time)
 {
     EnemyCollect::const_iterator it=m_EnemyCollect.begin();
@@ -158,4 +167,54 @@ void  BulletManager::updateEnemy(float time)
         (*it)->update(time);
     }
     return ;
+}
+
+//----------------------------------------------
+void  BulletManager::hasEnemyDeath(Enemy* pEnemy)
+{
+    pEnemy->reset(Ogre::Vector3(0,0,0));
+    return ;
+}
+
+//------------------------------------------------
+bool BulletManager::isGameEnd()
+{
+    
+    return !m_GameBegan;
+    
+}
+
+//-------------------------------------------------
+void BulletManager::startWar()
+{
+    m_GameBegan=true;
+
+    BulletManager::getSingleton().createEnemy(Ogre::Vector3(0,0,0));
+
+    return ;
+}
+
+//------------------------------------------------
+void BulletManager::endWar()
+{
+    m_GameBegan=false;
+
+    return ;
+}
+
+//---------------------------------------------------
+Enemy* BulletManager::getDeathEnemy()
+{
+    
+    EnemyCollect::iterator it=m_EnemyCollect.begin();
+    EnemyCollect::iterator endit=m_EnemyCollect.end();
+    for(;it!=endit;++it)
+    {
+        if((*it)->getState()==Enemy::ES_DEATH)
+        {
+            return *it;
+        }
+    }
+    
+    return NULL;
 }

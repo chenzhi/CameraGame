@@ -15,8 +15,7 @@
 
 //------------------------------------
 WarGS::WarGS()
-:GameState(ST_WAR),m_pBulletManager(NULL),m_pCameraNode(NULL),m_pHeadEntity(NULL),m_pAniState(NULL)
-
+:GameState(ST_WAR),m_pBulletManager(NULL),m_pCameraNode(NULL)
 {
     
 }
@@ -35,11 +34,17 @@ WarGS::~WarGS()
 void WarGS::begin()
 {
     
+    GameState::begin();
+    
+    initVideoTeture();
+    
     m_pBulletManager=new BulletManager();
+    
+    m_pBulletManager->startWar();
     
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
     
-    initMode();
+   
     
 }
 
@@ -47,9 +52,9 @@ void WarGS::begin()
 //------------------------------------
 void WarGS::end()
 {
+    GameState::end();
     delete m_pBulletManager;
-    
-    destroyMode();
+    m_pBulletManager=NULL;
 }
 
 //------------------------------------
@@ -59,16 +64,17 @@ StateType WarGS::update(float time)
     
     m_pBulletManager->update(time);
     
-    updateMode(time);
+    
+    ///如果游戏结束重新回到人物校正
+    if(m_pBulletManager->isGameEnd())
+    {
+        setNextStateType(ST_CAPTUREFACE);
+    }
     
          
     updateAccelerometer();
     
     
-    if(m_pAniState!=NULL)
-    {
-        m_pAniState->addTime(time);
-    }
     return GameState::update(time);
     
 }
@@ -90,7 +96,7 @@ void WarGS::beginTouch()
 }
 
 //-------------------------------------------------------------------------
-void WarGS::initMode()
+void WarGS::initVideoTeture()
 {
     
    // Ogre::SceneNode* pNode= m_pSceneManager->getRootSceneNode()->createChildSceneNode();
@@ -104,81 +110,40 @@ void WarGS::initMode()
 #ifdef __arm__
     
     Ogre::TexturePtr pVideoTexture=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture();
-    Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture_copy", "General", 
-    Ogre::TEX_TYPE_2D, pVideoTexture->getWidth(), pVideoTexture->getHeight(), 1, 1,Ogre::PF_R8G8B8);
     
     
-
-    pTexture->getBuffer()->lock(Ogre::HardwareBuffer::HBL_DISCARD);
-    const Ogre::PixelBox &pTextureBox = pTexture->getBuffer()->getCurrentLock();
-    
-    
-    pVideoTexture->getBuffer()->lock(Ogre::HardwareBuffer::HBL_DISCARD);
-    const Ogre::PixelBox& pVideoBox=pVideoTexture->getBuffer()->getCurrentLock();
-    
-    memcpy(pTextureBox.data,pVideoBox.data,pVideoBox.rowPitch*Ogre::PixelUtil::getNumElemBits(pVideoBox.format)/8*pVideoTexture->getHeight());
-    
-    pVideoTexture->getBuffer()->unlock();
-    pTexture->getBuffer()->unlock();
-    
-    Ogre::MaterialPtr pMaterial= Ogre::MaterialManager::getSingleton().getByName("03_-_Default_03_-_Default_A");
-        
-    if(pMaterial.isNull()==false)
+    Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName("videoTexture_copy");
+    if(pTexture.isNull())
     {
-        Ogre::Pass* pPass= pMaterial->getTechnique(0)->getPass(0);
-        pPass->getTextureUnitState(0)->setTextureName(pTexture->getName());
+       pTexture= Ogre::TextureManager::getSingleton().createManual("videoTexture_copy", "General", 
+       Ogre::TEX_TYPE_2D, pVideoTexture->getWidth(), pVideoTexture->getHeight(), 1, 1,Ogre::PF_R8G8B8);
     }
+       
     
+    bool b= ofxiPhoneVideoGrabber::getSingleton().getOgreTexture(pTexture);
+    if(b)
+    {
+        Ogre::MaterialPtr pMaterial= Ogre::MaterialManager::getSingleton().getByName("Material_#30_Material_#0_B");
+        
+        if(pMaterial.isNull()==false)
+        {
+            Ogre::Pass* pPass= pMaterial->getTechnique(0)->getPass(0);
+            pPass->getTextureUnitState(0)->setTextureName(pTexture->getName());
+        }
+
+        
+    }
+  
+      
     
 #endif
     
-    /*Enemy* pEnemy=*/BulletManager::getSingleton().createEnemy(Ogre::Vector3(0,0,0));
-    
-    
-    
-   //m_pAniState=m_pHeadEntity->getAnimationState("smile");
-   // if(m_pAniState!=NULL)
-   // {
-   //     m_pAniState->setEnabled(true);
-   //     m_pAniState->setLoop(true);
-   // }
-    
-    
-    
-   // Ogre::SubMesh* psubmesh;
-    
-    
-    
-    
-   // pNode->setPosition(Ogre::Vector3(0,0,-10));
-
     
 }
 
 
-//-------------------------------------------------------------------------
-void WarGS::destroyMode()
-{
 
-    Ogre::SceneNode* pNode= m_pHeadEntity->getParentSceneNode();
-     pNode->detachObject(m_pHeadEntity);
-    m_pSceneManager->destroyEntity(m_pHeadEntity);
-    m_pSceneManager->getRootSceneNode()->removeAndDestroyChild(pNode->getName());    
-    
-    
-}
 
-//-------------------------------------------------------------------------
-void WarGS::updateMode(float time)
-{
-    
-    //return ;
-    if(m_pHeadEntity!=NULL&&m_pHeadEntity->getParentSceneNode()!=NULL)
-    {
-        m_pHeadEntity->getParentSceneNode()->yaw(Ogre::Radian(time));
-    }
-
-}
 
 
 //-------------------------------------------------------------------------

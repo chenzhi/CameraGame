@@ -163,7 +163,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	
 	//printf("capturing!\n");	
 	
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	//NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
     /*Lock the image buffer*/
@@ -174,34 +174,47 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     size_t bytesPerRow		= CVPixelBufferGetBytesPerRow(imageBuffer); 
     size_t widthIn			= CVPixelBufferGetWidth(imageBuffer); 
     size_t heightIn			= CVPixelBufferGetHeight(imageBuffer);  
+    
+    
+   // grabberPtr->updatePixels(baseAddress,widthIn,heightIn,bytesPerRow);
+    //CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    
+   // return ;
+    
 	    
     /*Create a CGImageRef from the CVImageBufferRef*/
     CGColorSpaceRef colorSpace	= CGColorSpaceCreateDeviceRGB(); 
     CGContextRef newContext		= CGBitmapContextCreate(baseAddress, widthIn, heightIn, 8, bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
-    CGImageRef newImage			= CGBitmapContextCreateImage(newContext); 
+    
+    
+    CGImageRelease(currentFrame);	
+    
+    currentFrame			= CGBitmapContextCreateImage(newContext); 
 
-	CGImageRelease(currentFrame);	
-	currentFrame = CGImageCreateCopy(newImage);		
+	//CGImageRelease(currentFrame);	
+	//currentFrame = CGImageCreateCopy(newImage);		
 		
     /*We release some components*/
     CGContextRelease(newContext); 
     CGColorSpaceRelease(colorSpace);
 
 	/*We relase the CGImageRef*/
-	CGImageRelease(newImage);
+	//CGImageRelease(newImage);
 		
 	/*We unlock the  image buffer*/
 	CVPixelBufferUnlockBaseAddress(imageBuffer,0);
 	
 	grabberPtr->updatePixelsCB(currentFrame);
+   // grabberPtr->updatePixelsCB(newImage);
 	
-	[pool drain];
+	//[pool release];
 } 
 
 #pragma mark -
 #pragma mark Memory management
 
-- (void)dealloc {
+- (void)dealloc
+{
     [super dealloc];
 }
 
@@ -220,6 +233,7 @@ namespace Ogre
 
 //--------------------------------------------------------
 ofxiPhoneVideoGrabber::ofxiPhoneVideoGrabber(int width,int height)
+:m_pTemPixel(NULL)
 {
 	fps		= 30;
 	grabber = [[iPhoneVideoGrabber alloc] init];
@@ -237,6 +251,10 @@ ofxiPhoneVideoGrabber::~ofxiPhoneVideoGrabber()
 	[grabber stopCapture];
     [grabber release];
 	clear();
+    if(m_pTemPixel!=NULL)
+    {
+        free(m_pTemPixel);
+    }
 }
 
 //--------------------------------------------------------
@@ -287,6 +305,21 @@ void ofxiPhoneVideoGrabber::updatePixelsCB( CGImageRef & ref )
 {
 	m_bUpdateTex = convertCGImageToPixels(ref, pixels);
 }
+
+
+//-------------------------------------------------------------
+void ofxiPhoneVideoGrabber::updatePixels(uint8_t* pImage,int w,int h, int preByterow)
+{
+   // for (int i=0; i<h; ++i) 
+   // {
+        memcpy(pixels, pImage, preByterow*h);
+   // }
+    
+    m_bUpdateTex=true;
+    return ;
+    
+}
+
 	
 //--------------------------------------------------------
 void ofxiPhoneVideoGrabber::draw(float x, float y)
@@ -320,16 +353,19 @@ bool ofxiPhoneVideoGrabber::convertCGImageToPixels(CGImageRef & ref, unsigned ch
 	// Allocated memory needed for the bitmap context
 	//GLubyte *pixelsTmp	= (GLubyte *) malloc(w * h * bytesPerPixel);
     
-    
-    unsigned char *pixelsTmp	= (unsigned char *) malloc(w * h * bytesPerPixel);
+    if(m_pTemPixel==NULL)
+    {
+        m_pTemPixel	= (unsigned char *) malloc(w * h * bytesPerPixel);
+    }
+   
 	
 	// Uses the bitmatp creation function provided by the Core Graphics framework. 
-	spriteContext = CGBitmapContextCreate(pixelsTmp, w, h, CGImageGetBitsPerComponent(ref), w * bytesPerPixel, CGImageGetColorSpace(ref), bytesPerPixel == 4 ? kCGImageAlphaPremultipliedLast : kCGImageAlphaNone);
+	spriteContext = CGBitmapContextCreate(m_pTemPixel, w, h, CGImageGetBitsPerComponent(ref), w * bytesPerPixel, CGImageGetColorSpace(ref), bytesPerPixel == 4 ? kCGImageAlphaPremultipliedLast : kCGImageAlphaNone);
 	
 	if(spriteContext == NULL)
     {
 		//ofLog(OF_LOG_ERROR, "convertCGImageToPixels - CGBitmapContextCreate returned NULL");
-		free(pixelsTmp);
+		//free(pixelsTmp);
 		return false;
 	}
 
@@ -340,14 +376,14 @@ bool ofxiPhoneVideoGrabber::convertCGImageToPixels(CGImageRef & ref, unsigned ch
 	int j = 0;
 	for(int k = 0; k < totalSrcBytes; k+= bytesPerPixel )
     {
-		pixels[j  ] = pixelsTmp[k  ];
-		pixels[j+1] = pixelsTmp[k+1];
-		pixels[j+2] = pixelsTmp[k+2];
+		pixels[j  ] = m_pTemPixel[k  ];
+		pixels[j+1] = m_pTemPixel[k+1];
+		pixels[j+2] = m_pTemPixel[k+2];
 		
 		j+=3;
 	}
 					
-	free(pixelsTmp);
+	//free(pixelsTmp);
 	return true;
 }
 
@@ -387,7 +423,7 @@ void ofxiPhoneVideoGrabber::initOgreTexture()
     
         
     m_pTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture_ofxiPhoneVideoGrabber", "General", 
-    Ogre::TEX_TYPE_2D, m_width, m_height, 1, 1,Ogre::PF_R8G8B8); 
+    Ogre::TEX_TYPE_2D, m_width, m_height, 1, 1,Ogre::PF_B8G8R8); 
     
     return ;
     
@@ -464,6 +500,56 @@ void ofxiPhoneVideoGrabber::update()
     }
 }
 
+
+//--------------------------------------------------------
+bool ofxiPhoneVideoGrabber::getOgreTexture(Ogre::TexturePtr pTexture)
+{
+    
+    unsigned char* pPixel=getPixels();
+    if(pPixel==NULL)
+        return false;
+    
+    Ogre::HardwarePixelBufferSharedPtr pPixelBuff= pTexture->getBuffer(0,0);
+    int yoffset=pTexture->getHeight()-m_height;
+    
+    ///空间不够
+    if(yoffset<0)
+        return false;
+    
+    if(pPixelBuff.isNull()==false)
+    {
+        pPixelBuff->lock(Ogre::HardwareBuffer::HBL_DISCARD);
+        const Ogre::PixelBox &pb = pPixelBuff->getCurrentLock();
+        
+        // size_t height = pb.getHeight();
+        // size_t width = pb.getWidth();
+        // size_t depth = pb.getDepth();
+        size_t rowPitch = pb.rowPitch;
+        // size_t slicePitch = pb.slicePitch;
+        size_t pixelSize=Ogre::PixelUtil::getNumElemBits(pb.format);
+        pixelSize/=8;
+        
+        rowPitch*=pixelSize;
+        Ogre::uint8 *data = static_cast<Ogre::uint8*>(pb.data);
+        
+        for(int i=0;i<m_height ;++i)
+        {
+            unsigned char* pRow=pPixel+i*m_width*3;
+            unsigned char* ptarget=data+(i+yoffset)*rowPitch;
+            
+            memcpy(ptarget,pRow,m_width*pixelSize);
+        }
+        
+        pPixelBuff->unlock();
+        
+    }
+    
+    
+
+    
+    return true;
+}
+
 #endif	// (__arm__) compile only for ARM
 
 #else   // compile for 4.0+
@@ -471,3 +557,7 @@ void ofxiPhoneVideoGrabber::update()
 #warning "skipping ofxIphoneVideoGrabber compilation because you need > 3.2 iOS SDK"
 
 #endif
+
+
+
+

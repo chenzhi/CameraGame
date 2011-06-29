@@ -69,6 +69,9 @@ class ofxiPhoneVideoGrabber : public Ogre::Singleton<ofxiPhoneVideoGrabber>
 		void updatePixelsCB( CGImageRef & ref );		
 		void draw(float x, float y);
 		void draw(float x, float y, float w, float h);
+    
+         ///新的转变像素函数
+       void updatePixels(uint8_t* pImage,int w,int h, int preByterow);
 	
 		unsigned char * getPixels(){
 			return pixels;
@@ -100,6 +103,9 @@ class ofxiPhoneVideoGrabber : public Ogre::Singleton<ofxiPhoneVideoGrabber>
     Ogre::TexturePtr getOgreTexture() const ;
     
     
+   /**获取图像
+      */
+    bool getOgreTexture(Ogre::TexturePtr pTexture);
     
 	protected:
     
@@ -131,6 +137,8 @@ class ofxiPhoneVideoGrabber : public Ogre::Singleton<ofxiPhoneVideoGrabber>
     Ogre::TexturePtr m_pTexture;
     
     bool       m_isCapture;
+    
+    unsigned  char*       m_pTemPixel;
 };
 
 

@@ -43,22 +43,16 @@ protected:
 protected:
     
     
-    void initMode();
+    ///初始化视频贴图
+    void initVideoTeture();
     
-    void destroyMode();
-    
-    void updateMode(float time);
+  
     
     
     BulletManager* m_pBulletManager;
     
     Ogre::SceneNode* m_pCameraNode;
-    
-    Ogre::Entity*      m_pHeadEntity;
-    
-    
-    Ogre::AnimationState*  m_pAniState;
-    
+
     
     
     

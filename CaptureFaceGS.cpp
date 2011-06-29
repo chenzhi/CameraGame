@@ -12,7 +12,7 @@
 
 
 CaptureFaceGS::CaptureFaceGS( )
-:GameState(ST_CAPTUREFACE),m_pCaptureOverlay(NULL)
+:GameState(ST_CAPTUREFACE),m_pCaptureOverlay(NULL),m_BackGround(NULL),m_pCameraNode(NULL)
 {
     
 }
@@ -61,8 +61,7 @@ void  CaptureFaceGS::end( )
     
     
 #if defined  __arm__
-   // m_pVideo->stopCapture();
-    //ofxiPhoneVideoGrabber::getSingleton().stopCapture();
+  //ofxiPhoneVideoGrabber::getSingleton().stopCapture();
     
 #endif    
     
@@ -74,7 +73,6 @@ void  CaptureFaceGS::end( )
 StateType CaptureFaceGS::update(float time)
 {
     
-   // updateVideo();
     
     return GameState::update(time);
     
@@ -85,27 +83,18 @@ void  CaptureFaceGS::beginTouch()
 {
     setNextStateType(ST_WAR);
     
-    //m_pVideo->stopCapture();
-    
     return ;
 }
 
 
 void CaptureFaceGS::initBackGround()
 {
-    /*
-     MeshPtr createPlane(
-     const String& name, const String& groupName, const Plane& plane,
-     Real width, Real height,
-     int xsegments = 1, int ysegments = 1,
-     bool normals = true, unsigned short numTexCoordSets = 1,
-     Real uTile = 1.0f, Real vTile = 1.0f, const Vector3& upVector = Vector3::UNIT_Y,
-     HardwareBuffer::Usage vertexBufferUsage = HardwareBuffer::HBU_STATIC_WRITE_ONLY, 
-     HardwareBuffer::Usage indexBufferUsage = HardwareBuffer::HBU_STATIC_WRITE_ONLY,
-     bool vertexShadowBuffer = true, bool indexShadowBuffer = true);
-     */
     
-    float distance=1000.0f;
+    ///如果已经创建了直接返回
+    if(m_BackGround!=NULL)
+        return ;
+    
+    float distance=20.0f;
     float width=0,height=0;
     Ogre::Vector3 camPos=m_pCameraNode->getPosition();
     float fovy= Application::getSingleton().getMainCamera()->getFOVy().valueRadians()*0.5f;
@@ -165,7 +154,11 @@ void CaptureFaceGS::initBackGround()
 void CaptureFaceGS::initVideo()
 {
     
+#ifdef __arm__
+    
     m_pVideoTexture=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture();
+    
+#endif    
     return ;
     
 }

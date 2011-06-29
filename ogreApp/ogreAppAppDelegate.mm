@@ -81,7 +81,8 @@
     m_DisplayLink=nil;
     m_pTimer=nil;
     
-    
+  
+    //*/
 #define USE_CADISPLAYLINK
 #ifdef  USE_CADISPLAYLINK
     
@@ -94,6 +95,8 @@
     }
     
 #endif
+    
+    
     [self go];
 
     

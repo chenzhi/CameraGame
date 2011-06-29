@@ -102,7 +102,7 @@ bool Application::initOgreRender()
     
     m_pCameraNode=m_pSceneManager->getRootSceneNode()->createChildSceneNode();
     m_pCameraNode->attachObject(m_pCamera);
-    m_pCameraNode->setPosition(0.0f,0.0f,3.0f);
+    m_pCameraNode->setPosition(0.0f,0.0f,5.0f);
     
     if(m_pViewPort!=NULL)
     {

@@ -42,6 +42,16 @@ public:
     void update(float time);
     
     
+    ///判断游戏是否结束
+    bool isGameEnd();
+    
+    
+    ///战争开始
+    void startWar();
+    
+    ///战争结束
+    void endWar();
+    
     
     
 public:
@@ -58,9 +68,14 @@ public:
     ///销毁所有的敌人
     void  destroyAllEnemy();
     
-    
     ///每帧更新敌人
     void  updateEnemy(float time);
+    
+    ///敌人死亡回调
+    void  hasEnemyDeath(Enemy* pEnemy);
+    
+    ///获取一个死记亡单位，如果没有返回空
+    Enemy* getDeathEnemy();
     
     
     
@@ -89,6 +104,9 @@ protected:
     EnemyCollect       m_EnemyCollect;///所有目标的集合
     
     Ogre::SceneManager*   m_pSceneMrg;
+    
+    
+    bool            m_GameBegan;
     
 };
 
