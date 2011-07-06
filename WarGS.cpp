@@ -87,7 +87,7 @@ void WarGS::beginTouch()
     
     Ogre::Vector3 dir(matrix[0][2],matrix[1][2],matrix[2][2]);
     ///子弹发送时稍稍向上发送一点
-    dir.y-=0.3;
+    dir.y-=0.15;
     dir.normalise();
     m_pBulletManager->fire(m_pCameraNode->getPosition(),dir);
     
@@ -197,6 +197,7 @@ void WarGS::updateAccelerometer()
     //Ogre::LogManager::getSingleton().logMessage(sstream.str());
     
     
+    
     if(m_pCameraNode!=NULL )
     {
         m_pCameraNode->resetOrientation();
@@ -207,6 +208,7 @@ void WarGS::updateAccelerometer()
     
    
     
+    //std::basic_stringstream<char> cstringstream;
 
     return ;
 }

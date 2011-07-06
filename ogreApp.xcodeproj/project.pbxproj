@@ -415,7 +415,7 @@
 					"\"$(SRCROOT)/Bullet/src\"",
 				);
 				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Release",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib",
@@ -531,7 +531,7 @@
 					"\"$(SRCROOT)/Bullet/src\"",
 				);
 				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/$(CONFIGURATION)",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib",
@@ -706,7 +706,7 @@
 					"\"$(SRCROOT)/Bullet/src\"",
 				);
 				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/$(CONFIGURATION)",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib",
@@ -816,7 +816,7 @@
 					"\"$(SRCROOT)/Bullet/src\"",
 				);
 				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Debug",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib",

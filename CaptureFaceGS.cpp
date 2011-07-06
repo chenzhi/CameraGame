@@ -52,6 +52,9 @@ void  CaptureFaceGS::end( )
     {
         
         m_pCaptureOverlay->hide();
+        Ogre::OverlayManager::getSingleton().destroy(m_pCaptureOverlay);
+        m_pCaptureOverlay=NULL;
+        
     }
     
     if(m_BackGround!=NULL)
