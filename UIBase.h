@@ -31,23 +31,26 @@ public:
     virtual ~UIBase();
     
     
+    /**获取名字*/
+    const std::string& getName()const {return m_Name;}
+    
     /**初始化*/
-    virtual void init()=0;
+    virtual void init();
     
     /**每帧更新数*/
-    virtual void update(float time)=0;
+    virtual void update(float time){};
     
     
     /**开始触摸*/
-    virtual void onBeginTouch()=0;
+    virtual void onBeginTouch(){};
     
     
     /**滑动手指*/
-    virtual void onMoveTouch()=0;
+    virtual void onMoveTouch(){};
     
     
     /**手指离开*/
-    virtual void onEndTouch()=0;
+    virtual void onEndTouch(){};
     
     
     
@@ -59,8 +62,11 @@ public:
     bool   isVisible()const ;
     
 
-    /**销毁一个overlay和其子对像*/
-    static bool destroyOverlayAndChild(Ogre::OverlayElement* pOverlay);
+    /**销毁一个overlayElement和其子对像*/
+    static bool destroyOverlayElementAndChild(Ogre::OverlayElement* pOverlay);
+    
+     /**销毁一个overlay和其子对像*/
+    static bool destroyOverlayAndChiled(Ogre::Overlay* pOverlay);
     
     
     /**设置界面的z*/
@@ -72,6 +78,11 @@ public:
     
     
 protected:
+    
+    /**销毁
+       销毁overlay和其子对像
+     */
+    void destroy();
     
     std::string m_Name;//// ＵＩ名
     

@@ -7,9 +7,12 @@
 //
 
 #include "UIBase.h"
+#include  "FileSystemLayer.h"
+#include  "Config.h"
 
 
 
+//---------------------------------------------------------------------------------------------
 UIBase::UIBase(const std::string& name, const std::string& templateName)
 :m_Name(name),m_TemplateName(templateName),m_pParentOverlay(NULL)
 {
@@ -17,19 +20,76 @@ UIBase::UIBase(const std::string& name, const std::string& templateName)
     
 }
 
-
-
+//---------------------------------------------------------------------------------------------
 UIBase::~UIBase()
 {
+    destroy();   
+}
+
+
+//---------------------------------------------------------------------------------------------
+void UIBase::init()
+{
+ 
+    m_pParentOverlay=Ogre::OverlayManager::getSingleton().getByName(m_Name);
     
-    if(m_pParentOverlay!=NULL)
+    ///如果没有找到直接读相应文件
+    if(m_pParentOverlay==NULL)
     {
-         
+        
+        Ogre::String macPath=Ogre::macBundlePath();
+        Ogre::LogManager::getSingleton().logMessage(macPath);
+        macPath+="/";
+        macPath+=g_UIPath;
+        
+        //Ogre::DataStreamPtr  pDataStream=Ogre::Root::getSingleton().createFileStream(macPath);
+        ///先把文件加入资源组后才能打开
+        Ogre::ResourceGroupManager::getSingletonPtr()->addResourceLocation(macPath,"FileSystem",m_Name);
+        
+        macPath+=m_Name;
+        macPath+=".overlay";
+        Ogre::DataStreamPtr  pDataStream=Ogre::ResourceGroupManager::getSingletonPtr()->openResource(macPath,m_Name);
+        Ogre::OverlayManager::getSingleton().parseScript(pDataStream,"General");
+        
+        m_pParentOverlay=Ogre::OverlayManager::getSingleton().getByName(m_Name);
+        
+        if(m_pParentOverlay==NULL)
+        {
+            Ogre::String error="UIBase::init Failed , can not find overlay file ";
+            Ogre::LogManager::getSingleton().logMessage(error);
+            //throw(error.c_str());
+            //OGRE_EXCEPT(Ogre::Exception::ERR_FILE_NOT_FOUND, error, "UIBase::init");
+        }
+        
+        
+        /*
+        Ogre::OverlayManager::OverlayMapIterator it=Ogre::OverlayManager::getSingleton().getOverlayIterator();    
+        while (it.hasMoreElements())
+        {
+            Ogre::Overlay* pOverlay= it.getNext();
+            Ogre::String name=pOverlay->getName();
+            Ogre::LogManager::getSingleton().logMessage(name);
+        }
+        
+        //*/
+        
     }
-   
+    
+      
+    return ;
     
 }
 
+//---------------------------------------------------------------------------------------------
+void UIBase::destroy()
+{
+    destroyOverlayAndChiled(m_pParentOverlay);
+    m_pParentOverlay=NULL;
+    
+}
+
+
+//---------------------------------------------------------------------------------------------
 void UIBase::setZorder(unsigned short z)
 {
     if(m_pParentOverlay!=NULL)
@@ -41,7 +101,7 @@ void UIBase::setZorder(unsigned short z)
     
 }
 
-/**获取界面z,如果界面未初始返回0*/
+//---------------------------------------------------------------------------------------------
 unsigned short UIBase::getZorder()const
 {
     if(m_pParentOverlay==NULL)
@@ -49,10 +109,37 @@ unsigned short UIBase::getZorder()const
     return m_pParentOverlay->getZOrder();
 }
 
+//---------------------------------------------------------------------------------------------
+void  UIBase::setVisible(bool b)
+{
+    if(m_pParentOverlay==NULL)
+    {
+        return ;
+    }
+    
+    if(b)
+    {
+      m_pParentOverlay->show();
+    }else
+    {
+        m_pParentOverlay->hide();
+    }
+}
 
 
+//---------------------------------------------------------------------------------------------
+bool UIBase::isVisible()const
+{
+    if(m_pParentOverlay==NULL)
+    {
+        return false;
+    }
+    return m_pParentOverlay->isVisible();
+}
 
-bool UIBase::destroyOverlayAndChild(Ogre::OverlayElement* pOverlayElement)
+
+//---------------------------------------------------------------------------------------------
+bool UIBase::destroyOverlayElementAndChild(Ogre::OverlayElement* pOverlayElement)
 {
     if(pOverlayElement==NULL)
         return false;
@@ -70,7 +157,7 @@ bool UIBase::destroyOverlayAndChild(Ogre::OverlayElement* pOverlayElement)
         
         for (unsigned int i = 0; i < toDelete.size(); i++)
         {
-            UIBase::destroyOverlayAndChild(toDelete[i]);
+            UIBase::destroyOverlayElementAndChild(toDelete[i]);
         }
     }
     if (pOverlayElement)
@@ -83,4 +170,35 @@ bool UIBase::destroyOverlayAndChild(Ogre::OverlayElement* pOverlayElement)
     pOverlayElement=NULL;
     return true;
         
+}
+
+
+//---------------------------------------------------------------------------------------------
+bool UIBase::destroyOverlayAndChiled(Ogre::Overlay* pOverlay)
+{
+    if(pOverlay==NULL)
+        return false;
+    
+    Ogre::OverlayManager* pOverlayManager=Ogre::OverlayManager::getSingletonPtr();
+    
+    Ogre::Overlay::Overlay2DElementsIterator it=pOverlay->get2DElementsIterator();
+    std::vector<Ogre::OverlayContainer*> removeList;
+    while (it.hasMoreElements()) 
+    {
+        Ogre::OverlayContainer* pContainer=it.getNext();
+        removeList.push_back(pContainer);
+    }
+    
+    pOverlay->clear();
+    
+    int removeSize=removeList.size();
+    for(int i=0;i<removeSize;++i)
+    {
+        UIBase::destroyOverlayElementAndChild(removeList[i]);
+    }
+    
+    
+    pOverlayManager->destroy(pOverlay);
+    return true;
+    
 }

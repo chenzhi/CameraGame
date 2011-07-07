@@ -12,7 +12,7 @@
 class Bullet;
 
 
-#define EnemyMask 1000
+#define EnemyMask 0x0100
 
 
 

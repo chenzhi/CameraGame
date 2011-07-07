@@ -235,7 +235,7 @@ namespace Ogre
 ofxiPhoneVideoGrabber::ofxiPhoneVideoGrabber(int width,int height)
 :m_pTemPixel(NULL)
 {
-	fps		= 30;
+	fps		= 35;
 	grabber = [[iPhoneVideoGrabber alloc] init];
     grabber.grabberPtr = this;
     m_width=width;

@@ -209,6 +209,7 @@ void Application::initResource()
     
     // load resource paths from config file
     Ogre::ConfigFile cf;
+    Ogre::String tempath=Ogre::macBundlePath();
     cf.load(m_pFileSystem->getConfigFilePath("resources.cfg"));
     
     Ogre::ConfigFile::SectionIterator seci = cf.getSectionIterator();

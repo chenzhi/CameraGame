@@ -13,6 +13,13 @@
 #include  "state.h"
 #include  "ofxiPhoneVideoGrabber.h"
 
+
+
+
+
+
+
+
 class CaptureFaceGS : public GameState
 {
 
@@ -73,12 +80,14 @@ protected:
     Ogre::TexturePtr   m_pVideoTexture;
     
     
-    Ogre::Overlay*     m_pCaptureOverlay;
     
 #if defined  __arm__
 
     //ofxiPhoneVideoGrabber* m_pVideo;
 #endif
+    
+    
+    UIBase*         m_pCaptureUI;
     
     
 };

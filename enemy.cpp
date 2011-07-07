@@ -278,6 +278,13 @@ void Enemy::reset(const Ogre::Vector3& pos)
     }
     
     
+    ///重置动画
+    if (m_pAniSate!=NULL)
+    {
+        m_pAniSate->setTimePosition(0);
+    }
+    
+    
     m_LeftValue=100;
     m_State=ES_NORMAL;
     m_Rotate=0;

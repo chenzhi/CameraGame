@@ -1,4 +1,4 @@
-CaptureFace
+CaptureFaceUI
 {
     
     container BorderPanel(CaptureFace/Image)

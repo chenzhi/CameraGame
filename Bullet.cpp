@@ -22,6 +22,8 @@ m_pSceneMrg(pSceneMrg),m_pRayQuery(NULL)
     assert(m_pSceneMrg);
     
     m_pEntity=m_pSceneMrg->createEntity("cube.mesh");
+    ///支除所有的查询标志。
+    m_pEntity->setQueryFlags(0);
     m_pNode=m_pSceneMrg->getRootSceneNode()->createChildSceneNode();
     m_pNode->attachObject(m_pEntity);
     
@@ -60,10 +62,10 @@ void Bullet::update(float time)
     
     Ogre::Vector3 dir=power.normalisedCopy();    
     
-    updateHit(m_pNode->_getDerivedPosition(), dir, power.length());
+    updateHit(m_pNode->getPosition(), dir, power.length());
     
     
-    m_pNode->translate(power);
+    m_pNode->translate(power,Ogre::Node::TS_WORLD);
 
     
     
@@ -135,6 +137,8 @@ void Bullet::reset()
 void Bullet::updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float length)
 {
   
+    //Ogre::LogManager::getSingleton().logMessage("begin hit");
+    
     Ogre::Ray ray(pos,dir);
     
     if(m_pRayQuery==NULL)
@@ -152,11 +156,13 @@ void Bullet::updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float l
     const Ogre::RaySceneQueryResult& result=m_pRayQuery->execute();
 
     
+   // Ogre::LogManager::getSingleton().logMessage("end hit  1");
     if(result.empty())
     {
-        Ogre::LogManager::getSingleton().logMessage("can't hit can't pick any object");
+        //Ogre::LogManager::getSingleton().logMessage("can't hit can't pick any object");
         return ;
     }
+    
     
     
     Ogre::RaySceneQueryResultEntry pickEnemy=result.at(0);
@@ -164,26 +170,37 @@ void Bullet::updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float l
     {
         Ogre::String name0=result.at(0).movable->getName();
         Ogre::String name1=result.at(1).movable->getName();
+        name0+=name1;
         
     }
-    if(pickEnemy.distance>length*2.0f)
+    
+    //Ogre::LogManager::getSingleton().logMessage("end hit 2");
+    if(pickEnemy.distance>length)
     {
         
-        Ogre::LogManager::getSingleton().logMessage("can't hit   it is to length");
+       // char log[256];
+       // sprintf(log,"it is to length,position is :x:%.3f y:%.3f z:%.3f  length is %f",pos.x,pos.y,pos.z,length);
+        
+        //Ogre::LogManager::getSingleton().logMessage(log);
         return ;
     }
     
     
+    //Ogre::LogManager::getSingleton().logMessage("end hit 3");
     Enemy* pEnemy=BulletManager::getSingleton().getEnemyByEntityName(pickEnemy.movable->getName());
     if(pEnemy==NULL)
     {
+        Ogre::LogManager::getSingleton().logMessage("can not find ememy pick object name is "+pickEnemy.movable->getName());
         return ;
     }
+    
+   // Ogre::LogManager::getSingleton().logMessage("end hit 4");
     
     Ogre::Vector3 hitPos=pos+dir*pickEnemy.distance;
     
     pEnemy->onHit(hitPos, this);
     
+    //Ogre::LogManager::getSingleton().logMessage("hit enemy");
     
     ///击中后重置子弹
     reset();

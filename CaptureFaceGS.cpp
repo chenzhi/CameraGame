@@ -9,10 +9,13 @@
 #include "CaptureFaceGS.h"
 #include "application.h"
 #include  "ofxiPhoneVideoGrabber.h"
+#include "UICaptureFace.h"
+
 
 
 CaptureFaceGS::CaptureFaceGS( )
-:GameState(ST_CAPTUREFACE),m_pCaptureOverlay(NULL),m_BackGround(NULL),m_pCameraNode(NULL)
+:GameState(ST_CAPTUREFACE),m_BackGround(NULL),m_pCameraNode(NULL),m_pCaptureUI(NULL)
+
 {
     
 }
@@ -32,13 +35,21 @@ void  CaptureFaceGS::begin( )
     initVideo();
     initBackGround(); 
     
-   
-    m_pCaptureOverlay=Ogre::OverlayManager::getSingleton().getByName("CaptureFace");
-    if(m_pCaptureOverlay!=NULL)
-    {
-        m_pCaptureOverlay->show();
-    }
     
+    ///测试代码
+    m_pCaptureUI=new UICaptureFace();
+    m_pCaptureUI->init();
+    m_pCaptureUI->setVisible(true);
+    
+   
+    //m_pCaptureOverlay=Ogre::OverlayManager::getSingleton().getByName("CaptureFace");
+    //if(m_pCaptureOverlay!=NULL)
+    //{
+    //    m_pCaptureOverlay->show();
+   // }
+    
+    
+   
     
 }
 
@@ -47,15 +58,6 @@ void  CaptureFaceGS::begin( )
 void  CaptureFaceGS::end( )
 {
     GameState::end();
-    
-    if(m_pCaptureOverlay!=NULL)
-    {
-        
-        m_pCaptureOverlay->hide();
-        Ogre::OverlayManager::getSingleton().destroy(m_pCaptureOverlay);
-        m_pCaptureOverlay=NULL;
-        
-    }
     
     if(m_BackGround!=NULL)
     {
@@ -67,6 +69,12 @@ void  CaptureFaceGS::end( )
   //ofxiPhoneVideoGrabber::getSingleton().stopCapture();
     
 #endif    
+    
+    if(m_pCaptureUI!=NULL)
+    {
+        delete m_pCaptureUI;
+        m_pCaptureUI=NULL;
+    }
     
     
 }
