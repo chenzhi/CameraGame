@@ -3,7 +3,7 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-22.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 
 #pragma once
@@ -34,17 +34,17 @@ public:
     
     
     /*
-     *çŠ¶æ€å¼€å§‹å‡½æ•°,
+     *×´Ì¬¿ªÊ¼º¯Êı,
      */
 	virtual void  begin( );
     
 	/*
-     *çŠ¶æ€ç»“æŸå‡½æ•°
+     *×´Ì¬½áÊøº¯Êı
      */
 	virtual void  end( );
     
     
-	/**æ›´æ–°å‡½æ•°*/
+	/**¸üĞÂº¯Êı*/
 	virtual StateType update(float time);
 	
     
@@ -56,14 +56,14 @@ public:
     
 protected:
     
-    /**åˆå§‹èƒŒå½±æ¿*/
+    /**³õÊ¼±³Ó°°å*/
     void initBackGround();
 
 
-    /**åˆå§‹åŒ–æ‘„åƒå¤´*/
+    /**³õÊ¼»¯ÉãÏñÍ·*/
     void initVideo();
 
-    /**æ›´æ–°æ‘„åƒå¤´*/
+    /**¸üĞÂÉãÏñÍ·*/
     void updateVideo();
     
     
@@ -72,7 +72,7 @@ protected:
 
 protected:
     
-    ///èƒŒå½±æ¿
+    ///±³Ó°°å
     Ogre::Entity*      m_BackGround;
     
     Ogre::SceneNode*   m_pCameraNode;

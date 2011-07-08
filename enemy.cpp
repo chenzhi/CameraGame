@@ -3,7 +3,7 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-27.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 
 
@@ -11,7 +11,7 @@
 
 
 
-
+#include "pch.h"
 #include "enemy.h"
 #include  "bulletManager.h"
 
@@ -60,7 +60,7 @@ void Enemy::onHit(const Ogre::Vector3& hitPos,Bullet* pBullet )
     }
     
     
-    ///å¦‚æžœè¢«å‡»ä¸­æœªæˆäº¡è¿›å…¥èº²é¿çŠ¶æ€
+    ///Èç¹û±»»÷ÖÐÎ´³ÉÍö½øÈë¶ã±Ü×´Ì¬
     m_State=ES_DODGE;
     if(m_pAniSate->getEnabled()==false||m_pAniSate->hasEnded()==true)
     {
@@ -70,14 +70,14 @@ void Enemy::onHit(const Ogre::Vector3& hitPos,Bullet* pBullet )
     
     
     
-    ///è®¡ç®—æ—‹è½¬è§’åº¦å’Œæ—‹è½¬æ–¹å‘
+    ///¼ÆËãÐý×ª½Ç¶ÈºÍÐý×ª·½Ïò
     Ogre::Vector3 CurrentPos=m_pNode->_getDerivedPosition();
     m_pNode->_updateBounds();
     const Ogre::AxisAlignedBox& box=m_pNode->_getWorldAABB();
     
     float tem=box.getMaximum().x-box.getMinimum().x;
     tem*=0.5f;
-    m_Rotate+=(hitPos.x-CurrentPos.x)/tem*Ogre::Math::PI*10;///å¦‚æžœå‡»ä¸­æœ€å·¦è¾¹å°±æ—‹è½¬5å‘¨
+    m_Rotate+=(hitPos.x-CurrentPos.x)/tem*Ogre::Math::PI*10;///Èç¹û»÷ÖÐ×î×ó±ß¾ÍÐý×ª5ÖÜ
     
     
     Ogre::Vector3 center=box.getCenter();
@@ -99,7 +99,7 @@ void Enemy::onHit(const Ogre::Vector3& hitPos,Bullet* pBullet )
 
     
     
-    ///æ”¹å˜é¢œè‰²
+    ///¸Ä±äÑÕÉ«
     if(m_pMaterial.isNull()==false)
     {
         if(m_LeftValue>60)
@@ -212,7 +212,7 @@ void Enemy::updateDodge(float time)
         m_pAniSate->addTime(time);
     }
     
-    ///å¦‚æžœç›®æ ‡ç‚¹ä½ŽäºŽ-5é‚£ä¹ˆæ¸¸æˆç»“é€Ÿ
+    ///Èç¹ûÄ¿±êµãµÍÓÚ-5ÄÇÃ´ÓÎÏ·½áËÙ
     if(m_pNode->_getDerivedPosition().y<-5)
     {
         BulletManager::getSingleton().endWar();
@@ -223,13 +223,13 @@ void Enemy::updateDodge(float time)
  
     
     
-    ///æ—‹è½¬é€Ÿåº¦ä¸ºæ¯ç§’
+    ///Ðý×ªËÙ¶ÈÎªÃ¿Ãë
     float ra=m_Rotate*0.3f*time;
     m_pNode->rotate(Ogre::Vector3(0,0,1), Ogre::Radian(ra));
     m_Rotate-=ra;
     
     
-    ////ç§»åŠ¨
+    ////ÒÆ¶¯
     Ogre::Vector3 tr=m_Trans*0.3f*time;
     //m_pNode->translate(tr,Ogre::Node::TS_WORLD);
     m_Trans-=tr;
@@ -278,7 +278,7 @@ void Enemy::reset(const Ogre::Vector3& pos)
     }
     
     
-    ///é‡ç½®åŠ¨ç”»
+    ///ÖØÖÃ¶¯»­
     if (m_pAniSate!=NULL)
     {
         m_pAniSate->setTimePosition(0);

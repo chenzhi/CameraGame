@@ -7,4 +7,5 @@
  *
  */
 
+#include "pch.h"
 #include "ofPoint.h"

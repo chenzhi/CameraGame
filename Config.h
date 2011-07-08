@@ -3,15 +3,25 @@
 //  ogreApp
 //
 //  Created by thcz on 11-7-7.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 
 
 /**************************
- æ¸¸æˆå¸¸é‡å®å’Œå…¨å±€å˜é‡å®šä¹‰åœ¨æ­¤å¤„
+ ÓÎÏ·³£Á¿ºêºÍÈ«¾Ö±äÁ¿¶¨ÒåÔÚ´Ë´¦
  *************************/
 
 
 
-///ui overlay ç•Œé¢å®šä¹‰æ‰€æœ‰è·¯å¾„
+
+///ui overlay ½çÃæ¶¨ÒåËùÓĞÂ·¾¶
+
+#if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
+
 const  static std::string g_UIPath="Media/CameraGame/UI/";
+
+#else
+
+const  static std::string g_UIPath="../../../Media/CameraGame/UI/";
+
+#endif

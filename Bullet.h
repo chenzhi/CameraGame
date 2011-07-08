@@ -3,7 +3,7 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-21.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 #ifndef Bullet_h_h_h_h_
 #define Bullet_h_h_h_h_
@@ -34,12 +34,12 @@ class Bullet
     
       
   public:  
-    ///æ¯å¸§æ›´æ–°
+    ///Ã¿Ö¡¸üĞÂ
     void update(float time);
     
-    /**å‘å°„å­å¼¹
-       *@param positionï¼Œå‘å°„çš„åˆå§‹ä½ç½®ï¼Œ
-       *@param dir    å­å¼¹çš„å‘å°„çš„æ–¹å‘ï¼Œéœ€è¦å½’ä¸€åŒ–å‘é‡
+    /**·¢Éä×Óµ¯
+       *@param position£¬·¢ÉäµÄ³õÊ¼Î»ÖÃ£¬
+       *@param dir    ×Óµ¯µÄ·¢ÉäµÄ·½Ïò£¬ĞèÒª¹éÒ»»¯ÏòÁ¿
        */
     void shoot(const Ogre::Vector3& position, const Ogre::Vector3& dir);
     
@@ -51,19 +51,19 @@ class Bullet
     
     protected:
     
-    /**é”€æ¯*/
+    /**Ïú»Ù*/
     void destroy();
     
-    /**é‡ç½®*/
+    /**ÖØÖÃ*/
     void reset();
     
     
 protected:  
     
-    /**åˆ¤æ–­æ˜¯å¦å‡»ä¸­ç›®æ ‡
-     *@param dir å­å¼¹é£è¡Œçš„æ–¹å‘
-     *@param length å­å¼¹åœ¨ä¸€å¸§å†…åˆ†è¡Œçš„é•¿åº¦
-     *@warning åªåšå¤–æ¡†ç›’æ£€æŸ¥
+    /**ÅĞ¶ÏÊÇ·ñ»÷ÖĞÄ¿±ê
+     *@param dir ×Óµ¯·ÉĞĞµÄ·½Ïò
+     *@param length ×Óµ¯ÔÚÒ»Ö¡ÄÚ·ÖĞĞµÄ³¤¶È
+     *@warning Ö»×öÍâ¿òºĞ¼ì²é
      */
     void updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float length);    
     
@@ -73,14 +73,14 @@ protected:
 protected:
     Ogre::Entity*      m_pEntity;
     Ogre::SceneNode*   m_pNode;
-    Ogre::Vector3     m_Gravity;///å­å¼¹çš„é‡åŠ›
+    Ogre::Vector3     m_Gravity;///×Óµ¯µÄÖØÁ¦
     
     Ogre::Vector3     m_OrigiPosition;
-    Ogre::Vector3     m_Dir;///å­å¼¹å‘å°„æ–¹å‘
-    float         m_Force; ///åŠ¨åŠ›
-    float         m_LiftTime;///ç”Ÿå‘½å‘¨æœŸ 
-    float         m_CurrentTime;///å½“å‰ç”Ÿå‘½æ—¶æœŸ 
-    float         m_Speed; ///å­å¼¹çš„é€Ÿåº¦
+    Ogre::Vector3     m_Dir;///×Óµ¯·¢Éä·½Ïò
+    float         m_Force; ///¶¯Á¦
+    float         m_LiftTime;///ÉúÃüÖÜÆÚ 
+    float         m_CurrentTime;///µ±Ç°ÉúÃüÊ±ÆÚ 
+    float         m_Speed; ///×Óµ¯µÄËÙ¶È
     
     Ogre::SceneManager*  m_pSceneMrg;
     Ogre::RaySceneQuery*  m_pRayQuery;

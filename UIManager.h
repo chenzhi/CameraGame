@@ -3,11 +3,11 @@
 //  ogreApp
 //
 //  Created by thcz on 11-7-7.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 
 /****************************************************************
- ç®¡ç†uiç•Œé¢
+ ¹ÜÀíui½çÃæ
 ************************************************************/
 
 #pragma once
@@ -26,29 +26,29 @@ public:
     ~UIManager();
     
     
-    /**æ³¨å†Œä¸€ä¸ªui,æˆåŠŸè¿”å›çœŸï¼Œå¤±è´¥è¿”å›å‡*/
+    /**×¢²áÒ»¸öui,³É¹¦·µ»ØÕæ£¬Ê§°Ü·µ»Ø¼Ù*/
     bool registerUI(UIBase* pUI);
     
     
-    /**æ³¨é”€ä¸€ä¸ªui,ä¸é”€æ¯*/
+    /**×¢ÏúÒ»¸öui,²»Ïú»Ù*/
     bool unregisterUI(UIBase* pUI);
     
     
-    /**é€šè¿‡åå­—è·å–ä¸€ä¸ªui,æ— è¿”å›ç©º*/
+    /**Í¨¹ıÃû×Ö»ñÈ¡Ò»¸öui,ÎŞ·µ»Ø¿Õ*/
     UIBase* getUIByName(const std::string& name);
     
     
-    /**æ¯å¸§æ›´æ–°*/
+    /**Ã¿Ö¡¸üĞÂ*/
     void update(float time);
     
     
-    /**æ¶ˆæ¯ä¸€ä¸ªui*/
+    /**Ïû»ÙÒ»¸öui*/
     void destroyUI(UIBase* pUI);
     
     void destroyUI(const std::string& name);
     
     
-    /**é”€æ¯æ‰€æœ‰çš„ui*/
+    /**Ïú»ÙËùÓĞµÄui*/
     void destroyAll();
     
     

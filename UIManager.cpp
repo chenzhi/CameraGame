@@ -3,9 +3,9 @@
 //  ogreApp
 //
 //  Created by thcz on 11-7-7.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
-
+#include "pch.h"
 #include "UIManager.h"
 #include "UIBase.h" 
 
@@ -30,7 +30,7 @@ bool UIManager::registerUI(UIBase* pUI)
         return false;
     
     
-    ///å¦‚æžœæ²¡æœ‰æ³¨å†Œè¿‡å¯ä»¥åŠ å…¥é˜Ÿåˆ—
+    ///Èç¹ûÃ»ÓÐ×¢²á¹ý¿ÉÒÔ¼ÓÈë¶ÓÁÐ
     if (getUIByName(pUI->getName())!=NULL)
     {
        // m_UICollect.push_back(pUI);
@@ -45,6 +45,7 @@ bool UIManager::registerUI(UIBase* pUI)
 //-----------------------------------------------------------------------
 bool  UIManager::unregisterUI(UIBase* pUI)
 {
+	return true;
     
 }
 

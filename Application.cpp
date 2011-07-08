@@ -3,16 +3,24 @@
 //  ogreApp
 //
 //  Created by iMac on 11-6-15.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 
+#include "pch.h"
 #include "Application.h"
-#include "OgreGLESPlugin.h"
-#include "OgreParticleFXPlugin.h"
 #include  "CaptureFaceGS.h"
 #include "GameState.h"
 #include  "WarGS.h"
 #include  "SdkTrays.h"
+
+
+
+
+
+
+
+
+
 
 namespace Ogre
 {
@@ -22,9 +30,9 @@ namespace Ogre
 
 Application::Application()
 :m_pRoot(NULL ),m_pRenderWindow(NULL),m_pViewPort(NULL),m_pCamera(NULL),
-m_pSceneManager(NULL),m_pFileSystem(NULL)
+m_pSceneManager(NULL)
 {
-   
+
    
 }
 
@@ -33,6 +41,7 @@ Application::~Application()
 {
     
     
+
 }
 
 
@@ -73,8 +82,15 @@ bool initOgrePlugs()
 bool Application::initOgreRender()
 {
 
-    m_pRoot=OGRE_NEW Ogre::Root(/*"plugins.cfg","ogre.cfg"*/);
-    
+
+
+  
+   
+
+	///iphoneÊÇ¾²Ì¬¿âÁ¬½Ó¡£win32ÏÂ¶¯Ì¬¿âÁ¬½Ó
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+
+	m_pRoot=OGRE_NEW Ogre::Root(/*"plugins.cfg","ogre.cfg"*/);
     Ogre::Plugin* pPlugin = OGRE_NEW Ogre::GLESPlugin();
     m_pRoot->installPlugin(pPlugin);
     
@@ -88,8 +104,50 @@ bool Application::initOgreRender()
        m_pRoot->showConfigDialog();
    }
 
+   m_pRenderWindow=m_pRoot->initialise(true,"CameraGame");
+
+
+#else if  OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+
+	  m_pRoot=OGRE_NEW Ogre::Root("","");
+
+#ifdef  _DEBUG
+
+	m_pRoot->loadPlugin("RenderSystem_Direct3D9_d");
+	m_pRoot->loadPlugin("Plugin_ParticleFX_d");
+	m_pRoot->loadPlugin("Plugin_OctreeSceneManager_d");
+#else
+
+	m_pRoot->loadPlugin("RenderSystem_Direct3D9");
+	m_pRoot->loadPlugin("Plugin_ParticleFX");
+	m_pRoot->loadPlugin("Plugin_OctreeSceneManager");
+
+#endif
+
+	// ÉèÖÃäÖÈ¾ÏµÍ³
+
+	m_pRoot->setRenderSystem(m_pRoot->getRenderSystemByName("Direct3D9 Rendering Subsystem"));
+	m_pRenderWindow=m_pRoot->initialise(false);
+
+	int width=960;
+	int height=640;
+	InitWindow(width,height);
+
+	Ogre::NameValuePairList miscParams;
+
+	miscParams["FSAA"]					="0";
+    miscParams["VSync"]					= "No";
+	miscParams["VSync Interval"]        ="1";
+	miscParams["colourDepth"]			= "32";
+	miscParams["externalWindowHandle"]	= Ogre::StringConverter::toString((size_t)mHwnd);
+
+	m_pRenderWindow = m_pRoot->createRenderWindow("GameMainWindow", width, height,false, &miscParams);
+
+#endif
+
    // mStaticPluginLoader.load();
-    m_pRenderWindow=m_pRoot->initialise(true);
+ 
+
     m_pSceneManager = m_pRoot->createSceneManager(Ogre::ST_GENERIC, "DummyScene");
     m_pCamera = m_pSceneManager->createCamera("MainCamera");
     m_pCamera->setFarClipDistance(1000);
@@ -109,8 +167,10 @@ bool Application::initOgreRender()
       m_pViewPort->setBackgroundColour(Ogre::ColourValue(0.0f,0.0f,1.0f,1.0f));
     }
     
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     m_pFileSystem =new OgreBites::FileSystemLayerImpl(OGRE_VERSION_NAME);
-    
+#endif
+
     initInputDevice();
     
     initResource();
@@ -143,11 +203,17 @@ void Application::initScene()
 }
 
 //----------------------------------------------
-/**åˆå§‹åŒ–è¾“å…¥è®¾å¤‡*/
+/**³õÊ¼»¯ÊäÈëÉè±¸*/
 void Application::initInputDevice()
 {
+
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+
     m_pInputListen=new InputListen();
     m_pInputListen->setupInput();
+
+#endif
     
    // m_Accelerometer =[[Accelerometer alloc] init];
     
@@ -157,8 +223,13 @@ void Application::initInputDevice()
 //-------------------------------------------------
 void Application::destroyInputDevice()
 {
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+
     delete m_pInputListen;
     m_pInputListen=NULL;
+
+#endif
    // [m_Accelerometer release];
 }
 
@@ -166,7 +237,11 @@ void Application::destroyInputDevice()
 //----------------------------------------------
 void Application::destroyOgreRender()
 {
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     delete m_pFileSystem;
+#endif
+
     delete m_pUIManager;
    // mStaticPluginLoader.unload();
     OGRE_DELETE m_pRoot;
@@ -184,7 +259,10 @@ void Application::update(float time)
     StateMachine::update(time);
     
     //updateVideo();
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     m_pInputListen->Captuer();
+#endif
 
     m_pUIManager->frameRenderingQueued();
       
@@ -201,6 +279,7 @@ void Application::update(float time)
 //----------------------------------------------
 void Application::destory()
 {
+
     return ;
 }
 //--------------------------------------------------------------------
@@ -209,8 +288,15 @@ void Application::initResource()
     
     // load resource paths from config file
     Ogre::ConfigFile cf;
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     Ogre::String tempath=Ogre::macBundlePath();
     cf.load(m_pFileSystem->getConfigFilePath("resources.cfg"));
+#else 
+
+	  cf.load("resources.cfg");
+
+#endif
     
     Ogre::ConfigFile::SectionIterator seci = cf.getSectionIterator();
     Ogre::String sec, type, arch;
@@ -228,13 +314,14 @@ void Application::initResource()
             type = i->first;
             arch = i->second;
             
-#if /*OGRE_PLATFORM == OGRE_PLATFORM_APPLE ||*/ OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
             // OS X does not set the working directory relative to the app,
             // In order to make things portable on OS X we need to provide
             // the loading with it's own bundle path location
             if (!Ogre::StringUtil::startsWith(arch, "/", false)) // only adjust relative dirs
                 arch = Ogre::String(Ogre::macBundlePath() + "/" + arch);
 #endif
+
             Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch, type, sec);
         }
     }
@@ -256,3 +343,299 @@ void Application::TouchBegan()
         pState->beginTouch();
     }
 }
+
+
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+
+
+
+
+LRESULT Application::MsgProc(HWND hWnd, DWORD message, WPARAM wParam, LPARAM lParam)
+{
+
+
+
+	if (message == WM_CREATE)
+	{	// Store pointer to Win32Window in user data area
+		SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG)(((LPCREATESTRUCT)lParam)->lpCreateParams));
+		return 0;
+	}
+
+	switch (message)
+	{
+	case WM_ACTIVATE:
+		{
+
+		}
+		break;
+	}
+
+	//unsigned char code_point = (CEGUI::utf32)wParam;
+	//static char     s_tempChar[3]  = "";
+	//static wchar_t  s_tempWchar[2] = L"";
+	//static bool s_flag = false;
+	//unsigned char  uch  = (unsigned char)code_point;
+
+	Application* win = (Application*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
+	if (win &&	win->m_pRenderWindow)
+	{
+		switch (message)
+		{
+			/*			case WM_ACTIVATE:
+			{
+			bool active = (LOWORD(wParam) != WA_INACTIVE);
+			if( active )
+			{
+			win->mWindow->setActive( true );
+			}
+			else
+			{
+			if( win->mWindow->isDeactivatedOnFocusChange() )
+			{
+			win->mWindow->setActive( false );
+			}
+			}
+			break;
+			}
+			*/
+		case WM_SYSKEYDOWN:
+			switch( wParam )
+			{
+			case VK_CONTROL:
+			case VK_SHIFT:
+			case VK_MENU: //ALT
+				//return zero to bypass defProc and signal we processed the message
+				return 0;
+			}
+			break;
+
+		case  WM_KEYDOWN:
+			  if(wParam==VK_ESCAPE)
+			  {
+				  ::PostQuitMessage(0);
+			  }
+			  break;;
+
+		case WM_SYSKEYUP:
+			switch( wParam )
+			{
+			case VK_CONTROL:
+			case VK_SHIFT:
+			case VK_MENU: //ALT
+			case VK_F10:
+				//return zero to bypass defProc and signal we processed the message
+				return 0;
+			}
+			break;
+
+		case WM_SYSCHAR:
+			// return zero to bypass defProc and signal we processed the message, unless it's an ALT-space
+			if (wParam != VK_SPACE)
+				return 0;
+			break;
+
+		case WM_ENTERSIZEMOVE:
+			break;
+
+		case WM_EXITSIZEMOVE:
+			break;
+
+		case WM_MOVE:
+			//win->mWindow->windowMovedOrResized();
+			break;
+
+		case WM_DISPLAYCHANGE:
+			//win->mWindow->windowMovedOrResized();
+			//win->mFrameListener->windowResized();
+			break;
+
+		case WM_SIZE:
+			//win->mWindow->windowMovedOrResized();
+			//win->mFrameListener->windowResized();
+
+			/**¸üÐÂinputSystem**/
+			//if(InputSystem::getSingletonPtr()!=NULL)
+			//{
+			//	InputSystem::getSingletonPtr()->setMouseArea(LOWORD(lParam),HIWORD(lParam) );
+			//}
+
+
+
+			break;
+
+		case WM_GETMINMAXINFO:
+			((MINMAXINFO*)lParam)->ptMinTrackSize.x = 800;
+			((MINMAXINFO*)lParam)->ptMinTrackSize.y = 600;
+			break;
+
+		case WM_CLOSE:
+		//	win->mFrameListener->windowClosed();
+			PostQuitMessage(0);
+			//win->mWindow->destroy();
+			return 0;
+
+		case WM_DESTROY:
+			PostQuitMessage(0);
+			break;
+
+		case WM_ERASEBKGND:
+			return 1;
+
+		case WM_PAINT:
+			//PAINTSTRUCT ps;
+			//BeginPaint(hWnd, &ps);
+			//EndPaint(hWnd, &ps);
+			break;
+
+		case WM_SETCURSOR:
+			// ½öÔÚ¿Í»§ÇøÏÔÊ¾×Ô¶¨ÒåÊó±ê
+			if (LOWORD(lParam) == HTCLIENT)
+			{
+				//CMouseCursorManager::getSingleton().refreshMouseCursor();
+				return 1;
+			}
+			break;
+		
+		default:
+			break;
+		}
+	}
+
+	return DefWindowProc(hWnd, message, wParam, lParam);
+}
+
+
+
+
+
+
+
+
+
+///¿ªÊ¼Ö¡Ñ­»·
+void  Application::go()
+{
+	
+	
+	init();
+
+
+	MSG msg;
+	ZeroMemory(&msg, sizeof(MSG));
+
+	while(TRUE)
+	{
+
+		while(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) 
+		{ 
+			// Èç¹ûÊÇÍË³öÏûÏ¢,ÍË³ö
+			if(msg.message == WM_QUIT) 
+				return;
+
+			// ´¦ÀíÆäËûÏûÏ¢
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+
+		try
+		{
+			static DWORD lasttime=::GetTickCount();
+
+			DWORD CurrentTime=::GetTickCount();
+            
+			float time=(CurrentTime-lasttime)*0.001f;
+			update(time);
+			lasttime=CurrentTime;
+
+
+		}
+		catch (std::exception& e)
+		{
+			MessageBox(NULL,e.what(),"²¶»ñÒì³£",MB_OK);
+			::PostQuitMessage(0);
+
+		}
+
+	}
+
+
+
+}
+
+
+
+
+bool Application::InitWindow(int width, int height)
+{
+	//GLogManager.logMessage("Creating OgreWinFrame");
+
+	// ±£´æÊµÀý¾ä±ú
+	mInstance = GetModuleHandle(NULL);
+
+	HCURSOR mCursor = LoadCursor(NULL, IDC_ARROW);
+
+	// ³õÊ¼»¯
+	WNDCLASS wc;										// ´°¿ÚÀà½á¹¹
+	wc.style		 =	CS_HREDRAW | CS_VREDRAW |		// ÒÆ¶¯Ê±ÖØ»­
+		CS_DBLCLKS | CS_OWNDC;			// ½ÓÊÜË«»÷ÏûÏ¢, ²¢ÇÒ´°¿ÚÒ»Ö±±£³Ö×ÔÉíµÄDC
+	wc.lpfnWndProc	 =	(WNDPROC)MsgProc;				// WndProc´¦ÀíÏûÏ¢
+	wc.cbClsExtra	 =	0;								// ÎÞ¶îÍâ´°¿ÚÊý¾Ý
+	wc.cbWndExtra	 =	0;								// ÎÞ¶îÍâ´°¿ÚÊý¾Ý
+	wc.hInstance	 =	mInstance;						// ÉèÖÃÊµÀý
+	wc.hIcon		 =	LoadIcon(NULL, IDI_APPLICATION);// ÉèÖÃÍ¼±ê
+	wc.hCursor		 =	mCursor;						// ×°ÈëÊó±êÖ¸Õë
+	wc.hbrBackground =	(HBRUSH)(BLACK_BRUSH);			// Ö¸¶¨ÏµÍ³±³¾°Í¼Ë¢
+	wc.lpszMenuName  =	NULL;							// ÉèÖÃ²Ëµ¥
+	wc.lpszClassName =	"OgreWinFrame";					// Éè¶¨ÀàÃû×Ö
+
+	if (RegisterClass(&wc))
+	{
+		// ´°¿ÚÐÅÏ¢½á¹¹
+		CREATESTRUCT cs;
+		ZeroMemory(&cs, sizeof(CREATESTRUCT));
+		cs.hInstance	= mInstance;
+		cs.hwndParent	= HWND_DESKTOP;
+		cs.lpszName		= "CameraGame";
+		cs.lpszClass	= "OgreWinFrame";
+		cs.dwExStyle	= WS_EX_APPWINDOW | WS_EX_WINDOWEDGE;	// À©Õ¹´°Ìå·ç¸ñ
+		//modified by xumiao,½«´°ÌåµÄ×î´ó¿òÈ¡Ïû£¬²¢½ûÖ¹ÓÃ»§¸Ä±ä´°Ìå´óÐ¡
+		cs.style		= WS_OVERLAPPED | WS_MINIMIZEBOX |WS_CAPTION |WS_SYSMENU;//WS_OVERLAPPEDWINDOW;					// ´°Ìå·ç¸ñ 
+
+		//cs.style =WS_POPUP;
+		// ¾ÓÖÐ
+		RECT rc = {0, 0, width, height};
+		AdjustWindowRectEx(&rc, cs.style, FALSE, cs.dwExStyle);
+		width = rc.right - rc.left;
+		height = rc.bottom - rc.top;
+
+		// Clamp width and height to the desktop dimensions
+		int screenw = GetSystemMetrics(SM_CXSCREEN);
+		int screenh = GetSystemMetrics(SM_CYSCREEN);
+		if (width > screenw)
+			width = screenw;
+		if (height > screenh)
+			height = screenh;
+
+		cs.x = (screenw - width) / 2;
+		cs.y = (screenh - height) / 2;
+		cs.cx = width;
+		cs.cy = height;
+
+		// ´´½¨´°¿Ú
+		mHwnd = CreateWindowEx(cs.dwExStyle, cs.lpszClass, cs.lpszName, cs.style,
+			cs.x, cs.y, cs.cx, cs.cy,
+			cs.hwndParent, cs.hMenu, cs.hInstance, this);
+		if (mHwnd)
+		{
+			// ÏÔÊ¾´°¿Ú
+			ShowWindow(mHwnd, SW_SHOW);
+
+			return true;
+		}
+	}
+
+	return false;
+}
+
+#endif

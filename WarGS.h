@@ -3,7 +3,7 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-22.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 
 
@@ -36,14 +36,14 @@ protected:
     void beginTouch();
     
     
-    /**æ›´æ–°é‡è½¦è®¡æ•°æ®ï¼Œæ§åˆ¶æ‘„åƒå¤´è¿åŠ¨*/
+    /**¸üĞÂÖØ³µ¼ÆÊı¾İ£¬¿ØÖÆÉãÏñÍ·ÔË¶¯*/
     void updateAccelerometer();
 
     
 protected:
     
     
-    ///åˆå§‹åŒ–è§†é¢‘è´´å›¾
+    ///³õÊ¼»¯ÊÓÆµÌùÍ¼
     void initVideoTeture();
     
   

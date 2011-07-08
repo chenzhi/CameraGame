@@ -3,9 +3,9 @@
 //  ogreApp
 //
 //  Created by thcz on 11-7-6.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
-
+#include "pch.h"
 #include "UIBase.h"
 #include  "FileSystemLayer.h"
 #include  "Config.h"
@@ -33,22 +33,31 @@ void UIBase::init()
  
     m_pParentOverlay=Ogre::OverlayManager::getSingleton().getByName(m_Name);
     
-    ///å¦‚æžœæ²¡æœ‰æ‰¾åˆ°ç›´æŽ¥è¯»ç›¸åº”æ–‡ä»¶
+	Ogre::String temPath;
+
+
+    ///Èç¹ûÃ»ÓÐÕÒµ½Ö±½Ó¶ÁÏàÓ¦ÎÄ¼þ
     if(m_pParentOverlay==NULL)
     {
+
+#if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
         
-        Ogre::String macPath=Ogre::macBundlePath();
+        temPath=Ogre::macBundlePath();
         Ogre::LogManager::getSingleton().logMessage(macPath);
-        macPath+="/";
-        macPath+=g_UIPath;
-        
+        temPath+="/";
+        temPath+=g_UIPath;
+#else if  OGRE_PLATFORM ==OGRE_PLATFORM_WIN32
+
+		temPath=g_UIPath;
+
+#endif
         //Ogre::DataStreamPtr  pDataStream=Ogre::Root::getSingleton().createFileStream(macPath);
-        ///å…ˆæŠŠæ–‡ä»¶åŠ å…¥èµ„æºç»„åŽæ‰èƒ½æ‰“å¼€
-        Ogre::ResourceGroupManager::getSingletonPtr()->addResourceLocation(macPath,"FileSystem",m_Name);
+        ///ÏÈ°ÑÎÄ¼þ¼ÓÈë×ÊÔ´×éºó²ÅÄÜ´ò¿ª
+        Ogre::ResourceGroupManager::getSingletonPtr()->addResourceLocation(temPath,"FileSystem",m_Name);
         
-        macPath+=m_Name;
-        macPath+=".overlay";
-        Ogre::DataStreamPtr  pDataStream=Ogre::ResourceGroupManager::getSingletonPtr()->openResource(macPath,m_Name);
+        temPath+=m_Name;
+        temPath+=".overlay";
+        Ogre::DataStreamPtr  pDataStream=Ogre::ResourceGroupManager::getSingletonPtr()->openResource(temPath,m_Name);
         Ogre::OverlayManager::getSingleton().parseScript(pDataStream,"General");
         
         m_pParentOverlay=Ogre::OverlayManager::getSingleton().getByName(m_Name);

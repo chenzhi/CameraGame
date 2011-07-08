@@ -3,11 +3,11 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-22.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 
 
-
+#include "pch.h"
 #include "WarGS.h"
 #include  "BulletManager.h"
 #include "Application.h"
@@ -65,7 +65,7 @@ StateType WarGS::update(float time)
     m_pBulletManager->update(time);
     
     
-    ///å¦‚æžœæ¸¸æˆç»“æŸé‡æ–°å›žåˆ°äººç‰©æ ¡æ­£
+    ///Èç¹ûÓÎÏ·½áÊøÖØÐÂ»Øµ½ÈËÎïÐ£Õý
     if(m_pBulletManager->isGameEnd())
     {
         setNextStateType(ST_CAPTUREFACE);
@@ -86,7 +86,7 @@ void WarGS::beginTouch()
     Ogre::Matrix3 matrix= m_pCameraNode->getLocalAxes();
     
     Ogre::Vector3 dir(matrix[0][2],matrix[1][2],matrix[2][2]);
-    ///å­å¼¹å‘é€æ—¶ç¨ç¨å‘ä¸Šå‘é€ä¸€ç‚¹
+    ///×Óµ¯·¢ËÍÊ±ÉÔÉÔÏòÉÏ·¢ËÍÒ»µã
     dir.y-=0.15;
     dir.normalise();
     m_pBulletManager->fire(m_pCameraNode->getPosition(),dir);
@@ -150,6 +150,7 @@ void WarGS::initVideoTeture()
 void WarGS::updateAccelerometer()
 {
     
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     
     //const ofPoint& orientation=ofxAccelerometerHandler::getSingleton().getSmoothOrientation();
     
@@ -160,12 +161,12 @@ void WarGS::updateAccelerometer()
     //const ofPoint& force=ofxAccelerometerHandler::getSingleton().getForce();
     float x=orientation.z*90;
     
-    //ï¼1-- 1ä¹‹é—´æ—‹è½¬180åº¦
+    //£­1-- 1Ö®¼äÐý×ª180¶È
     static Ogre::Vector3 lastGyro(0.0f,0.0f,0.0f);
     Ogre::Vector3 temGyro=gyrco-lastGyro;
     
     
-    ///è®°å½•ç»•ï¼¹è½´è½¬äº†å¤šå°‘åº¦
+    ///¼ÇÂ¼ÈÆ£ÙÖá×ªÁË¶àÉÙ¶È
     static float yaw=0.0f;
     
     if(gyrco.x>0)
@@ -197,7 +198,6 @@ void WarGS::updateAccelerometer()
     //Ogre::LogManager::getSingleton().logMessage(sstream.str());
     
     
-    
     if(m_pCameraNode!=NULL )
     {
         m_pCameraNode->resetOrientation();
@@ -207,8 +207,7 @@ void WarGS::updateAccelerometer()
     }
     
    
-    
-    //std::basic_stringstream<char> cstringstream;
+#endif
 
     return ;
 }

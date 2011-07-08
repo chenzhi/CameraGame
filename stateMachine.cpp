@@ -1,4 +1,4 @@
-
+#include "pch.h"
 #include "stateMachine.h"
 
 
@@ -27,7 +27,7 @@ void  StateMachine::update(float time)
     
 	StateType nextType = m_pcurrentState->update(firstFrame?0.01f:time);
 	
-	///å¦‚æœä¸‹ä¸€å¸§çš„çŠ¶æ€å’Œå½“å‰å¸§ä¸åŒéœ€è¦æ›´æ¢çŠ¶æ€
+	///Èç¹ûÏÂÒ»Ö¡µÄ×´Ì¬ºÍµ±Ç°Ö¡²»Í¬ĞèÒª¸ü»»×´Ì¬
 	if(nextType!=m_pcurrentState->getType())
 	{
 		m_pcurrentState->end();
@@ -46,7 +46,7 @@ void  StateMachine::update(float time)
 void StateMachine::destroyAllState()
 {
     
-	////å¦‚æœå½“å‰æœ‰æ´»åŠ¨çŠ¶æ€ï¼Œé¦–å…ˆç»“æŸçŠ¶æ€
+	////Èç¹ûµ±Ç°ÓĞ»î¶¯×´Ì¬£¬Ê×ÏÈ½áÊø×´Ì¬
 	if(m_pcurrentState!=NULL)
 	{
 		m_pcurrentState->end();
@@ -128,7 +128,7 @@ State*  StateMachine::getState(unsigned int index) const
 }
 
 
-///è®¾ç½®æ¸¸æˆå¼€å§‹çš„çŠ¶æ€
+///ÉèÖÃÓÎÏ·¿ªÊ¼µÄ×´Ì¬
 void StateMachine::setBeginState(StateType GS)
 {
 	State* pGameState=findState(GS);

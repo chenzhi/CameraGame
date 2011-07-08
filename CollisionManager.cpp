@@ -5,7 +5,7 @@
 //  Created by thcz on 11-6-24.
 //  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
-
+#include "pch.h"
 #include "CollisionManager.h"
 
 

@@ -1701,7 +1701,8 @@
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
 		SdkTrayManager(const Ogre::String& name, Ogre::RenderWindow* window, SdkTrayListener* listener = 0) :
 #else
-		SdkTrayManager(const Ogre::String& name, Ogre::RenderWindow* window, OIS::Mouse* mouse, SdkTrayListener* listener = 0) :
+		//SdkTrayManager(const Ogre::String& name, Ogre::RenderWindow* window, OIS::Mouse* mouse, SdkTrayListener* listener = 0) :
+		SdkTrayManager(const Ogre::String& name, Ogre::RenderWindow* window,  SdkTrayListener* listener = 0) :
 #endif
 		  mName(name), mWindow(window), mWidgetDeathRow(), mListener(listener), mWidgetPadding(8),
                 mWidgetSpacing(2), mTrayPadding(0), mTrayDrag(false), mExpandedMenu(0), mDialog(0), mOk(0), mYes(0),
@@ -3145,7 +3146,7 @@
 		Ogre::RenderWindow* mWindow;          // render window
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
 		//OIS::MultiTouch* mMouse;              // multitouch device
-#else
+#else   OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 		OIS::Mouse* mMouse;                   // mouse device
 #endif
 		Ogre::Overlay* mBackdropLayer;        // backdrop layer

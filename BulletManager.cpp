@@ -3,9 +3,9 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-21.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
-
+#include "pch.h"
 #include "BulletManager.h"
 #include  "Bullet.h"
 #include  "Application.h"

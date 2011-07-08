@@ -3,12 +3,12 @@
 //  ogreApp
 //
 //  Created by thcz on 11-7-6.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 
 
 /**
- å·¥å…·ç±»ï¼Œä¸€èˆ¬éƒ½æ˜¯é™æ€å‡½æ•°ï¼Œå®Œæˆä¸€äº›é€šç”¨åŠŸèƒ½ 
+ ¹¤¾ßÀà£¬Ò»°ã¶¼ÊÇ¾²Ì¬º¯Êı£¬Íê³ÉÒ»Ğ©Í¨ÓÃ¹¦ÄÜ 
 */
 
 
@@ -24,7 +24,7 @@ public:
     
     
     
-    /**é”€æ¯ä¸€ä¸ªoverlayå’Œå…¶å­å¯¹åƒ*/
+    /**Ïú»ÙÒ»¸öoverlayºÍÆä×Ó¶ÔÏñ*/
     //static  void DestroyOverlayAndChild(Ogre:::Over);
     
     

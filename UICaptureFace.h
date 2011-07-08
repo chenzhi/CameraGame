@@ -3,10 +3,10 @@
 //  ogreApp
 //
 //  Created by thcz on 11-7-7.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 /****************************************
- æ•è·äººè„¸ç•Œé¢
+ ²¶»ñÈËÁ³½çÃæ
 *****************************************/
 
 #include "UIBase.h"

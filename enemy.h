@@ -3,7 +3,7 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-27.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 
 
@@ -23,18 +23,18 @@ public:
     
     enum EnemyState
     {
-        ES_NORMAL, ///å‡ºç°ï¼Œæœªå—ä¼¤æ—¶çŠ¶æ€
-        ES_DODGE, ////å—ä¼¤åèº²é¿
-        ES_DEATH, ///æ­»äº¡çŠ¶æ€
+        ES_NORMAL, ///³öÏÖ£¬Î´ÊÜÉËÊ±×´Ì¬
+        ES_DODGE, ////ÊÜÉËºó¶ã±Ü
+        ES_DEATH, ///ËÀÍö×´Ì¬
     };
     
     
     
     public:
     
-    /**æ„é€ å‡½æ•°
-     *@param meshName meshæ–‡ä»¶å
-     *@param pos     å‡ºç°çš„åˆå§‹ä½
+    /**¹¹Ôìº¯Êı
+     *@param meshName meshÎÄ¼şÃû
+     *@param pos     ³öÏÖµÄ³õÊ¼Î»
      */
     Enemy(const Ogre::String& meshName,const Ogre::Vector3&  pos, Ogre::SceneManager* pSceneMrg);
 
@@ -43,9 +43,9 @@ public:
     
     
     
-    /**è¢«æ‰“ä¸­æ—¶çš„å›è°ƒ
-     *@param hitPos æ‰“ä¸­çš„ç‚¹
-     *@param pBullet æ‰“ä¸­çš„å­å¼¹
+    /**±»´òÖĞÊ±µÄ»Øµ÷
+     *@param hitPos ´òÖĞµÄµã
+     *@param pBullet ´òÖĞµÄ×Óµ¯
      */
     virtual void onHit(const Ogre::Vector3& hitPos,Bullet* pBullet );
     
@@ -59,33 +59,33 @@ public:
     
     
     
-    ///è·å–åå­—
+    ///»ñÈ¡Ãû×Ö
     const std::string& getEntityName()const;
     
     
-    ///è·å–ç”Ÿå‘½å€¼
+    ///»ñÈ¡ÉúÃüÖµ
     float getLeftValue()const{return m_LeftValue;}
         
-    ///è®¾ç½®ç”Ÿå‘½å€¼
+    ///ÉèÖÃÉúÃüÖµ
     void  setLeftValue(float value){m_LeftValue=value;}
 
     
-    ///é‡ç½®,åœ¨æŒ‡å®šçš„ä½ç½®é‡æ–°å‡ºç°
+    ///ÖØÖÃ,ÔÚÖ¸¶¨µÄÎ»ÖÃÖØĞÂ³öÏÖ
     void reset(const Ogre::Vector3& pos);
     
-    ///è·å–çŠ¶æ€
+    ///»ñÈ¡×´Ì¬
     EnemyState getState()const {return m_State;}    
 
 protected:
     
-    ///æ­»äº¡
+    ///ËÀÍö
     void death();
     
-    ///æ¶ˆæ¯
+    ///Ïû»Ù
     void destroy();
     
     
-    ///æ›´æ–°å‡ºç°æ—¶
+    ///¸üĞÂ³öÏÖÊ±
     void updateNormal(float time);
     
     ///
@@ -106,15 +106,15 @@ protected:
     static int     m_EntityIndex;
     
     
-    float        m_LeftValue;///ç”Ÿå‘½å€¼
+    float        m_LeftValue;///ÉúÃüÖµ
     
-    EnemyState      m_State;///çŠ¶æ€
+    EnemyState      m_State;///×´Ì¬
     
     
-    ///è¢«å‡»ä¸­åçš„æ—‹è½¬ 
+    ///±»»÷ÖĞºóµÄĞı×ª 
     float         m_Rotate;
     
-    ///è¢«å‡»ä¸­åå‘å“ªä¸ªæ–¹å‘è¿åŠ¨å¤š
+    ///±»»÷ÖĞºóÏòÄÄ¸ö·½ÏòÔË¶¯¶à
     Ogre::Vector3     m_Trans;
     
     Ogre::MaterialPtr    m_pMaterial;

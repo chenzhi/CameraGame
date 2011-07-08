@@ -3,26 +3,31 @@
 //  ogreApp
 //
 //  Created by iMac on 11-6-15.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 #pragma once
 
-#ifndef application_h_h_h_
-#define application_h_h_h_  
+ 
 
 //#include "ogreConfig.h"
 //#include "Ogreplatform.h"
 
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
 
 #include "FileSystemLayerImpl.h"
 #include  "ofxiPhoneVideoGrabber.h"
 #include "Accelerometer.h"
 #include "inputListen.h"
+
+#endif
+
+
 #include "stateMachine.h"
 
 
 class ofxiPhoneVideoGrabber;
 class SdkTrayManager;
+
 
 class Application :public Ogre::Singleton<Application>, StateMachine
 {
@@ -34,62 +39,76 @@ public:
     ~Application();
     
     
-    /**åˆå§‹åŒ–
+    /**³õÊ¼»¯
     */
     void init();
     
-    /**é”€æ¯æ‰€ä»¥ç‰©ä½“
+    /**Ïú»ÙËùÒÔÎïÌå
     */
     void destory();
     
     
-    /**åˆå§‹åŒ–ogreæ¸²æŸ“å™¨*/
+    /**³õÊ¼»¯ogreäÖÈ¾Æ÷*/
     bool initOgreRender();
     
-    /**åˆå§‹åŒ–ogreæ’ä»¶ï¼ŒåŒ…æ‹¬openleséƒ½åœ¨è¿™é‡Œåˆå§‹åŒ–*/
+    /**³õÊ¼»¯ogre²å¼ş£¬°üÀ¨openles¶¼ÔÚÕâÀï³õÊ¼»¯*/
     bool initOgrePlugs();
    
     /**destroy render*/
     void destroyOgreRender();
     
     
-    /**æ¯å¸§æ›´æ–°
-    @param time å•ä½ä¸ºç§’
+    /**Ã¿Ö¡¸üĞÂ
+    @param time µ¥Î»ÎªÃë
     */
     void update(float time);
     
     
-    /**åˆå§‹åŒ–æ¸²æŸ“èµ„æº*/
+    /**³õÊ¼»¯äÖÈ¾×ÊÔ´*/
     void initResource();
+
+   
     
-    
-    /**åˆå§‹åŒ–è¾“å…¥è®¾å¤‡*/
+    /**³õÊ¼»¯ÊäÈëÉè±¸*/
     void initInputDevice();
     
     /***/
     void destroyInputDevice();
     
-    /**è¿”å›åœºæ™¯çš„çš„ä¸»æ‘„åƒæœºèŠ‚ç‚¹*/
+    /**·µ»Ø³¡¾°µÄµÄÖ÷ÉãÏñ»ú½Úµã*/
     Ogre::SceneNode* getMainCameraNode()const {return m_pCameraNode;}
     
     
-    /**è¿”å›ä¸»æ‘„åƒ*/
+    /**·µ»ØÖ÷ÉãÏñ*/
     Ogre::Camera*   getMainCamera()const{return m_pCamera;}
 
     
     
-    /**è¿”å›åœºæ™¯ç®¡ç†å™¨*/
+    /**·µ»Ø³¡¾°¹ÜÀíÆ÷*/
     Ogre::SceneManager* getMainSceneManager()const {return m_pSceneManager;}
     
     
-    /**å¼€å§‹æŒ‰ä¸‹*/
+    /**¿ªÊ¼°´ÏÂ*/
     void TouchBegan();
+
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+	///¿ªÊ¼Ö¡Ñ­»·,windowsÆ½Ì¨ÏÂÊ¹ÓÃ
+	void go();
+
+	///windowÏÂº¯´´½¨´°¿Úº¯Êı
+	bool  InitWindow(int width,int height);
+
+
+    static	LRESULT MsgProc(HWND hWnd, DWORD message, WPARAM wParam, LPARAM lParam);
+
+#endif
 
     
 protected:
     
-    /**åˆå§‹åŒ–å‡½æ•°ï¼Œä¸€èˆ¬åœ¨è¿™ä¸ªå‡½æ•°é‡Œæ³¨å†Œæ‰€æœ‰çš„çŠ¶æ€
-     *åœ¨è¿™ä¸ªå‡½æ•°é‡Œéœ€è¦æ‰‹åŠ¨æŒ‡å®šå½“å‰æ´»åŠ¨çŠ¶æ€ã€‚åŒæ—¶è°ƒç”¨æ´»åŠ¨çŠ¶æ€çš„beginå‡½æ•°
+    /**³õÊ¼»¯º¯Êı£¬Ò»°ãÔÚÕâ¸öº¯ÊıÀï×¢²áËùÓĞµÄ×´Ì¬
+     *ÔÚÕâ¸öº¯ÊıÀïĞèÒªÊÖ¶¯Ö¸¶¨µ±Ç°»î¶¯×´Ì¬¡£Í¬Ê±µ÷ÓÃ»î¶¯×´Ì¬µÄbeginº¯Êı
      */
 	virtual void  initState();
     
@@ -104,7 +123,7 @@ protected:
     
 protected:
     
-    /**åˆå§‹åŒ–åœºæ™¯*/
+    /**³õÊ¼»¯³¡¾°*/
     void initScene();
     
        
@@ -126,28 +145,29 @@ protected:
     
     Ogre::SceneManager*    m_pSceneManager;
     
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+
     OgreBites::FileSystemLayerImpl*    m_pFileSystem;
+
+	 InputListen*            m_pInputListen;
+
+#else OGRE_PLATFORM ==OGRE_PLATFORM_WIN32
+
+	HWND  mHwnd;
+    HINSTANCE	mInstance;
+
+#endif
     
     
 
-    InputListen*            m_pInputListen;
-    
+
     SdkTrayManager*           m_pUIManager;
     
     
-    
-    
+  
     
 };
 
 
 
-
-
-
-
-
-
-
-
-#endif

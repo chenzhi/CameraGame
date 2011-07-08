@@ -3,7 +3,7 @@
 //  ogreApp
 //
 //  Created by thcz on 11-7-6.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 
 
@@ -12,7 +12,7 @@
 
 
 /**
- æ¸¸æˆçš„ï¼µï¼©ç•Œé¢çš„åŸºç±»ï¼Œä¸€ä¸ªå®ä¾‹è¡¨ç¤ºä¸€ä¸ªæ¸¸æˆé¡µé¢
+ ÓÎÏ·µÄ£Õ£É½çÃæµÄ»ùÀà£¬Ò»¸öÊµÀı±íÊ¾Ò»¸öÓÎÏ·Ò³Ãæ
 */
 
 class UIBase
@@ -21,9 +21,9 @@ class UIBase
     
 public:
     
-    /** æ„é€ å‡½æ•°ï¼Œ
-       *@param name uibaseåå­—
-       *@param templateName overlayæ¨¡æ¿çš„åå­—
+    /** ¹¹Ôìº¯Êı£¬
+       *@param name uibaseÃû×Ö
+       *@param templateName overlayÄ£°åµÄÃû×Ö
       */
     UIBase(const std::string& name, const std::string& templateName);
     
@@ -31,64 +31,64 @@ public:
     virtual ~UIBase();
     
     
-    /**è·å–åå­—*/
+    /**»ñÈ¡Ãû×Ö*/
     const std::string& getName()const {return m_Name;}
     
-    /**åˆå§‹åŒ–*/
+    /**³õÊ¼»¯*/
     virtual void init();
     
-    /**æ¯å¸§æ›´æ–°æ•°*/
+    /**Ã¿Ö¡¸üĞÂÊı*/
     virtual void update(float time){};
     
     
-    /**å¼€å§‹è§¦æ‘¸*/
+    /**¿ªÊ¼´¥Ãş*/
     virtual void onBeginTouch(){};
     
     
-    /**æ»‘åŠ¨æ‰‹æŒ‡*/
+    /**»¬¶¯ÊÖÖ¸*/
     virtual void onMoveTouch(){};
     
     
-    /**æ‰‹æŒ‡ç¦»å¼€*/
+    /**ÊÖÖ¸Àë¿ª*/
     virtual void onEndTouch(){};
     
     
     
-    /**è®¾ç½®æ˜¯å¦å¯è§*/
+    /**ÉèÖÃÊÇ·ñ¿É¼û*/
     void  setVisible(bool b);
     
     
-    /**åˆ¤æ–­æ˜¯å¦å¯è§,å¦‚æœä¸åŒè§ä¸å“åº”æ‰‹æŒ‡äº‹ä»¶*/
+    /**ÅĞ¶ÏÊÇ·ñ¿É¼û,Èç¹û²»Í¬¼û²»ÏìÓ¦ÊÖÖ¸ÊÂ¼ş*/
     bool   isVisible()const ;
     
 
-    /**é”€æ¯ä¸€ä¸ªoverlayElementå’Œå…¶å­å¯¹åƒ*/
+    /**Ïú»ÙÒ»¸öoverlayElementºÍÆä×Ó¶ÔÏñ*/
     static bool destroyOverlayElementAndChild(Ogre::OverlayElement* pOverlay);
     
-     /**é”€æ¯ä¸€ä¸ªoverlayå’Œå…¶å­å¯¹åƒ*/
+     /**Ïú»ÙÒ»¸öoverlayºÍÆä×Ó¶ÔÏñ*/
     static bool destroyOverlayAndChiled(Ogre::Overlay* pOverlay);
     
     
-    /**è®¾ç½®ç•Œé¢çš„z*/
+    /**ÉèÖÃ½çÃæµÄz*/
     void setZorder(unsigned short z);
     
     
-    /**è·å–ç•Œé¢z,å¦‚æœç•Œé¢æœªåˆå§‹è¿”å›0*/
+    /**»ñÈ¡½çÃæz,Èç¹û½çÃæÎ´³õÊ¼·µ»Ø0*/
     unsigned short getZorder()const;
     
     
 protected:
     
-    /**é”€æ¯
-       é”€æ¯overlayå’Œå…¶å­å¯¹åƒ
+    /**Ïú»Ù
+       Ïú»ÙoverlayºÍÆä×Ó¶ÔÏñ
      */
     void destroy();
     
-    std::string m_Name;//// ï¼µï¼©å
+    std::string m_Name;//// £Õ£ÉÃû
     
-    std::string m_TemplateName;/// æ¨¡æ¿å
+    std::string m_TemplateName;/// Ä£°åÃû
     
-    Ogre::Overlay* m_pParentOverlay; ///æœ€ä¸Šå±‚overlay
+    Ogre::Overlay* m_pParentOverlay; ///×îÉÏ²ãoverlay
     
     
     

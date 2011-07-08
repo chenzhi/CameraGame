@@ -204,7 +204,7 @@ public:
 	}
 	
 	// call this to set it all up
-	//void setup();โซ
+	//void setup();กา
 	
 	// call this when you no longer need the accelerometer
 	//void exit();

@@ -3,7 +3,7 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-21.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 
 
@@ -25,31 +25,31 @@ class BulletManager :public Ogre::Singleton<BulletManager>
 public:
     
     /**
-      *@param pCameraNode å­å¼¹å‘å°„çš„
+      *@param pCameraNode ×Óµ¯·¢ÉäµÄ
       */
     BulletManager();
     
     ~BulletManager();
     
-    /*åˆå§‹åŒ–*/
+    /*³õÊ¼»¯*/
     void init();
     
     
-    /**å‘å°„å­å¼¹*/
+    /**·¢Éä×Óµ¯*/
     void fire(const Ogre::Vector3& pos,const Ogre::Vector3& dir);
     
     
     void update(float time);
     
     
-    ///åˆ¤æ–­æ¸¸æˆæ˜¯å¦ç»“æŸ
+    ///ÅĞ¶ÏÓÎÏ·ÊÇ·ñ½áÊø
     bool isGameEnd();
     
     
-    ///æˆ˜äº‰å¼€å§‹
+    ///Õ½Õù¿ªÊ¼
     void startWar();
     
-    ///æˆ˜äº‰ç»“æŸ
+    ///Õ½Õù½áÊø
     void endWar();
     
     
@@ -58,23 +58,23 @@ public:
     
     ///@{
     
-    ///åˆ›å»ºä¸€ä¸ªæ•Œäºº
+    ///´´½¨Ò»¸öµĞÈË
     Enemy* createEnemy(const Ogre::Vector3& pos);
     
     
-    ///é€šè¿‡ogre entityNameè·å–åˆ°enemyæŒ‡é’ˆ
+    ///Í¨¹ıogre entityName»ñÈ¡µ½enemyÖ¸Õë
     Enemy* getEnemyByEntityName(const std::string& name) const ;
     
-    ///é”€æ¯æ‰€æœ‰çš„æ•Œäºº
+    ///Ïú»ÙËùÓĞµÄµĞÈË
     void  destroyAllEnemy();
     
-    ///æ¯å¸§æ›´æ–°æ•Œäºº
+    ///Ã¿Ö¡¸üĞÂµĞÈË
     void  updateEnemy(float time);
     
-    ///æ•Œäººæ­»äº¡å›è°ƒ
+    ///µĞÈËËÀÍö»Øµ÷
     void  hasEnemyDeath(Enemy* pEnemy);
     
-    ///è·å–ä¸€ä¸ªæ­»è®°äº¡å•ä½ï¼Œå¦‚æœæ²¡æœ‰è¿”å›ç©º
+    ///»ñÈ¡Ò»¸öËÀ¼ÇÍöµ¥Î»£¬Èç¹ûÃ»ÓĞ·µ»Ø¿Õ
     Enemy* getDeathEnemy();
     
     
@@ -85,7 +85,7 @@ protected:
     
     void destroy();
     
-    /**è·å–ä¸€ä¸ªå‡†å¤‡å¥½çš„å­å¼¹,å¦‚æœæ²¡æœ‰è¿”å›ç©º*/
+    /**»ñÈ¡Ò»¸ö×¼±¸ºÃµÄ×Óµ¯,Èç¹ûÃ»ÓĞ·µ»Ø¿Õ*/
     Bullet*  getBullet();
     
     
@@ -93,15 +93,15 @@ protected:
     
     
       
-    float         m_FireTime;///å‘å°„å‘¨æœŸ
+    float         m_FireTime;///·¢ÉäÖÜÆÚ
     
-    float         m_LastFireTime;///ä¸Šä¸€å¼ çš„å‘å°„æ—¶é—´
-    
-    
-    BulletCollect      m_BulletCollect;///æ‰€æœ‰å­å¼¹é›†åˆ
+    float         m_LastFireTime;///ÉÏÒ»ÕÅµÄ·¢ÉäÊ±¼ä
     
     
-    EnemyCollect       m_EnemyCollect;///æ‰€æœ‰ç›®æ ‡çš„é›†åˆ
+    BulletCollect      m_BulletCollect;///ËùÓĞ×Óµ¯¼¯ºÏ
+    
+    
+    EnemyCollect       m_EnemyCollect;///ËùÓĞÄ¿±êµÄ¼¯ºÏ
     
     Ogre::SceneManager*   m_pSceneMrg;
     

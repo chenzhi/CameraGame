@@ -3,9 +3,9 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-22.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
-
+#include "pch.h"
 #include "CaptureFaceGS.h"
 #include "application.h"
 #include  "ofxiPhoneVideoGrabber.h"
@@ -36,7 +36,7 @@ void  CaptureFaceGS::begin( )
     initBackGround(); 
     
     
-    ///æµ‹è¯•ä»£ç 
+    ///²âÊÔ´úÂë
     m_pCaptureUI=new UICaptureFace();
     m_pCaptureUI->init();
     m_pCaptureUI->setVisible(true);
@@ -80,7 +80,7 @@ void  CaptureFaceGS::end( )
 }
 
 
-/**æ›´æ–°å‡½æ•°*/
+/**¸üĞÂº¯Êı*/
 StateType CaptureFaceGS::update(float time)
 {
     
@@ -101,7 +101,7 @@ void  CaptureFaceGS::beginTouch()
 void CaptureFaceGS::initBackGround()
 {
     
-    ///å¦‚æœå·²ç»åˆ›å»ºäº†ç›´æ¥è¿”å›
+    ///Èç¹ûÒÑ¾­´´½¨ÁËÖ±½Ó·µ»Ø
     if(m_BackGround!=NULL)
         return ;
     
@@ -175,7 +175,7 @@ void CaptureFaceGS::initVideo()
 }
 
 
-/**æ›´æ–°æ‘„åƒå¤´*/
+/**¸üĞÂÉãÏñÍ·*/
 void CaptureFaceGS::updateVideo()
 {
     

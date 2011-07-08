@@ -3,9 +3,9 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-21.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
-
+#include "pch.h"
 #include "Bullet.h"
 #include  "Application.h"
 #include  "BulletManager.h"
@@ -22,12 +22,12 @@ m_pSceneMrg(pSceneMrg),m_pRayQuery(NULL)
     assert(m_pSceneMrg);
     
     m_pEntity=m_pSceneMrg->createEntity("cube.mesh");
-    ///æ”¯é™¤æ‰€æœ‰çš„æŸ¥è¯¢æ ‡å¿—ã€‚
+    ///Ö§³ıËùÓĞµÄ²éÑ¯±êÖ¾¡£
     m_pEntity->setQueryFlags(0);
     m_pNode=m_pSceneMrg->getRootSceneNode()->createChildSceneNode();
     m_pNode->attachObject(m_pEntity);
     
-    ///é»˜è®¤ä¸æ˜¾ç¤º
+    ///Ä¬ÈÏ²»ÏÔÊ¾
     m_pNode->setVisible(false);
     m_pNode->setScale(Ogre::Vector3(0.003f,0.003f,0.003f));
     
@@ -52,7 +52,7 @@ void Bullet::update(float time)
     
    // Ogre::Vector pos=m_pNode->getPosition();
     
-    ///é‡åŠ›åŠ åŠ¨åŠ›çš„å‘é‡æ˜¯å­å¼¹å‘è¡Œçš„æ–¹å‘
+    ///ÖØÁ¦¼Ó¶¯Á¦µÄÏòÁ¿ÊÇ×Óµ¯·¢ĞĞµÄ·½Ïò
     float temForce=m_Force*((m_LiftTime-m_CurrentTime)/m_LiftTime);
     Ogre::Vector3 power=m_Dir*temForce;
     power+=m_Gravity;
@@ -71,7 +71,7 @@ void Bullet::update(float time)
     
     
     
-    ////å¦‚æœè¶…è¿‡ç”Ÿå‘½å‘¨æœŸå°±é‡ç½®
+    ////Èç¹û³¬¹ıÉúÃüÖÜÆÚ¾ÍÖØÖÃ
     if(m_CurrentTime>m_LiftTime)
     {
         reset();
@@ -83,7 +83,7 @@ void Bullet::update(float time)
 //-----------------------------------------------------------------------
 void Bullet::shoot(const Ogre::Vector3& position, const Ogre::Vector3& dir)
 {
-    ///å¦‚æœæ˜¯å·²ç»å‘å°„çš„å­å¼¹ä¸å†å‘å°„
+    ///Èç¹ûÊÇÒÑ¾­·¢ÉäµÄ×Óµ¯²»ÔÙ·¢Éä
     if (m_State==BS_SHOOT)
     {
         Ogre::LogManager::getSingleton().logMessage("Bullet had Shooted");
@@ -202,7 +202,7 @@ void Bullet::updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float l
     
     //Ogre::LogManager::getSingleton().logMessage("hit enemy");
     
-    ///å‡»ä¸­åé‡ç½®å­å¼¹
+    ///»÷ÖĞºóÖØÖÃ×Óµ¯
     reset();
     
     return;
