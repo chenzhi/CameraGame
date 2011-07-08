@@ -49,6 +49,12 @@ public:
     
 protected:
     
+    ///初始化ＵＩ ,子类如果需要初始化ui重载这个函数,begin里会被调用
+    virtual  void initUI(){};
+    
+    ///销毁状态机里的ＵＩ，子类如果需要销毁ＵＩ重载此函数，在end函数里被调用
+    virtual  void destroyUI(){};
+    
     
     
     Ogre::SceneManager* m_pSceneManager;

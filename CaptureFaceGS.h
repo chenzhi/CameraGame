@@ -68,6 +68,10 @@ protected:
     
     
     
+    void initUI();
+    
+    void destroyUI();
+    
     
 
 protected:

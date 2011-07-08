@@ -190,7 +190,7 @@ void Bullet::updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float l
     Enemy* pEnemy=BulletManager::getSingleton().getEnemyByEntityName(pickEnemy.movable->getName());
     if(pEnemy==NULL)
     {
-        Ogre::LogManager::getSingleton().logMessage("can not find ememy pick object name is "+pickEnemy.movable->getName());
+        //Ogre::LogManager::getSingleton().logMessage("can not find ememy pick object name is "+pickEnemy.movable->getName());
         return ;
     }
     

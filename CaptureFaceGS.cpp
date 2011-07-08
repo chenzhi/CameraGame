@@ -12,7 +12,7 @@
 #include "UICaptureFace.h"
 
 
-
+//-------------------------------------------------------------------
 CaptureFaceGS::CaptureFaceGS( )
 :GameState(ST_CAPTUREFACE),m_BackGround(NULL),m_pCameraNode(NULL),m_pCaptureUI(NULL)
 
@@ -20,13 +20,13 @@ CaptureFaceGS::CaptureFaceGS( )
     
 }
 
-
+//-------------------------------------------------------------------
 CaptureFaceGS::~CaptureFaceGS()
 {
     
 }
 
-
+//-------------------------------------------------------------------
 void  CaptureFaceGS::begin( )
 {
     GameState::begin();
@@ -35,13 +35,7 @@ void  CaptureFaceGS::begin( )
     initVideo();
     initBackGround(); 
     
-    
-    ///测试代码
-    m_pCaptureUI=new UICaptureFace();
-    m_pCaptureUI->init();
-    m_pCaptureUI->setVisible(true);
-    
-   
+     
     //m_pCaptureOverlay=Ogre::OverlayManager::getSingleton().getByName("CaptureFace");
     //if(m_pCaptureOverlay!=NULL)
     //{
@@ -54,7 +48,7 @@ void  CaptureFaceGS::begin( )
 }
 
 
-
+//-------------------------------------------------------------------
 void  CaptureFaceGS::end( )
 {
     GameState::end();
@@ -70,17 +64,37 @@ void  CaptureFaceGS::end( )
     
 #endif    
     
+       
+}
+
+
+//-------------------------------------------------------------------
+void CaptureFaceGS::initUI()
+{
+    
+    ///测试代码
+    m_pCaptureUI=new UICaptureFace();
+    m_pCaptureUI->init();
+    m_pCaptureUI->setVisible(true);
+    
+
+    
+}
+
+//-------------------------------------------------------------------
+void CaptureFaceGS::destroyUI()
+{
     if(m_pCaptureUI!=NULL)
     {
         delete m_pCaptureUI;
         m_pCaptureUI=NULL;
     }
     
-    
 }
 
 
-/**更新函数*/
+
+//-------------------------------------------------------------------
 StateType CaptureFaceGS::update(float time)
 {
     
@@ -89,7 +103,7 @@ StateType CaptureFaceGS::update(float time)
     
 }
 
-
+//-------------------------------------------------------------------
 void  CaptureFaceGS::beginTouch()
 {
     setNextStateType(ST_WAR);
@@ -98,6 +112,7 @@ void  CaptureFaceGS::beginTouch()
 }
 
 
+//-------------------------------------------------------------------
 void CaptureFaceGS::initBackGround()
 {
     
@@ -175,7 +190,7 @@ void CaptureFaceGS::initVideo()
 }
 
 
-/**更新摄像头*/
+//-------------------------------------------------------------------
 void CaptureFaceGS::updateVideo()
 {
     

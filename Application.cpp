@@ -183,6 +183,8 @@ void Application::update(float time)
     
     StateMachine::update(time);
     
+    UIManager::update(time);
+    
     //updateVideo();
     m_pInputListen->Captuer();
 

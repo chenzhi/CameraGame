@@ -25,6 +25,8 @@ void  GameState::begin( )
 {
 	State::begin();
     
+    initUI();
+    
 }
 
 /*
@@ -33,6 +35,7 @@ void  GameState::begin( )
 void  GameState::end( )
 {
     State::begin();
+    destroyUI();
       
 }
 

@@ -15,7 +15,7 @@
 
 class UIBase;
 
-typedef std::vector<UIBase> UICollect;
+typedef std::vector<UIBase*> UICollect;
 
 class UIManager
 {

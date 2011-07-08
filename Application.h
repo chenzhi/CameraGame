@@ -19,12 +19,13 @@
 #include "Accelerometer.h"
 #include "inputListen.h"
 #include "stateMachine.h"
+#include "UIManager.h"
 
 
 class ofxiPhoneVideoGrabber;
 class SdkTrayManager;
 
-class Application :public Ogre::Singleton<Application>, StateMachine
+class Application :public Ogre::Singleton<Application>, StateMachine , UIManager
 {
     
 public:

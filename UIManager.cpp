@@ -31,11 +31,13 @@ bool UIManager::registerUI(UIBase* pUI)
     
     
     ///如果没有注册过可以加入队列
-    if (getUIByName(pUI->getName())!=NULL)
+    if (getUIByName(pUI->getName())==NULL)
     {
-       // m_UICollect.push_back(pUI);
+        m_UICollect.push_back(pUI);
         return true;
     }
+    
+    Ogre::LogManager::getSingleton().logMessage("UIManager::registerUI faile has same name ui .name is "+pUI->getName());
     
     return false;
     
@@ -45,6 +47,21 @@ bool UIManager::registerUI(UIBase* pUI)
 //-----------------------------------------------------------------------
 bool  UIManager::unregisterUI(UIBase* pUI)
 {
+    if(pUI==NULL)
+        return false;
+   
+    UICollect::iterator it=m_UICollect.begin();
+    UICollect::iterator endit=m_UICollect.end();
+    for(;it!=endit;++it)
+    {
+        if((*it)==pUI)
+        {
+            m_UICollect.erase(it);
+            return true;
+        }
+    }
+
+    return false;
     
 }
 
@@ -52,6 +69,16 @@ bool  UIManager::unregisterUI(UIBase* pUI)
 //-----------------------------------------------------------------------
 UIBase* UIManager::getUIByName(const std::string& name)
 {
+    UICollect::iterator it=m_UICollect.begin();
+    UICollect::iterator endit=m_UICollect.end();
+    for(;it!=endit;++it)
+    {
+        if((*it)->getName() ==name)
+        {
+            return *it;
+        }
+    }
+
     return NULL;
 }
 
@@ -59,6 +86,20 @@ UIBase* UIManager::getUIByName(const std::string& name)
 //-----------------------------------------------------------------------
 void UIManager::update(float time)
 {
+    UICollect::iterator it=m_UICollect.begin();
+    UICollect::iterator endit=m_UICollect.end();
+    for(;it!=endit;++it)
+    {
+        ///如果未显示就不更新
+        if((*it)->isVisible()==false)
+        {
+            continue;
+        }
+        
+        (*it)->update(time);
+    }
+    
+    return ;
     
 }
 
@@ -67,6 +108,20 @@ void UIManager::update(float time)
 void UIManager::destroyUI(UIBase* pUI)
 {
     
+    UICollect::iterator it=m_UICollect.begin();
+    UICollect::iterator endit=m_UICollect.end();
+    for(;it!=endit;++it)
+    {
+        ///如果未显示就不更新
+        if((*it)==pUI)
+        {
+            delete (*it);
+            m_UICollect.erase(it);
+            return ;
+        }
+    }    
+    return ;
+
 }
 
 
@@ -74,11 +129,35 @@ void UIManager::destroyUI(UIBase* pUI)
 void UIManager::destroyUI(const std::string& name)
 {
     
+    UICollect::iterator it=m_UICollect.begin();
+    UICollect::iterator endit=m_UICollect.end();
+    for(;it!=endit;++it)
+    {
+        ///如果未显示就不更新
+        if((*it)->getName()==name)
+        {
+            delete (*it);
+            m_UICollect.erase(it);
+            return ;
+        }
+    }    
+    return ;
+
+    
 }
 
 
 //-----------------------------------------------------------------------
 void UIManager::destroyAll()
 {
+    UICollect::iterator it=m_UICollect.begin();
+    UICollect::iterator endit=m_UICollect.end();
+    for(;it!=endit;++it)
+    {
+      delete (*it);
+    }    
+    m_UICollect.clear();
+    return ;
     
+
 }
