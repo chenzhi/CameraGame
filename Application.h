@@ -50,13 +50,14 @@ public:
     
     /**初始化ogre渲染器*/
     bool initOgreRender();
+
+	/**销毁所有的ogre对像*/
+	void destroyOgreRender();
     
     /**初始化ogre插件，包括openles都在这里初始化*/
-    bool initOgrePlugs();
+  //  bool initOgrePlugs();
    
-    /**destroy render*/
-    void destroyOgreRender();
-    
+
     
     /**每帧更新
     @param time 单位为秒

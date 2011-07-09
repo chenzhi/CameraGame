@@ -30,3 +30,8 @@
 #include "OgreGLESPlugin.h"
 
 #endif
+
+
+
+
+#define SafeDelete(a) if(a!=NULL){delete a;a=NULL;}

@@ -41,7 +41,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-Zm110"
 				Optimization="0"
-				AdditionalIncludeDirectories="../ogreapp;../;&quot;$(OGRE_HOME)/include&quot;;&quot;$(OGRE_HOME)/OgreMain/include&quot;"
+				AdditionalIncludeDirectories="../ogreapp;../;&quot;$(OGRE_HOME)/include&quot;;&quot;$(OGRE_HOME)/OgreMain/include&quot;;&quot;$(OGRE_HOME)/dependencies/include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"

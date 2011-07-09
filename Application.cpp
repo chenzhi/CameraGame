@@ -40,7 +40,7 @@ m_pSceneManager(NULL)
 Application::~Application()
 {
     
-    
+    destory();
 
 }
 
@@ -190,6 +190,13 @@ bool Application::initOgreRender()
     return true;
 }
 
+
+
+
+
+
+
+
 //----------------------------------------------
 void Application::initScene()
 {
@@ -279,6 +286,13 @@ void Application::update(float time)
 //----------------------------------------------
 void Application::destory()
 {
+
+	///必须先销毁所有的状态
+	StateMachine::destroyAllState();
+	
+	destroyOgreRender();
+
+	destroyInputDevice();
 
     return ;
 }
