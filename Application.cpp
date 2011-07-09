@@ -94,9 +94,8 @@ bool Application::initOgreRender()
     Ogre::Plugin* pPlugin = OGRE_NEW Ogre::GLESPlugin();
     m_pRoot->installPlugin(pPlugin);
     
-    
-    pPlugin = OGRE_NEW Ogre::ParticleFXPlugin();
-    m_pRoot->installPlugin(pPlugin);
+   // pPlugin = OGRE_NEW Ogre::ParticleFXPlugin();
+    //m_pRoot->installPlugin(pPlugin);
 
     
    if (!m_pRoot->restoreConfig())
@@ -107,7 +106,7 @@ bool Application::initOgreRender()
    m_pRenderWindow=m_pRoot->initialise(true,"CameraGame");
 
 
-#else if  OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+#else//if  OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 
 	  m_pRoot=OGRE_NEW Ogre::Root("","");
 
