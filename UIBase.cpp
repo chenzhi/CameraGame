@@ -43,7 +43,7 @@ void UIBase::init()
 #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
         
         temPath=Ogre::macBundlePath();
-        Ogre::LogManager::getSingleton().logMessage(macPath);
+       // Ogre::LogManager::getSingleton().logMessage(macPath);
         temPath+="/";
         temPath+=g_UIPath;
 #else if  OGRE_PLATFORM ==OGRE_PLATFORM_WIN32

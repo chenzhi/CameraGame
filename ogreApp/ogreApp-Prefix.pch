@@ -19,6 +19,8 @@
 #endif
 
 
-#include "ogre.h"
-#include "MacUtils.h"
-//#include "OIS.h"
+#include "Ogre.h"
+
+//#include "macUtils.h"
+
+#include "/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/iPhone/macUtils.h"
