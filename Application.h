@@ -17,11 +17,11 @@
 #include "FileSystemLayerImpl.h"
 #include  "ofxiPhoneVideoGrabber.h"
 #include "Accelerometer.h"
-#include "inputListen.h"
+
 
 #endif
 
-
+#include "inputListen.h"
 #include "stateMachine.h"
 
 
@@ -151,7 +151,7 @@ protected:
 
     OgreBites::FileSystemLayerImpl*    m_pFileSystem;
 
-	 InputListen*            m_pInputListen;
+
 
 #else OGRE_PLATFORM ==OGRE_PLATFORM_WIN32
 
@@ -161,7 +161,7 @@ protected:
 #endif
     
     
-
+    InputListen*            m_pInputListen;
 
     SdkTrayManager*           m_pUIManager;
     

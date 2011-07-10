@@ -68,6 +68,8 @@ void  Application::initState()
 void Application::init()
 {
      initOgreRender();
+
+	 initInputDevice();
     
      initState();
 }
@@ -171,7 +173,7 @@ bool Application::initOgreRender()
     m_pFileSystem =new OgreBites::FileSystemLayerImpl(OGRE_VERSION_NAME);
 #endif
 
-    initInputDevice();
+
     
     initResource();
     
@@ -212,31 +214,20 @@ void Application::initScene()
 //----------------------------------------------
 /**初始化输入设备*/
 void Application::initInputDevice()
-{
-
-
-#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
-
+{   
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+    m_pInputListen=new InputListen(mHwnd);
+#else
     m_pInputListen=new InputListen();
-    m_pInputListen->setupInput();
-
 #endif
-    
-   // m_Accelerometer =[[Accelerometer alloc] init];
-    
-    
 }
 
 //-------------------------------------------------
 void Application::destroyInputDevice()
 {
+    
+	SafeDelete(m_pInputListen);
 
-#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
-
-    delete m_pInputListen;
-    m_pInputListen=NULL;
-
-#endif
    // [m_Accelerometer release];
 }
 
@@ -267,9 +258,8 @@ void Application::update(float time)
     
     //updateVideo();
 
-#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+
     m_pInputListen->Captuer();
-#endif
 
     m_pUIManager->frameRenderingQueued();
       
