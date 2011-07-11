@@ -115,12 +115,24 @@ Bullet* BulletManager::getBullet()
 //---------------------------------------------------
 Enemy* BulletManager::createEnemy(const Ogre::Vector3& pos)
 {
-    Enemy* pEnemy=  new Enemy("CameraHead.mesh",pos,m_pSceneMrg);
-    pEnemy->reset(pos);
     
-    m_EnemyCollect.push_back(pEnemy);
+    for(int i=0;i<3;++i)
+    {
+        for(int j=0;j<3;++j)
+        {
+            Ogre::Vector3 temPos(i,j,0);
+            Enemy* pEnemy=  new Enemy("CameraHead.mesh",temPos,m_pSceneMrg);
+            pEnemy->reset(temPos);
+            
+            m_EnemyCollect.push_back(pEnemy);
+
+            
+        }
+    }
     
-    return pEnemy;
+    
+       
+    return m_EnemyCollect[0];
 }
 
 

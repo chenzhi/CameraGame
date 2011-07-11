@@ -22,6 +22,7 @@ InputListen::InputListen()
 :m_AccelerometerData(0,0,0),m_GyroscopeData(0,0,0),m_pAccelerometer(NULL),m_GyroHander(NULL)
 {
   
+    setupInput();
 }
 
 //--------------------------------

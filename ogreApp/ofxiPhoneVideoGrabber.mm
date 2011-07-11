@@ -286,8 +286,8 @@ void ofxiPhoneVideoGrabber::initGrabber(int w, int h)
 	
 	clear();
 	
-	pixels = new unsigned char[m_width * m_height * 3];
-	memset(pixels, 0, m_width*m_height*3);
+	pixels = new unsigned char[m_width * m_height * 4];
+	memset(pixels, 0, m_width*m_height*4);
 	
 	//tex.allocate(width, height, GL_RGB);
 		
@@ -360,7 +360,7 @@ bool ofxiPhoneVideoGrabber::convertCGImageToPixels(CGImageRef & ref, unsigned ch
    
 	
 	// Uses the bitmatp creation function provided by the Core Graphics framework. 
-	spriteContext = CGBitmapContextCreate(m_pTemPixel, w, h, CGImageGetBitsPerComponent(ref), w * bytesPerPixel, CGImageGetColorSpace(ref), bytesPerPixel == 4 ? kCGImageAlphaPremultipliedLast : kCGImageAlphaNone);
+	spriteContext = CGBitmapContextCreate(pixels, w, h, CGImageGetBitsPerComponent(ref), w * bytesPerPixel, CGImageGetColorSpace(ref), bytesPerPixel == 4 ? kCGImageAlphaPremultipliedLast : kCGImageAlphaNone);
 	
 	if(spriteContext == NULL)
     {
@@ -372,6 +372,7 @@ bool ofxiPhoneVideoGrabber::convertCGImageToPixels(CGImageRef & ref, unsigned ch
 	CGContextDrawImage(spriteContext, CGRectMake(0.0, 0.0, (CGFloat)w, (CGFloat)h), ref);
 	CGContextRelease(spriteContext);
 	
+    return true;
 	int totalSrcBytes = w*h*bytesPerPixel;  
 	int j = 0;
 	for(int k = 0; k < totalSrcBytes; k+= bytesPerPixel )
@@ -379,8 +380,9 @@ bool ofxiPhoneVideoGrabber::convertCGImageToPixels(CGImageRef & ref, unsigned ch
 		pixels[j  ] = m_pTemPixel[k  ];
 		pixels[j+1] = m_pTemPixel[k+1];
 		pixels[j+2] = m_pTemPixel[k+2];
+        pixels[j+3]=  m_pTemPixel[k+3];
 		
-		j+=3;
+		j+=4;
 	}
 					
 	//free(pixelsTmp);
@@ -423,7 +425,7 @@ void ofxiPhoneVideoGrabber::initOgreTexture()
     
         
     m_pTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture_ofxiPhoneVideoGrabber", "General", 
-    Ogre::TEX_TYPE_2D, m_width, m_height, 1, 1,Ogre::PF_B8G8R8); 
+    Ogre::TEX_TYPE_2D, m_width, m_height, 1, 1,Ogre::PF_A8R8G8B8); 
     
     return ;
     
@@ -468,7 +470,7 @@ void ofxiPhoneVideoGrabber::updateOgreTexture()
             
             for(int i=0;i<m_height ;++i)
             {
-                unsigned char* pRow=pPixel+i*m_width*3;
+                unsigned char* pRow=pPixel+i*m_width*4;
                 unsigned char* ptarget=data+(i+yoffset)*rowPitch;
                 
                 memcpy(ptarget,pRow,m_width*pixelSize);
