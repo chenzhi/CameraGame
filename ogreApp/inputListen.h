@@ -3,51 +3,67 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-17.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
+
+#pragma once
+
+
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
 
-
-
-
-
-#ifndef inputListen_h_h_h_h
-#define inputListen_h_h_h_h
-
-
-
-
-
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-
 #include "ofPoint.h"
-
 #import  "Accelerometer.h"
-
 class ofxAccelerometerHandler;
-
-
-
 
 class InputListen :public Ogre::Singleton<InputListen>
 {
+public:
+	 InputListen();
+
+#else if OGRE_PLATFORM ==OGRE_PLATFORM_WIN32
+
+#include "ois/ois.h"
+
+
+#ifdef _DEBUG
+
+#pragma comment(lib,"ois_d.lib")
+
+#else
+#pragma comment(lib,"ois.lib");
+
+#endif
+
+class InputListen :public Ogre::Singleton<InputListen>,public OIS::KeyListener, public OIS::MouseListener
+{
+public:
+
+	 InputListen(HWND wnd);
+
+#endif
+
+
     
 public:
     
-    InputListen();
+   
     
     ~InputListen();
     
     void  setupInput();
     
-    /**å¼€å§‹æŒ‰ä¸‹*/
+    /**¿ªÊ¼°´ÏÂ*/
     void TouchBegan();
     
-    /**è·å–è¾“å…¥æ•°æ®*/
+    /**»ñÈ¡ÊäÈëÊı¾İ*/
     void Captuer();  
     
+
+
+#if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
     
     const Ogre::Vector3&  getAccelerometerData()const ;
     
@@ -56,13 +72,31 @@ public:
     Ogre::Vector3  getSmoothAccelerometer();
     
     Ogre::Vector3  getSmoothGyroscope();
+
+#else
+
+
+	/**OIS»Øµ÷º¯Êı*/
+	bool mouseMoved(const OIS::MouseEvent &arg);
+
+	bool mousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
+
+	bool mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id);
+
+	bool keyPressed(const OIS::KeyEvent &arg);
+
+	bool keyReleased(const OIS::KeyEvent &arg);
+
+#endif
+
+
     
 protected:
     
     
     void  createInputDevices();
     
-    /**é”€æ¯æ‰€æœ‰çš„è¾“å…¥è®¾å¤‡*/
+    /**Ïú»ÙËùÓĞµÄÊäÈëÉè±¸*/
     void  destroyInputDevices();
     
     
@@ -75,25 +109,28 @@ protected:
     
     
    
-    Accelerometer* m_pAccelerometer;
-    
-    ofxAccelerometerHandler*        m_AccelerHander;
-    ofxAccelerometerHandler*        m_GyroHander;
+#if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
 
-    
-    
+    Accelerometer* m_pAccelerometer;
+    ofxAccelerometerHandler*        m_AccelerHander; ///ÖØÁ¦¼Ç
+    ofxAccelerometerHandler*        m_GyroHander;    ///ÍÓÂİÒÇ
+
     Ogre::Vector3  m_AccelerometerData;
     Ogre::Vector3  m_GyroscopeData;
     
-    
+#else if OGRE_PLATFORM==OGRE_PLATFORM_WIN32
+
+
+
+	HWND                    m_wnd;                      ///win32´°¿Ú¾ä±ú
+	OIS::InputManager*		mInputManager;				// ÊäÈë¹ÜÀíÀà
+	OIS::Mouse*				mMouse;						// Êó±ê
+	OIS::Keyboard*			mKeyboard;					// ¼üÅÌ
+
+
+#endif
 
 };
 
 
 
-
-#endif
-
-
-
-#endif
