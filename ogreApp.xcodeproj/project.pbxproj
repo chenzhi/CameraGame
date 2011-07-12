@@ -100,7 +100,7 @@
 		8896C19313A88233000DA13C /* ogreAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ogreAppViewController.h; sourceTree = "<group>"; };
 		8896C19413A88233000DA13C /* ogreAppViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ogreAppViewController.mm; sourceTree = "<group>"; };
 		8896C1A013A8869C000DA13C /* Application.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = Application.cpp; sourceTree = "<group>"; };
-		8896C1A113A8869C000DA13C /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
+		8896C1A113A8869C000DA13C /* Application.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
 		88CBFD4113A8B0E600EBCDB6 /* OgreStaticPluginLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OgreStaticPluginLoader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

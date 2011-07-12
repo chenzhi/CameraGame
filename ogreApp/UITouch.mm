@@ -37,11 +37,13 @@
         return ;
     }
     
-    UITouch* pTouch=[touches anyObject];
+    UITouch* pTouch=[touches anyObject]; 
     CGPoint point=[pTouch locationInView:self];
     
     
     
+   //// int w = m_pRenderWindow->getViewport(0)->getActualWidth();
+   // int h = m_pRenderWindow->getViewport(0)->getActualHeight();
 
     m_pListen->TouchBegan(point.x,point.y);
     

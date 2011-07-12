@@ -114,6 +114,10 @@ protected:
 	virtual void  initState();
     
 
+    /**根据手机现在的方向转变ui位置*/
+    void transformInputCoordinate(Ogre::Vector2& pos);
+    
+    
     
     
     

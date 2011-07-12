@@ -187,6 +187,12 @@ bool Application::initOgreRender()
     new ofxiPhoneVideoGrabber(480,320);
 #endif
     
+    
+    
+
+
+    
+    
 
     return true;
 }
@@ -346,6 +352,56 @@ void Application::TouchBegan()
         pState->beginTouch();
     }
 }
+
+
+//-------------------------------------------------------
+void Application::transformInputCoordinate(Ogre::Vector2& pos)
+{
+    int w = m_pRenderWindow->getViewport(0)->getActualWidth();
+    int h = m_pRenderWindow->getViewport(0)->getActualHeight();
+    
+    
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+    
+    ///暂时点击数据只取到320*480,所以需要＊2
+    int absX = pos.x*2;
+    int absY = pos.y*2;
+    
+#else 
+    
+    int absX = pos.x;
+    int absY = pos.y;
+
+    
+#endif
+    //int relX = state.X.rel;
+   // int relY = state.Y.rel;
+    
+    switch (m_pRenderWindow->getViewport(0)->getOrientationMode())
+    {
+        case Ogre::OR_DEGREE_0:
+            break;
+        case Ogre::OR_DEGREE_90:
+            pos.x = w - absY;
+            pos.y = absX;
+   
+            break;
+        case Ogre::OR_DEGREE_180:
+            pos.x = w - absX;
+            pos.y = h - absY;
+            break;
+        case Ogre::OR_DEGREE_270:
+            pos.x = absY;
+            pos.y = h - absX;
+            break;
+    }
+
+    return ;
+    
+    
+}
+
+
 
 
 

@@ -47,11 +47,13 @@ void InputListen::setupInput()
     
     UITouchView* pUITouch =[[UITouchView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         
-    [pWind addSubview: pUITouch];
+    
     [pUITouch becomeFirstResponder];
     [pUITouch setMultipleTouchEnabled:YES];
     [pUITouch setExclusiveTouch:YES];
     pUITouch.m_pListen=this;
+    
+    [pWind addSubview: pUITouch];
     
     
     m_pAccelerometer= [[Accelerometer alloc] init];
