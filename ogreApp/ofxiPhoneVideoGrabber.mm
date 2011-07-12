@@ -176,10 +176,10 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     size_t heightIn			= CVPixelBufferGetHeight(imageBuffer);  
     
     
-   // grabberPtr->updatePixels(baseAddress,widthIn,heightIn,bytesPerRow);
-    //CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+    grabberPtr->updatePixels(baseAddress,widthIn,heightIn,bytesPerRow);
+    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
     
-   // return ;
+    return ;
     
 	    
     /*Create a CGImageRef from the CVImageBufferRef*/
@@ -235,7 +235,7 @@ namespace Ogre
 ofxiPhoneVideoGrabber::ofxiPhoneVideoGrabber(int width,int height)
 :m_pTemPixel(NULL)
 {
-	fps		= 35;
+	fps		= 30;
 	grabber = [[iPhoneVideoGrabber alloc] init];
     grabber.grabberPtr = this;
     m_width=width;

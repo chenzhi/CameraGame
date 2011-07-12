@@ -19,7 +19,7 @@ namespace Ogre
 }
 
 InputListen::InputListen()
-:m_AccelerometerData(0,0,0),m_GyroscopeData(0,0,0),m_pAccelerometer(NULL),m_GyroHander(NULL)
+:m_AccelerometerData(0,0,0),m_GyroscopeData(0,0,0),m_pAccelerometer(NULL),m_GyroHander(NULL),m_IsDeviceActive(false)
 {
   
     setupInput();
@@ -44,6 +44,7 @@ void InputListen::setupInput()
         return ;
     }
     
+    
     UITouchView* pUITouch =[[UITouchView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         
     [pWind addSubview: pUITouch];
@@ -54,15 +55,15 @@ void InputListen::setupInput()
     
     
     m_pAccelerometer= [[Accelerometer alloc] init];
-    if(m_pAccelerometer.m_IsSupperAccelerometer==YES)
-    {
-        [m_pAccelerometer startCaptureAccelerometer];
-    }
+   // if(m_pAccelerometer.m_IsSupperAccelerometer==YES)
+   // {
+    //    [m_pAccelerometer startCaptureAccelerometer];
+    //}
     
-    if(m_pAccelerometer.m_IsSupeGyroscope==YES)
-    {
-        [m_pAccelerometer startCaptureGyroscope];
-    }
+   // if(m_pAccelerometer.m_IsSupeGyroscope==YES)
+   // {
+     //   [m_pAccelerometer startCaptureGyroscope];
+    //}
     
     
     
@@ -81,6 +82,22 @@ void InputListen::createInputDevices()
 }
 
 
+/**开始启用陀螺仪*/
+void InputListen::beginGyroscope()
+{
+     [m_pAccelerometer startCaptureGyroscope];
+    m_IsDeviceActive=true;
+}
+
+/**结束启用陀螺仪*/
+void InputListen::endGyroscope()
+{
+     [m_pAccelerometer startCaptureGyroscope];
+     m_IsDeviceActive=false;
+    
+}
+
+
 //------------------------------------------------------
 void InputListen::destroyInputDevices()
 {
@@ -93,19 +110,25 @@ void InputListen::destroyInputDevices()
 //---------------------------------------------------------
 void InputListen::Captuer()
 {
-    if(m_pAccelerometer.m_IsSupperAccelerometer==YES)
-    {
-        [m_pAccelerometer getAccelerometerX:m_AccelerometerData.x Y:m_AccelerometerData.y Z:m_AccelerometerData.z];
+   // if(m_pAccelerometer.m_IsSupperAccelerometer==YES)
+   // {
+      //  [m_pAccelerometer getAccelerometerX:m_AccelerometerData.x Y:m_AccelerometerData.y Z:m_AccelerometerData.z];
         
-        m_AccelerHander->update(m_AccelerometerData.x,m_AccelerometerData.y,m_AccelerometerData.z);
+        //暂时去掉光滑插值
+       // m_AccelerHander->update(m_AccelerometerData.x,m_AccelerometerData.y,m_AccelerometerData.z);
         
-    }
+   // }
     
-    if(m_pAccelerometer.m_IsSupeGyroscope==YES)
-    {
-        [m_pAccelerometer getGroyscopeX:m_GyroscopeData.x Y:m_GyroscopeData.y Z:m_GyroscopeData.z];
+   // if(m_pAccelerometer.m_IsSupeGyroscope==YES)
+    //{
+      //  [m_pAccelerometer getGroyscopeX:m_GyroscopeData.x Y:m_GyroscopeData.y Z:m_GyroscopeData.z];
         
-        m_GyroHander->update(m_GyroscopeData.x,m_GyroscopeData.y,m_GyroscopeData.z);
+       // m_GyroHander->update(m_GyroscopeData.x,m_GyroscopeData.y,m_GyroscopeData.z);
+   // }
+    
+    if(m_pAccelerometer)
+    {
+         [m_pAccelerometer getGroyscopeX:m_GyroscopeData.x Y:m_GyroscopeData.y Z:m_GyroscopeData.z];
     }
     
     return ;
@@ -142,7 +165,7 @@ Ogre::Vector3  InputListen::getSmoothGyroscope()
 }
 
 /**开始按下*/
-void InputListen::TouchBegan()
+void InputListen::TouchBegan(int x,int y)
 {
     
     Application::getSingleton().TouchBegan();

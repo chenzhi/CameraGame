@@ -46,7 +46,7 @@
 		21222E5013C7F78600992E9C /* Accelerometer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Accelerometer.mm; sourceTree = "<group>"; };
 		21222E5113C7F78600992E9C /* FileSystemLayerImpl_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FileSystemLayerImpl_iPhone.mm; sourceTree = "<group>"; };
 		21222E5213C7F78600992E9C /* FileSystemLayerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemLayerImpl.h; sourceTree = "<group>"; };
-		21222E5313C7F78600992E9C /* inputListen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inputListen.h; sourceTree = "<group>"; };
+		21222E5313C7F78600992E9C /* inputListen.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = inputListen.h; sourceTree = "<group>"; };
 		21222E5413C7F78600992E9C /* inputListen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = inputListen.mm; sourceTree = "<group>"; };
 		21222E5513C7F78600992E9C /* ofxiPhoneVideoGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxiPhoneVideoGrabber.h; sourceTree = "<group>"; };
 		21222E5613C7F78600992E9C /* ofxiPhoneVideoGrabber.mm */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxiPhoneVideoGrabber.mm; sourceTree = "<group>"; };

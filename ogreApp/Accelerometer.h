@@ -49,6 +49,8 @@
 
 -(BOOL) startCaptureGyroscope;
 
+-(void) endCaptureGyroscope;
+
 -(BOOL) getAccelerometerX:(float&)x Y:(float&)y Z:(float&)z;
 
 -(BOOL) getGroyscopeX:(float&)x Y:(float&)y Z:(float&)z;

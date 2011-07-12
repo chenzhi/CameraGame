@@ -32,10 +32,21 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
 {
-    if(m_pListen!=NULL)
+    if(m_pListen==NULL)
     {
-        m_pListen->TouchBegan();
+        return ;
     }
+    
+    UITouch* pTouch=[touches anyObject];
+    CGPoint point=[pTouch locationInView:self];
+    
+    
+    
+
+    m_pListen->TouchBegan(point.x,point.y);
+    
+    
+    
     return ; 
 }
 
