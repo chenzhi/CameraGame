@@ -80,7 +80,7 @@ StateType WarGS::update(float time)
 }
 
 //------------------------------------
-void WarGS::beginTouch()
+void WarGS::beginTouch(int x,int y)
 {
     
     Ogre::Matrix3 matrix= m_pCameraNode->getLocalAxes();

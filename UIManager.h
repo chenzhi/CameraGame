@@ -15,7 +15,7 @@
 
 class UIBase;
 
-typedef std::vector<UIBase> UICollect;
+typedef std::vector<UIBase*> UICollect;
 
 class UIManager
 {
@@ -35,7 +35,7 @@ public:
     
     
     /**通过名字获取一个ui,无返回空*/
-    UIBase* getUIByName(const std::string& name);
+    UIBase* getUIByName(const std::string& name)const ;
     
     
     /**每帧更新*/
@@ -49,7 +49,7 @@ public:
     
     
     /**销毁所有的ui*/
-    void destroyAll();
+    void destroyAllUI();
     
     
     protected:

@@ -338,14 +338,43 @@ void Application::initResource()
 
 
 //-------------------------------------------------------
-void Application::TouchBegan()
+void Application::TouchBegan(int x,int y)
 {
     GameState* pState=static_cast<GameState*>(getCurrentActive());
     if(pState!=NULL)
     {
-        pState->beginTouch();
+        pState->beginTouch(x,y);
     }
+
+
+
+
+
 }
+
+
+/**手指离开*/
+void Application::TouchEnd(int x,int y)
+{
+
+	GameState* pState=static_cast<GameState*>(getCurrentActive());
+	if(pState!=NULL)
+	{
+		pState->endTouch(x,y);
+	}
+}
+
+/**手指滑动*/
+void Application::TouchMove(int x,int y)
+{
+	GameState* pState=static_cast<GameState*>(getCurrentActive());
+	if(pState!=NULL)
+	{
+		pState->moveTouch(x,y);
+	}
+
+}
+
 
 
 

@@ -88,9 +88,23 @@ public:
     /**返回场景管理器*/
     Ogre::SceneManager* getMainSceneManager()const {return m_pSceneManager;}
     
-    
+
+
+	//*/输入事件，
+
     /**开始按下*/
-    void TouchBegan();
+    void TouchBegan(int x,int y);
+    
+     /**手指离开*/
+	void TouchEnd(int x,int y);
+
+	/**手指滑动*/
+	void TouchMove(int x,int y);
+
+
+
+
+	//*/输入事件结束
 
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
