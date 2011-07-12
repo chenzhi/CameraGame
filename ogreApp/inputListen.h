@@ -53,7 +53,20 @@ public:
     
     ~InputListen();
     
+    
     void  setupInput();
+    
+    
+    /**开始启用陀螺仪*/
+    void beginGyroscope();
+    
+    /**结束启用陀螺仪*/
+    void endGyroscope();
+    
+    
+    /**判断陀螺仪是否启用*/
+    bool isGyroscopeActive()const{return m_IsDeviceActive;}
+    
     
     /**开始按下*/
     void TouchBegan(int x,int y);
@@ -125,6 +138,7 @@ protected:
     Ogre::Vector3  m_AccelerometerData;
     Ogre::Vector3  m_GyroscopeData;
     
+    
 #else if OGRE_PLATFORM==OGRE_PLATFORM_WIN32
 
 
@@ -136,6 +150,9 @@ protected:
 
 
 #endif
+        
+        bool       m_IsDeviceActive;///判断是否设备是否启用
+
 
 };
 

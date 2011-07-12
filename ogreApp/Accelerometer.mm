@@ -40,8 +40,14 @@
            // [motionManager startGyroUpdates];
         } 
         
+        if(motionManager.isDeviceMotionAvailable)
+        {
+            motionManager.deviceMotionUpdateInterval=1.0/60;
+        }
+        
+    }
 		
-		}
+    
 	return self;
 }
 
@@ -66,16 +72,29 @@
 
 -(BOOL) startCaptureGyroscope
 {
-    if(m_IsSupeGyroscope==YES)
+   // if(m_IsSupeGyroscope==YES)
+   // {
+    //    [motionManager startGyroUpdates];
+   // }
+    
+    if(motionManager.isDeviceMotionAvailable)
     {
-        [motionManager startGyroUpdates];
-        return YES;
+        [motionManager startDeviceMotionUpdates];
     }
     
-    return NO;
+    return YES;
     
 }
 
+
+-(void) endCaptureGyroscope
+{
+    if(motionManager.isDeviceMotionAvailable)
+    {
+
+     [motionManager stopDeviceMotionUpdates];
+    }
+}
 
 
 
@@ -102,13 +121,31 @@
         return NO;
     }
     
-    CMGyroData *gyroData = motionManager.gyroData;
+   // CMGyroData *gyroData = motionManager.gyroData;
     
-    x=gyroData.rotationRate.x;
-    y=gyroData.rotationRate.y;
-    z=gyroData.rotationRate.z;
+    CMDeviceMotion* currentDeviceMotion=motionManager.deviceMotion;
+    CMAttitude* currentAttitude=currentDeviceMotion.attitude;
+    
+    y=currentAttitude.yaw;
+    z=currentAttitude.roll;
+    x=currentAttitude.pitch;
+    
+   // float aa=180.0f/3.1415926f;
+    
+        
+    //char tem[128];
+    //sprintf(tem,"yaw:%.2f roll:%.2f pith:%.2f ",y*aa,z*aa,x*aa);
+    
+   // Ogre::LogManager::getSingleton().logMessage(tem);
+
     
     return YES;
+    
+   // x=gyroData.rotationRate.x;
+   // y=gyroData.rotationRate.y;
+   // z=gyroData.rotationRate.z;
+    
+   // return YES;
 
 }
 

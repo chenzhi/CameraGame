@@ -44,6 +44,9 @@ void WarGS::begin()
     
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
     
+    
+    ///起用陀螺仪
+    InputListen::getSingleton().beginGyroscope();
    
     
 }
@@ -55,6 +58,9 @@ void WarGS::end()
     GameState::end();
     delete m_pBulletManager;
     m_pBulletManager=NULL;
+    
+    ///关闭陀螺仪
+    InputListen::getSingleton().endGyroscope();
 }
 
 //------------------------------------
@@ -152,61 +158,22 @@ void WarGS::updateAccelerometer()
     
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     
-    //const ofPoint& orientation=ofxAccelerometerHandler::getSingleton().getSmoothOrientation();
+    Ogre::Vector3 gyrco=InputListen::getSingleton().getGyroscopeData();
     
-    Ogre::Vector3 orientation=InputListen::getSingleton().getSmoothAccelerometer();
-    Ogre::Vector3 gyrco=InputListen::getSingleton().getSmoothGyroscope();
+    float yawtem=gyrco.y;
+    float pitch=gyrco.z;
     
-    
-    //const ofPoint& force=ofxAccelerometerHandler::getSingleton().getForce();
-    float x=orientation.z*90;
-    
-    //－1-- 1之间旋转180度
-    static Ogre::Vector3 lastGyro(0.0f,0.0f,0.0f);
-    Ogre::Vector3 temGyro=gyrco-lastGyro;
-    
-    
-    ///记录绕Ｙ轴转了多少度
-    static float yaw=0.0f;
-    
-    if(gyrco.x>0)
-    {
-        if(temGyro.x<0)
-        {
-            temGyro.x=0;
-        }
-    
-    }else if(gyrco.x<0)
-    {
-        if(temGyro.x>0)
-        {
-            temGyro.x=0;
-        }
-    }
-    
-    yaw+=(temGyro.x*50.0f);//(180.0f/3.1415926f);
-    
-    lastGyro=gyrco;
-    
-   // Ogre::stringstream stream;
-   // stream<<"acceler x:"<<orientation.x<<"  "<<"y:"<<orientation.y<<"z:"<<orientation.z;
-   // Ogre::LogManager::getSingleton().logMessage(stream.str());
-    
-    
-    //Ogre::stringstream sstream;
-    //sstream<<"gyrco x:"<<yaw;//<<"  "<<"y:"<<gyrco.y<<"z:"<<gyrco.z;
-    //Ogre::LogManager::getSingleton().logMessage(sstream.str());
-    
-    
+    pitch+=Ogre::Math::PI*0.5f;
     if(m_pCameraNode!=NULL )
     {
         m_pCameraNode->resetOrientation();
-        m_pCameraNode->pitch(Ogre::Radian(Ogre::Degree(x)));
-        m_pCameraNode->yaw(Ogre::Radian(Ogre::Degree(yaw)),Ogre::Node::TS_WORLD);
-
+        m_pCameraNode->pitch(Ogre::Radian(-pitch));
+        m_pCameraNode->yaw(Ogre::Radian(yawtem),Ogre::Node::TS_WORLD);
+        
     }
-    
-   
+
+    return ;
+
 #endif
 
     return ;

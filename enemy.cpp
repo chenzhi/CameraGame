@@ -27,7 +27,7 @@ Enemy::Enemy(const Ogre::String& meshName,const Ogre::Vector3& pos, Ogre::SceneM
     m_pNode->attachObject(m_pEntity);
     m_pNode->setPosition(pos);
     
-    m_pNode->showBoundingBox(true);
+    //m_pNode->showBoundingBox(true);
     
     m_pEntity->setQueryFlags(EnemyMask);
     
