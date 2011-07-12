@@ -45,8 +45,11 @@ void WarGS::begin()
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
     
     
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     ///∆”√Õ”¬›“«
     InputListen::getSingleton().beginGyroscope();
+#endif
    
     
 }
@@ -59,8 +62,10 @@ void WarGS::end()
     delete m_pBulletManager;
     m_pBulletManager=NULL;
     
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     ///πÿ±’Õ”¬›“«
     InputListen::getSingleton().endGyroscope();
+#endif
 }
 
 //------------------------------------
