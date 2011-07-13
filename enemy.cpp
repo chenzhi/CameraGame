@@ -31,10 +31,22 @@ Enemy::Enemy(const Ogre::String& meshName,const Ogre::Vector3& pos, Ogre::SceneM
     
     m_pEntity->setQueryFlags(EnemyMask);
     
+   
+    try 
+    {
+        m_pAniSate=m_pEntity->getAnimationState("auto");
+        if(m_pAniSate!=NULL)
+        {
+            m_pAniSate->setLoop(false);
+        }
+
+        
+    } catch (...) 
+    {
+        m_pAniSate=NULL;
+    }
     
-    m_pAniSate=m_pEntity->getAnimationState("auto");
-    m_pAniSate->setLoop(false);
-    
+       
     m_pMaterial=Ogre::MaterialManager::getSingleton().getByName("Material_#30_Material_#0_B");
     
     
@@ -62,10 +74,13 @@ void Enemy::onHit(const Ogre::Vector3& hitPos,Bullet* pBullet )
     
     ///如果被击中未成亡进入躲避状态
     m_State=ES_DODGE;
-    if(m_pAniSate->getEnabled()==false||m_pAniSate->hasEnded()==true)
+    if(m_pAniSate!=NULL)
     {
-     m_pAniSate->setEnabled(true);
-     m_pAniSate->setTimePosition(0);
+     if(m_pAniSate->getEnabled()==false||m_pAniSate->hasEnded()==true)
+     {
+      m_pAniSate->setEnabled(true);
+      m_pAniSate->setTimePosition(0);
+      }
     }
     
     
@@ -207,11 +222,16 @@ void Enemy::updateNormal(float time)
 void Enemy::updateDodge(float time)
 {
     
+    
+    if(m_pAniSate!=NULL)
+    {
+        
     if(m_pAniSate->getEnabled()==true)
     {
         m_pAniSate->addTime(time);
     }
     
+    }
     ///如果目标点低于-5那么游戏结速
     if(m_pNode->_getDerivedPosition().y<-5)
     {

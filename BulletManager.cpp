@@ -121,7 +121,7 @@ Enemy* BulletManager::createEnemy(const Ogre::Vector3& pos)
         for(int j=-5;j<5;++j)
         {
             Ogre::Vector3 temPos(i,j,0);
-            Enemy* pEnemy=  new Enemy("CameraHead.mesh",temPos,m_pSceneMrg);
+            Enemy* pEnemy=  new Enemy("1.mesh",temPos,m_pSceneMrg);
             pEnemy->reset(temPos);
             
             m_EnemyCollect.push_back(pEnemy);
