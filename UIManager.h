@@ -52,6 +52,25 @@ public:
     void destroyAllUI();
     
     
+    
+    ///@{输入事件，
+
+    void TouchBegan(int x,int y);
+    
+    /**手指离开*/
+	void TouchEnd(int x,int y);
+    
+	/**手指滑动*/
+	void TouchMove(int x,int y);
+    
+    
+    ///@}输入事件结束，
+
+    
+    
+    
+    
+    
     protected:
     
     

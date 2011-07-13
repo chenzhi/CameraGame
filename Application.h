@@ -129,7 +129,7 @@ protected:
     
 
     /**根据手机现在的方向转变ui位置*/
-    void transformInputCoordinate(Ogre::Vector2& pos);
+    void transformInputCoordinate(int&x, int &y);
     
     
     
