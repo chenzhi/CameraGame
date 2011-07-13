@@ -40,6 +40,7 @@ void  CaptureFaceGS::begin( )
     m_pCaptureUI=new UICaptureFace();
     m_pCaptureUI->init();
     m_pCaptureUI->setVisible(true);
+	Application::getSingleton().registerUI(m_pCaptureUI);
     
    
     //m_pCaptureOverlay=Ogre::OverlayManager::getSingleton().getByName("CaptureFace");
@@ -72,6 +73,7 @@ void  CaptureFaceGS::end( )
     
     if(m_pCaptureUI!=NULL)
     {
+		Application::getSingleton().unregisterUI(m_pCaptureUI);
         delete m_pCaptureUI;
         m_pCaptureUI=NULL;
     }
@@ -92,7 +94,7 @@ StateType CaptureFaceGS::update(float time)
 
 void  CaptureFaceGS::beginTouch(int x,int y)
 {
-    setNextStateType(ST_WAR);
+    //setNextStateType(ST_WAR);
     
     return ;
 }

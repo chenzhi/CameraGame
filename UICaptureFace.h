@@ -24,6 +24,10 @@ public:
     
     
     ~UICaptureFace();
+
+
+	/**≥ı ºªØ*/
+	virtual void init();
     
 
     
@@ -44,6 +48,7 @@ protected:
 
 
 
+	virtual void buttonHit(Button* button);
     
     
     

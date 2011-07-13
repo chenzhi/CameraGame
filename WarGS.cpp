@@ -46,10 +46,10 @@ void WarGS::begin()
     
     
 
-#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+
     ///ÆðÓÃÍÓÂÝÒÇ
     InputListen::getSingleton().beginGyroscope();
-#endif
+
    
     
 }
@@ -62,10 +62,10 @@ void WarGS::end()
     delete m_pBulletManager;
     m_pBulletManager=NULL;
     
-#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+
     ///¹Ø±ÕÍÓÂÝÒÇ
     InputListen::getSingleton().endGyroscope();
-#endif
+
 }
 
 //------------------------------------
@@ -161,7 +161,7 @@ void WarGS::initVideoTeture()
 void WarGS::updateAccelerometer()
 {
     
-#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+//#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     
     Ogre::Vector3 gyrco=InputListen::getSingleton().getGyroscopeData();
     
@@ -169,6 +169,7 @@ void WarGS::updateAccelerometer()
     float pitch=gyrco.z;
     
     pitch+=Ogre::Math::PI*0.5f;
+
     if(m_pCameraNode!=NULL )
     {
         m_pCameraNode->resetOrientation();
@@ -179,7 +180,7 @@ void WarGS::updateAccelerometer()
 
     return ;
 
-#endif
+//#endif
 
     return ;
 }

@@ -330,10 +330,34 @@
 				RelativePath="..\WarGS.h"
 				>
 			</File>
+			<Filter
+				Name="PlayerGame"
+				>
+				<File
+					RelativePath="..\GS_GamePlay.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\GS_GamePlay.h"
+					>
+				</File>
+				<File
+					RelativePath="..\UI_GamePlay.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\UI_GamePlay.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="UI"
 			>
+			<File
+				RelativePath="..\SdkTrays.cpp"
+				>
+			</File>
 			<File
 				RelativePath="..\SdkTrays.h"
 				>
@@ -354,10 +378,30 @@
 				RelativePath="..\UIManager.h"
 				>
 			</File>
+			<File
+				RelativePath="..\Widget.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\Widget.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="tools"
 			>
+			<File
+				RelativePath="..\LayoutParse.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\LayoutParse.h"
+				>
+			</File>
+			<File
+				RelativePath="..\rapidxml.hpp"
+				>
+			</File>
 			<File
 				RelativePath="..\Tool.cpp"
 				>

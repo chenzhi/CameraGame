@@ -61,7 +61,7 @@ public:
     void beginGyroscope();
     
     /**结束启用陀螺仪*/
-    void endGyroscope();
+	void endGyroscope(){};
     
     
     /**判断陀螺仪是否启用*/
@@ -83,7 +83,7 @@ public:
     
 
 
-#if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
+
     
     const Ogre::Vector3&  getAccelerometerData()const ;
     
@@ -93,7 +93,8 @@ public:
     
     Ogre::Vector3  getSmoothGyroscope();
 
-#else
+
+#if OGRE_PLATFORM ==OGRE_PLATFORM_WIN32
 
 
 	/**OIS回调函数*/
@@ -135,9 +136,6 @@ protected:
     ofxAccelerometerHandler*        m_AccelerHander; ///重力记
     ofxAccelerometerHandler*        m_GyroHander;    ///陀螺仪
 
-    Ogre::Vector3  m_AccelerometerData;
-    Ogre::Vector3  m_GyroscopeData;
-    
     
 #else if OGRE_PLATFORM==OGRE_PLATFORM_WIN32
 
@@ -152,6 +150,11 @@ protected:
 #endif
         
         bool       m_IsDeviceActive;///判断是否设备是否启用
+
+
+		Ogre::Vector3  m_AccelerometerData;
+		Ogre::Vector3  m_GyroscopeData;
+
 
 
 };

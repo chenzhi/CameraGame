@@ -8,6 +8,12 @@
 
 
 #pragma once
+#include "SdkTrays.h"
+
+
+class Widget;
+
+typedef std::vector<Widget*> WidgetCollect;
 
 
 
@@ -15,7 +21,7 @@
  游戏的ＵＩ界面的基类，一个实例表示一个游戏页面
 */
 
-class UIBase
+class UIBase :public SdkTrayListener
 {
     
     
@@ -42,15 +48,15 @@ public:
     
     
     /**开始触摸,*/
-    virtual void onBeginTouch(int x,int y){};
+    virtual void onBeginTouch(int x,int y);
     
     
     /**滑动手指*/
-    virtual void onMoveTouch(int x,int y){};
+    virtual void onMoveTouch(int x,int y);
     
     
     /**手指离开*/
-    virtual void onEndTouch(int x,int y){};
+    virtual void onEndTouch(int x,int y);
     
     
     
@@ -75,6 +81,18 @@ public:
     
     /**获取界面z,如果界面未初始返回0*/
     unsigned short getZorder()const;
+
+
+	/**加入一个控件*/
+	bool registerWidget(Widget* pWidget);
+
+	/**
+	*/
+	bool unregisterWidget(Widget* pWidget);
+
+
+	/**根据名字获取控件*/
+	Widget* getWidgetByName(const Ogre::String& anem);
     
     
 protected:
@@ -83,6 +101,16 @@ protected:
        销毁overlay和其子对像
      */
     void destroy();
+
+
+	/**销毁所有的控件*/
+	void destroyAllWidget();
+
+
+
+
+
+
     
     std::string m_Name;//// ＵＩ名
     
@@ -91,6 +119,7 @@ protected:
     Ogre::Overlay* m_pParentOverlay; ///最上层overlay
     
     
+	WidgetCollect m_WidgetCollect;
     
     
     

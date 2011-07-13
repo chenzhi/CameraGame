@@ -8,7 +8,7 @@ template<> InputListen* Ogre::Singleton<InputListen>::ms_Singleton=NULL;
 
 //---------------------------------------------------------
 InputListen::InputListen(HWND wnd)
-:m_wnd(wnd)
+:m_wnd(wnd),m_GyroscopeData(0.0f,0.0f,-Ogre::Math::PI*0.5f)
 {
 
 	setupInput();
@@ -70,6 +70,16 @@ void  InputListen::setupInput()
 }
 
 
+void InputListen::beginGyroscope()
+{
+
+
+	m_GyroscopeData.x=0.0f;
+	m_GyroscopeData.y=0.0f;
+	m_GyroscopeData.z=-Ogre::Math::PI*0.5f;
+
+}
+
 //---------------------------------------------------------
 void InputListen::TouchBegan(int x, int y)
 {
@@ -111,7 +121,12 @@ void InputListen::Captuer()
 }
 
 
+const Ogre::Vector3&  InputListen::getGyroscopeData()const
+{
 
+	return m_GyroscopeData;
+
+}
 
 
 void  InputListen::createInputDevices()
@@ -135,28 +150,53 @@ void  InputListen::destroyInputDevices()
 }
 
 
+
+
 /**OIS»Øµ÷º¯Êý*/
 bool  InputListen::mouseMoved(const OIS::MouseEvent &arg)
 {
 
+
+	if(mMouse->getMouseState().buttonDown(OIS::MB_Right))
+	{
+
+		m_GyroscopeData.y+=arg.state.X.rel*0.001f;
+
+		m_GyroscopeData.z+=arg.state.Y.rel*0.001f;
+
+		return true;
+	}
+
+	TouchMove(arg.state.X.abs,arg.state.Y.abs);
 	return true;
 }
 
 bool  InputListen::mousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
 {
 
-	    TouchBegan(arg.state.X.abs,arg.state.Y.abs);
+	if(id!=OIS::MB_Left)
+	{
+		return false;
+	}
+	TouchBegan(arg.state.X.abs,arg.state.Y.abs);
 		return true;
 }
 
 bool  InputListen::mouseReleased(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
 {
 
+
+	if(id!=OIS::MB_Left)
+	{
+		return false;
+	}
+	    TouchEnd(arg.state.X.abs,arg.state.Y.abs);
 		return true;
 }
 
 bool  InputListen::keyPressed(const OIS::KeyEvent &arg)
 {
+	 
 
 		return true;
 }

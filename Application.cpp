@@ -12,7 +12,7 @@
 #include "GameState.h"
 #include  "WarGS.h"
 #include  "SdkTrays.h"
-
+#include "GS_GamePlay.h"
 
 
 
@@ -54,10 +54,15 @@ void  Application::initState()
     
     pState= new CaptureFaceGS();
     registerState(pState);
+	
+
+	pState = new GSGamePlay();
+	registerState(pState);
+    
+
     
     
-    
-    setBeginState(ST_CAPTUREFACE);
+    setBeginState(ST_GAMEPLAY);
     return;
 }
 
@@ -345,6 +350,9 @@ void Application::initResource()
 void Application::TouchBegan(int x,int y)
 {
     transformInputCoordinate(x,y);
+
+	UIManager::TouchBegan(x,y);
+
     GameState* pState=static_cast<GameState*>(getCurrentActive());
     if(pState!=NULL)
     {
@@ -362,11 +370,16 @@ void Application::TouchBegan(int x,int y)
 void Application::TouchEnd(int x,int y)
 {
     transformInputCoordinate(x,y);
+
+	UIManager::TouchEnd(x,y);
+
 	GameState* pState=static_cast<GameState*>(getCurrentActive());
 	if(pState!=NULL)
 	{
 		pState->endTouch(x,y);
 	}
+
+
 }
 
 /**手指滑动*/
@@ -375,6 +388,8 @@ void Application::TouchMove(int x,int y)
     
 
     transformInputCoordinate(x,y);
+
+	UIManager::TouchMove(x,y);
     
 	GameState* pState=static_cast<GameState*>(getCurrentActive());
 	if(pState!=NULL)
@@ -382,29 +397,33 @@ void Application::TouchMove(int x,int y)
 		pState->moveTouch(x,y);
 	}
     
+
+
+
 }
 
 
 //-------------------------------------------------------
 void Application::transformInputCoordinate(int&x, int &y)
 {
+
+#if OGRE_PLATFORM != OGRE_PLATFORM_IPHONE
+	return ;
+#endif
+
+
+
     int w = m_pRenderWindow->getViewport(0)->getActualWidth();
     int h = m_pRenderWindow->getViewport(0)->getActualHeight();
     
-    
-#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+
     
     ///暂时点击数据只取到320*480,所以需要＊2
     int absX =x*2;
     int absY =y*2;
     
-#else 
-    
-    int absX = pos.x;
-    int absY = pos.y;
 
-    
-#endif
+
     //int relX = state.X.rel;
    // int relY = state.Y.rel;
     
@@ -414,7 +433,7 @@ void Application::transformInputCoordinate(int&x, int &y)
             break;
         case Ogre::OR_DEGREE_90:
              x = w - absY;
-            y = absX;
+             y = absX;
    
             break;
         case Ogre::OR_DEGREE_180:
