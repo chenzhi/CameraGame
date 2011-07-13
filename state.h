@@ -10,6 +10,8 @@
 enum StateType
 {
     ST_NONE,
+
+	ST_GAMEPLAY=1,    //开始游戏
     ST_CAPTUREFACE,//捕获脸部
     
     ST_WAR,///战半状态

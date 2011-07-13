@@ -1,0 +1,35 @@
+material cz/Base
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_check off
+            
+            texture_unit 0
+            {
+                tex_address_mode clamp
+                filtering linear linear none
+            }
+        }
+    }
+
+}
+
+
+
+material cz/Button/Down : cz/Base
+{
+    technique
+    {
+        pass
+        {
+            texture_unit 0
+            {
+                texture sdk_button_down.png
+            }
+        }
+    }
+}

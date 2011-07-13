@@ -1,0 +1,12 @@
+template container Panel(cz/ImageButton)
+{
+	metrics_mode pixels
+	material cz/Button/Down
+      
+	horz_align center
+      vert_align center
+	width 100
+	height 100
+
+}
+

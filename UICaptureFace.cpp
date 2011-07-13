@@ -7,7 +7,7 @@
 //
 #include "pch.h"
 #include "UICaptureFace.h"
-
+#include "Widget.h"
 
 UICaptureFace::UICaptureFace()
 :UIBase("CaptureFaceUI","")
@@ -63,6 +63,17 @@ void UICaptureFace::init()
 	m_pParentOverlay->add2D( static_cast<Ogre::OverlayContainer*>( pButton->getOverlayElement()));
 	pButton->_assignListener(this);
     registerWidget(pButton);
+
+
+
+
+	ImageButton* pImageButton=new ImageButton("imagebutton","sdk_logo.png","sdk_shade.png");
+	pImageButton->_assignListener(this);
+	registerWidget(pImageButton);
+	m_pParentOverlay->add2D( static_cast<Ogre::OverlayContainer*>( pImageButton->getOverlayElement()));
+	pImageButton->getOverlayElement()->setLeft(300);
+	pImageButton->getOverlayElement()->setTop(300);
+
 
 
 	

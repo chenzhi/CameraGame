@@ -12,7 +12,7 @@
 #include "GameState.h"
 #include  "WarGS.h"
 #include  "SdkTrays.h"
-
+#include "GS_GamePlay.h"
 
 
 
@@ -54,10 +54,15 @@ void  Application::initState()
     
     pState= new CaptureFaceGS();
     registerState(pState);
+	
+
+	pState = new GSGamePlay();
+	registerState(pState);
+    
+
     
     
-    
-    setBeginState(ST_CAPTUREFACE);
+    setBeginState(ST_GAMEPLAY);
     return;
 }
 
