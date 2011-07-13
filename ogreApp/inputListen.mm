@@ -170,5 +170,5 @@ Ogre::Vector3  InputListen::getSmoothGyroscope()
 void InputListen::TouchBegan(int x,int y)
 {
     
-    Application::getSingleton().TouchBegan();
+    Application::getSingleton().TouchBegan(x,y);
 }

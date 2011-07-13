@@ -100,6 +100,14 @@
 			mElement = 0;
 			mListener = 0;
 		}
+        
+        Widget(const Ogre::String& name)
+        :m_Name(name)
+        {
+            mTrayLoc = TL_NONE;
+			mElement = 0;
+			mListener = 0;
+        }
 
 		virtual ~Widget() {}
 
@@ -264,6 +272,8 @@
 		Ogre::OverlayElement* mElement;
 		TrayLocation mTrayLoc;
 		SdkTrayListener* mListener;
+        Ogre::String     m_Name;
+        
 	};
 
 	typedef std::vector<Widget*> WidgetList;

@@ -174,3 +174,64 @@ void UIManager::destroyAllUI()
 	return ;
     
 }
+
+//-----------------------------------------------------------------------
+void UIManager::TouchBegan(int x,int y)
+{
+    
+    UICollect::iterator it=m_UICollect.begin();
+	UICollect::iterator endit=m_UICollect.end();
+    
+	for(;it!=endit;++it)
+	{
+        if((*it)->isVisible())
+        {
+            (*it)->onBeginTouch(x,y);
+        }
+        
+    }
+
+    return ;
+}
+
+//-----------------------------------------------------------------------
+void UIManager::TouchEnd(int x,int y)
+{
+    UICollect::iterator it=m_UICollect.begin();
+	UICollect::iterator endit=m_UICollect.end();
+    
+	for(;it!=endit;++it)
+	{
+        if((*it)->isVisible())
+        {
+            (*it)->onEndTouch(x,y);
+        }
+        
+    }
+    
+    return ;
+}
+
+    
+
+
+//-----------------------------------------------------------------------
+void UIManager::TouchMove(int x,int y)
+{
+    UICollect::iterator it=m_UICollect.begin();
+	UICollect::iterator endit=m_UICollect.end();
+    
+	for(;it!=endit;++it)
+	{
+        if((*it)->isVisible())
+        {
+            (*it)->onMoveTouch(x,y);
+        }
+        
+    }
+    
+    return ;
+}
+
+    
+
