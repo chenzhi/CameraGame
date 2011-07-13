@@ -30,7 +30,7 @@ class ofxiPhoneVideoGrabber;
 class SdkTrayManager;
 
 
-class Application :public Ogre::Singleton<Application>, StateMachine ,UIManager
+class Application :public Ogre::Singleton<Application>, StateMachine , public UIManager
 {
     
 public:

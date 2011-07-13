@@ -340,6 +340,9 @@ void Application::initResource()
 void Application::TouchBegan(int x,int y)
 {
     transformInputCoordinate(x,y);
+
+	UIManager::TouchBegan(x,y);
+
     GameState* pState=static_cast<GameState*>(getCurrentActive());
     if(pState!=NULL)
     {
@@ -357,11 +360,16 @@ void Application::TouchBegan(int x,int y)
 void Application::TouchEnd(int x,int y)
 {
     transformInputCoordinate(x,y);
+
+	UIManager::TouchEnd(x,y);
+
 	GameState* pState=static_cast<GameState*>(getCurrentActive());
 	if(pState!=NULL)
 	{
 		pState->endTouch(x,y);
 	}
+
+
 }
 
 /** ÷÷∏ª¨∂Ø*/
@@ -370,6 +378,8 @@ void Application::TouchMove(int x,int y)
     
 
     transformInputCoordinate(x,y);
+
+	UIManager::TouchMove(x,y);
     
 	GameState* pState=static_cast<GameState*>(getCurrentActive());
 	if(pState!=NULL)
@@ -377,6 +387,9 @@ void Application::TouchMove(int x,int y)
 		pState->moveTouch(x,y);
 	}
     
+
+
+
 }
 
 

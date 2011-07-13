@@ -100,14 +100,7 @@
 			mElement = 0;
 			mListener = 0;
 		}
-        
-        Widget(const Ogre::String& name)
-        :m_Name(name)
-        {
-            mTrayLoc = TL_NONE;
-			mElement = 0;
-			mListener = 0;
-        }
+  
 
 		virtual ~Widget() {}
 
@@ -272,7 +265,7 @@
 		Ogre::OverlayElement* mElement;
 		TrayLocation mTrayLoc;
 		SdkTrayListener* mListener;
-        Ogre::String     m_Name;
+        
         
 	};
 
@@ -1701,7 +1694,7 @@
 	/*=============================================================================
 	| Main class to manage a cursor, backdrop, trays and widgets.
 	=============================================================================*/
-	class SdkTrayManager : public SdkTrayListener, public Ogre::ResourceGroupListener
+	class SdkTrayManager : public Ogre::Singleton<SdkTrayManager>,  public SdkTrayListener, public Ogre::ResourceGroupListener
     {
     public:
 

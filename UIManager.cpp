@@ -31,9 +31,9 @@ bool UIManager::registerUI(UIBase* pUI)
     
     
     ///如果没有注册过可以加入队列
-    if (getUIByName(pUI->getName())!=NULL)
+    if (getUIByName(pUI->getName())==NULL)
     {
-       // m_UICollect.push_back(pUI);
+        m_UICollect.push_back(pUI);
         return true;
     }
     

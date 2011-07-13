@@ -92,8 +92,12 @@ void UIBase::init()
 //---------------------------------------------------------------------------------------------
 void UIBase::destroy()
 {
-    destroyOverlayAndChiled(m_pParentOverlay);
-    m_pParentOverlay=NULL;
+
+	destroyAllWidget();
+
+	destroyOverlayAndChiled(m_pParentOverlay);
+
+	m_pParentOverlay=NULL;
     
 }
 
@@ -210,4 +214,138 @@ bool UIBase::destroyOverlayAndChiled(Ogre::Overlay* pOverlay)
     pOverlayManager->destroy(pOverlay);
     return true;
     
+}
+
+
+/**开始触摸,*/
+void  UIBase::onBeginTouch(int x,int y)
+{ 
+	
+	Ogre::Vector2 pos(x,y);
+	WidgetCollect::iterator it=m_WidgetCollect.begin();
+	WidgetCollect::iterator endit=m_WidgetCollect.end();
+
+	for(;it!=endit;++it)
+	{
+		(*it)->_cursorPressed(pos);
+	}
+
+	return ;
+
+
+}
+
+
+/**滑动手指*/
+void  UIBase::onMoveTouch(int x,int y)
+{
+
+
+	Ogre::Vector2 pos(x,y);
+	WidgetCollect::iterator it=m_WidgetCollect.begin();
+	WidgetCollect::iterator endit=m_WidgetCollect.end();
+
+	for(;it!=endit;++it)
+	{
+		(*it)->_cursorMoved(pos);
+	}
+
+	return ;
+
+}
+
+
+/**手指离开*/
+void  UIBase::onEndTouch(int x,int y)
+{
+
+
+	Ogre::Vector2 pos(x,y);
+	WidgetCollect::iterator it=m_WidgetCollect.begin();
+	WidgetCollect::iterator endit=m_WidgetCollect.end();
+
+	for(;it!=endit;++it)
+	{
+		(*it)->_cursorReleased(pos);
+	}
+
+	return ;
+
+}
+
+
+
+/**加入一个控件*/
+bool UIBase::registerWidget(Widget* pWidget)
+{
+	if(pWidget==NULL)
+		return false;
+
+	if(getWidgetByName(pWidget->getName())!=NULL)
+	{
+		Ogre::LogManager::getSingleton().logMessage("UIBase::registerWidget Faild has same name widget ."+pWidget->getName());
+		return false;
+	}
+
+	m_WidgetCollect.push_back(pWidget);
+	return true;
+
+	return true;
+}
+
+/**
+*/
+bool UIBase::unregisterWidget(Widget* pWidget)
+{
+	if(pWidget==NULL)
+		return false;
+	WidgetCollect::iterator it=m_WidgetCollect.begin();
+	WidgetCollect::iterator endit=m_WidgetCollect.end();
+	for(;it!=endit;++it)
+	{
+
+		if((*it)==pWidget)
+		{
+			m_WidgetCollect.erase(it);
+			return true;
+		}
+	}
+
+
+	return false;
+}
+
+/**根据名字获取控件*/
+Widget* UIBase::getWidgetByName(const Ogre::String& name)
+{
+	WidgetCollect::iterator it=m_WidgetCollect.begin();
+	WidgetCollect::iterator endit=m_WidgetCollect.end();
+	for(;it!=endit;++it)
+	{
+
+		if((*it)->getName()==name)
+		{
+			return *it;
+		}
+	}
+
+	return NULL;
+
+}
+
+//-----------------------------------------------------------------
+void UIBase::destroyAllWidget()
+{
+	WidgetCollect::iterator it=m_WidgetCollect.begin();
+	WidgetCollect::iterator itend=m_WidgetCollect.end();
+	for(;it!=itend;++it)
+	{
+
+		delete (*it);
+	}
+
+	m_WidgetCollect.clear();
+	return;
+
+
 }
