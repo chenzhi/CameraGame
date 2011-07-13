@@ -23,13 +23,14 @@
 
 #include "inputListen.h"
 #include "stateMachine.h"
+#include "UIManager.h"
 
 
 class ofxiPhoneVideoGrabber;
 class SdkTrayManager;
 
 
-class Application :public Ogre::Singleton<Application>, StateMachine
+class Application :public Ogre::Singleton<Application>, StateMachine ,UIManager
 {
     
 public:
@@ -129,7 +130,7 @@ protected:
     
 
     /**根据手机现在的方向转变ui位置*/
-    void transformInputCoordinate(Ogre::Vector2& pos);
+    void transformInputCoordinate(int&x, int &y);
     
     
     

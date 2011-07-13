@@ -383,23 +383,24 @@ void Application::TouchMove(int x,int y)
 //-------------------------------------------------------
 void Application::transformInputCoordinate(int&x, int &y)
 {
+
+#if OGRE_PLATFORM != OGRE_PLATFORM_IPHONE
+	return ;
+#endif
+
+
+
     int w = m_pRenderWindow->getViewport(0)->getActualWidth();
     int h = m_pRenderWindow->getViewport(0)->getActualHeight();
     
-    
-#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+
     
     ///暂时点击数据只取到320*480,所以需要＊2
     int absX =x*2;
     int absY =y*2;
     
-#else 
-    
-    int absX = pos.x;
-    int absY = pos.y;
 
-    
-#endif
+
     //int relX = state.X.rel;
    // int relY = state.Y.rel;
     
@@ -409,7 +410,7 @@ void Application::transformInputCoordinate(int&x, int &y)
             break;
         case Ogre::OR_DEGREE_90:
              x = w - absY;
-            y = absX;
+             y = absX;
    
             break;
         case Ogre::OR_DEGREE_180:

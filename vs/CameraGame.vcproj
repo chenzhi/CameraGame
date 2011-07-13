@@ -335,6 +335,10 @@
 			Name="UI"
 			>
 			<File
+				RelativePath="..\SdkTrays.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\SdkTrays.h"
 				>
 			</File>
