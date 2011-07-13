@@ -41,16 +41,16 @@ public:
     virtual void update(float time){};
     
     
-    /**开始触摸*/
-    virtual void onBeginTouch(){};
+    /**开始触摸,*/
+    virtual void onBeginTouch(int x,int y){};
     
     
     /**滑动手指*/
-    virtual void onMoveTouch(){};
+    virtual void onMoveTouch(int x,int y){};
     
     
     /**手指离开*/
-    virtual void onEndTouch(){};
+    virtual void onEndTouch(int x,int y){};
     
     
     

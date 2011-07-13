@@ -90,7 +90,7 @@ StateType CaptureFaceGS::update(float time)
 }
 
 
-void  CaptureFaceGS::beginTouch()
+void  CaptureFaceGS::beginTouch(int x,int y)
 {
     setNextStateType(ST_WAR);
     

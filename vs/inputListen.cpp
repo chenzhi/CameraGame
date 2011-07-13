@@ -71,12 +71,28 @@ void  InputListen::setupInput()
 
 
 //---------------------------------------------------------
-void InputListen::TouchBegan()
+void InputListen::TouchBegan(int x, int y)
 {
 
-	 Application::getSingleton().TouchBegan();
+	 Application::getSingleton().TouchBegan(x,y);
 
 }
+
+
+//---------------------------------------------------------
+void InputListen::TouchEnd(int x, int y)
+{
+	Application::getSingleton().TouchEnd(x,y);
+
+}
+
+//---------------------------------------------------------
+void InputListen::TouchMove(int x, int y)
+{
+
+ Application::getSingleton().TouchMove(x,y);
+}
+
 
 
 //---------------------------------------------------------
@@ -129,7 +145,7 @@ bool  InputListen::mouseMoved(const OIS::MouseEvent &arg)
 bool  InputListen::mousePressed(const OIS::MouseEvent &arg, OIS::MouseButtonID id)
 {
 
-	    TouchBegan();
+	    TouchBegan(arg.state.X.abs,arg.state.Y.abs);
 		return true;
 }
 

@@ -33,7 +33,7 @@ protected:
     
     virtual StateType update(float time);
     
-    void beginTouch();
+   
     
     
     /**更新重车计数据，控制摄像头运动*/
@@ -42,6 +42,9 @@ protected:
     
 protected:
     
+
+
+	void beginTouch(int x,int y);
     
     ///初始化视频贴图
     void initVideoTeture();

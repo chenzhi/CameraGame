@@ -49,7 +49,7 @@ public:
 	
     
     
-	virtual void  beginTouch();
+	virtual void  beginTouch(int x,int y);
 	    
 	
     

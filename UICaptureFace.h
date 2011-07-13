@@ -30,6 +30,20 @@ public:
     
 protected:
     
+
+	/**开始触摸,*/
+	virtual void onBeginTouch(int x,int y);
+
+
+	/**滑动手指*/
+	virtual void onMoveTouch(int x,int y);
+
+
+	/**手指离开*/
+	virtual void onEndTouch(int x,int y);
+
+
+
     
     
     

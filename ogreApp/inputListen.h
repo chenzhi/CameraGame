@@ -70,6 +70,13 @@ public:
     
     /**开始按下*/
     void TouchBegan(int x,int y);
+
+	/**手指离开*/
+	void TouchEnd(int x, int y);
+
+	/**手指滑动*/
+	void TouchMove(int x, int y);
+
     
     /**获取输入数据*/
     void Captuer();  

@@ -45,8 +45,11 @@ void WarGS::begin()
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
     
     
+
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     ///ÆðÓÃÍÓÂÝÒÇ
     InputListen::getSingleton().beginGyroscope();
+#endif
    
     
 }
@@ -59,8 +62,10 @@ void WarGS::end()
     delete m_pBulletManager;
     m_pBulletManager=NULL;
     
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     ///¹Ø±ÕÍÓÂÝÒÇ
     InputListen::getSingleton().endGyroscope();
+#endif
 }
 
 //------------------------------------
@@ -86,7 +91,7 @@ StateType WarGS::update(float time)
 }
 
 //------------------------------------
-void WarGS::beginTouch()
+void WarGS::beginTouch(int x,int y)
 {
     
     Ogre::Matrix3 matrix= m_pCameraNode->getLocalAxes();

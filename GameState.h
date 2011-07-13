@@ -31,16 +31,16 @@ public:
 	
     
     
-	virtual void  beginTouch()
+	virtual void  beginTouch(int x,int y)
 	{ 
 		return ; 
 	}
     
-	virtual void  endTouch()
+	virtual void  endTouch(int x,int y)
 	{
 		return ; 
 	}
-	virtual void  moveTouch()
+	virtual void  moveTouch(int x,int y)
 	{ 
 		return ; 
 	}

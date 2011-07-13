@@ -21,3 +21,25 @@ UICaptureFace::~UICaptureFace()
 {
     
 }
+
+
+/**开始触摸,*/
+void UICaptureFace::onBeginTouch(int x,int y)
+{
+
+	return ;
+}
+
+
+/**滑动手指*/
+void UICaptureFace::onMoveTouch(int x,int y)
+{
+  return ;
+}
+
+
+/**手指离开*/
+void UICaptureFace::onEndTouch(int x,int y)
+{
+	return ;
+}

@@ -186,13 +186,6 @@ bool Application::initOgreRender()
 #ifdef __arm__
     new ofxiPhoneVideoGrabber(480,320);
 #endif
-    
-    
-    
-
-
-    
-    
 
     return true;
 }
@@ -344,18 +337,51 @@ void Application::initResource()
 
 
 //-------------------------------------------------------
-void Application::TouchBegan()
+void Application::TouchBegan(int x,int y)
 {
+    transformInputCoordinate(x,y);
     GameState* pState=static_cast<GameState*>(getCurrentActive());
     if(pState!=NULL)
     {
-        pState->beginTouch();
+        pState->beginTouch(x,y);
     }
+
+
+
+
+
 }
 
 
 //-------------------------------------------------------
-void Application::transformInputCoordinate(Ogre::Vector2& pos)
+void Application::TouchEnd(int x,int y)
+{
+    transformInputCoordinate(x,y);
+	GameState* pState=static_cast<GameState*>(getCurrentActive());
+	if(pState!=NULL)
+	{
+		pState->endTouch(x,y);
+	}
+}
+
+/**手指滑动*/
+void Application::TouchMove(int x,int y)
+{
+    
+
+    transformInputCoordinate(x,y);
+    
+	GameState* pState=static_cast<GameState*>(getCurrentActive());
+	if(pState!=NULL)
+	{
+		pState->moveTouch(x,y);
+	}
+    
+}
+
+
+//-------------------------------------------------------
+void Application::transformInputCoordinate(int&x, int &y)
 {
     int w = m_pRenderWindow->getViewport(0)->getActualWidth();
     int h = m_pRenderWindow->getViewport(0)->getActualHeight();
@@ -364,8 +390,8 @@ void Application::transformInputCoordinate(Ogre::Vector2& pos)
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     
     ///暂时点击数据只取到320*480,所以需要＊2
-    int absX = pos.x*2;
-    int absY = pos.y*2;
+    int absX =x*2;
+    int absY =y*2;
     
 #else 
     
@@ -382,17 +408,17 @@ void Application::transformInputCoordinate(Ogre::Vector2& pos)
         case Ogre::OR_DEGREE_0:
             break;
         case Ogre::OR_DEGREE_90:
-            pos.x = w - absY;
-            pos.y = absX;
+             x = w - absY;
+            y = absX;
    
             break;
         case Ogre::OR_DEGREE_180:
-            pos.x = w - absX;
-            pos.y = h - absY;
+            x = w - absX;
+            y = h - absY;
             break;
         case Ogre::OR_DEGREE_270:
-            pos.x = absY;
-            pos.y = h - absX;
+            x = absY;
+            y = h - absX;
             break;
     }
 
@@ -400,7 +426,6 @@ void Application::transformInputCoordinate(Ogre::Vector2& pos)
     
     
 }
-
 
 
 
