@@ -71,7 +71,8 @@ protected:
 	/**获取已经保存多少个用户的脸图片*/
 	int getUserFaceCount();
     
-    
+
+    void ConverTextureToImage(Ogre::TexturePtr pTexture,Ogre::Image& image);
     
 
 protected:
@@ -82,6 +83,8 @@ protected:
     Ogre::SceneNode*   m_pCameraNode;
     
     Ogre::TexturePtr   m_pVideoTexture;
+    
+
     
     
     

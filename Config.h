@@ -23,7 +23,7 @@
 #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
 
 const  static std::string g_UIPath="Media/CameraGame/UI/";
-const  static std::string g_UserFacePath="Media/CameraGame/UserFace";
+const  static std::string g_UserFacePath="/UserFace/";
 
 
 #else

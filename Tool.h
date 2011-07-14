@@ -28,5 +28,9 @@ public:
     //static  void DestroyOverlayAndChild(Ogre:::Over);
     
     
+    /**获取所有已经保存的用户*/
+    static  Ogre::StringVectorPtr getUserFaceFileList();
+    
+    
     
 };

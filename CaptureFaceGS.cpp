@@ -42,7 +42,7 @@ void  CaptureFaceGS::begin( )
 
 
 
-	int userCount= getUserFaceCount();
+	int userCount=this->getUserFaceCount();
 
 
 
@@ -130,7 +130,7 @@ StateType CaptureFaceGS::update(float time)
 
 void  CaptureFaceGS::beginTouch(int x,int y)
 {
-    setNextStateType(ST_WAR);
+   // setNextStateType(ST_WAR);
     
     return ;
 }
@@ -226,7 +226,22 @@ void CaptureFaceGS::updateVideo()
 /**获取已经保存多少个用户的脸图片*/
 int CaptureFaceGS::getUserFaceCount()
 {
-	Ogre::Archive* pArchive= Ogre::ArchiveManager::getSingleton().load(g_UserFacePath,"FileSystem");
+    
+  
+    std::string userFacePath;
+    
+#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
+    
+     userFacePath= Ogre::iPhoneDocumentsDirectory();
+     //userFacePath+=g_UserFacePath;
+#else
+    userFacePath=g_UserFacePath;
+
+#endif
+    
+    
+    
+	Ogre::Archive* pArchive= Ogre::ArchiveManager::getSingleton().load(userFacePath,"FileSystem");
 	
 	///如果未打开表示没有用户信息
 	if(pArchive==NULL)
@@ -240,15 +255,46 @@ int CaptureFaceGS::getUserFaceCount()
 
 	Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName("sdk_logo.png");
 	Ogre::Image image;
-	pTexture->convertToImage(image,false);
-	image.save(g_UserFacePath+"cc.png");
-
-
+	ConverTextureToImage(pTexture,image);
+   
+    std::string imagefileName=userFacePath+"/cc.tga";
+    Ogre::LogManager::getSingleton().logMessage(imagefileName);
+	image.save(imagefileName);
 
 
 	Ogre::ArchiveManager::getSingleton().unload(pArchive);
 
-	return 1;
+	return userFaceCount;
+}
+
+
+
+/**把一个texture转到image里*/
+void CaptureFaceGS::ConverTextureToImage(Ogre::TexturePtr pTexture,Ogre::Image& image)
+{
+	Ogre::PixelFormat pixelFormat=  pTexture->getFormat();
+	
+	Ogre::HardwarePixelBufferSharedPtr pBuffer=pTexture->getBuffer();
+	pBuffer->lock(Ogre::HardwareBuffer::HBL_READ_ONLY);
+	
+    
+	const Ogre::PixelBox& pixelBox=pBuffer->getCurrentLock();
+	size_t rowPitch=pixelBox.rowPitch;
+	size_t height=pTexture->getHeight();
+    size_t width=pTexture->getWidth();
+    
+	size_t size=rowPitch*height*Ogre::PixelUtil::getNumElemBytes(pixelFormat);
+    
+	Ogre::uchar* pImageBuffer= OGRE_ALLOC_T(Ogre::uchar,size , Ogre::MEMCATEGORY_GENERAL);
+	memcpy(pImageBuffer,pixelBox.data,size);
+    
+	image.loadDynamicImage(pImageBuffer,pTexture->getWidth(),height,1,pixelFormat,true);
+    
+	pBuffer->unlock();
+    
+	return ;
+    
+    
 }
 
 
