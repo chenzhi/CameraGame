@@ -279,14 +279,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\CaptureFaceGS.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\CaptureFaceGS.h"
-				>
-			</File>
-			<File
 				RelativePath="..\enemy.cpp"
 				>
 			</File>
@@ -312,14 +304,6 @@
 			</File>
 			<File
 				RelativePath="..\stateMachine.h"
-				>
-			</File>
-			<File
-				RelativePath="..\UICaptureFace.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\UICaptureFace.h"
 				>
 			</File>
 			<File
@@ -349,6 +333,58 @@
 					RelativePath="..\UI_GamePlay.h"
 					>
 				</File>
+			</Filter>
+			<Filter
+				Name="SelectFace"
+				>
+				<File
+					RelativePath="..\CaptureFaceGS.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\CaptureFaceGS.h"
+					>
+				</File>
+				<File
+					RelativePath="..\UICaptureFace.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\UICaptureFace.h"
+					>
+				</File>
+				<File
+					RelativePath="..\UISelectUser.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\UISelectUser.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="SelectMode"
+				>
+				<File
+					RelativePath="..\GSSelectMode.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\GSSelectMode.h"
+					>
+				</File>
+				<File
+					RelativePath="..\UISelectMode.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\UISelectMode.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="NewFilter1"
+				>
 			</Filter>
 		</Filter>
 		<Filter
@@ -408,6 +444,18 @@
 			</File>
 			<File
 				RelativePath="..\Tool.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="User"
+			>
+			<File
+				RelativePath="..\UserInformation.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\UserInformation.h"
 				>
 			</File>
 		</Filter>

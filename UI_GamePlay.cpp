@@ -69,9 +69,14 @@ void UIGamePlay::init()
 
 
 //-----------------------------------------------------------
-void UIGamePlay::buttonHit(Button* button)
+void UIGamePlay::buttonHit(Widget* button)
 {
 
+	if(button->getName()=="GamePlayer_PlayerButton")
+	{
+
+		Application::getSingleton().getCurrentActive()->setNextStateType(ST_SELECTMODE);
+	}
 	return ;
 
 }

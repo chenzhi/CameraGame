@@ -21,16 +21,17 @@
 
 #endif
 
-#include "inputListen.h"
+
 #include "stateMachine.h"
 #include "UIManager.h"
 
 
 class ofxiPhoneVideoGrabber;
 class SdkTrayManager;
+class InputListen;
 
 
-class Application :public Ogre::Singleton<Application>, StateMachine , public UIManager
+class Application :public Ogre::Singleton<Application>, public StateMachine , public UIManager
 {
     
 public:

@@ -29,7 +29,7 @@ protected:
 
 
 	/**点击按钮回调事件*/
-	virtual void buttonHit(Button* button);
+	virtual void buttonHit(Widget* button);
 
 
 

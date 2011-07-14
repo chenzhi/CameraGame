@@ -42,12 +42,18 @@ void ImageButton::_cursorPressed(const Ogre::Vector2& cursorPos)
 
 void ImageButton:: _cursorReleased(const Ogre::Vector2& cursorPos)
 {
-	//if (isCursorOver(mElement, cursorPos, 4))
-	//{
-		m_State=BS_UP;
-		updateState();
+	
+	m_State=BS_UP;
+	updateState();
 
-	//}
+	if (isCursorOver(mElement, cursorPos, 4))
+	{
+		if(mListener!=NULL)
+		{
+			mListener->buttonHit(this);
+		}
+
+	}
 
     
 

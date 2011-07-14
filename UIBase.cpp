@@ -176,7 +176,11 @@ bool UIBase::destroyOverlayElementAndChild(Ogre::OverlayElement* pOverlayElement
     if (pOverlayElement)
     {
         Ogre::OverlayContainer* parent = pOverlayElement->getParent();
-        if (parent) parent->removeChild(pOverlayElement->getName());
+        if (parent) 
+		{
+			parent->removeChild(pOverlayElement->getName());
+		}
+
         Ogre::OverlayManager::getSingleton().destroyOverlayElement(pOverlayElement);
     }
 

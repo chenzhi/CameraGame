@@ -78,7 +78,7 @@
     public:
 
 		virtual ~SdkTrayListener() {}
-		virtual void buttonHit(Button* button) {}
+		virtual void buttonHit(Widget* button) {}
 		virtual void itemSelected(SelectMenu* menu) {}
 		virtual void labelHit(Label* label) {}
 		virtual void sliderMoved(Slider* slider) {}

@@ -10,11 +10,15 @@
 #include "application.h"
 #include  "ofxiPhoneVideoGrabber.h"
 #include "UICaptureFace.h"
+#include "UISelectUser.h"
+#include "Config.h"
+
 
 
 
 CaptureFaceGS::CaptureFaceGS( )
-:GameState(ST_CAPTUREFACE),m_BackGround(NULL),m_pCameraNode(NULL),m_pCaptureUI(NULL)
+:GameState(ST_CAPTUREFACE),m_BackGround(NULL),m_pCameraNode(NULL),m_pCaptureUI(NULL),
+m_pSelectUserUI(NULL)
 
 {
     
@@ -34,13 +38,39 @@ void  CaptureFaceGS::begin( )
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
     initVideo();
     initBackGround(); 
+
+
+
+
+	int userCount= getUserFaceCount();
+
+
+
+
+
     
     
     ///测试代码
     m_pCaptureUI=new UICaptureFace();
     m_pCaptureUI->init();
-    m_pCaptureUI->setVisible(true);
+    m_pCaptureUI->setVisible(false);
 	Application::getSingleton().registerUI(m_pCaptureUI);
+
+
+	m_pSelectUserUI=new UISelectUser();
+	m_pSelectUserUI->init();
+	m_pSelectUserUI->setVisible(false);
+	Application::getSingleton().registerUI(m_pSelectUserUI);
+
+
+	if(userCount==0)
+	{
+        m_pCaptureUI->setVisible(true);
+
+	}else
+	{
+		m_pSelectUserUI->setVisible(true);
+	}
     
    
     //m_pCaptureOverlay=Ogre::OverlayManager::getSingleton().getByName("CaptureFace");
@@ -76,6 +106,12 @@ void  CaptureFaceGS::end( )
 		Application::getSingleton().unregisterUI(m_pCaptureUI);
         delete m_pCaptureUI;
         m_pCaptureUI=NULL;
+
+		Application::getSingleton().unregisterUI(m_pSelectUserUI);
+		delete m_pSelectUserUI;
+		m_pSelectUserUI=NULL;
+
+
     }
     
     
@@ -94,7 +130,7 @@ StateType CaptureFaceGS::update(float time)
 
 void  CaptureFaceGS::beginTouch(int x,int y)
 {
-    //setNextStateType(ST_WAR);
+    setNextStateType(ST_WAR);
     
     return ;
 }
@@ -184,6 +220,35 @@ void CaptureFaceGS::updateVideo()
     return ;
     
 
+}
+
+
+/**获取已经保存多少个用户的脸图片*/
+int CaptureFaceGS::getUserFaceCount()
+{
+	Ogre::Archive* pArchive= Ogre::ArchiveManager::getSingleton().load(g_UserFacePath,"FileSystem");
+	
+	///如果未打开表示没有用户信息
+	if(pArchive==NULL)
+	{
+           return 0;
+	}
+
+	Ogre::StringVectorPtr pStringVector=pArchive->list(false,false);
+
+	int userFaceCount=pStringVector->size();
+
+	Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName("sdk_logo.png");
+	Ogre::Image image;
+	pTexture->convertToImage(image,false);
+	image.save(g_UserFacePath+"cc.png");
+
+
+
+
+	Ogre::ArchiveManager::getSingleton().unload(pArchive);
+
+	return 1;
 }
 
 

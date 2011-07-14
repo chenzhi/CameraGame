@@ -69,7 +69,7 @@ void  InputListen::setupInput()
 
 }
 
-
+//---------------------------------------------------------
 void InputListen::beginGyroscope()
 {
 
@@ -77,6 +77,14 @@ void InputListen::beginGyroscope()
 	m_GyroscopeData.x=0.0f;
 	m_GyroscopeData.y=0.0f;
 	m_GyroscopeData.z=-Ogre::Math::PI*0.5f;
+
+}
+
+//---------------------------------------------------------
+void InputListen::endGyroscope()
+{
+
+	return ;
 
 }
 

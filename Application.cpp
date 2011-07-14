@@ -7,13 +7,14 @@
 //
 
 #include "pch.h"
+#include "inputListen.h"
 #include "Application.h"
 #include  "CaptureFaceGS.h"
 #include "GameState.h"
 #include  "WarGS.h"
 #include  "SdkTrays.h"
 #include "GS_GamePlay.h"
-
+#include "GSSelectMode.h"
 
 
 
@@ -59,6 +60,9 @@ void  Application::initState()
 	pState = new GSGamePlay();
 	registerState(pState);
     
+
+	pState =new GSSelectMode();
+	registerState(pState);
 
     
     
@@ -208,8 +212,8 @@ void Application::initScene()
 
    m_pSceneManager->createEntity("Head", "CameraHead.mesh");
     
-    Ogre::Entity* pEntity=m_pSceneManager->createEntity("EffectHead", "1.mesh");
-    m_pSceneManager->getRootSceneNode()->createChildSceneNode()->attachObject(pEntity);
+   // Ogre::Entity* pEntity=m_pSceneManager->createEntity("EffectHead", "1.mesh");
+   // m_pSceneManager->getRootSceneNode()->createChildSceneNode()->attachObject(pEntity);
     
     
    // pEntity->setVisible(true);

@@ -66,6 +66,10 @@ protected:
     /**更新摄像头*/
     void updateVideo();
     
+
+
+	/**获取已经保存多少个用户的脸图片*/
+	int getUserFaceCount();
     
     
     
@@ -88,6 +92,8 @@ protected:
     
     
     UIBase*         m_pCaptureUI;
+
+	UIBase*         m_pSelectUserUI;
     
     
 };

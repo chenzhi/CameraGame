@@ -12,6 +12,10 @@
  *************************/
 
 
+#pragma  once
+
+
+
 
 
 ///ui overlay 界面定义所有路径
@@ -19,9 +23,20 @@
 #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
 
 const  static std::string g_UIPath="Media/CameraGame/UI/";
+const  static std::string g_UserFacePath="Media/CameraGame/UserFace";
+
 
 #else
 
+
 const  static std::string g_UIPath="../../../Media/CameraGame/UI/";
+const  static std::string g_UserFacePath="../../../Media/CameraGame/UserFace/";
+
 
 #endif
+
+
+
+
+///用户选择进入的模式
+static  unsigned int g_UserMode =0;
