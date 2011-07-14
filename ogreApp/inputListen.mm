@@ -137,18 +137,19 @@ void InputListen::Captuer()
 }
 
 
-
+//----------------------------------------------------------------
 const Ogre::Vector3&  InputListen::getAccelerometerData()const
 {
     return m_AccelerometerData;
 }
 
+//----------------------------------------------------------------
 const Ogre::Vector3&  InputListen::getGyroscopeData()const
 {
     return m_GyroscopeData;
 }
 
-
+//----------------------------------------------------------------
 Ogre::Vector3  InputListen::getSmoothAccelerometer()
 {
     ofPoint p=m_AccelerHander->getSmoothOrientation();
@@ -157,7 +158,7 @@ Ogre::Vector3  InputListen::getSmoothAccelerometer()
     
 }
 
-
+//----------------------------------------------------------------
 Ogre::Vector3  InputListen::getSmoothGyroscope()
 {
 
@@ -166,9 +167,22 @@ Ogre::Vector3  InputListen::getSmoothGyroscope()
 
 }
 
-/**开始按下*/
+//----------------------------------------------------------------
 void InputListen::TouchBegan(int x,int y)
 {
     
     Application::getSingleton().TouchBegan(x,y);
 }
+
+//----------------------------------------------------------------
+void InputListen::TouchEnd(int x, int y)
+{
+    Application::getSingleton().TouchEnd(x,y);
+}
+
+//----------------------------------------------------------------
+void InputListen::TouchMove(int x, int y)
+{
+    Application::getSingleton().TouchMove(x,y);
+}
+

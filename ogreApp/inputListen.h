@@ -61,7 +61,7 @@ public:
     void beginGyroscope();
     
     /**╫АйЬфТсцмсбщрг*/
-	void endGyroscope(){};
+	void endGyroscope();
     
     
     /**еп╤омсбщргйг╥ЯфТсц*/

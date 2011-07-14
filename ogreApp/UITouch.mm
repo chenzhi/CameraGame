@@ -17,11 +17,33 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
 {
+    
+    if(m_pListen==NULL)
+    {
+        return ;
+    }
+    
+    UITouch* pTouch=[touches anyObject]; 
+    CGPoint point=[pTouch locationInView:self];
+    m_pListen->TouchEnd(point.x,point.y);
+
    
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event 
 {
+    
+    if(m_pListen==NULL)
+    {
+        return ;
+    }
+    
+    UITouch* pTouch=[touches anyObject]; 
+    CGPoint point=[pTouch locationInView:self];
+    m_pListen->TouchMove(point.x,point.y);
+
+    
+    
    
 }
 

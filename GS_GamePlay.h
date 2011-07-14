@@ -29,12 +29,12 @@ public:
 
 
 	 
-    /*
+    /**
      *状态开始函数,
      */
 	virtual void  begin( );
     
-	/*
+	/**
      *状态结束函数
      */
 	virtual void  end( );

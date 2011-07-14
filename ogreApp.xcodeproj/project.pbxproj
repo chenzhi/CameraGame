@@ -15,12 +15,15 @@
 		7701CF6413B1B69200D39C17 /* CaptureFaceGS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7701CF6213B1B69200D39C17 /* CaptureFaceGS.cpp */; };
 		7701CF6813B1C0F600D39C17 /* stateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7701CF6613B1C0F600D39C17 /* stateMachine.cpp */; };
 		7701CF6B13B1DA2100D39C17 /* WarGS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7701CF6913B1DA2100D39C17 /* WarGS.cpp */; };
+		770323FD13CDF94000EBB43F /* Widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 770323FB13CDF94000EBB43F /* Widget.cpp */; };
 		771FA83C13AB1884001C73C8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771FA83B13AB1884001C73C8 /* CoreVideo.framework */; };
 		771FA83E13AB18DC001C73C8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771FA83D13AB18DC001C73C8 /* CoreMedia.framework */; };
 		771FA84013AB19A3001C73C8 /* Media in Resources */ = {isa = PBXBuildFile; fileRef = 771FA83F13AB19A3001C73C8 /* Media */; };
 		771FA90113AB2561001C73C8 /* libboost_date_time.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 771FA8FF13AB2560001C73C8 /* libboost_date_time.a */; };
 		771FA90213AB2562001C73C8 /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 771FA90013AB2560001C73C8 /* libboost_thread.a */; };
 		773945BC13AB028B001E735C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773945BB13AB028B001E735C /* AVFoundation.framework */; };
+		773A266413CE00A900B8261C /* UI_GamePlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 773A266213CE00A900B8261C /* UI_GamePlay.cpp */; };
+		77435C6E13CDFBBC00940850 /* GS_GamePlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77435C6D13CDFBBC00940850 /* GS_GamePlay.cpp */; };
 		7775627413B03582003849ED /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7775627013B03582003849ED /* Bullet.cpp */; };
 		7775627513B03582003849ED /* BulletManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7775627213B03582003849ED /* BulletManager.cpp */; };
 		778F9E1D13B8337700E1706D /* enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778F9E1B13B8337700E1706D /* enemy.cpp */; };
@@ -33,6 +36,7 @@
 		77A8B4F813B1770600D40305 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A8B4F713B1770600D40305 /* CoreMotion.framework */; };
 		77A8B4FF13B19A7E00D40305 /* GameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A8B4FE13B19A7E00D40305 /* GameState.cpp */; };
 		77C17B5913AED3A90067B857 /* ofPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C17B5713AED3A90067B857 /* ofPoint.cpp */; };
+		77F4287413CDF1D200C3478E /* SdkTrays.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77F4287213CDF1D200C3478E /* SdkTrays.cpp */; };
 		8896C17F13A88233000DA13C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C17E13A88233000DA13C /* UIKit.framework */; };
 		8896C18113A88233000DA13C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18013A88233000DA13C /* Foundation.framework */; };
 		8896C18313A88233000DA13C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18213A88233000DA13C /* CoreGraphics.framework */; };
@@ -55,17 +59,23 @@
 		21222E5F13C7F96900992E9C /* pch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pch.h; path = vs/pch.h; sourceTree = "<group>"; };
 		7701CF6213B1B69200D39C17 /* CaptureFaceGS.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = CaptureFaceGS.cpp; sourceTree = "<group>"; };
 		7701CF6313B1B69200D39C17 /* CaptureFaceGS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureFaceGS.h; sourceTree = "<group>"; };
-		7701CF6513B1BC3400D39C17 /* state.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = state.h; sourceTree = "<group>"; };
+		7701CF6513B1BC3400D39C17 /* state.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = state.h; sourceTree = "<group>"; };
 		7701CF6613B1C0F600D39C17 /* stateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stateMachine.cpp; sourceTree = "<group>"; };
 		7701CF6713B1C0F600D39C17 /* stateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stateMachine.h; sourceTree = "<group>"; };
 		7701CF6913B1DA2100D39C17 /* WarGS.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = WarGS.cpp; sourceTree = "<group>"; };
 		7701CF6A13B1DA2100D39C17 /* WarGS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarGS.h; sourceTree = "<group>"; };
+		770323FB13CDF94000EBB43F /* Widget.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = Widget.cpp; sourceTree = "<group>"; };
+		770323FC13CDF94000EBB43F /* Widget.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Widget.h; sourceTree = "<group>"; };
 		771FA83B13AB1884001C73C8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		771FA83D13AB18DC001C73C8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		771FA83F13AB19A3001C73C8 /* Media */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Media; sourceTree = "<group>"; };
 		771FA8FF13AB2560001C73C8 /* libboost_date_time.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_date_time.a; path = "../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_date_time.a"; sourceTree = "<group>"; };
 		771FA90013AB2560001C73C8 /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = "../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_thread.a"; sourceTree = "<group>"; };
 		773945BB13AB028B001E735C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		773A266213CE00A900B8261C /* UI_GamePlay.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UI_GamePlay.cpp; sourceTree = "<group>"; };
+		773A266313CE00A900B8261C /* UI_GamePlay.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UI_GamePlay.h; sourceTree = "<group>"; };
+		77435C6A13CDFB6600940850 /* GS_GamePlay.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = GS_GamePlay.h; sourceTree = "<group>"; };
+		77435C6D13CDFBBC00940850 /* GS_GamePlay.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = GS_GamePlay.cpp; sourceTree = "<group>"; };
 		7775627013B03582003849ED /* Bullet.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Bullet.cpp; sourceTree = "<group>"; };
 		7775627113B03582003849ED /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
 		7775627213B03582003849ED /* BulletManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = BulletManager.cpp; sourceTree = "<group>"; };
@@ -89,6 +99,7 @@
 		77A8B4FE13B19A7E00D40305 /* GameState.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = GameState.cpp; sourceTree = "<group>"; };
 		77C17B5713AED3A90067B857 /* ofPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofPoint.cpp; sourceTree = "<group>"; };
 		77C17B5813AED3A90067B857 /* ofPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofPoint.h; sourceTree = "<group>"; };
+		77F4287213CDF1D200C3478E /* SdkTrays.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SdkTrays.cpp; sourceTree = "<group>"; };
 		8896C17A13A88232000DA13C /* ogreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ogreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8896C17E13A88233000DA13C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8896C18013A88233000DA13C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -127,6 +138,7 @@
 		7701CF6013B1B66700D39C17 /* gameState */ = {
 			isa = PBXGroup;
 			children = (
+				77F4286513CDF14100C3478E /* GamePlay */,
 				778F9E1B13B8337700E1706D /* enemy.cpp */,
 				778F9E1C13B8337700E1706D /* enemy.h */,
 				7775627013B03582003849ED /* Bullet.cpp */,
@@ -151,6 +163,10 @@
 		779F91F113C5540C009A65D4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				770323FB13CDF94000EBB43F /* Widget.cpp */,
+				770323FC13CDF94000EBB43F /* Widget.h */,
+				77A2646C13B2CCF300894A24 /* SdkTrays.h */,
+				77F4287213CDF1D200C3478E /* SdkTrays.cpp */,
 				779F91F313C5546F009A65D4 /* UIBase.cpp */,
 				779F91F413C5546F009A65D4 /* UIBase.h */,
 				779F91FB13C5A71F009A65D4 /* UIManager.cpp */,
@@ -174,9 +190,28 @@
 			name = collisionManager;
 			sourceTree = "<group>";
 		};
+		77F4286513CDF14100C3478E /* GamePlay */ = {
+			isa = PBXGroup;
+			children = (
+				773A266213CE00A900B8261C /* UI_GamePlay.cpp */,
+				773A266313CE00A900B8261C /* UI_GamePlay.h */,
+				77435C6D13CDFBBC00940850 /* GS_GamePlay.cpp */,
+				77435C6A13CDFB6600940850 /* GS_GamePlay.h */,
+			);
+			name = GamePlay;
+			sourceTree = "<group>";
+		};
+		77F4286E13CDF18800C3478E /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
 		8896C16F13A88232000DA13C = {
 			isa = PBXGroup;
 			children = (
+				77F4286E13CDF18800C3478E /* Tools */,
 				779F91F613C557FB009A65D4 /* Config */,
 				779F91F113C5540C009A65D4 /* UI */,
 				77BDDF2113B46A0600818C67 /* collisionManager */,
@@ -248,7 +283,6 @@
 			isa = PBXGroup;
 			children = (
 				21222E5F13C7F96900992E9C /* pch.h */,
-				77A2646C13B2CCF300894A24 /* SdkTrays.h */,
 				77C17B5713AED3A90067B857 /* ofPoint.cpp */,
 				77C17B5813AED3A90067B857 /* ofPoint.h */,
 				77979F4013AAE3920040265C /* FileSystemLayer.h */,
@@ -350,6 +384,10 @@
 				21222E5B13C7F78600992E9C /* inputListen.mm in Sources */,
 				21222E5C13C7F78600992E9C /* ofxiPhoneVideoGrabber.mm in Sources */,
 				21222E5D13C7F78600992E9C /* UITouch.mm in Sources */,
+				77F4287413CDF1D200C3478E /* SdkTrays.cpp in Sources */,
+				770323FD13CDF94000EBB43F /* Widget.cpp in Sources */,
+				77435C6E13CDFBBC00940850 /* GS_GamePlay.cpp in Sources */,
+				773A266413CE00A900B8261C /* UI_GamePlay.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
