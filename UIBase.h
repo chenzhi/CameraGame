@@ -107,6 +107,10 @@ protected:
 	void destroyAllWidget();
 
 
+	/**销毁一个控件*/
+	void destroyWidget(Widget* pWidget);
+
+
 
 
 

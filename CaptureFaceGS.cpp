@@ -12,7 +12,7 @@
 #include "UICaptureFace.h"
 #include "UISelectUser.h"
 #include "Config.h"
-
+#include "Tool.h"
 
 
 
@@ -41,10 +41,8 @@ void  CaptureFaceGS::begin( )
 
 
 
-
-	int userCount=this->getUserFaceCount();
-
-
+	///获取有多少个用户数据。
+	Ogre::StringVectorPtr pFileList=Tools::getUserFaceFileList();
 
 
 
@@ -61,9 +59,9 @@ void  CaptureFaceGS::begin( )
 	m_pSelectUserUI->init();
 	m_pSelectUserUI->setVisible(false);
 	Application::getSingleton().registerUI(m_pSelectUserUI);
+	m_pSelectUserUI->setUserList(pFileList);///设置用户头像
 
-
-	if(userCount==0)
+	if(pFileList->empty())
 	{
         m_pCaptureUI->setVisible(true);
 
@@ -223,49 +221,6 @@ void CaptureFaceGS::updateVideo()
 }
 
 
-/**获取已经保存多少个用户的脸图片*/
-int CaptureFaceGS::getUserFaceCount()
-{
-    
-  
-    std::string userFacePath;
-    
-#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
-    
-     userFacePath= Ogre::iPhoneDocumentsDirectory();
-     //userFacePath+=g_UserFacePath;
-#else
-    userFacePath=g_UserFacePath;
-
-#endif
-    
-    
-    
-	Ogre::Archive* pArchive= Ogre::ArchiveManager::getSingleton().load(userFacePath,"FileSystem");
-	
-	///如果未打开表示没有用户信息
-	if(pArchive==NULL)
-	{
-           return 0;
-	}
-
-	Ogre::StringVectorPtr pStringVector=pArchive->list(false,false);
-
-	int userFaceCount=pStringVector->size();
-
-	Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName("sdk_logo.png");
-	Ogre::Image image;
-	ConverTextureToImage(pTexture,image);
-   
-    std::string imagefileName=userFacePath+"/cc.tga";
-    Ogre::LogManager::getSingleton().logMessage(imagefileName);
-	image.save(imagefileName);
-
-
-	Ogre::ArchiveManager::getSingleton().unload(pArchive);
-
-	return userFaceCount;
-}
 
 
 

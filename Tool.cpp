@@ -7,7 +7,7 @@
 //
 #include "pch.h"
 #include "Tool.h"
-
+#include "config.h"
 
 
 Ogre::StringVectorPtr Tools::getUserFaceFileList()
@@ -24,6 +24,21 @@ Ogre::StringVectorPtr Tools::getUserFaceFileList()
     userFacePath=g_UserFacePath;
     
 #endif
+
+	/*/
+	Ogre::String groupName="UserFace";
+	Ogre::ResourceGroupManager* pResourceManager=Ogre::ResourceGroupManager::getSingletonPtr();
+	if(pResourceManager->resourceGroupExists(groupName)==false)
+	{
+		pResourceManager->createResourceGroup(groupName);
+		pResourceManager->addResourceLocation(userFacePath,"FileSystem","UserFace");
+		pResourceManager->initialiseResourceGroup(groupName);
+		pResourceManager->loadResourceGroup(groupName);
+	}
+	
+	//*/
+	
+
     
 	Ogre::Archive* pArchive= Ogre::ArchiveManager::getSingleton().load(userFacePath,"FileSystem");
 	
@@ -33,12 +48,10 @@ Ogre::StringVectorPtr Tools::getUserFaceFileList()
         return Ogre::StringVectorPtr();
 	}
     
-    Ogre::ArchiveManager::getSingleton().unload(pArchive);
+   
     Ogre::StringVectorPtr pFileList= pArchive->list(false,false);
-    
-    return pFileList;
-    
-    /*
+     Ogre::ArchiveManager::getSingleton().unload(pArchive);
+  
     ///排除后缀非png的文件
     Ogre::StringVector filteFile;
     int size=pFileList->size();
@@ -46,15 +59,23 @@ Ogre::StringVectorPtr Tools::getUserFaceFileList()
     for(int i=0;i<size;++i)
     {
         Ogre::String fileName=pFileList->at(i);
-        
-        
-        if(fileName.find(".png",fileName.begin(),fileName.end())==Ogre::String::npos)
+        if(fileName.find_first_of("png",0)==Ogre::String::npos)
         {
             filteFile.push_back(fileName);
         }
     }
+
+	size=filteFile.size();
+	for(int i=0;i<size;++i)
+	{
+		Ogre::StringVector::iterator it =std::find(pFileList->begin(),pFileList->end(),filteFile[i]);
+		if(it!=pFileList->end())
+		{
+			pFileList->erase(it);
+		}
+	}
     
     return pFileList;
    
-   //*/
+   
 }

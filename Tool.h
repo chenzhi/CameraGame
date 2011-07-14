@@ -6,6 +6,7 @@
 //  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 
+#pragma once
 
 /**
  工具类，一般都是静态函数，完成一些通用功能 

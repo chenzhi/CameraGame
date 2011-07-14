@@ -58,6 +58,7 @@ void  UISelectUser::init()
     
     
     
+
     
     
     ///创建五个按钮用来选择已拍照的人物。
@@ -79,4 +80,67 @@ void  UISelectUser::init()
 
 
 	return ;
+}
+
+
+
+//-------------------------------------------------------
+void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
+{
+
+	///如果传无效指针忽视
+	if(pUserList.isNull())
+		return ;
+
+	///删除旧的
+	destroyAllUserList();
+
+	m_UserList=pUserList;
+
+	///循环创建有用户按钮,最多只创建5个
+	int userSize=m_UserList->size();
+	if(userSize>5)
+	{
+		userSize=5;
+	}
+
+	for(int i=0;i<userSize;++i)
+	{
+		Ogre::String buttonName="UserFace_"+Ogre::StringConverter::toString(i);
+		Ogre::String imageName=m_UserList->at(i);
+		ImageButton* pButton=new ImageButton(buttonName, imageName,imageName);
+		registerWidget(pButton);
+		m_UserButtonCollect.push_back(pButton);
+
+		Ogre::OverlayElement* pElement=pButton->getOverlayElement();
+		pElement->setHorizontalAlignment(Ogre::GHA_LEFT);
+
+		pElement->setLeft(200+200*i);
+
+	}
+
+
+
+
+	return ;
+
+}
+
+
+//-------------------------------------------------------
+void  UISelectUser::destroyAllUserList()
+{
+
+	ImageButtonCollect::iterator it=m_UserButtonCollect.begin();
+	ImageButtonCollect::iterator itend=m_UserButtonCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		destroyWidget(*it);
+	}
+
+	m_UserButtonCollect.clear();
+	
+	return ;
+
 }

@@ -30,7 +30,7 @@ const  static std::string g_UserFacePath="/UserFace/";
 
 
 const  static std::string g_UIPath="../../../Media/CameraGame/UI/";
-const  static std::string g_UserFacePath="../../../Media/CameraGame/UserFace/";
+const  static std::string g_UserFacePath="../../../Media/CameraGame/UserFace";
 
 
 #endif

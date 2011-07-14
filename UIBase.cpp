@@ -292,8 +292,7 @@ bool UIBase::registerWidget(Widget* pWidget)
 	}
 
 	m_WidgetCollect.push_back(pWidget);
-	return true;
-
+	pWidget->_assignListener(this);
 	return true;
 }
 
@@ -351,5 +350,27 @@ void UIBase::destroyAllWidget()
 	m_WidgetCollect.clear();
 	return;
 
+
+}
+
+void UIBase::destroyWidget(Widget* pWidget)
+{
+
+	if(pWidget==NULL)
+		return ;
+
+	WidgetCollect::iterator it=m_WidgetCollect.begin();
+	WidgetCollect::iterator itend=m_WidgetCollect.end();
+	for(;it!=itend;++it)
+	{
+          if((*it)==pWidget)
+		  {
+			  delete (*it);
+			  m_WidgetCollect.erase(it);
+			  return ;
+		  }
+	}
+
+	return;
 
 }
