@@ -25,7 +25,14 @@ public:
 	void setUserList(Ogre::StringVectorPtr pUserList);
 
 
+	///每帧更新
+	 virtual void update(float time);
+
 protected:
+
+	///重新载入用用列表
+	void updateUserList();
+
 
 	/**删除现有的所有的用户图*/
 	void destroyAllUserList();
@@ -46,6 +53,7 @@ protected:
 	///返回到捕人脸按钮
 	ImageButton* m_ToCaptureButton;
 
+	bool         m_NeedUpdate;///是否刷新
 
 
 

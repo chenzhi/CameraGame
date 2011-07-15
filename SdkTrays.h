@@ -78,6 +78,7 @@
     public:
 
 		virtual ~SdkTrayListener() {}
+		virtual void buttondown(Widget*button){}
 		virtual void buttonHit(Widget* button) {}
 		virtual void itemSelected(SelectMenu* menu) {}
 		virtual void labelHit(Label* label) {}
@@ -102,13 +103,20 @@
 		}
   
 
-		virtual ~Widget() {}
+		virtual ~Widget()
+		{
+		   cleanup();
+
+		}
 
 		void cleanup()
 		{
 			if (mElement) nukeOverlayElement(mElement);
 			mElement = 0;
 		}
+
+		///Ã¿Ö¡¸üÐÂ
+		virtual void update(float time){}
 
 		/*-----------------------------------------------------------------------------
 		| Static utility method to recursively delete an overlay element plus

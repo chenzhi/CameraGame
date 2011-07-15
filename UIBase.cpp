@@ -224,6 +224,7 @@ bool UIBase::destroyOverlayAndChiled(Ogre::Overlay* pOverlay)
     
     
     pOverlayManager->destroy(pOverlay);
+
     return true;
     
 }

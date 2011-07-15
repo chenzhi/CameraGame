@@ -29,6 +29,10 @@ public:
 
 	/**初始化*/
 	virtual void init();
+
+
+	///设置已经有多少个用户了
+	void setUserCount(unsigned int count);
     
 
     
@@ -75,5 +79,9 @@ protected:
 	ImageButton* m_pGoBackButton;///返回按钮
 
 	ImageButton* m_pCaptureButton;///拍照按钮
+
+
+	///当前已经保存了多少个用户
+	unsigned int  m_UserCount;
     
 };

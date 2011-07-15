@@ -39,45 +39,10 @@ void  CaptureFaceGS::begin( )
     initVideo();
     initBackGround(); 
 
+	///创建ui
+	initUI();
 
 
-	///获取有多少个用户数据。
-	Ogre::StringVectorPtr pFileList=Tools::getUserFaceFileList();
-
-
-
-    
-    
-    ///测试代码
-    m_pCaptureUI=new UICaptureFace();
-    m_pCaptureUI->init();
-    m_pCaptureUI->setVisible(false);
-	Application::getSingleton().registerUI(m_pCaptureUI);
-
-
-	m_pSelectUserUI=new UISelectUser();
-	m_pSelectUserUI->init();
-	m_pSelectUserUI->setVisible(false);
-	Application::getSingleton().registerUI(m_pSelectUserUI);
-	m_pSelectUserUI->setUserList(pFileList);///设置用户头像
-
-	if(pFileList->empty())
-	{
-        m_pCaptureUI->setVisible(true);
-
-	}else
-	{
-		m_pSelectUserUI->setVisible(true);
-	}
-    
-   
-    //m_pCaptureOverlay=Ogre::OverlayManager::getSingleton().getByName("CaptureFace");
-    //if(m_pCaptureOverlay!=NULL)
-    //{
-    //    m_pCaptureOverlay->show();
-   // }
-    
-    
    
     
 }
@@ -98,20 +63,9 @@ void  CaptureFaceGS::end( )
   //ofxiPhoneVideoGrabber::getSingleton().stopCapture();
     
 #endif    
-    
-    if(m_pCaptureUI!=NULL)
-    {
-		Application::getSingleton().unregisterUI(m_pCaptureUI);
-        delete m_pCaptureUI;
-        m_pCaptureUI=NULL;
-
-		Application::getSingleton().unregisterUI(m_pSelectUserUI);
-		delete m_pSelectUserUI;
-		m_pSelectUserUI=NULL;
 
 
-    }
-    
+	destroyUI();
     
 }
 
@@ -254,3 +208,51 @@ void CaptureFaceGS::ConverTextureToImage(Ogre::TexturePtr pTexture,Ogre::Image& 
 
 
 
+void  CaptureFaceGS::initUI()
+{
+
+
+	///获取有多少个用户数据。
+	Ogre::StringVectorPtr pFileList=Tools::getUserFaceFileList();
+
+
+
+
+
+	///测试代码
+	m_pCaptureUI=new UICaptureFace();
+	m_pCaptureUI->init();
+	m_pCaptureUI->setVisible(false);
+	m_pCaptureUI->setUserCount(pFileList->size());
+	Application::getSingleton().registerUI(m_pCaptureUI);
+
+
+	m_pSelectUserUI=new UISelectUser();
+	m_pSelectUserUI->init();
+	m_pSelectUserUI->setVisible(false);
+	Application::getSingleton().registerUI(m_pSelectUserUI);
+	m_pSelectUserUI->setUserList(pFileList);///设置用户头像
+
+	if(pFileList->empty())
+	{
+		m_pCaptureUI->setVisible(true);
+
+	}else
+	{
+		m_pSelectUserUI->setVisible(true);
+	}
+
+
+}
+
+
+void  CaptureFaceGS::destroyUI()
+{
+
+	Application::getSingleton().destroyUI(m_pCaptureUI);
+	m_pCaptureUI=NULL;
+
+	Application::getSingleton().destroyUI(m_pSelectUserUI);
+	m_pSelectUserUI=NULL;
+
+}

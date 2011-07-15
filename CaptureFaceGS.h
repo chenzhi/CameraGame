@@ -19,7 +19,7 @@
 
 
 class UISelectUser;
-
+class UICaptureFace;
 class CaptureFaceGS : public GameState
 {
 
@@ -73,6 +73,15 @@ protected:
     
 
 
+protected:
+
+
+	///uiÏà¹Øº¯Êý
+	void initUI();
+
+
+	void destroyUI();
+
 
 protected:
     
@@ -93,7 +102,7 @@ protected:
 #endif
     
     
-    UIBase*         m_pCaptureUI;
+    UICaptureFace*         m_pCaptureUI;
 
 	UISelectUser*         m_pSelectUserUI;
     

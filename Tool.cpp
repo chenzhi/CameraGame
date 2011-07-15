@@ -46,6 +46,15 @@ Ogre::StringVectorPtr Tools::getUserFaceFileList()
 	if(pArchive==NULL)
 	{
         return Ogre::StringVectorPtr();
+	}else
+	{
+		Ogre::ArchiveManager::getSingleton().unload(pArchive);
+	    pArchive= Ogre::ArchiveManager::getSingleton().load(userFacePath,"FileSystem");
+        if(pArchive==NULL)
+		{
+			return Ogre::StringVectorPtr();
+		}
+
 	}
     
    

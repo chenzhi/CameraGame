@@ -43,4 +43,4 @@ static  unsigned int g_UserMode =0;
 
 
 ///用户照片保存的格式
-static  const  std::string g_UserFaceFormt=".jpg";
+static  const  std::string g_UserFaceFormt=".JPG";

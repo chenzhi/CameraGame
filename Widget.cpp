@@ -11,8 +11,12 @@ ImageButton::ImageButton(const Ogre::String& name,const Ogre::String& normalText
 
 	mElement = Ogre::OverlayManager::getSingleton().createOverlayElementFromTemplate("cz/ImageButton", "Panel", name);
 	
-	m_pMaterial=mElement->getMaterial()->clone(name);
-	mElement->setMaterialName(name);
+	m_pMaterial=Ogre::MaterialManager::getSingleton().getByName(name);
+	if(m_pMaterial.isNull())
+	{
+    	m_pMaterial=mElement->getMaterial()->clone(name);
+	}
+	mElement->setMaterialName(m_pMaterial->getName());
 
 	updateState();
 
@@ -21,6 +25,8 @@ ImageButton::ImageButton(const Ogre::String& name,const Ogre::String& normalText
 
 ImageButton::~ImageButton()
 {
+
+	Ogre::MaterialManager::getSingleton().remove(m_pMaterial->getHandle());
 
 
 }
@@ -97,8 +103,13 @@ StaticImage::StaticImage(const Ogre::String& name,const Ogre::String& textureNam
 
 	mElement = Ogre::OverlayManager::getSingleton().createOverlayElementFromTemplate("cz/ImageButton", "Panel", name);
 
-	m_pMaterial=mElement->getMaterial()->clone(name);
-	mElement->setMaterialName(name);
+	m_pMaterial=Ogre::MaterialManager::getSingleton().getByName(name);
+	if(m_pMaterial.isNull())
+	{
+		m_pMaterial=mElement->getMaterial()->clone(name);
+	}
+
+	mElement->setMaterialName(m_pMaterial->getName());
 	setImage(textureName);
 
 }
@@ -106,7 +117,8 @@ StaticImage::StaticImage(const Ogre::String& name,const Ogre::String& textureNam
 
 StaticImage::~StaticImage()
 {
-
+ 
+		Ogre::MaterialManager::getSingleton().remove(m_pMaterial->getHandle());
 
 }
 

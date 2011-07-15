@@ -32,7 +32,7 @@ void  GameState::begin( )
  */
 void  GameState::end( )
 {
-    State::begin();
+    State::end();
       
 }
 

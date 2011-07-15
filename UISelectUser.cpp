@@ -3,14 +3,15 @@
 #include "UISelectUser.h"
 #include  "Widget.h"
 #include "Application.h"
-
+#include "Config.h"
+#include "Tool.h"
 
 
 
 
 
 UISelectUser::UISelectUser()
-:UIBase("UISelectUser",""),m_ToCaptureButton(NULL)
+:UIBase("UISelectUser",""),m_ToCaptureButton(NULL),m_NeedUpdate(false)
 {
 
 
@@ -82,6 +83,33 @@ void  UISelectUser::init()
 
 
 
+///每帧更新
+void UISelectUser::update(float time)
+{
+	UIBase::update(time);
+
+	if(m_NeedUpdate)
+	{
+		updateUserList();
+	}
+
+	return ;
+
+}
+
+
+//-------------------------------------------------------
+void  UISelectUser::updateUserList()
+{
+
+	Ogre::StringVectorPtr pUserList=Tools::getUserFaceFileList();
+	setUserList(pUserList);
+	m_NeedUpdate=false;
+
+}
+
+
+
 //-------------------------------------------------------
 void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 {
@@ -104,9 +132,9 @@ void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 
 	for(int i=0;i<userSize;++i)
 	{
-		Ogre::String buttonName="UserFace_"+Ogre::StringConverter::toString(i);
+		//Ogre::String buttonName="UserFace_"+Ogre::StringConverter::toString(i);
 		Ogre::String imageName=m_UserList->at(i);
-		ImageButton* pButton=new ImageButton(buttonName, imageName,imageName);
+		ImageButton* pButton=new ImageButton(imageName, imageName,imageName);
 		registerWidget(pButton);
 		m_UserButtonCollect.push_back(pButton);
 
@@ -160,9 +188,34 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 	}
 
-	const Ogre::String& name=pbutton->getName();
+	
+
+	////不能在些删除控件。
+
+	///如果点击的人物脸就删除这个用户
+	const Ogre::String& imageName=pbutton->getName();
+    size_t size=m_UserList->size();
+	for(size_t i=0;i<size;++i)
+	{
+		Ogre::String username=m_UserList->at(i);
+
+		if(username==imageName)
+		{
+
+				//pArchive->remove(username);
+				username=g_UserFacePath+"/"+username;
+				::remove(username.c_str());
+		
+                 m_NeedUpdate=true;
+				return ;
+		}
+
+	}
 
 
+
+//	Ogre::StringVectorPtr pFileList=Tools::getUserFaceFileList();
+//	this->setUserList(pFileList);
 
 	
 

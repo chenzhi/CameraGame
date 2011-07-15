@@ -38,6 +38,13 @@ void UICaptureFace::init()
 }
 
 
+
+///设置已经有多少个用户了
+void UICaptureFace::setUserCount(unsigned int count)
+{
+	m_UserCount=count;
+}
+
 /**开始触摸,*/
 void UICaptureFace::onBeginTouch(int x,int y)
 {
@@ -128,6 +135,8 @@ void  UICaptureFace::initUI()
 void  UICaptureFace::destroyUI()
 {
 
+	
+
 	return ;
 }
 
@@ -149,10 +158,10 @@ void UICaptureFace::buttonHit(Widget* button)
 		 return ;
 
 
-	 }else if(button==m_pCaptureButton)
+	 }else if(button==m_pCaptureButton)///拍照并保存
 	 {
       
-
+       /// Application::getSingleton().getCurrentActive()->setNextStateType(ST_GAMEPLAY);
 
 	 }
 

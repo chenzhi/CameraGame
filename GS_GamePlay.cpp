@@ -37,7 +37,6 @@ void  GSGamePlay::begin( )
 void  GSGamePlay::end( )
 {
 	GameState::end();
-
 	destroyUI();
 
 }

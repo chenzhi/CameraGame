@@ -41,6 +41,8 @@ m_pSceneManager(NULL)
 Application::~Application()
 {
     
+	///必须先销毁所有的ui
+	UIManager::destroyAllUI();
     destory();
 
 }
@@ -267,6 +269,7 @@ void Application::update(float time)
 {
     
     StateMachine::update(time);
+	UIManager::update(time);
     
     //updateVideo();
 
