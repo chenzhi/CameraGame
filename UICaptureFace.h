@@ -13,6 +13,7 @@
 
 
 
+class ImageButton;
 
 
 class UICaptureFace :public UIBase
@@ -51,5 +52,28 @@ protected:
 	virtual void buttonHit(Button* button);
     
     
+
+protected:
+
+	///实列化ui
+	void  initUI();
+
+	///去除ui
+	void  destroyUI();
+
+
+
+	///按钮回调事件
+	virtual void buttonHit(Widget* button);
+
+
+
+  ///返回到
+
+	ImageButton* m_pToUserFace;///跳到用户选择按钮
+
+	ImageButton* m_pGoBackButton;///返回按钮
+
+	ImageButton* m_pCaptureButton;///拍照按钮
     
 };

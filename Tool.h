@@ -6,6 +6,7 @@
 //  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 
+#pragma once
 
 /**
  工具类，一般都是静态函数，完成一些通用功能 
@@ -26,6 +27,10 @@ public:
     
     /**销毁一个overlay和其子对像*/
     //static  void DestroyOverlayAndChild(Ogre:::Over);
+    
+    
+    /**获取所有已经保存的用户*/
+    static  Ogre::StringVectorPtr getUserFaceFileList();
     
     
     

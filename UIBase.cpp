@@ -30,6 +30,14 @@ UIBase::~UIBase()
 //---------------------------------------------------------------------------------------------
 void UIBase::init()
 {
+
+
+	m_pParentOverlay =Ogre::OverlayManager::getSingleton().create(m_Name);
+	m_pParentOverlay->show();
+
+	return ;
+
+
  
     m_pParentOverlay=Ogre::OverlayManager::getSingleton().getByName(m_Name);
     
@@ -285,15 +293,17 @@ bool UIBase::registerWidget(Widget* pWidget)
 	if(pWidget==NULL)
 		return false;
 
+
+
 	if(getWidgetByName(pWidget->getName())!=NULL)
 	{
 		Ogre::LogManager::getSingleton().logMessage("UIBase::registerWidget Faild has same name widget ."+pWidget->getName());
 		return false;
 	}
 
+	m_pParentOverlay->add2D( static_cast<Ogre::OverlayContainer*>(pWidget->getOverlayElement()));
 	m_WidgetCollect.push_back(pWidget);
-	return true;
-
+	pWidget->_assignListener(this);
 	return true;
 }
 
@@ -315,6 +325,8 @@ bool UIBase::unregisterWidget(Widget* pWidget)
 		}
 	}
 
+	pWidget->_assignListener(NULL);
+	m_pParentOverlay->remove2D(static_cast<Ogre::OverlayContainer*>(pWidget->getOverlayElement()));
 
 	return false;
 }
@@ -351,5 +363,27 @@ void UIBase::destroyAllWidget()
 	m_WidgetCollect.clear();
 	return;
 
+
+}
+
+void UIBase::destroyWidget(Widget* pWidget)
+{
+
+	if(pWidget==NULL)
+		return ;
+
+	WidgetCollect::iterator it=m_WidgetCollect.begin();
+	WidgetCollect::iterator itend=m_WidgetCollect.end();
+	for(;it!=itend;++it)
+	{
+          if((*it)==pWidget)
+		  {
+			  delete (*it);
+			  m_WidgetCollect.erase(it);
+			  return ;
+		  }
+	}
+
+	return;
 
 }

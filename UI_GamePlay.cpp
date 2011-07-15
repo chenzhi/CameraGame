@@ -28,13 +28,11 @@ UIGamePlay::~UIGamePlay()
 void UIGamePlay::init()
 {
 
-	m_pParentOverlay =Ogre::OverlayManager::getSingleton().create("UIGamePlayer");
-    m_pParentOverlay->show();
+   UIBase::init();
 
    StaticImage* pImage=new StaticImage("GamePlayBackGround","sdk_logo.png");
     registerWidget(pImage);
    Ogre::OverlayElement* pElment=pImage->getOverlayElement();
-   m_pParentOverlay->add2D( static_cast<Ogre::OverlayContainer*>(pElment));
    pElment->setMetricsMode(Ogre::GMM_RELATIVE);
    pElment->setHorizontalAlignment(Ogre::GHA_LEFT);
    pElment->setVerticalAlignment(Ogre::GVA_TOP);
@@ -49,7 +47,6 @@ void UIGamePlay::init()
    ImageButton* pPlayButton=new ImageButton("GamePlayer_PlayerButton","sdk_logo.png","sdk_button_down.png");
    registerWidget(pPlayButton);
    pElment=pPlayButton->getOverlayElement();
-   m_pParentOverlay->add2D( static_cast<Ogre::OverlayContainer*>(pElment));
    pPlayButton->_assignListener(this);
    float width=pElment->getWidth();
    float height=pElment->getHeight();

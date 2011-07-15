@@ -23,14 +23,14 @@
 #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
 
 const  static std::string g_UIPath="Media/CameraGame/UI/";
-const  static std::string g_UserFacePath="Media/CameraGame/UserFace";
+const  static std::string g_UserFacePath="/UserFace/";
 
 
 #else
 
 
 const  static std::string g_UIPath="../../../Media/CameraGame/UI/";
-const  static std::string g_UserFacePath="../../../Media/CameraGame/UserFace/";
+const  static std::string g_UserFacePath="../../../Media/CameraGame/UserFace";
 
 
 #endif
@@ -40,3 +40,7 @@ const  static std::string g_UserFacePath="../../../Media/CameraGame/UserFace/";
 
 ///用户选择进入的模式
 static  unsigned int g_UserMode =0;
+
+
+///用户照片保存的格式
+static  const  std::string g_UserFaceFormt=".jpg";

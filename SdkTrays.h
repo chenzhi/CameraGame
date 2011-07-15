@@ -2229,6 +2229,7 @@
 				mFpsLabel = createLabel(TL_NONE, mName + "/FpsLabel", "FPS:", 180);
 				mFpsLabel->_assignListener(this);
 				mStatsPanel = createParamsPanel(TL_NONE, mName + "/StatsPanel", 180, stats);
+				
 			}
 
 			moveWidgetToTray(mFpsLabel, trayLoc, place);

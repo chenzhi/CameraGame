@@ -26,14 +26,11 @@ UISelectMode::~UISelectMode()
 /**³õÊ¼»¯*/
 void UISelectMode::init()
 {
-	m_pParentOverlay =Ogre::OverlayManager::getSingleton().create("UISelectMode");
-	m_pParentOverlay->show();
-
+	UIBase::init();
 
 	StaticImage* pImage=new StaticImage("SelectModeBackGround","sdk_mini_text_box_over.png");
 	registerWidget(pImage);
 	Ogre::OverlayElement* pElment=pImage->getOverlayElement();
-	m_pParentOverlay->add2D( static_cast<Ogre::OverlayContainer*>(pElment));
 	pElment->setMetricsMode(Ogre::GMM_RELATIVE);
 	pElment->setHorizontalAlignment(Ogre::GHA_LEFT);
 	pElment->setVerticalAlignment(Ogre::GVA_TOP);
@@ -52,7 +49,7 @@ void UISelectMode::init()
 	float height=pElment->getHeight();
 	pElment->setLeft(100);
 	pElment->setTop(height*(-0.5f));
-	m_pParentOverlay->add2D( static_cast<Ogre::OverlayContainer*>(pElment));
+
 
 
 
@@ -65,7 +62,7 @@ void UISelectMode::init()
 	height=pElment->getHeight();
 	pElment->setLeft(width*(-0.5f));
 	pElment->setTop(height*(-0.5f));
-	m_pParentOverlay->add2D( static_cast<Ogre::OverlayContainer*>(pElment));
+
 
 
 
@@ -78,7 +75,7 @@ void UISelectMode::init()
 	height=pElment->getHeight();
 	pElment->setLeft(-width-100.0f);
 	pElment->setTop(height*(-0.5f));
-	m_pParentOverlay->add2D( static_cast<Ogre::OverlayContainer*>(pElment));
+	
 
 
 

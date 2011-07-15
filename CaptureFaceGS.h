@@ -18,7 +18,7 @@
 
 
 
-
+class UISelectUser;
 
 class CaptureFaceGS : public GameState
 {
@@ -66,16 +66,11 @@ protected:
     /**更新摄像头*/
     void updateVideo();
     
-
-
-	/**获取已经保存多少个用户的脸图片*/
-	int getUserFaceCount();
-    
-    
     
 
-	/**把一个texture转到image里*/
-	void ConverTextureToImage(Ogre::TexturePtr pTexture,Ogre::Image& image);
+	////
+    void ConverTextureToImage(Ogre::TexturePtr pTexture,Ogre::Image& image);
+    
 
 
 
@@ -88,6 +83,8 @@ protected:
     
     Ogre::TexturePtr   m_pVideoTexture;
     
+
+    
     
     
 #if defined  __arm__
@@ -98,7 +95,7 @@ protected:
     
     UIBase*         m_pCaptureUI;
 
-	UIBase*         m_pSelectUserUI;
+	UISelectUser*         m_pSelectUserUI;
     
     
 };
