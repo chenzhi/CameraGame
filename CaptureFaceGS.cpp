@@ -240,8 +240,13 @@ int CaptureFaceGS::getUserFaceCount()
 
 	Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName("sdk_logo.png");
 	Ogre::Image image;
-	pTexture->convertToImage(image,false);
+
+	ConverTextureToImage(pTexture,image);
+
+	//pTexture->convertToImage(image,false);
 	image.save(g_UserFacePath+"cc.png");
+
+
 
 
 
@@ -253,3 +258,29 @@ int CaptureFaceGS::getUserFaceCount()
 
 
 
+/**把一个texture转到image里*/
+void CaptureFaceGS::ConverTextureToImage(Ogre::TexturePtr pTexture,Ogre::Image& image)
+{
+	Ogre::PixelFormat pixelFormat=  pTexture->getFormat();
+	
+	Ogre::HardwarePixelBufferSharedPtr pBuffer=pTexture->getBuffer();
+
+	pBuffer->lock(Ogre::HardwareBuffer::HBL_READ_ONLY);
+	
+
+	const Ogre::PixelBox& pixelBox=pBuffer->getCurrentLock();
+	size_t rowPitch=pixelBox.rowPitch;
+	size_t height=pTexture->getHeight();
+
+	size_t size=rowPitch*height*Ogre::PixelUtil::getNumElemBytes(pixelFormat);
+
+	Ogre::uchar* pImageBuffer= OGRE_ALLOC_T(Ogre::uchar,size , Ogre::MEMCATEGORY_GENERAL);
+	memcpy(pImageBuffer,pixelBox.data,size);
+
+	image.loadDynamicImage(pImageBuffer,pTexture->getWidth(),height,1,pixelFormat,true);
+	pBuffer->unlock();
+
+	return ;
+
+
+}

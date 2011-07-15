@@ -74,6 +74,11 @@ protected:
     
     
 
+	/**把一个texture转到image里*/
+	void ConverTextureToImage(Ogre::TexturePtr pTexture,Ogre::Image& image);
+
+
+
 protected:
     
     ///背影板
