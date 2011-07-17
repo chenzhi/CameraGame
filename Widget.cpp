@@ -11,6 +11,20 @@ ImageButton::ImageButton(const Ogre::String& name,const Ogre::String& normalText
 
 	mElement = Ogre::OverlayManager::getSingleton().createOverlayElementFromTemplate("cz/ImageButton", "Panel", name);
 	
+    /*
+    Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName(normalTexture);
+    if(pTexture.isNull()==false)
+    {
+       // pTexture->load();
+    }
+    
+    pTexture=Ogre::TextureManager::getSingleton().getByName(pressTexture);
+    if(pTexture.isNull()==false)
+    {
+       // pTexture->load();
+    }
+    //*/
+    
 	m_pMaterial=Ogre::MaterialManager::getSingleton().getByName(name);
 	if(m_pMaterial.isNull())
 	{

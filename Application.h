@@ -104,6 +104,8 @@ public:
 	void TouchMove(int x,int y);
 
 
+    
+    Ogre::RenderWindow* getRenderWindow()const  {return m_pRenderWindow;}
 
 
 	//*/输入事件结束

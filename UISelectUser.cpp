@@ -92,7 +92,47 @@ void UISelectUser::update(float time)
 	{
 		updateUserList();
 	}
-
+    
+    
+    
+    /*
+    Ogre::RenderWindow* pWind=Application::getSingleton().getRenderWindow();
+    int ViewportCount=pWind->getNumViewports();
+    
+    int winWidth= pWind->getWidth();
+    int winHeight= pWind->getHeight();
+    
+    
+    for(int i=0;i<ViewportCount;++i)
+    {
+        Ogre::Viewport* pViewport=pWind->getViewport(0);
+        pViewport->setBackgroundColour(Ogre::ColourValue(1.0f,0,0));
+        
+        float left=pViewport->getLeft();
+        float top=pViewport->getTop();
+        
+        float width=pViewport->getWidth();
+        float height=pViewport->getHeight();
+        
+        
+        left+=height;
+        
+        
+    }
+    
+    Ogre::RenderSystem::RenderTargetIterator targetIt=Ogre::Root::getSingleton().getRenderSystem()->getRenderTargetIterator();    
+    
+    while (targetIt.hasMoreElements())
+    {
+        Ogre::RenderTarget *pTarget=targetIt.getNext();
+        ViewportCount=pTarget->getNumViewports();
+    }
+    
+    //*/
+    
+    
+    
+    
 	return ;
 
 }
@@ -193,6 +233,8 @@ void UISelectUser::buttonHit(Widget* pbutton)
 	////不能在些删除控件。
 
 	///如果点击的人物脸就删除这个用户
+    if(m_UserList.isNull()==false)
+    {
 	const Ogre::String& imageName=pbutton->getName();
     size_t size=m_UserList->size();
 	for(size_t i=0;i<size;++i)
@@ -205,12 +247,12 @@ void UISelectUser::buttonHit(Widget* pbutton)
 				//pArchive->remove(username);
 				username=g_UserFacePath+"/"+username;
 				::remove(username.c_str());
-		
-                 m_NeedUpdate=true;
+                m_NeedUpdate=true;
 				return ;
 		}
 
 	}
+    }
 
 
 

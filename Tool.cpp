@@ -19,6 +19,8 @@ Ogre::StringVectorPtr Tools::getUserFaceFileList()
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     
     userFacePath= Ogre::iPhoneDocumentsDirectory();
+    Ogre::LogManager::getSingleton().logMessage(userFacePath);
+    //userFacePath=  "/Users/thcz/Downloads";
     //userFacePath+=g_UserFacePath;
 #else
     userFacePath=g_UserFacePath;
@@ -48,12 +50,15 @@ Ogre::StringVectorPtr Tools::getUserFaceFileList()
         return Ogre::StringVectorPtr();
 	}else
 	{
+        /*
 		Ogre::ArchiveManager::getSingleton().unload(pArchive);
 	    pArchive= Ogre::ArchiveManager::getSingleton().load(userFacePath,"FileSystem");
         if(pArchive==NULL)
 		{
 			return Ogre::StringVectorPtr();
 		}
+        
+        //*/
 
 	}
     

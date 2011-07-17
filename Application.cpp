@@ -102,14 +102,26 @@ bool Application::initOgreRender()
 
 	///iphone是静态库连接。win32下动态库连接
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
-
-	m_pRoot=OGRE_NEW Ogre::Root(/*"plugins.cfg","ogre.cfg"*/);
-    Ogre::Plugin* pPlugin = OGRE_NEW Ogre::GLESPlugin();
-    m_pRoot->installPlugin(pPlugin);
     
+    
+    Ogre::String pluginsPath = Ogre::StringUtil::BLANK;
+#ifndef OGRE_STATIC_LIB
+    pluginsPath = mFSLayer->getConfigFilePath("plugins.cfg");
+#endif
+    
+    
+    
+    //m_pRoot = OGRE_NEW Ogre::Root(pluginsPath, m_pFileSystem->getWritablePath("ogre.cfg"), 
+                                //m_pFileSystem->getWritablePath("ogre.log"));
+
+    
+    
+	m_pRoot=OGRE_NEW Ogre::Root(/*"plugins.cfg","ogre.cfg"*/);
+   
    // pPlugin = OGRE_NEW Ogre::ParticleFXPlugin();
     //m_pRoot->installPlugin(pPlugin);
-
+    Ogre::Plugin* pPlugin = OGRE_NEW Ogre::GLESPlugin();
+    m_pRoot->installPlugin(pPlugin);
     
    if (!m_pRoot->restoreConfig())
    {
@@ -140,6 +152,8 @@ bool Application::initOgreRender()
 
 	m_pRoot->setRenderSystem(m_pRoot->getRenderSystemByName("Direct3D9 Rendering Subsystem"));
 	m_pRenderWindow=m_pRoot->initialise(false);
+    m_pRenderWindow->removeAllViewports();
+    
 
 	int width=960;
 	int height=640;
@@ -157,8 +171,11 @@ bool Application::initOgreRender()
 
 #endif
 
+    m_pFileSystem =new OgreBites::FileSystemLayerImpl(OGRE_VERSION_NAME);
+
    // mStaticPluginLoader.load();
  
+    //Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
 
     m_pSceneManager = m_pRoot->createSceneManager(Ogre::ST_GENERIC, "DummyScene");
     m_pCamera = m_pSceneManager->createCamera("MainCamera");
@@ -178,10 +195,7 @@ bool Application::initOgreRender()
     {
       m_pViewPort->setBackgroundColour(Ogre::ColourValue(0.0f,0.0f,1.0f,1.0f));
     }
-    
-#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
-    m_pFileSystem =new OgreBites::FileSystemLayerImpl(OGRE_VERSION_NAME);
-#endif
+
 
 
     
