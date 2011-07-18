@@ -34,7 +34,8 @@ Application::Application()
 m_pSceneManager(NULL)
 {
 
-   
+    //创建目录
+    initGamePath();
 }
 
 //----------------------------------------------
@@ -410,6 +411,8 @@ void Application::TouchMove(int x,int y)
 }
 
 
+
+
 //-------------------------------------------------------
 void Application::transformInputCoordinate(int&x, int &y)
 {
@@ -754,3 +757,36 @@ bool Application::InitWindow(int width, int height)
 }
 
 #endif
+
+
+
+
+
+//初始化游戏目录
+void Application::initGamePath()
+{
+    
+    #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
+     
+    Ogre::String DocDirect=Ogre::iPhoneDocumentsDirectory();
+    
+    Ogre::String faceDirect=DocDirect+"/UserFace";
+    
+    struct stat tagStat;
+    bool ret = (stat(faceDirect.c_str(), &tagStat) == 0);
+    
+    //如果返回真表示目录存在。否刚创建一个新的目录
+    if(ret)
+    {
+        return ;
+    }    
+    
+    ///创建目录
+    mkdir(faceDirect.c_str(),0777);
+    
+    return ;
+    #endif
+}
+
+
+

@@ -17,6 +17,8 @@
 #include "FileSystemLayerImpl.h"
 #include  "ogreapp/ofxiPhoneVideoGrabber.h"
 #include "ogreapp/Accelerometer.h"
+#include <sys/types.h>
+#include <sys/stat.h>
 
 
 #endif
@@ -105,6 +107,9 @@ public:
 	/**手指滑动*/
 	void TouchMove(int x,int y);
 
+    
+    /**初始化游戏目录*/
+    void initGamePath();
 
 
 
@@ -121,6 +126,11 @@ public:
 
     static	LRESULT MsgProc(HWND hWnd, DWORD message, WPARAM wParam, LPARAM lParam);
 
+#else
+    
+ 
+    
+    
 #endif
 
     

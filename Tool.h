@@ -34,4 +34,10 @@ public:
     
     
     
+#if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
+   // static  Ogre::String           getIphoneDocumentPath();
+#endif
+    
+    
+    
 };
