@@ -15,7 +15,7 @@ enum StateType
 	ST_SELECTMODE,    ///选择模式
     ST_CAPTUREFACE,//捕获脸部
     
-    ST_WAR,///战半状态
+    ST_WAR,///战斗状态
     
 };
 

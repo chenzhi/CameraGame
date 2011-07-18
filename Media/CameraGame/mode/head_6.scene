@@ -1,8 +1,0 @@
-<scene formatVersion="0.1" author="oiram">
-	<nodes>
-		<node name="1">
-			<entity name="1" meshFile="1.mesh"/>
-		</node>
-	</nodes>
-</scene>
-

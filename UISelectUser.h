@@ -7,6 +7,7 @@
 
 
 class ImageButton;
+class TimeImageButton;
 class UISelectUser :public UIBase
 {
 
@@ -47,7 +48,7 @@ protected:
 	Ogre::StringVectorPtr m_UserList;
 
 
-	typedef std::vector<ImageButton*> ImageButtonCollect;
+	typedef std::vector<TimeImageButton*> ImageButtonCollect;
 	ImageButtonCollect  m_UserButtonCollect;
 
 	///返回到捕人脸按钮

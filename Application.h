@@ -37,6 +37,8 @@ class Application :public Ogre::Singleton<Application>, public StateMachine , pu
 public:
     
     Application();
+
+
     
     ~Application();
     

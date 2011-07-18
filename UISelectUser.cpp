@@ -134,7 +134,7 @@ void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 	{
 		//Ogre::String buttonName="UserFace_"+Ogre::StringConverter::toString(i);
 		Ogre::String imageName=m_UserList->at(i);
-		ImageButton* pButton=new ImageButton(imageName, imageName,imageName);
+		TimeImageButton* pButton=new TimeImageButton(imageName, imageName);
 		registerWidget(pButton);
 		m_UserButtonCollect.push_back(pButton);
 
@@ -202,12 +202,24 @@ void UISelectUser::buttonHit(Widget* pbutton)
 		if(username==imageName)
 		{
 
-				//pArchive->remove(username);
+			TimeImageButton*  pTimeButton=static_cast<TimeImageButton*>(pbutton);
+
+			///长按后再点击就是删除
+			if(pTimeButton->getState()==TimeImageButton::Press)
+			{
+
 				username=g_UserFacePath+"/"+username;
 				::remove(username.c_str());
-		
-                 m_NeedUpdate=true;
+
+				m_NeedUpdate=true;
 				return ;
+			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///正常点击就是入了战争状态
+			{
+				Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
+
+			}
+
+			
 		}
 
 	}
