@@ -15,8 +15,8 @@
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
 
 #include "FileSystemLayerImpl.h"
-#include  "ofxiPhoneVideoGrabber.h"
-#include "Accelerometer.h"
+#include  "ogreapp/ofxiPhoneVideoGrabber.h"
+#include "ogreapp/Accelerometer.h"
 
 
 #endif

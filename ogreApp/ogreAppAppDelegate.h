@@ -16,7 +16,7 @@
 
 
 
-#include "Application.h"
+#include "../Application.h"
 
 //@class ogreAppViewController;
 

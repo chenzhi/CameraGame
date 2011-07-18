@@ -14,7 +14,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#include "ofPoint.h"
+#include "../ofPoint.h"
 #import  "Accelerometer.h"
 class ofxAccelerometerHandler;
 

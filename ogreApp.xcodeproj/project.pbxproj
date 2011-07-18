@@ -84,7 +84,7 @@
 		7755CC2F13CEBCEB00E9B78A /* GSSelectMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSSelectMode.h; sourceTree = "<group>"; };
 		7755CC3013CEBCEB00E9B78A /* UISelectMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = UISelectMode.cpp; sourceTree = "<group>"; };
 		7755CC3113CEBCEB00E9B78A /* UISelectMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISelectMode.h; sourceTree = "<group>"; };
-		7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UISelectUser.cpp; sourceTree = "<group>"; };
+		7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = UISelectUser.cpp; sourceTree = "<group>"; };
 		7755CC3613CEBD1600E9B78A /* UISelectUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISelectUser.h; sourceTree = "<group>"; };
 		7755CC4013CEEA9400E9B78A /* Tool.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = Tool.cpp; sourceTree = "<group>"; };
 		7755CC4113CEEA9400E9B78A /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		779F91F313C5546F009A65D4 /* UIBase.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UIBase.cpp; sourceTree = SOURCE_ROOT; };
 		779F91F413C5546F009A65D4 /* UIBase.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIBase.h; sourceTree = "<group>"; };
 		779F91F713C5580D009A65D4 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
-		779F91F813C56420009A65D4 /* UICaptureFace.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = UICaptureFace.cpp; sourceTree = "<group>"; };
+		779F91F813C56420009A65D4 /* UICaptureFace.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UICaptureFace.cpp; sourceTree = "<group>"; };
 		779F91F913C56420009A65D4 /* UICaptureFace.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UICaptureFace.h; sourceTree = "<group>"; };
 		779F91FB13C5A71F009A65D4 /* UIManager.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = UIManager.cpp; sourceTree = "<group>"; };
 		779F91FC13C5A71F009A65D4 /* UIManager.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIManager.h; sourceTree = "<group>"; };
@@ -462,9 +462,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_SUFFIX = "";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ogreApp/ogreApp-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/include",
@@ -494,7 +500,7 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Paging/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Terrain/include",
 					"\"$(SRCROOT)/Bullet/src\"",
-					"\"$(SRCROOT)/../../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include",
+					"\"$(SRCROOT)/../../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/**",
 				);
 				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
@@ -502,6 +508,8 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Release",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib",
 				);
+				OTHER_CFLAGS = "-pthread";
+				OTHER_CPLUSPLUSFLAGS = "-pthread";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -545,9 +553,17 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_thread.a",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_date_time.a",
 				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
 				TARGETED_DEVICE_FAMILY = 1;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = DeviceDebug;
@@ -579,9 +595,19 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_SUFFIX = "";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ogreApp/ogreApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					BOOST_ALL_NO_LIB,
+					USE_RTSHADER_SYSTEM,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/include",
@@ -611,7 +637,7 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Paging/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Terrain/include",
 					"\"$(SRCROOT)/Bullet/src\"",
-					"\"$(SRCROOT)/../../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include",
+					"\"$(SRCROOT)/../../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/**",
 				);
 				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
@@ -619,6 +645,8 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib",
 				);
+				OTHER_CFLAGS = "-pthread";
+				OTHER_CPLUSPLUSFLAGS = "-pthread";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -697,9 +725,17 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_thread.a",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_date_time.a",
 				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
 				TARGETED_DEVICE_FAMILY = 1;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = SimuatorDebug;
@@ -753,9 +789,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_SUFFIX = "";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ogreApp/ogreApp-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/include",
@@ -785,13 +828,21 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Paging/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Terrain/include",
 					"\"$(SRCROOT)/Bullet/src\"",
-					"\"$(SRCROOT)/../../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include",
+					"\"$(SRCROOT)/../../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/**",
 				);
 				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/$(CONFIGURATION)",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib",
+				);
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-pthread",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"-pthread",
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -832,9 +883,17 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_thread.a",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_date_time.a",
 				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
 				TARGETED_DEVICE_FAMILY = 1;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = SimuatorRelease;
@@ -846,9 +905,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_SUFFIX = "";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ogreApp/ogreApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/include",
@@ -878,13 +945,21 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Paging/include",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Terrain/include",
 					"\"$(SRCROOT)/Bullet/src\"",
-					"\"$(SRCROOT)/../../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include",
+					"\"$(SRCROOT)/../../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/**",
 				);
 				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Debug",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib",
+				);
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-pthread",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"-pthread",
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -930,10 +1005,18 @@
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_date_time.a",
 					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libOIS.a",
 				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
 				TARGETED_DEVICE_FAMILY = 1;
+				USE_HEADERMAP = NO;
 				VALIDATE_PRODUCT = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = DeviceRelease;

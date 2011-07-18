@@ -20,7 +20,7 @@
 #import <CoreMotion/CoreMotion.h>
 
 //#import "AccelerometerViewController.h"
-#include "ofPoint.h"
+#include "../ofPoint.h"
 
 //@class AccelerometerViewController;
 

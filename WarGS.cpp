@@ -11,7 +11,7 @@
 #include "WarGS.h"
 #include  "BulletManager.h"
 #include "Application.h"
-#include "inputListen.h"
+#include "ogreapp/inputListen.h"
 
 
 //------------------------------------

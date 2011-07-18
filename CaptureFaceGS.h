@@ -11,7 +11,7 @@
 
 #include "GameState.h"
 #include  "state.h"
-#include  "ofxiPhoneVideoGrabber.h"
+#include  "ogreapp/ofxiPhoneVideoGrabber.h"
 
 
 

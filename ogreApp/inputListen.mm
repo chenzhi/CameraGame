@@ -9,7 +9,7 @@
 #include "inputListen.h"
 
 #include "UITouch.h"
-#include "Application.h"
+#include "../Application.h"
 
 
 namespace Ogre

@@ -7,7 +7,7 @@
 //
 
 #include "pch.h"
-#include "inputListen.h"
+#include "ogreapp/inputListen.h"
 #include "Application.h"
 #include  "CaptureFaceGS.h"
 #include "GameState.h"

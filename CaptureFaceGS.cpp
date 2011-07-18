@@ -8,7 +8,7 @@
 #include "pch.h"
 #include "CaptureFaceGS.h"
 #include "application.h"
-#include  "ofxiPhoneVideoGrabber.h"
+#include  "ogreapp/ofxiPhoneVideoGrabber.h"
 #include "UICaptureFace.h"
 #include "UISelectUser.h"
 #include "Config.h"
