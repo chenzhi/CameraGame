@@ -116,12 +116,13 @@ Bullet* BulletManager::getBullet()
 Enemy* BulletManager::createEnemy(const Ogre::Vector3& pos)
 {
     
-    for(int i=-5;i<5;++i)
+   // for(int i=-5;i<5;++i)
     {
-        for(int j=-5;j<5;++j)
+      //  for(int j=-5;j<5;++j)
         {
-            Ogre::Vector3 temPos(i,j,0);
-            Enemy* pEnemy=  new Enemy("1.mesh",temPos,m_pSceneMrg);
+            //Ogre::Vector3 temPos(i,j,0);
+			Ogre::Vector3 temPos=pos;
+            Enemy* pEnemy=  new Enemy("face.mesh",temPos,m_pSceneMrg);
             pEnemy->reset(temPos);
             
             m_EnemyCollect.push_back(pEnemy);

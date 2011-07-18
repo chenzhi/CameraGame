@@ -19,13 +19,19 @@ int Enemy::m_EntityIndex=0;
 
 //------------------------------------------
 Enemy::Enemy(const Ogre::String& meshName,const Ogre::Vector3& pos, Ogre::SceneManager* pSceneMrg)
-:m_pEntity(NULL),m_pNode(NULL),m_pSceneMrg(pSceneMrg),m_pAniSate(NULL),m_LeftValue(100),m_State(ES_NORMAL),m_Rotate(0)
+:m_pEntity(NULL),m_pNode(NULL),m_pSceneMrg(pSceneMrg),m_pAniSate(NULL),m_LeftValue(100),m_State(ES_NORMAL),m_Rotate(0),
+m_pHeadEnity(NULL)
 {
     
     m_pEntity=m_pSceneMrg->createEntity("Enemy"+Ogre::StringConverter::toString(m_EntityIndex++),meshName);
     m_pNode=pSceneMrg->getRootSceneNode()->createChildSceneNode();
     m_pNode->attachObject(m_pEntity);
     m_pNode->setPosition(pos);
+
+	m_pHeadEnity=m_pSceneMrg->createEntity("Head.mesh");
+
+	m_pNode->attachObject(m_pHeadEnity);
+	m_pHeadEnity->shareSkeletonInstanceWith(m_pEntity);
     
     //m_pNode->showBoundingBox(true);
     

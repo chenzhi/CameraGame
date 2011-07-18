@@ -212,7 +212,7 @@ bool Application::initOgreRender()
 void Application::initScene()
 {
 
-   m_pSceneManager->createEntity("Head", "CameraHead.mesh");
+  // m_pSceneManager->createEntity("Head", "CameraHead.mesh");
     
    // Ogre::Entity* pEntity=m_pSceneManager->createEntity("EffectHead", "1.mesh");
    // m_pSceneManager->getRootSceneNode()->createChildSceneNode()->attachObject(pEntity);

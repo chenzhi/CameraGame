@@ -161,7 +161,7 @@ void UICaptureFace::buttonHit(Widget* button)
 	 }else if(button==m_pCaptureButton)///ÅÄÕÕ²¢±£´æ
 	 {
       
-       /// Application::getSingleton().getCurrentActive()->setNextStateType(ST_GAMEPLAY);
+        Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
 
 	 }
 

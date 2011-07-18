@@ -10,3 +10,28 @@ template container Panel(cz/ImageButton)
 
 }
 
+
+template container Panel(cz/TimeImageButton)
+{
+	metrics_mode pixels
+	material cz/Button/Down
+      
+	horz_align center
+      vert_align center
+	width 100
+	height 100
+
+     element Panel(DeleteImage)
+	{
+        metrics_mode pixels
+        material cz/TimeImageButton/DeleteButton
+        left  68
+        top   0
+        width 32
+        height 32
+	}
+
+
+
+}
+

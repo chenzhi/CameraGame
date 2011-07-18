@@ -33,3 +33,19 @@ material cz/Button/Down : cz/Base
         }
     }
 }
+
+
+
+material cz/TimeImageButton/DeleteButton : cz/Base
+{
+    technique
+    {
+        pass
+        {
+            texture_unit 0
+            {
+                texture sdk_mini_tray.png
+            }
+        }
+    }
+}

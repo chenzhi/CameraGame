@@ -118,6 +118,9 @@ protected:
     Ogre::Vector3     m_Trans;
     
     Ogre::MaterialPtr    m_pMaterial;
+
+
+	Ogre::Entity*        m_pHeadEnity;
     
     
     

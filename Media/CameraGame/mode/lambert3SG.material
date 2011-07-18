@@ -1,0 +1,12 @@
+
+material lambert3SG_lambert3SG_A 
+{
+	technique
+	{
+		pass
+		{
+			diffuse 1 1 1
+		}
+	}
+}
+

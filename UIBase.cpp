@@ -388,3 +388,15 @@ void UIBase::destroyWidget(Widget* pWidget)
 	return;
 
 }
+
+//--------------------------------------------------------------
+void  UIBase::update(float time)
+{
+	WidgetCollect::iterator it=m_WidgetCollect.begin();
+	WidgetCollect::iterator itend=m_WidgetCollect.end();
+	for(;it!=itend;++it)
+	{
+		(*it)->update(time);
+	}
+
+}

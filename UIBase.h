@@ -44,7 +44,7 @@ public:
     virtual void init();
     
     /**每帧更新数*/
-    virtual void update(float time){};
+    virtual void update(float time);
     
     
     /**开始触摸,*/
@@ -93,6 +93,8 @@ public:
 
 	/**根据名字获取控件*/
 	Widget* getWidgetByName(const Ogre::String& anem);
+
+
     
     
 protected:
