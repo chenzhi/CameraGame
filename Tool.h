@@ -33,6 +33,9 @@ public:
     static  Ogre::StringVectorPtr getUserFaceFileList();
     
     
+    ///获取用户照象后保存的路径
+    static Ogre::String       getUserFacePath();
+    
     
 #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
    // static  Ogre::String           getIphoneDocumentPath();

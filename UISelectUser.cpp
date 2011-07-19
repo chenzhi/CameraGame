@@ -208,11 +208,11 @@ void UISelectUser::buttonHit(Widget* pbutton)
 			if(pTimeButton->getState()==TimeImageButton::Press)
 			{
 
-				username=g_UserFacePath+"/"+username;
+				username=Tools::getUserFacePath()+"/"+username;
 				::remove(username.c_str());
-
 				m_NeedUpdate=true;
 				return ;
+                
 			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///正常点击就是入了战争状态
 			{
 				Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
