@@ -14,6 +14,8 @@
 
 
 
+class Ogre::OverlayElement;
+
 /**
 图片按钮
 */
@@ -155,5 +157,289 @@ protected:
 	Ogre::MaterialPtr m_pDeleteMaterial;
 
 	Ogre::OverlayElement* m_pDeleteElement;///删除按钮
+
+};
+
+
+
+/***********************************************
+会显示3d图形的按钮。可以把一scenenode挂到这个按钮上
+**************************************************/
+class Image3DButton :public Widget
+{
+public:
+
+	Image3DButton(const Ogre::String& name,Ogre::SceneNode* pNode);
+
+
+	~Image3DButton();
+
+
+    /**设置挂载的节点*/
+	void   setSceneNode(Ogre::SceneNode* pNode);
+
+	virtual void _cursorPressed(const Ogre::Vector2& cursorPos);
+
+	virtual void _cursorReleased(const Ogre::Vector2& cursorPos) ;
+
+
+	///返回名字
+	virtual const Ogre::String& getName();
+
+
+protected:
+
+	Ogre::Overlay*  m_pOveraly;
+
+	Ogre::SceneNode* m_pScenNode;
+
+	 
+
+};
+
+
+
+/*************************************************
+滑动按钮，
+****************************************************/
+
+///滚动按钮的数据源
+class 	SliderGalleryDataSource
+{
+public:
+	SliderGalleryDataSource(){}
+
+
+	virtual ~SliderGalleryDataSource(){}
+
+
+	/**获取共有多少个元素
+	*/
+	virtual	unsigned int getElementCount()=0;
+
+
+	/**获取元素的贴图名
+	*成功返回true 失败返回false
+	*/
+	virtual bool  getElementTexture(unsigned int index,Ogre::String& textureName)=0;
+
+
+
+	/**获取元素的用户数据
+	*成功返回true 失败返回false
+	*/
+	virtual bool getElementUserData(unsigned index,Ogre::String& elementData)=0;
+
+
+};
+
+
+///滚动窗口里的每一个按钮
+class SrollButton
+{
+
+public:
+
+	SrollButton(Ogre::OverlayElement* pElement)
+		:m_pElement(pElement),m_OriginalPos(0.0f),m_targetPos(0.0f),m_Visible(false)
+	{
+
+		Ogre::MaterialPtr pMat=pElement->getMaterial();
+		assert(pMat.isNull()==false);
+		pMat= pMat->clone(pElement->getName());
+		pElement->setMaterialName(pMat->getName());
+		return;
+
+	}
+
+	/**滚动函数*/
+	void sroll(float precent)
+	{
+		if(m_pElement==NULL)
+			return ;
+		if(precent>=1.0f)
+		{
+			m_pElement->setLeft(m_targetPos);
+			m_pElement->show();
+			return ;
+		}
+
+		m_pElement->setLeft(m_OriginalPos+(m_targetPos-m_OriginalPos)*precent);
+		if(m_Visible)
+		{
+			m_pElement->show();
+		}else
+		{
+			m_pElement->hide();
+
+		}
+		return ;
+
+	}
+
+
+	/**设置按钮的图片
+	*/
+	void setTextureName(const Ogre::String& textureName)
+	{
+		if(m_pElement==NULL)
+			return ;
+		m_pElement->getMaterial()->getTechnique(0)->getPass(0)->
+			getTextureUnitState(0)->setTextureName(textureName);
+
+
+	}
+
+
+	/**调置用户数据
+	*/
+	void setUserData(const Ogre::String& data)
+	{
+		m_userData=data;
+	}
+
+
+	/**返回用户数据
+	*/
+	const Ogre::String getUserData()const
+	{
+		return m_userData;
+	}
+
+
+	/**判断鼠标是在按钮的范围
+	*/
+	bool isCursorOver(const Ogre::Vector2& pos)
+	{
+		if(m_pElement==NULL)
+			return false;
+		if(m_pElement->isVisible()==false)
+			return false;
+
+		return Widget::isCursorOver(m_pElement,pos);
+
+
+	}
+
+
+	///设置是否可见
+	void setVisible(bool b)
+	{
+		if(m_pElement!=NULL)
+		{
+			if(b)
+			{
+            	m_pElement->show();				
+			}else
+			{
+
+				m_pElement->hide();
+			}
+
+		}
+	}
+
+
+public:
+
+	Ogre::OverlayElement*  m_pElement; 
+	float                  m_OriginalPos; ///滚动开始的位置 
+	float                  m_targetPos;   ///滚动结不束位置
+	bool                   m_Visible;     ///滚动是否隐藏
+	Ogre::String           m_userData;     ///用户保存数据
+
+
+
+};
+
+
+class SliderGallery : public Widget
+{
+
+public:
+
+
+
+public:
+
+	SliderGallery(const Ogre::String& name,SliderGalleryDataSource* pDataSource);
+ 
+   virtual	~SliderGallery();
+
+
+   /**设置数据源*/
+   void setDataSource(SliderGalleryDataSource* pSource);
+
+
+
+protected:
+
+	/**鼠标回调事件
+	*/
+	virtual void _cursorPressed(const Ogre::Vector2& cursorPos);
+
+	/**鼠标回调事件
+	*/
+	virtual void _cursorReleased(const Ogre::Vector2& cursorPos) ;
+
+	/**鼠标回调事件
+	*/
+	virtual void _cursorMoved(const Ogre::Vector2& cursorPos);
+
+
+
+
+protected:
+
+
+	///每帧更新涵数
+	void update(float tim);
+
+
+	///向前滚动一格
+	void previsouButton();
+
+
+	///向后滚动一格
+	void nextButton();
+
+	///获取所有按钮原来的位置
+	void saveButtonPos() ;
+
+	///删除所有的滚动按钮
+	void destroySrollButton();
+
+
+	///刷新所有button数据
+	void resetButtonInformation();
+
+
+	///滚动结束
+	void endRoll();
+
+
+	protected:
+
+	
+	Ogre::OverlayElement* m_pPrevisouButton;///向前一个按钮
+
+	Ogre::OverlayElement* m_pNextButton; ///向后一个按钮
+
+
+
+	typedef std::vector<SrollButton*> SrollButtonCollect;
+	SrollButtonCollect         m_ButtonCollect; ///记录滚动所有的按钮
+
+
+	bool                  m_IsPress;         ///是否按下
+	int                    m_RollDir;        ///滚动方向 0,表示不滚动。-1向滚动一格 1向左路滚动一格
+	float                  m_RollTime;       ///滚动时间
+
+
+
+
+	SliderGalleryDataSource*      m_pDataSource; ////数据源
+	unsigned int                  m_DataIndex; ///最左边按钮对应数据源里第几个数据
+
 
 };

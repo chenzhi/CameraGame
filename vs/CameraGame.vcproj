@@ -334,6 +334,22 @@
 					>
 				</File>
 				<File
+					RelativePath="..\UISelectFaceMode.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\UISelectFaceMode.h"
+					>
+				</File>
+				<File
+					RelativePath="..\UISelectHead.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\UISelectHead.h"
+					>
+				</File>
+				<File
 					RelativePath="..\UISelectUser.cpp"
 					>
 				</File>

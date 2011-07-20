@@ -43,7 +43,6 @@ void UIGamePlay::init()
    pElment->setHeight(1.0f);
 
 
-
    ImageButton* pPlayButton=new ImageButton("GamePlayer_PlayerButton","sdk_logo.png","sdk_button_down.png");
    registerWidget(pPlayButton);
    pElment=pPlayButton->getOverlayElement();

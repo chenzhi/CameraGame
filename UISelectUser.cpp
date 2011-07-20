@@ -1,4 +1,3 @@
-
 #include "pch.h"
 #include "UISelectUser.h"
 #include  "Widget.h"
@@ -40,50 +39,23 @@ void  UISelectUser::init()
 	pElment->setVerticalAlignment(Ogre::GVA_TOP);
 	pElment->setWidth(1.0f);
 	pElment->setHeight(1.0f);
-    
-    
-    
-    
-    ///创建左边按钮用来跳到捕获脸的界面。
-   m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","sdk_button_up.png","sdk_button_down.png");
-    registerWidget(m_ToCaptureButton);
-    m_ToCaptureButton->_assignListener(this);
-    pElment=m_ToCaptureButton->getOverlayElement();
+
+
+
+
+	///创建左边按钮用来跳到捕获脸的界面。
+	m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","sdk_button_up.png","sdk_button_down.png");
+	registerWidget(m_ToCaptureButton);
+	m_ToCaptureButton->_assignListener(this);
+	pElment=m_ToCaptureButton->getOverlayElement();
 	pElment->setHorizontalAlignment(Ogre::GHA_LEFT);
-	//pElment->setWidth(1.0f);
-	//pElment->setHeight(1.0f);
-
-
-    
-    
-    
-
-    
-    
-    ///创建五个按钮用来选择已拍照的人物。
-    
-    //ImageButton* pButton =new ImageButton("SelectUser_1",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	return ;
 }
 
 
 
-///每帧更新
+//-----------------------------------------------
 void UISelectUser::update(float time)
 {
 	UIBase::update(time);
@@ -165,9 +137,53 @@ void  UISelectUser::destroyAllUserList()
 	}
 
 	m_UserButtonCollect.clear();
-	
+
 	return ;
 
+}
+
+//-------------------------------------------------------
+void UISelectUser::onEndTouch(int x,int y)
+{
+	UIBase::onEndTouch(x,y);
+
+	///如是没有点击到任何一个照片按钮就把所有的照片按钮全部重置状态
+
+	bool needRest=true;
+
+	ImageButtonCollect::iterator it=m_UserButtonCollect.begin();
+	ImageButtonCollect::iterator itend=m_UserButtonCollect.end();
+	Ogre::Vector2  area(x,y);
+
+	for(;it!=itend;++it)
+	{
+		if((*it)->isCursorOver((*it)->getOverlayElement(),area))
+		{
+
+			needRest=false;
+			break;;
+		}
+	}
+
+	if(needRest)
+	{
+		resetUserFaceButton();
+	}
+
+
+}
+
+//----------------------------------------------------------
+void   UISelectUser::resetUserFaceButton()
+{
+	ImageButtonCollect::iterator it=m_UserButtonCollect.begin();
+	ImageButtonCollect::iterator itend=m_UserButtonCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		(*it)->reset();
+	}
+	return ;
 }
 
 //-------------------------------------------------------
@@ -181,20 +197,20 @@ void UISelectUser::buttonHit(Widget* pbutton)
 	if(pbutton==m_ToCaptureButton)
 	{
 		setVisible(false);
-		
+
 		UIBase* pCaptureFace= Application::getSingleton().getUIByName("CaptureFaceUI");
 		assert(pCaptureFace);
 		pCaptureFace->setVisible(true);
 
 	}
 
-	
+
 
 	////不能在些删除控件。
 
 	///如果点击的人物脸就删除这个用户
 	const Ogre::String& imageName=pbutton->getName();
-    size_t size=m_UserList->size();
+	size_t size=m_UserList->size();
 	for(size_t i=0;i<size;++i)
 	{
 		Ogre::String username=m_UserList->at(i);
@@ -213,28 +229,24 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 				m_NeedUpdate=true;
 				return ;
-			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///正常点击就是入了战争状态
+			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///正常点击进入选择头套选择界面
 			{
-				Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
+				//Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
+
+				setVisible(false);
+				UIBase* pSelectFaceMode= Application::getSingleton().getUIByName(" UISelectHead");
+				pSelectFaceMode->setVisible(true);
 
 			}
 
-			
+
 		}
 
 	}
 
 
 
-//	Ogre::StringVectorPtr pFileList=Tools::getUserFaceFileList();
-//	this->setUserList(pFileList);
-
-	
-
 	return ;
 
 
 }
-
-
-
