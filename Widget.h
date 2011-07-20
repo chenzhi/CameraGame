@@ -137,12 +137,19 @@ public:
 	void reset();
 
 	TIB getState()const{return m_State;}
+    
+    
+    
+    
 
 
 protected:
 
 	///根据状态更新显示
 	void updateState();
+    
+    ///摇动按钮
+    void rotateButton(float time);
 
 
 
@@ -155,5 +162,6 @@ protected:
 	Ogre::MaterialPtr m_pDeleteMaterial;
 
 	Ogre::OverlayElement* m_pDeleteElement;///删除按钮
+    
 
 };

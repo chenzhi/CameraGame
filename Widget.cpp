@@ -203,6 +203,8 @@ void TimeImageButton::update(float time)
 
 	
 	updateState();
+    
+    rotateButton(time);
 
 
 }
@@ -247,7 +249,7 @@ void TimeImageButton::_focusLost()
   m_isPress=false;
 }
 
-//---------------------------------------------------------------------------------------------
+
 void TimeImageButton::updateState()
 {
 	if(m_State==NORMAL)
@@ -258,6 +260,20 @@ void TimeImageButton::updateState()
 		m_pDeleteElement->show();
 	}
 
+}
+
+//---------------------------------------------------------------------------------------------
+void TimeImageButton::rotateButton(float time)
+{
+    if(m_State==NORMAL)
+    {
+        
+    }else
+    {
+        
+        
+    }
+    
 }
 
 //--------------------------------------------------------------------------------------------

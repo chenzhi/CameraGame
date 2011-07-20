@@ -161,6 +161,8 @@ bool Application::initOgreRender()
 #endif
 
    // mStaticPluginLoader.load();
+    
+    Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(3);
  
 
     m_pSceneManager = m_pRoot->createSceneManager(Ogre::ST_GENERIC, "DummyScene");
