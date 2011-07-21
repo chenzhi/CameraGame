@@ -72,7 +72,7 @@ bool FaceModeDataSource::getElementUserData(unsigned index,Ogre::String& element
 
 
 //---------------------------------------------------------------
- UISelectHead:: UISelectHead()
+UISelectHead:: UISelectHead()
 :UIBase(" UISelectHead","")
 {
 

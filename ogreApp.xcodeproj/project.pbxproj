@@ -34,6 +34,8 @@
 		77910B9013AA0D0300ACEE73 /* ogre.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8D13AA0D0300ACEE73 /* ogre.cfg */; };
 		77910B9113AA0D0300ACEE73 /* plugins.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8E13AA0D0300ACEE73 /* plugins.cfg */; };
 		77910B9213AA0D0300ACEE73 /* resources.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8F13AA0D0300ACEE73 /* resources.cfg */; };
+		779B6D9213D7B67C006E2BE4 /* UISelectFaceMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779B6D8E13D7B67C006E2BE4 /* UISelectFaceMode.cpp */; };
+		779B6D9313D7B67C006E2BE4 /* UISelectHead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779B6D9013D7B67C006E2BE4 /* UISelectHead.cpp */; };
 		779F91F513C5546F009A65D4 /* UIBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779F91F313C5546F009A65D4 /* UIBase.cpp */; };
 		779F91FA13C56420009A65D4 /* UICaptureFace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779F91F813C56420009A65D4 /* UICaptureFace.cpp */; };
 		779F91FD13C5A71F009A65D4 /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779F91FB13C5A71F009A65D4 /* UIManager.cpp */; };
@@ -98,6 +100,10 @@
 		77910B8E13AA0D0300ACEE73 /* plugins.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plugins.cfg; path = Resources/plugins.cfg; sourceTree = "<group>"; };
 		77910B8F13AA0D0300ACEE73 /* resources.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = resources.cfg; path = Resources/resources.cfg; sourceTree = "<group>"; };
 		77979F4013AAE3920040265C /* FileSystemLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemLayer.h; sourceTree = "<group>"; };
+		779B6D8E13D7B67C006E2BE4 /* UISelectFaceMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UISelectFaceMode.cpp; sourceTree = "<group>"; };
+		779B6D8F13D7B67C006E2BE4 /* UISelectFaceMode.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UISelectFaceMode.h; sourceTree = "<group>"; };
+		779B6D9013D7B67C006E2BE4 /* UISelectHead.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UISelectHead.cpp; sourceTree = "<group>"; };
+		779B6D9113D7B67C006E2BE4 /* UISelectHead.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UISelectHead.h; sourceTree = "<group>"; };
 		779F91F313C5546F009A65D4 /* UIBase.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UIBase.cpp; sourceTree = SOURCE_ROOT; };
 		779F91F413C5546F009A65D4 /* UIBase.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIBase.h; sourceTree = "<group>"; };
 		779F91F713C5580D009A65D4 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
@@ -184,6 +190,10 @@
 		7755CC3413CEBCF200E9B78A /* SelectFace */ = {
 			isa = PBXGroup;
 			children = (
+				779B6D8E13D7B67C006E2BE4 /* UISelectFaceMode.cpp */,
+				779B6D8F13D7B67C006E2BE4 /* UISelectFaceMode.h */,
+				779B6D9013D7B67C006E2BE4 /* UISelectHead.cpp */,
+				779B6D9113D7B67C006E2BE4 /* UISelectHead.h */,
 				7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */,
 				7755CC3613CEBD1600E9B78A /* UISelectUser.h */,
 				779F91F813C56420009A65D4 /* UICaptureFace.cpp */,
@@ -428,6 +438,8 @@
 				7755CC3313CEBCEB00E9B78A /* UISelectMode.cpp in Sources */,
 				7755CC3713CEBD1600E9B78A /* UISelectUser.cpp in Sources */,
 				7755CC4213CEEA9400E9B78A /* Tool.cpp in Sources */,
+				779B6D9213D7B67C006E2BE4 /* UISelectFaceMode.cpp in Sources */,
+				779B6D9313D7B67C006E2BE4 /* UISelectHead.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
