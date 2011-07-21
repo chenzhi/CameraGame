@@ -260,6 +260,63 @@
 			return mElement->isVisible();
 		}
 
+		void setleft(float left)
+		{
+			if(mElement!=NULL)
+			{
+				mElement->setLeft(left);
+			}
+		}
+
+		void setWidth(float width)
+		{
+			if(mElement!=NULL)
+			{
+				mElement->setWidth(width);
+			}
+		}
+
+		void setHeight(float height)
+		{
+			if(mElement!=NULL)
+			{
+				mElement->setHeight(height);
+			}
+		}
+
+		void setTop(float top)
+		{
+			if(mElement!=NULL)
+			{
+				mElement->setTop(top);
+			}
+		}
+
+
+		void setMetricsMode(Ogre::GuiMetricsMode mode)
+		{
+			if(mElement!=NULL)
+			{
+				mElement->setMetricsMode(mode);
+			}
+		}
+
+
+		void  setHorizontalAlignment(Ogre::GuiHorizontalAlignment gha)
+		{
+			if(mElement!=NULL)
+			{
+				mElement->setHorizontalAlignment(gha);
+			}
+		}
+
+		void setVerticalAlignment(Ogre::GuiVerticalAlignment gva)
+		{
+			if(mElement!=NULL)
+			{
+				mElement->setVerticalAlignment(gva);
+			}
+		}
 		// callbacks
 
 		virtual void _cursorPressed(const Ogre::Vector2& cursorPos) {}

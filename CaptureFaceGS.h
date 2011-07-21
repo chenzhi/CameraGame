@@ -20,6 +20,7 @@
 
 class UISelectUser;
 class UICaptureFace;
+class UIBase;
 class CaptureFaceGS : public GameState
 {
 
@@ -105,6 +106,8 @@ protected:
     UICaptureFace*         m_pCaptureUI;
 
 	UISelectUser*         m_pSelectUserUI;
+
+	UIBase*               m_pSelectHeadUI;
     
     
 };

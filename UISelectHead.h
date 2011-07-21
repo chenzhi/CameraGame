@@ -89,10 +89,16 @@ protected:
 
 
 
+	 ///点击按钮回调事件
+     void  buttonHit(Widget* pWidget);
+
 
 
 protected:
 
+
+
+	Widget* m_pReturnButton;
 
 
 

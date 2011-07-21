@@ -73,7 +73,7 @@ bool FaceModeDataSource::getElementUserData(unsigned index,Ogre::String& element
 
 //---------------------------------------------------------------
  UISelectHead:: UISelectHead()
-:UIBase(" UISelectHead","")
+:UIBase(" UISelectHead",""),m_pReturnButton(NULL)
 {
 
 
@@ -109,6 +109,17 @@ void  UISelectHead::init()
 	pSliderGallery->getOverlayElement()->setLeft(100);
 
 
+
+	m_pReturnButton=new ImageButton("SelectHeadReturn","sdk_button_down.png","sdk_button_up.png");
+	m_pReturnButton->setHorizontalAlignment(Ogre::GHA_LEFT);
+	m_pReturnButton->setVerticalAlignment(Ogre::GVA_TOP);
+	m_pReturnButton->setleft(700);
+	m_pReturnButton->setTop(400);
+	registerWidget(m_pReturnButton);
+
+
+
+
 }
 
 
@@ -119,5 +130,21 @@ void  UISelectHead::sliderGalleryhit(SrollButton* pbutton)
 	Ogre::String userData=pbutton->getUserData();
 
 	return ;
+
+}
+
+void UISelectHead::buttonHit(Widget* pWidget)
+{
+	if(pWidget==NULL)
+		return ;
+
+	//返回按钮，回到选择人物界面
+	if(pWidget==m_pReturnButton)
+	{
+
+
+		return ;
+
+	}
 
 }

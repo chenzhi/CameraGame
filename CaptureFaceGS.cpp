@@ -20,7 +20,7 @@
 
 CaptureFaceGS::CaptureFaceGS( )
 :GameState(ST_CAPTUREFACE),m_BackGround(NULL),m_pCameraNode(NULL),m_pCaptureUI(NULL),
-m_pSelectUserUI(NULL)
+m_pSelectUserUI(NULL),m_pSelectHeadUI(NULL)
 
 {
     
@@ -249,11 +249,11 @@ void  CaptureFaceGS::initUI()
 
 
 ///---------------------------Ñ¡ÔñÁ³ÐÎ
-	UIBase* pSelectMode=new UISelectHead();
-	pSelectMode->init();
-	pSelectMode->setVisible(true);
-	Application::getSingleton().registerUI(pSelectMode);
-	pSelectMode->setVisible(false);
+	m_pSelectHeadUI=new UISelectHead();
+	m_pSelectHeadUI->init();
+	m_pSelectHeadUI->setVisible(true);
+	Application::getSingleton().registerUI(m_pSelectHeadUI);
+	m_pSelectHeadUI->setVisible(false);
 
 
 
@@ -264,11 +264,14 @@ void  CaptureFaceGS::initUI()
 
 void  CaptureFaceGS::destroyUI()
 {
+	Application* pApp=Application::getSingletonPtr();
 
-	Application::getSingleton().destroyUI(m_pCaptureUI);
+	pApp->destroyUI(m_pCaptureUI);
 	m_pCaptureUI=NULL;
 
-	Application::getSingleton().destroyUI(m_pSelectUserUI);
+	pApp->destroyUI(m_pSelectUserUI);
 	m_pSelectUserUI=NULL;
 
+	pApp->destroyUI(m_pSelectHeadUI);
+	m_pSelectHeadUI=NULL;
 }
