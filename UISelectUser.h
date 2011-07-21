@@ -31,6 +31,9 @@ public:
 
 protected:
 
+	/**手指离开*/
+	virtual void onEndTouch(int x,int y);
+
 	///重新载入用用列表
 	void updateUserList();
 
@@ -41,6 +44,9 @@ protected:
 
 	///按钮回调事件
 	virtual void buttonHit(Widget* button);
+
+	/**重置所有的照片按钮状态*/
+	void   resetUserFaceButton();
 
 
 

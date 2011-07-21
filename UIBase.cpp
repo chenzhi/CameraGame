@@ -302,7 +302,12 @@ bool UIBase::registerWidget(Widget* pWidget)
 		return false;
 	}
 
-	m_pParentOverlay->add2D( static_cast<Ogre::OverlayContainer*>(pWidget->getOverlayElement()));
+
+	Ogre::OverlayContainer*pElement=static_cast<Ogre::OverlayContainer*>(pWidget->getOverlayElement());
+	if(pElement!=NULL)
+	{
+		m_pParentOverlay->add2D(pElement );
+	}
 	m_WidgetCollect.push_back(pWidget);
 	pWidget->_assignListener(this);
 	return true;

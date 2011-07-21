@@ -69,6 +69,8 @@
 	class Label;
 	class Slider;
 	class CheckBox;
+	class SliderGallery;
+	class SrollButton;
 
 	/*=============================================================================
 	| Listener class for responding to tray events.
@@ -78,7 +80,8 @@
     public:
 
 		virtual ~SdkTrayListener() {}
-		virtual void buttondown(Widget*button){}
+		virtual void sliderGalleryhit(SrollButton* pbutton ){}///滚动栏按钮选择事件
+		//virtual void buttondown(Widget*button){}
 		virtual void buttonHit(Widget* button) {}
 		virtual void itemSelected(SelectMenu* menu) {}
 		virtual void labelHit(Label* label) {}
@@ -231,8 +234,9 @@
 			return mElement;
 		}
 
-		const Ogre::String& getName()
+		virtual const Ogre::String& getName()
 		{
+			
 			return mElement->getName();
 		}
 

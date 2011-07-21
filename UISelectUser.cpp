@@ -1,4 +1,3 @@
-
 #include "pch.h"
 #include "UISelectUser.h"
 #include  "Widget.h"
@@ -40,50 +39,22 @@ void  UISelectUser::init()
 	pElment->setVerticalAlignment(Ogre::GVA_TOP);
 	pElment->setWidth(1.0f);
 	pElment->setHeight(1.0f);
-    
-    
-    
-    
-    ///åˆ›å»ºå·¦è¾¹æŒ‰é’®ç”¨æ¥è·³åˆ°æ•èŽ·è„¸çš„ç•Œé¢ã€‚
-   m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","sdk_button_up.png","sdk_button_down.png");
-    registerWidget(m_ToCaptureButton);
-    m_ToCaptureButton->_assignListener(this);
-    pElment=m_ToCaptureButton->getOverlayElement();
+
+
+
+
+	///??»ºå·?¾¹????¨æ?è·³å?????¸ç??????	m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","sdk_button_up.png","sdk_button_down.png");
+	registerWidget(m_ToCaptureButton);
+	m_ToCaptureButton->_assignListener(this);
+	pElment=m_ToCaptureButton->getOverlayElement();
 	pElment->setHorizontalAlignment(Ogre::GHA_LEFT);
-	//pElment->setWidth(1.0f);
-	//pElment->setHeight(1.0f);
-
-
-    
-    
-    
-
-    
-    
-    ///åˆ›å»ºäº”ä¸ªæŒ‰é’®ç”¨æ¥é€‰æ‹©å·²æ‹ç…§çš„äººç‰©ã€‚
-    
-    //ImageButton* pButton =new ImageButton("SelectUser_1",
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	return ;
 }
 
 
 
-///æ¯å¸§æ›´æ–°
+//-----------------------------------------------
 void UISelectUser::update(float time)
 {
 	UIBase::update(time);
@@ -114,17 +85,15 @@ void  UISelectUser::updateUserList()
 void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 {
 
-	///å¦‚æžœä¼ æ— æ•ˆæŒ‡é’ˆå¿½è§†
-	if(pUserList.isNull())
+	///å¦??ä¼???????¿½è§?	if(pUserList.isNull())
 		return ;
 
-	///åˆ é™¤æ—§çš„
+	///????§ç?
 	destroyAllUserList();
 
 	m_UserList=pUserList;
 
-	///å¾ªçŽ¯åˆ›å»ºæœ‰ç”¨æˆ·æŒ‰é’®,æœ€å¤šåªåˆ›å»º5ä¸ª
-	int userSize=m_UserList->size();
+	///å¾????»º????·æ?????????å»?ä¸?	int userSize=m_UserList->size();
 	if(userSize>5)
 	{
 		userSize=5;
@@ -165,9 +134,53 @@ void  UISelectUser::destroyAllUserList()
 	}
 
 	m_UserButtonCollect.clear();
-	
+
 	return ;
 
+}
+
+//-------------------------------------------------------
+void UISelectUser::onEndTouch(int x,int y)
+{
+	UIBase::onEndTouch(x,y);
+
+	///å¦??æ²¡æ??¹å??°ä»»ä½??ä¸???????°±???????§ç?????¨é???½®?¶æ?
+
+	bool needRest=true;
+
+	ImageButtonCollect::iterator it=m_UserButtonCollect.begin();
+	ImageButtonCollect::iterator itend=m_UserButtonCollect.end();
+	Ogre::Vector2  area(x,y);
+
+	for(;it!=itend;++it)
+	{
+		if((*it)->isCursorOver((*it)->getOverlayElement(),area))
+		{
+
+			needRest=false;
+			break;;
+		}
+	}
+
+	if(needRest)
+	{
+		resetUserFaceButton();
+	}
+
+
+}
+
+//----------------------------------------------------------
+void   UISelectUser::resetUserFaceButton()
+{
+	ImageButtonCollect::iterator it=m_UserButtonCollect.begin();
+	ImageButtonCollect::iterator itend=m_UserButtonCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		(*it)->reset();
+	}
+	return ;
 }
 
 //-------------------------------------------------------
@@ -177,24 +190,21 @@ void UISelectUser::buttonHit(Widget* pbutton)
 		return ;
 
 
-	///å¦‚æžœæ˜¯è·³åˆ°æ•è„¸ç•Œé¢
-	if(pbutton==m_ToCaptureButton)
+	///å¦????·³?°æ??¸ç???	if(pbutton==m_ToCaptureButton)
 	{
 		setVisible(false);
-		
+
 		UIBase* pCaptureFace= Application::getSingleton().getUIByName("CaptureFaceUI");
 		assert(pCaptureFace);
 		pCaptureFace->setVisible(true);
 
 	}
 
-	
 
-	////ä¸èƒ½åœ¨äº›åˆ é™¤æŽ§ä»¶ã€‚
 
-	///å¦‚æžœç‚¹å‡»çš„äººç‰©è„¸å°±åˆ é™¤è¿™ä¸ªç”¨æˆ·
-	const Ogre::String& imageName=pbutton->getName();
-    size_t size=m_UserList->size();
+	////ä¸???¨ä?????§ä»¶??
+	///å¦???¹å???ºº?©è?å°±å??¤è?ä¸????	const Ogre::String& imageName=pbutton->getName();
+	size_t size=m_UserList->size();
 	for(size_t i=0;i<size;++i)
 	{
 		Ogre::String username=m_UserList->at(i);
@@ -204,7 +214,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 			TimeImageButton*  pTimeButton=static_cast<TimeImageButton*>(pbutton);
 
-			///é•¿æŒ‰åŽå†ç‚¹å‡»å°±æ˜¯åˆ é™¤
+			///?¿æ?????¹å?å°±æ????
 			if(pTimeButton->getState()==TimeImageButton::Press)
 			{
 
@@ -212,29 +222,24 @@ void UISelectUser::buttonHit(Widget* pbutton)
 				::remove(username.c_str());
 				m_NeedUpdate=true;
 				return ;
-                
-			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///æ­£å¸¸ç‚¹å‡»å°±æ˜¯å…¥äº†æˆ˜äº‰çŠ¶æ€
+			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///æ­£å¸¸?¹å?è¿?????å¤´å???????
 			{
-				Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
+				//Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
+
+				setVisible(false);
+				UIBase* pSelectFaceMode= Application::getSingleton().getUIByName(" UISelectHead");
+				pSelectFaceMode->setVisible(true);
 
 			}
 
-			
+
 		}
 
 	}
 
 
 
-//	Ogre::StringVectorPtr pFileList=Tools::getUserFaceFileList();
-//	this->setUserList(pFileList);
-
-	
-
 	return ;
 
 
 }
-
-
-

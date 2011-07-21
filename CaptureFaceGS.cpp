@@ -13,6 +13,8 @@
 #include "UISelectUser.h"
 #include "Config.h"
 #include "Tool.h"
+#include "UISelectHead.h"
+#include "UISelectFaceMode.h"
 
 
 
@@ -237,10 +239,24 @@ void  CaptureFaceGS::initUI()
 	{
 		m_pCaptureUI->setVisible(true);
 
-	}else
+	}
+    else
 	{
 		m_pSelectUserUI->setVisible(true);
 	}
+
+	
+
+
+///---------------------------Ñ¡ÔñÁ³ÐÎ
+	UIBase* pSelectMode=new UISelectHead();
+	pSelectMode->init();
+	pSelectMode->setVisible(true);
+	Application::getSingleton().registerUI(pSelectMode);
+	pSelectMode->setVisible(false);
+
+
+
 
 
 }

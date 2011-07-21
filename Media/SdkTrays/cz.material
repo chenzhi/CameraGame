@@ -44,8 +44,92 @@ material cz/TimeImageButton/DeleteButton : cz/Base
         {
             texture_unit 0
             {
-                texture sdk_mini_tray.png
+                texture sdk_separator.png
             }
         }
     }
 }
+
+
+
+material cz/SliderGallery/mat : cz/Base
+{
+    technique
+    {
+        pass
+        {
+            texture_unit 0
+            {
+                 texture sdk_button_down.png
+            }
+        }
+    }
+}
+
+
+material cz/SliderGallery/Backgroud/mat : cz/Base
+{
+    technique
+    {
+        pass
+        {
+            texture_unit 0
+            {
+                  texture sdk_button_over.png
+            }
+        }
+    }
+}
+
+
+material cz/SliderGallery/Button/mat : cz/Base
+{
+    technique
+    {
+        pass
+        {
+            texture_unit 0
+            {
+               texture   sdk_button_over.png
+            }
+        }
+    }
+}
+
+
+material cz/SliderGallery/PrevisousButton/mat  : cz/Base
+{
+    technique
+    {
+        pass
+        {
+            texture_unit 0
+            {
+                 texture sdk_cursor.png
+            }
+        }
+    }
+}
+
+
+material cz/SliderGallery/NextButton/mat  : cz/Base
+{
+    technique
+    {
+        pass
+        {
+            texture_unit 0
+            {
+                 texture sdk_cursor.png
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+

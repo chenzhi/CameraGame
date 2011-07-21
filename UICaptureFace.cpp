@@ -30,56 +30,6 @@ void UICaptureFace::init()
 {
 	
 
-	initUI();
-
-
-
-	return ;
-}
-
-
-
-///设置已经有多少个用户了
-void UICaptureFace::setUserCount(unsigned int count)
-{
-	m_UserCount=count;
-}
-
-/**开始触摸,*/
-void UICaptureFace::onBeginTouch(int x,int y)
-{
-	UIBase::onBeginTouch(x,y);
-
-	return ;
-}
-
-
-/**滑动手指*/
-void UICaptureFace::onMoveTouch(int x,int y)
-{
-	UIBase::onMoveTouch(x,y);
-  return ;
-}
-
-
-/**手指离开*/
-void UICaptureFace::onEndTouch(int x,int y)
-{
-	UIBase::onEndTouch(x,y);
-	return ;
-}
-
- void UICaptureFace::buttonHit(Button* button)
-{
-	Ogre::String name=	button->getName();
-	return ;
-}
-
-
-//-----------------------------------------------
-void  UICaptureFace::initUI()
-{
-
 
 
 	UIBase::init();
@@ -95,10 +45,10 @@ void  UICaptureFace::initUI()
 	pElement->setVerticalAlignment(Ogre::GVA_TOP);
 	pElement->setWidth(1.0f);
 	pElement->setHeight(1.0f);
-	
 
 
-  ////回到用户选择按钮
+
+	////回到用户选择按钮
 	m_pToUserFace=new ImageButton("ToCaptureFace","sdk_label.png","sdk_frame.png");
 	registerWidget(m_pToUserFace);
 	pElement=m_pToUserFace->getOverlayElement();
@@ -107,7 +57,7 @@ void  UICaptureFace::initUI()
 
 
 	///拍照铵钮
-    m_pCaptureButton=new ImageButton("CaptureFaceButton","sdk_frame.png","sdk_label.png");
+	m_pCaptureButton=new ImageButton("CaptureFaceButton","sdk_frame.png","sdk_label.png");
 	registerWidget(m_pCaptureButton);
 	pElement=m_pCaptureButton->getOverlayElement();
 	pElement->setHorizontalAlignment(Ogre::GHA_RIGHT);
@@ -119,24 +69,32 @@ void  UICaptureFace::initUI()
 
 
 	///返回上一层按钮
-	 m_pGoBackButton=new ImageButton("CaptureFaceGoBackButton","sdk_button_down.png","sdk_button_over.png");
-	 registerWidget(m_pGoBackButton);
-     pElement=m_pGoBackButton->getOverlayElement();
-	 pElement->setHorizontalAlignment(Ogre::GHA_LEFT);
-	 pElement->setVerticalAlignment(Ogre::GVA_BOTTOM);
-	 pElement->setLeft(200);
-	 pElement->setTop(-height-100);
+	m_pGoBackButton=new ImageButton("CaptureFaceGoBackButton","sdk_button_down.png","sdk_button_over.png");
+	registerWidget(m_pGoBackButton);
+	pElement=m_pGoBackButton->getOverlayElement();
+	pElement->setHorizontalAlignment(Ogre::GHA_LEFT);
+	pElement->setVerticalAlignment(Ogre::GVA_BOTTOM);
+	pElement->setLeft(200);
+	pElement->setTop(-height-100);
 
 
 	return ;
+
+
 }
 
- ///-------------------------------------------------------------
-void  UICaptureFace::destroyUI()
+
+
+///设置已经有多少个用户了
+void UICaptureFace::setUserCount(unsigned int count)
 {
+	m_UserCount=count;
+}
 
-	
 
+ void UICaptureFace::buttonHit(Button* button)
+{
+	Ogre::String name=	button->getName();
 	return ;
 }
 

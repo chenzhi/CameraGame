@@ -61,11 +61,11 @@ public:
     
     
     /**设置是否可见*/
-    void  setVisible(bool b);
+    virtual void  setVisible(bool b);
     
     
     /**判断是否可见,如果不同见不响应手指事件*/
-    bool   isVisible()const ;
+    virtual bool   isVisible()const ;
     
 
     /**销毁一个overlayElement和其子对像*/
