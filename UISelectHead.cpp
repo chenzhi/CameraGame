@@ -4,7 +4,7 @@
 #include "UISelectHead.h"
 #include "Widget.h"
 #include "Application.h"
-
+#include "Tool.h"
 
 
 
@@ -72,8 +72,8 @@ bool FaceModeDataSource::getElementUserData(unsigned index,Ogre::String& element
 
 
 //---------------------------------------------------------------
- UISelectHead:: UISelectHead()
-:UIBase(" UISelectHead",""),m_pReturnButton(NULL)
+UISelectHead:: UISelectHead()
+:UIBase("UISelectHead",""),m_pReturnButton(NULL)
 {
 
 
@@ -113,7 +113,7 @@ void  UISelectHead::init()
 	m_pReturnButton=new ImageButton("SelectHeadReturn","sdk_button_down.png","sdk_button_up.png");
 	m_pReturnButton->setHorizontalAlignment(Ogre::GHA_LEFT);
 	m_pReturnButton->setVerticalAlignment(Ogre::GVA_TOP);
-	m_pReturnButton->setleft(700);
+	m_pReturnButton->setLeft(700);
 	m_pReturnButton->setTop(400);
 	registerWidget(m_pReturnButton);
 
@@ -129,6 +129,13 @@ void  UISelectHead::sliderGalleryhit(SrollButton* pbutton)
 
 	Ogre::String userData=pbutton->getUserData();
 
+
+	///选择了头套进入选择脸型界面
+	setVisible(false);
+	UIBase* pSelectFace=Application::getSingleton().getUIByName("UISelectFaceMode");
+	pSelectFace->setVisible(true);
+
+
 	return ;
 
 }
@@ -138,10 +145,26 @@ void UISelectHead::buttonHit(Widget* pWidget)
 	if(pWidget==NULL)
 		return ;
 
+
 	//返回按钮，回到选择人物界面
 	if(pWidget==m_pReturnButton)
 	{
 
+		Ogre::StringVectorPtr pUserList=Tools::getUserFaceFileList();
+
+		if(pUserList.isNull()||pUserList->empty())///如果没有信息就返回到捕脸界面
+		{
+		   
+			UIBase* pUI=Application::getSingletonPtr()->getUIByName("CaptureFaceUI");
+		    pUI->setVisible(true);
+	
+     	}else///返回到选择用户的界面
+		{
+
+			UIBase* pUI=Application::getSingletonPtr()->getUIByName("UISelectUser");
+			pUI->setVisible(true);
+		}
+         setVisible(false);
 
 		return ;
 

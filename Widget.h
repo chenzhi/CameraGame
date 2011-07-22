@@ -85,7 +85,7 @@ public:
 	StaticImage(const Ogre::String& name, const Ogre::String& textureName);
 
 
-	~StaticImage();
+    virtual	~StaticImage();
 
 
 	void setImage(const Ogre::String& textureName);
@@ -139,12 +139,19 @@ public:
 	void reset();
 
 	TIB getState()const{return m_State;}
+    
+    
+    
+    
 
 
 protected:
 
 	///根据状态更新显示
 	void updateState();
+    
+    ///摇动按钮
+    void rotateButton(float time);
 
 
 
@@ -157,6 +164,7 @@ protected:
 	Ogre::MaterialPtr m_pDeleteMaterial;
 
 	Ogre::OverlayElement* m_pDeleteElement;///删除按钮
+    
 
 };
 
@@ -440,6 +448,33 @@ protected:
 
 	SliderGalleryDataSource*      m_pDataSource; ////数据源
 	unsigned int                  m_DataIndex; ///最左边按钮对应数据源里第几个数据
+
+
+};
+
+
+/*************************************************
+可旋转的静态图片
+****************************************************/
+class RotateImage :public StaticImage
+{
+
+public:
+	RotateImage(const Ogre::String& name, const Ogre::String& imageName);
+
+	~RotateImage();
+
+	/**设置朝向
+	*@param radian 弧度单位
+	*/
+	void setOrientation(float radian);
+
+
+//	void update(float time);
+
+protected:
+
+	
 
 
 };

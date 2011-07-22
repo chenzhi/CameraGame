@@ -15,7 +15,7 @@
 #include  "SdkTrays.h"
 #include "GS_GamePlay.h"
 #include "GSSelectMode.h"
-
+#include "Tool.h"
 
 
 
@@ -34,8 +34,7 @@ Application::Application()
 m_pSceneManager(NULL)
 {
 
-    //创建目录
-    initGamePath();
+
 }
 
 //----------------------------------------------
@@ -82,6 +81,9 @@ void Application::init()
      initOgreRender();
 
 	 initInputDevice();
+    
+    //创建目录
+    initGamePath();
     
      initState();
 }
@@ -159,6 +161,8 @@ bool Application::initOgreRender()
 #endif
 
    // mStaticPluginLoader.load();
+    
+    Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(3);
  
 
     m_pSceneManager = m_pRoot->createSceneManager(Ogre::ST_GENERIC, "DummyScene");
@@ -766,11 +770,11 @@ bool Application::InitWindow(int width, int height)
 void Application::initGamePath()
 {
     
-    #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
+  #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
      
-    Ogre::String DocDirect=Ogre::iPhoneDocumentsDirectory();
+    Ogre::String faceDirect=Tools::getUserFacePath();
     
-    Ogre::String faceDirect=DocDirect+"/UserFace";
+    Ogre::LogManager::getSingleton().logMessage("user face path is "+faceDirect);
     
     struct stat tagStat;
     bool ret = (stat(faceDirect.c_str(), &tagStat) == 0);
@@ -785,7 +789,7 @@ void Application::initGamePath()
     mkdir(faceDirect.c_str(),0777);
     
     return ;
-    #endif
+   #endif
 }
 
 

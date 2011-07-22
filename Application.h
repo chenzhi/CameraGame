@@ -112,6 +112,9 @@ public:
     void initGamePath();
 
 
+	/**获取渲染窗口*/
+	Ogre::RenderWindow* getRenderWindows()const {return m_pRenderWindow;}
+
 
 	//*/输入事件结束
 

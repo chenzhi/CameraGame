@@ -8,6 +8,8 @@
 #include "UIBase.h"
 
 
+class Widget;
+
 class UIGamePlay :public UIBase
 {
 public:
@@ -22,6 +24,7 @@ public:
 	/**≥ı ºªØ*/
 	virtual void init();
 
+	virtual void update(float time);
 
 
 
@@ -32,6 +35,8 @@ protected:
 	virtual void buttonHit(Widget* button);
 
 
+
+	Widget* m_pRotateImage;
 
 
 

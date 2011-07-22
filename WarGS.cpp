@@ -12,11 +12,13 @@
 #include  "BulletManager.h"
 #include "Application.h"
 #include "ogreapp/inputListen.h"
+#include "GameMode.h"
 
 
 //------------------------------------
 WarGS::WarGS()
-:GameState(ST_WAR),m_pBulletManager(NULL),m_pCameraNode(NULL)
+:GameState(ST_WAR),m_pBulletManager(NULL),m_pCameraNode(NULL),
+m_ActiveGameMode(NULL)
 {
     
 }
@@ -39,13 +41,19 @@ void WarGS::begin()
     
     initVideoTeture();
     
-    m_pBulletManager=new BulletManager();
+   m_pBulletManager=new BulletManager();
     
-    m_pBulletManager->startWar();
+   // m_pBulletManager->startWar();
     
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
     
+
+	m_ActiveGameMode=new GameModeTwo(this);
     
+	if(m_ActiveGameMode)
+	{
+		m_ActiveGameMode->start();
+	}
 
 
     ///起用陀螺仪
@@ -64,6 +72,7 @@ void WarGS::end()
     m_pBulletManager=NULL;
     
 
+	SafeDelete(m_ActiveGameMode);
     ///关闭陀螺仪
     InputListen::getSingleton().endGyroscope();
 
@@ -78,14 +87,28 @@ StateType WarGS::update(float time)
     
     
     ///如果游戏结束重新回到人物校正
-    if(m_pBulletManager->isGameEnd())
-    {
-        setNextStateType(ST_CAPTUREFACE);
-    }
+    //if(m_pBulletManager->isGameEnd())
+   // {
+    //    setNextStateType(ST_CAPTUREFACE);
+   // }
     
          
     updateAccelerometer();
     
+
+	if(m_ActiveGameMode)
+	{
+		m_ActiveGameMode->update(time);
+		if(m_ActiveGameMode->isEnd())
+		{
+			m_ActiveGameMode->end();
+			setNextStateType(ST_CAPTUREFACE);
+		}
+
+
+	}
+
+
     
     return GameState::update(time);
     
@@ -95,6 +118,7 @@ StateType WarGS::update(float time)
 void WarGS::beginTouch(int x,int y)
 {
     
+	/*//
     Ogre::Matrix3 matrix= m_pCameraNode->getLocalAxes();
     
     Ogre::Vector3 dir(matrix[0][2],matrix[1][2],matrix[2][2]);
@@ -102,8 +126,13 @@ void WarGS::beginTouch(int x,int y)
     dir.y-=0.15;
     dir.normalise();
     m_pBulletManager->fire(m_pCameraNode->getPosition(),dir);
+    //*/
     
-    
+
+	if(m_ActiveGameMode)
+	{
+		m_ActiveGameMode->beginTouch(x,y);
+	}
 
 }
 
@@ -161,6 +190,7 @@ void WarGS::initVideoTeture()
 //-------------------------------------------------------------------------
 void WarGS::updateAccelerometer()
 {
+	return ;
     
 //#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     

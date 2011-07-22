@@ -33,14 +33,14 @@ void UIGamePlay::init()
    StaticImage* pImage=new StaticImage("GamePlayBackGround","sdk_logo.png");
     registerWidget(pImage);
    Ogre::OverlayElement* pElment=pImage->getOverlayElement();
-   pElment->setMetricsMode(Ogre::GMM_RELATIVE);
-   pElment->setHorizontalAlignment(Ogre::GHA_LEFT);
-   pElment->setVerticalAlignment(Ogre::GVA_TOP);
+   pImage->setMetricsMode(Ogre::GMM_RELATIVE);
+   pImage->setHorizontalAlignment(Ogre::GHA_LEFT);
+   pImage->setVerticalAlignment(Ogre::GVA_TOP);
 
-   pElment->setLeft(0.0f);
-   pElment->setWidth(1.0f);
-   pElment->setTop(0.0f);
-   pElment->setHeight(1.0f);
+   pImage->setLeft(0.0f);
+   pImage->setWidth(1.0f);
+   pImage->setTop(0.0f);
+   pImage->setHeight(1.0f);
 
 
    ImageButton* pPlayButton=new ImageButton("GamePlayer_PlayerButton","sdk_logo.png","sdk_button_down.png");
@@ -49,8 +49,13 @@ void UIGamePlay::init()
    pPlayButton->_assignListener(this);
    float width=pElment->getWidth();
    float height=pElment->getHeight();
-   pElment->setLeft(width*(-0.5f));
-   pElment->setTop(height*(-0.5f));
+   pPlayButton->setLeft(width*(-0.5f));
+   pPlayButton->setTop(height*(-0.5f));
+
+
+   m_pRotateImage=new RotateImage("rotsa","sdk_button_down.png");
+   registerWidget(m_pRotateImage);
+   static_cast<RotateImage*>(m_pRotateImage)->setOrientation(1.70f);
 
 
 
@@ -67,5 +72,16 @@ void UIGamePlay::buttonHit(Widget* button)
 		Application::getSingleton().getCurrentActive()->setNextStateType(ST_SELECTMODE);
 	}
 	return ;
+
+}
+
+
+
+void  UIGamePlay::update(float time)
+{
+	if(m_pRotateImage!=NULL)
+	{
+		m_pRotateImage->update(time);
+	}
 
 }

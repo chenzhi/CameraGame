@@ -14,16 +14,8 @@ Ogre::StringVectorPtr Tools::getUserFaceFileList()
 {
     
     
-    std::string userFacePath;
-    
-#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
-    
-    userFacePath= Ogre::iPhoneDocumentsDirectory();
-    //userFacePath+=g_UserFacePath;
-#else
-    userFacePath=g_UserFacePath;
-    
-#endif
+    std::string userFacePath= Tools::getUserFacePath();
+
 
 	//*/
 	Ogre::String groupName="UserFace";
@@ -46,18 +38,9 @@ Ogre::StringVectorPtr Tools::getUserFaceFileList()
 	if(pArchive==NULL)
 	{
         return Ogre::StringVectorPtr();
-	}else
-	{
-		Ogre::ArchiveManager::getSingleton().unload(pArchive);
-	    pArchive= Ogre::ArchiveManager::getSingleton().load(userFacePath,"FileSystem");
-        if(pArchive==NULL)
-		{
-			return Ogre::StringVectorPtr();
-		}
-
 	}
-    
-   
+
+	    
     Ogre::StringVectorPtr pFileList= pArchive->list(false,false);
    //  Ogre::ArchiveManager::getSingleton().unload(pArchive);
   
@@ -87,4 +70,20 @@ Ogre::StringVectorPtr Tools::getUserFaceFileList()
     return pFileList;
    
    
+}
+
+//-----------------------------------------------------------------------
+Ogre::String Tools::getUserFacePath()
+{
+    
+#if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
+    Ogre::String  userFacePath= Ogre::iPhoneDocumentsDirectory();
+    userFacePath+=g_UserFacePath;
+    return userFacePath;
+#else
+    
+    return g_UserFacePath;
+    
+#endif
+
 }

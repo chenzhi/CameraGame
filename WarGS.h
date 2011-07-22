@@ -15,7 +15,8 @@
 
 
 class BulletManager;
-
+class GameMode;
+typedef std::vector<GameMode*>GameModeCollect;
 class WarGS :public GameState
 {
     
@@ -56,6 +57,10 @@ protected:
     
     Ogre::SceneNode* m_pCameraNode;
 
+
+	GameModeCollect m_GameModeCollect;
+	GameMode*       m_ActiveGameMode;
+	
     
     
     

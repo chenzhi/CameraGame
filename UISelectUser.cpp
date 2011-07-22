@@ -43,7 +43,7 @@ void  UISelectUser::init()
 
 
 
-	///创建左边按钮用来跳到捕获脸的界面。
+	///捕脸按钮
 	m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","sdk_button_up.png","sdk_button_down.png");
 	registerWidget(m_ToCaptureButton);
 	m_ToCaptureButton->_assignListener(this);
@@ -86,16 +86,15 @@ void  UISelectUser::updateUserList()
 void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 {
 
-	///如果传无效指针忽视
 	if(pUserList.isNull())
 		return ;
 
-	///删除旧的
+	///????觧?
 	destroyAllUserList();
 
 	m_UserList=pUserList;
 
-	///循环创建有用户按钮,最多只创建5个
+	///最多只取5个用户
 	int userSize=m_UserList->size();
 	if(userSize>5)
 	{
@@ -147,8 +146,9 @@ void UISelectUser::onEndTouch(int x,int y)
 {
 	UIBase::onEndTouch(x,y);
 
-	///如是没有点击到任何一个照片按钮就把所有的照片按钮全部重置状态
 
+
+	///重置所有的候选按钮状态
 	bool needRest=true;
 
 	ImageButtonCollect::iterator it=m_UserButtonCollect.begin();
@@ -193,7 +193,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 		return ;
 
 
-	///如果是跳到捕脸界面
+	//返回到捕脸的界面
 	if(pbutton==m_ToCaptureButton)
 	{
 		setVisible(false);
@@ -206,9 +206,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 
 
-	////不能在些删除控件。
-
-	///如果点击的人物脸就删除这个用户
+	///如果选择了玩家	
 	const Ogre::String& imageName=pbutton->getName();
 	size_t size=m_UserList->size();
 	for(size_t i=0;i<size;++i)
@@ -220,21 +218,18 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 			TimeImageButton*  pTimeButton=static_cast<TimeImageButton*>(pbutton);
 
-			///长按后再点击就是删除
+			///删除一个用户图片
 			if(pTimeButton->getState()==TimeImageButton::Press)
 			{
 
-				username=g_UserFacePath+"/"+username;
+				username=Tools::getUserFacePath()+"/"+username;
 				::remove(username.c_str());
-
 				m_NeedUpdate=true;
 				return ;
-			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///正常点击进入选择头套选择界面
+			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///进入选择头套界面
 			{
-				//Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
-
 				setVisible(false);
-				UIBase* pSelectFaceMode= Application::getSingleton().getUIByName(" UISelectHead");
+				UIBase* pSelectFaceMode= Application::getSingleton().getUIByName("UISelectHead");
 				pSelectFaceMode->setVisible(true);
 
 			}
@@ -248,6 +243,4 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 
 	return ;
-
-
 }

@@ -20,7 +20,7 @@
 
 CaptureFaceGS::CaptureFaceGS( )
 :GameState(ST_CAPTUREFACE),m_BackGround(NULL),m_pCameraNode(NULL),m_pCaptureUI(NULL),
-m_pSelectUserUI(NULL),m_pSelectHeadUI(NULL)
+m_pSelectUserUI(NULL),m_pSelectHeadUI(NULL),m_pSelectFaceUI(NULL)
 
 {
     
@@ -248,13 +248,20 @@ void  CaptureFaceGS::initUI()
 	
 
 
-///---------------------------选择脸形
+///---------------------------选择头套
 	m_pSelectHeadUI=new UISelectHead();
 	m_pSelectHeadUI->init();
 	m_pSelectHeadUI->setVisible(true);
 	Application::getSingleton().registerUI(m_pSelectHeadUI);
 	m_pSelectHeadUI->setVisible(false);
 
+
+///-------------------选择模型
+	m_pSelectFaceUI=new UISelectFaceMode();
+	m_pSelectFaceUI->init();
+	m_pSelectFaceUI->setVisible(false);
+	Application::getSingletonPtr()->registerUI(m_pSelectFaceUI);
+	
 
 
 
@@ -274,4 +281,7 @@ void  CaptureFaceGS::destroyUI()
 
 	pApp->destroyUI(m_pSelectHeadUI);
 	m_pSelectHeadUI=NULL;
+
+	pApp->destroyUI(m_pSelectFaceUI);
+	m_pSelectFaceUI=NULL;
 }

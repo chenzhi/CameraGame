@@ -260,7 +260,7 @@
 			return mElement->isVisible();
 		}
 
-		void setleft(float left)
+		void setLeft(float left)
 		{
 			if(mElement!=NULL)
 			{

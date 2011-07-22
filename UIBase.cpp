@@ -279,7 +279,11 @@ void  UIBase::onEndTouch(int x,int y)
 
 	for(;it!=endit;++it)
 	{
-		(*it)->_cursorReleased(pos);
+		if((*it)->isVisible())
+		{
+           (*it)->_cursorReleased(pos);
+		}
+		
 	}
 
 	return ;
@@ -304,7 +308,7 @@ bool UIBase::registerWidget(Widget* pWidget)
 
 
 	Ogre::OverlayContainer*pElement=static_cast<Ogre::OverlayContainer*>(pWidget->getOverlayElement());
-	if(pElement!=NULL)
+	if(pElement!=NULL&&pElement->getParent()==NULL)
 	{
 		m_pParentOverlay->add2D(pElement );
 	}
