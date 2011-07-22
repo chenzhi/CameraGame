@@ -90,6 +90,9 @@ void ImageButton::updateState()
 	if(m_State==BS_UP)
 	{
 
+		//Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName(m_NormalTexture);
+		//if(p)
+
 		m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(m_NormalTexture);
 	
 	}else
@@ -132,6 +135,15 @@ StaticImage::~StaticImage()
 //-------------------------------------------------------------------------------------------
 void StaticImage::setImage(const Ogre::String& textureName)
 {
+
+	/*Ogre::TexturePtr ptexture=Ogre::TextureManager::getSingleton().getByName(textureName);
+	assert(ptexture.isNull()==false);
+
+	int width=ptexture->getWidth();
+	int height=ptexture->getHeight();
+
+	mElement->setWidth(width);
+	*/
 
 	if(m_pMaterial.isNull()==false)
 	{

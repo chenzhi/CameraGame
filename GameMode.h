@@ -67,6 +67,8 @@ protected:
 /***************************************************
 游戏模式2
 ****************************************************/
+class UIWarModeTwo;
+class Enemy;
 class GameModeTwo :public GameMode
 {
 
@@ -108,7 +110,18 @@ protected:
 	void destroyUI();
 
 
+	/**更新ui箭头朝向*/
+	void updateUIDir();
 
+
+
+protected:
+
+	Enemy* m_pEnemy;
+
+	UIWarModeTwo  * m_pUI;
+
+	Ogre::SceneManager* m_pSceneMrg;
 
 
 };

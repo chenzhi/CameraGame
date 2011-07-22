@@ -1836,6 +1836,8 @@
 			showTrays();
 			//showCursor();
             hideCursor();
+
+			toggleAdvancedFrameStats();
 		}
 
 		/*-----------------------------------------------------------------------------
@@ -2286,6 +2288,7 @@
 		-----------------------------------------------------------------------------*/
 		void showFrameStats(TrayLocation trayLoc, int place = -1)
 		{
+			return ;
 			if (!areFrameStatsVisible())
 			{
 				Ogre::StringVector stats;
@@ -2329,7 +2332,10 @@
 		-----------------------------------------------------------------------------*/
 		void toggleAdvancedFrameStats()
 		{
-			if (mFpsLabel) labelHit(mFpsLabel);
+			if (mFpsLabel)
+			{
+				labelHit();
+			}
 		}
 
 		/*-----------------------------------------------------------------------------
@@ -2826,6 +2832,8 @@
 		-----------------------------------------------------------------------------*/
 		bool frameRenderingQueued()
 		{
+			return true;
+
 			for (unsigned int i = 0; i < mWidgetDeathRow.size(); i++)
 			{
 				delete mWidgetDeathRow[i];
@@ -2954,7 +2962,7 @@
 		/*-----------------------------------------------------------------------------
 		| Toggles visibility of advanced statistics.
 		-----------------------------------------------------------------------------*/
-		void labelHit(Label* label)
+		void labelHit(/*Label* label*/)
 		{
 			if (mStatsPanel->getOverlayElement()->isVisible())
 			{

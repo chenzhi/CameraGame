@@ -5,8 +5,8 @@ template container Panel(cz/ImageButton)
       
 	horz_align center
       vert_align center
-	width 100
-	height 100
+	width 128
+	height 128
 }
 
 

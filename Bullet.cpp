@@ -63,6 +63,16 @@ void Bullet::update(float time)
     Ogre::Vector3 dir=power.normalisedCopy();    
     
     updateHit(m_pNode->getPosition(), dir, power.length());
+
+	Ogre::Ray ray(m_pNode->getPosition(),dir);
+
+
+	///如果击中了目标，子弹就会向下掉
+	if(BulletManager::getSingleton().intersectEnemy(ray,power.length()))
+	{
+      return ;
+		
+	}
     
     
     m_pNode->translate(power,Ogre::Node::TS_WORLD);

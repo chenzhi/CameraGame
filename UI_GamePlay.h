@@ -24,7 +24,7 @@ public:
 	/**≥ı ºªØ*/
 	virtual void init();
 
-	virtual void update(float time);
+	//virtual void update(float time);
 
 
 
@@ -36,7 +36,7 @@ protected:
 
 
 
-	Widget* m_pRotateImage;
+	
 
 
 

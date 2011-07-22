@@ -49,11 +49,12 @@ void UICaptureFace::init()
 
 
 	////回到用户选择按钮
-	m_pToUserFace=new ImageButton("ToCaptureFace","sdk_label.png","sdk_frame.png");
+	m_pToUserFace=new ImageButton("ToCaptureFace","paizhao_sanjiao_press.png","paizhao_sanjiao_release.png");
 	registerWidget(m_pToUserFace);
 	pElement=m_pToUserFace->getOverlayElement();
 	pElement->setHorizontalAlignment(Ogre::GHA_RIGHT);
 	pElement->setLeft(-pElement->getWidth()-100);
+	m_pToUserFace->setTop(-64);
 
 
 	///拍照铵钮
@@ -69,15 +70,15 @@ void UICaptureFace::init()
 
 
 	///返回上一层按钮
-	m_pGoBackButton=new ImageButton("CaptureFaceGoBackButton","sdk_button_down.png","sdk_button_over.png");
+	m_pGoBackButton=new ImageButton("CaptureFaceGoBackButton","moshi_fanhui_press.png","moshi_fanhui_release.png");
 	registerWidget(m_pGoBackButton);
-	pElement=m_pGoBackButton->getOverlayElement();
-	pElement->setHorizontalAlignment(Ogre::GHA_LEFT);
-	pElement->setVerticalAlignment(Ogre::GVA_BOTTOM);
-	pElement->setLeft(200);
-	pElement->setTop(-height-100);
+	m_pGoBackButton->setHorizontalAlignment(Ogre::GHA_LEFT);
+	m_pGoBackButton->setLeft(10);
+	m_pGoBackButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
+	m_pGoBackButton->setTop(-128);
 
 
+	
 	return ;
 
 

@@ -28,7 +28,8 @@ void UISelectMode::init()
 {
 	UIBase::init();
 
-	StaticImage* pImage=new StaticImage("SelectModeBackGround","sdk_mini_text_box_over.png");
+	///模式选择背景图
+	StaticImage* pImage=new StaticImage("SelectModeBackGround","jieshu_background.png");
 	registerWidget(pImage);
 	Ogre::OverlayElement* pElment=pImage->getOverlayElement();
 	pElment->setMetricsMode(Ogre::GMM_RELATIVE);
@@ -38,21 +39,35 @@ void UISelectMode::init()
 	pElment->setHeight(1.0f);
 
 
+	///静态图片stage
+    pImage=new StaticImage("SelectMode_StageImage","moshi_stage.png");
+	registerWidget(pImage);
+	pImage->setVerticalAlignment(Ogre::GVA_TOP);
+	pImage->setTop(100);
+	int width=256;
+	int height=128;
+	pImage->setWidth(width);
+	pImage->setLeft(width*-0.5f);
 
 
-	ImageButton* pPlayButton=new ImageButton("SelectMode_1","sdk_logo.png","sdk_button_down.png");
+
+	
+
+
+	///模式1按钮
+	ImageButton* pPlayButton=new ImageButton("SelectMode_1","moshi_leftright.png","moshi_leftright.png");
 	registerWidget(pPlayButton);
 	pElment=pPlayButton->getOverlayElement();
 	pPlayButton->_assignListener(this);
 	pElment->setHorizontalAlignment(Ogre::GHA_LEFT);
-	float width=pElment->getWidth();
-	float height=pElment->getHeight();
+	width=pElment->getWidth();
+	height=pElment->getHeight();
 	pElment->setLeft(100);
 	pElment->setTop(height*(-0.5f));
 
 
 
-
+	///模式2按钮
 	pPlayButton=new ImageButton("SelectMode_2","sdk_logo.png","sdk_button_down.png");
 	registerWidget(pPlayButton);
 	pElment=pPlayButton->getOverlayElement();
@@ -66,6 +81,7 @@ void UISelectMode::init()
 
 
 
+	///模式3按钮
 	pPlayButton=new ImageButton("SelectMode_3","sdk_logo.png","sdk_button_down.png");
 	registerWidget(pPlayButton);
 	pElment=pPlayButton->getOverlayElement();
@@ -81,6 +97,13 @@ void UISelectMode::init()
 
 
 
+	///返回按钮
+	Widget* pReturnButton=new ImageButton("SelectMode_return","moshi_fanhui_press.png","moshi_fanhui_release.png");
+	pReturnButton->setHorizontalAlignment(Ogre::GHA_LEFT);
+	pReturnButton->setLeft(10);
+	pReturnButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
+	pReturnButton->setTop(-128);
+	registerWidget(pReturnButton);
 
 
 
@@ -93,6 +116,16 @@ void UISelectMode::init()
 void UISelectMode::buttonHit(Widget* button)
 {
 	const  Ogre::String&  name=button->getName();
+
+	///如果是返回按钮
+	if(name=="SelectMode_return")
+	{
+		Application::getSingleton().getCurrentActive()->setNextStateType(ST_GAMEPLAY);
+		return ;
+
+	}
+
+
 	if(name=="SelectMode_1")
 	{
      g_UserMode=1;
