@@ -43,7 +43,8 @@ void  UISelectUser::init()
 
 
 
-	///??»ºå·?¾¹????¨æ?è·³å?????¸ç??????	m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","sdk_button_up.png","sdk_button_down.png");
+	///
+    m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","sdk_button_up.png","sdk_button_down.png");
 	registerWidget(m_ToCaptureButton);
 	m_ToCaptureButton->_assignListener(this);
 	pElment=m_ToCaptureButton->getOverlayElement();
@@ -85,7 +86,9 @@ void  UISelectUser::updateUserList()
 void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 {
 
-	///å¦??ä¼???????¿½è§?	if(pUserList.isNull())
+	///
+    
+    if(pUserList.isNull())
 		return ;
 
 	///????§ç?
@@ -93,7 +96,8 @@ void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 
 	m_UserList=pUserList;
 
-	///å¾????»º????·æ?????????å»?ä¸?	int userSize=m_UserList->size();
+	///
+    int userSize=m_UserList->size();
 	if(userSize>5)
 	{
 		userSize=5;
@@ -202,8 +206,8 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 
 
-	////ä¸???¨ä?????§ä»¶??
-	///å¦???¹å???ºº?©è?å°±å??¤è?ä¸????	const Ogre::String& imageName=pbutton->getName();
+	
+    const Ogre::String& imageName=pbutton->getName();
 	size_t size=m_UserList->size();
 	for(size_t i=0;i<size;++i)
 	{
@@ -214,7 +218,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 			TimeImageButton*  pTimeButton=static_cast<TimeImageButton*>(pbutton);
 
-			///?¿æ?????¹å?å°±æ????
+			///
 			if(pTimeButton->getState()==TimeImageButton::Press)
 			{
 
