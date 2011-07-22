@@ -20,6 +20,7 @@
 
 class UISelectUser;
 class UICaptureFace;
+class UIBase;
 class CaptureFaceGS : public GameState
 {
 
@@ -102,9 +103,13 @@ protected:
 #endif
     
     
-    UICaptureFace*         m_pCaptureUI;
+    UICaptureFace*         m_pCaptureUI;///捕获脸
 
-	UISelectUser*         m_pSelectUserUI;
+	UISelectUser*         m_pSelectUserUI;///选择用户
+
+	UIBase*               m_pSelectHeadUI;///选择头套
+
+	UIBase*               m_pSelectFaceUI;//选择脸型
     
     
 };

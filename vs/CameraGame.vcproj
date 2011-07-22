@@ -286,14 +286,6 @@
 				RelativePath="..\stateMachine.h"
 				>
 			</File>
-			<File
-				RelativePath="..\WarGS.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\WarGS.h"
-				>
-			</File>
 			<Filter
 				Name="PlayerGame"
 				>
@@ -362,6 +354,14 @@
 				Name="SelectMode"
 				>
 				<File
+					RelativePath="..\EnemyQueue.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\EnemyQueue.h"
+					>
+				</File>
+				<File
 					RelativePath="..\GSSelectMode.cpp"
 					>
 				</File>
@@ -379,8 +379,28 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="NewFilter1"
+				Name="GameMode"
 				>
+				<File
+					RelativePath="..\GameMode.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\GameMode.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="WarGS"
+				>
+				<File
+					RelativePath="..\WarGS.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\WarGS.h"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter

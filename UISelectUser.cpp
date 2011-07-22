@@ -43,8 +43,8 @@ void  UISelectUser::init()
 
 
 
-	///
-    m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","sdk_button_up.png","sdk_button_down.png");
+	///??????
+	m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","sdk_button_up.png","sdk_button_down.png");
 	registerWidget(m_ToCaptureButton);
 	m_ToCaptureButton->_assignListener(this);
 	pElment=m_ToCaptureButton->getOverlayElement();
@@ -86,18 +86,15 @@ void  UISelectUser::updateUserList()
 void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 {
 
-	///
-    
-    if(pUserList.isNull())
+	if(pUserList.isNull())
 		return ;
 
-	///????§ç?
+	///????è§?
 	destroyAllUserList();
 
 	m_UserList=pUserList;
 
-	///
-    int userSize=m_UserList->size();
+	///??????5ä¸????	int userSize=m_UserList->size();
 	if(userSize>5)
 	{
 		userSize=5;
@@ -194,7 +191,8 @@ void UISelectUser::buttonHit(Widget* pbutton)
 		return ;
 
 
-	///å¦????·³?°æ??¸ç???	if(pbutton==m_ToCaptureButton)
+	//è¿???°æ??¸ç????
+	if(pbutton==m_ToCaptureButton)
 	{
 		setVisible(false);
 
@@ -206,8 +204,8 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 
 
-	
-    const Ogre::String& imageName=pbutton->getName();
+	///å¦?????äº??å®?
+	const Ogre::String& imageName=pbutton->getName();
 	size_t size=m_UserList->size();
 	for(size_t i=0;i<size;++i)
 	{
@@ -218,7 +216,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 			TimeImageButton*  pTimeButton=static_cast<TimeImageButton*>(pbutton);
 
-			///
+			///???ä¸?¸ª?¨æ??¾ç?
 			if(pTimeButton->getState()==TimeImageButton::Press)
 			{
 
@@ -226,12 +224,10 @@ void UISelectUser::buttonHit(Widget* pbutton)
 				::remove(username.c_str());
 				m_NeedUpdate=true;
 				return ;
-			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///æ­£å¸¸?¹å?è¿?????å¤´å???????
+			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///è¿?????å¤´å????
 			{
-				//Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
-
 				setVisible(false);
-				UIBase* pSelectFaceMode= Application::getSingleton().getUIByName(" UISelectHead");
+				UIBase* pSelectFaceMode= Application::getSingleton().getUIByName("UISelectHead");
 				pSelectFaceMode->setVisible(true);
 
 			}
@@ -239,11 +235,10 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 		}
 
+
 	}
 
 
 
 	return ;
-
-
 }

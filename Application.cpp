@@ -770,7 +770,7 @@ bool Application::InitWindow(int width, int height)
 void Application::initGamePath()
 {
     
-   // #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
+  #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
      
     Ogre::String faceDirect=Tools::getUserFacePath();
     
@@ -789,7 +789,7 @@ void Application::initGamePath()
     mkdir(faceDirect.c_str(),0777);
     
     return ;
-   // #endif
+   #endif
 }
 
 

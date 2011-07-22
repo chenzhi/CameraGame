@@ -18,6 +18,8 @@ ImageButton::ImageButton(const Ogre::String& name,const Ogre::String& normalText
 	}
 	mElement->setMaterialName(m_pMaterial->getName());
 
+	Ogre::TextureUnitState* pTextureState=m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0);
+
 	updateState();
 
 }
@@ -727,3 +729,56 @@ void  SliderGallery::endRoll()
 	return ;
 
 }
+
+
+/*************************************************
+¿ÉÐý×ªµÄ¾²Ì¬Í¼Æ¬
+****************************************************/
+RotateImage::RotateImage(const Ogre::String& name, const Ogre::String& imageName)
+:StaticImage(name,imageName)
+{
+	
+
+}
+
+
+//-------------------------------------------------------------------------
+RotateImage::~RotateImage()
+{
+
+	
+
+}
+
+//-------------------------------------------------------------------------
+void RotateImage::setOrientation(float radian)
+{
+	if(m_pMaterial.isNull())
+		return ;
+	Ogre::TextureUnitState* pTextureState=m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0);
+
+	pTextureState->setTextureRotate(Ogre::Radian(radian));
+
+}
+//
+//void RotateImage::update(float time)
+//{
+//
+//	static float ang=0.0f;
+//	ang+=time;
+//
+//	while (ang>Ogre::Math::PI*2)
+//	{
+//		ang-=Ogre::Math::PI*2;
+//	}
+//
+//	Ogre::TextureUnitState* pTextureState=m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0);
+//	if(pTextureState!=NULL)
+//	{
+//		pTextureState->setTextureRotate(Ogre::Radian(ang));
+//	}
+//
+//
+//
+//
+//}

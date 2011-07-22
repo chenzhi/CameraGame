@@ -119,7 +119,10 @@ void UICaptureFace::buttonHit(Widget* button)
 	 }else if(button==m_pCaptureButton)///ÅÄÕÕ²¢±£´æ
 	 {
       
-        Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
+		 UIBase* pSelectHead=Application::getSingletonPtr()->getUIByName("UISelectHead");
+		 pSelectHead->setVisible(true);
+		 setVisible(false);
+       // Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
 
 	 }
 
