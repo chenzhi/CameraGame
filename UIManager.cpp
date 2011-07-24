@@ -100,7 +100,7 @@ void UIManager::update(float time)
 	for(;it!=endit;++it)
 	{
 		///可见的才更新
-		if((*it)->isVisible())
+		//if((*it)->isVisible())
 		{
 			(*it)->update(time);
 		}

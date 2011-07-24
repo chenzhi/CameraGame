@@ -53,7 +53,7 @@ void GameModeTwo::update(float time)
 	float y=Ogre::Math::Sin(stime);
 	float x=Ogre::Math::Cos(stime);	
 	Ogre::Vector3 pos(x,y,0.0f);
-	pos*=3.50f;
+	pos*=1.50f;
 
 	m_pEnemy->getSceneNode()->setPosition(pos);
 
@@ -116,13 +116,17 @@ void GameModeTwo::updateUIDir()
 
 	///如果这个点在屏幕上出现了就隐藏箭头
 	Ogre::Camera* pCamera=Application::getSingleton().getMainCamera();
+
+	const Ogre::Matrix4& viewMat=pCamera->getViewMatrix();
+	pos=viewMat*pos;
+	
 	//pCamera->is
 
 
 	 if(pCamera->isVisible(m_pEnemy->getSceneNode()->_getWorldAABB()))
 	 {
-		 m_pUI->setVisible(false);
-		 return ;
+		// m_pUI->setVisible(false);
+		// return ;
 	 }else
 	 {
 

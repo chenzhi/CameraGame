@@ -105,7 +105,7 @@ material cz/SliderGallery/PrevisousButton/mat  : cz/Base
         {
             texture_unit 0
             {
-                 texture sdk_cursor.png
+                texture  paizhao_sanjiao_release.png
             }
         }
     }
@@ -120,7 +120,7 @@ material cz/SliderGallery/NextButton/mat  : cz/Base
         {
             texture_unit 0
             {
-                 texture sdk_cursor.png
+               texture  paizhao_sanjiao_release.png
             }
         }
     }

@@ -14,7 +14,7 @@
 
 //---------------------------------------------------------------------------------------------
 UIBase::UIBase(const std::string& name, const std::string& templateName)
-:m_Name(name),m_TemplateName(templateName),m_pParentOverlay(NULL)
+:m_Name(name),m_TemplateName(templateName),m_pParentOverlay(NULL),m_Flag(0)
 {
     
     
@@ -133,18 +133,29 @@ unsigned short UIBase::getZorder()const
 //---------------------------------------------------------------------------------------------
 void  UIBase::setVisible(bool b)
 {
-    if(m_pParentOverlay==NULL)
-    {
-        return ;
-    }
-    
-    if(b)
+	if(b)
+	{
+		setFlag(F_SHOW);
+	}else
+	{
+		setFlag(F_HIDE);
+	}
+   // if(m_pParentOverlay==NULL)
+    //{
+    //    return ;
+   // }
+
+	
+  /*  if(b)
     {
       m_pParentOverlay->show();
     }else
     {
         m_pParentOverlay->hide();
-    }
+    }*/
+
+
+
 }
 
 
@@ -406,6 +417,17 @@ void  UIBase::update(float time)
 	for(;it!=itend;++it)
 	{
 		(*it)->update(time);
+	}
+
+	if(hasFlag(F_SHOW)&&m_pParentOverlay!=NULL)
+	{
+	  m_pParentOverlay->show();
+	  removeFlag(F_SHOW);
+	}else if(hasFlag(F_HIDE)&&m_pParentOverlay!=NULL)
+	{
+		m_pParentOverlay->hide();
+		removeFlag(F_HIDE);
+
 	}
 
 }

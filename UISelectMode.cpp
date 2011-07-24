@@ -68,7 +68,7 @@ void UISelectMode::init()
 
 
 	///模式2按钮
-	pPlayButton=new ImageButton("SelectMode_2","sdk_logo.png","sdk_button_down.png");
+	pPlayButton=new ImageButton("SelectMode_2","moshi_updown.png","moshi_updown.png");
 	registerWidget(pPlayButton);
 	pElment=pPlayButton->getOverlayElement();
 	pPlayButton->_assignListener(this);
@@ -82,7 +82,7 @@ void UISelectMode::init()
 
 
 	///模式3按钮
-	pPlayButton=new ImageButton("SelectMode_3","sdk_logo.png","sdk_button_down.png");
+	pPlayButton=new ImageButton("SelectMode_3","moshi_smile.png","moshi_smile.png");
 	registerWidget(pPlayButton);
 	pElment=pPlayButton->getOverlayElement();
 	pPlayButton->_assignListener(this);

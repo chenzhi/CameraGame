@@ -58,15 +58,17 @@ void UICaptureFace::init()
 
 
 	///拍照铵钮
-	m_pCaptureButton=new ImageButton("CaptureFaceButton","sdk_frame.png","sdk_label.png");
+	m_pCaptureButton=new ImageButton("CaptureFaceButton","paizhao_paizhao_press.png","paizhao_paizhao_release.png");
 	registerWidget(m_pCaptureButton);
 	pElement=m_pCaptureButton->getOverlayElement();
-	pElement->setHorizontalAlignment(Ogre::GHA_RIGHT);
-	pElement->setVerticalAlignment(Ogre::GVA_BOTTOM);
-	int width=pElement->getWidth();
-	int height=pElement->getHeight();
-	pElement->setLeft(-width-100);
-	pElement->setTop(-height-100);
+	//pElement->setHorizontalAlignment(Ogre::GHA_RIGHT);
+	//pElement->setVerticalAlignment(Ogre::GVA_BOTTOM);
+	int width=256;
+	int height=256;
+    m_pCaptureButton->setWidth(width);
+	m_pCaptureButton->setHeight(height);
+	m_pCaptureButton->setLeft(-width*0.5f);
+	m_pCaptureButton->setTop(100);
 
 
 	///返回上一层按钮

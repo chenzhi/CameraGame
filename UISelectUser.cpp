@@ -31,7 +31,7 @@ void  UISelectUser::init()
 	UIBase::init();
 
 
-	StaticImage* pImage=new StaticImage("SelectUserBackGround","sdk_button_up.png");
+	StaticImage* pImage=new StaticImage("SelectUserBackGround","tuku_background.png");
 	registerWidget(pImage);
 	Ogre::OverlayElement* pElment=pImage->getOverlayElement();
 	pElment->setMetricsMode(Ogre::GMM_RELATIVE);
@@ -44,7 +44,7 @@ void  UISelectUser::init()
 
 
 	///捕脸按钮
-	m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","sdk_button_up.png","sdk_button_down.png");
+	m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","moshi_fanhui_press.png","moshi_fanhui_release.png");
 	registerWidget(m_ToCaptureButton);
 	m_ToCaptureButton->_assignListener(this);
 	pElment=m_ToCaptureButton->getOverlayElement();
@@ -201,6 +201,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 		UIBase* pCaptureFace= Application::getSingleton().getUIByName("CaptureFaceUI");
 		assert(pCaptureFace);
 		pCaptureFace->setVisible(true);
+		return ;
 
 	}
 

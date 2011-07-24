@@ -205,6 +205,7 @@ void UISelectFaceMode::init()
 void  UISelectFaceMode::setVisible(bool b)
 {
 
+	UIBase::setVisible(b);
 	setUserSelctModeVisible(b);
 
 }

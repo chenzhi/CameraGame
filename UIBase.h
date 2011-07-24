@@ -23,7 +23,14 @@ typedef std::vector<Widget*> WidgetCollect;
 
 class UIBase :public SdkTrayListener
 {
-    
+public:
+
+	enum Flag
+	{
+		F_SHOW=1<<1,//需要显示
+		F_HIDE=1<<2,//需要隐藏
+	};
+
     
 public:
     
@@ -95,6 +102,13 @@ public:
 	Widget* getWidgetByName(const Ogre::String& anem);
 
 
+	/**设置属性*/
+	void    setFlag(Flag flag){m_Flag=flag;}
+	void    addFlag(Flag roleFlag){m_Flag|=roleFlag;}
+	void    removeFlag(Flag roleFlag){m_Flag&=~roleFlag;}
+	DWORD   getFlag()const {return m_Flag;}
+	bool    hasFlag(DWORD flag)  {return (m_Flag&flag)!=0;}
+
     
     
 protected:
@@ -124,8 +138,9 @@ protected:
     
     Ogre::Overlay* m_pParentOverlay; ///最上层overlay
     
-    
-	WidgetCollect m_WidgetCollect;
+	WidgetCollect m_WidgetCollect;    ///子控件列表
+
+	unsigned int  m_Flag;             ///标记，用来标记属性
     
     
     
