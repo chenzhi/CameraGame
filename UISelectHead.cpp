@@ -14,12 +14,12 @@ FaceModeDataSource::FaceModeDataSource()
 
 	m_ElementCollect.push_back(std::make_pair("texture1.png","userdata1"));
 	m_ElementCollect.push_back(std::make_pair("texture2.png","userdata2"));
-	m_ElementCollect.push_back(std::make_pair("texture3.png","userdata3"));
+    m_ElementCollect.push_back(std::make_pair("texture3.png","userdata3"));
 	m_ElementCollect.push_back(std::make_pair("texture4.png","userdata4"));
 	m_ElementCollect.push_back(std::make_pair("texture5.png","userdata5"));
 	m_ElementCollect.push_back(std::make_pair("texture6.png","userdata6"));
 	m_ElementCollect.push_back(std::make_pair("texture7.png","userdata7"));
-	m_ElementCollect.push_back(std::make_pair("texture8.png","userdata8"));
+    m_ElementCollect.push_back(std::make_pair("texture8.png","userdata8"));
 	m_ElementCollect.push_back(std::make_pair("texture9.png","userdata9"));
 	m_ElementCollect.push_back(std::make_pair("texture10.png","userdata10"));
 }
@@ -100,23 +100,38 @@ void  UISelectHead::init()
 	//pScenNode->attachObject(pHead);
 
 
-	//Image3DButton* pImageButton=new Image3DButton("TestButton",pScenNode);
-	//registerWidget(pImageButton);
+	StaticImage* pImage=new StaticImage("SelectHeadBackGround","tuku_background.png");
+	registerWidget(pImage);
+	Ogre::OverlayElement* pElment=pImage->getOverlayElement();
+	pImage->setMetricsMode(Ogre::GMM_RELATIVE);
+	pImage->setHorizontalAlignment(Ogre::GHA_LEFT);
+	pImage->setVerticalAlignment(Ogre::GVA_TOP);
+	pImage->setLeft(0.0f);
+	pImage->setWidth(1.0f);
+	pImage->setTop(0.0f);
+	pImage->setHeight(1.0f);
 
-	SliderGallery* pSliderGallery=new SliderGallery("testSliderGallery",new FaceModeDataSource());
+
+
+	SliderGallery* pSliderGallery=new SliderGallery("SelectHeadSliderGallery",new FaceModeDataSource());
 	registerWidget(pSliderGallery);
 	pSliderGallery->getOverlayElement()->setHorizontalAlignment(Ogre::GHA_LEFT);
-	pSliderGallery->getOverlayElement()->setLeft(100);
+	//pSliderGallery->getOverlayElement()->setLeft();
 
 
 
-	m_pReturnButton=new ImageButton("SelectHeadReturn","sdk_button_down.png","sdk_button_up.png");
+	m_pReturnButton=new ImageButton("SelectHeadReturn","moshi_fanhui_press.png","moshi_fanhui_release.png");
 	m_pReturnButton->setHorizontalAlignment(Ogre::GHA_LEFT);
-	m_pReturnButton->setVerticalAlignment(Ogre::GVA_TOP);
-	m_pReturnButton->setLeft(700);
-	m_pReturnButton->setTop(400);
+	m_pReturnButton->setLeft(10);
+	m_pReturnButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
+	m_pReturnButton->setTop(-128);
 	registerWidget(m_pReturnButton);
 
+
+
+
+
+	//·µ»Ø°´Å¥
 
 
 

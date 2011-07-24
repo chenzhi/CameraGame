@@ -112,6 +112,23 @@ Bullet* BulletManager::getBullet()
 
 }
 
+
+//---------------------------------------------------
+bool  BulletManager::intersectEnemy(const Ogre::Ray& ray,float lenght)
+{
+	EnemyCollect::iterator it=m_EnemyCollect.begin();
+	EnemyCollect::iterator itend=m_EnemyCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		if((*it)->intersectRay(ray,lenght))
+			return true;
+	}
+	 
+	return false;
+
+}
+
 //---------------------------------------------------
 Enemy* BulletManager::createEnemy(const Ogre::Vector3& pos)
 {
@@ -122,7 +139,7 @@ Enemy* BulletManager::createEnemy(const Ogre::Vector3& pos)
         {
             //Ogre::Vector3 temPos(i,j,0);
 			Ogre::Vector3 temPos=pos;
-            Enemy* pEnemy=  new Enemy("face.mesh",temPos,m_pSceneMrg);
+            Enemy* pEnemy=  new Enemy("face.mesh",temPos,m_pSceneMrg->getRootSceneNode());
             pEnemy->reset(temPos);
             
             m_EnemyCollect.push_back(pEnemy);

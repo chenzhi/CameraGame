@@ -49,35 +49,38 @@ void UICaptureFace::init()
 
 
 	////回到用户选择按钮
-	m_pToUserFace=new ImageButton("ToCaptureFace","sdk_label.png","sdk_frame.png");
+	m_pToUserFace=new ImageButton("ToCaptureFace","paizhao_sanjiao_press.png","paizhao_sanjiao_release.png");
 	registerWidget(m_pToUserFace);
 	pElement=m_pToUserFace->getOverlayElement();
 	pElement->setHorizontalAlignment(Ogre::GHA_RIGHT);
 	pElement->setLeft(-pElement->getWidth()-100);
+	m_pToUserFace->setTop(-64);
 
 
 	///拍照铵钮
-	m_pCaptureButton=new ImageButton("CaptureFaceButton","sdk_frame.png","sdk_label.png");
+	m_pCaptureButton=new ImageButton("CaptureFaceButton","paizhao_paizhao_press.png","paizhao_paizhao_release.png");
 	registerWidget(m_pCaptureButton);
 	pElement=m_pCaptureButton->getOverlayElement();
-	pElement->setHorizontalAlignment(Ogre::GHA_RIGHT);
-	pElement->setVerticalAlignment(Ogre::GVA_BOTTOM);
-	int width=pElement->getWidth();
-	int height=pElement->getHeight();
-	pElement->setLeft(-width-100);
-	pElement->setTop(-height-100);
+	//pElement->setHorizontalAlignment(Ogre::GHA_RIGHT);
+	//pElement->setVerticalAlignment(Ogre::GVA_BOTTOM);
+	int width=256;
+	int height=256;
+    m_pCaptureButton->setWidth(width);
+	m_pCaptureButton->setHeight(height);
+	m_pCaptureButton->setLeft(-width*0.5f);
+	m_pCaptureButton->setTop(100);
 
 
 	///返回上一层按钮
-	m_pGoBackButton=new ImageButton("CaptureFaceGoBackButton","sdk_button_down.png","sdk_button_over.png");
+	m_pGoBackButton=new ImageButton("CaptureFaceGoBackButton","moshi_fanhui_press.png","moshi_fanhui_release.png");
 	registerWidget(m_pGoBackButton);
-	pElement=m_pGoBackButton->getOverlayElement();
-	pElement->setHorizontalAlignment(Ogre::GHA_LEFT);
-	pElement->setVerticalAlignment(Ogre::GVA_BOTTOM);
-	pElement->setLeft(200);
-	pElement->setTop(-height-100);
+	m_pGoBackButton->setHorizontalAlignment(Ogre::GHA_LEFT);
+	m_pGoBackButton->setLeft(10);
+	m_pGoBackButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
+	m_pGoBackButton->setTop(-128);
 
 
+	
 	return ;
 
 

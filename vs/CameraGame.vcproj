@@ -243,30 +243,6 @@
 			Name="GameState"
 			>
 			<File
-				RelativePath="..\Bullet.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Bullet.h"
-				>
-			</File>
-			<File
-				RelativePath="..\BulletManager.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\BulletManager.h"
-				>
-			</File>
-			<File
-				RelativePath="..\enemy.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\enemy.h"
-				>
-			</File>
-			<File
 				RelativePath="..\GameState.cpp"
 				>
 			</File>
@@ -354,14 +330,6 @@
 				Name="SelectMode"
 				>
 				<File
-					RelativePath="..\EnemyQueue.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\EnemyQueue.h"
-					>
-				</File>
-				<File
 					RelativePath="..\GSSelectMode.cpp"
 					>
 				</File>
@@ -389,10 +357,50 @@
 					RelativePath="..\GameMode.h"
 					>
 				</File>
+				<File
+					RelativePath="..\UIWarTwo.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\UIWarTwo.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="WarGS"
 				>
+				<File
+					RelativePath="..\Bullet.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\Bullet.h"
+					>
+				</File>
+				<File
+					RelativePath="..\BulletManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\BulletManager.h"
+					>
+				</File>
+				<File
+					RelativePath="..\enemy.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\enemy.h"
+					>
+				</File>
+				<File
+					RelativePath="..\EnemyQueue.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\EnemyQueue.h"
+					>
+				</File>
 				<File
 					RelativePath="..\WarGS.cpp"
 					>
@@ -442,6 +450,14 @@
 		<Filter
 			Name="tools"
 			>
+			<File
+				RelativePath="..\EventManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\EventManager.h"
+				>
+			</File>
 			<File
 				RelativePath="..\LayoutParse.cpp"
 				>

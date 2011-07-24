@@ -190,7 +190,7 @@ void WarGS::initVideoTeture()
 //-------------------------------------------------------------------------
 void WarGS::updateAccelerometer()
 {
-	return ;
+	//return ;
     
 //#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     

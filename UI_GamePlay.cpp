@@ -30,7 +30,7 @@ void UIGamePlay::init()
 
    UIBase::init();
 
-   StaticImage* pImage=new StaticImage("GamePlayBackGround","sdk_logo.png");
+   StaticImage* pImage=new StaticImage("GamePlayBackGround","play_background.png");
     registerWidget(pImage);
    Ogre::OverlayElement* pElment=pImage->getOverlayElement();
    pImage->setMetricsMode(Ogre::GMM_RELATIVE);
@@ -43,19 +43,42 @@ void UIGamePlay::init()
    pImage->setHeight(1.0f);
 
 
-   ImageButton* pPlayButton=new ImageButton("GamePlayer_PlayerButton","sdk_logo.png","sdk_button_down.png");
+   ImageButton* pPlayButton=new ImageButton("GamePlayer_PlayerButton","play_play_release.png","play_play_press.png");
    registerWidget(pPlayButton);
    pElment=pPlayButton->getOverlayElement();
    pPlayButton->_assignListener(this);
-   float width=pElment->getWidth();
-   float height=pElment->getHeight();
+   float width=256;
+   float height=200;
+   pElment->setHeight(height);
+   pElment->setWidth(width);
    pPlayButton->setLeft(width*(-0.5f));
-   pPlayButton->setTop(height*(-0.5f));
+   pPlayButton->setTop(50.0f);
+  // pPlayButton->setTop(height*(-0.5f));
 
 
-   m_pRotateImage=new RotateImage("rotsa","sdk_button_down.png");
-   registerWidget(m_pRotateImage);
-   static_cast<RotateImage*>(m_pRotateImage)->setOrientation(1.70f);
+
+   //faceBool°´Å¥
+   ImageButton* pPlayFaceBook=new ImageButton("GamePlayer_FaceBookButton","play_facebook_release.png","play_facebook_press.png");
+   registerWidget(pPlayFaceBook);
+   pPlayFaceBook->setHorizontalAlignment(Ogre::GHA_RIGHT);
+   pPlayFaceBook->setVerticalAlignment(Ogre::GVA_BOTTOM);
+
+   pPlayFaceBook->setLeft(-110);
+   pPlayFaceBook->setTop(-228);
+
+
+
+   //twit
+
+   ImageButton* pPlayTwitterBook=new ImageButton("GamePlayer_twitterButton","play_twitter_release.png","play_twitter_press.png");
+   registerWidget(pPlayTwitterBook);
+   pPlayTwitterBook->setHorizontalAlignment(Ogre::GHA_RIGHT);
+   pPlayTwitterBook->setVerticalAlignment(Ogre::GVA_BOTTOM);
+
+   pPlayTwitterBook->setLeft(-110);
+   pPlayTwitterBook->setTop(-128);
+
+  
 
 
 
@@ -77,11 +100,3 @@ void UIGamePlay::buttonHit(Widget* button)
 
 
 
-void  UIGamePlay::update(float time)
-{
-	if(m_pRotateImage!=NULL)
-	{
-		m_pRotateImage->update(time);
-	}
-
-}

@@ -90,6 +90,9 @@ void ImageButton::updateState()
 	if(m_State==BS_UP)
 	{
 
+		//Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName(m_NormalTexture);
+		//if(p)
+
 		m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(m_NormalTexture);
 	
 	}else
@@ -132,6 +135,15 @@ StaticImage::~StaticImage()
 //-------------------------------------------------------------------------------------------
 void StaticImage::setImage(const Ogre::String& textureName)
 {
+
+	/*Ogre::TexturePtr ptexture=Ogre::TextureManager::getSingleton().getByName(textureName);
+	assert(ptexture.isNull()==false);
+
+	int width=ptexture->getWidth();
+	int height=ptexture->getHeight();
+
+	mElement->setWidth(width);
+	*/
 
 	if(m_pMaterial.isNull()==false)
 	{
@@ -385,11 +397,13 @@ SliderGallery::SliderGallery(const Ogre::String& name,SliderGalleryDataSource* p
 	Ogre::OverlayContainer* pContainer=static_cast<Ogre::OverlayContainer*>(mElement);
 
     m_pPrevisouButton=pContainer->getChild(getName()+"/cz/SliderGallery/PreviousButton");
+
     m_pNextButton=pContainer->getChild(getName()+"/cz/SliderGallery/NextButton");
 
 
-	pContainer = static_cast<Ogre::OverlayContainer*>(pContainer->getChild(name+"/cz/SliderGallery/Backgroud"));
+	//pContainer = static_cast<Ogre::OverlayContainer*>(pContainer->getChild(name+"/cz/SliderGallery/Backgroud"));
 
+	
 	Ogre::OverlayElement* pButton=pContainer->getChild(pContainer->getName()+"/cz/SliderGallery/1");
 	SrollButton* pSrollButton= new SrollButton(pButton);
 	m_ButtonCollect.push_back(pSrollButton);
@@ -408,6 +422,9 @@ SliderGallery::SliderGallery(const Ogre::String& name,SliderGalleryDataSource* p
 
 	///初始化资源
 	resetButtonInformation();
+
+ ///初始化显示
+	updateSrollButton();
 
 
 }
@@ -519,8 +536,23 @@ void SliderGallery::previsouButton()
 	SrollButton* pFirstButton=m_ButtonCollect[0];
 	SrollButton* pLastButton=m_ButtonCollect[size-1];
 
-   pFirstButton->m_OriginalPos=pFirstButton->m_pElement->getLeft();
-   pFirstButton->m_targetPos  =pLastButton->m_pElement->getLeft();
+   pFirstButton->m_OriginalPos.x=pFirstButton->m_pElement->getLeft();
+   pFirstButton->m_OriginalPos.y=pFirstButton->m_pElement->getTop();
+
+   pFirstButton->m_targetPos.x  =pLastButton->m_pElement->getLeft();
+   pFirstButton->m_targetPos.y  =pLastButton->m_pElement->getTop();
+
+
+   pFirstButton->m_OriginaWidth=pFirstButton->m_pElement->getWidth();
+   pFirstButton->m_TargetWidth=pLastButton->m_pElement->getWidth();
+
+   pFirstButton->m_OriginaHeight=pFirstButton->m_pElement->getHeight();
+   pFirstButton->m_TargetHeight=pLastButton->m_pElement->getHeight();
+
+
+
+
+
    pFirstButton->m_Visible=false;
 
 
@@ -530,8 +562,22 @@ void SliderGallery::previsouButton()
 	   pFirstButton=m_ButtonCollect[i];
 	   pLastButton=m_ButtonCollect[i-1];
 
-	   pFirstButton->m_OriginalPos=pFirstButton->m_pElement->getLeft();
-	   pFirstButton->m_targetPos  =pLastButton->m_pElement->getLeft();
+	   pFirstButton->m_OriginalPos.x=pFirstButton->m_pElement->getLeft();
+	   pFirstButton->m_OriginalPos.y=pFirstButton->m_pElement->getTop();
+
+	   pFirstButton->m_targetPos.x  =pLastButton->m_pElement->getLeft();
+	   pFirstButton->m_targetPos.y  =pLastButton->m_pElement->getTop();
+	  
+
+	   pFirstButton->m_OriginaWidth=pFirstButton->m_pElement->getWidth();
+	   pFirstButton->m_TargetWidth=pLastButton->m_pElement->getWidth();
+
+	   pFirstButton->m_OriginaHeight=pFirstButton->m_pElement->getHeight();
+	   pFirstButton->m_TargetHeight=pLastButton->m_pElement->getHeight();
+
+
+
+
 	   pFirstButton->m_Visible=true;
 
 
@@ -566,10 +612,19 @@ void SliderGallery::nextButton()
 	SrollButton* pFirstButton=m_ButtonCollect[size-1];
 	SrollButton* pLastButton=m_ButtonCollect[0];
 
-	pFirstButton->m_OriginalPos=pFirstButton->m_pElement->getLeft();
-	pFirstButton->m_targetPos  =pLastButton->m_pElement->getLeft();
+	pFirstButton->m_OriginalPos.x=pFirstButton->m_pElement->getLeft();
+	pFirstButton->m_OriginalPos.y=pFirstButton->m_pElement->getTop();
+
+	pFirstButton->m_targetPos.x =pLastButton->m_pElement->getLeft();
+	pFirstButton->m_targetPos.y =pLastButton->m_pElement->getTop();
+
 	pFirstButton->m_Visible=false;
 
+	pFirstButton->m_OriginaWidth=pFirstButton->m_pElement->getWidth();
+	pFirstButton->m_TargetWidth=pLastButton->m_pElement->getWidth();
+
+	pFirstButton->m_OriginaHeight=pFirstButton->m_pElement->getHeight();
+	pFirstButton->m_TargetHeight=pLastButton->m_pElement->getHeight();
 
 
 	for(size_t i=0;i<size-1;++i)
@@ -577,9 +632,19 @@ void SliderGallery::nextButton()
 		pFirstButton=m_ButtonCollect[i];
 		pLastButton=m_ButtonCollect[i+1];
 
-		pFirstButton->m_OriginalPos=pFirstButton->m_pElement->getLeft();
-		pFirstButton->m_targetPos  =pLastButton->m_pElement->getLeft();
+		pFirstButton->m_OriginalPos.x=pFirstButton->m_pElement->getLeft();
+		pFirstButton->m_OriginalPos.y=pFirstButton->m_pElement->getTop();
+
+		pFirstButton->m_targetPos.x =pLastButton->m_pElement->getLeft();
+		pFirstButton->m_targetPos.y =pLastButton->m_pElement->getTop();
+
 		pFirstButton->m_Visible=true;
+
+		pFirstButton->m_OriginaWidth=pFirstButton->m_pElement->getWidth();
+		pFirstButton->m_TargetWidth=pLastButton->m_pElement->getWidth();
+
+		pFirstButton->m_OriginaHeight=pFirstButton->m_pElement->getHeight();
+		pFirstButton->m_TargetHeight=pLastButton->m_pElement->getHeight();
 
 
 	}
@@ -703,9 +768,12 @@ void  SliderGallery::endRoll()
 	m_RollDir=0;
 	m_RollTime=0.0f;
 
+	
+
 	if(m_pDataSource==NULL)
 		return ;
 
+	updateSrollButton();
 
 	///重新计算按钮显示
 	
@@ -727,6 +795,26 @@ void  SliderGallery::endRoll()
 	}
 
 	return ;
+
+}
+
+//-------------------------------------------------------------------------------
+void SliderGallery::updateSrollButton()
+{
+
+    m_pNextButton->show();
+	m_pPrevisouButton->show();
+	if(m_DataIndex<=0)
+	{
+		m_pNextButton->hide();
+		
+		
+	}else if(m_DataIndex>=m_pDataSource->getElementCount()-m_ButtonCollect.size())
+	{
+		
+		m_pPrevisouButton->hide();
+
+	}
 
 }
 

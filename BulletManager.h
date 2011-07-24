@@ -55,6 +55,10 @@ public:
     
     
 public:
+
+	///¼ì²âÅö×²
+	bool intersectEnemy(const Ogre::Ray& ray,float lenght);
+
     
     ///@{
     

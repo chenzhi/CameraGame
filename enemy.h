@@ -9,14 +9,29 @@
 
 #pragma once
 
+#include "EventManager.h"
+
+
 class Bullet;
+
+
 
 
 #define EnemyMask 0x0100
 
 
 
-class Enemy
+///敌人事件，
+enum EnemyEvent
+{
+	EE_Hit,//被击上事件
+	EE_Die，//死亡事件
+};
+
+
+
+
+class Enemy :public CEventManager
 {
     
 public:
@@ -36,7 +51,7 @@ public:
      *@param meshName mesh文件名
      *@param pos     出现的初始位
      */
-    Enemy(const Ogre::String& meshName,const Ogre::Vector3&  pos, Ogre::SceneManager* pSceneMrg);
+	Enemy(const Ogre::String& meshName,const Ogre::Vector3&  pos, Ogre::SceneNode* pParent);
 
     
     ~Enemy();
@@ -74,7 +89,39 @@ public:
     void reset(const Ogre::Vector3& pos);
     
     ///获取状态
-    EnemyState getState()const {return m_State;}    
+    EnemyState getState()const {return m_State;}   
+
+
+	///获取场景节点
+	Ogre::SceneNode* getSceneNode()const {return m_pNode;}
+
+
+	/**判断是否和射线碰撞
+    *@param ray 用来做碰撞的射线
+	*@param length 如果碰撞点长度限制
+	*@return 如果和射线相交返回真，未击中返回假
+	*/
+	bool intersectRay(const Ogre::Ray& ray,float length);
+
+
+	/**注册一个事件监听
+	*@param EEevent 敌人事件
+	*@param f 注册的类函数指针
+	*@param obj 临听类实例指针
+	*/
+	template<typename T >
+	bool registerEvent(EnemyEvent EEevent, void (T::*f)( Enemy *) , T * obj )
+	{
+		return CEventManager::registerMessageHandle(EEevent,f,obj );
+	}
+
+	/**注销事件*/
+	template<typename T >
+	bool unregisterEven(EnemyEvent EEevent,T*obj)
+	{
+		return CEventManager::unregisterMessageHandle(EEevent,obj);
+	}
+	
 
 protected:
     

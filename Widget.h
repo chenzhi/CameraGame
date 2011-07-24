@@ -256,6 +256,15 @@ public:
 		assert(pMat.isNull()==false);
 		pMat= pMat->clone(pElement->getName());
 		pElement->setMaterialName(pMat->getName());
+		m_OriginaWidth=pElement->getWidth();
+		m_TargetWidth=m_OriginaWidth;
+
+		m_OriginaHeight=pElement->getHeight();
+		m_TargetHeight=m_OriginaHeight;
+
+		m_OriginaZOrder=pElement->getZOrder();
+		m_TargetZorder=m_OriginaZOrder;
+
 		return;
 
 	}
@@ -267,12 +276,23 @@ public:
 			return ;
 		if(precent>=1.0f)
 		{
-			m_pElement->setLeft(m_targetPos);
+			m_pElement->setLeft(m_targetPos.x);
+			m_pElement->setTop(m_targetPos.y);
 			m_pElement->show();
 			return ;
 		}
 
-		m_pElement->setLeft(m_OriginalPos+(m_targetPos-m_OriginalPos)*precent);
+		m_pElement->setLeft(m_OriginalPos.x+(m_targetPos.x-m_OriginalPos.x)*precent);
+		m_pElement->setTop(m_OriginalPos.y+(m_targetPos.y-m_OriginalPos.y)*precent);
+		m_pElement->setWidth(m_OriginaWidth+(m_TargetWidth-m_OriginaWidth)*precent);
+		m_pElement->setHeight(m_OriginaHeight+(m_TargetHeight-m_OriginaHeight)*precent);
+		//m_pElement->getZOrder()
+		
+
+		
+
+		
+		
 		if(m_Visible)
 		{
 			m_pElement->show();
@@ -351,8 +371,19 @@ public:
 public:
 
 	Ogre::OverlayElement*  m_pElement; 
-	float                  m_OriginalPos; ///滚动开始的位置 
-	float                  m_targetPos;   ///滚动结不束位置
+	Ogre::Vector2          m_OriginalPos; ///滚动开始的位置 
+	Ogre::Vector2          m_targetPos;   ///滚动结不束位置
+
+	int                    m_OriginaWidth;//宽
+	int                    m_TargetWidth;
+
+	int                    m_OriginaHeight;//高
+	int                    m_TargetHeight;
+
+	int                    m_OriginaZOrder;  //z顺序
+	int                    m_TargetZorder; 
+
+
 	bool                   m_Visible;     ///滚动是否隐藏
 	Ogre::String           m_userData;     ///用户保存数据
 
@@ -426,6 +457,10 @@ protected:
 	void endRoll();
 
 
+	///更新左右滚动按钮状态
+	void updateSrollButton();
+
+
 	protected:
 
 	
@@ -440,8 +475,8 @@ protected:
 
 
 	bool                  m_IsPress;         ///是否按下
-	int                    m_RollDir;        ///滚动方向 0,表示不滚动。-1向滚动一格 1向左路滚动一格
-	float                  m_RollTime;       ///滚动时间
+	int                   m_RollDir;        ///滚动方向 0,表示不滚动。-1向滚动一格 1向左路滚动一格
+	float                 m_RollTime;       ///滚动时间
 
 
 

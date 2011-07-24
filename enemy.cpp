@@ -18,13 +18,13 @@
 int Enemy::m_EntityIndex=0;
 
 //------------------------------------------
-Enemy::Enemy(const Ogre::String& meshName,const Ogre::Vector3& pos, Ogre::SceneManager* pSceneMrg)
-:m_pEntity(NULL),m_pNode(NULL),m_pSceneMrg(pSceneMrg),m_pAniSate(NULL),m_LeftValue(100),m_State(ES_NORMAL),m_Rotate(0),
+Enemy::Enemy(const Ogre::String& meshName,const Ogre::Vector3& pos, Ogre::SceneNode* pParent)
+:m_pEntity(NULL),m_pNode(NULL),m_pSceneMrg(pParent->getCreator()),m_pAniSate(NULL),m_LeftValue(100),m_State(ES_NORMAL),m_Rotate(0),
 m_pHeadEnity(NULL)
 {
     
     m_pEntity=m_pSceneMrg->createEntity("Enemy"+Ogre::StringConverter::toString(m_EntityIndex++),meshName);
-    m_pNode=pSceneMrg->getRootSceneNode()->createChildSceneNode();
+    m_pNode=pParent->createChildSceneNode();
     m_pNode->attachObject(m_pEntity);
     m_pNode->setPosition(pos);
 
@@ -318,4 +318,26 @@ void Enemy::reset(const Ogre::Vector3& pos)
     
     
     return  ;
+}
+
+
+//--------------------------------------------------------------
+bool Enemy::intersectRay(const Ogre::Ray& ray,float length)
+{
+
+	///先对最外面的外框盒做一个检查，如果有相应再对里面每一个对像再做检查
+	const Ogre::AxisAlignedBox& box=m_pNode->_getWorldAABB();
+	float nearPoint(0.0f),farPoint(0.0f);
+	bool intersect=	Ogre::Math::intersects(ray,box,&nearPoint,&farPoint);
+	if(intersect==false)
+	{
+		return false;
+	}
+	if(nearPoint<length || farPoint<length)
+	{
+		return true;
+	}
+
+	return false;
+
 }

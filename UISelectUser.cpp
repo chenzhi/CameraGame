@@ -31,7 +31,7 @@ void  UISelectUser::init()
 	UIBase::init();
 
 
-	StaticImage* pImage=new StaticImage("SelectUserBackGround","sdk_button_up.png");
+	StaticImage* pImage=new StaticImage("SelectUserBackGround","tuku_background.png");
 	registerWidget(pImage);
 	Ogre::OverlayElement* pElment=pImage->getOverlayElement();
 	pElment->setMetricsMode(Ogre::GMM_RELATIVE);
@@ -44,7 +44,7 @@ void  UISelectUser::init()
 
 
 	///??????
-	m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","sdk_button_up.png","sdk_button_down.png");
+	m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","moshi_fanhui_press.png","moshi_fanhui_release.png");
 	registerWidget(m_ToCaptureButton);
 	m_ToCaptureButton->_assignListener(this);
 	pElment=m_ToCaptureButton->getOverlayElement();
@@ -94,8 +94,7 @@ void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 
 	m_UserList=pUserList;
 
-	///??????5ä¸????	
-    int userSize=m_UserList->size();
+	///??????5ä¸????	int userSize=m_UserList->size();
 	if(userSize>5)
 	{
 		userSize=5;
@@ -148,7 +147,7 @@ void UISelectUser::onEndTouch(int x,int y)
 
 	///å¦??æ²¡æ??¹å??°ä»»ä½??ä¸???????°±???????§ç?????¨é???½®?¶æ?
 
-	bool needRest=true;
+	///??½®??????????????	bool needRest=true;
 
 	ImageButtonCollect::iterator it=m_UserButtonCollect.begin();
 	ImageButtonCollect::iterator itend=m_UserButtonCollect.end();
@@ -200,6 +199,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 		UIBase* pCaptureFace= Application::getSingleton().getUIByName("CaptureFaceUI");
 		assert(pCaptureFace);
 		pCaptureFace->setVisible(true);
+		return ;
 
 	}
 

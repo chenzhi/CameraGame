@@ -66,15 +66,11 @@ public:
     
     ///@}输入事件结束，
 
-    
-    
-    
-    
-    
     protected:
     
     
     UICollect m_UICollect;
+
     
     
     

@@ -5,8 +5,8 @@ template container Panel(cz/ImageButton)
       
 	horz_align center
       vert_align center
-	width 100
-	height 100
+	width 128
+	height 128
 }
 
 
@@ -40,29 +40,27 @@ template container Panel(cz/SliderGallery)
 {
 
      metrics_mode pixels
-     material cz/Button/Down
+   //material cz/Button/Down
       
-	horz_align center
-      vert_align center
-	width 600
-	height 150
+	horz_align left
+      vert_align top
+      left  0
+      top   0
+	width 960
+	height 640
 
-   container Panel(cz/SliderGallery/Backgroud)
-      {
-         metrics_mode pixels
-         material cz/SliderGallery/Backgroud/mat
-         left 120
-         top  0
-         width 400
-         height 120
-         element Panel(cz/SliderGallery/1)
+          element Panel(cz/SliderGallery/1)
              {
                 material cz/SliderGallery/Button/mat
                 metrics_mode pixels
-                left 0
-                top  0
-                width 80
-                 height 80
+                 horz_align left
+                 vert_align center
+
+                
+                left 129
+                top  -64
+                width 128
+                height 128
 
              }
 
@@ -70,28 +68,32 @@ template container Panel(cz/SliderGallery)
              {
                 material cz/SliderGallery/Button/mat
                 metrics_mode pixels
-                left 100
-                top  0
-                width 80
-                 height 80
+                 horz_align left
+                 vert_align center
+
+                left 352
+                top  -128
+                width 256
+                height 256
 
              }
 
-              element Panel(cz/SliderGallery/3)
+             element Panel(cz/SliderGallery/3)
              {
                 material cz/SliderGallery/Button/mat
                 metrics_mode pixels
-                left 200
-                top  0
-                width 80
-                 height 80
+                horz_align left
+                vert_align center
+
+                left 704
+                top  -64
+                width 128
+                height 128
 
              }
 
 
 
-           
-      }
 
 
 
@@ -99,10 +101,13 @@ template container Panel(cz/SliderGallery)
       {
          metrics_mode pixels
          material cz/SliderGallery/PrevisousButton/mat
+         horz_align left
+         vert_align center
+
          left 0
-         top  20
-         width 100
-         height 100
+         top  -64
+         width 128
+         height 128
            
       }
 
@@ -110,10 +115,13 @@ template container Panel(cz/SliderGallery)
       {
          metrics_mode pixels
          material cz/SliderGallery/NextButton/mat
-         left 500
-         top  20
-         width 100
-         height 100
+         horz_align right
+         vert_align center
+
+         left -128
+         top  -64
+         width 128
+         height 128
            
       }
 
