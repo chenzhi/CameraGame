@@ -43,6 +43,8 @@
 		77A8B4FF13B19A7E00D40305 /* GameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A8B4FE13B19A7E00D40305 /* GameState.cpp */; };
 		77C17B5913AED3A90067B857 /* ofPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C17B5713AED3A90067B857 /* ofPoint.cpp */; };
 		77F4287413CDF1D200C3478E /* SdkTrays.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77F4287213CDF1D200C3478E /* SdkTrays.cpp */; };
+		77FCF58B13D904C00048CCE3 /* EnemyQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */; };
+		77FCF58C13D904C00048CCE3 /* GameMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FCF58913D904C00048CCE3 /* GameMode.cpp */; };
 		8896C17F13A88233000DA13C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C17E13A88233000DA13C /* UIKit.framework */; };
 		8896C18113A88233000DA13C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18013A88233000DA13C /* Foundation.framework */; };
 		8896C18313A88233000DA13C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18213A88233000DA13C /* CoreGraphics.framework */; };
@@ -86,7 +88,7 @@
 		7755CC2F13CEBCEB00E9B78A /* GSSelectMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSSelectMode.h; sourceTree = "<group>"; };
 		7755CC3013CEBCEB00E9B78A /* UISelectMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = UISelectMode.cpp; sourceTree = "<group>"; };
 		7755CC3113CEBCEB00E9B78A /* UISelectMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISelectMode.h; sourceTree = "<group>"; };
-		7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = UISelectUser.cpp; sourceTree = "<group>"; };
+		7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UISelectUser.cpp; sourceTree = "<group>"; };
 		7755CC3613CEBD1600E9B78A /* UISelectUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISelectUser.h; sourceTree = "<group>"; };
 		7755CC4013CEEA9400E9B78A /* Tool.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = Tool.cpp; sourceTree = "<group>"; };
 		7755CC4113CEEA9400E9B78A /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
@@ -118,6 +120,10 @@
 		77C17B5713AED3A90067B857 /* ofPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofPoint.cpp; sourceTree = "<group>"; };
 		77C17B5813AED3A90067B857 /* ofPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofPoint.h; sourceTree = "<group>"; };
 		77F4287213CDF1D200C3478E /* SdkTrays.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SdkTrays.cpp; sourceTree = "<group>"; };
+		77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = EnemyQueue.cpp; sourceTree = "<group>"; };
+		77FCF58813D904C00048CCE3 /* EnemyQueue.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = EnemyQueue.h; sourceTree = "<group>"; };
+		77FCF58913D904C00048CCE3 /* GameMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = GameMode.cpp; sourceTree = "<group>"; };
+		77FCF58A13D904C00048CCE3 /* GameMode.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = GameMode.h; sourceTree = "<group>"; };
 		8896C17A13A88232000DA13C /* ogreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ogreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8896C17E13A88233000DA13C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8896C18013A88233000DA13C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -156,22 +162,15 @@
 		7701CF6013B1B66700D39C17 /* gameState */ = {
 			isa = PBXGroup;
 			children = (
+				77FCF58513D904870048CCE3 /* War */,
 				7755CC3413CEBCF200E9B78A /* SelectFace */,
 				7755CC2C13CEBCC400E9B78A /* SelectMode */,
 				77F4286513CDF14100C3478E /* GamePlay */,
-				778F9E1B13B8337700E1706D /* enemy.cpp */,
-				778F9E1C13B8337700E1706D /* enemy.h */,
-				7775627013B03582003849ED /* Bullet.cpp */,
-				7775627113B03582003849ED /* Bullet.h */,
-				7775627213B03582003849ED /* BulletManager.cpp */,
-				7775627313B03582003849ED /* BulletManager.h */,
 				77A8B4FE13B19A7E00D40305 /* GameState.cpp */,
 				77A8B4FD13B1991200D40305 /* GameState.h */,
 				7701CF6613B1C0F600D39C17 /* stateMachine.cpp */,
 				7701CF6713B1C0F600D39C17 /* stateMachine.h */,
 				7701CF6513B1BC3400D39C17 /* state.h */,
-				7701CF6913B1DA2100D39C17 /* WarGS.cpp */,
-				7701CF6A13B1DA2100D39C17 /* WarGS.h */,
 			);
 			name = gameState;
 			sourceTree = "<group>";
@@ -252,6 +251,25 @@
 				7755CC4113CEEA9400E9B78A /* Tool.h */,
 			);
 			name = Tools;
+			sourceTree = "<group>";
+		};
+		77FCF58513D904870048CCE3 /* War */ = {
+			isa = PBXGroup;
+			children = (
+				77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */,
+				77FCF58813D904C00048CCE3 /* EnemyQueue.h */,
+				77FCF58913D904C00048CCE3 /* GameMode.cpp */,
+				77FCF58A13D904C00048CCE3 /* GameMode.h */,
+				778F9E1B13B8337700E1706D /* enemy.cpp */,
+				778F9E1C13B8337700E1706D /* enemy.h */,
+				7775627013B03582003849ED /* Bullet.cpp */,
+				7775627113B03582003849ED /* Bullet.h */,
+				7775627213B03582003849ED /* BulletManager.cpp */,
+				7775627313B03582003849ED /* BulletManager.h */,
+				7701CF6913B1DA2100D39C17 /* WarGS.cpp */,
+				7701CF6A13B1DA2100D39C17 /* WarGS.h */,
+			);
+			name = War;
 			sourceTree = "<group>";
 		};
 		8896C16F13A88232000DA13C = {
@@ -440,6 +458,8 @@
 				7755CC4213CEEA9400E9B78A /* Tool.cpp in Sources */,
 				779B6D9213D7B67C006E2BE4 /* UISelectFaceMode.cpp in Sources */,
 				779B6D9313D7B67C006E2BE4 /* UISelectHead.cpp in Sources */,
+				77FCF58B13D904C00048CCE3 /* EnemyQueue.cpp in Sources */,
+				77FCF58C13D904C00048CCE3 /* GameMode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

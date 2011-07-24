@@ -760,25 +760,26 @@ void RotateImage::setOrientation(float radian)
 	pTextureState->setTextureRotate(Ogre::Radian(radian));
 
 }
-//
-//void RotateImage::update(float time)
-//{
-//
-//	static float ang=0.0f;
-//	ang+=time;
-//
-//	while (ang>Ogre::Math::PI*2)
-//	{
-//		ang-=Ogre::Math::PI*2;
-//	}
-//
-//	Ogre::TextureUnitState* pTextureState=m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0);
-//	if(pTextureState!=NULL)
-//	{
-//		pTextureState->setTextureRotate(Ogre::Radian(ang));
-//	}
-//
-//
-//
-//
-//}
+
+//-------------------------------------------------------------------------
+void RotateImage::update(float time)
+{
+
+	static float ang=0.0f;
+	ang+=time;
+
+	while (ang>Ogre::Math::PI*2)
+	{
+		ang-=Ogre::Math::PI*2;
+	}
+
+	Ogre::TextureUnitState* pTextureState=m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0);
+	if(pTextureState!=NULL)
+	{
+		pTextureState->setTextureRotate(Ogre::Radian(ang));
+	}
+
+
+
+
+}

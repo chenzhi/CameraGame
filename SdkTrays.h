@@ -2839,9 +2839,10 @@
 				std::ostringstream oss;
 				Ogre::String s;
 
-				oss << "FPS: "  << std::setprecision(1) << stats.lastFPS;
+				oss << "FPS: " << std::fixed << std::setprecision(1) << stats.lastFPS;
 				s = oss.str();
-				for (int i = s.length() - 5; i > 5; i -= 3) { s.insert(i, 1, ','); }
+				for (int i = s.length() - 5; i > 5; i -= 3) 
+                  { s.insert(i, 1, ','); }
 				mFpsLabel->setCaption(s);
 
 				if (mStatsPanel->getOverlayElement()->isVisible())
@@ -2855,13 +2856,13 @@
 					values.push_back(s);
 
 					oss.str("");
-					oss << std::setprecision(1) << stats.bestFPS;
+					oss << std::fixed << std::setprecision(1) << stats.bestFPS;
 					str = oss.str();
 					for (int i = str.length() - 5; i > 0; i -= 3) { str.insert(i, 1, ','); }
 					values.push_back(s);
 
 					oss.str("");
-					oss  << std::setprecision(1) << stats.worstFPS;
+					oss << std::fixed  << std::setprecision(1) << stats.worstFPS;
 					str = oss.str();
 					for (int i = str.length() - 5; i > 0; i -= 3) { str.insert(i, 1, ','); }
 					values.push_back(str);

@@ -94,7 +94,8 @@ void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 
 	m_UserList=pUserList;
 
-	///??????5ä¸????	int userSize=m_UserList->size();
+	///??????5ä¸????	
+    int userSize=m_UserList->size();
 	if(userSize>5)
 	{
 		userSize=5;
