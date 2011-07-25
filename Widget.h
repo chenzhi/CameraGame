@@ -100,6 +100,36 @@ protected:
 
 
 
+class CaptureImage :public Widget
+{
+public:
+
+		CaptureImage(const Ogre::String& name)
+		{
+			mElement = Ogre::OverlayManager::getSingleton().createOverlayElementFromTemplate("cz/CaptureFace/StaticImage", "Panel", name);
+
+		}
+
+		~CaptureImage()
+		{
+		
+		}
+
+
+protected:
+
+
+
+
+
+
+
+
+};
+
+
+
+
 
 /*********************************************
 长按图片按钮,按下时间超过指定时间会发出事件
@@ -329,7 +359,7 @@ public:
 
 	/**返回用户数据
 	*/
-	const Ogre::String getUserData()const
+	const Ogre::String& getUserData()const
 	{
 		return m_userData;
 	}

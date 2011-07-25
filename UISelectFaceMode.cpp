@@ -1,12 +1,13 @@
 #include "pch.h"
 #include  "UISelectFaceMode.h"
 #include "Application.h"
+#include "Config.h"
 
 /**************************************************************/
 
 //----------------------------------------------------------
 UserSelectMode::UserSelectMode(const Ogre::String& faceMesh,const Ogre::String&headMesh)
-:m_currentTime(0.0f),m_isRoll(false),m_pNode(NULL),m_pFaceEntity(NULL),m_pHeadEntity(NULL)
+:m_currentTime(0.0f),m_isRoll(false),m_pNode(NULL),m_pFaceEntity(NULL),m_pHeadEntity(NULL),m_pAnimation(NULL)
 {
 	Ogre::SceneManager* pSceneMrg=Application::getSingletonPtr()->getMainSceneManager();
 	m_pNode=pSceneMrg->getRootSceneNode()->createChildSceneNode();
@@ -14,14 +15,22 @@ UserSelectMode::UserSelectMode(const Ogre::String& faceMesh,const Ogre::String&h
 	m_pFaceEntity=pSceneMrg->createEntity(faceMesh);
 	m_pHeadEntity=pSceneMrg->createEntity(headMesh);
 
-	if(m_pFaceEntity->hasSkeleton()&&m_pHeadEntity->hasSkeleton())
-	{
-		m_pHeadEntity->shareSkeletonInstanceWith(m_pFaceEntity);
-	}
+	//if(m_pFaceEntity->hasSkeleton()&&m_pHeadEntity->hasSkeleton())
+	//{
+	//	m_pHeadEntity->shareSkeletonInstanceWith(m_pFaceEntity);
+	//}
 
 	m_pNode->attachObject(m_pFaceEntity);
 	m_pNode->attachObject(m_pHeadEntity);
 
+
+	m_pAnimation=m_pFaceEntity->getAnimationState("shiai");
+	if(m_pAnimation!=NULL)
+	{
+		m_pAnimation->setLoop(true);
+		m_pAnimation->setEnabled(true);
+		m_pAnimation->setTimePosition(0);
+	}
 
 
 }
@@ -39,6 +48,7 @@ UserSelectMode::~UserSelectMode()
 	pSceneMrg->destroyEntity(m_pFaceEntity);
 	m_pHeadEntity=NULL;
 	m_pFaceEntity=NULL;
+	m_pAnimation=NULL;
 
 	return ;
 }
@@ -47,6 +57,12 @@ UserSelectMode::~UserSelectMode()
 //----------------------------------------------------------
 void UserSelectMode::update(float time)
 {
+	updateOrientation();
+
+		if(m_pAnimation!=NULL)
+	{
+		m_pAnimation->addTime(time);
+	}
 	///如果不需要移动返回
 	if(m_isRoll==false)
 		return ;
@@ -58,6 +74,8 @@ void UserSelectMode::update(float time)
 	{
 		reset();
 	}
+
+	
 
 	return ;
 
@@ -139,13 +157,51 @@ void UserSelectMode::setVisible(bool b)
 	m_pNode->setVisible(b);
 }
 
-//--------------------------------------
+//-------------------------------------------------------------------------
 void UserSelectMode::setPosition(float x,float y,float z)
 {
 	m_pNode->setPosition(Ogre::Vector3(x,y,z));
 
+	updateOrientation();
+
 }
 
+//-------------------------------------------------------------------------
+void UserSelectMode::updateOrientation()
+{
+
+	if(m_pNode==NULL)
+		return ;
+
+	//m_pNode->rotate(Ogre::Vector3::UNIT_Y,Ogre::Radian(0.01f));
+	//return ;
+
+	Ogre::Camera* pCamera=Application::getSingleton().getMainCamera();
+	Ogre::Vector3 camPos= pCamera->getParentNode()->getPosition();
+	Ogre::Vector3 facePos=m_pNode->getPosition();
+
+
+	Ogre::Vector3 dir=camPos-facePos;
+	dir.normalise();
+	//dir=-dir;
+
+	Ogre::Vector3 up(0.0f,1.0f,0.0f);
+
+	Ogre::Vector3 right=dir.crossProduct(up);
+
+	//m_pNode->setDirection(dir,Ogre::Node::TS_WORLD);
+
+	//Ogre::Quaternion qu(right,up,dir);
+	//m_pNode->setOrientation(qu);
+
+	m_pNode->lookAt(camPos,Ogre::Node::TS_WORLD,Ogre::Vector3::UNIT_Z);
+
+	return ;
+
+
+
+
+}
 
 
 
@@ -176,26 +232,6 @@ void UISelectFaceMode::init()
 {
      UIBase::init();
 
-	 /**创建三个模型用来做为不同脸型的选择*/
-
-	 UserSelectMode* pMode=new UserSelectMode("face.mesh","Head.mesh");
-	 m_FaceModeCollect.push_back(pMode);
-	 pMode->setPosition(-2.0f,0.0f,0.0f);
-
-
-	 
-	 pMode=new UserSelectMode("face.mesh","Head.mesh");
-	 m_FaceModeCollect.push_back(pMode);
-	 pMode->setPosition(0.0f,0.0f,0.0f);
-
-
-	 pMode=new UserSelectMode("face.mesh","Head.mesh");
-	 m_FaceModeCollect.push_back(pMode);
-	 pMode->setPosition(2.0f,0.0f,0.0f);
-
-
-
-
 	return ;
 
 }
@@ -206,6 +242,15 @@ void  UISelectFaceMode::setVisible(bool b)
 {
 
 	UIBase::setVisible(b);
+
+	if(b)
+	{
+		destroyAllFaceMode();
+		initAllFaceMode();
+
+
+	}
+
 	setUserSelctModeVisible(b);
 
 }
@@ -232,6 +277,8 @@ void UISelectFaceMode::setUserSelctModeVisible(bool b)
 void UISelectFaceMode::onEndTouch(int x,int y)
 {
 	UIBase::onEndTouch(x,y);
+
+	return ;
 
 	///判断是否有拾取一个模型
 
@@ -277,5 +324,42 @@ void  UISelectFaceMode::destroyAllFaceMode()
 
 	m_FaceModeCollect.clear();
 
+
+}
+
+void UISelectFaceMode::initAllFaceMode()
+{
+
+	/**创建三个模型用来做为不同脸型的选择*/
+
+	///创建所有选择的脸
+	unsigned int FaceSize= m_FaceModeSource.getFaceModeCount();
+	const Ogre::String& headMode=g_userInformation.getHeadMode();
+
+	Ogre::Vector3 pos(-2.0f,0.0f,0.0f);
+	for(unsigned int i=0;i<FaceSize;++i)
+	{
+
+		const Ogre::String& faceMesh=m_FaceModeSource.getFaceMode(i);
+		UserSelectMode* pMode=new UserSelectMode(faceMesh,headMode);
+		m_FaceModeCollect.push_back(pMode);
+		pMode->setPosition(pos.x,pos.y,pos.z);
+		pos.x+=2.0f;
+
+	}
+
+}
+
+//---------------------------------------------------------------------
+void UISelectFaceMode::update(float time)
+{
+
+	FaceModeCollect::iterator it=m_FaceModeCollect.begin();
+	FaceModeCollect::iterator itend=m_FaceModeCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		(*it)->update(time);
+	}
 
 }

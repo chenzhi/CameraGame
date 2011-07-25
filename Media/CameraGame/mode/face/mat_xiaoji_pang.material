@@ -1,5 +1,6 @@
 
-material Material_#157_Material_#157_A 
+
+material mat_xiaoji_pang_mat_xiaoji_pang_A 
 {
 	set_texture_alias diffuseMap xiaoji.png
 	technique

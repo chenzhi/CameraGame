@@ -1,12 +1,13 @@
 
-material 13_-_Default_Material_#156_B 
+
+material mat_hema_face_lian_A 
 {
-	set_texture_alias diffuseMap lian_kouqiang.png
+	set_texture_alias diffuseMap face_front.png
 	technique
 	{
 		pass
 		{
-			diffuse 0.588 0.588 0.588
+			diffuse 0.588235 0.588235 0.588235
 			texture_unit diffuseMap
 			{
 				tex_coord_set 0
@@ -16,14 +17,14 @@ material 13_-_Default_Material_#156_B
 	}
 }
 
-material 13_-_Default_13_-_Default_A 
+material mat_hema_face_kouqiang_B 
 {
-	set_texture_alias diffuseMap front.png
+	set_texture_alias diffuseMap lian_kouqiang.png
 	technique
 	{
 		pass
 		{
-			diffuse 0.588235 0.588235 0.588235
+			diffuse 0.588 0.588 0.588
 			texture_unit diffuseMap
 			{
 				tex_coord_set 0

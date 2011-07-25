@@ -120,6 +120,7 @@ StaticImage::StaticImage(const Ogre::String& name,const Ogre::String& textureNam
 	}
 
 	mElement->setMaterialName(m_pMaterial->getName());
+
 	setImage(textureName);
 
 }

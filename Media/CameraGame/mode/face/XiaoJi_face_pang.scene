@@ -1,0 +1,11 @@
+<scene formatVersion="0.1" author="oiram">
+	<nodes>
+		<node name="face_pang">
+			<entity name="face_pang" meshFile="face_pang.mesh"/>
+		</node>
+		<node name="xiaoji_pang">
+			<entity name="xiaoji_pang" meshFile="xiaoji_pang.mesh"/>
+		</node>
+	</nodes>
+</scene>
+

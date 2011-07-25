@@ -63,6 +63,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="OgreMain_d.lib"
+				OutputFile="$(OutDir)\$(ProjectName)_d.exe"
 				AdditionalLibraryDirectories="&quot;$(OGRE_HOME)/dependencies/lib/debug&quot;;&quot;$(OGRE_LIBS)/debug&quot;"
 				GenerateDebugInformation="true"
 				TargetMachine="1"
@@ -91,7 +92,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			OutputDirectory="bin/release"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="2"
@@ -116,6 +117,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="../ogreapp;../;&quot;$(OGRE_HOME)/include&quot;;&quot;$(OGRE_HOME)/OgreMain/include&quot;;&quot;$(OGRE_HOME)/dependencies/include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -133,7 +135,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalLibraryDirectories="&quot;$(OGRE_LIBS)/Release&quot;"
+				AdditionalDependencies="OgreMain.lib"
+				AdditionalLibraryDirectories="&quot;$(OGRE_HOME)/dependencies/lib/release&quot;;&quot;$(OGRE_LIBS)/release&quot;"
 				GenerateDebugInformation="true"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -494,6 +497,10 @@
 		<Filter
 			Name="config"
 			>
+			<File
+				RelativePath="..\Config.cpp"
+				>
+			</File>
 			<File
 				RelativePath="..\Config.h"
 				>

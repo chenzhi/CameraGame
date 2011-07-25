@@ -150,7 +150,7 @@ void GameModeTwo::updateUIDir()
 	}
 
 
-	m_pUI->setEmemeyDir(Ogre::Radian(Ogre::Angle(ang)).valueRadians());
+	m_pUI->setEmemeyDir(Ogre::Radian(Ogre::Degree(ang)).valueRadians());
 	
 
 	

@@ -14,7 +14,7 @@
 
 #pragma  once
 
-
+#include "UserInformation.h"
 
 
 
@@ -38,9 +38,10 @@ const  static std::string g_UserFacePath="../../../Media/CameraGame/UserFace";
 
 
 
-///用户选择进入的模式
-static  unsigned int g_UserMode =0;
-
-
 ///用户照片保存的格式
 static  const  std::string g_UserFaceFormt=".png";
+
+
+
+
+static UserInformation g_userInformation;

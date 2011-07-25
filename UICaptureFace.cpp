@@ -37,14 +37,14 @@ void UICaptureFace::init()
 
 	Ogre::OverlayElement* pElement=NULL;
 	///创建脸部校正图片
-	StaticImage* pImage=new StaticImage("CaptureBackGround","CaptureFace.png");
+	CaptureImage* pImage=new CaptureImage("CaptureBackGround");
 	registerWidget(pImage);
-	pElement=pImage->getOverlayElement();
-	pElement->setMetricsMode(Ogre::GMM_RELATIVE);
-	pElement->setHorizontalAlignment(Ogre::GHA_LEFT);
-	pElement->setVerticalAlignment(Ogre::GVA_TOP);
-	pElement->setWidth(1.0f);
-	pElement->setHeight(1.0f);
+	//pElement=pImage->getOverlayElement();
+	//pElement->setMetricsMode(Ogre::GMM_RELATIVE);
+	//pElement->setHorizontalAlignment(Ogre::GHA_LEFT);
+	//pElement->setVerticalAlignment(Ogre::GVA_TOP);
+	//pElement->setWidth(1.0f);
+	//pElement->setHeight(1.0f);
 
 
 
@@ -63,12 +63,12 @@ void UICaptureFace::init()
 	pElement=m_pCaptureButton->getOverlayElement();
 	//pElement->setHorizontalAlignment(Ogre::GHA_RIGHT);
 	//pElement->setVerticalAlignment(Ogre::GVA_BOTTOM);
-	int width=256;
-	int height=256;
+	int width=160;
+	int height=160;
     m_pCaptureButton->setWidth(width);
 	m_pCaptureButton->setHeight(height);
 	m_pCaptureButton->setLeft(-width*0.5f);
-	m_pCaptureButton->setTop(100);
+	m_pCaptureButton->setTop(150);
 
 
 	///返回上一层按钮
@@ -78,6 +78,8 @@ void UICaptureFace::init()
 	m_pGoBackButton->setLeft(10);
 	m_pGoBackButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
 	m_pGoBackButton->setTop(-128);
+	m_pGoBackButton->setWidth(80);
+	m_pGoBackButton->setHeight(80);
 
 
 	

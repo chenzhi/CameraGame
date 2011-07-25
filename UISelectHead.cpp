@@ -5,23 +5,23 @@
 #include "Widget.h"
 #include "Application.h"
 #include "Tool.h"
-
+#include "Config.h"
 
 
 
 FaceModeDataSource::FaceModeDataSource()
 {
 
-	m_ElementCollect.push_back(std::make_pair("texture1.png","userdata1"));
-	m_ElementCollect.push_back(std::make_pair("texture2.png","userdata2"));
-    m_ElementCollect.push_back(std::make_pair("texture3.png","userdata3"));
-	m_ElementCollect.push_back(std::make_pair("texture4.png","userdata4"));
-	m_ElementCollect.push_back(std::make_pair("texture5.png","userdata5"));
-	m_ElementCollect.push_back(std::make_pair("texture6.png","userdata6"));
-	m_ElementCollect.push_back(std::make_pair("texture7.png","userdata7"));
-    m_ElementCollect.push_back(std::make_pair("texture8.png","userdata8"));
-	m_ElementCollect.push_back(std::make_pair("texture9.png","userdata9"));
-	m_ElementCollect.push_back(std::make_pair("texture10.png","userdata10"));
+	m_ElementCollect.push_back(std::make_pair("xiaoji.png","xiaoji_pang.mesh"));
+	m_ElementCollect.push_back(std::make_pair("hema.png","hema_shou.mesh"));
+    m_ElementCollect.push_back(std::make_pair("xiaoji.png","xiaoji_pang.mesh"));
+	m_ElementCollect.push_back(std::make_pair("hema.png","xiaoji_pang.mesh"));
+	m_ElementCollect.push_back(std::make_pair("xiaoji.png","hema_shou.mesh"));
+	m_ElementCollect.push_back(std::make_pair("hema.png","xiaoji_pang.mesh"));
+	m_ElementCollect.push_back(std::make_pair("xiaoji.png","hema_shou.mesh"));
+    m_ElementCollect.push_back(std::make_pair("hema.png","xiaoji_pang.mesh"));
+	m_ElementCollect.push_back(std::make_pair("xiaoji.png","hema_shou.mesh"));
+	m_ElementCollect.push_back(std::make_pair("hema.png","xiaoji_pang.mesh"));
 }
 
 
@@ -38,9 +38,9 @@ unsigned int FaceModeDataSource::getElementCount()
 }
 
 
-	/**获取元素的贴图名
-	*成功返回true 失败返回false
-	*/
+/**获取元素的贴图名
+*成功返回true 失败返回false
+*/
 bool  FaceModeDataSource::getElementTexture(unsigned int index,Ogre::String& textureName)
 {
 	if(index>=m_ElementCollect.size())
@@ -125,6 +125,8 @@ void  UISelectHead::init()
 	m_pReturnButton->setLeft(10);
 	m_pReturnButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
 	m_pReturnButton->setTop(-128);
+	m_pReturnButton->setWidth(80);
+	m_pReturnButton->setHeight(80);
 	registerWidget(m_pReturnButton);
 
 
@@ -142,8 +144,8 @@ void  UISelectHead::init()
 void  UISelectHead::sliderGalleryhit(SrollButton* pbutton)
 {
 
-	Ogre::String userData=pbutton->getUserData();
-
+    const Ogre::String& userData=pbutton->getUserData();
+	g_userInformation.setHeadMode(userData);
 
 	///选择了头套进入选择脸型界面
 	setVisible(false);

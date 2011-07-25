@@ -20,6 +20,25 @@ material cz/Base
 
 
 
+material cz/CaptureFaceImage/mat : cz/Base
+{
+    technique
+    {
+        pass
+        {
+            texture_unit 0
+            {
+                texture paizhao_xuanliankuang.png
+            }
+        }
+    }
+}
+
+
+
+
+
+
 material cz/Button/Down : cz/Base
 {
     technique
@@ -44,7 +63,7 @@ material cz/TimeImageButton/DeleteButton : cz/Base
         {
             texture_unit 0
             {
-                texture sdk_separator.png
+                texture tuku_quxiao_release.png
             }
         }
     }
@@ -105,7 +124,7 @@ material cz/SliderGallery/PrevisousButton/mat  : cz/Base
         {
             texture_unit 0
             {
-                texture  paizhao_sanjiao_release.png
+                texture  tuku_zuoanniu_release.png
             }
         }
     }

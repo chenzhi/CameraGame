@@ -3,6 +3,7 @@
 #include "Widget.h"
 #include "Config.h"
 #include "Application.h"
+#include "Config.h"
 
 
 UISelectMode::UISelectMode()
@@ -100,6 +101,8 @@ void UISelectMode::init()
 	///·µ»Ø°´Å¥
 	Widget* pReturnButton=new ImageButton("SelectMode_return","moshi_fanhui_press.png","moshi_fanhui_release.png");
 	pReturnButton->setHorizontalAlignment(Ogre::GHA_LEFT);
+	pReturnButton->setWidth(80);
+	pReturnButton->setHeight(80);
 	pReturnButton->setLeft(10);
 	pReturnButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
 	pReturnButton->setTop(-128);
@@ -128,18 +131,15 @@ void UISelectMode::buttonHit(Widget* button)
 
 	if(name=="SelectMode_1")
 	{
-     g_UserMode=1;
+     g_userInformation.setWarMode(0);
 
 	}else if(name=="SelectMode_2")
 	{
-
-		g_UserMode=2;
-
+        g_userInformation.setWarMode(1);
 	}else if(name=="SelectMode_3")
 	{
 
-		g_UserMode=3;
-
+    g_userInformation.setWarMode(2);
 	}
 
 
