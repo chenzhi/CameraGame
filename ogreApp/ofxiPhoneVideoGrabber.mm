@@ -64,7 +64,7 @@
 	
 	// Set the video output to store frame in BGRA (It is supposed to be faster)
 	NSString* key = (NSString*)kCVPixelBufferPixelFormatTypeKey; 
-	NSNumber* value = [NSNumber numberWithUnsignedInt:kCVPixelFormatType_32ABGR]; 
+	NSNumber* value = [NSNumber numberWithUnsignedInt:kCVPixelFormatType_32BGRA]; 
 
 	NSDictionary* videoSettings = [NSDictionary dictionaryWithObject:value forKey:key]; 
 	[captureOutput setVideoSettings:videoSettings]; 
@@ -425,7 +425,7 @@ void ofxiPhoneVideoGrabber::initOgreTexture()
     
         
     m_pTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture_ofxiPhoneVideoGrabber", "General", 
-    Ogre::TEX_TYPE_2D, m_width, m_height, 1, 1,Ogre::PF_A8R8G8B8); 
+    Ogre::TEX_TYPE_2D, m_width, m_height, 1, 1,Ogre::PF_R8G8B8A8); 
     
     return ;
     
@@ -477,9 +477,9 @@ void ofxiPhoneVideoGrabber::updateOgreTexture()
                 {
                     int pixIndex=j*4;
                     ptarget[pixIndex]=pRow[pixIndex+2];
-                    ptarget[pixIndex+2]=pRow[pixIndex+1];
-                    ptarget[pixIndex+3]=pRow[pixIndex];
-                    ptarget[pixIndex+4]=pRow[pixIndex+4];
+                    ptarget[pixIndex+1]=pRow[pixIndex+1];
+                    ptarget[pixIndex+2]=pRow[pixIndex];
+                    ptarget[pixIndex+3]=pRow[pixIndex+3];
                 }
                 
                // memcpy(ptarget,pRow,m_width*pixelSize);
