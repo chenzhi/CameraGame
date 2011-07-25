@@ -88,7 +88,7 @@ class UserFaceDataSource
 public:
 	UserFaceDataSource()
 	{
-		m_FaceModeCollect.push_back("face.mesh");
+		m_FaceModeCollect.push_back("face_shou.mesh");
 		m_FaceModeCollect.push_back("face_pang.mesh");
 
 

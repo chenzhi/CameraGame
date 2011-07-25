@@ -125,6 +125,13 @@ void UICaptureFace::buttonHit(Widget* button)
 	 {
       
 		 UIBase* pSelectHead=Application::getSingletonPtr()->getUIByName("UISelectHead");
+
+	//	
+#ifdef _arm_
+
+
+#endif
+
 		 pSelectHead->setVisible(true);
 		 setVisible(false);
        // Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);

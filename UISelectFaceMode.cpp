@@ -15,10 +15,10 @@ UserSelectMode::UserSelectMode(const Ogre::String& faceMesh,const Ogre::String&h
 	m_pFaceEntity=pSceneMrg->createEntity(faceMesh);
 	m_pHeadEntity=pSceneMrg->createEntity(headMesh);
 
-	//if(m_pFaceEntity->hasSkeleton()&&m_pHeadEntity->hasSkeleton())
-	//{
-	//	m_pHeadEntity->shareSkeletonInstanceWith(m_pFaceEntity);
-	//}
+	if(m_pFaceEntity->hasSkeleton()&&m_pHeadEntity->hasSkeleton())
+	{
+		m_pHeadEntity->shareSkeletonInstanceWith(m_pFaceEntity);
+	}
 
 	m_pNode->attachObject(m_pFaceEntity);
 	m_pNode->attachObject(m_pHeadEntity);

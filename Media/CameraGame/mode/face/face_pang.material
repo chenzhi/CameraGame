@@ -1,8 +1,7 @@
 
 
-material mat_hema_face_lian_A 
-{
-	set_texture_alias diffuseMap face_front.png
+material face_pang_lian_A {
+	set_texture_alias diffuseMap face_front_1.png
 	technique
 	{
 		pass
@@ -17,7 +16,7 @@ material mat_hema_face_lian_A
 	}
 }
 
-material mat_hema_face_kouqiang_B 
+material face_pang_kouqiang_B 
 {
 	set_texture_alias diffuseMap lian_kouqiang.png
 	technique

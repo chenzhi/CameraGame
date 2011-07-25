@@ -16,7 +16,7 @@ EnemyQueue::EnemyQueue(const  PositionList&EnemyList,const PositionList& FriendL
 	size_t size=EnemyList.size();
 	for(size_t i=0;i<size;++i)
 	{
-		m_ElemyCollect.push_back(new Enemy("face.mesh",EnemyList[i],m_pRootNode));
+		m_ElemyCollect.push_back(new Enemy("face_shou.mesh",EnemyList[i],m_pRootNode));
 
 	}
 

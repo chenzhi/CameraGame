@@ -30,7 +30,7 @@ void GameModeTwo::start()
 
 
 	Ogre::Vector3 pos(0.0f,0.0f,0.0f);
-	m_pEnemy=new Enemy("face.mesh",pos,m_pSceneMrg->getRootSceneNode());
+	m_pEnemy=new Enemy("face_shou.mesh",pos,m_pSceneMrg->getRootSceneNode());
 
 	initUI();
 

@@ -1,8 +1,8 @@
 
 
-material mat_hema_head_mat_hema_head_A 
+material xiaoji_xiaoji_A 
 {
-	set_texture_alias diffuseMap hema.png
+	set_texture_alias diffuseMap xiaoji.png
 	technique
 	{
 		pass
