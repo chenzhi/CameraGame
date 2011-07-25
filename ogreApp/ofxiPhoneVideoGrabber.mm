@@ -473,7 +473,16 @@ void ofxiPhoneVideoGrabber::updateOgreTexture()
                 unsigned char* pRow=pPixel+i*m_width*4;
                 unsigned char* ptarget=data+(i+yoffset)*rowPitch;
                 
-                memcpy(ptarget,pRow,m_width*pixelSize);
+                for(int j=0;j<m_width;++j)
+                {
+                    int pixIndex=j*4;
+                    ptarget[pixIndex]=pRow[pixIndex+2];
+                    ptarget[pixIndex+2]=pRow[pixIndex+1];
+                    ptarget[pixIndex+3]=pRow[pixIndex];
+                    ptarget[pixIndex+4]=pRow[pixIndex+4];
+                }
+                
+               // memcpy(ptarget,pRow,m_width*pixelSize);
             }
             
             pPixelBuff->unlock();
