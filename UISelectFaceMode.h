@@ -50,6 +50,9 @@ public:
 	/**设置位置*/
 	void setPosition(float x,float y,float z);
 
+	/**更新朝向，使其面向摄像机*/
+	void updateOrientation();
+
 protected:
 
 	
@@ -70,11 +73,49 @@ protected:
 	Ogre::Entity*    m_pFaceEntity;
 	Ogre::Entity*    m_pHeadEntity;
 
+	Ogre::AnimationState* m_pAnimation;
+
 
 
 };
 
 
+
+////脸型选择数据源
+class UserFaceDataSource
+{
+
+public:
+	UserFaceDataSource()
+	{
+		m_FaceModeCollect.push_back("face.mesh");
+		m_FaceModeCollect.push_back("face_pang.mesh");
+
+
+	}
+	~UserFaceDataSource()
+	{
+
+	}
+
+
+	unsigned int getFaceModeCount() const{return m_FaceModeCollect.size();}
+
+	const Ogre::String& getFaceMode(unsigned int index	 )const
+	{
+		assert(index<m_FaceModeCollect.size());
+		return m_FaceModeCollect[index];
+	}
+
+
+	
+protected:
+
+	Ogre::StringVector m_FaceModeCollect;
+
+
+
+};
 
 
 
@@ -111,17 +152,25 @@ protected:
 	/**手指离开*/
 	virtual void onEndTouch(int x,int y);
 
+	//每帧更新
+	virtual void update(float time);
+
 
 protected:
 
 	///销毁所有脸部模型
 	void destroyAllFaceMode();
 
+	///初始化所有的脸部模型
+	void initAllFaceMode();
+
 
 	typedef std::vector<UserSelectMode*>FaceModeCollect;
 	FaceModeCollect          m_FaceModeCollect;
 
 
+
+	UserFaceDataSource                  m_FaceModeSource;
 	
 
 

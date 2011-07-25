@@ -49,6 +49,8 @@ void  UISelectUser::init()
 	m_ToCaptureButton->_assignListener(this);
 	pElment=m_ToCaptureButton->getOverlayElement();
 	pElment->setHorizontalAlignment(Ogre::GHA_LEFT);
+	m_ToCaptureButton->setWidth(80);
+	m_ToCaptureButton->setHeight(80);
 
 	return ;
 }
@@ -230,6 +232,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///进入选择头套界面
 			{
 				setVisible(false);
+				g_userInformation.setUserImage(username);
 				UIBase* pSelectFaceMode= Application::getSingleton().getUIByName("UISelectHead");
 				pSelectFaceMode->setVisible(true);
 

@@ -62,7 +62,8 @@ void UIGamePlay::init()
    registerWidget(pPlayFaceBook);
    pPlayFaceBook->setHorizontalAlignment(Ogre::GHA_RIGHT);
    pPlayFaceBook->setVerticalAlignment(Ogre::GVA_BOTTOM);
-
+   pPlayFaceBook->setWidth(80);
+   pPlayFaceBook->setHeight(80);
    pPlayFaceBook->setLeft(-110);
    pPlayFaceBook->setTop(-228);
 
@@ -75,6 +76,8 @@ void UIGamePlay::init()
    pPlayTwitterBook->setHorizontalAlignment(Ogre::GHA_RIGHT);
    pPlayTwitterBook->setVerticalAlignment(Ogre::GVA_BOTTOM);
 
+   pPlayTwitterBook->setWidth(80);
+   pPlayTwitterBook->setHeight(80);
    pPlayTwitterBook->setLeft(-110);
    pPlayTwitterBook->setTop(-128);
 

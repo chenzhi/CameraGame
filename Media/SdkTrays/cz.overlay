@@ -1,8 +1,8 @@
+
 template container Panel(cz/ImageButton)
 {
 	metrics_mode pixels
 	material cz/Button/Down
-      
 	horz_align center
       vert_align center
 	width 128
@@ -105,9 +105,9 @@ template container Panel(cz/SliderGallery)
          vert_align center
 
          left 0
-         top  -64
-         width 128
-         height 128
+         top  -40
+         width 80
+         height 80
            
       }
 
@@ -118,13 +118,30 @@ template container Panel(cz/SliderGallery)
          horz_align right
          vert_align center
 
-         left -128
-         top  -64
-         width 128
-         height 128
+         left -80
+         top  -40
+         width 80
+         height 80
            
       }
 
 
 }
+
+
+
+
+template container Panel(cz/CaptureFace/StaticImage)
+{
+	metrics_mode relative
+	material cz/CaptureFaceImage/mat
+      uv_coords 0 0.2968 0.9375 1.0
+	horz_align left
+      vert_align top
+      left  0
+      top   0
+	width 1.0
+	height 1.0
+}
+
 

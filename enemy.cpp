@@ -28,7 +28,7 @@ m_pHeadEnity(NULL)
     m_pNode->attachObject(m_pEntity);
     m_pNode->setPosition(pos);
 
-	m_pHeadEnity=m_pSceneMrg->createEntity("Head.mesh");
+	m_pHeadEnity=m_pSceneMrg->createEntity("hema_shou.mesh");
 
 	m_pNode->attachObject(m_pHeadEnity);
 	m_pHeadEnity->shareSkeletonInstanceWith(m_pEntity);
