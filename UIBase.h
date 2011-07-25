@@ -106,8 +106,8 @@ public:
 	void    setFlag(Flag flag){m_Flag=flag;}
 	void    addFlag(Flag roleFlag){m_Flag|=roleFlag;}
 	void    removeFlag(Flag roleFlag){m_Flag&=~roleFlag;}
-	DWORD   getFlag()const {return m_Flag;}
-	bool    hasFlag(DWORD flag)  {return (m_Flag&flag)!=0;}
+	unsigned int  getFlag()const {return m_Flag;}
+	bool    hasFlag(Flag flag)  {return (m_Flag&flag)!=0;}
 
     
     

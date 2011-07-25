@@ -535,7 +535,7 @@ public:
 	void setOrientation(float radian);
 
 
-//	void update(float time);
+	void update(float time);
 
 protected:
 

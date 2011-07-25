@@ -25,7 +25,7 @@ class Bullet;
 enum EnemyEvent
 {
 	EE_Hit,//被击上事件
-	EE_Die，//死亡事件
+	EE_Die,//死亡事件
 };
 
 

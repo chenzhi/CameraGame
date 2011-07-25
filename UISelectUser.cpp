@@ -43,7 +43,7 @@ void  UISelectUser::init()
 
 
 
-	///æ•è„¸æŒ‰é’®
+	///??????
 	m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","moshi_fanhui_press.png","moshi_fanhui_release.png");
 	registerWidget(m_ToCaptureButton);
 	m_ToCaptureButton->_assignListener(this);
@@ -91,13 +91,13 @@ void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 	if(pUserList.isNull())
 		return ;
 
-	///????è§§?
+	///????è§?
 	destroyAllUserList();
 
 	m_UserList=pUserList;
 
-	///æœ€å¤šåªå–5ä¸ªç”¨æˆ·
-	int userSize=m_UserList->size();
+	///??????5ä¸????	
+    int userSize=m_UserList->size();
 	if(userSize>5)
 	{
 		userSize=5;
@@ -148,9 +148,9 @@ void UISelectUser::onEndTouch(int x,int y)
 {
 	UIBase::onEndTouch(x,y);
 
+	///å¦??æ²¡æ??¹å??°ä»»ä½??ä¸???????°±???????§ç?????¨é???½®?¶æ?
 
-
-	///é‡ç½®æ‰€æœ‰çš„å€™é€‰æŒ‰é’®çŠ¶æ€
+	///??½®??????????????
 	bool needRest=true;
 
 	ImageButtonCollect::iterator it=m_UserButtonCollect.begin();
@@ -195,7 +195,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 		return ;
 
 
-	//è¿”å›žåˆ°æ•è„¸çš„ç•Œé¢
+	//è¿???°æ??¸ç????
 	if(pbutton==m_ToCaptureButton)
 	{
 		setVisible(false);
@@ -209,7 +209,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 
 
-	///å¦‚æžœé€‰æ‹©äº†çŽ©å®¶	
+	///å¦?????äº??å®?
 	const Ogre::String& imageName=pbutton->getName();
 	size_t size=m_UserList->size();
 	for(size_t i=0;i<size;++i)
@@ -221,7 +221,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 			TimeImageButton*  pTimeButton=static_cast<TimeImageButton*>(pbutton);
 
-			///åˆ é™¤ä¸€ä¸ªç”¨æˆ·å›¾ç‰‡
+			///???ä¸?¸ª?¨æ??¾ç?
 			if(pTimeButton->getState()==TimeImageButton::Press)
 			{
 
@@ -229,7 +229,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 				::remove(username.c_str());
 				m_NeedUpdate=true;
 				return ;
-			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///è¿›å…¥é€‰æ‹©å¤´å¥—ç•Œé¢
+			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///è¿?????å¤´å????
 			{
 				setVisible(false);
 				g_userInformation.setUserImage(username);

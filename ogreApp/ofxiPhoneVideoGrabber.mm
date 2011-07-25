@@ -425,7 +425,7 @@ void ofxiPhoneVideoGrabber::initOgreTexture()
     
         
     m_pTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture_ofxiPhoneVideoGrabber", "General", 
-    Ogre::TEX_TYPE_2D, m_width, m_height, 1, 1,Ogre::PF_A8R8G8B8); 
+    Ogre::TEX_TYPE_2D, m_width, m_height, 1, 1,Ogre::PF_R8G8B8A8); 
     
     return ;
     
@@ -473,7 +473,16 @@ void ofxiPhoneVideoGrabber::updateOgreTexture()
                 unsigned char* pRow=pPixel+i*m_width*4;
                 unsigned char* ptarget=data+(i+yoffset)*rowPitch;
                 
-                memcpy(ptarget,pRow,m_width*pixelSize);
+                for(int j=0;j<m_width;++j)
+                {
+                    int pixIndex=j*4;
+                    ptarget[pixIndex]=pRow[pixIndex+2];
+                    ptarget[pixIndex+1]=pRow[pixIndex+1];
+                    ptarget[pixIndex+2]=pRow[pixIndex];
+                    ptarget[pixIndex+3]=pRow[pixIndex+3];
+                }
+                
+               // memcpy(ptarget,pRow,m_width*pixelSize);
             }
             
             pPixelBuff->unlock();

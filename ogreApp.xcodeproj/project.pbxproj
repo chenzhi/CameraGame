@@ -27,9 +27,11 @@
 		7755CC3213CEBCEB00E9B78A /* GSSelectMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7755CC2E13CEBCEB00E9B78A /* GSSelectMode.cpp */; };
 		7755CC3313CEBCEB00E9B78A /* UISelectMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7755CC3013CEBCEB00E9B78A /* UISelectMode.cpp */; };
 		7755CC3713CEBD1600E9B78A /* UISelectUser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */; };
-		7755CC4213CEEA9400E9B78A /* Tool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7755CC4013CEEA9400E9B78A /* Tool.cpp */; };
 		7775627413B03582003849ED /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7775627013B03582003849ED /* Bullet.cpp */; };
 		7775627513B03582003849ED /* BulletManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7775627213B03582003849ED /* BulletManager.cpp */; };
+		778A6F3913DD753000EFE6EA /* UserInformation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778A6F3713DD753000EFE6EA /* UserInformation.cpp */; };
+		778A6F3C13DD754100EFE6EA /* UIWarTwo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778A6F3A13DD754100EFE6EA /* UIWarTwo.cpp */; };
+		778A6F4013DD755900EFE6EA /* Tool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778A6F3E13DD755900EFE6EA /* Tool.cpp */; };
 		778F9E1D13B8337700E1706D /* enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778F9E1B13B8337700E1706D /* enemy.cpp */; };
 		77910B9013AA0D0300ACEE73 /* ogre.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8D13AA0D0300ACEE73 /* ogre.cfg */; };
 		77910B9113AA0D0300ACEE73 /* plugins.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8E13AA0D0300ACEE73 /* plugins.cfg */; };
@@ -43,6 +45,8 @@
 		77A8B4FF13B19A7E00D40305 /* GameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A8B4FE13B19A7E00D40305 /* GameState.cpp */; };
 		77C17B5913AED3A90067B857 /* ofPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C17B5713AED3A90067B857 /* ofPoint.cpp */; };
 		77F4287413CDF1D200C3478E /* SdkTrays.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77F4287213CDF1D200C3478E /* SdkTrays.cpp */; };
+		77FCF58B13D904C00048CCE3 /* EnemyQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */; };
+		77FCF58C13D904C00048CCE3 /* GameMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FCF58913D904C00048CCE3 /* GameMode.cpp */; };
 		8896C17F13A88233000DA13C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C17E13A88233000DA13C /* UIKit.framework */; };
 		8896C18113A88233000DA13C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18013A88233000DA13C /* Foundation.framework */; };
 		8896C18313A88233000DA13C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18213A88233000DA13C /* CoreGraphics.framework */; };
@@ -86,16 +90,20 @@
 		7755CC2F13CEBCEB00E9B78A /* GSSelectMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSSelectMode.h; sourceTree = "<group>"; };
 		7755CC3013CEBCEB00E9B78A /* UISelectMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = UISelectMode.cpp; sourceTree = "<group>"; };
 		7755CC3113CEBCEB00E9B78A /* UISelectMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISelectMode.h; sourceTree = "<group>"; };
-		7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = UISelectUser.cpp; sourceTree = "<group>"; };
+		7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UISelectUser.cpp; sourceTree = "<group>"; };
 		7755CC3613CEBD1600E9B78A /* UISelectUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISelectUser.h; sourceTree = "<group>"; };
-		7755CC4013CEEA9400E9B78A /* Tool.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = Tool.cpp; sourceTree = "<group>"; };
-		7755CC4113CEEA9400E9B78A /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
 		7775627013B03582003849ED /* Bullet.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Bullet.cpp; sourceTree = "<group>"; };
 		7775627113B03582003849ED /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
 		7775627213B03582003849ED /* BulletManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = BulletManager.cpp; sourceTree = "<group>"; };
 		7775627313B03582003849ED /* BulletManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletManager.h; sourceTree = "<group>"; };
+		778A6F3713DD753000EFE6EA /* UserInformation.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = UserInformation.cpp; sourceTree = "<group>"; };
+		778A6F3813DD753000EFE6EA /* UserInformation.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UserInformation.h; sourceTree = "<group>"; };
+		778A6F3A13DD754100EFE6EA /* UIWarTwo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIWarTwo.cpp; sourceTree = "<group>"; };
+		778A6F3B13DD754100EFE6EA /* UIWarTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWarTwo.h; sourceTree = "<group>"; };
+		778A6F3E13DD755900EFE6EA /* Tool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tool.cpp; sourceTree = "<group>"; };
+		778A6F3F13DD755900EFE6EA /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
 		778F9E1B13B8337700E1706D /* enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = enemy.cpp; sourceTree = "<group>"; };
-		778F9E1C13B8337700E1706D /* enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enemy.h; sourceTree = "<group>"; };
+		778F9E1C13B8337700E1706D /* enemy.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = enemy.h; sourceTree = "<group>"; };
 		77910B8D13AA0D0300ACEE73 /* ogre.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ogre.cfg; path = Resources/ogre.cfg; sourceTree = "<group>"; };
 		77910B8E13AA0D0300ACEE73 /* plugins.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plugins.cfg; path = Resources/plugins.cfg; sourceTree = "<group>"; };
 		77910B8F13AA0D0300ACEE73 /* resources.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = resources.cfg; path = Resources/resources.cfg; sourceTree = "<group>"; };
@@ -118,6 +126,10 @@
 		77C17B5713AED3A90067B857 /* ofPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofPoint.cpp; sourceTree = "<group>"; };
 		77C17B5813AED3A90067B857 /* ofPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofPoint.h; sourceTree = "<group>"; };
 		77F4287213CDF1D200C3478E /* SdkTrays.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SdkTrays.cpp; sourceTree = "<group>"; };
+		77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = EnemyQueue.cpp; sourceTree = "<group>"; };
+		77FCF58813D904C00048CCE3 /* EnemyQueue.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = EnemyQueue.h; sourceTree = "<group>"; };
+		77FCF58913D904C00048CCE3 /* GameMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = GameMode.cpp; sourceTree = "<group>"; };
+		77FCF58A13D904C00048CCE3 /* GameMode.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = GameMode.h; sourceTree = "<group>"; };
 		8896C17A13A88232000DA13C /* ogreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ogreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8896C17E13A88233000DA13C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8896C18013A88233000DA13C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -156,22 +168,15 @@
 		7701CF6013B1B66700D39C17 /* gameState */ = {
 			isa = PBXGroup;
 			children = (
+				77FCF58513D904870048CCE3 /* War */,
 				7755CC3413CEBCF200E9B78A /* SelectFace */,
 				7755CC2C13CEBCC400E9B78A /* SelectMode */,
 				77F4286513CDF14100C3478E /* GamePlay */,
-				778F9E1B13B8337700E1706D /* enemy.cpp */,
-				778F9E1C13B8337700E1706D /* enemy.h */,
-				7775627013B03582003849ED /* Bullet.cpp */,
-				7775627113B03582003849ED /* Bullet.h */,
-				7775627213B03582003849ED /* BulletManager.cpp */,
-				7775627313B03582003849ED /* BulletManager.h */,
 				77A8B4FE13B19A7E00D40305 /* GameState.cpp */,
 				77A8B4FD13B1991200D40305 /* GameState.h */,
 				7701CF6613B1C0F600D39C17 /* stateMachine.cpp */,
 				7701CF6713B1C0F600D39C17 /* stateMachine.h */,
 				7701CF6513B1BC3400D39C17 /* state.h */,
-				7701CF6913B1DA2100D39C17 /* WarGS.cpp */,
-				7701CF6A13B1DA2100D39C17 /* WarGS.h */,
 			);
 			name = gameState;
 			sourceTree = "<group>";
@@ -204,6 +209,15 @@
 			name = SelectFace;
 			sourceTree = "<group>";
 		};
+		778A6F3D13DD754B00EFE6EA /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				778A6F3E13DD755900EFE6EA /* Tool.cpp */,
+				778A6F3F13DD755900EFE6EA /* Tool.h */,
+			);
+			name = Tool;
+			sourceTree = "<group>";
+		};
 		779F91F113C5540C009A65D4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +236,8 @@
 		779F91F613C557FB009A65D4 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				778A6F3713DD753000EFE6EA /* UserInformation.cpp */,
+				778A6F3813DD753000EFE6EA /* UserInformation.h */,
 				779F91F713C5580D009A65D4 /* Config.h */,
 			);
 			name = Config;
@@ -245,19 +261,31 @@
 			name = GamePlay;
 			sourceTree = "<group>";
 		};
-		77F4286E13CDF18800C3478E /* Tools */ = {
+		77FCF58513D904870048CCE3 /* War */ = {
 			isa = PBXGroup;
 			children = (
-				7755CC4013CEEA9400E9B78A /* Tool.cpp */,
-				7755CC4113CEEA9400E9B78A /* Tool.h */,
+				778A6F3A13DD754100EFE6EA /* UIWarTwo.cpp */,
+				778A6F3B13DD754100EFE6EA /* UIWarTwo.h */,
+				77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */,
+				77FCF58813D904C00048CCE3 /* EnemyQueue.h */,
+				77FCF58913D904C00048CCE3 /* GameMode.cpp */,
+				77FCF58A13D904C00048CCE3 /* GameMode.h */,
+				778F9E1B13B8337700E1706D /* enemy.cpp */,
+				778F9E1C13B8337700E1706D /* enemy.h */,
+				7775627013B03582003849ED /* Bullet.cpp */,
+				7775627113B03582003849ED /* Bullet.h */,
+				7775627213B03582003849ED /* BulletManager.cpp */,
+				7775627313B03582003849ED /* BulletManager.h */,
+				7701CF6913B1DA2100D39C17 /* WarGS.cpp */,
+				7701CF6A13B1DA2100D39C17 /* WarGS.h */,
 			);
-			name = Tools;
+			name = War;
 			sourceTree = "<group>";
 		};
 		8896C16F13A88232000DA13C = {
 			isa = PBXGroup;
 			children = (
-				77F4286E13CDF18800C3478E /* Tools */,
+				778A6F3D13DD754B00EFE6EA /* Tool */,
 				779F91F613C557FB009A65D4 /* Config */,
 				779F91F113C5540C009A65D4 /* UI */,
 				77BDDF2113B46A0600818C67 /* collisionManager */,
@@ -437,9 +465,13 @@
 				7755CC3213CEBCEB00E9B78A /* GSSelectMode.cpp in Sources */,
 				7755CC3313CEBCEB00E9B78A /* UISelectMode.cpp in Sources */,
 				7755CC3713CEBD1600E9B78A /* UISelectUser.cpp in Sources */,
-				7755CC4213CEEA9400E9B78A /* Tool.cpp in Sources */,
 				779B6D9213D7B67C006E2BE4 /* UISelectFaceMode.cpp in Sources */,
 				779B6D9313D7B67C006E2BE4 /* UISelectHead.cpp in Sources */,
+				77FCF58B13D904C00048CCE3 /* EnemyQueue.cpp in Sources */,
+				77FCF58C13D904C00048CCE3 /* GameMode.cpp in Sources */,
+				778A6F3913DD753000EFE6EA /* UserInformation.cpp in Sources */,
+				778A6F3C13DD754100EFE6EA /* UIWarTwo.cpp in Sources */,
+				778A6F4013DD755900EFE6EA /* Tool.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +503,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinqi Pang (2FKSK3PN69)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_SUFFIX = "";
@@ -568,7 +600,7 @@
 				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				PROVISIONING_PROFILE = "23437BA4-291C-43E3-8FAB-9D3BF957DD3F";
 				TARGETED_DEVICE_FAMILY = 1;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
@@ -604,7 +636,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinqi Pang (2FKSK3PN69)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_SUFFIX = "";
@@ -740,7 +772,7 @@
 				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				PROVISIONING_PROFILE = "23437BA4-291C-43E3-8FAB-9D3BF957DD3F";
 				TARGETED_DEVICE_FAMILY = 1;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
@@ -798,7 +830,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinqi Pang (2FKSK3PN69)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_SUFFIX = "";
@@ -898,7 +930,7 @@
 				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				PROVISIONING_PROFILE = "23437BA4-291C-43E3-8FAB-9D3BF957DD3F";
 				TARGETED_DEVICE_FAMILY = 1;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = (
@@ -914,7 +946,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinqi Pang (2FKSK3PN69)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_SUFFIX = "";
@@ -1020,7 +1052,7 @@
 				OTHER_REZFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				PROVISIONING_PROFILE = "23437BA4-291C-43E3-8FAB-9D3BF957DD3F";
 				TARGETED_DEVICE_FAMILY = 1;
 				USE_HEADERMAP = NO;
 				VALIDATE_PRODUCT = NO;
