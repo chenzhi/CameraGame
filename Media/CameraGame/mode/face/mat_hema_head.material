@@ -1,0 +1,19 @@
+
+
+material mat_hema_head_mat_hema_head_A 
+{
+	set_texture_alias diffuseMap hema.png
+	technique
+	{
+		pass
+		{
+			diffuse 0.588235 0.588235 0.588235
+			texture_unit diffuseMap
+			{
+				tex_coord_set 0
+				texture_alias diffuseMap
+			}
+		}
+	}
+}
+

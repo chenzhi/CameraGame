@@ -12,16 +12,16 @@
 FaceModeDataSource::FaceModeDataSource()
 {
 
-	m_ElementCollect.push_back(std::make_pair("texture1.png","xiaoji_pang.mesh"));
-	m_ElementCollect.push_back(std::make_pair("texture2.png","hema_shou.mesh"));
-    m_ElementCollect.push_back(std::make_pair("texture3.png","xiaoji_pang.mesh"));
-	m_ElementCollect.push_back(std::make_pair("texture4.png","xiaoji_pang.mesh"));
-	m_ElementCollect.push_back(std::make_pair("texture5.png","hema_shou.mesh"));
-	m_ElementCollect.push_back(std::make_pair("texture6.png","xiaoji_pang.mesh"));
-	m_ElementCollect.push_back(std::make_pair("texture7.png","hema_shou.mesh"));
-    m_ElementCollect.push_back(std::make_pair("texture8.png","xiaoji_pang.mesh"));
-	m_ElementCollect.push_back(std::make_pair("texture9.png","hema_shou.mesh"));
-	m_ElementCollect.push_back(std::make_pair("texture10.png","xiaoji_pang.mesh"));
+	m_ElementCollect.push_back(std::make_pair("xiaoji.png","xiaoji_pang.mesh"));
+	m_ElementCollect.push_back(std::make_pair("hema.png","hema_shou.mesh"));
+    m_ElementCollect.push_back(std::make_pair("xiaoji.png","xiaoji_pang.mesh"));
+	m_ElementCollect.push_back(std::make_pair("hema.png","xiaoji_pang.mesh"));
+	m_ElementCollect.push_back(std::make_pair("xiaoji.png","hema_shou.mesh"));
+	m_ElementCollect.push_back(std::make_pair("hema.png","xiaoji_pang.mesh"));
+	m_ElementCollect.push_back(std::make_pair("xiaoji.png","hema_shou.mesh"));
+    m_ElementCollect.push_back(std::make_pair("hema.png","xiaoji_pang.mesh"));
+	m_ElementCollect.push_back(std::make_pair("xiaoji.png","hema_shou.mesh"));
+	m_ElementCollect.push_back(std::make_pair("hema.png","xiaoji_pang.mesh"));
 }
 
 
@@ -38,9 +38,9 @@ unsigned int FaceModeDataSource::getElementCount()
 }
 
 
-	/**获取元素的贴图名
-	*成功返回true 失败返回false
-	*/
+/**获取元素的贴图名
+*成功返回true 失败返回false
+*/
 bool  FaceModeDataSource::getElementTexture(unsigned int index,Ogre::String& textureName)
 {
 	if(index>=m_ElementCollect.size())

@@ -1,0 +1,36 @@
+
+
+material mat_hema_face_lian_A 
+{
+	set_texture_alias diffuseMap face_front.png
+	technique
+	{
+		pass
+		{
+			diffuse 0.588235 0.588235 0.588235
+			texture_unit diffuseMap
+			{
+				tex_coord_set 0
+				texture_alias diffuseMap
+			}
+		}
+	}
+}
+
+material mat_hema_face_kouqiang_B 
+{
+	set_texture_alias diffuseMap lian_kouqiang.png
+	technique
+	{
+		pass
+		{
+			diffuse 0.588 0.588 0.588
+			texture_unit diffuseMap
+			{
+				tex_coord_set 0
+				texture_alias diffuseMap
+			}
+		}
+	}
+}
+
