@@ -15,7 +15,7 @@
 class Bullet
 {
     
-    friend class BulletManager;
+    friend class WarManager;
     protected:
     
     public:
@@ -34,8 +34,9 @@ class Bullet
     
       
   public:  
-    ///每帧更新
-    void update(float time);
+
+    ///每帧更新,如果是发射状态返回真。非发射状态返回假
+    bool  update(float time);
     
     /**发射子弹
        *@param position，发射的初始位置，
@@ -48,6 +49,9 @@ class Bullet
 
     
     BulletState getState()const {return m_State;}
+
+	/**返回上一帧时间度的射线和长度*/
+	bool getFrameRay(Ogre::Ray& ray,float& lenght);
     
     protected:
     
@@ -56,6 +60,8 @@ class Bullet
     
     /**重置*/
     void reset();
+
+	
     
     
 protected:  
@@ -86,6 +92,9 @@ protected:
     Ogre::RaySceneQuery*  m_pRayQuery;
     
     BulletState      m_State;
+
+	Ogre::Ray        m_ray;
+	float            m_raylenght;
     
     
        

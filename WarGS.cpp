@@ -9,15 +9,15 @@
 
 #include "pch.h"
 #include "WarGS.h"
-#include  "BulletManager.h"
+#include  "WarManager.h"
 #include "Application.h"
 #include "ogreapp/inputListen.h"
-#include "GameMode.h"
+#include "WarMode.h"
 
 
 //------------------------------------
 WarGS::WarGS()
-:GameState(ST_WAR),m_pBulletManager(NULL),m_pCameraNode(NULL),
+:GameState(ST_WAR),m_pWarManager(NULL),m_pCameraNode(NULL),
 m_ActiveGameMode(NULL)
 {
     
@@ -41,9 +41,9 @@ void WarGS::begin()
     
     initVideoTeture();
     
-   m_pBulletManager=new BulletManager();
+   m_pWarManager=new WarManager();
     
-   // m_pBulletManager->startWar();
+   m_pWarManager->startWar();
     
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
     
@@ -68,8 +68,8 @@ void WarGS::begin()
 void WarGS::end()
 {
     GameState::end();
-    delete m_pBulletManager;
-    m_pBulletManager=NULL;
+    delete m_pWarManager;
+    m_pWarManager=NULL;
     
 
 	SafeDelete(m_ActiveGameMode);
@@ -83,11 +83,11 @@ StateType WarGS::update(float time)
 {
     
     
-    m_pBulletManager->update(time);
+    m_pWarManager->update(time);
     
     
     ///如果游戏结束重新回到人物校正
-    //if(m_pBulletManager->isGameEnd())
+    //if(m_pWarManager->isGameEnd())
    // {
     //    setNextStateType(ST_CAPTUREFACE);
    // }
@@ -125,7 +125,7 @@ void WarGS::beginTouch(int x,int y)
     ///子弹发送时稍稍向上发送一点
     dir.y-=0.15;
     dir.normalise();
-    m_pBulletManager->fire(m_pCameraNode->getPosition(),dir);
+    m_pWarManager->fire(m_pCameraNode->getPosition(),dir);
     //*/
     
 

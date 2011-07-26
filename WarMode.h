@@ -101,6 +101,10 @@ public:
 	virtual void  moveTouch(int x,int y);
 
 
+	/**内部调用函数，杀死目标后的回调函数*/
+	void notityKillEmemy();
+
+
 protected:
 
 	///初始化ui游戏开始
@@ -117,7 +121,7 @@ protected:
 
 protected:
 
-	Enemy* m_pEnemy;
+	//Enemy* m_pEnemy;
 
 	UIWarModeTwo  * m_pUI;
 

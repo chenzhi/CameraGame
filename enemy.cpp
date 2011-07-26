@@ -13,13 +13,14 @@
 
 #include "pch.h"
 #include "enemy.h"
-#include  "bulletManager.h"
+#include  "WarManager.h"
+#include "Config.h"
 
 int Enemy::m_EntityIndex=0;
 
 //------------------------------------------
-Enemy::Enemy(const Ogre::String& meshName,const Ogre::Vector3& pos, Ogre::SceneNode* pParent)
-:m_pEntity(NULL),m_pNode(NULL),m_pSceneMrg(pParent->getCreator()),m_pAniSate(NULL),m_LeftValue(100),m_State(ES_NORMAL),m_Rotate(0),
+Enemy::Enemy(const Ogre::String& meshName,const Ogre::String& headMesh,const Ogre::Vector3& pos, Ogre::SceneNode* pParent)
+:m_pEntity(NULL),m_pNode(NULL),m_pSceneMrg(pParent->getCreator()),m_pAniSate(NULL),m_LeftValue(30),m_State(ES_NORMAL),m_Rotate(0),
 m_pHeadEnity(NULL)
 {
     
@@ -27,13 +28,12 @@ m_pHeadEnity(NULL)
     m_pNode=pParent->createChildSceneNode();
     m_pNode->attachObject(m_pEntity);
     m_pNode->setPosition(pos);
-
-	m_pHeadEnity=m_pSceneMrg->createEntity("hema_shou.mesh");
+	m_pHeadEnity=m_pSceneMrg->createEntity(headMesh);
 
 	m_pNode->attachObject(m_pHeadEnity);
 	m_pHeadEnity->shareSkeletonInstanceWith(m_pEntity);
     
-    //m_pNode->showBoundingBox(true);
+    m_pNode->showBoundingBox(true);
     
     m_pEntity->setQueryFlags(EnemyMask);
     
@@ -53,7 +53,7 @@ m_pHeadEnity(NULL)
     }
     
        
-    m_pMaterial=Ogre::MaterialManager::getSingleton().getByName("Material_#30_Material_#0_B");
+    m_pMaterial=m_pEntity->getSubEntity(0)->getMaterial();
     
     
     
@@ -208,7 +208,7 @@ void Enemy::death()
     m_pEntity->setVisible(false);
     
     
-    BulletManager::getSingleton().hasEnemyDeath(this);
+    WarManager::getSingleton().hasEnemyDeath(this);
 
     
     return ;
@@ -241,7 +241,7 @@ void Enemy::updateDodge(float time)
     ///如果目标点低于-5那么游戏结速
     if(m_pNode->_getDerivedPosition().y<-5)
     {
-        BulletManager::getSingleton().endWar();
+        WarManager::getSingleton().endWar();
         return ;
     }
     

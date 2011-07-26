@@ -15,9 +15,9 @@ UserSelectMode::UserSelectMode(const Ogre::String& faceMesh,const Ogre::String&h
 	m_pFaceEntity=pSceneMrg->createEntity(faceMesh);
 	m_pHeadEntity=pSceneMrg->createEntity(headMesh);
 
-	//if(m_pFaceEntity->hasSkeleton()&&m_pHeadEntity->hasSkeleton())
+	if(m_pFaceEntity->hasSkeleton()&&m_pHeadEntity->hasSkeleton())
 	{
-		//m_pHeadEntity->shareSkeletonInstanceWith(m_pFaceEntity);
+		m_pHeadEntity->shareSkeletonInstanceWith(m_pFaceEntity);
 	}
 
 	m_pNode->attachObject(m_pFaceEntity);
@@ -111,6 +111,39 @@ void UserSelectMode::setHeadMesh(const Ogre::String& headMesh)
 
 }
 
+//----------------------------------------------------------------
+bool  UserSelectMode::getFaceMeshName(Ogre::String& meshName)const 
+{
+	if(m_pFaceEntity!=NULL)
+	{
+		Ogre::MeshPtr pMesh=m_pFaceEntity->getMesh();
+		if(pMesh.isNull()==false)
+		{
+			meshName=pMesh->getName();
+			return true;
+		}
+	}
+
+	return false;
+
+}
+
+//----------------------------------------------------------------
+bool  UserSelectMode::getHeadMeshName(Ogre::String& meshName)const
+{
+	if(m_pHeadEntity!=NULL)
+	{
+		Ogre::MeshPtr pMesh=m_pHeadEntity->getMesh();
+		if(pMesh.isNull()==false)
+		{
+			meshName=pMesh->getName();
+			return true;
+		}
+	}
+
+	return false;
+
+}
 
 //----------------------------------------------------------
 bool UserSelectMode::isIntersect(const  Ogre::Ray& ray)
@@ -278,7 +311,6 @@ void UISelectFaceMode::onEndTouch(int x,int y)
 {
 	UIBase::onEndTouch(x,y);
 
-	return ;
 
 	///判断是否有拾取一个模型
 
@@ -299,6 +331,12 @@ void UISelectFaceMode::onEndTouch(int x,int y)
 		if(	(*it)->isIntersect(pickRay))
 		{
 
+			Ogre::String meshName;
+			bool b=(*it)->getFaceMeshName(meshName);
+			assert(b);
+			g_userInformation.setFaceMode(meshName);
+			b=(*it)->getHeadMeshName(meshName);
+			g_userInformation.setHeadMode(meshName);
 			Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
 			return ;
 		}

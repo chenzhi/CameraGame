@@ -41,7 +41,8 @@ const  static std::string g_UserFacePath="../../../Media/CameraGame/UserFace";
 ///用户照片保存的格式
 static  const  std::string g_UserFaceFormt=".png";
 
-
-
-
+///用户选择信息
 static UserInformation g_userInformation;
+
+///不能被击打目标的脸型
+static const   Ogre::String  m_FriendFaceImage="";

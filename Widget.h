@@ -189,6 +189,7 @@ protected:
 	float m_CurrentTime;//当时计时
 	TIB   m_State;
 	bool  m_isPress;///是否按下
+	float m_RotateRadian; ///当前旋转角度
 
 	Ogre::MaterialPtr m_pBackgroundMaterial;
 	Ogre::MaterialPtr m_pDeleteMaterial;

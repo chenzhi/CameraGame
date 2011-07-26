@@ -30,6 +30,11 @@ public:
 	/**设置头套模型*/
 	void setHeadMesh(const Ogre::String& headMesh);
 
+	///获取脸部mesh名
+	bool  getFaceMeshName(Ogre::String& meshName)const ;
+
+	///获取头部mesh名
+	bool  getHeadMeshName(Ogre::String& meshName)const ;
 
 	///是否与射线相交，用来做拾取
 	bool isIntersect(const  Ogre::Ray& ray); 

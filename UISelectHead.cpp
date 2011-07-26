@@ -14,13 +14,13 @@ FaceModeDataSource::FaceModeDataSource()
 
 	m_ElementCollect.push_back(std::make_pair("tuku_xiaoji.png","xiaoji.mesh"));
 	m_ElementCollect.push_back(std::make_pair("tuku_hema.png","hema.mesh"));
-    m_ElementCollect.push_back(std::make_pair("tuku_xiaoji.png","xiaoji.mesh"));
+    m_ElementCollect.push_back(std::make_pair("tuku_deer.png","xiaoji.mesh"));
 	m_ElementCollect.push_back(std::make_pair("tuku_hema.png","hema.mesh"));
 	m_ElementCollect.push_back(std::make_pair("tuku_xiaoji.png","xiaoji.mesh"));
-	m_ElementCollect.push_back(std::make_pair("hema.png","hema.mesh"));
+	m_ElementCollect.push_back(std::make_pair("tuku_deer.png","hema.mesh"));
 	m_ElementCollect.push_back(std::make_pair("tuku_xiaoji.png","xiaoji.mesh"));
     m_ElementCollect.push_back(std::make_pair("tuku_hema.png","hema.mesh"));
-	m_ElementCollect.push_back(std::make_pair("tuku_xiaoji.png","xiaoji.mesh"));
+	m_ElementCollect.push_back(std::make_pair("tuku_deer.png","xiaoji.mesh"));
 	m_ElementCollect.push_back(std::make_pair("tuku_hema.png","hema.mesh"));
 }
 

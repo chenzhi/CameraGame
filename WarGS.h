@@ -14,7 +14,7 @@
 //#include "Bullet.h"
 
 
-class BulletManager;
+class WarManager;
 class GameMode;
 typedef std::vector<GameMode*>GameModeCollect;
 class WarGS :public GameState
@@ -53,7 +53,7 @@ protected:
   
     
     
-    BulletManager* m_pBulletManager;
+    WarManager* m_pWarManager;
     
     Ogre::SceneNode* m_pCameraNode;
 
