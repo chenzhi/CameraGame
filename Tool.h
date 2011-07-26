@@ -36,6 +36,9 @@ public:
     ///获取用户照象后保存的路径
     static Ogre::String       getUserFacePath();
     
+    ///把纹理转到image里
+    static void ConverTextureToImage(Ogre::TexturePtr pTexture,Ogre::Image& image);
+    
     
 #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
    // static  Ogre::String           getIphoneDocumentPath();

@@ -87,3 +87,30 @@ Ogre::String Tools::getUserFacePath()
 #endif
 
 }
+
+//----------------------------------------------------------------------- 
+void Tools::ConverTextureToImage(Ogre::TexturePtr pTexture,Ogre::Image& image)
+{
+    Ogre::PixelFormat pixelFormat=  pTexture->getFormat();
+	
+	Ogre::HardwarePixelBufferSharedPtr pBuffer=pTexture->getBuffer();
+	pBuffer->lock(Ogre::HardwareBuffer::HBL_READ_ONLY);
+	
+    
+	const Ogre::PixelBox& pixelBox=pBuffer->getCurrentLock();
+	size_t rowPitch=pixelBox.rowPitch;
+	size_t height=pTexture->getHeight();
+    size_t width=pTexture->getWidth();
+    
+	size_t size=rowPitch*height*Ogre::PixelUtil::getNumElemBytes(pixelFormat);
+    
+	Ogre::uchar* pImageBuffer= OGRE_ALLOC_T(Ogre::uchar,size , Ogre::MEMCATEGORY_GENERAL);
+	memcpy(pImageBuffer,pixelBox.data,size);
+    
+	image.loadDynamicImage(pImageBuffer,pTexture->getWidth(),height,1,pixelFormat,true);
+    
+	pBuffer->unlock();
+    
+	return ;
+    
+}

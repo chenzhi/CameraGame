@@ -9,6 +9,8 @@
 #include "UICaptureFace.h"
 #include "Widget.h"
 #include "Application.h"
+#include  "Tool.h"
+#include   "config.h"
 
 
 UICaptureFace::UICaptureFace()
@@ -88,23 +90,33 @@ void UICaptureFace::init()
 
 }
 
+//--------------------------------------------------
+void  UICaptureFace::setVisible(bool b)
+{
+    UIBase::setVisible(b);
+    
+#ifdef __arm__
+    if(b)
+    {
+        ofxiPhoneVideoGrabber::getSingleton().startCapture();
+    }else
+    {
+        ofxiPhoneVideoGrabber::getSingleton().stopCapture();
+    }
+
+#endif
 
 
-///设置已经有多少个用户了
+}
+
+
+///-------------------------------------------------------------
 void UICaptureFace::setUserCount(unsigned int count)
 {
 	m_UserCount=count;
 }
 
-
- void UICaptureFace::buttonHit(Button* button)
-{
-	Ogre::String name=	button->getName();
-	return ;
-}
-
-
- ///-------------------------------------------------------------
+///-------------------------------------------------------------
 void UICaptureFace::buttonHit(Widget* button)
 {
      if(button==m_pToUserFace)
@@ -127,10 +139,38 @@ void UICaptureFace::buttonHit(Widget* button)
 		 UIBase* pSelectHead=Application::getSingletonPtr()->getUIByName("UISelectHead");
 
 	//	
-#ifdef _arm_
+#ifdef __arm__
+         
+         Ogre::String userName="userName0";
+         Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName(userName);
+         int userindex=0;
+         while(pTexture.isNull()==false)
+         {
+             ++userindex;
+             userName="userFace"+Ogre::StringConverter::toString(userindex);
+             pTexture=Ogre::TextureManager::getSingleton().getByName(userName);
+                    
+         }
+         
+         pTexture=Ogre::TextureManager::getSingleton().createManual(userName, "General",Ogre::TEX_TYPE_2D, 480, 320, 1, 1,Ogre::PF_R8G8B8A8);
+         ofxiPhoneVideoGrabber::getSingleton().getOgreTexture(pTexture);
+         Ogre::LogManager::getSingleton().logMessage("create user face image is "+userName);
+      
+#else        
+         Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName("sdk_logo.png");
+#endif  
+         Ogre::String userFacepath= Tools::getUserFacePath();
+         userFacepath+="/";
+         Ogre::Image image;
+         Tools::ConverTextureToImage(pTexture, image);
+         //pTexture->convertToImage(image);
+         //image.save(userFacepath+pTexture->getName());
+         g_userInformation.setUserImage(pTexture->getName());
+        Ogre::LogManager::getSingleton().logMessage("set user image is "+pTexture->getName());
+         
+         
 
 
-#endif
 
 		 pSelectHead->setVisible(true);
 		 setVisible(false);

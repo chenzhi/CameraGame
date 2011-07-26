@@ -96,7 +96,7 @@
 	[self.captureSession addOutput:captureOutput];
 	
 	[self.captureSession commitConfiguration];		
-	[self.captureSession startRunning];
+	//[self.captureSession startRunning];
 
 	bInitCalled = true;
 	
@@ -117,7 +117,8 @@
 	[captureInput.device lockForConfiguration:nil];
 	
 	//if( [captureInput.device isExposureModeSupported:AVCaptureExposureModeAutoExpose] ) [captureInput.device setExposureMode:AVCaptureExposureModeAutoExpose ];
-	if( [captureInput.device isFocusModeSupported:AVCaptureFocusModeAutoFocus] )	[captureInput.device setFocusMode:AVCaptureFocusModeAutoFocus ];
+	if( [captureInput.device isFocusModeSupported:AVCaptureFocusModeAutoFocus] )
+        [captureInput.device setFocusMode:AVCaptureFocusModeAutoFocus ];
 
 }
 
@@ -548,7 +549,15 @@ bool ofxiPhoneVideoGrabber::getOgreTexture(Ogre::TexturePtr pTexture)
             unsigned char* pRow=pPixel+i*m_width*3;
             unsigned char* ptarget=data+(i+yoffset)*rowPitch;
             
-            memcpy(ptarget,pRow,m_width*pixelSize);
+            for(int j=0;j<m_width;++j)
+            {
+                int pixIndex=j*4;
+                ptarget[pixIndex]=pRow[pixIndex+2];
+                ptarget[pixIndex+1]=pRow[pixIndex+1];
+                ptarget[pixIndex+2]=pRow[pixIndex];
+                ptarget[pixIndex+3]=pRow[pixIndex+3];
+            }
+
         }
         
         pPixelBuff->unlock();

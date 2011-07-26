@@ -34,15 +34,15 @@ public:
 	///设置已经有多少个用户了
 	void setUserCount(unsigned int count);
     
+    /**设置是否可见*/
+    virtual void  setVisible(bool b);
 
     
     
 protected:
     
-
-
-	virtual void buttonHit(Button* button);
     
+   
     
 
 protected:
