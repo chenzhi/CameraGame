@@ -33,8 +33,12 @@ WarManager::WarManager()
 //---------------------------------------------------
 WarManager::~WarManager()
 {
-    destroy();
+    destroyAllBullet();
     destroyAllEnemy();
+
+	destroyAllEnemyQueue();
+
+
 }
 
 
@@ -119,7 +123,7 @@ void WarManager::update(float time)
 
 
 //---------------------------------------------------
-void WarManager::destroy()
+void WarManager::destroyAllBullet()
 {
     size_t size=m_BulletCollect.size();
     for(size_t i=0;i<size;++i)
@@ -128,6 +132,19 @@ void WarManager::destroy()
     }
     
     m_BulletCollect.clear();
+}
+
+//--------------------------------------------------
+void WarManager::destroyAllEnemyQueue()
+{
+
+	size_t size=m_EnemyQueueCollect.size();
+	for(size_t i=0;i<size;++i)
+	{
+      delete m_EnemyQueueCollect[i];
+	}
+	m_EnemyQueueCollect.clear();
+
 }
 
 //---------------------------------------------------
@@ -253,7 +270,7 @@ void  WarManager::updateEnemy(float time)
 //----------------------------------------------
 void  WarManager::hasEnemyDeath(Enemy* pEnemy)
 {
-    pEnemy->reset(Ogre::Vector3(0,0,0));
+   // pEnemy->reset(Ogre::Vector3(0,0,0));
     return ;
 }
 
@@ -298,6 +315,16 @@ Enemy* WarManager::getDeathEnemy()
     }
     
     return NULL;
+}
+
+
+//---------------------------------------------------------
+///回调函数一队敌人死亡
+void WarManager::notifyEnemyQueuDeath(EnemyQueue* pEnemyQueue)
+{
+
+	return ;
+
 }
 
 

@@ -62,7 +62,7 @@
 		21222E5213C7F78600992E9C /* FileSystemLayerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemLayerImpl.h; sourceTree = "<group>"; };
 		21222E5313C7F78600992E9C /* inputListen.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = inputListen.h; sourceTree = "<group>"; };
 		21222E5413C7F78600992E9C /* inputListen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = inputListen.mm; sourceTree = "<group>"; };
-		21222E5513C7F78600992E9C /* ofxiPhoneVideoGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxiPhoneVideoGrabber.h; sourceTree = "<group>"; };
+		21222E5513C7F78600992E9C /* ofxiPhoneVideoGrabber.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = ofxiPhoneVideoGrabber.h; sourceTree = "<group>"; };
 		21222E5613C7F78600992E9C /* ofxiPhoneVideoGrabber.mm */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxiPhoneVideoGrabber.mm; sourceTree = "<group>"; };
 		21222E5713C7F78600992E9C /* UITouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouch.h; sourceTree = "<group>"; };
 		21222E5813C7F78600992E9C /* UITouch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UITouch.mm; sourceTree = "<group>"; };
@@ -100,8 +100,8 @@
 		778A6F3813DD753000EFE6EA /* UserInformation.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UserInformation.h; sourceTree = "<group>"; };
 		778A6F3A13DD754100EFE6EA /* UIWarTwo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIWarTwo.cpp; sourceTree = "<group>"; };
 		778A6F3B13DD754100EFE6EA /* UIWarTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWarTwo.h; sourceTree = "<group>"; };
-		778A6F3E13DD755900EFE6EA /* Tool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tool.cpp; sourceTree = "<group>"; };
-		778A6F3F13DD755900EFE6EA /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		778A6F3E13DD755900EFE6EA /* Tool.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = Tool.cpp; sourceTree = "<group>"; };
+		778A6F3F13DD755900EFE6EA /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
 		778F9E1B13B8337700E1706D /* enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = enemy.cpp; sourceTree = "<group>"; };
 		778F9E1C13B8337700E1706D /* enemy.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = enemy.h; sourceTree = "<group>"; };
 		77910B8D13AA0D0300ACEE73 /* ogre.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ogre.cfg; path = Resources/ogre.cfg; sourceTree = "<group>"; };
@@ -512,6 +512,10 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ogreApp/ogreApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					BOOST_ALL_NO_LIB,
+					USE_RTSHADER_SYSTEM,
+				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
@@ -840,6 +844,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ogreApp/ogreApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;

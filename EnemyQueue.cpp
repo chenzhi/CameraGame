@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "Config.h"
 #include "Bullet.h"
+#include "enemy.h"
 
 //-----------------------------------------------------------------
 EnemyQueue::EnemyQueue(const Ogre::Vector3& pos,const  PositionList&EnemyList,const PositionList& FriendList )
@@ -19,7 +20,10 @@ EnemyQueue::EnemyQueue(const Ogre::Vector3& pos,const  PositionList&EnemyList,co
 	{
 		const Ogre::String& faceMesh=g_userInformation.getFaceMode();
 		const Ogre::String& headMesh=g_userInformation.getHeadMode();
-		m_ElemyCollect.push_back(new Enemy(faceMesh,headMesh,EnemyList[i],m_pRootNode));
+		Enemy* pEnemy=new Enemy(faceMesh,headMesh,EnemyList[i],m_pRootNode);
+		pEnemy->registerEvent(EE_Die,&EnemyQueue::notifyEnemyDeath,this);
+
+		m_ElemyCollect.push_back(pEnemy);
 
 	}
 
@@ -71,6 +75,20 @@ void EnemyQueue::update(float time)
 	{
 		(*it)->update(time);
 	}
+
+
+	
+   ///如果有队员变打死飞到背景外层
+     if(hasFriendKilled())
+	 {
+
+	 }
+
+	///如果所有敌人被打死，队友示爱后消息
+	 if(isEnemyAllKilled())
+	 {
+
+	 }
 
 
 }
@@ -222,3 +240,52 @@ void EnemyQueue::destroy()
 
 }
 
+//--------------------------------------------------------------------------
+void EnemyQueue::notifyEnemyDeath(Enemy* pEnemy)
+{
+
+
+	return ;
+
+}
+
+
+//--------------------------------------------------------------------------
+bool  EnemyQueue::hasFriendKilled()
+{
+	///如果生命周期到了。或者
+	EnemyCollect::iterator it=m_FriendCollect.begin();
+	EnemyCollect::iterator endit=m_FriendCollect.end();
+	for(;it!=endit;++it)
+	{
+		if((*it)->getState()==Enemy::ES_DEATH)
+		{
+			return true;
+		}
+	}
+
+	return false;
+
+}
+
+
+/**是否被打死*/
+bool  EnemyQueue::isEnemyAllKilled()
+{
+	
+	
+
+///如果敌人队列里的对像全死了。表示整队被打死
+	EnemyCollect::iterator it=m_ElemyCollect.begin();
+	EnemyCollect::iterator endit=m_ElemyCollect.end();
+	for(;it!=endit;++it)
+	{
+		if((*it)->getState()!=Enemy::ES_DEATH)
+		{
+			return false;
+		}
+	}
+
+	return true;
+
+}

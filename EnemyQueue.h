@@ -22,6 +22,15 @@ class EnemyQueue : public CEventManager
 
 public:
 
+	enum EQST
+	{
+    //  EQ_NORMAl,//正常状态
+	 // EQ_
+	};
+
+
+public:
+
 	EnemyQueue(const Ogre::Vector3& pos,const  PositionList&EnemyList,const PositionList& FriendList );
 
 	~EnemyQueue();
@@ -56,6 +65,16 @@ protected:
 	/**销毁所有*/
 	void destroy();
 
+
+	/**敌人死亡通知*/
+	void notifyEnemyDeath(Enemy* pEnemy);
+
+
+	/**是否有队友对像被打死*/
+	bool  hasFriendKilled();
+
+	/**所有敌人是否都被打死*/
+	bool  isEnemyAllKilled();
 
 
 protected:

@@ -101,12 +101,17 @@ public:
     Enemy* getDeathEnemy();
     
     
+	///回调函数一队敌人死亡
+	void notifyEnemyQueuDeath(EnemyQueue* pEnemyQueue);
     
     ///@}
     
 protected:
     
-    void destroy();
+    void destroyAllBullet();
+
+	/**销毁所有的队列*/
+	void destroyAllEnemyQueue();
     
     /**获取一个准备好的子弹,如果没有返回空*/
     Bullet*  getBullet();
