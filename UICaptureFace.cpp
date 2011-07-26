@@ -103,7 +103,10 @@ void  UICaptureFace::setVisible(bool b)
     {
         ofxiPhoneVideoGrabber::getSingleton().stopCapture();
     }
+
 #endif
+
+
 }
 
 

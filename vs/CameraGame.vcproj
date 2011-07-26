@@ -352,22 +352,6 @@
 			<Filter
 				Name="GameMode"
 				>
-				<File
-					RelativePath="..\GameMode.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\GameMode.h"
-					>
-				</File>
-				<File
-					RelativePath="..\UIWarTwo.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\UIWarTwo.h"
-					>
-				</File>
 			</Filter>
 			<Filter
 				Name="WarGS"
@@ -378,14 +362,6 @@
 				</File>
 				<File
 					RelativePath="..\Bullet.h"
-					>
-				</File>
-				<File
-					RelativePath="..\BulletManager.cpp"
-					>
-				</File>
-				<File
-					RelativePath="..\BulletManager.h"
 					>
 				</File>
 				<File
@@ -405,11 +381,43 @@
 					>
 				</File>
 				<File
+					RelativePath="..\Friend.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\Friend.h"
+					>
+				</File>
+				<File
+					RelativePath="..\UIWarTwo.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\UIWarTwo.h"
+					>
+				</File>
+				<File
 					RelativePath="..\WarGS.cpp"
 					>
 				</File>
 				<File
 					RelativePath="..\WarGS.h"
+					>
+				</File>
+				<File
+					RelativePath="..\WarManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\WarManager.h"
+					>
+				</File>
+				<File
+					RelativePath="..\WarMode.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\WarMode.h"
 					>
 				</File>
 			</Filter>

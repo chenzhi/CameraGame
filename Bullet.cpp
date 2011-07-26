@@ -8,7 +8,7 @@
 #include "pch.h"
 #include "Bullet.h"
 #include  "Application.h"
-#include  "BulletManager.h"
+#include  "WarManager.h"
 
 
 
@@ -42,42 +42,55 @@ Bullet::~Bullet()
 }
 
 
+/**返回上一帧时间度的射线和长度*/
+bool Bullet::getFrameRay(Ogre::Ray& ray,float& lenght)
+{
+	if(m_State==BS_NONE)
+		return false;
+
+	ray=m_ray;
+	lenght=m_raylenght;
+	return true;
+}
+
+
 //-----------------------------------------------------------------------
-void Bullet::update(float time)
+bool  Bullet::update(float time)
 {
     if(m_State==BS_NONE)
-        return ;
+        return  false;
     
     m_CurrentTime+=time;
-    
-   // Ogre::Vector pos=m_pNode->getPosition();
     
     ///重力加动力的向量是子弹发行的方向
     float temForce=m_Force*((m_LiftTime-m_CurrentTime)/m_LiftTime);
     Ogre::Vector3 power=m_Dir*temForce;
-    power+=m_Gravity;
+   // power+=m_Gravity;
     
     power*=m_CurrentTime*m_Speed;
     
     
     Ogre::Vector3 dir=power.normalisedCopy();    
     
-    updateHit(m_pNode->getPosition(), dir, power.length());
+   // updateHit(m_pNode->getPosition(), dir, power.length());
 
-	Ogre::Ray ray(m_pNode->getPosition(),dir);
+	//Ogre::Ray ray(m_pNode->getPosition(),dir);
 
 
 	///如果击中了目标，子弹就会向下掉
-	if(BulletManager::getSingleton().intersectEnemy(ray,power.length()))
-	{
-      return ;
+	//if(WarManager::getSingleton().intersectEnemy(ray,power.length()))
+	//{
+    //  return ;
 		
-	}
+	//}
     
+
+	m_ray.setOrigin(m_pNode->getPosition());
+	m_ray.setDirection(dir);
+	m_raylenght=power.length();
     
     m_pNode->translate(power,Ogre::Node::TS_WORLD);
 
-    
     
     
     
@@ -88,6 +101,7 @@ void Bullet::update(float time)
     }
     
     
+	return true;
 }
 
 //-----------------------------------------------------------------------
@@ -197,7 +211,7 @@ void Bullet::updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float l
     
     
     //Ogre::LogManager::getSingleton().logMessage("end hit 3");
-    Enemy* pEnemy=BulletManager::getSingleton().getEnemyByEntityName(pickEnemy.movable->getName());
+    Enemy* pEnemy=WarManager::getSingleton().getEnemyByEntityName(pickEnemy.movable->getName());
     if(pEnemy==NULL)
     {
         Ogre::LogManager::getSingleton().logMessage("can not find ememy pick object name is "+pickEnemy.movable->getName());

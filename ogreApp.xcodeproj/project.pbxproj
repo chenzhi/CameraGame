@@ -28,7 +28,6 @@
 		7755CC3313CEBCEB00E9B78A /* UISelectMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7755CC3013CEBCEB00E9B78A /* UISelectMode.cpp */; };
 		7755CC3713CEBD1600E9B78A /* UISelectUser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */; };
 		7775627413B03582003849ED /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7775627013B03582003849ED /* Bullet.cpp */; };
-		7775627513B03582003849ED /* BulletManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7775627213B03582003849ED /* BulletManager.cpp */; };
 		778A6F3913DD753000EFE6EA /* UserInformation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778A6F3713DD753000EFE6EA /* UserInformation.cpp */; };
 		778A6F3C13DD754100EFE6EA /* UIWarTwo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778A6F3A13DD754100EFE6EA /* UIWarTwo.cpp */; };
 		778A6F4013DD755900EFE6EA /* Tool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778A6F3E13DD755900EFE6EA /* Tool.cpp */; };
@@ -38,6 +37,10 @@
 		77910B9213AA0D0300ACEE73 /* resources.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8F13AA0D0300ACEE73 /* resources.cfg */; };
 		779B6D9213D7B67C006E2BE4 /* UISelectFaceMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779B6D8E13D7B67C006E2BE4 /* UISelectFaceMode.cpp */; };
 		779B6D9313D7B67C006E2BE4 /* UISelectHead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779B6D9013D7B67C006E2BE4 /* UISelectHead.cpp */; };
+		779D145A13DEDE7B00E9C5B2 /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779D145213DEDE7B00E9C5B2 /* EventManager.cpp */; };
+		779D145B13DEDE7B00E9C5B2 /* Friend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779D145413DEDE7B00E9C5B2 /* Friend.cpp */; };
+		779D145C13DEDE7B00E9C5B2 /* WarManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779D145613DEDE7B00E9C5B2 /* WarManager.cpp */; };
+		779D145D13DEDE7B00E9C5B2 /* WarMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779D145813DEDE7B00E9C5B2 /* WarMode.cpp */; };
 		779F91F513C5546F009A65D4 /* UIBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779F91F313C5546F009A65D4 /* UIBase.cpp */; };
 		779F91FA13C56420009A65D4 /* UICaptureFace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779F91F813C56420009A65D4 /* UICaptureFace.cpp */; };
 		779F91FD13C5A71F009A65D4 /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779F91FB13C5A71F009A65D4 /* UIManager.cpp */; };
@@ -46,7 +49,6 @@
 		77C17B5913AED3A90067B857 /* ofPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C17B5713AED3A90067B857 /* ofPoint.cpp */; };
 		77F4287413CDF1D200C3478E /* SdkTrays.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77F4287213CDF1D200C3478E /* SdkTrays.cpp */; };
 		77FCF58B13D904C00048CCE3 /* EnemyQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */; };
-		77FCF58C13D904C00048CCE3 /* GameMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FCF58913D904C00048CCE3 /* GameMode.cpp */; };
 		8896C17F13A88233000DA13C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C17E13A88233000DA13C /* UIKit.framework */; };
 		8896C18113A88233000DA13C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18013A88233000DA13C /* Foundation.framework */; };
 		8896C18313A88233000DA13C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18213A88233000DA13C /* CoreGraphics.framework */; };
@@ -62,7 +64,7 @@
 		21222E5213C7F78600992E9C /* FileSystemLayerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemLayerImpl.h; sourceTree = "<group>"; };
 		21222E5313C7F78600992E9C /* inputListen.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = inputListen.h; sourceTree = "<group>"; };
 		21222E5413C7F78600992E9C /* inputListen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = inputListen.mm; sourceTree = "<group>"; };
-		21222E5513C7F78600992E9C /* ofxiPhoneVideoGrabber.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = ofxiPhoneVideoGrabber.h; sourceTree = "<group>"; };
+		21222E5513C7F78600992E9C /* ofxiPhoneVideoGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxiPhoneVideoGrabber.h; sourceTree = "<group>"; };
 		21222E5613C7F78600992E9C /* ofxiPhoneVideoGrabber.mm */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxiPhoneVideoGrabber.mm; sourceTree = "<group>"; };
 		21222E5713C7F78600992E9C /* UITouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouch.h; sourceTree = "<group>"; };
 		21222E5813C7F78600992E9C /* UITouch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UITouch.mm; sourceTree = "<group>"; };
@@ -94,14 +96,12 @@
 		7755CC3613CEBD1600E9B78A /* UISelectUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISelectUser.h; sourceTree = "<group>"; };
 		7775627013B03582003849ED /* Bullet.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Bullet.cpp; sourceTree = "<group>"; };
 		7775627113B03582003849ED /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
-		7775627213B03582003849ED /* BulletManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = BulletManager.cpp; sourceTree = "<group>"; };
-		7775627313B03582003849ED /* BulletManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletManager.h; sourceTree = "<group>"; };
 		778A6F3713DD753000EFE6EA /* UserInformation.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = UserInformation.cpp; sourceTree = "<group>"; };
 		778A6F3813DD753000EFE6EA /* UserInformation.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UserInformation.h; sourceTree = "<group>"; };
-		778A6F3A13DD754100EFE6EA /* UIWarTwo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIWarTwo.cpp; sourceTree = "<group>"; };
+		778A6F3A13DD754100EFE6EA /* UIWarTwo.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UIWarTwo.cpp; sourceTree = "<group>"; };
 		778A6F3B13DD754100EFE6EA /* UIWarTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWarTwo.h; sourceTree = "<group>"; };
-		778A6F3E13DD755900EFE6EA /* Tool.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = Tool.cpp; sourceTree = "<group>"; };
-		778A6F3F13DD755900EFE6EA /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		778A6F3E13DD755900EFE6EA /* Tool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tool.cpp; sourceTree = "<group>"; };
+		778A6F3F13DD755900EFE6EA /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
 		778F9E1B13B8337700E1706D /* enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = enemy.cpp; sourceTree = "<group>"; };
 		778F9E1C13B8337700E1706D /* enemy.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = enemy.h; sourceTree = "<group>"; };
 		77910B8D13AA0D0300ACEE73 /* ogre.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ogre.cfg; path = Resources/ogre.cfg; sourceTree = "<group>"; };
@@ -112,6 +112,14 @@
 		779B6D8F13D7B67C006E2BE4 /* UISelectFaceMode.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UISelectFaceMode.h; sourceTree = "<group>"; };
 		779B6D9013D7B67C006E2BE4 /* UISelectHead.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UISelectHead.cpp; sourceTree = "<group>"; };
 		779B6D9113D7B67C006E2BE4 /* UISelectHead.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UISelectHead.h; sourceTree = "<group>"; };
+		779D145213DEDE7B00E9C5B2 /* EventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventManager.cpp; sourceTree = "<group>"; };
+		779D145313DEDE7B00E9C5B2 /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManager.h; sourceTree = "<group>"; };
+		779D145413DEDE7B00E9C5B2 /* Friend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Friend.cpp; sourceTree = "<group>"; };
+		779D145513DEDE7B00E9C5B2 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		779D145613DEDE7B00E9C5B2 /* WarManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = WarManager.cpp; sourceTree = "<group>"; };
+		779D145713DEDE7B00E9C5B2 /* WarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarManager.h; sourceTree = "<group>"; };
+		779D145813DEDE7B00E9C5B2 /* WarMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = WarMode.cpp; sourceTree = "<group>"; };
+		779D145913DEDE7B00E9C5B2 /* WarMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarMode.h; sourceTree = "<group>"; };
 		779F91F313C5546F009A65D4 /* UIBase.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UIBase.cpp; sourceTree = SOURCE_ROOT; };
 		779F91F413C5546F009A65D4 /* UIBase.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIBase.h; sourceTree = "<group>"; };
 		779F91F713C5580D009A65D4 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
@@ -128,8 +136,6 @@
 		77F4287213CDF1D200C3478E /* SdkTrays.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SdkTrays.cpp; sourceTree = "<group>"; };
 		77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = EnemyQueue.cpp; sourceTree = "<group>"; };
 		77FCF58813D904C00048CCE3 /* EnemyQueue.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = EnemyQueue.h; sourceTree = "<group>"; };
-		77FCF58913D904C00048CCE3 /* GameMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = GameMode.cpp; sourceTree = "<group>"; };
-		77FCF58A13D904C00048CCE3 /* GameMode.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = GameMode.h; sourceTree = "<group>"; };
 		8896C17A13A88232000DA13C /* ogreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ogreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8896C17E13A88233000DA13C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8896C18013A88233000DA13C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -264,18 +270,22 @@
 		77FCF58513D904870048CCE3 /* War */ = {
 			isa = PBXGroup;
 			children = (
+				779D145213DEDE7B00E9C5B2 /* EventManager.cpp */,
+				779D145313DEDE7B00E9C5B2 /* EventManager.h */,
+				779D145413DEDE7B00E9C5B2 /* Friend.cpp */,
+				779D145513DEDE7B00E9C5B2 /* Friend.h */,
+				779D145613DEDE7B00E9C5B2 /* WarManager.cpp */,
+				779D145713DEDE7B00E9C5B2 /* WarManager.h */,
+				779D145813DEDE7B00E9C5B2 /* WarMode.cpp */,
+				779D145913DEDE7B00E9C5B2 /* WarMode.h */,
 				778A6F3A13DD754100EFE6EA /* UIWarTwo.cpp */,
 				778A6F3B13DD754100EFE6EA /* UIWarTwo.h */,
 				77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */,
 				77FCF58813D904C00048CCE3 /* EnemyQueue.h */,
-				77FCF58913D904C00048CCE3 /* GameMode.cpp */,
-				77FCF58A13D904C00048CCE3 /* GameMode.h */,
 				778F9E1B13B8337700E1706D /* enemy.cpp */,
 				778F9E1C13B8337700E1706D /* enemy.h */,
 				7775627013B03582003849ED /* Bullet.cpp */,
 				7775627113B03582003849ED /* Bullet.h */,
-				7775627213B03582003849ED /* BulletManager.cpp */,
-				7775627313B03582003849ED /* BulletManager.h */,
 				7701CF6913B1DA2100D39C17 /* WarGS.cpp */,
 				7701CF6A13B1DA2100D39C17 /* WarGS.h */,
 			);
@@ -444,7 +454,6 @@
 				8896C1A213A8869C000DA13C /* Application.cpp in Sources */,
 				77C17B5913AED3A90067B857 /* ofPoint.cpp in Sources */,
 				7775627413B03582003849ED /* Bullet.cpp in Sources */,
-				7775627513B03582003849ED /* BulletManager.cpp in Sources */,
 				77A8B4FF13B19A7E00D40305 /* GameState.cpp in Sources */,
 				7701CF6413B1B69200D39C17 /* CaptureFaceGS.cpp in Sources */,
 				7701CF6813B1C0F600D39C17 /* stateMachine.cpp in Sources */,
@@ -468,10 +477,13 @@
 				779B6D9213D7B67C006E2BE4 /* UISelectFaceMode.cpp in Sources */,
 				779B6D9313D7B67C006E2BE4 /* UISelectHead.cpp in Sources */,
 				77FCF58B13D904C00048CCE3 /* EnemyQueue.cpp in Sources */,
-				77FCF58C13D904C00048CCE3 /* GameMode.cpp in Sources */,
 				778A6F3913DD753000EFE6EA /* UserInformation.cpp in Sources */,
 				778A6F3C13DD754100EFE6EA /* UIWarTwo.cpp in Sources */,
 				778A6F4013DD755900EFE6EA /* Tool.cpp in Sources */,
+				779D145A13DEDE7B00E9C5B2 /* EventManager.cpp in Sources */,
+				779D145B13DEDE7B00E9C5B2 /* Friend.cpp in Sources */,
+				779D145C13DEDE7B00E9C5B2 /* WarManager.cpp in Sources */,
+				779D145D13DEDE7B00E9C5B2 /* WarMode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,7 +858,6 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ogreApp/ogreApp-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;

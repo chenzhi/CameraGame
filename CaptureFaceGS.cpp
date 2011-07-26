@@ -38,8 +38,11 @@ void  CaptureFaceGS::begin( )
     GameState::begin();
     
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
+    
+#if defined  __arm__
     initVideo();
     initBackGround(); 
+#endif
 
 	///´´½¨ui
 	initUI();
@@ -56,9 +59,13 @@ void  CaptureFaceGS::end( )
     GameState::end();
     
     
-    destroyBackGround();    
+       
     
 #if defined  __arm__
+    
+   // m_BackGround->setVisible(false);
+ // destroyBackGround(); 
+    
   ofxiPhoneVideoGrabber::getSingleton().stopCapture();
     
 #endif    

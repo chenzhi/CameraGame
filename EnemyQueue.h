@@ -17,12 +17,12 @@ typedef std::vector<Enemy*> EnemyCollect;///
 
 
 
-class EnemyQueue :public CEventManager
+class EnemyQueue : public CEventManager
 {
 
 public:
 
-	EnemyQueue(const  PositionList&EnemyList,const PositionList& FriendList );
+	EnemyQueue(const Ogre::Vector3& pos,const  PositionList&EnemyList,const PositionList& FriendList );
 
 	~EnemyQueue();
 
@@ -30,19 +30,27 @@ public:
 	/**每帧循环*/
 	void update(float time);
 
+	/**获取队列所在的世界节点*/
+	Ogre::SceneNode* getSceneNode()const {return m_pRootNode;}
+
+	/**更新碰撞检测*/
+	void updateCollision(Bullet* pBullet);
 
 
-
+	/**获取世界坐标外框盒*/
+	Ogre::AxisAlignedBox getWordBox();
 
 
 protected:
 
+	
 	/**判断是否和射线碰撞
     *@param ray 用来做碰撞的射线
 	*@param length 如果碰撞点长度限制
 	*@return 如果和射线相交返回真，未击中返回假
 	*/
-	bool intersectRay(const Ogre::Ray& ray,float length);
+	// bool intersectRay(const Ogre::Ray& ray,float length);
+	
 
 
 	/**销毁所有*/

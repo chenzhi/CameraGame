@@ -160,7 +160,7 @@ void StaticImage::setImage(const Ogre::String& textureName)
 ////////////////////////////////////////////////////////////////////////////////
 
 TimeImageButton::TimeImageButton(const Ogre::String&name,const Ogre::String& imageName)
-:Widget(),m_Time(1.0f),m_CurrentTime(0.0f),m_isPress(false),m_State(NORMAL)
+:Widget(),m_Time(1.0f),m_CurrentTime(0.0f),m_isPress(false),m_State(NORMAL),m_RotateRadian(0.0f)
 {
 
 
@@ -286,7 +286,15 @@ void TimeImageButton::rotateButton(float time)
         
     }else
     {
-        
+
+
+		//float ro=time*0.01f;
+
+		//m_RotateRadian+=ro;
+
+		//Ogre::TextureUnitState* pTextureState=m_pBackgroundMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0);
+  //      
+		//pTextureState->setTextureRotate(Ogre::Radian(m_RotateRadian));
         
     }
     

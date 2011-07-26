@@ -51,7 +51,7 @@ public:
      *@param meshName mesh文件名
      *@param pos     出现的初始位
      */
-	Enemy(const Ogre::String& meshName,const Ogre::Vector3&  pos, Ogre::SceneNode* pParent);
+	Enemy(const Ogre::String& meshName,const Ogre::String& headMesh,const Ogre::Vector3&  pos, Ogre::SceneNode* pParent);
 
     
     ~Enemy();
@@ -70,7 +70,7 @@ public:
     
     
     ///
-    void update(float time);
+    virtual void update(float time);
     
     
     
@@ -101,7 +101,7 @@ public:
 	*@param length 如果碰撞点长度限制
 	*@return 如果和射线相交返回真，未击中返回假
 	*/
-	bool intersectRay(const Ogre::Ray& ray,float length);
+	virtual bool intersectRay(const Ogre::Ray& ray,float length);
 
 
 	/**注册一个事件监听

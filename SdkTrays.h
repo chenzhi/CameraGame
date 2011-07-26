@@ -268,12 +268,26 @@
 			}
 		}
 
+		float getLeft()const
+		{
+			if(mElement==NULL)
+				return 0.0f;
+			return mElement->getLeft();
+		}
+
 		void setWidth(float width)
 		{
 			if(mElement!=NULL)
 			{
 				mElement->setWidth(width);
 			}
+		}
+
+		float getWidth()const
+		{
+			if(mElement==NULL)
+				return 0.0f;
+			return mElement->getWidth();
 		}
 
 		void setHeight(float height)
@@ -284,6 +298,14 @@
 			}
 		}
 
+		float  getHeight()const
+		{
+			if(mElement==NULL)
+				return 0.0f;
+			return mElement->getHeight();
+	
+		}
+
 		void setTop(float top)
 		{
 			if(mElement!=NULL)
@@ -292,6 +314,12 @@
 			}
 		}
 
+		float getTop()const
+		{
+			if(mElement==NULL)
+				return 0.0f;
+			return mElement->getTop();
+		}
 
 		void setMetricsMode(Ogre::GuiMetricsMode mode)
 		{
