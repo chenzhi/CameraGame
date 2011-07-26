@@ -69,8 +69,7 @@ protected:
     
     
 
-	////
-    void ConverTextureToImage(Ogre::TexturePtr pTexture,Ogre::Image& image);
+	
     
 
 

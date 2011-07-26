@@ -19,6 +19,16 @@ UserSelectMode::UserSelectMode(const Ogre::String& faceMesh,const Ogre::String&h
 	{
 		m_pHeadEntity->shareSkeletonInstanceWith(m_pFaceEntity);
 	}
+    
+    const Ogre::String& userImage=g_userInformation.getUserImage();
+    if(userImage.empty()==false)
+    {
+        Ogre::MaterialPtr pMaterial=m_pFaceEntity->getSubEntity(0)->getMaterial();
+        if(pMaterial.isNull()==false)
+        {
+            pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(userImage);
+        }
+    }
 
 	m_pNode->attachObject(m_pFaceEntity);
 	m_pNode->attachObject(m_pHeadEntity);
