@@ -518,16 +518,9 @@ bool ofxiPhoneVideoGrabber::getOgreTexture(Ogre::TexturePtr pTexture)
 {
     
     unsigned char* pPixel=getPixels();
-    if(pPixel==NULL)
-        return false;
     
     Ogre::HardwarePixelBufferSharedPtr pPixelBuff= pTexture->getBuffer(0,0);
     int yoffset=pTexture->getHeight()-m_height;
-    
-    ///空间不够
-    if(yoffset<0)
-        return false;
-    
     if(pPixelBuff.isNull()==false)
     {
         pPixelBuff->lock(Ogre::HardwareBuffer::HBL_DISCARD);
@@ -546,7 +539,7 @@ bool ofxiPhoneVideoGrabber::getOgreTexture(Ogre::TexturePtr pTexture)
         
         for(int i=0;i<m_height ;++i)
         {
-            unsigned char* pRow=pPixel+i*m_width*3;
+            unsigned char* pRow=pPixel+i*m_width*4;
             unsigned char* ptarget=data+(i+yoffset)*rowPitch;
             
             for(int j=0;j<m_width;++j)
@@ -557,14 +550,12 @@ bool ofxiPhoneVideoGrabber::getOgreTexture(Ogre::TexturePtr pTexture)
                 ptarget[pixIndex+2]=pRow[pixIndex];
                 ptarget[pixIndex+3]=pRow[pixIndex+3];
             }
-
+            
+            // memcpy(ptarget,pRow,m_width*pixelSize);
         }
         
         pPixelBuff->unlock();
-        
     }
-    
-    
 
     
     return true;
