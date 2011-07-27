@@ -9,7 +9,7 @@
 
 
 #include "UIBase.h"
-
+#include "WarManager.h"
 
 
 class RotateImage;
@@ -46,10 +46,28 @@ public:
 
 
 
+	 ///杀死一队敌人
+	 void onKillEnemyQueue(EnemyQueue* pEnemyQueue);
+
+	 ///敌人逃跑
+	 void onLostEnemyQueue(EnemyQueue* pEnemyQueue);
+
+	 ///创建新敌人
+	 void onCrateEnemyQueue(EnemyQueue* pEnemyQueue);
+
+
+	 ///重置状态在游戏开始时调用
+	 void reset();
+
+
 protected:
 
 	 /**按钮回调事件*/
 	 virtual void buttonHit(Widget* button);
+
+
+
+
 
 
 	  ImageButton* m_PauseButton;  ///暂停按钮
@@ -60,7 +78,7 @@ protected:
 	  EnemyQueue*  m_pEnemy;
 
 	  typedef std::vector<Widget*> WidgetCollect;
-	  WidgetCollect  m_LiftCollect;
+	  WidgetCollect  m_LifeCollect;
 
 
 };

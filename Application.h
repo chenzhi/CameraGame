@@ -52,6 +52,14 @@ public:
     /**销毁所以物体
     */
     void destory();
+
+	/**暂停整个游戏
+	*@remark 只会暂停游戏逻辑。ui和渲染不会暂停
+	*/
+	void pauseApp();
+
+	/**继续游戏*/
+	void continueApp();
     
     
     /**初始化ogre渲染器*/
@@ -130,9 +138,9 @@ public:
     static	LRESULT MsgProc(HWND hWnd, DWORD message, WPARAM wParam, LPARAM lParam);
 
 #else
-    
- 
-    
+
+	FileSystemLayerImpl* getFileSystem()const {return m_pFileSystem;}   
+   
     
 #endif
 
@@ -200,7 +208,8 @@ protected:
 
     SdkTrayManager*           m_pUIManager;
     
-    
+
+	bool                     m_Pause;///是否暂停
   
     
 };

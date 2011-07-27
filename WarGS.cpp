@@ -13,12 +13,12 @@
 #include "Application.h"
 #include "ogreapp/inputListen.h"
 #include "WarMode.h"
-
+#include "UIWarPause.h"
 
 //------------------------------------
 WarGS::WarGS()
 :GameState(ST_WAR),m_pWarManager(NULL),m_pCameraNode(NULL),
-m_ActiveGameMode(NULL)
+m_ActiveWarMode(NULL),m_pUIPause(NULL)
 {
     
 }
@@ -38,23 +38,18 @@ void WarGS::begin()
 {
     
     GameState::begin();
+
+	intiUI();
+
     
     initVideoTeture();
     
     m_pWarManager=new WarManager();
     
-    m_pWarManager->startWar();
-    
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
-    
-
-	m_ActiveGameMode=new GameModeTwo(this);
-    
-	if(m_ActiveGameMode)
-	{
-		m_ActiveGameMode->start();
-	}
-
+   
+	m_ActiveWarMode=new WarModeTwo(this);
+   	m_ActiveWarMode->start();
 
     ///ÆðÓÃÍÓÂÝÒÇ
     InputListen::getSingleton().beginGyroscope();
@@ -68,11 +63,10 @@ void WarGS::begin()
 void WarGS::end()
 {
     GameState::end();
-    delete m_pWarManager;
-    m_pWarManager=NULL;
-    
 
-	SafeDelete(m_ActiveGameMode);
+	destroyUI();
+    SafeDelete(m_pWarManager);   
+	SafeDelete(m_ActiveWarMode);
     ///¹Ø±ÕÍÓÂÝÒÇ
     InputListen::getSingleton().endGyroscope();
 
@@ -96,12 +90,13 @@ StateType WarGS::update(float time)
     updateAccelerometer();
     
 
-	if(m_ActiveGameMode)
+	if(m_ActiveWarMode)
 	{
-		m_ActiveGameMode->update(time);
-		if(m_ActiveGameMode->isEnd())
+		m_ActiveWarMode->update(time);
+
+		if(m_ActiveWarMode->isEnd())
 		{
-			m_ActiveGameMode->end();
+			m_ActiveWarMode->end();
 			setNextStateType(ST_CAPTUREFACE);
 		}
 
@@ -129,9 +124,9 @@ void WarGS::beginTouch(int x,int y)
     //*/
     
 
-	if(m_ActiveGameMode)
+	if(m_ActiveWarMode)
 	{
-		m_ActiveGameMode->beginTouch(x,y);
+		m_ActiveWarMode->beginTouch(x,y);
 	}
 
 }
@@ -191,14 +186,10 @@ void WarGS::initVideoTeture()
 //-------------------------------------------------------------------------
 void WarGS::updateAccelerometer()
 {
-	//return ;
-    
-//#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
     
     Ogre::Vector3 gyrco=InputListen::getSingleton().getGyroscopeData();
-    
     float yawtem=gyrco.y;
-    float pitch=gyrco.z;
+   float pitch=gyrco.z;
     
     pitch+=Ogre::Math::PI*0.5f;
 
@@ -211,8 +202,22 @@ void WarGS::updateAccelerometer()
     }
 
     return ;
+ 
+}
 
-//#endif
 
-    return ;
+void WarGS::intiUI()
+{
+	m_pUIPause=new UIWarPause();
+	m_pUIPause->init();
+	m_pUIPause->setVisible(false);
+	Application::getSingleton().registerUI(m_pUIPause);
+}
+
+///Ïú»Ùui
+void WarGS::destroyUI()
+{
+	Application::getSingleton().destroyUI(m_pUIPause);
+	m_pUIPause=NULL;
+
 }

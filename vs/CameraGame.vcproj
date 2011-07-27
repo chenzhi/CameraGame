@@ -389,11 +389,27 @@
 					>
 				</File>
 				<File
+					RelativePath="..\UIWarPause.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\UIWarPause.h"
+					>
+				</File>
+				<File
 					RelativePath="..\UIWarTwo.cpp"
 					>
 				</File>
 				<File
 					RelativePath="..\UIWarTwo.h"
+					>
+				</File>
+				<File
+					RelativePath="..\UIWarTwoBalance.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\UIWarTwoBalance.h"
 					>
 				</File>
 				<File

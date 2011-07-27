@@ -71,7 +71,7 @@ void UIWarModeTwo::init()
 
 
 	///初始化三个生命显示
-	
+	int startleft=-64*3;
 	for(int i=0;i<3;++i)
 	{
 		StaticImage* pImage=new StaticImage("WarModeTwo_Lift_"+Ogre::StringConverter::toString(i),"youxi_shengmingzhi.png");
@@ -81,8 +81,9 @@ void UIWarModeTwo::init()
 
 		pImage->setWidth(64);
 		pImage->setHeight(64);
-		pImage->setLeft(-64*(i+1));
+		pImage->setLeft(startleft+(i)*64);
 		pImage->setTop(64);
+		m_LifeCollect.push_back(pImage);
 
 	}
 	
@@ -114,7 +115,7 @@ void UIWarModeTwo::updateEnemyDir()
 	if(pCamera->isVisible(box))
 	{
 		m_pRotateImage->hide();
-
+		return ;
 	}else
 	{
 		m_pRotateImage->show();
@@ -145,14 +146,77 @@ void UIWarModeTwo::updateEnemyDir()
 	
 }
 
-
-
-
+//----------------------------------------------------------------
 void  UIWarModeTwo::buttonHit(Widget* button)
 {
 	if(button==m_pFireButton)
 	{
 		WarManager::getSingleton().fire();
+	}else if(button==m_PauseButton)///如果是暂停
+	{
+
+		UIBase* pUI=Application::getSingleton().getUIByName("UIWarPause");
+		pUI	->setVisible(true);
+		setVisible(false);
+
+
 	}
+
+}
+
+
+
+//----------------------------------------------------------------
+void  UIWarModeTwo::onKillEnemyQueue(EnemyQueue* pEnemyQueue)
+{
+
+	m_pEnemy=NULL;
+	return ;
+}
+
+//----------------------------------------------------------------
+void  UIWarModeTwo::onLostEnemyQueue(EnemyQueue* pEnemyQueue)
+{
+	///减少显示一个生合图标
+
+	WidgetCollect::iterator it=	m_LifeCollect.begin();
+	WidgetCollect::iterator itend=	m_LifeCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		if(	(*it)->isVisible())
+		{
+			(*it)->hide();
+			return ;
+		}
+	}
+
+	m_pEnemy=NULL;
+
+
+
+	return ;
+}
+
+//----------------------------------------------------------------
+void UIWarModeTwo::onCrateEnemyQueue(EnemyQueue* pEnemyQueue)
+{
+	m_pEnemy=pEnemyQueue;
+}
+
+
+///-------------------------------------------------------------
+void UIWarModeTwo::reset()
+{
+
+	WidgetCollect::iterator it=	m_LifeCollect.begin();
+	WidgetCollect::iterator itend=	m_LifeCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		(*it)->show();
+	}
+
+	m_pEnemy=NULL;
 
 }

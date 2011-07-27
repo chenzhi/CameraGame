@@ -39,7 +39,7 @@ public:
     enum EnemyState
     {
         ES_NORMAL, ///出现，未受伤时状态
-        ES_DODGE, ////受伤后躲避
+        ES_DODGE, ////已经变打中，找飞的状态
         ES_DEATH, ///死亡状态
     };
     
@@ -79,10 +79,10 @@ public:
     
     
     ///获取生命值
-    float getLeftValue()const{return m_LeftValue;}
+    float getLeftValue()const{return m_LifeValue;}
         
     ///设置生命值
-    void  setLeftValue(float value){m_LeftValue=value;}
+    void  setLeftValue(float value){m_LifeValue=value;}
 
     
     ///重置,在指定的位置重新出现
@@ -94,6 +94,18 @@ public:
 
 	///获取场景节点
 	Ogre::SceneNode* getSceneNode()const {return m_pNode;}
+
+
+	/**播放一个动画
+	*@param aniName 动画名
+	*@param loop 是否循环播放
+	*@param fadetime 动作过流的时间.如果小于1直接播放无过渡
+	*/
+	bool playAnimation(const Ogre::String& aniName,bool loop,float fadetime);
+
+
+	/**更新动画*/
+	void updateAnimation(float time);
 
 
 	/**判断是否和射线碰撞
@@ -144,30 +156,32 @@ protected:
     
     
     Ogre::Entity*     m_pEntity;
+
     Ogre::SceneNode*  m_pNode;
+
     Ogre::SceneManager* m_pSceneMrg;
-    
-    
+
     Ogre::AnimationState* m_pAniSate;
-    
+
     static int     m_EntityIndex;
-    
-    
-    float        m_LeftValue;///生命值
+ 
+    float        m_LifeValue;///生命值
     
     EnemyState      m_State;///状态
-    
     
     ///被击中后的旋转 
     float         m_Rotate;
     
     ///被击中后向哪个方向运动多
     Ogre::Vector3     m_Trans;
-    
+
     Ogre::MaterialPtr    m_pMaterial;
 
-
 	Ogre::Entity*        m_pHeadEnity;
+
+	float                m_HurtTime;///受伤的时间
+
+	float                m_AniFade;///动作过渡时间
     
     
     
