@@ -24,8 +24,11 @@ public:
 
 	enum EQST
 	{
-    //  EQ_NORMAl,//正常状态
-	 // EQ_
+      EQ_NORMAl,//正常状态
+	  EQ_KILLALLENEMY,///所有敌人被打死
+	  EQ_KILLFRIEND,//杀死了友人。
+
+	  EQ_DISACTIVE,//非活动状态
 	};
 
 
@@ -50,7 +53,17 @@ public:
 	Ogre::AxisAlignedBox getWordBox();
 
 
+	
+
 protected:
+
+	/**更新感谢状态后消息*/
+	void updateThankState(float time);
+
+
+
+	/**更新逃跑状态*/
+	void updateLevelState(float time);
 
 	
 	/**判断是否和射线碰撞
@@ -66,8 +79,8 @@ protected:
 	void destroy();
 
 
-	/**敌人死亡通知*/
-	void notifyEnemyDeath(Enemy* pEnemy);
+	/**敌人被击中通知*/
+	void notifyEnemyHit(Enemy* pEnemy);
 
 
 	/**是否有队友对像被打死*/
@@ -87,7 +100,9 @@ protected:
 	EnemyCollect                m_ElemyCollect; ///需要打击的对象列表
 	EnemyCollect                m_FriendCollect;///不能打击的对像列表
 
-
+	EQST                        m_State;
+	float                       m_loveTime;       ///示爱时间
+	Ogre::Vector3               m_LevelPoint;      ///飞到幕后的目标点
 
 
 

@@ -15,8 +15,8 @@
 
 
 class WarManager;
-class GameMode;
-typedef std::vector<GameMode*>GameModeCollect;
+class WarMode;
+typedef std::vector<WarMode*>WarModeCollect;
 class WarGS :public GameState
 {
     
@@ -28,22 +28,26 @@ public:
     
 protected:
     
+
     void begin();
     
     void end();
     
     virtual StateType update(float time);
     
-   
-    
-    
-    /**更新重车计数据，控制摄像头运动*/
+    /**更新重力计数据，控制摄像头运动*/
     void updateAccelerometer();
 
     
 protected:
-    
 
+
+	///初始化ui
+	void intiUI();
+
+	///销毁ui
+	void destroyUI();
+   
 
 	void beginTouch(int x,int y);
     
@@ -58,9 +62,11 @@ protected:
     Ogre::SceneNode* m_pCameraNode;
 
 
-	GameModeCollect m_GameModeCollect;
-	GameMode*       m_ActiveGameMode;
+	WarModeCollect m_WarModeCollect;
+	WarMode*       m_ActiveWarMode;
 	
+
+	UIBase*        m_pUIPause;
     
     
     

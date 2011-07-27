@@ -7,17 +7,19 @@
 游戏模式基类
 *************************************/
 
+#include "WarManager.h"
+
 class GameState;
 
 
-class  GameMode
+class  WarMode
 {
 public:
 
-	GameMode(GameState* pGameState)
+	WarMode(GameState* pGameState)
 	:m_end(false),m_pGameState(pGameState){}
 
-	virtual ~GameMode(){}
+	virtual ~WarMode(){}
 
 	
 	/**开始游戏*/
@@ -69,16 +71,32 @@ protected:
 ****************************************************/
 class UIWarModeTwo;
 class Enemy;
-class GameModeTwo :public GameMode
+class UIBase;
+class WarModeTwo :public WarMode ,public WarListener
 {
+public:
+
+	///阵型类
+	typedef std::vector<Ogre::Vector3> Vector3Collect;
+	class EnemyFormat
+	{
+	public:
+		Vector3Collect m_EnemyCollect;
+		Vector3Collect m_FriendCollect;
+		
+	};
+
+	typedef std::vector<EnemyFormat> EnemyFormatCollect;
+
+
 
 
 public:
 
-	GameModeTwo(GameState* pGameState);
+	WarModeTwo(GameState* pGameState);
 
 
-	virtual ~GameModeTwo();
+	virtual ~WarModeTwo();
 
 
 	/**开始游戏*/
@@ -101,11 +119,12 @@ public:
 	virtual void  moveTouch(int x,int y);
 
 
-	/**内部调用函数，杀死目标后的回调函数*/
-	void notityKillEmemy();
-
 
 protected:
+	
+
+	///初始化阵形
+	void initEmemyFormat();
 
 	///初始化ui游戏开始
 	void initUI();
@@ -114,8 +133,25 @@ protected:
 	void destroyUI();
 
 
-	/**更新ui箭头朝向*/
-	void updateUIDir();
+	///杀死一队敌人
+	virtual void onKillEnemyQueue(EnemyQueue* pEnemyQueue);
+
+	///敌人逃跑
+	virtual void onLostEnemyQueue(EnemyQueue* pEnemyQueue);
+
+	///创建新敌人
+	virtual void onCrateEnemyQueue(EnemyQueue* pEnemyQueue);
+
+
+	void createEnemyQueue()
+	{
+		m_needCreate=true;
+
+	}
+
+	///内部方法用来创建队列
+	void   _createEnemyQueue();
+
 
 
 
@@ -123,9 +159,19 @@ protected:
 
 	//Enemy* m_pEnemy;
 
-	UIWarModeTwo  * m_pUI;
+	UIWarModeTwo*           m_pUI;///比赛的ui界面
+	UIBase*                 m_pUIBalance;///结算界面
+	Ogre::SceneManager*     m_pSceneMrg;
+	unsigned int            m_KillCount;///本次杀死了多少敌人
+	unsigned int            m_LostCount;///有多少人跑了
 
-	Ogre::SceneManager* m_pSceneMrg;
+
+	///阵型列表,共14种队列
+	EnemyFormatCollect      m_EnemyFormatCollect;
+	bool                    m_needCreate;
+
+
+	
 
 
 };

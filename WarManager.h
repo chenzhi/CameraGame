@@ -22,6 +22,39 @@ class EnemyQueue;
 typedef std::vector<Bullet*> BulletCollect;
 typedef std::vector<Enemy*> EnemyCollect;
 
+
+///战斗监听，用不获取各战斗事件
+class WarListener
+{
+public:
+	WarListener(){};
+	virtual ~WarListener(){};
+
+
+	///开始战斗
+	//virtual void onWarStart()=0;
+
+	///结整战斗
+	//virtual void onWarEnd()=0;
+
+
+
+	///杀死一队敌人
+	virtual void onKillEnemyQueue(EnemyQueue* pEnemyQueue)=0;
+
+	///敌人逃跑
+	virtual void onLostEnemyQueue(EnemyQueue* pEnemyQueue)=0;
+
+
+	///创建一个新的敌人队列
+	virtual void onCrateEnemyQueue(EnemyQueue* pEnemyQueue)=0;
+
+};
+
+
+typedef std::vector<WarListener*>WarListenerCollect;
+
+
 class WarManager :public Ogre::Singleton<WarManager>
 {
 public:
@@ -63,8 +96,33 @@ public:
 	*@param yangle 摄像机y轴上下yangle角度范围以内
 	%@return 返回创建的目标队列。失败返回NULL
 	*/
-	EnemyQueue* createEnemyQueue(float xangle,float yangle);
-    
+	EnemyQueue* createEnemyQueue(float xangle,float yangle,const std::vector<Ogre::Vector3>& enemyList,
+		const std::vector<Ogre::Vector3>& friendList);
+
+
+
+	/**添加一个监听器
+	*/
+	void addListener(WarListener* pwarListen);
+
+
+	/**移除一个监听器,
+	*@remark 只移除不删除
+	*/
+    void removeListener(WarListener* pWarListen);
+
+
+	/**回调函数一队敌人死亡
+	*内部通知函数不需要主动调用
+	*/
+	void notifyEnemyQueuDeath(EnemyQueue* pEnemyQueue);
+
+
+	/**内部通知函数。敌人逃跑
+	*内部函数不需要主动调用
+	*/
+	void notifyEnemyQueuLost(EnemyQueue* pEnemyQueue);
+
     
 public:
 
@@ -85,6 +143,9 @@ public:
     
     ///通过ogre entityName获取到enemy指针
     Enemy* getEnemyByEntityName(const std::string& name) const ;
+
+
+protected:
     
     ///销毁所有的敌人
     void  destroyAllEnemy();
@@ -101,9 +162,7 @@ public:
     Enemy* getDeathEnemy();
     
     
-	///回调函数一队敌人死亡
-	void notifyEnemyQueuDeath(EnemyQueue* pEnemyQueue);
-    
+	
     ///@}
     
 protected:
@@ -115,7 +174,16 @@ protected:
     
     /**获取一个准备好的子弹,如果没有返回空*/
     Bullet*  getBullet();
-    
+
+	///广播杀死队列消息
+	void fireKillEnemyQueue(EnemyQueue* pQueue);
+
+	///广播敌人逃跑消息
+	void fireLostEnemyQueue(EnemyQueue* pQueue);
+
+	///广播创建新敌人消息
+	void fireCreateEnemyQueue(EnemyQueue* pQueue);
+     
     
 protected:
     
@@ -132,11 +200,14 @@ protected:
 
 	typedef std::vector<EnemyQueue*> EnemyQueueCollect;
 	EnemyQueueCollect m_EnemyQueueCollect;
+
+	EnemyQueueCollect  m_DeleteEnemyQueueCollect;
     
     Ogre::SceneManager*   m_pSceneMrg;
-    
-    
-    bool            m_GameBegan;
+    bool                  m_GameBegan;
+
+
+	WarListenerCollect    m_listenerCollect;  ///临听器容器
     
 };
 

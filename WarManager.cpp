@@ -145,6 +145,12 @@ void WarManager::destroyAllEnemyQueue()
 	}
 	m_EnemyQueueCollect.clear();
 
+
+
+
+
+
+
 }
 
 //---------------------------------------------------
@@ -200,9 +206,9 @@ Enemy* WarManager::createEnemy(const Ogre::Vector3& pos)
 {
     
    // for(int i=-5;i<5;++i)
-    {
+  
       //  for(int j=-5;j<5;++j)
-        {
+     
             //Ogre::Vector3 temPos(i,j,0);
 			Ogre::Vector3 temPos=pos;
 			const Ogre::String& faceMesh=g_userInformation.getFaceMode();
@@ -212,13 +218,9 @@ Enemy* WarManager::createEnemy(const Ogre::Vector3& pos)
             
             m_EnemyCollect.push_back(pEnemy);
 
-            
-        }
-    }
+ 
     
-    
-       
-    return m_EnemyCollect[0];
+    return pEnemy;
 }
 
 
@@ -287,8 +289,6 @@ void WarManager::startWar()
 {
     m_GameBegan=true;
 
-   // WarManager::getSingleton().createEnemy(Ogre::Vector3(0,0,0));
-
     return ;
 }
 
@@ -319,16 +319,32 @@ Enemy* WarManager::getDeathEnemy()
 
 
 //---------------------------------------------------------
-///回调函数一队敌人死亡
 void WarManager::notifyEnemyQueuDeath(EnemyQueue* pEnemyQueue)
 {
+	fireKillEnemyQueue(pEnemyQueue);
+	///创建一个新的队列
+
+	m_DeleteEnemyQueueCollect.push_back(pEnemyQueue);
 
 	return ;
 
 }
 
+//---------------------------------------------------------
+void WarManager::notifyEnemyQueuLost(EnemyQueue* pEnemyQueue)
+{
+	fireLostEnemyQueue(pEnemyQueue);
+	
+	///如果有三个以上的敌人
+	m_DeleteEnemyQueueCollect.push_back(pEnemyQueue);
 
-EnemyQueue* WarManager::createEnemyQueue(float xangle,float yangle)
+	return ;
+
+}
+
+//---------------------------------------------------------
+EnemyQueue* WarManager::createEnemyQueue(float xangle,float yangle,const std::vector<Ogre::Vector3>& enemyList,
+										 const std::vector<Ogre::Vector3>& friendList)
 {
 	Ogre::Camera* pCamera=Application::getSingleton().getMainCamera();
 
@@ -348,24 +364,51 @@ EnemyQueue* WarManager::createEnemyQueue(float xangle,float yangle)
 	 pos.normalise();
 	 pos.x*=5.0f;
 	 pos.y*=5.0f;
-	 pos.z=-10;
+	 pos.z=Ogre::Math::RangeRandom(4.0f,-10.0f);
 
-	 PositionList Enemylist;
-     Enemylist.push_back(Ogre::Vector3(2.0f,0.0f,0.0f));
-	 Enemylist.push_back(Ogre::Vector3(-2.0f,0.0f,0.0f));
+	 //PositionList Enemylist;
+  //   Enemylist.push_back(Ogre::Vector3(2.0f,0.0f,0.0f));
+	 //Enemylist.push_back(Ogre::Vector3(-2.0f,0.0f,0.0f));
 
-	 PositionList FriendList;
-	 FriendList.push_back(Ogre::Vector3(0.0f,0.0f,0.0f));
+	 //PositionList FriendList;
+	 //FriendList.push_back(Ogre::Vector3(0.0f,0.0f,0.0f));
 
 
-	 EnemyQueue* pQueue=new EnemyQueue(pos,Enemylist,FriendList);
+	 EnemyQueue* pQueue=new EnemyQueue(pos,enemyList,friendList);
      m_EnemyQueueCollect.push_back(pQueue);
+
+	 fireCreateEnemyQueue(pQueue);
+
 	 return pQueue;
 
 }
 
+//---------------------------------------------------------
 void  WarManager::updateEnemyQueue(float time)
 {
+
+	///先把需要删除的都删除
+	if(m_DeleteEnemyQueueCollect.empty()==false)
+	{
+		EnemyQueueCollect::iterator deleteIt=m_DeleteEnemyQueueCollect.begin();
+		EnemyQueueCollect::iterator deleteEndIt=m_DeleteEnemyQueueCollect.end();
+		for(;deleteIt!=deleteEndIt;++deleteIt)
+		{
+			EnemyQueueCollect::iterator temIt=std::find(m_EnemyQueueCollect.begin(),m_EnemyQueueCollect.end(),(*deleteIt));
+			if(temIt!=m_EnemyQueueCollect.end())
+			{
+				delete (*temIt);
+				m_EnemyQueueCollect.erase(temIt);
+				
+			}
+
+		}
+		m_DeleteEnemyQueueCollect.clear();
+
+	}
+
+
+
 	EnemyQueueCollect::iterator it=m_EnemyQueueCollect.begin();
 	EnemyQueueCollect::iterator endit=m_EnemyQueueCollect.end();
 	for(;it!=endit;++it)
@@ -374,5 +417,99 @@ void  WarManager::updateEnemyQueue(float time)
 	}
 
 	return ;
+
+}
+
+//---------------------------------------------------------
+void WarManager::addListener(WarListener* pwarListen)
+{
+	if(pwarListen==NULL)
+		return ;
+	///如果已经加入了就不再加入
+	WarListenerCollect::iterator it=m_listenerCollect.begin();
+	WarListenerCollect::iterator itend=m_listenerCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		if((*it)==pwarListen)
+		{
+			return ;
+		}
+	}
+
+	m_listenerCollect.push_back(pwarListen);
+	return ;
+
+}
+
+
+//----------------------------------------------------------------
+void WarManager::removeListener(WarListener* pWarListen)
+{
+	if(pWarListen==NULL)
+		return ;
+	
+	WarListenerCollect::iterator it=m_listenerCollect.begin();
+	WarListenerCollect::iterator itend=m_listenerCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		if((*it)==pWarListen)
+		{
+			m_listenerCollect.erase(it);
+			return ;
+		}
+	}
+
+	return ;
+}
+
+//----------------------------------------------------------------
+void WarManager::fireKillEnemyQueue(EnemyQueue* pQueue)
+{
+
+	WarListenerCollect::iterator it=m_listenerCollect.begin();
+	WarListenerCollect::iterator itend=m_listenerCollect.end();
+
+	for(;it!=itend;++it)
+	{
+	  (*it)->onKillEnemyQueue(pQueue);
+	}
+
+
+	return ;
+
+}
+
+
+
+//----------------------------------------------------------------
+void WarManager::fireLostEnemyQueue(EnemyQueue* pQueue)
+{
+	WarListenerCollect::iterator it=m_listenerCollect.begin();
+	WarListenerCollect::iterator itend=m_listenerCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		(*it)->onLostEnemyQueue(pQueue);
+	}
+	return ;
+
+}
+
+//----------------------------------------------------------------
+void  WarManager::fireCreateEnemyQueue(EnemyQueue* pQueue)
+{
+
+	WarListenerCollect::iterator it=m_listenerCollect.begin();
+	WarListenerCollect::iterator itend=m_listenerCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		(*it)->onCrateEnemyQueue(pQueue);
+	}
+	return ;
+
+
 
 }

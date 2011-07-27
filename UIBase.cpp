@@ -328,8 +328,7 @@ bool UIBase::registerWidget(Widget* pWidget)
 	return true;
 }
 
-/**
-*/
+//------------------------------------------------------------
 bool UIBase::unregisterWidget(Widget* pWidget)
 {
 	if(pWidget==NULL)

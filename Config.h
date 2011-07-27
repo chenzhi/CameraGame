@@ -24,6 +24,7 @@
 
 const  static std::string g_UIPath="Media/CameraGame/UI/";
 const  static std::string g_UserFacePath="/UserFace";
+const  static std::string g_EnemyFormat="EnemyFormat.cfg";///敌人阵型文件
 
 
 #else
@@ -31,6 +32,7 @@ const  static std::string g_UserFacePath="/UserFace";
 
 const  static std::string g_UIPath="../../../Media/CameraGame/UI/";
 const  static std::string g_UserFacePath="../../../Media/CameraGame/UserFace";
+const  static std::string g_EnemyFormat="../../../Media/EnemyFormat.cfg";
 
 
 #endif

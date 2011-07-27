@@ -31,7 +31,7 @@ namespace Ogre
 
 Application::Application()
 :m_pRoot(NULL ),m_pRenderWindow(NULL),m_pViewPort(NULL),m_pCamera(NULL),
-m_pSceneManager(NULL)
+m_pSceneManager(NULL),m_Pause(false)
 {
 
 
@@ -273,13 +273,16 @@ void Application::destroyOgreRender()
 void Application::update(float time)
 {
     
-    StateMachine::update(time);
+	if(!m_Pause)
+	{
+		StateMachine::update(time);
+	}
+
 	UIManager::update(time);
     
     //updateVideo();
 
-
-    m_pInputListen->Captuer();
+     m_pInputListen->Captuer();
 
     m_pUIManager->frameRenderingQueued();
       
@@ -291,6 +294,22 @@ void Application::update(float time)
     ofxiPhoneVideoGrabber::getSingleton().update();
 #endif
     
+}
+
+//----------------------------------------------
+void Application::pauseApp()
+{
+
+	m_Pause=true;
+}
+
+
+
+//----------------------------------------------
+void Application::continueApp()
+{
+	m_Pause=false;
+
 }
 
 //----------------------------------------------
@@ -314,7 +333,7 @@ void Application::initResource()
     Ogre::ConfigFile cf;
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
-    Ogre::String tempath=Ogre::macBundlePath();
+   // Ogre::String tempath=Ogre::macBundlePath();
     cf.load(m_pFileSystem->getConfigFilePath("resources.cfg"));
 #else 
 

@@ -59,9 +59,10 @@ void Enemy::onHit(const Ogre::Vector3& hitPos,Bullet* pBullet )
 	if(m_State==ES_DODGE||m_State==ES_DEATH)
 		return ;
 
-	///如果被击中未成亡进入躲避状态
+	
 
-	fireMessage(EE_Hit,this);///广播被击中
+	
+
 	m_State=ES_DODGE;
 	m_HurtTime=0.0f;
 
@@ -88,6 +89,8 @@ void Enemy::onHit(const Ogre::Vector3& hitPos,Bullet* pBullet )
 	m_Trans=m_Trans+dir;
 
 
+	///如果被击中未成亡进入躲避状态
+	fireMessage(EE_Hit,this);///广播被击中
 
 
 
@@ -161,7 +164,9 @@ void Enemy::death()
 	// m_pEntity->setVisible(false);
 	///广播自已死
 	m_pNode->setVisible(false);
+	//被击中就是死亡
 	fireMessage(EE_Die,this);
+	
 	return ;
 }
 
@@ -199,7 +204,7 @@ void Enemy::updateDodge(float time)
 
 
 	///如果受作超过三秒就死亡
-	if(m_HurtTime>=5.0f)
+	if(m_HurtTime>=3.0f)
 	{
 		death();
 	}
