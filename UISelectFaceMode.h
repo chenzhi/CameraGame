@@ -171,12 +171,19 @@ protected:
 	void initAllFaceMode();
 
 
+	///³õÊ¼±³¾°
+	void initBackEntity();
+
+	///Ïû»Ù±³¾°
+	void destroyBackEnetiy();
+
+
 	typedef std::vector<UserSelectMode*>FaceModeCollect;
-	FaceModeCollect          m_FaceModeCollect;
+	FaceModeCollect                   m_FaceModeCollect;
 
+	UserFaceDataSource                m_FaceModeSource;
 
-
-	UserFaceDataSource                  m_FaceModeSource;
+	Ogre::Entity*                     m_pBackEntity;
 	
 
 

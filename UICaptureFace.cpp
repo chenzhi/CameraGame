@@ -11,6 +11,7 @@
 #include "Application.h"
 #include  "Tool.h"
 #include   "config.h"
+#include "ofxiPhoneVideoGrabber.h"
 
 
 UICaptureFace::UICaptureFace()
@@ -35,6 +36,22 @@ void UICaptureFace::init()
 
 
 	UIBase::init();
+
+#ifdef	__arm__
+	const Ogre::String& CameraImage=ofxiPhoneVideoGrabber::getSingleton()->getOgreTexture()->getName();
+	StaticImage* pCameraImage=new StaticImage("CameraCapterImage",CameraImage);
+	registerWidget(pCameraImage);
+	pCameraImage->setHorizontalAlignment(Ogre::GHA_LEFT);
+	pCameraImage->setVerticalAlignment(Ogre::GVA_TOP);
+	pCameraImage->setMetricsMode(Ogre::GMM_RELATIVE);
+	pCameraImage->setLeft(0);
+	pCameraImage->setTop(0);
+	pCameraImage->setWidth(1.0f);
+	pCameraImage->setHeight(1.0f);
+
+#endif
+
+	
 
 
 

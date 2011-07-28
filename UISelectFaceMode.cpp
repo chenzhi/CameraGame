@@ -253,7 +253,7 @@ void UserSelectMode::updateOrientation()
 
 //----------------------------------------------------------
 UISelectFaceMode::UISelectFaceMode()
-:UIBase("UISelectFaceMode","")
+:UIBase("UISelectFaceMode",""),m_pBackEntity(NULL)
 {
 
 
@@ -266,6 +266,7 @@ UISelectFaceMode::~UISelectFaceMode()
 
 
    destroyAllFaceMode();
+   destroyBackEnetiy();
 
 }
 
@@ -274,6 +275,8 @@ UISelectFaceMode::~UISelectFaceMode()
 void UISelectFaceMode::init()
 {
      UIBase::init();
+
+	 initBackEntity();
 
 	return ;
 
@@ -409,5 +412,20 @@ void UISelectFaceMode::update(float time)
 	{
 		(*it)->update(time);
 	}
+
+}
+
+
+///³õÊ¼±³¾°
+void UISelectFaceMode::initBackEntity()
+{
+
+
+}
+
+///Ïû»Ù±³¾°
+void UISelectFaceMode::destroyBackEnetiy()
+{
+
 
 }
