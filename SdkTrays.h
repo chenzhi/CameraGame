@@ -99,10 +99,12 @@
 	public:
 			
 		Widget()
+			:m_Pos(0,0),m_Size(0,0)
 		{
 			mTrayLoc = TL_NONE;
 			mElement = 0;
 			mListener = 0;
+			
 		}
   
 
@@ -265,6 +267,7 @@
 			if(mElement!=NULL)
 			{
 				mElement->setLeft(left);
+				m_Pos.x=left;
 			}
 		}
 
@@ -280,6 +283,7 @@
 			if(mElement!=NULL)
 			{
 				mElement->setWidth(width);
+				m_Size.x=width;
 			}
 		}
 
@@ -295,6 +299,7 @@
 			if(mElement!=NULL)
 			{
 				mElement->setHeight(height);
+				m_Size.y=height;
 			}
 		}
 
@@ -311,6 +316,7 @@
 			if(mElement!=NULL)
 			{
 				mElement->setTop(top);
+				m_Pos.y=top;
 			}
 		}
 
@@ -345,6 +351,28 @@
 				mElement->setVerticalAlignment(gva);
 			}
 		}
+
+		///等比缩放,不能是负数和零
+		void setScale(float scale)
+		{
+			assert(scale>0);
+			if(mElement==NULL)
+				return ;
+			Ogre::Vector2 center;
+			center.x=m_Pos.x+m_Size.x*0.5f;
+			center.y=m_Pos.y+m_Size.y*0.5f;
+
+			Ogre::Vector2 newSize=m_Size*scale;
+			center.x-=newSize.x*0.5f;
+			center.y-=newSize.y*0.5f;
+
+			mElement->setLeft(center.x);
+			mElement->setTop(center.y);
+			mElement->setWidth(newSize.x);
+			mElement->setHeight(newSize.y);
+			return ;        
+
+		}
 		// callbacks
 
 		virtual void _cursorPressed(const Ogre::Vector2& cursorPos) {}
@@ -359,9 +387,26 @@
 
 	protected:
 
-		Ogre::OverlayElement* mElement;
-		TrayLocation mTrayLoc;
-		SdkTrayListener* mListener;
+		/**重新获取大小和位置*/
+		void resetPosAndSize()
+		{
+			if(mElement==NULL)
+			{
+				m_Pos.x=m_Pos.y=0;
+				m_Size.x=m_Size.y=0;
+				return ;
+			}
+			m_Pos.x=mElement->getLeft();
+			m_Pos.y=mElement->getTop();
+			m_Size.x=mElement->getWidth();
+			m_Size.y=mElement->getHeight();
+		}
+
+		Ogre::OverlayElement*   mElement;
+		TrayLocation            mTrayLoc;
+		SdkTrayListener*        mListener;
+		Ogre::Vector2           m_Size;///大小
+		Ogre::Vector2           m_Pos; //位置
         
         
 	};

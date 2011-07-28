@@ -55,12 +55,10 @@ protected:
 protected:
 
 
-	 Ogre::String m_NormalTexture;
-	 Ogre::String m_PressTexture;
-
-	 Ogre::MaterialPtr m_pMaterial;
-
-	 ButtonState       m_State;
+	 Ogre::String           m_NormalTexture;
+	 Ogre::String           m_PressTexture;
+	 Ogre::MaterialPtr      m_pMaterial;
+	 ButtonState            m_State;
 
 
 

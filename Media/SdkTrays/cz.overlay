@@ -14,20 +14,22 @@ template container Panel(cz/TimeImageButton)
 {
 	metrics_mode pixels
 	material cz/Button/Down
-      
+      uv_coords 0.21 0.28 0.70 0.82
+
 	horz_align center
       vert_align center
-	width 100
-	height 100
+	width  128
+	height 128
+   
 
      element Panel(DeleteImage)
 	{
         metrics_mode pixels
         material cz/TimeImageButton/DeleteButton
-        left  68
-        top   0
-        width 32
-        height 32
+        left   103
+        top    -25
+        width  50
+        height 50
 
         
 	}
@@ -40,7 +42,7 @@ template container Panel(cz/SliderGallery)
 {
 
      metrics_mode pixels
-   //material cz/Button/Down
+     material cz/Button/Down
       
 	horz_align left
       vert_align top

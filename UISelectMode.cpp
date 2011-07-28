@@ -32,12 +32,11 @@ void UISelectMode::init()
 	///模式选择背景图
 	StaticImage* pImage=new StaticImage("SelectModeBackGround","jieshu_background.png");
 	registerWidget(pImage);
-	Ogre::OverlayElement* pElment=pImage->getOverlayElement();
-	pElment->setMetricsMode(Ogre::GMM_RELATIVE);
-	pElment->setHorizontalAlignment(Ogre::GHA_LEFT);
-	pElment->setVerticalAlignment(Ogre::GVA_TOP);
-	pElment->setWidth(1.0f);
-	pElment->setHeight(1.0f);
+	pImage->setMetricsMode(Ogre::GMM_RELATIVE);
+	pImage->setHorizontalAlignment(Ogre::GHA_LEFT);
+	pImage->setVerticalAlignment(Ogre::GVA_TOP);
+	pImage->setWidth(1.0f);
+	pImage->setHeight(1.0f);
 
 
 	///静态图片stage
@@ -58,26 +57,22 @@ void UISelectMode::init()
 	///模式1按钮
 	ImageButton* pPlayButton=new ImageButton("SelectMode_1","moshi_leftright.png","moshi_leftright.png");
 	registerWidget(pPlayButton);
-	pElment=pPlayButton->getOverlayElement();
-	pPlayButton->_assignListener(this);
-	pElment->setHorizontalAlignment(Ogre::GHA_LEFT);
-	width=pElment->getWidth();
-	height=pElment->getHeight();
-	pElment->setLeft(100);
-	pElment->setTop(height*(-0.5f));
+	pPlayButton->setHorizontalAlignment(Ogre::GHA_LEFT);
+	width=pPlayButton->getWidth();
+	height=pPlayButton->getHeight();
+	pPlayButton->setLeft(100);
+	pPlayButton->setTop(height*(-0.5f));
 
 
 
 	///模式2按钮
 	pPlayButton=new ImageButton("SelectMode_2","moshi_updown.png","moshi_updown.png");
 	registerWidget(pPlayButton);
-	pElment=pPlayButton->getOverlayElement();
-	pPlayButton->_assignListener(this);
-	pElment->setHorizontalAlignment(Ogre::GHA_CENTER);
-	width=pElment->getWidth();
-	height=pElment->getHeight();
-	pElment->setLeft(width*(-0.5f));
-	pElment->setTop(height*(-0.5f));
+	pPlayButton->setHorizontalAlignment(Ogre::GHA_CENTER);
+	width=pPlayButton->getWidth();
+	height=pPlayButton->getHeight();
+	pPlayButton->setLeft(width*(-0.5f));
+	pPlayButton->setTop(height*(-0.5f));
 
 
 
@@ -85,13 +80,11 @@ void UISelectMode::init()
 	///模式3按钮
 	pPlayButton=new ImageButton("SelectMode_3","moshi_smile.png","moshi_smile.png");
 	registerWidget(pPlayButton);
-	pElment=pPlayButton->getOverlayElement();
-	pPlayButton->_assignListener(this);
-	pElment->setHorizontalAlignment(Ogre::GHA_RIGHT);
-	width=pElment->getWidth();
-	height=pElment->getHeight();
-	pElment->setLeft(-width-100.0f);
-	pElment->setTop(height*(-0.5f));
+	pPlayButton->setHorizontalAlignment(Ogre::GHA_RIGHT);
+	width=pPlayButton->getWidth();
+	height=pPlayButton->getHeight();
+	pPlayButton->setLeft(-width-100.0f);
+	pPlayButton->setTop(height*(-0.5f));
 	
 
 

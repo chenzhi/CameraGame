@@ -59,6 +59,7 @@ protected:
 
 	///返回到捕人脸按钮
 	ImageButton* m_ToCaptureButton;
+	ImageButton* m_pReturnButton;
 
 	bool         m_NeedUpdate;///是否刷新
 

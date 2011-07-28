@@ -20,6 +20,8 @@ ImageButton::ImageButton(const Ogre::String& name,const Ogre::String& normalText
 
 	Ogre::TextureUnitState* pTextureState=m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0);
 
+	 resetPosAndSize();
+
 	updateState();
 
 }
@@ -89,15 +91,13 @@ void ImageButton::updateState()
 
 	if(m_State==BS_UP)
 	{
-
-		//Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName(m_NormalTexture);
-		//if(p)
-
 		m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(m_NormalTexture);
+		setScale(1.0f);
 	
 	}else
     {
 		m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(m_PressTexture);
+		setScale(1.2f);
 
 	}
 
@@ -119,6 +119,7 @@ StaticImage::StaticImage(const Ogre::String& name,const Ogre::String& textureNam
 		m_pMaterial=mElement->getMaterial()->clone(name);
 	}
 
+	 resetPosAndSize();
 	mElement->setMaterialName(m_pMaterial->getName());
 
 	setImage(textureName);
@@ -188,7 +189,7 @@ TimeImageButton::TimeImageButton(const Ogre::String&name,const Ogre::String& ima
 	//}
 
 	//m_pDeleteMaterial
-
+     resetPosAndSize();
 
 }
 
@@ -323,7 +324,7 @@ Image3DButton::Image3DButton(const Ogre::String& name,Ogre::SceneNode* pNode)
 	mElement = Ogre::OverlayManager::getSingleton().createOverlayElementFromTemplate("cz/ImageButton", "Panel", name);
 	m_pOveraly->add2D( static_cast<Ogre::OverlayContainer*>(mElement));
 
-
+     resetPosAndSize();
 }
 
 //-----------------------------------------------------------------------------------------
@@ -428,7 +429,7 @@ SliderGallery::SliderGallery(const Ogre::String& name,SliderGalleryDataSource* p
 	m_ButtonCollect.push_back(pSrollButton);
 
 
-
+     resetPosAndSize();
 	///初始化资源
 	resetButtonInformation();
 
