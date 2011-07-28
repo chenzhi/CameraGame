@@ -32,16 +32,21 @@ public:
 	*/
 	ImageButton( const Ogre::String& name,const Ogre::String& normalTexture,const Ogre::String& pressTexture);
 
-
 	virtual ~ImageButton();
 
+	/**内部构造函数，
+	*/
+	ImageButton(Ogre::OverlayElement* pElement,const Ogre::String& normalTexture,const Ogre::String& pressTexture);
+
+
+	///鼠标事件
+	virtual void _cursorPressed(const Ogre::Vector2& cursorPos);
+
+	///鼠标事件
+	virtual void _cursorReleased(const Ogre::Vector2& cursorPos) ;
 
 protected:
 
-
-	virtual void _cursorPressed(const Ogre::Vector2& cursorPos);
-
-	virtual void _cursorReleased(const Ogre::Vector2& cursorPos) ;
 
 	virtual void _focusLost();
 
@@ -415,7 +420,7 @@ public:
 };
 
 
-class SliderGallery : public Widget
+class SliderGallery : public Widget ,public SdkTrayListener
 {
 
 public:
@@ -453,6 +458,8 @@ protected:
 
 protected:
 
+	///回调事件
+	virtual void buttonHit(Widget* button);
 
 	///每帧更新涵数
 	void update(float tim);
@@ -487,9 +494,9 @@ protected:
 	protected:
 
 	
-	Ogre::OverlayElement* m_pPrevisouButton;///向前一个按钮
+	ImageButton* m_pPrevisouButton;///向前一个按钮
 
-	Ogre::OverlayElement* m_pNextButton; ///向后一个按钮
+	ImageButton* m_pNextButton; ///向后一个按钮
 
 
 

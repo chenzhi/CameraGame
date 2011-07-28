@@ -68,6 +68,19 @@ void  UISelectUser::init()
 	m_pReturnButton->setHeight(80);
 
 
+
+
+
+	///É¾³ıÌáÊ¾¿ò
+   StaticImage* pDeleteImage=new StaticImage("UISelectDeleteImage","tuku_delete_0.png");
+   registerWidget(pDeleteImage);
+   pDeleteImage->setVerticalAlignment(Ogre::GVA_BOTTOM);
+   pDeleteImage->setWidth(256);
+   pDeleteImage->setTop(-pDeleteImage->getHeight()-20);
+   pDeleteImage->setLeft(-pDeleteImage->getWidth()*0.5f);
+
+
+
 	return ;
 }
 

@@ -26,6 +26,23 @@ ImageButton::ImageButton(const Ogre::String& name,const Ogre::String& normalText
 
 }
 
+
+ImageButton::ImageButton(Ogre::OverlayElement* pElement,const Ogre::String& normalTexture,const Ogre::String& pressTexture)
+:m_NormalTexture(normalTexture),m_PressTexture(pressTexture),m_State(BS_UP)
+{
+   assert(pElement);
+   mElement=pElement;
+
+   m_pMaterial=mElement->getMaterial();
+   m_pMaterial=m_pMaterial->clone(mElement->getName());
+
+   resetPosAndSize();
+   updateState();
+
+}
+
+
+
 //-------------------------------------------------------------------------------------------
 ImageButton::~ImageButton()
 {
@@ -426,17 +443,21 @@ void   Image3DButton::setSceneNode(Ogre::SceneNode* pNode)
 
 //-------------------------------------------------------
 SliderGallery::SliderGallery(const Ogre::String& name,SliderGalleryDataSource* pDataSource)
-:Widget(),m_IsPress(false),m_RollDir(0),m_RollTime(0.0f),m_pDataSource(pDataSource),m_DataIndex(0)
+:Widget(),m_IsPress(false),m_RollDir(0),m_RollTime(0.0f),m_pDataSource(pDataSource),m_DataIndex(0),m_pPrevisouButton(NULL),
+m_pNextButton(NULL)
 {
 
 	mElement=Ogre::OverlayManager::getSingleton().createOverlayElementFromTemplate("cz/SliderGallery","Panel",name);
 
 	Ogre::OverlayContainer* pContainer=static_cast<Ogre::OverlayContainer*>(mElement);
 
-    m_pPrevisouButton=pContainer->getChild(getName()+"/cz/SliderGallery/PreviousButton");
+	Ogre::OverlayElement* pPreElement=pContainer->getChild(getName()+"/cz/SliderGallery/PreviousButton");
+	m_pPrevisouButton=new ImageButton(pPreElement,"tuku_zuoanniu_release.png","tuku_zuoanniu_press.png");
+	m_pPrevisouButton->_assignListener(this);
 
-    m_pNextButton=pContainer->getChild(getName()+"/cz/SliderGallery/NextButton");
-
+    Ogre::OverlayElement* pNewxElement =pContainer->getChild(getName()+"/cz/SliderGallery/NextButton");
+	m_pNextButton = new ImageButton(pNewxElement,"paizhao_sanjiao_release.png","paizhao_sanjiao_press.png");
+    m_pNextButton->_assignListener(this);
 
 	//pContainer = static_cast<Ogre::OverlayContainer*>(pContainer->getChild(name+"/cz/SliderGallery/Backgroud"));
 
@@ -470,6 +491,8 @@ SliderGallery::SliderGallery(const Ogre::String& name,SliderGalleryDataSource* p
 //-------------------------------------------------------
 SliderGallery::~SliderGallery()
 {
+	SafeDelete(m_pNextButton);
+	SafeDelete(m_pPrevisouButton);
 	destroySrollButton();
 	SafeDelete(m_pDataSource);
 
@@ -498,14 +521,24 @@ void SliderGallery::_cursorPressed(const Ogre::Vector2& cursorPos)
 	m_IsPress=true;	
 
 	//SaveButtonPos();
-
-	if(isCursorOver(m_pPrevisouButton,cursorPos)&&m_RollDir==0)
+	if(m_pPrevisouButton!=NULL)
 	{
-		
-	}else if(isCursorOver(m_pNextButton,cursorPos)&&m_RollDir==0)
-	{
-		
+		m_pPrevisouButton->_cursorPressed(cursorPos);
 	}
+
+	if(m_pNextButton!=NULL)
+	{
+		m_pNextButton->_cursorPressed(cursorPos);
+
+	}
+
+	//if(isCursorOver(m_pPrevisouButton,cursorPos)&&m_RollDir==0)
+	//{
+		
+	//}else if(isCursorOver(m_pNextButton,cursorPos)&&m_RollDir==0)
+	//{
+		
+	//}
 
 
 }
@@ -518,20 +551,34 @@ void SliderGallery::_cursorReleased(const Ogre::Vector2& cursorPos)
 	m_IsPress=false;
 
 	if(m_RollDir==0)
-	{
-		if(isCursorOver(m_pPrevisouButton,cursorPos))
-		{
-			
-			previsouButton();
-		     return ;
 
-		}else if(isCursorOver(m_pNextButton,cursorPos))
-		{
-			nextButton();
-			return ;
-		}
+	//{
+		//if(isCursorOver(m_pPrevisouButton,cursorPos))
+		//{
+			
+		//	previsouButton();
+		 //    return ;
+
+		//}else if(isCursorOver(m_pNextButton,cursorPos))
+		//{
+		//	nextButton();
+		//	return ;
+		//}
+
+	//}
+
+
+	if(m_pPrevisouButton!=NULL)
+	{
+		m_pPrevisouButton->_cursorReleased(cursorPos);
+	}
+
+	if(m_pNextButton!=NULL)
+	{
+		m_pNextButton->_cursorReleased(cursorPos);
 
 	}
+
 
 
 	///如果没有点击前后按钮。判断是否点击到了主要的内容按钮
@@ -701,8 +748,35 @@ void SliderGallery::nextButton()
 void  SliderGallery::_cursorMoved(const Ogre::Vector2& cursorPos)
 {
 
+	if(m_pPrevisouButton!=NULL)
+	{
+		m_pPrevisouButton->_cursorMoved(cursorPos);
+	}
+
+	if(m_pNextButton!=NULL)
+	{
+		m_pNextButton->_cursorMoved(cursorPos);
+
+	}
+
+
 }
 
+
+//------------------------------------------------------------
+void SliderGallery::buttonHit(Widget* button)
+{
+	if(button==NULL)
+		return ;
+	if(button==m_pPrevisouButton)
+	{
+		previsouButton();
+	}else if(button==m_pNextButton)
+	{
+		nextButton();
+	}
+
+}
 
 
 //-------------------------------------------------------------
