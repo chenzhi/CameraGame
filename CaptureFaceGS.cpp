@@ -38,8 +38,11 @@ void  CaptureFaceGS::begin( )
     GameState::begin();
     
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
+    
+#if defined  __arm__
     initVideo();
     initBackGround(); 
+#endif
 
 	///´´½¨ui
 	initUI();
@@ -55,13 +58,14 @@ void  CaptureFaceGS::end( )
 {
     GameState::end();
     
-    if(m_BackGround!=NULL)
-    {
-        //m_BackGround->setVisible(false);
-    }
     
+       
     
 #if defined  __arm__
+    
+   // m_BackGround->setVisible(false);
+ // destroyBackGround(); 
+    
   ofxiPhoneVideoGrabber::getSingleton().stopCapture();
     
 #endif    
@@ -143,15 +147,30 @@ void CaptureFaceGS::initBackGround()
 #endif
     pPass->setAmbient(Ogre::ColourValue(1.0f,1.0f,1.0f,1.0f));
     
-    
     m_BackGround->getSubEntity(0)->setMaterialName(pBackGroundMaterial->getName());
     
 #ifndef __arm__
     m_BackGround->setVisible(false);
 #endif
 }
+            
 
 
+
+void CaptureFaceGS::destroyBackGround()
+{
+    //m_pSceneManager
+    
+    
+    
+    Ogre::SceneNode* pNode=m_BackGround->getParentSceneNode();
+    pNode->detachAllObjects();
+    pNode->getParentSceneNode()->removeAndDestroyChild(pNode->getName());
+    m_pSceneManager->destroyEntity(m_BackGround);
+    m_BackGround=NULL;
+
+    
+}
 
 //------------------------------------------------------------
 void CaptureFaceGS::initVideo()

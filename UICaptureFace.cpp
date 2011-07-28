@@ -90,7 +90,7 @@ void UICaptureFace::init()
 void  UICaptureFace::setVisible(bool b)
 {
     UIBase::setVisible(b);
-    
+
 #ifdef __arm__
     if(b)
     {
@@ -108,7 +108,7 @@ void  UICaptureFace::setVisible(bool b)
 
 ///-------------------------------------------------------------
 void UICaptureFace::setUserCount(unsigned int count)
-{
+{ 
 	m_UserCount=count;
 }
 
@@ -148,9 +148,12 @@ void UICaptureFace::buttonHit(Widget* button)
                     
          }
          
-         pTexture=Ogre::TextureManager::getSingleton().createManual(userName, "General",Ogre::TEX_TYPE_2D, 480, 320, 1, 1,Ogre::PF_R8G8B8A8);
-         ofxiPhoneVideoGrabber::getSingleton().getOgreTexture(pTexture);
-         Ogre::LogManager::getSingleton().logMessage("create user face image is "+userName);
+        Ogre::TexturePtr pVideoTexture=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture();
+               
+        pTexture= Ogre::TextureManager::getSingleton().createManual(userName, "General", 
+            Ogre::TEX_TYPE_2D, pVideoTexture->getWidth(), pVideoTexture->getHeight(), 1, 1,pVideoTexture->getFormat());
+         
+         bool b= ofxiPhoneVideoGrabber::getSingleton().getOgreTexture(pTexture);
       
 #else        
          Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName("sdk_logo.png");

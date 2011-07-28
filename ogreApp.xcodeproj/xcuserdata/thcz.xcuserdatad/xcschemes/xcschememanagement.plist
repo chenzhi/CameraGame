@@ -4,12 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CameraGame.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>OgreApp.xcscheme</key>
+		<key>ogreApp.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>

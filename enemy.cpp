@@ -33,7 +33,7 @@ m_pHeadEnity(NULL),m_HurtTime(0.0f),m_Trans(0.0f,0.0f,0.0f),m_AniFade(0.0f)
 	m_pNode->attachObject(m_pHeadEnity);
 	m_pHeadEnity->shareSkeletonInstanceWith(m_pEntity);
 
-	m_pNode->showBoundingBox(true);
+	//m_pNode->showBoundingBox(true);
 
 	m_pEntity->setQueryFlags(EnemyMask);
 	m_pAniSate=NULL;

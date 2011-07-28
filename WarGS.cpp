@@ -152,7 +152,7 @@ void WarGS::initVideoTeture()
     if(pTexture.isNull())
     {
        pTexture= Ogre::TextureManager::getSingleton().createManual("videoTexture_copy", "General", 
-       Ogre::TEX_TYPE_2D, pVideoTexture->getWidth(), pVideoTexture->getHeight(), 1, 1,Ogre::PF_R8G8B8);
+       Ogre::TEX_TYPE_2D, pVideoTexture->getWidth(), pVideoTexture->getHeight(), 1, 1,pVideoTexture->getFormat());
     }
        
     
@@ -171,6 +171,7 @@ void WarGS::initVideoTeture()
     }
   
       
+    ofxiPhoneVideoGrabber::getSingleton().startCapture();
     
 #endif
     
