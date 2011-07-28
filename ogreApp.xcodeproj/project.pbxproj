@@ -47,6 +47,8 @@
 		77A8B4F813B1770600D40305 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A8B4F713B1770600D40305 /* CoreMotion.framework */; };
 		77A8B4FF13B19A7E00D40305 /* GameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A8B4FE13B19A7E00D40305 /* GameState.cpp */; };
 		77C17B5913AED3A90067B857 /* ofPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C17B5713AED3A90067B857 /* ofPoint.cpp */; };
+		77DD6AA413DFFD7000278BBA /* UIWarPause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77DD6AA013DFFD7000278BBA /* UIWarPause.cpp */; };
+		77DD6AA513DFFD7000278BBA /* UIWarTwoBalance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77DD6AA213DFFD7000278BBA /* UIWarTwoBalance.cpp */; };
 		77F4287413CDF1D200C3478E /* SdkTrays.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77F4287213CDF1D200C3478E /* SdkTrays.cpp */; };
 		77FCF58B13D904C00048CCE3 /* EnemyQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */; };
 		8896C17F13A88233000DA13C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C17E13A88233000DA13C /* UIKit.framework */; };
@@ -133,6 +135,10 @@
 		77A8B4FE13B19A7E00D40305 /* GameState.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = GameState.cpp; sourceTree = "<group>"; };
 		77C17B5713AED3A90067B857 /* ofPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofPoint.cpp; sourceTree = "<group>"; };
 		77C17B5813AED3A90067B857 /* ofPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofPoint.h; sourceTree = "<group>"; };
+		77DD6AA013DFFD7000278BBA /* UIWarPause.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UIWarPause.cpp; sourceTree = "<group>"; };
+		77DD6AA113DFFD7000278BBA /* UIWarPause.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIWarPause.h; sourceTree = "<group>"; };
+		77DD6AA213DFFD7000278BBA /* UIWarTwoBalance.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UIWarTwoBalance.cpp; sourceTree = "<group>"; };
+		77DD6AA313DFFD7000278BBA /* UIWarTwoBalance.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIWarTwoBalance.h; sourceTree = "<group>"; };
 		77F4287213CDF1D200C3478E /* SdkTrays.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SdkTrays.cpp; sourceTree = "<group>"; };
 		77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = EnemyQueue.cpp; sourceTree = "<group>"; };
 		77FCF58813D904C00048CCE3 /* EnemyQueue.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = EnemyQueue.h; sourceTree = "<group>"; };
@@ -270,6 +276,10 @@
 		77FCF58513D904870048CCE3 /* War */ = {
 			isa = PBXGroup;
 			children = (
+				77DD6AA013DFFD7000278BBA /* UIWarPause.cpp */,
+				77DD6AA113DFFD7000278BBA /* UIWarPause.h */,
+				77DD6AA213DFFD7000278BBA /* UIWarTwoBalance.cpp */,
+				77DD6AA313DFFD7000278BBA /* UIWarTwoBalance.h */,
 				779D145213DEDE7B00E9C5B2 /* EventManager.cpp */,
 				779D145313DEDE7B00E9C5B2 /* EventManager.h */,
 				779D145413DEDE7B00E9C5B2 /* Friend.cpp */,
@@ -484,6 +494,8 @@
 				779D145B13DEDE7B00E9C5B2 /* Friend.cpp in Sources */,
 				779D145C13DEDE7B00E9C5B2 /* WarManager.cpp in Sources */,
 				779D145D13DEDE7B00E9C5B2 /* WarMode.cpp in Sources */,
+				77DD6AA413DFFD7000278BBA /* UIWarPause.cpp in Sources */,
+				77DD6AA513DFFD7000278BBA /* UIWarTwoBalance.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

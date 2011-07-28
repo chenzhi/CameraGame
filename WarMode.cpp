@@ -206,7 +206,7 @@ void WarModeTwo::initEmemyFormat()
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
 
-	FileSystemLayerImpl* pFileSystem=Application::getSingleton().getFileSystem();
+	OgreBites::FileSystemLayerImpl* pFileSystem=Application::getSingleton().getFileSystem();
 	cf.load(pFileSystem->getConfigFilePath(g_EnemyFormat));
 
 #else 

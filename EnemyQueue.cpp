@@ -15,7 +15,7 @@ EnemyQueue::EnemyQueue(const Ogre::Vector3& pos,const  PositionList&EnemyList,co
 	m_pSceneMrg=Application::getSingleton().getMainSceneManager();
 	m_pRootNode=m_pSceneMrg->getRootSceneNode()->createChildSceneNode();
     m_pRootNode->setPosition(pos);
-	m_pRootNode->showBoundingBox(true);
+	//m_pRootNode->showBoundingBox(true);
 
 	size_t size=EnemyList.size();
 	for(size_t i=0;i<size;++i)
@@ -41,7 +41,14 @@ EnemyQueue::EnemyQueue(const Ogre::Vector3& pos,const  PositionList&EnemyList,co
 	}
 
 
+    ///面向摄像机
+    
 
+    
+	Ogre::Camera* pCamera=Application::getSingleton().getMainCamera();
+	Ogre::Vector3 camPos= pCamera->getParentNode()->getPosition();
+	m_pRootNode->lookAt(camPos,Ogre::Node::TS_WORLD,Ogre::Vector3::UNIT_Z);
+    
 
 	
 
@@ -80,6 +87,11 @@ void EnemyQueue::update(float time)
 		(*it)->update(time);
 	}
 
+    if(m_State==EQ_NORMAl)
+    {
+        updateNormal(time);
+        return ;
+    }
 
 	
    ///如果有队员变打死飞到背景外层
@@ -374,4 +386,23 @@ void EnemyQueue::updateLevelState(float time)
 
 	return ;
 
+}
+
+//------------------------------------------------------------------
+void EnemyQueue::updateNormal(float time)
+{
+    m_loveTime+=time;
+    if(m_loveTime>=3.0f)
+    {
+        m_State=EQ_KILLFRIEND;
+        
+		///确定逃离的方向
+		m_LevelPoint.x=Ogre::Math::RangeRandom(-3.0f,3.0f);
+		m_LevelPoint.y=Ogre::Math::RangeRandom(-3.0f,3.0f);
+		m_LevelPoint.z=Ogre::Math::RangeRandom(-10.0f,0.0f);
+        m_LevelPoint.normalise();
+		m_loveTime=0.0f;
+		return ;
+    }
+    
 }

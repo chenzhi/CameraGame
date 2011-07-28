@@ -64,6 +64,9 @@ protected:
 
 	/**更新逃跑状态*/
 	void updateLevelState(float time);
+    
+    /**正常状态更新*/
+    void updateNormal(float time);
 
 	
 	/**判断是否和射线碰撞
@@ -95,14 +98,15 @@ protected:
 
 
 	Ogre::SceneManager*         m_pSceneMrg;      ///场景管理器
-	Ogre::SceneNode*            m_pRootNode;
+	Ogre::SceneNode*           m_pRootNode;
 
-	EnemyCollect                m_ElemyCollect; ///需要打击的对象列表
-	EnemyCollect                m_FriendCollect;///不能打击的对像列表
+	EnemyCollect             m_ElemyCollect; ///需要打击的对象列表
+	EnemyCollect             m_FriendCollect;///不能打击的对像列表
 
-	EQST                        m_State;
-	float                       m_loveTime;       ///示爱时间
-	Ogre::Vector3               m_LevelPoint;      ///飞到幕后的目标点
+	EQST                   m_State;
+	float                  m_loveTime;       ///示爱时间
+	Ogre::Vector3              m_LevelPoint;      ///飞到幕后的目标点
+    
 
 
 

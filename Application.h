@@ -139,7 +139,7 @@ public:
 
 #else
 
-	FileSystemLayerImpl* getFileSystem()const {return m_pFileSystem;}   
+	OgreBites::FileSystemLayerImpl* getFileSystem()const {return m_pFileSystem;}   
    
     
 #endif

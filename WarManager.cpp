@@ -364,7 +364,8 @@ EnemyQueue* WarManager::createEnemyQueue(float xangle,float yangle,const std::ve
 	 pos.normalise();
 	 pos.x*=5.0f;
 	 pos.y*=5.0f;
-	 pos.z=Ogre::Math::RangeRandom(4.0f,-10.0f);
+	 pos.z=Ogre::Math::RangeRandom(3.0f,-10.0f);
+    
 
 	 //PositionList Enemylist;
   //   Enemylist.push_back(Ogre::Vector3(2.0f,0.0f,0.0f));
