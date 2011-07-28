@@ -38,10 +38,11 @@ void  CaptureFaceGS::begin( )
     GameState::begin();
     
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
+	m_pCameraNode->setOrientation(Ogre::Quaternion::IDENTITY);
     
 #if defined  __arm__
-    initVideo();
-    initBackGround(); 
+   // initVideo();
+   // initBackGround(); 
 #endif
 
 	///´´½¨ui
