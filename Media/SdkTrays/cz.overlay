@@ -42,7 +42,7 @@ template container Panel(cz/SliderGallery)
 {
 
      metrics_mode pixels
-     material cz/Button/Down
+    # material cz/Button/Down
       
 	horz_align left
       vert_align top

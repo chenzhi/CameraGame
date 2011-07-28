@@ -139,14 +139,12 @@ class TimeImageButton:public Widget
 public:
 	enum TIB
 	{
-
 		NORMAL,///正常状态
 		Press,///长按后弹起状态。这时会出现减号符
-
-
 	};
 
 public:
+
 	TimeImageButton(const Ogre::String&name, const Ogre::String& imageName);
 
 	~TimeImageButton();
@@ -162,16 +160,11 @@ public:
 	virtual void _focusLost();
 
 
-
 	///重置状态
 	void reset();
 
 	TIB getState()const{return m_State;}
     
-    
-    
-    
-
 
 protected:
 
@@ -180,6 +173,7 @@ protected:
     
     ///摇动按钮
     void rotateButton(float time);
+
 
 
 

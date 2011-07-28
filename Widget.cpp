@@ -170,7 +170,7 @@ TimeImageButton::TimeImageButton(const Ogre::String&name,const Ogre::String& ima
 	m_pBackgroundMaterial=Ogre::MaterialManager::getSingleton().getByName(name);
 	if(m_pBackgroundMaterial.isNull())
 	{
-		m_pBackgroundMaterial=mElement->getMaterial()->clone(name);
+		m_pBackgroundMaterial=mElement->getMaterial()->clone(name+"backgruond");
 	}
 
 	mElement->setMaterialName(m_pBackgroundMaterial->getName());
@@ -180,6 +180,9 @@ TimeImageButton::TimeImageButton(const Ogre::String&name,const Ogre::String& ima
 	Ogre::PanelOverlayElement* pBackground=static_cast<Ogre::PanelOverlayElement*>(mElement);
 	m_pDeleteElement=pBackground->getChild(getName()+"/DeleteImage");
 	m_pDeleteElement->hide();
+	m_pDeleteMaterial=m_pDeleteElement->getMaterial();
+	m_pDeleteMaterial=m_pDeleteMaterial->clone(name+"deleteButton");
+	m_pDeleteElement->setMaterialName(m_pDeleteMaterial->getName());
 
 	//Ogre::String deleteMaterial=name+"deleate";
 	//m_pDeleteMaterial=Ogre::MaterialManager::getSingleton().getByName(deleteMaterial);
@@ -282,21 +285,45 @@ void TimeImageButton::updateState()
 //---------------------------------------------------------------------------------------------
 void TimeImageButton::rotateButton(float time)
 {
+
+	static bool left=true;
+
+		Ogre::TextureUnitState* pTextureState=m_pBackgroundMaterial->
+			getTechnique(0)->getPass(0)->getTextureUnitState(0);  
+		Ogre::TextureUnitState* pDeleteState=m_pDeleteMaterial->
+			getTechnique(0)->getPass(0)->getTextureUnitState(0);  
+
+
     if(m_State==NORMAL)
     {
+		pTextureState->setTextureRotate(Ogre::Radian(0));
+		pDeleteState->setTextureRotate(Ogre::Radian(0));
         
     }else
     {
 
+		
+		float ro=time*2.0f;
+		if(m_RotateRadian>0.1)
+		{
+			left=false;
+			//m_RotateRadian+=ro;
+		}else if(m_RotateRadian<-0.1)
+		{
+			left=true;
+          //m_RotateRadian-=ro;
+		}
 
-		//float ro=time*0.01f;
+		if(left)
+		{
+			m_RotateRadian+=ro;
+		}else
+		{
+			m_RotateRadian-=ro;
+		}
 
-		//m_RotateRadian+=ro;
-
-		//Ogre::TextureUnitState* pTextureState=m_pBackgroundMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0);
-  //      
-		//pTextureState->setTextureRotate(Ogre::Radian(m_RotateRadian));
-        
+		pTextureState->setTextureRotate(Ogre::Radian(m_RotateRadian));
+		pDeleteState->setTextureRotate(Ogre::Radian(m_RotateRadian));
     }
     
 }
