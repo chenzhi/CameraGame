@@ -10,7 +10,7 @@
 
 
 UISelectUser::UISelectUser()
-:UIBase("UISelectUser",""),m_ToCaptureButton(NULL),m_NeedUpdate(false)
+:UIBase("UISelectUser",""),m_ToCaptureButton(NULL),m_pReturnButton(NULL),m_NeedUpdate(false)
 {
 
 
@@ -31,6 +31,7 @@ void  UISelectUser::init()
 	UIBase::init();
 
 
+	///背景
 	StaticImage* pImage=new StaticImage("SelectUserBackGround","tuku_background.png");
 	registerWidget(pImage);
 	Ogre::OverlayElement* pElment=pImage->getOverlayElement();
@@ -43,14 +44,29 @@ void  UISelectUser::init()
 
 
 
-	///??????
-	m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","moshi_fanhui_press.png","moshi_fanhui_release.png");
+	///跳到拍照界面
+	m_ToCaptureButton=new ImageButton("UISelectUser_GoCapture","tuku_zuoanniu_release.png","tuku_zuoanniu_press.png");
 	registerWidget(m_ToCaptureButton);
 	m_ToCaptureButton->_assignListener(this);
 	pElment=m_ToCaptureButton->getOverlayElement();
 	pElment->setHorizontalAlignment(Ogre::GHA_LEFT);
 	m_ToCaptureButton->setWidth(80);
 	m_ToCaptureButton->setHeight(80);
+	
+
+
+	///返回按钮
+
+	///返回上一层按钮
+	m_pReturnButton=new ImageButton("UISelctReturnButton,","moshi_fanhui_release.png","moshi_fanhui_press.png");
+	registerWidget(m_pReturnButton);
+	m_pReturnButton->setHorizontalAlignment(Ogre::GHA_LEFT);
+	m_pReturnButton->setLeft(10);
+	m_pReturnButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
+	m_pReturnButton->setTop(-128);
+	m_pReturnButton->setWidth(80);
+	m_pReturnButton->setHeight(80);
+
 
 	return ;
 }
@@ -91,12 +107,12 @@ void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 	if(pUserList.isNull())
 		return ;
 
-	///????瑙?
+	///先销毁所有的
 	destroyAllUserList();
 
 	m_UserList=pUserList;
 
-	///??????5涓????	
+	///最多只显示5个
     int userSize=m_UserList->size();
 	if(userSize>5)
 	{
@@ -110,10 +126,11 @@ void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 		TimeImageButton* pButton=new TimeImageButton(imageName, imageName);
 		registerWidget(pButton);
 		m_UserButtonCollect.push_back(pButton);
-
-		Ogre::OverlayElement* pElement=pButton->getOverlayElement();
-		pElement->setHorizontalAlignment(Ogre::GHA_LEFT);
-		pElement->setLeft(200+150*i);
+		pButton->setHorizontalAlignment(Ogre::GHA_LEFT);
+		pButton->setTop(pButton->getHeight()*-0.5f);
+		int width= pButton->getWidth();
+		width+=20;//加下空隙
+		pButton->setLeft(200+width*i);
 
 	}
 
@@ -148,9 +165,7 @@ void UISelectUser::onEndTouch(int x,int y)
 {
 	UIBase::onEndTouch(x,y);
 
-	///濡??娌℃??瑰??颁换浣??涓???????氨???????х?????ㄩ???疆?舵?
-
-	///??疆??????????????
+	///如果一个用户按钮都没有点到。重置删除状态
 	bool needRest=true;
 
 	ImageButtonCollect::iterator it=m_UserButtonCollect.begin();
@@ -195,7 +210,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 		return ;
 
 
-	//杩???版??哥????
+	//如果是跳到拍照按钮
 	if(pbutton==m_ToCaptureButton)
 	{
 		setVisible(false);
@@ -205,11 +220,16 @@ void UISelectUser::buttonHit(Widget* pbutton)
 		pCaptureFace->setVisible(true);
 		return ;
 
+	}else if(pbutton==m_pReturnButton)//如果是返回按钮
+	{
+		Application::getSingleton().getCurrentActive()->setNextStateType(ST_SELECTMODE);
+		return ;
+
 	}
 
 
 
-	///濡?????浜??瀹?
+	///如果是选择已有的脸
 	const Ogre::String& imageName=pbutton->getName();
 	size_t size=m_UserList->size();
 	for(size_t i=0;i<size;++i)
@@ -221,7 +241,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 			TimeImageButton*  pTimeButton=static_cast<TimeImageButton*>(pbutton);
 
-			///???涓?釜?ㄦ??剧?
+			///如果是删除用户脸
 			if(pTimeButton->getState()==TimeImageButton::Press)
 			{
 

@@ -37,7 +37,7 @@ void UICaptureFace::init()
 	UIBase::init();
 
 
-	Ogre::OverlayElement* pElement=NULL;
+
 	///创建脸部校正图片
 	CaptureImage* pImage=new CaptureImage("CaptureBackGround");
 	registerWidget(pImage);
@@ -51,20 +51,16 @@ void UICaptureFace::init()
 
 
 	////回到用户选择按钮
-	m_pToUserFace=new ImageButton("ToCaptureFace","paizhao_sanjiao_press.png","paizhao_sanjiao_release.png");
+	m_pToUserFace=new ImageButton("ToCaptureFace","paizhao_sanjiao_release.png","paizhao_sanjiao_press.png");
 	registerWidget(m_pToUserFace);
-	pElement=m_pToUserFace->getOverlayElement();
-	pElement->setHorizontalAlignment(Ogre::GHA_RIGHT);
-	pElement->setLeft(-pElement->getWidth()-100);
+	m_pToUserFace->setHorizontalAlignment(Ogre::GHA_RIGHT);
+	m_pToUserFace->setLeft(-m_pToUserFace->getWidth()-100);
 	m_pToUserFace->setTop(-64);
 
 
 	///拍照铵钮
-	m_pCaptureButton=new ImageButton("CaptureFaceButton","paizhao_paizhao_press.png","paizhao_paizhao_release.png");
+	m_pCaptureButton=new ImageButton("CaptureFaceButton","paizhao_paizhao_release.png","paizhao_paizhao_press.png");
 	registerWidget(m_pCaptureButton);
-	pElement=m_pCaptureButton->getOverlayElement();
-	//pElement->setHorizontalAlignment(Ogre::GHA_RIGHT);
-	//pElement->setVerticalAlignment(Ogre::GVA_BOTTOM);
 	int width=160;
 	int height=160;
     m_pCaptureButton->setWidth(width);
@@ -74,7 +70,7 @@ void UICaptureFace::init()
 
 
 	///返回上一层按钮
-	m_pGoBackButton=new ImageButton("CaptureFaceGoBackButton","moshi_fanhui_press.png","moshi_fanhui_release.png");
+	m_pGoBackButton=new ImageButton("CaptureFaceGoBackButton,","moshi_fanhui_release.png","moshi_fanhui_press.png");
 	registerWidget(m_pGoBackButton);
 	m_pGoBackButton->setHorizontalAlignment(Ogre::GHA_LEFT);
 	m_pGoBackButton->setLeft(10);
