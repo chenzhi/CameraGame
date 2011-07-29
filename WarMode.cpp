@@ -16,15 +16,13 @@ m_pUIBalance(NULL)
 {
 	m_pSceneMrg=Application::getSingleton().getMainSceneManager();
 
-	initUI();
+
 }
 
 
 //--------------------------------------------------------
 WarModeTwo::~WarModeTwo()
 {
-
-	destroyUI();
 }
 
 
@@ -33,9 +31,10 @@ void WarModeTwo::start()
 {
 	
 
-	m_pUIBalance->setVisible(false);
-	m_pUI->setVisible(true);
-	m_pUI->reset();
+
+	initUI();
+
+	
 	
 	///重置杀死人数
 	m_KillCount=0;
@@ -56,6 +55,8 @@ void WarModeTwo::start()
 //--------------------------------------------------------
 void WarModeTwo::end()
 {
+
+	destroyUI();
 	WarManager::getSingleton().removeListener(this);
 	//WarManager::getSingleton().destroyAllEnemyQueue();
 
@@ -108,6 +109,9 @@ void WarModeTwo::initUI()
 	Application::getSingleton().registerUI(m_pUIBalance);
 
 
+	m_pUIBalance->setVisible(false);
+	m_pUI->setVisible(true);
+	m_pUI->reset();
 
 
 }
@@ -144,6 +148,8 @@ void  WarModeTwo::onLostEnemyQueue(EnemyQueue* pEnemyQueue)
 	m_pUI->onLostEnemyQueue(pEnemyQueue);
 	++m_LostCount;
 	///如果大于三个逃跑游戏结束。
+
+	/*/
 	if(m_LostCount>=3)
 	{
 		///结束比赛
@@ -152,7 +158,8 @@ void  WarModeTwo::onLostEnemyQueue(EnemyQueue* pEnemyQueue)
 		m_pUIBalance->setVisible(true);
         m_pUI->setVisible(false);
 
-	}else///继续创建新的队列
+	}///继续创建新的队列
+	else  //*/
 	{
 
 		createEnemyQueue();
@@ -184,7 +191,7 @@ void   WarModeTwo::_createEnemyQueue()
 		createindex=::rand()%m_EnemyFormatCollect.size();
 	}
 
-	WarManager::getSingleton().createEnemyQueue(90,30,m_EnemyFormatCollect[createindex].m_EnemyCollect,
+	WarManager::getSingleton().createEnemyQueue(10,10,m_EnemyFormatCollect[createindex].m_EnemyCollect,
 		m_EnemyFormatCollect[createindex].m_FriendCollect);
 
 

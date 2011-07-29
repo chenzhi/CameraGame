@@ -442,42 +442,65 @@ void   Image3DButton::setSceneNode(Ogre::SceneNode* pNode)
 
 
 //-------------------------------------------------------
-SliderGallery::SliderGallery(const Ogre::String& name,SliderGalleryDataSource* pDataSource)
+SliderGallery::SliderGallery(const Ogre::String& name,SliderGalleryDataSource* pDataSource,const Ogre::String& templateName)
 :Widget(),m_IsPress(false),m_RollDir(0),m_RollTime(0.0f),m_pDataSource(pDataSource),m_DataIndex(0),m_pPrevisouButton(NULL),
 m_pNextButton(NULL)
 {
 
-	mElement=Ogre::OverlayManager::getSingleton().createOverlayElementFromTemplate("cz/SliderGallery","Panel",name);
+	mElement=Ogre::OverlayManager::getSingleton().createOverlayElementFromTemplate(templateName,"Panel",name);
 
 	Ogre::OverlayContainer* pContainer=static_cast<Ogre::OverlayContainer*>(mElement);
 
-	Ogre::OverlayElement* pPreElement=pContainer->getChild(getName()+"/cz/SliderGallery/PreviousButton");
+	Ogre::OverlayElement* pPreElement=pContainer->getChild(getName()+"/"+templateName+"/PreviousButton");
 	m_pPrevisouButton=new ImageButton(pPreElement,"tuku_zuoanniu_release.png","tuku_zuoanniu_press.png");
 	m_pPrevisouButton->_assignListener(this);
 
-    Ogre::OverlayElement* pNewxElement =pContainer->getChild(getName()+"/cz/SliderGallery/NextButton");
+    Ogre::OverlayElement* pNewxElement =pContainer->getChild(getName()+"/"+templateName+"/NextButton");
 	m_pNextButton = new ImageButton(pNewxElement,"paizhao_sanjiao_release.png","paizhao_sanjiao_press.png");
     m_pNextButton->_assignListener(this);
 
-	//pContainer = static_cast<Ogre::OverlayContainer*>(pContainer->getChild(name+"/cz/SliderGallery/Backgroud"));
+   int Srollindex=1;
+   while(true)
+   {
+	   try
+	   {
+		   Ogre::String buttonName=getName()+"/"+templateName+"/button/"+Ogre::StringConverter::toString(Srollindex);
+		   Ogre::OverlayElement* pButton=pContainer->getChild(buttonName);
+		   if(pButton==NULL)
+		   {
+			   break;
+		   }
+		   SrollButton* pSrollButton= new SrollButton(pButton);
+		   m_ButtonCollect.push_back(pSrollButton);
+		   ++Srollindex;
+
+	   }
+	   catch (...)
+	   {
+		   break;
+	   }
+	   
+		
+
+   }
 
 	
-	Ogre::OverlayElement* pButton=pContainer->getChild(pContainer->getName()+"/cz/SliderGallery/1");
-	SrollButton* pSrollButton= new SrollButton(pButton);
-	m_ButtonCollect.push_back(pSrollButton);
+	//Ogre::OverlayElement* pButton=pContainer->getChild(pContainer->getName()+"/cz/SliderGallery/1");
+	//SrollButton* pSrollButton= new SrollButton(pButton);
+	//m_ButtonCollect.push_back(pSrollButton);
 
 
-	pButton=pContainer->getChild(pContainer->getName()+"/cz/SliderGallery/2");
-	pSrollButton= new SrollButton(pButton);
-	m_ButtonCollect.push_back(pSrollButton);
+	//pButton=pContainer->getChild(pContainer->getName()+"/cz/SliderGallery/2");
+	//pSrollButton= new SrollButton(pButton);
+	//m_ButtonCollect.push_back(pSrollButton);
 
 
-	pButton=pContainer->getChild(pContainer->getName()+"/cz/SliderGallery/3");
-	pSrollButton= new SrollButton(pButton);
-	m_ButtonCollect.push_back(pSrollButton);
+	//pButton=pContainer->getChild(pContainer->getName()+"/cz/SliderGallery/3");
+	//pSrollButton= new SrollButton(pButton);
+	//m_ButtonCollect.push_back(pSrollButton);
 
 
-     resetPosAndSize();
+    resetPosAndSize();
 	///初始化资源
 	resetButtonInformation();
 
@@ -519,6 +542,8 @@ void SliderGallery::_cursorPressed(const Ogre::Vector2& cursorPos)
 	
 
 	m_IsPress=true;	
+	if(m_RollDir!=0)
+		return ;
 
 	//SaveButtonPos();
 	if(m_pPrevisouButton!=NULL)
@@ -532,13 +557,6 @@ void SliderGallery::_cursorPressed(const Ogre::Vector2& cursorPos)
 
 	}
 
-	//if(isCursorOver(m_pPrevisouButton,cursorPos)&&m_RollDir==0)
-	//{
-		
-	//}else if(isCursorOver(m_pNextButton,cursorPos)&&m_RollDir==0)
-	//{
-		
-	//}
 
 
 }
@@ -548,24 +566,10 @@ void SliderGallery::_cursorPressed(const Ogre::Vector2& cursorPos)
 void SliderGallery::_cursorReleased(const Ogre::Vector2& cursorPos)
 {
 	
-	m_IsPress=false;
+    m_IsPress=false;	
 
-	if(m_RollDir==0)
-
-	//{
-		//if(isCursorOver(m_pPrevisouButton,cursorPos))
-		//{
-			
-		//	previsouButton();
-		 //    return ;
-
-		//}else if(isCursorOver(m_pNextButton,cursorPos))
-		//{
-		//	nextButton();
-		//	return ;
-		//}
-
-	//}
+	if(m_RollDir!=0)
+          return ;
 
 
 	if(m_pPrevisouButton!=NULL)

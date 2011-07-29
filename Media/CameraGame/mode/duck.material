@@ -1,6 +1,4 @@
-
-
-material duck_duck_A 
+material duck_duck_A
 {
 	set_texture_alias diffuseMap duck.png
 	technique
@@ -11,7 +9,7 @@ material duck_duck_A
 			texture_unit diffuseMap
 			{
 				tex_coord_set 0
-				texture_alias diffuseMap
+				texture duck.png
 			}
 		}
 	}

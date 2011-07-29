@@ -1,6 +1,4 @@
-
-
-material xiaoji_xiaoji_A 
+material xiaoji_xiaoji_A
 {
 	set_texture_alias diffuseMap xiaoji.png
 	technique
@@ -11,7 +9,7 @@ material xiaoji_xiaoji_A
 			texture_unit diffuseMap
 			{
 				tex_coord_set 0
-				texture_alias diffuseMap
+				texture xiaoji.png
 			}
 		}
 	}

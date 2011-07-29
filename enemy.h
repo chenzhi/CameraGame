@@ -135,6 +135,9 @@ public:
 	}
 	
 
+	/**ÉèÖÃhitÌùÍ¼*/
+	bool  setHitEffectTextureName(const Ogre::String& textureName); 
+
 protected:
     
     ///ËÀÍö

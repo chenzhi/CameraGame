@@ -53,6 +53,13 @@ protected:
     
     ///初始化视频贴图
     void initVideoTeture();
+
+
+	/**初始化所有的战斗模式*/
+	void initWarMode();
+
+	/**销毁所有的战争模式*/
+	void destroyWarMode();
     
   
     

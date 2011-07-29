@@ -109,7 +109,7 @@ void  UISelectHead::init()
 
 
 
-	SliderGallery* pSliderGallery=new SliderGallery("SelectHeadSliderGallery",new FaceModeDataSource());
+	SliderGallery* pSliderGallery=new SliderGallery("SelectHeadSliderGallery",new FaceModeDataSource(),"cz/SliderGallery");
 	registerWidget(pSliderGallery);
 	pSliderGallery->getOverlayElement()->setHorizontalAlignment(Ogre::GHA_LEFT);
 	//pSliderGallery->getOverlayElement()->setLeft();

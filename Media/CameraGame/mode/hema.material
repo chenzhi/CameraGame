@@ -1,6 +1,4 @@
-
-
-material hema_hema_A 
+material hema_hema_A
 {
 	set_texture_alias diffuseMap hema.png
 	technique
@@ -11,7 +9,7 @@ material hema_hema_A
 			texture_unit diffuseMap
 			{
 				tex_coord_set 0
-				texture_alias diffuseMap
+				texture hema.png
 			}
 		}
 	}

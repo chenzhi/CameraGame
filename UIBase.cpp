@@ -162,7 +162,7 @@ void  UIBase::setVisible(bool b)
 //---------------------------------------------------------------------------------------------
 bool UIBase::isVisible()const
 {
-    if(m_pParentOverlay==NULL)
+    if(m_pParentOverlay==NULL||hasFlag(F_HIDE))
     {
         return false;
     }

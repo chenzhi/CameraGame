@@ -2,6 +2,7 @@
 #include  "UISelectFaceMode.h"
 #include "Application.h"
 #include "Config.h"
+#include "Widget.h"
 
 /**************************************************************/
 
@@ -253,7 +254,7 @@ void UserSelectMode::updateOrientation()
 
 //----------------------------------------------------------
 UISelectFaceMode::UISelectFaceMode()
-:UIBase("UISelectFaceMode",""),m_pBackEntity(NULL)
+:UIBase("UISelectFaceMode",""),m_BackGround(NULL),m_pReturnButton(NULL)
 {
 
 
@@ -278,6 +279,19 @@ void UISelectFaceMode::init()
 
 	 initBackEntity();
 
+
+	 ///返回按钮
+	 ///返回上一层按钮
+	 m_pReturnButton=new ImageButton("UISelectFaceModeButton,","moshi_fanhui_release.png","moshi_fanhui_press.png");
+	 registerWidget(m_pReturnButton);
+	 m_pReturnButton->setHorizontalAlignment(Ogre::GHA_LEFT);
+	 m_pReturnButton->setLeft(10);
+	 m_pReturnButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
+	 m_pReturnButton->setTop(-128);
+	 m_pReturnButton->setWidth(80);
+	 m_pReturnButton->setHeight(80);
+
+
 	return ;
 
 }
@@ -293,11 +307,11 @@ void  UISelectFaceMode::setVisible(bool b)
 	{
 		destroyAllFaceMode();
 		initAllFaceMode();
-
-
 	}
 
 	setUserSelctModeVisible(b);
+
+	m_BackGround->setVisible(b);
 
 }
 
@@ -420,6 +434,45 @@ void UISelectFaceMode::update(float time)
 void UISelectFaceMode::initBackEntity()
 {
 
+	///如果已经创建了直接返回
+	if(m_BackGround!=NULL)
+		return ;
+
+	Ogre::SceneNode* m_pCameraNode=Application::getSingleton().getMainCamera()->getParentSceneNode();
+
+	float distance=20.0f;
+	float width=0,height=0;
+	Ogre::Vector3 camPos=m_pCameraNode->getPosition();
+	float fovy= Application::getSingleton().getMainCamera()->getFOVy().valueRadians()*0.5f;
+	height=Ogre::Math::Tan(fovy)*distance*2.0f;
+	width=Application::getSingleton().getMainCamera()->getAspectRatio()*height;
+
+	float videowidth=480;
+	float videoheight=360;
+	float textWidth=512;
+	float texheight=512;
+
+
+	Ogre::Plane plane(Ogre::Vector3(0.0f,0.0f,1.0f),Ogre::Vector3(0.0f,0.0f,0.0f));
+	Ogre::MeshPtr pMesh= Ogre::MeshManager::getSingleton().
+		createPlane("backVideo", "General", plane,1,1,1,1,false,1);
+
+
+	Ogre::SceneManager* pSceneMrg=Application::getSingleton().getMainSceneManager();
+	m_BackGround=pSceneMrg->createEntity("UISelectFaceModeBackGround", pMesh->getName());
+	Ogre::SceneNode* pBackNode=m_pCameraNode->createChildSceneNode();
+	pBackNode->attachObject(m_BackGround);
+	pBackNode->setPosition(0,0,-distance);
+	pBackNode->setScale(Ogre::Vector3(width,height,1.0f));
+
+	Ogre::MaterialPtr pBackGroundMaterial=Ogre::MaterialManager::getSingleton().create("UISelectFaceModeBackGround", "General");
+	Ogre::Pass*pPass=pBackGroundMaterial->getTechnique(0)->getPass(0);
+	pPass->createTextureUnitState()->setTextureName("tuku_background.png");
+
+
+	m_BackGround->getSubEntity(0)->setMaterialName(pBackGroundMaterial->getName());
+
+
 
 }
 
@@ -427,5 +480,28 @@ void UISelectFaceMode::initBackEntity()
 void UISelectFaceMode::destroyBackEnetiy()
 {
 
+	Ogre::SceneNode* pParentNode=m_BackGround->getParentSceneNode();
+	pParentNode->getParentSceneNode()->removeAndDestroyChild(pParentNode->getName());
+	Ogre::SceneManager* pSceneMrg=Application::getSingleton().getMainSceneManager();
+	pSceneMrg->destroyEntity(m_BackGround);
+	m_BackGround=NULL;
+
+
+}
+
+///鼠标事件
+void UISelectFaceMode::buttonHit(Widget* pButton)
+{
+	if(pButton==NULL)
+		return ;
+	if(pButton==m_pReturnButton)
+	{
+		///返回到选脸界面
+		setVisible(false);
+		UIBase* pSelectFaceImage=Application::getSingleton().getUIByName("UISelectHead");
+		assert(pSelectFaceImage);
+		pSelectFaceImage->setVisible(true);
+	}
+	return ;
 
 }

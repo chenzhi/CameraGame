@@ -429,7 +429,14 @@ public:
 
 public:
 
-	SliderGallery(const Ogre::String& name,SliderGalleryDataSource* pDataSource);
+	/**滚动框控件构造函数
+	*@param name 控件名，不能和其它控件同名
+	*@param SliderGalleryDataSource*  数据源指针
+	*@param templateName 对应的ogreoverlay模板名
+	*@remark templateName模板决定了滚动动框的大小和外框，每个按钮的位置，和滚动按钮的数量。
+	但templateName里第个元素的命名规则必须统一。
+	*/
+	SliderGallery(const Ogre::String& name,SliderGalleryDataSource* pDataSource,const Ogre::String& templateName);
  
    virtual	~SliderGallery();
 

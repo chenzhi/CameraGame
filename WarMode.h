@@ -33,10 +33,10 @@ public:
 
 
 	/**点击按下事件*/
-	virtual  void beginTouch(int x,int y)=0;
+	virtual  void beginTouch(int x,int y){};
 
 	/**点击离开事件*/
-	virtual void  endTouch(int x,int y)=0;
+	virtual void  endTouch(int x,int y){};
 
 	/**点击移动事件*/
 	virtual void  moveTouch(int x,int y){}

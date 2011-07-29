@@ -102,6 +102,7 @@ void UIManager::update(float time)
 		///可见的才更新
 		//if((*it)->isVisible())
 		{
+
 			(*it)->update(time);
 		}
 	}

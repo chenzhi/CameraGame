@@ -1,6 +1,4 @@
-
-
-material deer_deer_A 
+material deer_deer_A
 {
 	set_texture_alias diffuseMap deer.png
 	technique
@@ -11,7 +9,7 @@ material deer_deer_A
 			texture_unit diffuseMap
 			{
 				tex_coord_set 0
-				texture_alias diffuseMap
+				texture deer.png
 			}
 		}
 	}

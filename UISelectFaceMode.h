@@ -1,5 +1,6 @@
 /**************************************************
-选择用户用用脸型界面。这个界面实际是3d场景,选择胖瘦脸的模型
+选择用户用用脸型界面。这个界面实际是3d场景,选择胖瘦脸的模型,
+因为选择模型是3d的。所有背景也用的3d模型
 **************************************************/
 
 
@@ -178,14 +179,25 @@ protected:
 	void destroyBackEnetiy();
 
 
+	///鼠标事件
+	void buttonHit(Widget* pButton);
+
+
+
+protected:
+
+
 	typedef std::vector<UserSelectMode*>FaceModeCollect;
 	FaceModeCollect                   m_FaceModeCollect;
 
 	UserFaceDataSource                m_FaceModeSource;
 
-	Ogre::Entity*                     m_pBackEntity;
+	Ogre::Entity*                     m_BackGround;
+
+	Widget*                           m_pReturnButton;
 	
 
+	
 
 
 

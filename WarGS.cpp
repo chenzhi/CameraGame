@@ -14,6 +14,12 @@
 #include "ogreapp/inputListen.h"
 #include "WarMode.h"
 #include "UIWarPause.h"
+#include "Config.h"
+#include "WarModeThree.h"
+
+
+
+
 
 //------------------------------------
 WarGS::WarGS()
@@ -47,14 +53,12 @@ void WarGS::begin()
     m_pWarManager=new WarManager();
     
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
-   
-	m_ActiveWarMode=new WarModeTwo(this);
-   	m_ActiveWarMode->start();
-
+ 
     ///起用陀螺仪
     InputListen::getSingleton().beginGyroscope();
 
-   
+   ///初始化所有的模式
+	initWarMode();
     
 }
 
@@ -64,9 +68,10 @@ void WarGS::end()
 {
     GameState::end();
 
+	destroyWarMode();
+
 	destroyUI();
     SafeDelete(m_pWarManager);   
-	SafeDelete(m_ActiveWarMode);
     ///关闭陀螺仪
     InputListen::getSingleton().endGyroscope();
 
@@ -79,27 +84,13 @@ StateType WarGS::update(float time)
     
     m_pWarManager->update(time);
     
-    
-    ///如果游戏结束重新回到人物校正
-    //if(m_pWarManager->isGameEnd())
-   // {
-    //    setNextStateType(ST_CAPTUREFACE);
-   // }
-    
-         
+            
     updateAccelerometer();
     
 
 	if(m_ActiveWarMode)
 	{
 		m_ActiveWarMode->update(time);
-
-		if(m_ActiveWarMode->isEnd())
-		{
-			m_ActiveWarMode->end();
-			setNextStateType(ST_CAPTUREFACE);
-		}
-
 
 	}
 
@@ -112,18 +103,7 @@ StateType WarGS::update(float time)
 //------------------------------------
 void WarGS::beginTouch(int x,int y)
 {
-    
-	/*//
-    Ogre::Matrix3 matrix= m_pCameraNode->getLocalAxes();
-    
-    Ogre::Vector3 dir(matrix[0][2],matrix[1][2],matrix[2][2]);
-    ///子弹发送时稍稍向上发送一点
-    dir.y-=0.15;
-    dir.normalise();
-    m_pWarManager->fire(m_pCameraNode->getPosition(),dir);
-    //*/
-    
-
+   
 	if(m_ActiveWarMode)
 	{
 		m_ActiveWarMode->beginTouch(x,y);
@@ -219,5 +199,51 @@ void WarGS::destroyUI()
 {
 	Application::getSingleton().destroyUI(m_pUIPause);
 	m_pUIPause=NULL;
+
+}
+
+
+//------------------------------------------------------------------
+void WarGS::initWarMode()
+{
+
+	WarMode* pMode=new WarModeTwo(this);
+	m_WarModeCollect.push_back(pMode);
+
+	pMode=new WarModeThree(this);
+	m_WarModeCollect.push_back(pMode);
+
+	unsigned int selectMode=g_userInformation.getWarMode();
+
+	if(selectMode>=m_WarModeCollect.size())
+	{
+		selectMode=m_WarModeCollect.size()-1;
+	}
+
+	m_ActiveWarMode=m_WarModeCollect[selectMode];
+	m_ActiveWarMode->start();
+
+	return ;
+}
+
+//------------------------------------------------------------------
+void WarGS::destroyWarMode()
+{
+	if(m_ActiveWarMode!=NULL)
+	{
+		m_ActiveWarMode->end();
+	}
+
+	WarModeCollect::iterator it=   m_WarModeCollect.begin();
+	WarModeCollect::iterator itend=m_WarModeCollect.end();
+
+	for(;it!=itend;++it)
+	{
+	   SafeDelete(*it);
+	}
+	
+	m_ActiveWarMode=NULL;
+	m_WarModeCollect.clear();
+	return ;
 
 }

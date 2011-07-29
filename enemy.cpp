@@ -337,3 +337,15 @@ void Enemy::updateAnimation(float time)
 
 	}
 }
+
+
+//-------------------------------------------------------------------------------
+bool Enemy::setHitEffectTextureName(const Ogre::String& textureName)
+{
+
+	Ogre::TextureUnitState* pTextureState=m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(1);
+	if(pTextureState==NULL)
+		return false;
+	pTextureState->setTextureName(textureName);
+	return true;
+}

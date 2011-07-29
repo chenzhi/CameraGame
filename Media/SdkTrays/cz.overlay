@@ -36,14 +36,28 @@ template container Panel(cz/TimeImageButton)
 
 }
 
+template container Panel(cz/CaptureFace/StaticImage)
+{
+	metrics_mode relative
+	material cz/CaptureFaceImage/mat
+      uv_coords 0 0.2968 0.9375 1.0
+	horz_align left
+      vert_align top
+      left  0
+      top   0
+	width 1.0
+	height 1.0
+}
 
 
+
+
+//选择头套滚动控件         
 template container Panel(cz/SliderGallery)
 {
 
      metrics_mode pixels
-    # material cz/Button/Down
-      
+    // material cz/Button/Down 
 	horz_align left
       vert_align top
       left  0
@@ -51,22 +65,20 @@ template container Panel(cz/SliderGallery)
 	width 960
 	height 640
 
-          element Panel(cz/SliderGallery/1)
+          element Panel(cz/SliderGallery/button/1)
              {
                 material cz/SliderGallery/Button/mat
                 metrics_mode pixels
                  horz_align left
                  vert_align center
-
-                
-                left 129
+                 left 129
                 top  -64
                 width 128
                 height 128
 
              }
 
-          element Panel(cz/SliderGallery/2)
+          element Panel(cz/SliderGallery/button/2)
              {
                 material cz/SliderGallery/Button/mat
                 metrics_mode pixels
@@ -80,7 +92,7 @@ template container Panel(cz/SliderGallery)
 
              }
 
-             element Panel(cz/SliderGallery/3)
+             element Panel(cz/SliderGallery/button/3)
              {
                 material cz/SliderGallery/Button/mat
                 metrics_mode pixels
@@ -133,17 +145,129 @@ template container Panel(cz/SliderGallery)
 
 
 
-template container Panel(cz/CaptureFace/StaticImage)
+//模式三选择不同的武器界面
+template container Panel(cz/Select/Arms)
 {
-	metrics_mode relative
-	material cz/CaptureFaceImage/mat
-      uv_coords 0 0.2968 0.9375 1.0
-	horz_align left
-      vert_align top
-      left  0
-      top   0
-	width 1.0
-	height 1.0
+
+//指定外框大小，无背景材质
+      metrics_mode pixels
+     	horz_align left
+      vert_align bottom
+      left  150
+      top   -90
+	width 660
+	height 80
+
+//背景底图
+      element Panel(cz/Select/Arms/background)
+       {
+           material cz/Select/Arms/background/mat
+           horz_align left
+           vert_align bottom
+           left 80
+           top  -100
+           width 500
+           height 100
+       }
+
+//上一个按钮
+      element Panel(cz/Select/Arms/PreviousButton)
+      {
+         metrics_mode pixels
+         material cz/SliderGallery/PrevisousButton/mat
+         horz_align left
+         vert_align top
+         left 0
+         top  0
+         width 80
+         height 80
+          
+      }
+//下一个按钮
+    element Panel(cz/Select/Arms/NextButton)
+      {
+         metrics_mode pixels
+         material cz/SliderGallery/NextButton/mat
+         horz_align right
+         vert_align top
+         left -80
+         top  0
+         width 80
+         height 80
+      }
+
+//五个滚动按钮
+     element Panel(cz/Select/Arms/button/1)
+          {
+                material cz/SliderGallery/Button/mat
+                metrics_mode pixels
+                horz_align left
+                vert_align center
+                left 100
+                top  -32
+                width 64
+                height 64
+
+           }
+
+          element Panel(cz/Select/Arms/button/2)
+             {
+                material cz/SliderGallery/Button/mat
+                metrics_mode pixels
+                horz_align left
+                vert_align center
+
+                left 200
+                top  -32
+                width 64
+                height 64
+
+             }
+
+         element Panel(cz/Select/Arms/button/3)
+             {
+                material cz/SliderGallery/Button/mat
+                metrics_mode pixels
+                horz_align left
+                vert_align center
+
+                left   300
+                top    -32
+                width  64
+                height 64
+
+             }
+
+        element Panel(cz/Select/Arms/button/4)
+             {
+                material cz/SliderGallery/Button/mat
+                metrics_mode pixels
+                horz_align left
+                vert_align center
+
+                left   400
+                top    -32
+                width  64
+                height 64
+
+             }
+
+            element Panel(cz/Select/Arms/button/5)
+             {
+                material cz/SliderGallery/Button/mat
+                metrics_mode pixels
+                horz_align left
+                vert_align center
+
+                left   500
+                top    -32
+                width  64
+                height 64
+
+             }
+
 }
+
+
 
 

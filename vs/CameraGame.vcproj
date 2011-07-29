@@ -389,6 +389,14 @@
 					>
 				</File>
 				<File
+					RelativePath="..\UIWarModeThree.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\UIWarModeThree.h"
+					>
+				</File>
+				<File
 					RelativePath="..\UIWarPause.cpp"
 					>
 				</File>
@@ -421,6 +429,14 @@
 					>
 				</File>
 				<File
+					RelativePath="..\WarItem.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\WarItem.h"
+					>
+				</File>
+				<File
 					RelativePath="..\WarManager.cpp"
 					>
 				</File>
@@ -434,6 +450,14 @@
 				</File>
 				<File
 					RelativePath="..\WarMode.h"
+					>
+				</File>
+				<File
+					RelativePath="..\WarModeThree.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\WarModeThree.h"
 					>
 				</File>
 			</Filter>

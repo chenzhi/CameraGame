@@ -1,6 +1,5 @@
-material mouse_mouse_A
+material mat_jidan_mat_jidan_A
 {
-	set_texture_alias diffuseMap mouse.png
 	technique
 	{
 		pass
@@ -9,7 +8,7 @@ material mouse_mouse_A
 			texture_unit diffuseMap
 			{
 				tex_coord_set 0
-				texture mouse.png
+				texture jidan.png
 			}
 		}
 	}

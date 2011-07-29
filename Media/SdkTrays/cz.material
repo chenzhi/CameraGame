@@ -146,6 +146,20 @@ material cz/SliderGallery/NextButton/mat  : cz/Base
 }
 
 
+material cz/Select/Arms/background/mat 
+{
+    technique
+    {
+        pass
+        {
+            texture_unit 0
+            {
+               texture  model3__baseball_press.png
+            }
+        }
+    }
+}
+
 
 
 
