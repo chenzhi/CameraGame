@@ -11,7 +11,7 @@
 class GameState;
 class UIWarModeThree;
 class WarItemManager;
-
+class WarItem;
 
 class Item;
 
@@ -40,6 +40,10 @@ public:
 
 	/**点击按下事件*/
 	virtual  void beginTouch(int x,int y);
+
+
+	/**目标点敌人被道具击中后的回调*/
+	void   notityEmemyHit(Enemy* pEnemy,WarItem* pWarItem);
 
 
 protected:

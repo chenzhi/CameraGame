@@ -17,6 +17,17 @@ WarItemManager::WarItemManager()
 }
 
 
+WarItem*  WarItemManager::createWarItem(const Ogre::String& typeName)
+{
+
+	WarItemType itemType=stringToItemtype(typeName);
+	
+	return createWarItem(itemType);
+
+
+
+}
+
 //----------------------------------------------------------------------------
 WarItem*  WarItemManager::createWarItem(WarItemType itemtype)
 {
@@ -149,6 +160,39 @@ WarItemManager::createFun  WarItemManager::findCrateFun(WarItemType itemtype)
 
 	}
 	return NULL;
+}
+
+
+//----------------------------------------------------------------------------
+Ogre::String WarItemManager::itemTypeToString(WarItemType itemType)
+{
+	switch (itemType)
+	{
+	case  WIT_EGG:
+		{
+			return "egg";
+		}
+	
+	default:
+		{
+			assert(0);
+			break;
+		}
+
+	}
+
+
+	return "";
+}
+	
+//----------------------------------------------------------------------------
+WarItemType WarItemManager::stringToItemtype(const Ogre::String& itemtype)
+{
+	if(itemtype=="egg")
+	{
+		return WIT_EGG;
+	}
+	return WIT_NONE;
 }
 
 

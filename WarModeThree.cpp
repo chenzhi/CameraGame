@@ -5,7 +5,8 @@
 #include "WarManager.h"
 #include "WarItem.h"
 #include "WarItemManager.h"
-
+#include "enemy.h"
+#include "WarItem.h"
 
 //----------------------------------------------------------------
 WarModeThree::WarModeThree(GameState* pGameState)
@@ -63,8 +64,33 @@ void WarModeThree::update(float time)
 //-----------------------------------------------------------------
 void WarModeThree::beginTouch(int x,int y)
 {
-	WarItem* pItem= m_pWarItemManager->createWarItem(WIT_EGG);
+	
+
+	/**
+	*只有当点击到目标点时才会发射道具
+	*/
+	if(m_pTargetEnemy==NULL)
+		return ;
+
+
+	Ogre::Camera* pCamera=Application::getSingleton().getMainCamera();
+    float viewx=x,viewy=y;
+	float w = Application::getSingleton().getRenderWindows()->getViewport(0)->getActualWidth();
+	float  h= Application::getSingleton().getRenderWindows()->getViewport(0)->getActualHeight();
+	Ogre::Ray ray=pCamera->getCameraToViewportRay(viewx/w,viewy/h);
+
+
+	const Ogre::AxisAlignedBox& box=m_pTargetEnemy->getSceneNode()->_getWorldAABB();
+	float d1=0,d2=0;
+	if(Ogre::Math::intersects(ray,box,&d1,&d2)==false)
+	{
+		return ;
+	}
+
+	const Ogre::String& itemtype=m_pUIWar->getCurrentItemType();
+	WarItem* pItem= m_pWarItemManager->createWarItem(itemtype);
 	pItem->setTarget(m_pTargetEnemy);
+
 	
 
 	return ;
@@ -109,8 +135,12 @@ void WarModeThree::updatePower(float time)
 	///设置能量槽的长度
 	m_pUIWar->setPowerPercent(m_CurrentPower/m_MaxPower);
 
+}
 
 
-
+//--------------------------------------------------------------------
+void    WarModeThree::notityEmemyHit(Enemy* pEnemy,WarItem* pWarItem)
+{
+	return ;
 
 }

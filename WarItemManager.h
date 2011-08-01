@@ -22,10 +22,17 @@ public:
 	~WarItemManager(){destroyWarItem();}
 
 
+
+
 	/**创建一个道具
 	*@param itemtype 道具类型
 	*/
 	WarItem*  createWarItem(WarItemType  itemtype);
+
+	/**创建道具
+	*@see createWarItem
+	*/
+	WarItem*  createWarItem(const Ogre::String& typeName);
 
 
 	/**每帧更新*/
@@ -56,9 +63,13 @@ protected:
 	/**创建鸡蛋道具函数*/
 	WarItem* createEggItem();
 
-
-
+    /**内部函数，把类型转了字符串
+	*/
+	Ogre::String itemTypeToString(WarItemType itemType);
 	
+	/**内部函数把字符串转成类型
+	*/
+	WarItemType stringToItemtype(const Ogre::String& itemtype);
 
 
 protected:

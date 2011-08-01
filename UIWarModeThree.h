@@ -17,13 +17,13 @@ public:
 
 	ItemDataSource()
 	{
-		m_Collect.push_back(std::make_pair("model3__egg_press.png","model3__egg_press.png"));
-		m_Collect.push_back(std::make_pair("model3__brick_press.png","model3__egg_press.png"));
-		m_Collect.push_back(std::make_pair("model3__shoes_press.png","model3__egg_press.png"));
-		m_Collect.push_back(std::make_pair("model3__knife_press.png","model3__egg_press.png"));
-		m_Collect.push_back(std::make_pair("model3__baseball_press.png","model3__egg_press.png"));
-		m_Collect.push_back(std::make_pair("model3__baseball_press.png","model3__egg_press.png"));
-		m_Collect.push_back(std::make_pair("model3__baseball_press.png","model3__egg_press.png"));
+		m_Collect.push_back(std::make_pair("model3__egg_press.png","egg"));
+		m_Collect.push_back(std::make_pair("model3__brick_press.png","egg"));
+		m_Collect.push_back(std::make_pair("model3__shoes_press.png","egg"));
+		m_Collect.push_back(std::make_pair("model3__knife_press.png","egg"));
+		m_Collect.push_back(std::make_pair("model3__baseball_press.png","egg"));
+		m_Collect.push_back(std::make_pair("model3__baseball_press.png","egg"));
+		m_Collect.push_back(std::make_pair("model3__baseball_press.png","egg"));
 		
 	}
 
@@ -112,9 +112,15 @@ public:
 	void buttonHit(Widget* button);
 
 
+	/**获取当前ui选择的道具类型 */
+	const Ogre::String& getCurrentItemType()const {return m_ItemType;}
+
 
 protected:
 
+
+	/**开始触摸,发射道具就*/
+	//virtual void onBeginTouch(int x,int y);
 
 
 
@@ -126,6 +132,8 @@ protected:
 
 	Widget*              m_pSnapshotButton;//快速拍照
 	SliderGallery*       m_pItemSelectSlider;///选择道具滚动控件
+
+	Ogre::String         m_ItemType;
 
 
 

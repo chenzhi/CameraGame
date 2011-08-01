@@ -8,7 +8,8 @@
 //------------------------------------------------------------
 UIWarModeThree::UIWarModeThree(WarModeThree* pWarMode)
 :UIBase("UIWarModeThree",""),m_pWarMode(pWarMode),
-m_pPauseButton(NULL),m_pSnapshotButton(NULL),m_pItemSelectSlider(NULL),m_pPowerBackground(NULL)
+m_pPauseButton(NULL),m_pSnapshotButton(NULL),m_pItemSelectSlider(NULL),m_pPowerBackground(NULL),
+m_ItemType("egg")
 {
 
 }
@@ -132,6 +133,13 @@ void UIWarModeThree::sliderGalleryhit(SrollButton* pbutton )
 	if(pbutton==NULL)
 		return ;
 
+
+	///获取道具的类型
+	const Ogre::String& itemType=pbutton->getUserData();
+	return ;
+
+
+
 }
 
 
@@ -160,3 +168,11 @@ void UIWarModeThree::buttonHit(Widget* pbutton)
 
 
 }
+
+
+//void  UIWarModeThree::onBeginTouch(int x,int y)
+//{
+//	UIBase::onBeginTouch(x,y);
+//
+//
+//}
