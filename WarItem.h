@@ -3,17 +3,32 @@
 *************************************************/
 
 
+#pragma  once	
+
+
 class Enemy;
 
-class Item
+
+enum WarItemType
+{
+	WIT_NONE,
+
+	WIT_EGG,//鸡蛋
+
+};
+
+
+
+
+class WarItem
 {
 
 public:
-	Item(const Ogre::String& name)
-		:m_pTarget(NULL)
+	WarItem(const Ogre::String& name,float power,WarItemType type)
+		:m_pTarget(NULL),m_PowerValue(power),m_Type(type)
 	{}
 
-	virtual ~Item(){}
+	virtual ~WarItem(){}
 
 
 	///设置目标点
@@ -33,23 +48,36 @@ public:
 
 	virtual void end(){}
 
+	/**获取能量点数*/
+	float getPower()const {return m_PowerValue;}
+
+	void setPower(float power){m_PowerValue=power;}
+
+	WarItemType getType()      {return m_Type;}
+
 	
 
 
 protected:
 
 	Enemy*        m_pTarget;///目标点
+
+	float         m_PowerValue;///击中后加多少照像点数
+
+	WarItemType       m_Type;
     
 	
 };
 
+
+typedef std::vector<WarItem*> WarItemCollect;
 
 
 
 /*************************************************
 鸡蛋道具
 *****************************************************/
-class EggItem :public Item
+class EggItem :public WarItem
 {
 
 public:
@@ -58,7 +86,7 @@ public:
 	*@param startPos 开始位置
 	*@pEnemy 目标点
 	*/
-	EggItem(const Ogre::Vector3& startPos,Enemy* pEnemy);
+	EggItem(/*const Ogre::Vector3& startPos,Enemy* pEnemy*/);
 
 	virtual ~EggItem();
 

@@ -69,8 +69,8 @@ void UIWarPause::buttonHit(Widget* button)
 
 	if(button==m_pContinue)
 	{
-		UIBase* pUI=Application::getSingleton().getUIByName("UIWarModeTwo");
-		pUI->setVisible(true);
+		//UIBase* pUI=Application::getSingleton().getUIByName("UIWarModeTwo");
+	//	pUI->setVisible(true);
 		setVisible(false);
 
 	}else if(button==m_pReturn)
@@ -94,6 +94,15 @@ void UIWarPause::setVisible(bool b)
 	}else
 	{
 		Application::getSingleton().continueApp();
+
+
+		std::vector<UIBase*>::iterator it=m_ContinueShowUI.begin();
+		std::vector<UIBase*>::iterator endit=m_ContinueShowUI.end();
+		for(;it!=endit;++it)
+		{
+			(*it)->setVisible(true);
+		}
+
 	}
 
 

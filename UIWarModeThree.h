@@ -106,8 +106,17 @@ public:
 	//void update(float time);
 
 
+	/**界面控件事件*/
+	void sliderGalleryhit(SrollButton* pbutton );///滚动栏按钮选择事件
+
+	void buttonHit(Widget* button);
+
+
 
 protected:
+
+
+
 
 	WarModeThree*        m_pWarMode;    ///对应的战斗模式
 

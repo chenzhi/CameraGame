@@ -10,6 +10,8 @@
 
 class GameState;
 class UIWarModeThree;
+class WarItemManager;
+
 
 class Item;
 
@@ -67,7 +69,7 @@ protected:
 
 	Enemy*          m_pTargetEnemy;
 
-	Item*          m_pItem;
+	WarItemManager* m_pWarItemManager;
 
 
 };

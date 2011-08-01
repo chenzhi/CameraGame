@@ -2,7 +2,8 @@
 #include "UIWarModeThree.h"
 #include "Widget.h"
 #include "WarModeThree.h"
-
+#include "UIWarPause.h"
+#include "Application.h"
 
 //------------------------------------------------------------
 UIWarModeThree::UIWarModeThree(WarModeThree* pWarMode)
@@ -123,3 +124,39 @@ void  UIWarModeThree::setPowerPercent(float percent)
 //
 //
 //}
+
+//--------------------------------------------------------------------------
+void UIWarModeThree::sliderGalleryhit(SrollButton* pbutton )
+{
+
+	if(pbutton==NULL)
+		return ;
+
+}
+
+
+//--------------------------------------------------------------------------
+void UIWarModeThree::buttonHit(Widget* pbutton)
+{
+	if(pbutton==NULL)
+		return ;
+
+	///如果是返回按钮。
+	if(pbutton==m_pPauseButton)
+	{
+		UIWarPause* pPauseUI= static_cast<UIWarPause*>(Application::getSingleton().getUIByName("UIWarPause"));
+		if(pPauseUI!=NULL)
+		{
+			std::vector<UIBase*>showList;
+			showList.push_back(this);
+			pPauseUI->setEndShowUI(showList);
+			pPauseUI->setVisible(true);
+			this->setVisible(false);
+		}
+
+		return ;
+
+	}
+
+
+}

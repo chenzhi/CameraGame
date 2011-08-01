@@ -20,7 +20,13 @@ public:
 
 	void init();
 
+
+	/**设置是否可见*/
 	void setVisible(bool b);
+
+
+	/**设置当暂停结束后需要显示的界面*/
+	void setEndShowUI(const std::vector<UIBase*>& UIList){m_ContinueShowUI=UIList;}
 
 
 protected:
@@ -32,6 +38,9 @@ protected:
 protected:
 	Widget* m_pReturn ;
 	Widget* m_pContinue;
+
+	///
+	std::vector<UIBase*> m_ContinueShowUI;
 
 
 

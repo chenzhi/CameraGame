@@ -5,12 +5,12 @@
 
 
 //-----------------------------------------------------------------------
-EggItem::EggItem(const Ogre::Vector3& startPos,Enemy* pEnemy)
-:Item("EggItem"),m_StartPos(startPos),m_pParentNode(NULL),m_pEntity(NULL),m_liftTime(0.0f)
+EggItem::EggItem(/*const Ogre::Vector3& startPos,Enemy* pEnemy*/)
+:WarItem("EggItem",1.0f,WIT_EGG),m_StartPos(0.0f,-1.0f,4.0f),m_pParentNode(NULL),m_pEntity(NULL),m_liftTime(0.0f)
 {
 
-	assert(pEnemy);
-	setTarget(pEnemy);
+	//assert(pEnemy);
+	//setTarget(pEnemy);
 
 	initEtity();
 
@@ -60,9 +60,10 @@ bool   EggItem::update(float time)
 		return false ;
 	}
 
-	m_pParentNode->rotate(m_pRotateDir,Ogre::Radian(time));
+	float RotateSpeed=Ogre::Math::PI/180.0f*0.000001f;
+	m_pParentNode->rotate(m_pRotateDir,time*Ogre::Radian(RotateSpeed));
 
-	float spped=0.3f;
+	float spped=1.0f;
 	Ogre::Vector3 pos=m_pParentNode->getPosition();
 	Ogre::Vector3 targetPos=m_pTarget->getSceneNode()->getPosition();
 
@@ -92,6 +93,7 @@ void EggItem::initEtity()
 	m_pEntity=pSceneMrg->createEntity("jidan.mesh");
 	m_pParentNode->attachObject(m_pEntity);
 	m_pParentNode->setPosition(m_StartPos);
+	
 
 
 }
@@ -112,7 +114,7 @@ void EggItem::destroyEntiy()
 //-----------------------------------------------------------------------
 bool EggItem::hitTarget()
 {
-	const Ogre::Vector3& pos=m_pParentNode->getPosition();
+	 const Ogre::AxisAlignedBox& bulletBox=m_pParentNode->_getWorldAABB();
     const Ogre::AxisAlignedBox& box=m_pTarget->getSceneNode()->_getWorldAABB();
-	return 	box.contains(pos);
+	return 	box.contains(bulletBox);
 }

@@ -1,0 +1,16 @@
+material caidao_caidao_A
+{
+	technique
+	{
+		pass
+		{
+			diffuse 0.588 0.588 0.588
+			texture_unit diffuseMap
+			{
+				tex_coord_set 0
+				texture caidao.png
+			}
+		}
+	}
+}
+

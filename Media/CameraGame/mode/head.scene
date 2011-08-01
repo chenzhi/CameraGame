@@ -1,0 +1,26 @@
+<scene formatVersion="0.1" author="oiram">
+	<nodes>
+		<node name="face_pang">
+			<entity name="face_pang" meshFile="face_pang.mesh"/>
+		</node>
+		<node name="xiaoji">
+			<entity name="xiaoji" meshFile="xiaoji.mesh"/>
+		</node>
+		<node name="hema">
+			<entity name="hema" meshFile="hema.mesh"/>
+		</node>
+		<node name="face_shou">
+			<entity name="face_shou" meshFile="face_shou.mesh"/>
+		</node>
+		<node name="deer">
+			<entity name="deer" meshFile="deer.mesh"/>
+		</node>
+		<node name="duck">
+			<entity name="duck" meshFile="duck.mesh"/>
+		</node>
+		<node name="mouse">
+			<entity name="mouse" meshFile="mouse.mesh"/>
+		</node>
+	</nodes>
+</scene>
+

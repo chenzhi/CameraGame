@@ -4,12 +4,13 @@
 #include "Application.h"
 #include "WarManager.h"
 #include "WarItem.h"
+#include "WarItemManager.h"
 
 
 //----------------------------------------------------------------
 WarModeThree::WarModeThree(GameState* pGameState)
 :WarMode(pGameState),m_pUIWar(NULL),m_CurrentPower(0.0f),m_MaxPower(15.0f),
-m_StopFireTime(0),m_pItem(NULL),m_pTargetEnemy(NULL)
+m_StopFireTime(0),m_pWarItemManager(NULL),m_pTargetEnemy(NULL)
 {
 
 }
@@ -29,6 +30,7 @@ void WarModeThree::start()
 	initUI();
 
 
+	m_pWarItemManager=new WarItemManager();
 	///创建一个模型
 	WarManager::getSingleton().startWar();
 	m_pTargetEnemy=WarManager::getSingleton().createEnemy(Ogre::Vector3(0,0,1));
@@ -43,6 +45,7 @@ void WarModeThree::end()
 
 	destroyUI();
 	WarManager::getSingleton().endWar();
+	SafeDelete(m_pWarItemManager);
 
 	
 
@@ -51,15 +54,8 @@ void WarModeThree::end()
 //----------------------------------------------------------------
 void WarModeThree::update(float time)
 {
-	if(m_pItem!=NULL)
-	{
-		if(m_pItem->update(time)==false)
-		{
 
-			SafeDelete(m_pItem);
-		}
-	}
-
+	m_pWarItemManager->update(time);
 }
 
 
@@ -67,10 +63,9 @@ void WarModeThree::update(float time)
 //-----------------------------------------------------------------
 void WarModeThree::beginTouch(int x,int y)
 {
-	if(m_pItem==NULL)
-	{
-		m_pItem=new EggItem(Ogre::Vector3(0,-1,4),m_pTargetEnemy);
-	}
+	WarItem* pItem= m_pWarItemManager->createWarItem(WIT_EGG);
+	pItem->setTarget(m_pTargetEnemy);
+	
 
 	return ;
 }

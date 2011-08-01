@@ -5,6 +5,8 @@
 #include "WarManager.h"
 #include "Application.h"
 #include "EnemyQueue.h"
+#include "UIWarPause.h"
+
 
 //-----------------------------------------------------------------
 UIWarModeTwo::UIWarModeTwo()
@@ -155,8 +157,13 @@ void  UIWarModeTwo::buttonHit(Widget* button)
 	}else if(button==m_PauseButton)///Èç¹ûÊÇÔÝÍ£
 	{
 
-		UIBase* pUI=Application::getSingleton().getUIByName("UIWarPause");
-		pUI	->setVisible(true);
+		UIWarPause* pPauseUI= static_cast<UIWarPause*>(Application::getSingleton().getUIByName("UIWarPause"));
+		
+		std::vector<UIBase*>showList;
+		showList.push_back(this);
+		pPauseUI->setEndShowUI(showList);
+
+		pPauseUI->setVisible(true);
 		setVisible(false);
 
 
