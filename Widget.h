@@ -12,6 +12,9 @@
 
 #include "SdkTrays.h"
 
+#ifdef  __arm__
+#include "ogreapp/ofxiPhoneVideoGrabber.h"
+#endif
 
 
 class Ogre::OverlayElement;
@@ -103,6 +106,7 @@ protected:
 
 
 
+/**脸部三个点对应的的校正控件*/
 class CaptureImage :public Widget
 {
 public:
@@ -118,19 +122,50 @@ public:
 		
 		}
 
-
 protected:
-
-
-
-
-
-
 
 
 };
 
 
+
+/***********************************************
+ 用来显示摄像机视频的的窗口
+ ************************************************/
+class CameraVideoImage :public Widget
+{
+public:
+    CameraVideoImage(const Ogre::String& name)
+    {
+        
+        mElement = Ogre::OverlayManager::getSingleton().createOverlayElementFromTemplate("cz/CaptureFace/StaticImage", "Panel", name);
+        Ogre::MaterialPtr pMaterial=mElement->getMaterial();
+      
+#ifdef  __arm__
+        Ogre::MaterialPtr pNewMaterial=pMaterial->clone(name);
+        mElement->setMaterialName(pNewMaterial->getName());
+        Ogre::Pass* pPass=pNewMaterial->getTechnique(0)->getPass(0);
+        Ogre::String videoTexture=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture()->getName();
+        pPass->getTextureUnitState(0)->setTextureName(videoTexture);
+#endif
+        setHorizontalAlignment(Ogre::GHA_LEFT);
+        setVerticalAlignment(Ogre::GVA_TOP);
+        setMetricsMode(Ogre::GMM_RELATIVE);
+        setLeft(0);
+        setTop(0);
+        setWidth(1.0f);
+        setHeight(1.0f);
+
+    }
+    
+    
+    ~CameraVideoImage(){}
+    
+    
+protected:
+    
+    
+};
 
 
 

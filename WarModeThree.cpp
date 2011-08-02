@@ -34,7 +34,7 @@ void WarModeThree::start()
 	m_pWarItemManager=new WarItemManager();
 	///创建一个模型
 	WarManager::getSingleton().startWar();
-	m_pTargetEnemy=WarManager::getSingleton().createEnemy(Ogre::Vector3(0,0,1));
+	m_pTargetEnemy=WarManager::getSingleton().createEnemy(Ogre::Vector3(0,0,0));
 
 
 }

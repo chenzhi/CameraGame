@@ -4,7 +4,7 @@
 
 
 
-WarItemManager* Ogre::Singleton<WarItemManager>::ms_Singleton=NULL;
+template<> WarItemManager* Ogre::Singleton<WarItemManager>::ms_Singleton=NULL;
 
 
 WarItemManager::WarItemManager()
@@ -14,6 +14,12 @@ WarItemManager::WarItemManager()
 
 
 
+}
+
+
+WarItemManager::~WarItemManager()
+{
+    destroyWarItem();
 }
 
 
@@ -111,6 +117,20 @@ void WarItemManager::destroyWarItem()
 	}
 
 	m_WarItemCollect.clear();
+    
+    
+    it = m_RemoveItemCollect.begin();
+	endit=m_RemoveItemCollect.end();
+	for(;it!=endit;++it)
+	{
+		SafeDelete(*it);
+	}
+	m_RemoveItemCollect.clear();
+
+    
+    
+    
+    
 
 
 }
@@ -202,6 +222,7 @@ WarItemType WarItemManager::stringToItemtype(const Ogre::String& itemtype)
 WarItem* WarItemManager::createEggItem()
 {
 	WarItem* pItem=	new EggItem();
+    pItem->begin();
 	m_WarItemCollect.push_back(pItem);
 	return pItem;
 }

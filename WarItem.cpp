@@ -19,7 +19,8 @@ EggItem::EggItem(/*const Ogre::Vector3& startPos,Enemy* pEnemy*/)
 //-----------------------------------------------------------------------
 EggItem::~EggItem()
 {
-
+    
+destroyEntiy();
 
 }
 
@@ -60,16 +61,16 @@ bool   EggItem::update(float time)
 		return false ;
 	}
 
-	float RotateSpeed=Ogre::Math::PI/180.0f*0.000001f;
+	float RotateSpeed=Ogre::Math::PI/180.0f*200.0f;
 	m_pParentNode->rotate(m_pRotateDir,time*Ogre::Radian(RotateSpeed));
 
-	float spped=1.0f;
+	float speed=1.0f;
 	Ogre::Vector3 pos=m_pParentNode->getPosition();
 	Ogre::Vector3 targetPos=m_pTarget->getSceneNode()->getPosition();
 
 	Ogre::Vector3 dir=targetPos-pos;
 	dir.normalise();
-	m_pParentNode->translate(dir*spped*time,Ogre::Node::TS_WORLD);
+	m_pParentNode->translate(dir*speed*time,Ogre::Node::TS_WORLD);
 	return true;
 
 }
@@ -79,7 +80,7 @@ void EggItem::end()
 {
 	m_pTarget->setHitEffectTextureName("danqin.png");
 
-	destroyEntiy();
+	
 
 }
 
@@ -93,6 +94,7 @@ void EggItem::initEtity()
 	m_pEntity=pSceneMrg->createEntity("jidan.mesh");
 	m_pParentNode->attachObject(m_pEntity);
 	m_pParentNode->setPosition(m_StartPos);
+   // m_pParentNode->setScale(Ogre::Vector3(1,0.1,1));
 	
 
 
@@ -114,7 +116,8 @@ void EggItem::destroyEntiy()
 //-----------------------------------------------------------------------
 bool EggItem::hitTarget()
 {
-	 const Ogre::AxisAlignedBox& bulletBox=m_pParentNode->_getWorldAABB();
+	 //const Ogre::AxisAlignedBox& bulletBox=m_pParentNode->_getWorldAABB();
+    const Ogre::Vector3 pos=m_pParentNode->getPosition();
     const Ogre::AxisAlignedBox& box=m_pTarget->getSceneNode()->_getWorldAABB();
-	return 	box.contains(bulletBox);
+	return 	box.contains(pos);
 }

@@ -24,7 +24,7 @@
 //------------------------------------
 WarGS::WarGS()
 :GameState(ST_WAR),m_pWarManager(NULL),m_pCameraNode(NULL),
-m_ActiveWarMode(NULL),m_pUIPause(NULL)
+m_ActiveWarMode(NULL),m_pUIPause(NULL),m_BackGround(NULL)
 {
     
 }
@@ -50,13 +50,20 @@ void WarGS::begin()
     
     initVideoTeture();
     
+
+    
+    
+//#endif    
     m_pWarManager=new WarManager();
     
     m_pCameraNode=Application::getSingleton().getMainCameraNode();
  
     ///起用陀螺仪
+    
     InputListen::getSingleton().beginGyroscope();
 
+    initBackGround();
+    
    ///初始化所有的模式
 	initWarMode();
     
@@ -74,6 +81,12 @@ void WarGS::end()
     SafeDelete(m_pWarManager);   
     ///关闭陀螺仪
     InputListen::getSingleton().endGyroscope();
+    destroyBackGround();
+  #ifdef __arm__  
+    ofxiPhoneVideoGrabber::getSingleton().stopCapture();
+    
+#endif
+    
 
 }
 
@@ -125,9 +138,9 @@ void WarGS::initVideoTeture()
     
 #ifdef __arm__
     
-    Ogre::TexturePtr pVideoTexture=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture();
+   // Ogre::TexturePtr pVideoTexture=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture();
     
-    
+    /*
     Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName("videoTexture_copy");
     if(pTexture.isNull())
     {
@@ -149,7 +162,7 @@ void WarGS::initVideoTeture()
 
         
     }
-  
+  //*/
       
     ofxiPhoneVideoGrabber::getSingleton().startCapture();
     
@@ -166,10 +179,15 @@ void WarGS::initVideoTeture()
 //-------------------------------------------------------------------------
 void WarGS::updateAccelerometer()
 {
+    if(g_userInformation.getWarMode()>0)
+    {
+         m_pCameraNode->resetOrientation();
+        return ;
+    }
     
     Ogre::Vector3 gyrco=InputListen::getSingleton().getGyroscopeData();
     float yawtem=gyrco.y;
-   float pitch=gyrco.z;
+    float pitch=gyrco.z;
     
     pitch+=Ogre::Math::PI*0.5f;
 
@@ -246,4 +264,94 @@ void WarGS::destroyWarMode()
 	m_WarModeCollect.clear();
 	return ;
 
+}
+
+
+
+void WarGS::initBackGround()
+{
+    
+    ///如果已经创建了直接返回
+    if(m_BackGround!=NULL)
+        return ;
+    
+   
+    
+    float distance=20.0f;
+    float width=0,height=0;
+    //Ogre::Vector3 camPos=m_pCameraNode->getPosition();
+    float fovy= Application::getSingleton().getMainCamera()->getFOVy().valueRadians()*0.5f;
+    height=Ogre::Math::Tan(fovy)*distance*2.0f;
+    width=Application::getSingleton().getMainCamera()->getAspectRatio()*height;
+    
+#if defined  __arm__
+
+    m_pVideoTexture=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture();
+    
+    float videowidth=ofxiPhoneVideoGrabber::getSingleton().getWidth();
+    float videoheight=ofxiPhoneVideoGrabber::getSingleton().getHeight();
+    float textWidth=m_pVideoTexture->getWidth();
+    float texheight=m_pVideoTexture->getHeight();
+     
+#else
+    float videowidth=480;
+    float videoheight=360;
+    float textWidth=512;
+    float texheight=512;
+    
+#endif
+    
+    
+    float u=videowidth/textWidth;
+    float v=videoheight/texheight;
+    
+    Ogre::Plane plane(Ogre::Vector3(0.0f,0.0f,1.0f),Ogre::Vector3(0.0f,0.0f,0.0f));
+    Ogre::MeshPtr pMesh= Ogre::MeshManager::getSingleton().
+    createPlane("WarGS_backVideo", "General", plane,1,1,1,1,true,1,u,v);
+    
+    
+    m_BackGround=m_pSceneManager->createEntity("WarGS_videoBackGround", pMesh->getName());
+    Ogre::SceneNode* pBackNode=m_pCameraNode->createChildSceneNode();
+    pBackNode->attachObject(m_BackGround);
+    pBackNode->setPosition(0,0,-distance);
+    pBackNode->setScale(Ogre::Vector3(width,height,1.0f));
+    
+    Ogre::MaterialPtr pBackGroundMaterial=Ogre::MaterialManager::getSingleton().create("BackGroundVideomat", "General");
+    
+    Ogre::Pass*pPass=pBackGroundMaterial->getTechnique(0)->getPass(0);
+    
+#if defined  __arm__
+    Ogre::TexturePtr pVideoTexture=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture();
+    pPass->createTextureUnitState()->setTextureName(pVideoTexture->getName());
+#else
+    pPass->createTextureUnitState()->setTextureName("face.png");
+    
+#endif
+    pPass->setAmbient(Ogre::ColourValue(1.0f,1.0f,1.0f,1.0f));
+    
+    m_BackGround->getSubEntity(0)->setMaterialName(pBackGroundMaterial->getName());
+    
+    
+    //m_BackGround->setVisible(false);
+   
+}
+
+
+
+
+void WarGS::destroyBackGround()
+{
+    //m_pSceneManager
+    
+    
+    
+    Ogre::SceneNode* pNode=m_BackGround->getParentSceneNode();
+    pNode->detachAllObjects();
+    pNode->getParentSceneNode()->removeAndDestroyChild(pNode->getName());
+    m_pSceneManager->destroyEntity(m_BackGround);
+    m_BackGround=NULL;
+    
+    Ogre::MaterialManager::getSingleton().remove("BackGroundVideomat");
+    
+    
 }

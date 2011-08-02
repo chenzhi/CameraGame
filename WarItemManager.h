@@ -19,7 +19,7 @@ public:
 	WarItemManager();
 
 
-	~WarItemManager(){destroyWarItem();}
+	~WarItemManager();
 
 
 
