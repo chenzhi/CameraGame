@@ -6,6 +6,7 @@
 #pragma  once 
 
 #include "WarMode.h"
+#include  "WarItem.h"
 
 
 class GameState;
@@ -16,8 +17,8 @@ class WarItem;
 class Item;
 
 
-class WarModeThree :public WarMode
-{
+class WarModeThree :public WarMode,public WarItemListen
+	{
 
 public:
 
@@ -43,7 +44,7 @@ public:
 
 
 	/**目标点敌人被道具击中后的回调*/
-	void   notityEmemyHit(Enemy* pEnemy,WarItem* pWarItem);
+	virtual void onHitTarget(WarItem* pItem,Enemy* pEnemy);
 
 
 protected:

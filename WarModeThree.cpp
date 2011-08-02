@@ -90,6 +90,7 @@ void WarModeThree::beginTouch(int x,int y)
 	const Ogre::String& itemtype=m_pUIWar->getCurrentItemType();
 	WarItem* pItem= m_pWarItemManager->createWarItem(itemtype);
 	pItem->setTarget(m_pTargetEnemy);
+	pItem->setListen(this);
 
 	
 
@@ -139,8 +140,9 @@ void WarModeThree::updatePower(float time)
 
 
 //--------------------------------------------------------------------
-void    WarModeThree::notityEmemyHit(Enemy* pEnemy,WarItem* pWarItem)
+void  WarModeThree::onHitTarget(WarItem* pItem,Enemy* pEnemy)
 {
+
 	return ;
 
 }

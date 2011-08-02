@@ -79,6 +79,9 @@ void EggItem::end()
 {
 	m_pTarget->setHitEffectTextureName("danqin.png");
 
+	///广播击中目标
+	fireHitTarget();
+
 	destroyEntiy();
 
 }

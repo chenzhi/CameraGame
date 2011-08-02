@@ -7,7 +7,7 @@
 
 
 class Enemy;
-
+class WarItem;
 
 enum WarItemType
 {
@@ -18,6 +18,15 @@ enum WarItemType
 };
 
 
+class WarItemListen
+{
+public:
+	WarItemListen(){}
+
+	virtual ~WarItemListen(){}
+ 	virtual void onHitTarget(WarItem* pItem,Enemy* pEnemy)=0;
+};
+
 
 
 class WarItem
@@ -25,7 +34,7 @@ class WarItem
 
 public:
 	WarItem(const Ogre::String& name,float power,WarItemType type)
-		:m_pTarget(NULL),m_PowerValue(power),m_Type(type)
+		:m_pTarget(NULL),m_PowerValue(power),m_Type(type),m_pListen(NULL)
 	{}
 
 	virtual ~WarItem(){}
@@ -45,7 +54,6 @@ public:
 	virtual bool  update(float time){return true;}
 
 	/**结束*/
-
 	virtual void end(){}
 
 	/**获取能量点数*/
@@ -56,6 +64,18 @@ public:
 	WarItemType getType()      {return m_Type;}
 
 	
+	/**设置监听*/
+	void setListen(WarItemListen* pListen){m_pListen=pListen;}
+
+
+	/**广播打击中了目标*/
+	 void fireHitTarget()
+	 {
+		 if(m_pListen!=NULL)
+		 {
+			 m_pListen->onHitTarget(this,m_pTarget);
+		 }
+	 }
 
 
 protected:
@@ -65,6 +85,8 @@ protected:
 	float         m_PowerValue;///击中后加多少照像点数
 
 	WarItemType       m_Type;
+
+	WarItemListen*    m_pListen; ///监听
     
 	
 };
