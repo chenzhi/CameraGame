@@ -33,7 +33,7 @@ EnemyQueue::EnemyQueue(const Ogre::Vector3& pos,const  PositionList&EnemyList,co
 	for(size_t i=0;i<size;++i)
 	{
 
-		Enemy* pEnemy=new Enemy("face_pang.mesh","hema.mesh",FriendList[i],m_pRootNode);
+		Enemy* pEnemy=new Enemy("puffer.mesh","",FriendList[i],m_pRootNode);
 
 		pEnemy->registerEvent(EE_Hit,&EnemyQueue::notifyEnemyHit,this);
 		m_FriendCollect.push_back(pEnemy);
