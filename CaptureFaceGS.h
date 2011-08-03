@@ -57,18 +57,14 @@ public:
     
 protected:
     
-    /**初始背影板*/
-    void initBackGround();
-    
-    /**销毁背景板*/
-    void destroyBackGround();
+   
 
 
     /**初始化摄像头*/
-    void initVideo();
+   // void initVideo();
 
     /**更新摄像头*/
-    void updateVideo();
+    //void updateVideo();
     
     
 
@@ -88,13 +84,11 @@ protected:
 
 protected:
     
-    ///背影板
-    Ogre::Entity*      m_BackGround;
+    
     
     Ogre::SceneNode*   m_pCameraNode;
     
-    Ogre::TexturePtr   m_pVideoTexture;
-    
+       
 
     
     

@@ -4,16 +4,24 @@
 
 
 
-WarItemManager* Ogre::Singleton<WarItemManager>::ms_Singleton=NULL;
+template<> WarItemManager* Ogre::Singleton<WarItemManager>::ms_Singleton=NULL;
 
 
 WarItemManager::WarItemManager()
 {
 
-	addItemType(WIT_EGG,(&WarItemManager::createEggItem));
+	initItemTypeInformation();
+
+	//addItemType(WIT_EGG,(&WarItemManager::createEggItem));
 
 
 
+}
+
+
+WarItemManager::~WarItemManager()
+{
+    destroyWarItem();
 }
 
 
@@ -32,11 +40,22 @@ WarItem*  WarItemManager::createWarItem(const Ogre::String& typeName)
 WarItem*  WarItemManager::createWarItem(WarItemType itemtype)
 {
 
-	createFun fun=findCrateFun(itemtype);
+	//createFun fun=findCrateFun(itemtype);
 
-	assert(fun);
+	//assert(fun);
 
-	return 	(this->*fun)();
+	Ogre::String meshName;
+	Ogre::String textureName;
+
+	 ItemInformat itemTypeInformation;
+	if(getItemTypeMeshAndTexture(itemtype,itemTypeInformation)==false)
+		return NULL;
+
+	WarItem* pItem=new  EggItem(itemTypeInformation.m_MeshName,itemTypeInformation.m_Texture,itemTypeInformation.m_Power);
+	m_WarItemCollect.push_back(pItem);
+
+	return pItem ;
+	//return 	(this->*fun)(meshName,textureName);
 
 }
 
@@ -111,6 +130,20 @@ void WarItemManager::destroyWarItem()
 	}
 
 	m_WarItemCollect.clear();
+    
+    
+    it = m_RemoveItemCollect.begin();
+	endit=m_RemoveItemCollect.end();
+	for(;it!=endit;++it)
+	{
+		SafeDelete(*it);
+	}
+	m_RemoveItemCollect.clear();
+
+    
+    
+    
+    
 
 
 }
@@ -199,9 +232,81 @@ WarItemType WarItemManager::stringToItemtype(const Ogre::String& itemtype)
 
 
 //----------------------------------------------------------------------------
-WarItem* WarItemManager::createEggItem()
+//WarItem* WarItemManager::createEggItem(const Ogre::String&MeshName,const Ogre::String&textureName)
+//{
+//	WarItem* pItem=	new EggItem(MeshName,textureName);
+//    pItem->begin();
+//	m_WarItemCollect.push_back(pItem);
+//	return pItem;
+//}
+
+
+//----------------------------------------------------------------------------
+bool WarItemManager::getItemTypeMeshAndTexture(WarItemType itemType,ItemInformat& itemTypeInfor)
 {
-	WarItem* pItem=	new EggItem();
-	m_WarItemCollect.push_back(pItem);
-	return pItem;
+	ItemInformationCollect::iterator it=m_ItemInformation.begin();
+	ItemInformationCollect::iterator itend=m_ItemInformation.end();
+
+	for(;it!=itend;++it)
+	{
+		if((*it).m_ItemType==itemType)
+		{
+          itemTypeInfor.m_MeshName=(*it).m_MeshName;
+		  itemTypeInfor.m_Texture=(*it).m_Texture;
+		  itemTypeInfor.m_Power=(*it).m_Power;
+		  itemTypeInfor.m_ItemType=itemType;
+		  return true;
+		}
+	}
+
+	return false;
+
+}
+
+
+void WarItemManager::initItemTypeInformation()
+{
+
+	ItemInformat Item={WIT_EGG,"jidan.mesh","danqin.png",1.5f}; 
+	m_ItemInformation.push_back(Item);
+
+	Item.m_ItemType=WIT_BRICK;
+	Item.m_MeshName="banzhuan.mesh";
+	Item.m_Texture="banzhuan.png";
+	Item.m_Power=2.0f;
+	m_ItemInformation.push_back(Item);
+
+
+	Item.m_ItemType=WIT_STICK;
+	Item.m_MeshName="gunzi.mesh";
+	Item.m_Texture="";
+	Item.m_Power=2.0f;
+	m_ItemInformation.push_back(Item);
+
+
+
+	Item.m_ItemType=WIT_SHOE;
+	Item.m_MeshName="xiezi.mesh";
+	Item.m_Texture="xiezi.png";
+	Item.m_Power=1.0f;
+	m_ItemInformation.push_back(Item);
+
+
+	Item.m_ItemType=WIT_KNIFE;
+	Item.m_MeshName="caidao.mesh";
+	Item.m_Texture="";
+    Item.m_Power=2.0f;
+	m_ItemInformation.push_back(Item);
+
+
+
+
+	//Item.m_ItemType=
+	//WIT_BRICK, //°å×©
+	//WIT_SHOE,//Ð¬×Ó
+	//WIT_BENCH,//°åµÇ
+	//WIT_STICK,//¹÷×Ó
+
+
+	  
 }

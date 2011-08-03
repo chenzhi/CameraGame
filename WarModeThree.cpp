@@ -34,7 +34,7 @@ void WarModeThree::start()
 	m_pWarItemManager=new WarItemManager();
 	///创建一个模型
 	WarManager::getSingleton().startWar();
-	m_pTargetEnemy=WarManager::getSingleton().createEnemy(Ogre::Vector3(0,0,1));
+	m_pTargetEnemy=WarManager::getSingleton().createEnemy(Ogre::Vector3(0,0,0));
 
 
 }
@@ -57,6 +57,10 @@ void WarModeThree::update(float time)
 {
 
 	m_pWarItemManager->update(time);
+
+
+	///理新力量槽
+	updatePower(time);
 }
 
 
@@ -87,8 +91,11 @@ void WarModeThree::beginTouch(int x,int y)
 		return ;
 	}
 
-	const Ogre::String& itemtype=m_pUIWar->getCurrentItemType();
-	WarItem* pItem= m_pWarItemManager->createWarItem(itemtype);
+	WarItemType itemType=m_pUIWar->getCurrentItemType();
+	if(itemType==WIT_NONE)
+		return ;
+	WarItem* pItem= m_pWarItemManager->createWarItem(itemType);
+	pItem->begin();
 	pItem->setTarget(m_pTargetEnemy);
 	pItem->setListen(this);
 
@@ -124,17 +131,20 @@ void WarModeThree::updatePower(float time)
 	if(m_StopFireTime>3.0)
 	{
 		m_CurrentPower-=time*3;////每秒减三格
-		std::max(m_CurrentPower,0.0f);//不能小于0
-
+		
 	}else
 	{
 
 	}
 
 
+    std::max(m_CurrentPower,0.0f);//不能小于0
 
 	///设置能量槽的长度
 	m_pUIWar->setPowerPercent(m_CurrentPower/m_MaxPower);
+    
+	///只有能量槽满了才会显示拍照按钮
+	
 
 }
 
@@ -143,6 +153,9 @@ void WarModeThree::updatePower(float time)
 void  WarModeThree::onHitTarget(WarItem* pItem,Enemy* pEnemy)
 {
 
+	m_StopFireTime=0;
+	float power= pItem->getPower();
+	m_CurrentPower+=power;
 	return ;
 
 }

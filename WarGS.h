@@ -61,6 +61,17 @@ protected:
 	/**销毁所有的战争模式*/
 	void destroyWarMode();
     
+    /**初始背影板*/
+    void initBackGround();
+    
+    /**销毁背景板*/
+    void destroyBackGround();
+    
+    
+    
+protected:
+    
+    
   
     
     
@@ -77,4 +88,9 @@ protected:
     
     
     
+    ///背影板
+    Ogre::Entity*      m_BackGround;
+    
+    Ogre::TexturePtr   m_pVideoTexture;
+
 };

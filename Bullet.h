@@ -71,7 +71,7 @@ protected:
      *@param length 子弹在一帧内分行的长度
      *@warning 只做外框盒检查
      */
-    void updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float length);    
+  //  void updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float length);    
     
     
     
@@ -89,7 +89,7 @@ protected:
     float         m_Speed; ///子弹的速度
     
     Ogre::SceneManager*  m_pSceneMrg;
-    Ogre::RaySceneQuery*  m_pRayQuery;
+   // Ogre::RaySceneQuery*  m_pRayQuery;
     
     BulletState      m_State;
 

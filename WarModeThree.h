@@ -47,6 +47,15 @@ public:
 	virtual void onHitTarget(WarItem* pItem,Enemy* pEnemy);
 
 
+	/**增加力量槽*/
+	void addPower(float power){m_CurrentPower+=power;}
+
+	/**获取当前力量槽*/
+	float getCurrentPower()const {return m_CurrentPower;}
+
+    /**获取力量槽的大小*/
+	float getMaxPower()const     {return m_MaxPower;}
+
 protected:
 
 

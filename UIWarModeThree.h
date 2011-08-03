@@ -5,6 +5,7 @@
 
 #include "UIBase.h"
 #include "Widget.h"
+#include "WarItem.h"
 
 
 class WarModeThree;
@@ -17,13 +18,13 @@ public:
 
 	ItemDataSource()
 	{
-		m_Collect.push_back(std::make_pair("model3__egg_press.png","egg"));
-		m_Collect.push_back(std::make_pair("model3__brick_press.png","egg"));
-		m_Collect.push_back(std::make_pair("model3__shoes_press.png","egg"));
-		m_Collect.push_back(std::make_pair("model3__knife_press.png","egg"));
-		m_Collect.push_back(std::make_pair("model3__baseball_press.png","egg"));
-		m_Collect.push_back(std::make_pair("model3__baseball_press.png","egg"));
-		m_Collect.push_back(std::make_pair("model3__baseball_press.png","egg"));
+		m_Collect.push_back(std::make_pair("model3__egg_press.png",Ogre::StringConverter::toString(WIT_EGG)));
+		m_Collect.push_back(std::make_pair("model3__brick_press.png",Ogre::StringConverter::toString(WIT_BRICK)));
+		m_Collect.push_back(std::make_pair("model3__shoes_press.png",Ogre::StringConverter::toString(WIT_SHOE)));
+		m_Collect.push_back(std::make_pair("model3__knife_press.png",Ogre::StringConverter::toString(WIT_KNIFE)));
+		m_Collect.push_back(std::make_pair("model3__baseball_press.png",Ogre::StringConverter::toString(WIT_STICK)));
+		//m_Collect.push_back(std::make_pair("model3__baseball_press.png","egg"));
+		//m_Collect.push_back(std::make_pair("model3__baseball_press.png","egg"));
 		
 	}
 
@@ -113,7 +114,7 @@ public:
 
 
 	/**获取当前ui选择的道具类型 */
-	const Ogre::String& getCurrentItemType()const {return m_ItemType;}
+	WarItemType getCurrentItemType()const {return m_ItemType;}
 
 
 protected:
@@ -133,7 +134,7 @@ protected:
 	Widget*              m_pSnapshotButton;//快速拍照
 	SliderGallery*       m_pItemSelectSlider;///选择道具滚动控件
 
-	Ogre::String         m_ItemType;
+	WarItemType              m_ItemType;         ///道具类型
 
 
 

@@ -14,14 +14,14 @@
 
 //-----------------------------------------------------------------------
 Bullet::Bullet(Ogre::SceneManager* pSceneMrg)
-:m_pEntity(NULL),m_pNode(NULL),m_Gravity(0.0f,-0.98f,0.0f),m_OrigiPosition(0.0f,0.0f,0.0f),
-m_Dir(0.0f,0.0f,-1.0f),m_Force(10),m_LiftTime(1.5f),m_CurrentTime(0),m_State(BS_NONE),m_Speed(1.0f),
-m_pSceneMrg(pSceneMrg),m_pRayQuery(NULL)
+:m_pEntity(NULL),m_pNode(NULL),m_Gravity(0.0f,-0.98f*0.5f,0.0f),m_OrigiPosition(0.0f,0.0f,0.0f),
+m_Dir(0.0f,0.0f,-1.0f),m_Force(10),m_LiftTime(1.5f),m_CurrentTime(0),m_State(BS_NONE),m_Speed(0.5f),
+m_pSceneMrg(pSceneMrg)
 {
     //Ogre::SceneManager* pSceneMrg= Application::getSingleton().getMainSceneManager();
     assert(m_pSceneMrg);
     
-    m_pEntity=m_pSceneMrg->createEntity("cube.mesh");
+    m_pEntity=m_pSceneMrg->createEntity("zidan.mesh");
     ///支除所有的查询标志。
     m_pEntity->setQueryFlags(0);
     m_pNode=m_pSceneMrg->getRootSceneNode()->createChildSceneNode();
@@ -29,7 +29,7 @@ m_pSceneMrg(pSceneMrg),m_pRayQuery(NULL)
     
     ///默认不显示
     m_pNode->setVisible(false);
-    m_pNode->setScale(Ogre::Vector3(0.003f,0.003f,0.003f));
+  //  m_pNode->setScale(Ogre::Vector3(0.003f,0.003f,0.003f));
     
     
 }
@@ -65,7 +65,7 @@ bool  Bullet::update(float time)
     ///重力加动力的向量是子弹发行的方向
     float temForce=m_Force*((m_LiftTime-m_CurrentTime)/m_LiftTime);
     Ogre::Vector3 power=m_Dir*temForce;
-   // power+=m_Gravity;
+    power+=m_Gravity;
     
     power*=m_CurrentTime*m_Speed;
     
@@ -139,12 +139,12 @@ void Bullet::destroy()
     m_pSceneMrg->destroyEntity(m_pEntity);
     m_pNode->getParentSceneNode()->removeAndDestroyChild(m_pNode->getName());
     
-    if(m_pRayQuery!=NULL)
-    {
-        m_pSceneMrg->destroyQuery(m_pRayQuery);
-        m_pRayQuery=NULL;
-    }
-    
+    //if(m_pRayQuery!=NULL)
+    //{
+    //    m_pSceneMrg->destroyQuery(m_pRayQuery);
+    //    m_pRayQuery=NULL;
+    //}
+    //
 
 }
 
@@ -158,6 +158,7 @@ void Bullet::reset()
 }
 
 //-----------------------------------------------
+/*/
 void Bullet::updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float length)
 {
   
@@ -235,3 +236,4 @@ void Bullet::updateHit(const Ogre::Vector3& pos,const Ogre::Vector3& dir,float l
 
     
 }
+//*/

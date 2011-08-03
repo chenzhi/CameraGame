@@ -9,7 +9,7 @@
 UIWarModeThree::UIWarModeThree(WarModeThree* pWarMode)
 :UIBase("UIWarModeThree",""),m_pWarMode(pWarMode),
 m_pPauseButton(NULL),m_pSnapshotButton(NULL),m_pItemSelectSlider(NULL),m_pPowerBackground(NULL),
-m_ItemType("egg")
+m_ItemType(WIT_EGG)
 {
 
 }
@@ -97,8 +97,8 @@ void UIWarModeThree::init()
 //-----------------------------------------------------------------------------
 void  UIWarModeThree::setPowerPercent(float percent)
 {
-	std::max(0.0f,percent);
-	std::min(1.0f,percent);
+	percent=std::max(0.0f,percent);
+	percent=std::min(1.0f,percent);
 
 	int height=m_pPowerBackground->getHeight();
     int top=m_pPowerBackground->getTop();
@@ -110,6 +110,17 @@ void  UIWarModeThree::setPowerPercent(float percent)
 	m_pPowerImage->setHeight(newHeight-5);
 
 
+    if(percent>=1.0f)
+	{
+		m_pSnapshotButton->show();
+
+	}else
+	{
+		m_pSnapshotButton->hide();
+	}
+
+
+	return ;
 
 }
 
@@ -136,6 +147,8 @@ void UIWarModeThree::sliderGalleryhit(SrollButton* pbutton )
 
 	///获取道具的类型
 	const Ogre::String& itemType=pbutton->getUserData();
+
+	m_ItemType=(WarItemType)Ogre::StringConverter::parseInt(itemType);
 	return ;
 
 

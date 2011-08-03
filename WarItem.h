@@ -12,9 +12,13 @@ class WarItem;
 enum WarItemType
 {
 	WIT_NONE,
-
 	WIT_EGG,//鸡蛋
-
+	WIT_BRICK, //板砖
+	WIT_SHOE,//鞋子
+	WIT_BENCH,//板登
+	WIT_STICK,//棍子
+	WIT_KNIFE,//菜刀
+	
 };
 
 
@@ -33,7 +37,7 @@ class WarItem
 {
 
 public:
-	WarItem(const Ogre::String& name,float power,WarItemType type)
+	WarItem(WarItemType type,float power)
 		:m_pTarget(NULL),m_PowerValue(power),m_Type(type),m_pListen(NULL)
 	{}
 
@@ -108,7 +112,7 @@ public:
 	*@param startPos 开始位置
 	*@pEnemy 目标点
 	*/
-	EggItem(/*const Ogre::Vector3& startPos,Enemy* pEnemy*/);
+	EggItem(const Ogre::String&MeshName,const Ogre::String&textureName,float Power);
 
 	virtual ~EggItem();
 
@@ -124,7 +128,7 @@ public:
 protected:
 
 	////初始化实体
-	void initEtity();
+	void initEntity(const Ogre::String& entityName);
 
 	///消毁实体
 	void destroyEntiy();
@@ -143,9 +147,9 @@ protected:
 	
 	Ogre::Vector3    m_pRotateDir;///旋转方向
 
-
 	float            m_liftTime;///生命周期
 
+	Ogre::String     m_TextreuName;
 
 }
 ;

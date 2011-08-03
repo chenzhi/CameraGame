@@ -66,7 +66,11 @@ void WarManager::fire()
 
 	Ogre::Vector3 dir(matrix[0][2],matrix[1][2],matrix[2][2]);
 	dir.normalise();
-	pos-=dir*4;
+	pos-=dir*2;
+	pos.y-=0.5f;
+
+	dir.y-=0.15f;
+	dir.normalise();
 
 	///子弹发送时稍稍向上发送一点
 	//dir.y-=0.15;
