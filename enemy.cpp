@@ -112,6 +112,13 @@ void Enemy::destroy()
 		if(m_pEntity!=NULL)
 		{
 			m_pSceneMrg->destroyEntity(m_pEntity);
+			m_pEntity=NULL;
+		}
+
+		if(m_pHeadEnity!=NULL)
+		{
+			m_pSceneMrg->destroyEntity(m_pHeadEnity);
+			m_pHeadEnity=NULL;
 		}
 	}
 
