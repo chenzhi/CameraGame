@@ -28,6 +28,9 @@ public:
 
 	///每帧更新
 	 virtual void update(float time);
+    
+    /**设置是否可见*/
+    void  setVisible(bool b);
 
 protected:
 
@@ -47,6 +50,9 @@ protected:
 
 	/**重置所有的照片按钮状态*/
 	void   resetUserFaceButton();
+    
+    
+
 
 
 

@@ -39,6 +39,12 @@ public:
     ///把纹理转到image里
     static void ConverTextureToImage(Ogre::TexturePtr pTexture,Ogre::Image& image);
     
+    ///保存纹理到指定的目录
+    static bool SaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& fileName);
+    
+    
+    static bool testSaveTexture(const Ogre::String& fileName);
+    
     
 #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
    // static  Ogre::String           getIphoneDocumentPath();

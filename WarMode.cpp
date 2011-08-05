@@ -191,7 +191,7 @@ void   WarModeTwo::_createEnemyQueue()
 		createindex=::rand()%m_EnemyFormatCollect.size();
 	}
 
-	WarManager::getSingleton().createEnemyQueue(10,10,m_EnemyFormatCollect[createindex].m_EnemyCollect,
+	WarManager::getSingleton().createEnemyQueue(90,60,m_EnemyFormatCollect[createindex].m_EnemyCollect,
 		m_EnemyFormatCollect[createindex].m_FriendCollect);
 
 

@@ -216,6 +216,19 @@ void   UISelectUser::resetUserFaceButton()
 	return ;
 }
 
+
+//----------------------------------------------------------
+void  UISelectUser::setVisible(bool b)
+{
+    UIBase::setVisible(b);
+    if(b)
+    {
+        m_NeedUpdate=true;
+    }
+    
+}
+
+
 //-------------------------------------------------------
 void UISelectUser::buttonHit(Widget* pbutton)
 {

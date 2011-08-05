@@ -33,5 +33,9 @@
 
 
 
+#include  "ogrecodec.h"
+#include  "ogreImage.h"
+#include  "ogreImageCodec.h"
+
 
 #define SafeDelete(a) if(a!=NULL){delete a;a=NULL;}
