@@ -196,9 +196,9 @@ void UICaptureFace::buttonHit(Widget* button)
          Ogre::LogManager::getSingleton().logMessage("set user image is "+pTexture->getName());
          
 #else
-        // Ogre::String fileName=userFacepath+pTexture->getName();
-         //Ogre::Image image;
-       //  bool b=Tools::testSaveTexture(pTexture,fileName);
+         Ogre::String fileName=userFacepath+pTexture->getName();
+         Ogre::Image image;
+        // bool b=Tools::testSaveTexture(fileName);
          //image.load("face.png","General");
         // bool b=Tools::SaveTexture(pTexture,fileName);
         

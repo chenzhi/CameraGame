@@ -8,7 +8,9 @@
 #include "pch.h"
 #include "Tool.h"
 #include "config.h"
-#import <UIKit/UIKit.h>
+#include "OgreCodec.h"
+#include "OgreImageCodec.h"
+
 
 
 Ogre::StringVectorPtr Tools::getUserFaceFileList()
@@ -175,7 +177,8 @@ bool Tools::SaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& filename)
 
 
 //-----------------------------------------------------------------------------------------------
-bool  Tools::testSaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& fileName)
+/*
+bool  Tools::testSaveTexture(const Ogre::String& fileName)
 {
     if(pTexture.isNull())
         return false;
@@ -201,9 +204,8 @@ bool  Tools::testSaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& fileN
     char* data=(char*)box.data;
     
     
-    /*Create a CGImageRef from the CVImageBufferRef*/
     CGColorSpaceRef colorSpace	= CGColorSpaceCreateDeviceRGB(); 
-    CGContextRef newContext		= CGBitmapContextCreate(data, width, height, 8, rowPitch, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedLast);
+    CGContextRef newContext		= CGBitmapContextCreate(data, width, height, 8, rowPitch, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
     
     CGImageRef currentFrame			= CGBitmapContextCreateImage(newContext); 
     
@@ -211,9 +213,9 @@ bool  Tools::testSaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& fileN
     
     UIImage* pImage=[UIImage imageWithCGImage:currentFrame];
     NSData* pdata= UIImagePNGRepresentation(pImage);
-    NSString* strFile=[NSString stringWithFormat:@"%s",fileName.c_str()];
+    NSString* strFile=[NSString stringWithCString:fileName.c_str() encoding:NSASCIIStringEncoding];
     Ogre::LogManager::getSingleton().logMessage(fileName);
-    NSLog(@"%s",fileName.c_str());
+    NSLog(@"s%",fileName.c_str());
     [pdata writeToFile:strFile atomically:YES];
     //[strFile autorelease];
     
@@ -229,7 +231,7 @@ bool  Tools::testSaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& fileN
     
 }
 
-
+//*/
 
 
 
