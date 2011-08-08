@@ -1,0 +1,17 @@
+material mouse_mouse_A
+{
+	set_texture_alias diffuseMap mouse.png
+	technique
+	{
+		pass
+		{
+			diffuse 0.588 0.588 0.588
+			texture_unit diffuseMap
+			{
+				tex_coord_set 0
+				texture mouse.png
+			}
+		}
+	}
+}
+
