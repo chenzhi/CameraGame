@@ -178,13 +178,13 @@ void UICaptureFace::buttonHit(Widget* button)
          Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName("sdk_logo.png");
 #endif  
          Ogre::String userFacepath= Tools::getUserFacePath();
-         userFacepath+="/";
-         Ogre::Image image;
-         Tools::ConverTextureToImage(pTexture, image);
+        // userFacepath+="/";
+        // Ogre::Image image;
+       //  Tools::ConverTextureToImage(pTexture, image);
          //pTexture->convertToImage(image);
-         //image.save(userFacepath+pTexture->getName());
-         g_userInformation.setUserImage(pTexture->getName());
-        Ogre::LogManager::getSingleton().logMessage("set user image is "+pTexture->getName());
+        // image.save(userFacepath+pTexture->getName());
+       //  g_userInformation.setUserImage(pTexture->getName());
+         Ogre::LogManager::getSingleton().logMessage("set user image is "+pTexture->getName());
          
          
 
