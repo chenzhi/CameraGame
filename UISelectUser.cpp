@@ -273,6 +273,9 @@ void UISelectUser::buttonHit(Widget* pbutton)
 
 				username=Tools::getUserFacePath()+"/"+username;
 				::remove(username.c_str());
+                
+                //ogre ÒÆ³ýÌùÍ¼
+                Ogre::TextureManager::getSingleton().remove(username);
 				m_NeedUpdate=true;
 				return ;
 			}else if(pTimeButton->getState()==TimeImageButton::NORMAL)///è¿?????å¤´å????

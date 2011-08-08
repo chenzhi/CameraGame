@@ -155,21 +155,19 @@ void UICaptureFace::buttonHit(Widget* button)
 
 	//	
 #ifdef __arm__
+         ///根据系统时间创建贴图名
          
-         Ogre::String userName="userName0";
-         Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName(userName);
-         int userindex=0;
-         while(pTexture.isNull()==false)
-         {
-             ++userindex;
-             userName="userFace"+Ogre::StringConverter::toString(userindex);
-             pTexture=Ogre::TextureManager::getSingleton().getByName(userName);
-                    
-         }
-         
+         time_t tp;
+         char* str=NULL;
+         time(&tp);
+         str=ctime(&tp);
+
+         Ogre::String userName="userName";
+         userName+=str;
+            
         Ogre::TexturePtr pVideoTexture=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture();
                
-        pTexture= Ogre::TextureManager::getSingleton().createManual(userName, "General", 
+        Ogre::TexturePtr pTexture= Ogre::TextureManager::getSingleton().createManual(userName, "General", 
             Ogre::TEX_TYPE_2D, pVideoTexture->getWidth(), pVideoTexture->getHeight(), 1, 1,pVideoTexture->getFormat());
          
          bool b= ofxiPhoneVideoGrabber::getSingleton().getOgreTexture(pTexture);

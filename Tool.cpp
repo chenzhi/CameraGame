@@ -170,8 +170,7 @@ bool Tools::SaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& filename)
     pCodec->codeToFile(wrapper, filename, codeDataPtr);    
     pbuffer->unlock();
     
-   
-    
+       
     return true;
 }
 
@@ -184,16 +183,7 @@ bool  Tools::testSaveTexture(const Ogre::String& fileName)
         return false;
     pTexture->load();
     
-    /*
-    Ogre::Image image;
-    image.load("sdk_logo.png", "General");
-    char* data=(char*)image.getData();
-    int width=image.getWidth();
-    int height=image.getHeight();
-    Ogre::PixelFormat format=image.getFormat();
-    int rowPitch=width*Ogre::PixelUtil::getNumElemBytes(format);
-    */
-    
+      
     int width=pTexture->getWidth();
     int height=pTexture->getHeight();
     
