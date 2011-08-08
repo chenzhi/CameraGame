@@ -414,6 +414,63 @@ Ogre::TexturePtr ofxiPhoneVideoGrabber::getOgreTexture() const
     
 }
 
+bool  ofxiPhoneVideoGrabber::SaveTexture(const char* fileName)
+{
+    
+    if(m_pTexture.isNull())
+        return true;
+    
+    Ogre::HardwarePixelBufferSharedPtr pPixelBuff= m_pTexture->getBuffer(0,0);
+    if(pPixelBuff.isNull()==false)
+    {
+        pPixelBuff->lock(Ogre::HardwareBuffer::HBL_READ_ONLY);
+        const Ogre::PixelBox &pb = pPixelBuff->getCurrentLock();
+        size_t rowPitch = pb.rowPitch;
+        size_t pixelSize=Ogre::PixelUtil::getNumElemBits(pb.format);
+        pixelSize/=8;
+        rowPitch*=pixelSize;
+        char* data = (char*)(pb.data);
+        
+        
+        Ogre::Image image;
+        image.load("sdk_logo.png", "General");
+        data=(char*)image.getData();
+        int width=image.getWidth();
+        int height=image.getHeight();
+        rowPitch=width*Ogre::PixelUtil::getNumElemBytes(image.getFormat());
+        
+        
+        /*Create a CGImageRef from the CVImageBufferRef*/
+        CGColorSpaceRef colorSpace	= CGColorSpaceCreateDeviceRGB(); 
+        CGContextRef newContext		= CGBitmapContextCreate(data, width, height, 8, rowPitch, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+        
+        CGImageRef currentFrame			= CGBitmapContextCreateImage(newContext); 
+        
+        
+        
+        UIImage* pImage=[UIImage imageWithCGImage:currentFrame];
+        NSData* pdata= UIImagePNGRepresentation(pImage);
+        NSString* strFile=[NSString stringWithCString:fileName encoding:NSASCIIStringEncoding];
+        [pdata writeToFile:strFile atomically:YES];
+        //[strFile autorelease];
+        
+        CGContextRelease(newContext); 
+        CGColorSpaceRelease(colorSpace);
+        CGImageRelease(currentFrame);	
+        pPixelBuff->unlock();
+        
+        return true;
+    }
+    return false;
+        
+}
+
+    
+    
+    
+    
+
+
 
 //--------------------------------------------------------
 void ofxiPhoneVideoGrabber::initOgreTexture()

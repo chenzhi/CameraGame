@@ -111,6 +111,11 @@ class ofxiPhoneVideoGrabber : public Ogre::Singleton<ofxiPhoneVideoGrabber>
     Ogre::TexturePtr getOgreTexture() const ;
     
     
+    /**把当前图像保存到指定目录，按png格式
+       */
+    bool  SaveTexture(const char* fileName);
+    
+    
    /**获取图像
       */
     bool getOgreTexture(Ogre::TexturePtr pTexture);
