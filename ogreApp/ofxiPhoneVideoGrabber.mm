@@ -417,51 +417,56 @@ Ogre::TexturePtr ofxiPhoneVideoGrabber::getOgreTexture() const
 bool  ofxiPhoneVideoGrabber::SaveTexture(const char* fileName)
 {
     
-    if(m_pTexture.isNull())
-        return true;
-    
-    Ogre::HardwarePixelBufferSharedPtr pPixelBuff= m_pTexture->getBuffer(0,0);
-    if(pPixelBuff.isNull()==false)
-    {
-        pPixelBuff->lock(Ogre::HardwareBuffer::HBL_READ_ONLY);
-        const Ogre::PixelBox &pb = pPixelBuff->getCurrentLock();
-        size_t rowPitch = pb.rowPitch;
-        size_t pixelSize=Ogre::PixelUtil::getNumElemBits(pb.format);
-        pixelSize/=8;
-        rowPitch*=pixelSize;
-        char* data = (char*)(pb.data);
-        
-        
-        Ogre::Image image;
-        image.load("sdk_logo.png", "General");
-        data=(char*)image.getData();
-        int width=image.getWidth();
-        int height=image.getHeight();
-        rowPitch=width*Ogre::PixelUtil::getNumElemBytes(image.getFormat());
-        
-        
+          
         /*Create a CGImageRef from the CVImageBufferRef*/
-        CGColorSpaceRef colorSpace	= CGColorSpaceCreateDeviceRGB(); 
-        CGContextRef newContext		= CGBitmapContextCreate(data, width, height, 8, rowPitch, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+    
+    
+    unsigned char* pnewData=(unsigned char*)malloc(512*512*4);
+    memset(pnewData,512*512*4,0);
+    
+    int index=0;
+    for(int i=512-360;i<512;++i)
+    {
+        unsigned char* ptarget=pnewData+i*512*4;
+        unsigned char* psource=pixels+index*480*4;
+        for(int j=0;j<480;++j)
+        {
+            ptarget[j*4]=psource[j*4+2];
+            ptarget[j*4+1]=psource[j*4+1];
+            ptarget[j*4+2]=psource[j*4];
+            ptarget[j*4+3]=psource[j*4+3];
+            
+        }
+        //memcpy(ptarget, psource, 480*4);  
+        ++index;
         
-        CGImageRef currentFrame			= CGBitmapContextCreateImage(newContext); 
+    }
+    
+    
+    unsigned char* data=pnewData;
+    int width=512;
+    int height= 512;
+    int rowPitch=width*4;
+    
+    CGColorSpaceRef colorSpace	= CGColorSpaceCreateDeviceRGB(); 
+    CGContextRef newContext		= CGBitmapContextCreate(data, width, height, 8, rowPitch, colorSpace, kCGImageAlphaPremultipliedLast );
         
+    CGImageRef currentFrame			= CGBitmapContextCreateImage(newContext);
         
-        
-        UIImage* pImage=[UIImage imageWithCGImage:currentFrame];
-        NSData* pdata= UIImagePNGRepresentation(pImage);
-        NSString* strFile=[NSString stringWithCString:fileName encoding:NSASCIIStringEncoding];
-        [pdata writeToFile:strFile atomically:YES];
+    UIImage* pImage=[UIImage imageWithCGImage:currentFrame];
+    NSData* pdata= UIImagePNGRepresentation(pImage);
+    NSString* strFile=[NSString stringWithCString:fileName encoding:NSASCIIStringEncoding];
+    [pdata writeToFile:strFile atomically:YES];
         //[strFile autorelease];
         
-        CGContextRelease(newContext); 
-        CGColorSpaceRelease(colorSpace);
-        CGImageRelease(currentFrame);	
-        pPixelBuff->unlock();
+    CGContextRelease(newContext); 
+    CGColorSpaceRelease(colorSpace);
+    CGImageRelease(currentFrame);	
+    
+    free(pnewData);
         
-        return true;
-    }
-    return false;
+    return true;
+ 
         
 }
 

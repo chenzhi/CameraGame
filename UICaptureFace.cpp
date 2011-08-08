@@ -175,7 +175,7 @@ void UICaptureFace::buttonHit(Widget* button)
          bool b= ofxiPhoneVideoGrabber::getSingleton().getOgreTexture(pTexture);
       
 #else        
-        Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName("sdk_logo.png");
+        Ogre::TexturePtr pTexture=Ogre::TextureManager::getSingleton().getByName("face_front_1.png");
         //Ogre::TexturePtr pTexture= Ogre::TextureManager::getSingleton().createManual("testFace", "General", 
                    // Ogre::TEX_TYPE_2D, 512, 512, 1, 1,Ogre::PF_R8G8B8A8);
 
@@ -188,14 +188,17 @@ void UICaptureFace::buttonHit(Widget* button)
          //Ogre::Image image;
          //Tools::ConverTextureToImage(pTexture, image);
          Ogre::String fileName=userFacepath+pTexture->getName()+".png";
+         
+        // Ogre::String fileName="/cz/"+pTexture->getName()+".png";
+         
          ofxiPhoneVideoGrabber::getSingleton().SaveTexture(fileName.c_str());
           g_userInformation.setUserImage(pTexture->getName());
          Ogre::LogManager::getSingleton().logMessage("set user image is "+pTexture->getName());
          
 #else
-         Ogre::String fileName=userFacepath+pTexture->getName();
-         Ogre::Image image;
-         bool b=Tools::testSaveTexture(fileName);
+        // Ogre::String fileName=userFacepath+pTexture->getName();
+         //Ogre::Image image;
+       //  bool b=Tools::testSaveTexture(pTexture,fileName);
          //image.load("face.png","General");
         // bool b=Tools::SaveTexture(pTexture,fileName);
         

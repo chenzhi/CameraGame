@@ -175,9 +175,13 @@ bool Tools::SaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& filename)
 
 
 //-----------------------------------------------------------------------------------------------
-bool  Tools::testSaveTexture(const Ogre::String& fileName)
+bool  Tools::testSaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& fileName)
 {
+    if(pTexture.isNull())
+        return false;
+    pTexture->load();
     
+    /*
     Ogre::Image image;
     image.load("sdk_logo.png", "General");
     char* data=(char*)image.getData();
@@ -185,11 +189,21 @@ bool  Tools::testSaveTexture(const Ogre::String& fileName)
     int height=image.getHeight();
     Ogre::PixelFormat format=image.getFormat();
     int rowPitch=width*Ogre::PixelUtil::getNumElemBytes(format);
+    */
+    
+    int width=pTexture->getWidth();
+    int height=pTexture->getHeight();
+    
+    Ogre::HardwarePixelBufferSharedPtr pBuffer=pTexture->getBuffer();
+    pBuffer->lock(Ogre::HardwareBuffer::HBL_NORMAL);
+    const  Ogre::PixelBox& box= pBuffer->getCurrentLock();
+    int rowPitch=box.rowPitch* Ogre::PixelUtil::getNumElemBytes(pTexture->getFormat());
+    char* data=(char*)box.data;
     
     
     /*Create a CGImageRef from the CVImageBufferRef*/
     CGColorSpaceRef colorSpace	= CGColorSpaceCreateDeviceRGB(); 
-    CGContextRef newContext		= CGBitmapContextCreate(data, width, height, 8, rowPitch, colorSpace, kCGBitmapByteOrder32Little /*| kCGImageAlphaPremultipliedFirst*/);
+    CGContextRef newContext		= CGBitmapContextCreate(data, width, height, 8, rowPitch, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedLast);
     
     CGImageRef currentFrame			= CGBitmapContextCreateImage(newContext); 
     
@@ -197,9 +211,9 @@ bool  Tools::testSaveTexture(const Ogre::String& fileName)
     
     UIImage* pImage=[UIImage imageWithCGImage:currentFrame];
     NSData* pdata= UIImagePNGRepresentation(pImage);
-    NSString* strFile=[NSString stringWithCString:fileName.c_str() encoding:NSASCIIStringEncoding];
+    NSString* strFile=[NSString stringWithFormat:@"%s",fileName.c_str()];
     Ogre::LogManager::getSingleton().logMessage(fileName);
-    NSLog(@"s%",fileName.c_str());
+    NSLog(@"%s",fileName.c_str());
     [pdata writeToFile:strFile atomically:YES];
     //[strFile autorelease];
     
@@ -207,6 +221,8 @@ bool  Tools::testSaveTexture(const Ogre::String& fileName)
     CGColorSpaceRelease(colorSpace);
     CGImageRelease(currentFrame);	
     
+    
+    pBuffer->unlock();
     
     return true;
 

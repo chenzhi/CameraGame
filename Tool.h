@@ -43,7 +43,7 @@ public:
     static bool SaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& fileName);
     
     
-    static bool testSaveTexture(const Ogre::String& fileName);
+    static bool testSaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& fileName);
     
     
 #if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
