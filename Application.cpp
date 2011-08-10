@@ -16,7 +16,7 @@
 #include "GS_GamePlay.h"
 #include "GSSelectMode.h"
 #include "Tool.h"
-
+#include "GS_Test.h"
 
 
 
@@ -66,9 +66,14 @@ void  Application::initState()
 	pState =new GSSelectMode();
 	registerState(pState);
 
+
+	pState=new GSTest();
+    registerState(pState);
     
-    
-    setBeginState(ST_GAMEPLAY);
+    setBeginState(ST_TEST);
+
+
+	
     return;
 }
 

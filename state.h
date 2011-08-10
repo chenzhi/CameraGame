@@ -16,6 +16,8 @@ enum StateType
     ST_CAPTUREFACE,//≤∂ªÒ¡≥≤ø
     
     ST_WAR,///’Ω∂∑◊¥Ã¨
+
+	ST_TEST,///≤‚ ‘
     
 };
 

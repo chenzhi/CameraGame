@@ -1,0 +1,17 @@
+material tuzi_tuzi_A
+{
+	set_texture_alias diffuseMap tou_uv.png
+	technique
+	{
+		pass
+		{
+			diffuse 1 1 1
+			texture_unit diffuseMap
+			{
+				tex_coord_set 0
+				texture tou_uv.png
+			}
+		}
+	}
+}
+
