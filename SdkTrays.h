@@ -2361,7 +2361,7 @@
 		-----------------------------------------------------------------------------*/
 		void showFrameStats(TrayLocation trayLoc, int place = -1)
 		{
-			return ;
+			//return ;
 			if (!areFrameStatsVisible())
 			{
 				Ogre::StringVector stats;
@@ -2905,7 +2905,7 @@
 		-----------------------------------------------------------------------------*/
 		bool frameRenderingQueued()
 		{
-			return true;
+			//return true;
 
 			for (unsigned int i = 0; i < mWidgetDeathRow.size(); i++)
 			{

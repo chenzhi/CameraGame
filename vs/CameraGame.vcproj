@@ -469,6 +469,18 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="testState"
+				>
+				<File
+					RelativePath="..\GS_Test.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\GS_Test.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="UI"
