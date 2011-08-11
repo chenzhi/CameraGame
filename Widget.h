@@ -47,6 +47,11 @@ public:
 
 	///Êó±êÊÂ¼þ
 	virtual void _cursorReleased(const Ogre::Vector2& cursorPos) ;
+    
+    
+    void setNormalTexture(const Ogre::String& textureName);
+    
+    void setPressTexture(const Ogre::String& texturename);
 
 protected:
 

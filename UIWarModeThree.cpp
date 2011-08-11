@@ -4,6 +4,7 @@
 #include "WarModeThree.h"
 #include "UIWarPause.h"
 #include "Application.h"
+#include  "Tool.h"
 
 //------------------------------------------------------------
 UIWarModeThree::UIWarModeThree(WarModeThree* pWarMode)
@@ -177,9 +178,24 @@ void UIWarModeThree::buttonHit(Widget* pbutton)
 
 		return ;
 
-	}
+	}else if(pbutton==m_pSnapshotButton)///如果是快照保存快照到用户的象册文件夹下
+    {
+        
+        Ogre::TexturePtr ptexture=Tools::getScreenSnapshot();
+        
+         
+        m_pSnapshotButton->setNormalTexture(ptexture->getName());
+    
+       Tools::saveOgreTextureToPhotosAlbum(ptexture);
+    ///保存照片到像册目录
+        
+      
+        
+        return ;
+    }
 
 
+    return ;
 }
 
 

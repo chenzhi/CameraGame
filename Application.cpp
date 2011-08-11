@@ -71,6 +71,7 @@ void  Application::initState()
    // registerState(pState);
     
     setBeginState(ST_GAMEPLAY);
+    //setBeginState(ST_TEST);
 
 
 	

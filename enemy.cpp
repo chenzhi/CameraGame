@@ -28,10 +28,17 @@ m_pHeadEnity(NULL),m_HurtTime(0.0f),m_Trans(0.0f,0.0f,0.0f),m_AniFade(0.0f)
 	m_pNode=pParent->createChildSceneNode();
 	m_pNode->attachObject(m_pEntity);
 	m_pNode->setPosition(pos);
+
+	bool b=m_pEntity->hasSkeleton();
+
 	if(headMesh.empty()==false)
 	{
 		m_pHeadEnity=m_pSceneMrg->createEntity(headMesh);
+        assert(m_pHeadEnity);
 		m_pNode->attachObject(m_pHeadEnity);
+
+	
+
 		m_pHeadEnity->shareSkeletonInstanceWith(m_pEntity);
 	}
 
@@ -298,6 +305,8 @@ bool Enemy::playAnimation(const Ogre::String& aniName,bool loop,float fadetime)
 	{
 		m_pAniSate->setWeight(1.0f);
 	}
+
+	m_AniFade=fadetime;
 	return true;
 }
 
@@ -306,6 +315,7 @@ void Enemy::updateAnimation(float time)
 {
 
 	m_AniFade-=time;
+	m_AniFade=std::max(m_AniFade,0.0f);
 
 	if (m_pEntity)
 	{

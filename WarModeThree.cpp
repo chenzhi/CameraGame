@@ -11,7 +11,7 @@
 //----------------------------------------------------------------
 WarModeThree::WarModeThree(GameState* pGameState)
 :WarMode(pGameState),m_pUIWar(NULL),m_CurrentPower(0.0f),m_MaxPower(15.0f),
-m_StopFireTime(0),m_pWarItemManager(NULL),m_pTargetEnemy(NULL)
+m_StopFireTime(0.0f),m_LastFireTime(0.0f),m_pWarItemManager(NULL),m_pTargetEnemy(NULL)
 {
 
 }
@@ -37,6 +37,18 @@ void WarModeThree::start()
 	m_pTargetEnemy=WarManager::getSingleton().createEnemy(Ogre::Vector3(0,0,0));
 
 
+	///初始化表情列表
+	m_AnimationCollect.push_back("diantou");
+	m_AnimationCollect.push_back("tiaomei");
+	m_AnimationCollect.push_back("gusaibang");
+	m_AnimationCollect.push_back("shiai");
+	m_AnimationCollect.push_back("zhayan");
+	m_AnimationCollect.push_back("ku");
+	m_AnimationCollect.push_back("xiexiao");
+
+
+	m_LastFireTime=0.0f;
+
 }
 
 
@@ -61,6 +73,8 @@ void WarModeThree::update(float time)
 
 	///理新力量槽
 	updatePower(time);
+
+	m_LastFireTime+=time;
 }
 
 
@@ -75,6 +89,11 @@ void WarModeThree::beginTouch(int x,int y)
 	*/
 	if(m_pTargetEnemy==NULL)
 		return ;
+
+	///如果距上一次进攻时间小于一秒就忽过
+	if(m_LastFireTime<1.0f)
+		return ;
+	m_LastFireTime=0.0f;
 
 
 	Ogre::Camera* pCamera=Application::getSingleton().getMainCamera();
@@ -138,7 +157,7 @@ void WarModeThree::updatePower(float time)
 	}
 
 
-    std::max(m_CurrentPower,0.0f);//不能小于0
+    m_CurrentPower=std::max(m_CurrentPower,0.0f);//不能小于0
 
 	///设置能量槽的长度
 	m_pUIWar->setPowerPercent(m_CurrentPower/m_MaxPower);
@@ -156,6 +175,14 @@ void  WarModeThree::onHitTarget(WarItem* pItem,Enemy* pEnemy)
 	m_StopFireTime=0;
 	float power= pItem->getPower();
 	m_CurrentPower+=power;
+
+
+
+	size_t size=m_AnimationCollect.size();
+
+	unsigned int AniIndex=::rand()%size;
+	pEnemy->playAnimation(m_AnimationCollect[AniIndex],false,0.0f);
+
 	return ;
 
 }

@@ -113,8 +113,7 @@ class ofxiPhoneVideoGrabber : public Ogre::Singleton<ofxiPhoneVideoGrabber>
     
     /**把当前图像保存到指定目录，按png格式
        */
-    bool  SaveTexture(const char* fileName);
-    
+    bool  saveTexture(const char* fileName);
     
    /**获取图像
       */
@@ -133,7 +132,7 @@ class ofxiPhoneVideoGrabber : public Ogre::Singleton<ofxiPhoneVideoGrabber>
     
    
     
-    protected:
+protected:
     
     
     int m_width, m_height;

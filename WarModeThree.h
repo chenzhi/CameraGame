@@ -79,11 +79,13 @@ protected:
 	float           m_CurrentPower;///当前能量。
 	float           m_MaxPower;    ///满能量
 	float           m_StopFireTime; ///停止攻击的时间 
+	float           m_LastFireTime; ///上一次攻击的时间
 
 
 	Enemy*          m_pTargetEnemy;
-
 	WarItemManager* m_pWarItemManager;
+
+	Ogre::StringVector m_AnimationCollect; ///被击中后的动作列表
 
 
 };
