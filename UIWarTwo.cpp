@@ -124,6 +124,7 @@ void UIWarModeTwo::updateEnemyDir()
 	}
 
 
+
 	float  ang= (Ogre::Math::ATan(pos.y/pos.x)).valueDegrees();
 
 	///µÚÈıÏñÏŞ
