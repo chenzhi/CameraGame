@@ -55,6 +55,7 @@
 		77DD6AA513DFFD7000278BBA /* UIWarTwoBalance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77DD6AA213DFFD7000278BBA /* UIWarTwoBalance.cpp */; };
 		77F4287413CDF1D200C3478E /* SdkTrays.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77F4287213CDF1D200C3478E /* SdkTrays.cpp */; };
 		77FCF58B13D904C00048CCE3 /* EnemyQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */; };
+		77FF16C213F2CB2F00A5B7C5 /* GS_Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FF16C013F2CB2F00A5B7C5 /* GS_Test.cpp */; };
 		8896C17F13A88233000DA13C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C17E13A88233000DA13C /* UIKit.framework */; };
 		8896C18113A88233000DA13C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18013A88233000DA13C /* Foundation.framework */; };
 		8896C18313A88233000DA13C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18213A88233000DA13C /* CoreGraphics.framework */; };
@@ -154,6 +155,8 @@
 		77F4287213CDF1D200C3478E /* SdkTrays.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SdkTrays.cpp; sourceTree = "<group>"; };
 		77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = EnemyQueue.cpp; sourceTree = "<group>"; };
 		77FCF58813D904C00048CCE3 /* EnemyQueue.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = EnemyQueue.h; sourceTree = "<group>"; };
+		77FF16C013F2CB2F00A5B7C5 /* GS_Test.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = GS_Test.cpp; sourceTree = "<group>"; };
+		77FF16C113F2CB2F00A5B7C5 /* GS_Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GS_Test.h; sourceTree = "<group>"; };
 		8896C17A13A88232000DA13C /* ogreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ogreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8896C17E13A88233000DA13C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8896C18013A88233000DA13C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -192,6 +195,7 @@
 		7701CF6013B1B66700D39C17 /* gameState */ = {
 			isa = PBXGroup;
 			children = (
+				77FF16BE13F2CB0E00A5B7C5 /* TestGame */,
 				77FCF58513D904870048CCE3 /* War */,
 				7755CC3413CEBCF200E9B78A /* SelectFace */,
 				7755CC2C13CEBCC400E9B78A /* SelectMode */,
@@ -320,6 +324,15 @@
 				7701CF6A13B1DA2100D39C17 /* WarGS.h */,
 			);
 			name = War;
+			sourceTree = "<group>";
+		};
+		77FF16BE13F2CB0E00A5B7C5 /* TestGame */ = {
+			isa = PBXGroup;
+			children = (
+				77FF16C013F2CB2F00A5B7C5 /* GS_Test.cpp */,
+				77FF16C113F2CB2F00A5B7C5 /* GS_Test.h */,
+			);
+			name = TestGame;
 			sourceTree = "<group>";
 		};
 		8896C16F13A88232000DA13C = {
@@ -520,6 +533,7 @@
 				7788FA5C13E6BEA500993B56 /* WarItem.cpp in Sources */,
 				7788FA5D13E6BEA500993B56 /* WarItemManager.cpp in Sources */,
 				7788FA5E13E6BEA500993B56 /* WarModeThree.cpp in Sources */,
+				77FF16C213F2CB2F00A5B7C5 /* GS_Test.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

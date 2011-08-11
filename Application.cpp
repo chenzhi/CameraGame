@@ -70,7 +70,8 @@ void  Application::initState()
 	pState=new GSTest();
     registerState(pState);
     
-    setBeginState(ST_TEST);
+    setBeginState(ST_GAMEPLAY);
+    //setBeginState(ST_TEST);
 
 
 	

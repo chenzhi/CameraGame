@@ -414,13 +414,13 @@ Ogre::TexturePtr ofxiPhoneVideoGrabber::getOgreTexture() const
     
 }
 
-bool  ofxiPhoneVideoGrabber::SaveTexture(const char* fileName)
+
+
+
+//--------------------------------------------------------
+bool  ofxiPhoneVideoGrabber::saveTexture(const char* fileName)
 {
-    
-          
-        /*Create a CGImageRef from the CVImageBufferRef*/
-    
-    
+      
     unsigned char* pnewData=(unsigned char*)malloc(512*512*4);
     memset(pnewData,512*512*4,0);
     
@@ -437,9 +437,7 @@ bool  ofxiPhoneVideoGrabber::SaveTexture(const char* fileName)
             ptarget[j*4+3]=psource[j*4+3];
             
         }
-        //memcpy(ptarget, psource, 480*4);  
         ++index;
-        
     }
     
     
@@ -450,15 +448,13 @@ bool  ofxiPhoneVideoGrabber::SaveTexture(const char* fileName)
     
     CGColorSpaceRef colorSpace	= CGColorSpaceCreateDeviceRGB(); 
     CGContextRef newContext		= CGBitmapContextCreate(data, width, height, 8, rowPitch, colorSpace, kCGImageAlphaPremultipliedLast );
-        
     CGImageRef currentFrame			= CGBitmapContextCreateImage(newContext);
         
     UIImage* pImage=[UIImage imageWithCGImage:currentFrame];
     NSData* pdata= UIImagePNGRepresentation(pImage);
     NSString* strFile=[NSString stringWithCString:fileName encoding:NSASCIIStringEncoding];
-    [pdata writeToFile:strFile atomically:YES];
-        //[strFile autorelease];
-        
+    [pdata writeToFile:strFile atomically:YES];  
+    
     CGContextRelease(newContext); 
     CGColorSpaceRelease(colorSpace);
     CGImageRelease(currentFrame);	
@@ -487,8 +483,9 @@ void ofxiPhoneVideoGrabber::initOgreTexture()
     }
     
         
-    m_pTexture=Ogre::TextureManager::getSingleton().createManual("videoTexture_ofxiPhoneVideoGrabber", "General", 
-    Ogre::TEX_TYPE_2D, m_width, m_height, 1, 1,Ogre::PF_R8G8B8A8); 
+    m_pTexture=Ogre::TextureManager::getSingleton().createManual
+    ("videoTexture_ofxiPhoneVideoGrabber", "General", 
+    Ogre::TEX_TYPE_2D, m_width, m_height, 1, 1,Ogre::PF_R8G8B8A8/*,Ogre::TU_DYNAMIC_WRITE_ONLY*/); 
     
     return ;
     
@@ -585,7 +582,7 @@ bool ofxiPhoneVideoGrabber::getOgreTexture(Ogre::TexturePtr pTexture)
     int yoffset=pTexture->getHeight()-m_height;
     if(pPixelBuff.isNull()==false)
     {
-        pPixelBuff->lock(Ogre::HardwareBuffer::HBL_DISCARD);
+        pPixelBuff->lock(Ogre::HardwareBuffer::HBL_NORMAL);
         const Ogre::PixelBox &pb = pPixelBuff->getCurrentLock();
         
         // size_t height = pb.getHeight();

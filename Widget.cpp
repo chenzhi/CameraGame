@@ -120,6 +120,24 @@ void ImageButton::updateState()
 
 }
 
+//-------------------------------------------------------------------------------------------
+void ImageButton::setNormalTexture(const Ogre::String& textureName)
+{
+    m_NormalTexture=textureName;
+    updateState();
+    
+
+}
+
+
+//-------------------------------------------------------------------------------------------
+void ImageButton::setPressTexture(const Ogre::String& texturename)
+{
+    m_PressTexture=texturename;
+    updateState();
+    
+}
+
 
 
 /////////////////////////////////////////////////////////////////////////////

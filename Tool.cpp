@@ -10,7 +10,7 @@
 #include "config.h"
 #include "OgreCodec.h"
 #include "OgreImageCodec.h"
-
+#include  "Application.h"
 
 
 Ogre::StringVectorPtr Tools::getUserFaceFileList()
@@ -119,7 +119,9 @@ void Tools::ConverTextureToImage(Ogre::TexturePtr pTexture,Ogre::Image& image)
 }
 
 
+
 //----------------------------------------------------------------------- 
+/*
 bool Tools::SaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& filename)
 {
     if(pTexture.isNull())
@@ -173,41 +175,33 @@ bool Tools::SaveTexture(Ogre::TexturePtr pTexture,const Ogre::String& filename)
        
     return true;
 }
+//*/
 
-
-//-----------------------------------------------------------------------------------------------
-/*
-bool  Tools::testSaveTexture(const Ogre::String& fileName)
+//--------------------------------------------------------
+bool  Tools::saveOgreTexture(const char* fileName,Ogre::TexturePtr pTexture)
 {
-    if(pTexture.isNull())
-        return false;
-    pTexture->load();
+    if (pTexture.isNull()) 
+    {
+        return true;
+    }
     
-      
+    Ogre::HardwarePixelBufferSharedPtr pBuffer= pTexture->getBuffer();
+    pBuffer->lock(Ogre::HardwareBuffer::HBL_NORMAL);
+    const Ogre::PixelBox &pb = pBuffer->getCurrentLock();
+    
+    unsigned char* data=(unsigned char*)pb.data;
     int width=pTexture->getWidth();
     int height=pTexture->getHeight();
-    
-    Ogre::HardwarePixelBufferSharedPtr pBuffer=pTexture->getBuffer();
-    pBuffer->lock(Ogre::HardwareBuffer::HBL_NORMAL);
-    const  Ogre::PixelBox& box= pBuffer->getCurrentLock();
-    int rowPitch=box.rowPitch* Ogre::PixelUtil::getNumElemBytes(pTexture->getFormat());
-    char* data=(char*)box.data;
-    
+    int rowPitch=width* Ogre::PixelUtil::getNumElemBytes(pTexture->getFormat()); 
     
     CGColorSpaceRef colorSpace	= CGColorSpaceCreateDeviceRGB(); 
-    CGContextRef newContext		= CGBitmapContextCreate(data, width, height, 8, rowPitch, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
-    
-    CGImageRef currentFrame			= CGBitmapContextCreateImage(newContext); 
-    
-    
+    CGContextRef newContext		= CGBitmapContextCreate(data, width, height, 8, rowPitch, colorSpace, kCGImageAlphaPremultipliedLast );
+    CGImageRef currentFrame			= CGBitmapContextCreateImage(newContext);
     
     UIImage* pImage=[UIImage imageWithCGImage:currentFrame];
     NSData* pdata= UIImagePNGRepresentation(pImage);
-    NSString* strFile=[NSString stringWithCString:fileName.c_str() encoding:NSASCIIStringEncoding];
-    Ogre::LogManager::getSingleton().logMessage(fileName);
-    NSLog(@"s%",fileName.c_str());
-    [pdata writeToFile:strFile atomically:YES];
-    //[strFile autorelease];
+    NSString* strFile=[NSString stringWithCString:fileName encoding:NSASCIIStringEncoding];
+    [pdata writeToFile:strFile atomically:YES];  
     
     CGContextRelease(newContext); 
     CGColorSpaceRelease(colorSpace);
@@ -216,12 +210,128 @@ bool  Tools::testSaveTexture(const Ogre::String& fileName)
     
     pBuffer->unlock();
     
+    
+    
+    
     return true;
-
     
 }
 
-//*/
+//--------------------------------------------------------
+Ogre::TexturePtr Tools::getScreenSnapshot()
+{
+    
+    Ogre::SceneManager* pSceneManager=Application::getSingleton().getMainSceneManager();
+    
+    static  Ogre::Camera* SnapshotCamera=NULL;
+    static  Ogre::TexturePtr pRenderTarget;
+    static  Ogre::Viewport* pViewport=NULL;
+    if(SnapshotCamera==NULL)
+    { 
+        SnapshotCamera=pSceneManager->createCamera("ScreenSnapshot_Camera");
+        pSceneManager->getRootSceneNode()->createChildSceneNode()->attachObject(SnapshotCamera);
+    }
+    
+    
+    
+    if(pRenderTarget.isNull())
+    {
+        pRenderTarget=Ogre::TextureManager::getSingleton().createManual
+        ("ScreenSnapshot_Rendtarget", "General", Ogre::TEX_TYPE_2D,                                                                        512,512,0,Ogre::PF_R8G8B8A8,Ogre::TU_RENDERTARGET | /*Ogre::TU_DEFAULT | */Ogre::TU_DYNAMIC_WRITE_ONLY,0,false);
+        
+        
+        assert(pRenderTarget.isNull()==false);
+        Ogre::RenderTarget* ptarget=pRenderTarget->getBuffer()->getRenderTarget();
+        pViewport=ptarget->addViewport(SnapshotCamera);
+        ptarget->setAutoUpdated(false);
+        pViewport->setOverlaysEnabled(false);
+        pViewport->setClearEveryFrame(true);
+        pViewport->setBackgroundColour(Ogre::ColourValue::Black);
+        
+        
+    }
+    
+    
+    assert(pViewport);
+    
+    
+    
+    Ogre::Camera* pMainCamera=Application::getSingleton().getMainCamera();
+    SnapshotCamera->setFOVy(pMainCamera->getFOVy());
+    SnapshotCamera->setNearClipDistance(pMainCamera->getNearClipDistance());
+    SnapshotCamera->setFarClipDistance(pMainCamera->getFarClipDistance());
+    
+    SnapshotCamera->getParentSceneNode()->setPosition(pMainCamera->getParentSceneNode()->getPosition());
+    SnapshotCamera->getParentSceneNode()->setOrientation(pMainCamera->getParentSceneNode()->getOrientation());
+    pRenderTarget->getBuffer()->getRenderTarget()->update();
+    
+    return pRenderTarget;
+}
 
 
+
+
+//--------------------------------------------------------
+bool  Tools::saveOgreTextureToPhotosAlbum(Ogre::TexturePtr pTexture)
+{
+//#ifndef __arm__
+///    return false;
+//#endif
+    
+    if(pTexture.isNull())
+        return false;
+    
+    
+    
+    if (pTexture.isNull()) 
+    {
+        return true;
+    }
+    
+    Ogre::HardwarePixelBufferSharedPtr pBuffer= pTexture->getBuffer();
+   // pBuffer->lock(Ogre::HardwareBuffer::HBL_NORMAL);
+   // const Ogre::PixelBox &pb = pBuffer->getCurrentLock();
+    
+   // pBuffer->unlock();
+    //return true;
+    
+   
+    int width=pTexture->getWidth();
+    int height=pTexture->getHeight();
+    int rowPitch=width* Ogre::PixelUtil::getNumElemBytes(pTexture->getFormat()); 
+    
+    int size=rowPitch*height;
+    
+    void* data=malloc(size);
+    
+    //memcpy(data, pb.data, size);
+    memset(data, 128, size);
+    //pBuffer->unlock();
+    
+    CGColorSpaceRef colorSpace	= CGColorSpaceCreateDeviceRGB(); 
+    CGContextRef newContext		= CGBitmapContextCreate(data, width, height, 8, rowPitch, colorSpace,/*kCGImageAlphaNone */kCGImageAlphaPremultipliedLast );
+    CGImageRef currentFrame= CGBitmapContextCreateImage(newContext);
+    
+   // UIImage* pImage=[UIImage imageWithCGImage:currentFrame];
+    //NSData* pdata= UIImagePNGRepresentation(pImage);
+  
+    UIImage* pImage=[UIImage imageWithContentsOfFile:@"youxi_zhanting_release.png"];
+    
+    UIImageWriteToSavedPhotosAlbum(pImage, nil, nil, nil);
+    
+    //[pdata writeToFile:strFile atomically:YES];  
+    
+    CGContextRelease(newContext); 
+    CGColorSpaceRelease(colorSpace);
+    CGImageRelease(currentFrame);	
+    
+    
+    free(data);
+    
+
+    
+    
+    return true;
+      
+}
 

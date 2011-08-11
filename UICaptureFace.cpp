@@ -167,8 +167,9 @@ void UICaptureFace::buttonHit(Widget* button)
             
         Ogre::TexturePtr pVideoTexture=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture();
                
-        Ogre::TexturePtr pTexture= Ogre::TextureManager::getSingleton().createManual(userName, "General", 
-            Ogre::TEX_TYPE_2D, pVideoTexture->getWidth(), pVideoTexture->getHeight(), 1, 1,pVideoTexture->getFormat());
+        Ogre::TexturePtr pTexture= Ogre::TextureManager::getSingleton().createManual
+         (userName, "General", Ogre::TEX_TYPE_2D, pVideoTexture->getWidth(), pVideoTexture->getHeight(),
+          1, 1,pVideoTexture->getFormat()/*,Ogre::TU_DYNAMIC_WRITE_ONLY*/);
          
          bool b= ofxiPhoneVideoGrabber::getSingleton().getOgreTexture(pTexture);
       
@@ -183,58 +184,21 @@ void UICaptureFace::buttonHit(Widget* button)
        
          
 #ifdef __arm__
-         //Ogre::Image image;
-         //Tools::ConverTextureToImage(pTexture, image);
+         
          Ogre::String fileName=userFacepath+pTexture->getName()+".png";
-         
-        // Ogre::String fileName="/cz/"+pTexture->getName()+".png";
-         
-         ofxiPhoneVideoGrabber::getSingleton().SaveTexture(fileName.c_str());
-          g_userInformation.setUserImage(pTexture->getName());
+         ofxiPhoneVideoGrabber::getSingleton().saveTexture(fileName.c_str());
+         //Tools::saveOgreTexture(fileName.c_str(), pTexture);
+         g_userInformation.setUserImage(pTexture->getName());
          Ogre::LogManager::getSingleton().logMessage("set user image is "+pTexture->getName());
          
 #else
          Ogre::String fileName=userFacepath+pTexture->getName();
-         Ogre::Image image;
-        // bool b=Tools::testSaveTexture(fileName);
-         //image.load("face.png","General");
-        // bool b=Tools::SaveTexture(pTexture,fileName);
-        
-        // Tools::ConverTextureToImage(pTexture, image);
-        // image.save(fileName);
-        // pTexture->loadImage(image);
-       // ofxiPhoneVideoGrabber::getSingleton().SaveTexture(fileName.c_str());
-        g_userInformation.setUserImage(pTexture->getName());
-         
-         /*/
-         pTexture->getBuffer(0,0)->lock(Ogre::HardwareBuffer::HBL_READ_ONLY);
-         const Ogre::PixelBox& pixelBox=pTexture->getBuffer(0,0)->getCurrentLock();
-         size_t rowPitch=pixelBox.rowPitch;
-         size_t height=pTexture->getHeight();
-         size_t width=pTexture->getWidth();
-         size_t size=rowPitch*height*Ogre::PixelUtil::getNumElemBytes(pTexture->getFormat());
-         pTexture->getBuffer(0,0)->unlock();
-
-         
-         Ogre::uchar* currentPixData=OGRE_ALLOC_T(Ogre::uchar,size, Ogre::MEMCATEGORY_GENERAL);
-         Ogre::PixelBox pixBox(pTexture->getWidth(), pTexture->getHeight(), pTexture->getDepth(), pTexture->getFormat(), currentPixData);
-         pTexture->getBuffer(0,0)->blitToMemory(pixBox);
-         image.loadDynamicImage(currentPixData,pTexture->getWidth(), pTexture->getHeight(), pTexture->getDepth(), pTexture->getFormat());
-         //image.save(fileName);
-         //ofxiPhoneVideoGrabber::getSingleton().SaveTexture(fileName.c_str());
          g_userInformation.setUserImage(pTexture->getName());
-      
-         
-         OGRE_FREE(currentPixData, Ogre::MEMCATEGORY_GENERAL);
-         //*/
-         
+       
+                
 #endif
-
-
-
 		 pSelectHead->setVisible(true);
 		 setVisible(false);
-       // Application::getSingleton().getCurrentActive()->setNextStateType(ST_WAR);
 
 	 }
 
