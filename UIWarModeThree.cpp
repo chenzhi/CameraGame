@@ -13,6 +13,10 @@ m_pPauseButton(NULL),m_pSnapshotButton(NULL),m_pItemSelectSlider(NULL),m_pPowerB
 m_ItemType(WIT_EGG)
 {
 
+	m_pSnapshotTexture=Ogre::TextureManager::getSingleton().createManual
+		     ("ScreenSnapshot_Rendtarget", "General", Ogre::TEX_TYPE_2D,     
+		512,512,0,Ogre::PF_R8G8B8A8,Ogre::TU_RENDERTARGET | /*Ogre::TU_DEFAULT | */Ogre::TU_DYNAMIC_WRITE_ONLY,0,false);
+
 }
 
 
@@ -20,6 +24,7 @@ m_ItemType(WIT_EGG)
 //------------------------------------------------------------
 UIWarModeThree::~UIWarModeThree()
 {
+	Ogre::TextureManager::getSingleton().remove(m_pSnapshotTexture->getHandle());
 
 
 }
@@ -181,13 +186,19 @@ void UIWarModeThree::buttonHit(Widget* pbutton)
 	}else if(pbutton==m_pSnapshotButton)///如果是快照保存快照到用户的象册文件夹下
     {
         
-        Ogre::TexturePtr ptexture=Tools::getScreenSnapshot();
+      if(Tools::getScreenSnapshot(m_pSnapshotTexture))
+	  {
+
+		   // m_pSnapshotButton->setNormalTexture(ptexture->getName());
+		  ///保存照片到像册目录
+		  Tools::saveOgreTextureToPhotosAlbum(m_pSnapshotTexture);
+
+	  }
         
          
-       // m_pSnapshotButton->setNormalTexture(ptexture->getName());
+      
     
-       Tools::saveOgreTextureToPhotosAlbum(ptexture);
-    ///保存照片到像册目录
+     
         
       
         

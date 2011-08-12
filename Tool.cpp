@@ -219,14 +219,18 @@ bool  Tools::saveOgreTexture(const char* fileName,Ogre::TexturePtr pTexture)
 }
 
 //--------------------------------------------------------
-Ogre::TexturePtr Tools::getScreenSnapshot()
+bool  Tools::getScreenSnapshot(Ogre::TexturePtr pTexture)
 {
+
+	if(pTexture.isNull())
+		return false;
+
     
     Ogre::SceneManager* pSceneManager=Application::getSingleton().getMainSceneManager();
-    
+	Ogre::TexturePtr pRenderTarget=pTexture;
     static  Ogre::Camera* SnapshotCamera=NULL;
-    static  Ogre::TexturePtr pRenderTarget;
-    static  Ogre::Viewport* pViewport=NULL;
+     Ogre::Viewport* pViewport=NULL;
+
     if(SnapshotCamera==NULL)
     { 
         SnapshotCamera=pSceneManager->createCamera("ScreenSnapshot_Camera");
@@ -235,31 +239,29 @@ Ogre::TexturePtr Tools::getScreenSnapshot()
     
     
     
-    if(pRenderTarget.isNull())
-    {
-        pRenderTarget=Ogre::TextureManager::getSingleton().createManual
-        ("ScreenSnapshot_Rendtarget", "General", Ogre::TEX_TYPE_2D,     
-		512,512,0,Ogre::PF_R8G8B8A8,Ogre::TU_RENDERTARGET | /*Ogre::TU_DEFAULT | */Ogre::TU_DYNAMIC_WRITE_ONLY,0,false);
+  //  if(pRenderTarget.isNull())
+  //  {
+  //      pRenderTarget=Ogre::TextureManager::getSingleton().createManual
+  //      ("ScreenSnapshot_Rendtarget", "General", Ogre::TEX_TYPE_2D,     
+		//512,512,0,Ogre::PF_R8G8B8A8,Ogre::TU_RENDERTARGET | /*Ogre::TU_DEFAULT | */Ogre::TU_DYNAMIC_WRITE_ONLY,0,false);
 
-		Ogre::TextureManager::getSingleton().remove(pRenderTarget->getHandle());
-        
-        
-        assert(pRenderTarget.isNull()==false);
-        Ogre::RenderTarget* ptarget=pRenderTarget->getBuffer()->getRenderTarget();
-        pViewport=ptarget->addViewport(SnapshotCamera);
-        ptarget->setAutoUpdated(false);
-        pViewport->setOverlaysEnabled(false);
-        pViewport->setClearEveryFrame(true);
-        pViewport->setBackgroundColour(Ogre::ColourValue::Black);
-        
-        
-    }
-    
+  //      
+  //      assert(pRenderTarget.isNull()==false);
+  //      Ogre::RenderTarget* ptarget=pRenderTarget->getBuffer()->getRenderTarget();
+
+  //      
+  //      
+  //  }
+  //  
+     Ogre::RenderTarget* ptarget=pRenderTarget->getBuffer()->getRenderTarget();
+	 pViewport=ptarget->addViewport(SnapshotCamera);
+	 ptarget->setAutoUpdated(false);
+	 pViewport->setOverlaysEnabled(false);
+	 pViewport->setClearEveryFrame(true);
+	 pViewport->setBackgroundColour(Ogre::ColourValue::Black);
+
     
     assert(pViewport);
-    
-    
-    
     Ogre::Camera* pMainCamera=Application::getSingleton().getMainCamera();
     SnapshotCamera->setFOVy(pMainCamera->getFOVy());
     SnapshotCamera->setNearClipDistance(pMainCamera->getNearClipDistance());
@@ -268,10 +270,12 @@ Ogre::TexturePtr Tools::getScreenSnapshot()
     SnapshotCamera->getParentSceneNode()->setPosition(pMainCamera->getParentSceneNode()->getPosition());
     SnapshotCamera->getParentSceneNode()->setOrientation(pMainCamera->getParentSceneNode()->getOrientation());
     pRenderTarget->getBuffer()->getRenderTarget()->update();
+
+	ptarget->removeAllViewports();
+
+
     
-
-
-    return pRenderTarget;
+    return true;
 }
 
 

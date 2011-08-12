@@ -47,8 +47,10 @@ public:
     
 
     
-    /**保存屏幕快照*/
-    static Ogre::TexturePtr getScreenSnapshot();
+    /**保存屏幕快照
+	*@param pTexture 必须是rendetTarget标志创建的帖图
+	*/
+	static bool  getScreenSnapshot(Ogre::TexturePtr pTexture);
     
     
     

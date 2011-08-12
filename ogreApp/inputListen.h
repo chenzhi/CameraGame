@@ -33,7 +33,7 @@ public:
 #pragma comment(lib,"ois_d.lib")
 
 #else
-#pragma comment(lib,"ois.lib");
+#pragma comment(lib,"ois.lib")
 
 #endif
 

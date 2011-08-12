@@ -131,10 +131,13 @@ protected:
 	StaticImage*         m_pPowerBackground;///能量槽背景
 	StaticImage*         m_pPowerImage;     ///能量槽图片
 
-	ImageButton*              m_pSnapshotButton;//快速拍照
+	ImageButton*         m_pSnapshotButton;//快速拍照
 	SliderGallery*       m_pItemSelectSlider;///选择道具滚动控件
 
-	WarItemType              m_ItemType;         ///道具类型
+	WarItemType          m_ItemType;         ///道具类型
+
+
+	Ogre::TexturePtr     m_pSnapshotTexture;  ///屏幕截图   
 
 
 
