@@ -274,6 +274,7 @@ bool  Tools::getScreenSnapshot(Ogre::TexturePtr pTexture)
 	ptarget->removeAllViewports();
 
 
+//	Ogre::Math::intersects()
     
     return true;
 }
