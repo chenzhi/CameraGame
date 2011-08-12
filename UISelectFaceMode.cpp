@@ -44,6 +44,20 @@ UserSelectMode::UserSelectMode(const Ogre::String& faceMesh,const Ogre::String&h
 	}
 
 
+	///È¥³ýÌØÐ§ÌùÍ¼
+	Ogre::MaterialPtr pMaterial=m_pFaceEntity->getSubEntity(0)->getMaterial();
+
+	int textureNumber=pMaterial->getTechnique(0)->getPass(0)->getNumTextureUnitStates();
+
+	if(textureNumber>0)
+	{
+      pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(textureNumber-1)->setTextureName("");
+	}
+	
+
+
+
+
 }
 
 

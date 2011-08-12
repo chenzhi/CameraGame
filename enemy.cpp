@@ -36,9 +36,6 @@ m_pHeadEnity(NULL),m_HurtTime(0.0f),m_Trans(0.0f,0.0f,0.0f),m_AniFade(0.0f)
 		m_pHeadEnity=m_pSceneMrg->createEntity(headMesh);
         assert(m_pHeadEnity);
 		m_pNode->attachObject(m_pHeadEnity);
-
-	
-
 		m_pHeadEnity->shareSkeletonInstanceWith(m_pEntity);
 	}
 
@@ -46,6 +43,11 @@ m_pHeadEnity(NULL),m_HurtTime(0.0f),m_Trans(0.0f,0.0f,0.0f),m_AniFade(0.0f)
 	m_pAniSate=NULL;
 	m_pMaterial=m_pEntity->getSubEntity(0)->getMaterial();
 
+
+	///²¥·ÅÐÝÏÐ¶¯×÷
+   playAnimation("shiai",true,0);
+
+  
 
 
 
