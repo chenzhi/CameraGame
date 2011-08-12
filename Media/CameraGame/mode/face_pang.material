@@ -17,7 +17,7 @@ material face_pang_kouqiang_B
 
 material face_pang_lian_A
 {
-	set_texture_alias faceMap xieyin.png
+	//set_texture_alias faceMap xieyin.png
 	set_texture_alias diffuseMap face_front_1.png
 	technique
 	{
@@ -33,7 +33,7 @@ material face_pang_lian_A
 			{
 				tex_coord_set 1
 				colour_op alpha_blend
-				texture xieyin.png
+				
 			}
 		}
 	}

@@ -35,19 +35,21 @@ void WarModeThree::start()
 	///创建一个模型
 	WarManager::getSingleton().startWar();
 	m_pTargetEnemy=WarManager::getSingleton().createEnemy(Ogre::Vector3(0,0,0));
+	
 
 
 	///初始化表情列表
+	m_AnimationCollect.push_back("shiai");
 	m_AnimationCollect.push_back("diantou");
 	m_AnimationCollect.push_back("tiaomei");
 	m_AnimationCollect.push_back("gusaibang");
-	m_AnimationCollect.push_back("shiai");
 	m_AnimationCollect.push_back("zhayan");
 	m_AnimationCollect.push_back("ku");
 	m_AnimationCollect.push_back("xiexiao");
 
 
 	m_LastFireTime=0.0f;
+	m_pTargetEnemy->playAnimation(m_AnimationCollect[0],true,0.5f);
 
 }
 
@@ -91,7 +93,7 @@ void WarModeThree::beginTouch(int x,int y)
 		return ;
 
 	///如果距上一次进攻时间小于一秒就忽过
-	if(m_LastFireTime<1.0f)
+	if(m_LastFireTime<0.5f)
 		return ;
 	m_LastFireTime=0.0f;
 

@@ -2361,7 +2361,9 @@
 		-----------------------------------------------------------------------------*/
 		void showFrameStats(TrayLocation trayLoc, int place = -1)
 		{
-			//return ;
+#if OGRE_PLATFORM !=OGRE_PLATFORM_IPHONE
+			return ;
+#endif
 			if (!areFrameStatsVisible())
 			{
 				Ogre::StringVector stats;

@@ -79,7 +79,11 @@ bool   EggItem::update(float time)
 //-----------------------------------------------------------------------
 void EggItem::end()
 {
-	m_pTarget->setHitEffectTextureName(m_TextreuName);
+	if(m_TextreuName.empty()==false)
+	{
+     m_pTarget->setHitEffectTextureName(m_TextreuName);
+	}
+	
 
 	///广播击中目标
 	fireHitTarget();

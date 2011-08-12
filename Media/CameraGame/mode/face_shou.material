@@ -23,7 +23,7 @@ material face_shou_lian_A
 	{
 		pass
 		{
-			diffuse 0.588235 0.588235 0.588235
+			diffuse 0.588235 0.588235 0.588235 0.5f
 			texture_unit diffuseMap
 			{
 				tex_coord_set 0
@@ -32,6 +32,7 @@ material face_shou_lian_A
 			texture_unit faceMap
 			{
 				tex_coord_set 1
+                                alpha_op_ex blend_diffuse_alpha src_current src_texture 
 				colour_op alpha_blend
 				texture banzhuan.png
 			}

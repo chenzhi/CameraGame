@@ -184,7 +184,7 @@ void UIWarModeThree::buttonHit(Widget* pbutton)
         Ogre::TexturePtr ptexture=Tools::getScreenSnapshot();
         
          
-        m_pSnapshotButton->setNormalTexture(ptexture->getName());
+       // m_pSnapshotButton->setNormalTexture(ptexture->getName());
     
        Tools::saveOgreTextureToPhotosAlbum(ptexture);
     ///±£´æÕÕÆ¬µ½Ïñ²áÄ¿Â¼
