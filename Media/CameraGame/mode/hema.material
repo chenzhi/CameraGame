@@ -1,0 +1,17 @@
+material hema_hema_A
+{
+	set_texture_alias diffuseMap hema.png
+	technique
+	{
+		pass
+		{
+			diffuse 0.588235 0.588235 0.588235
+			texture_unit diffuseMap
+			{
+				tex_coord_set 0
+				texture hema.png
+			}
+		}
+	}
+}
+

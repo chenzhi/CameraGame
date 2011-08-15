@@ -1,0 +1,346 @@
+14:39:21: Creating resource group General
+14:39:21: Creating resource group Internal
+14:39:21: Creating resource group Autodetect
+14:39:21: SceneManagerFactory for type 'DefaultSceneManager' registered.
+14:39:21: Registering ResourceManager for type Material
+14:39:21: Registering ResourceManager for type Mesh
+14:39:21: Registering ResourceManager for type Skeleton
+14:39:21: MovableObjectFactory for type 'ParticleSystem' registered.
+14:39:21: OverlayElementFactory for type Panel registered.
+14:39:21: OverlayElementFactory for type BorderPanel registered.
+14:39:21: OverlayElementFactory for type TextArea registered.
+14:39:21: Registering ResourceManager for type Font
+14:39:21: ArchiveFactory for archive type FileSystem registered.
+14:39:21: ArchiveFactory for archive type Zip registered.
+14:39:21: DDS codec registering
+14:39:21: FreeImage version: 3.13.1
+14:39:21: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+14:39:21: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,bay,bmq,cr2,crw,cs1,dc2,dcr,dng,erf,fff,hdr,k25,kdc,mdc,mos,mrw,nef,orf,pef,pxn,raf,raw,rdc,sr2,srf,arw,3fr,cine,ia,kc2,mef,nrw,qtk,rw2,sti,drf,dsc,ptx,cap,iiq,rwz
+14:39:21: Registering ResourceManager for type HighLevelGpuProgram
+14:39:21: Registering ResourceManager for type Compositor
+14:39:21: MovableObjectFactory for type 'Entity' registered.
+14:39:21: MovableObjectFactory for type 'Light' registered.
+14:39:21: MovableObjectFactory for type 'BillboardSet' registered.
+14:39:21: MovableObjectFactory for type 'ManualObject' registered.
+14:39:21: MovableObjectFactory for type 'BillboardChain' registered.
+14:39:21: MovableObjectFactory for type 'RibbonTrail' registered.
+14:39:21: *-*-* OGRE Initialising
+14:39:21: *-*-* Version 1.7.1 (Cthugha)
+14:39:21: Loading library RenderSystem_Direct3D9
+14:39:21: Installing plugin: D3D9 RenderSystem
+14:39:21: D3D9 : Direct3D9 Rendering Subsystem created.
+14:39:21: D3D9: Driver Detection Starts
+14:39:21: D3D9: Driver Detection Ends
+14:39:21: Plugin successfully installed
+14:39:21: Loading library Plugin_ParticleFX
+14:39:21: Installing plugin: ParticleFX
+14:39:21: Particle Emitter Type 'Point' registered
+14:39:21: Particle Emitter Type 'Box' registered
+14:39:21: Particle Emitter Type 'Ellipsoid' registered
+14:39:21: Particle Emitter Type 'Cylinder' registered
+14:39:21: Particle Emitter Type 'Ring' registered
+14:39:21: Particle Emitter Type 'HollowEllipsoid' registered
+14:39:21: Particle Affector Type 'LinearForce' registered
+14:39:21: Particle Affector Type 'ColourFader' registered
+14:39:21: Particle Affector Type 'ColourFader2' registered
+14:39:21: Particle Affector Type 'ColourImage' registered
+14:39:21: Particle Affector Type 'ColourInterpolator' registered
+14:39:21: Particle Affector Type 'Scaler' registered
+14:39:21: Particle Affector Type 'Rotator' registered
+14:39:21: Particle Affector Type 'DirectionRandomiser' registered
+14:39:21: Particle Affector Type 'DeflectorPlane' registered
+14:39:21: Plugin successfully installed
+14:39:21: Loading library Plugin_OctreeSceneManager
+14:39:21: Installing plugin: Octree & Terrain Scene Manager
+14:39:21: Plugin successfully installed
+14:39:21: CPU Identifier & Features
+14:39:21: -------------------------
+14:39:21:  *   CPU ID: GenuineIntel: Intel(R) Core(TM) i3 CPU         530  @ 2.93GHz
+14:39:21:  *      SSE: yes
+14:39:21:  *     SSE2: yes
+14:39:21:  *     SSE3: yes
+14:39:21:  *      MMX: yes
+14:39:21:  *   MMXEXT: yes
+14:39:21:  *    3DNOW: no
+14:39:21:  * 3DNOWEXT: no
+14:39:21:  *     CMOV: yes
+14:39:21:  *      TSC: yes
+14:39:21:  *      FPU: yes
+14:39:21:  *      PRO: yes
+14:39:21:  *       HT: no
+14:39:21: -------------------------
+14:39:21: D3D9 : Subsystem Initialising
+14:39:21: Registering ResourceManager for type Texture
+14:39:21: Registering ResourceManager for type GpuProgram
+14:39:21: ***************************************
+14:39:21: *** D3D9 : Subsystem Initialised OK ***
+14:39:21: ***************************************
+14:39:21: D3D9RenderSystem::_createRenderWindow "GameMainWindow", 960x640 windowed  miscParams: FSAA=0 VSync=No VSync Interval=1 colourDepth=32 externalWindowHandle=4331998 
+14:39:21: D3D9 : Created D3D9 Rendering Window 'GameMainWindow' : 960x640, 32bpp
+14:39:21: D3D9 : WARNING - disabling VSync in windowed mode can cause timing issues at lower frame rates, turn VSync on if you observe this problem.
+14:39:21: D3D9: Vertex texture format supported - PF_L8
+14:39:21: D3D9: Vertex texture format supported - PF_L16
+14:39:21: D3D9: Vertex texture format supported - PF_A8
+14:39:21: D3D9: Vertex texture format supported - PF_A4L4
+14:39:21: D3D9: Vertex texture format supported - PF_BYTE_LA
+14:39:21: D3D9: Vertex texture format supported - PF_R5G6B5
+14:39:21: D3D9: Vertex texture format supported - PF_B5G6R5
+14:39:21: D3D9: Vertex texture format supported - PF_A4R4G4B4
+14:39:21: D3D9: Vertex texture format supported - PF_A1R5G5B5
+14:39:21: D3D9: Vertex texture format supported - PF_A8R8G8B8
+14:39:21: D3D9: Vertex texture format supported - PF_B8G8R8A8
+14:39:21: D3D9: Vertex texture format supported - PF_A2R10G10B10
+14:39:21: D3D9: Vertex texture format supported - PF_A2B10G10R10
+14:39:21: D3D9: Vertex texture format supported - PF_DXT1
+14:39:21: D3D9: Vertex texture format supported - PF_DXT2
+14:39:21: D3D9: Vertex texture format supported - PF_DXT3
+14:39:21: D3D9: Vertex texture format supported - PF_DXT4
+14:39:21: D3D9: Vertex texture format supported - PF_DXT5
+14:39:21: D3D9: Vertex texture format supported - PF_FLOAT16_RGB
+14:39:21: D3D9: Vertex texture format supported - PF_FLOAT16_RGBA
+14:39:21: D3D9: Vertex texture format supported - PF_FLOAT32_RGB
+14:39:21: D3D9: Vertex texture format supported - PF_FLOAT32_RGBA
+14:39:21: D3D9: Vertex texture format supported - PF_X8R8G8B8
+14:39:21: D3D9: Vertex texture format supported - PF_R8G8B8A8
+14:39:21: D3D9: Vertex texture format supported - PF_DEPTH
+14:39:21: D3D9: Vertex texture format supported - PF_SHORT_RGBA
+14:39:21: D3D9: Vertex texture format supported - PF_FLOAT16_R
+14:39:21: D3D9: Vertex texture format supported - PF_FLOAT32_R
+14:39:21: D3D9: Vertex texture format supported - PF_SHORT_GR
+14:39:21: D3D9: Vertex texture format supported - PF_FLOAT16_GR
+14:39:21: D3D9: Vertex texture format supported - PF_FLOAT32_GR
+14:39:21: D3D9: Vertex texture format supported - PF_SHORT_RGB
+14:39:21: D3D9: Vertex texture format supported - PF_PVRTC_RGB2
+14:39:21: D3D9: Vertex texture format supported - PF_PVRTC_RGBA2
+14:39:21: D3D9: Vertex texture format supported - PF_PVRTC_RGB4
+14:39:21: D3D9: Vertex texture format supported - PF_PVRTC_RGBA4
+14:39:21: RenderSystem capabilities
+14:39:21: -------------------------
+14:39:21: RenderSystem Name: Direct3D9 Rendering Subsystem
+14:39:21: GPU Vendor: intel
+14:39:21: Device Name: Monitor-1-Intel(R) HD Graphics
+14:39:21: Driver Version: 8.15.10.2202
+14:39:21:  * Fixed function pipeline: yes
+14:39:21:  * Hardware generation of mipmaps: yes
+14:39:21:  * Texture blending: yes
+14:39:21:  * Anisotropic texture filtering: yes
+14:39:21:  * Dot product texture operation: yes
+14:39:21:  * Cube mapping: yes
+14:39:21:  * Hardware stencil buffer: yes
+14:39:21:    - Stencil depth: 8
+14:39:21:    - Two sided stencil support: yes
+14:39:21:    - Wrap stencil values: yes
+14:39:21:  * Hardware vertex / index buffers: yes
+14:39:21:  * Vertex programs: yes
+14:39:21:  * Number of floating-point constants for vertex programs: 256
+14:39:21:  * Number of integer constants for vertex programs: 16
+14:39:21:  * Number of boolean constants for vertex programs: 16
+14:39:21:  * Fragment programs: yes
+14:39:21:  * Number of floating-point constants for fragment programs: 224
+14:39:21:  * Number of integer constants for fragment programs: 16
+14:39:21:  * Number of boolean constants for fragment programs: 16
+14:39:21:  * Geometry programs: no
+14:39:21:  * Number of floating-point constants for geometry programs: 0
+14:39:21:  * Number of integer constants for geometry programs: 0
+14:39:21:  * Number of boolean constants for geometry programs: 0
+14:39:21:  * Supported Shader Profiles: hlsl ps_1_1 ps_1_2 ps_1_3 ps_1_4 ps_2_0 ps_2_a ps_2_b ps_2_x ps_3_0 vs_1_1 vs_2_0 vs_2_a vs_2_x vs_3_0
+14:39:21:  * Texture Compression: yes
+14:39:21:    - DXT: yes
+14:39:21:    - VTC: no
+14:39:21:    - PVRTC: no
+14:39:21:  * Scissor Rectangle: yes
+14:39:21:  * Hardware Occlusion Query: yes
+14:39:21:  * User clip planes: yes
+14:39:21:  * VET_UBYTE4 vertex element type: yes
+14:39:21:  * Infinite far plane projection: yes
+14:39:21:  * Hardware render-to-texture: yes
+14:39:21:  * Floating point textures: yes
+14:39:21:  * Non-power-of-two textures: yes (limited)
+14:39:21:  * Volume textures: yes
+14:39:21:  * Multiple Render Targets: 4
+14:39:21:    - With different bit depths: yes
+14:39:21:  * Point Sprites: yes
+14:39:21:  * Extended point parameters: yes
+14:39:21:  * Max Point Size: 10
+14:39:21:  * Vertex texture fetch: yes
+14:39:21:  * Number of world matrices: 0
+14:39:21:  * Number of texture units: 8
+14:39:21:  * Stencil buffer depth: 8
+14:39:21:  * Number of vertex blend matrices: 0
+14:39:21:    - Max vertex textures: 4
+14:39:21:    - Vertex textures shared: no
+14:39:21:  * Render to Vertex Buffer : no
+14:39:21:  * DirectX per stage constants: yes
+14:39:21: DefaultWorkQueue('Root') initialising on thread main.
+14:39:21: Particle Renderer Type 'billboard' registered
+14:39:21: SceneManagerFactory for type 'OctreeSceneManager' registered.
+14:39:21: SceneManagerFactory for type 'TerrainSceneManager' registered.
+14:39:21: Added resource location 'Media/CameraGame/overlay' of type 'FileSystem' to resource group 'General'
+14:39:21: Added resource location 'Media/CameraGame/material' of type 'FileSystem' to resource group 'General'
+14:39:21: Added resource location 'Media/CameraGame/mode/face' of type 'FileSystem' to resource group 'General'
+14:39:21: Added resource location 'Media/CameraGame/mode' of type 'FileSystem' to resource group 'General'
+14:39:21: Added resource location 'Media/CameraGame/mode/face_1' of type 'FileSystem' to resource group 'General'
+14:39:21: Added resource location 'Media/CameraGame/texture' of type 'FileSystem' to resource group 'General'
+14:39:21: Added resource location 'Media/CameraGame/UI/play' of type 'FileSystem' to resource group 'General'
+14:39:21: Added resource location 'Media/CameraGame/UI/end' of type 'FileSystem' to resource group 'General'
+14:39:21: Added resource location 'Media/CameraGame/UI/mode3' of type 'FileSystem' to resource group 'General'
+14:39:21: Added resource location 'Media/CameraGame/UI/SelectMode' of type 'FileSystem' to resource group 'General'
+14:39:21: Added resource location 'Media/CameraGame/item' of type 'FileSystem' to resource group 'General'
+14:39:21: Creating resource group sdktrays
+14:39:21: Added resource location 'Media/SdkTrays' of type 'FileSystem' to resource group 'sdktrays'
+14:39:21: Parsing scripts for resource group Autodetect
+14:39:21: Finished parsing scripts for resource group Autodetect
+14:39:21: Parsing scripts for resource group General
+14:39:21: Parsing script CameraGame.material
+14:39:21: Parsing script deer.material
+14:39:21: Parsing script duck.material
+14:39:21: Parsing script face_pang.material
+14:39:21: Parsing script face_shou.material
+14:39:21: Compiler error: invalid parameters in face_shou.material(26): diffuse requires 3 or 4 colour arguments, or a "vertexcolour" directive
+14:39:21: Parsing script hema.material
+14:39:21: Parsing script mouse.material
+14:39:21: Parsing script puffer.material
+14:39:21: Parsing script xiaoji.material
+14:39:21: Parsing script zidan.material
+14:39:21: Parsing script banzhuan.material
+14:39:21: Parsing script caidao.material
+14:39:21: Parsing script gunzi.material
+14:39:21: Parsing script jidan.material
+14:39:21: Parsing script mat_jidan.material
+14:39:21: Parsing script xiezi.material
+14:39:21: Finished parsing scripts for resource group General
+14:39:21: Parsing scripts for resource group Internal
+14:39:21: Finished parsing scripts for resource group Internal
+14:39:21: Parsing scripts for resource group sdktrays
+14:39:21: Parsing script cz.material
+14:39:21: Parsing script SdkTrays.material
+14:39:21: Parsing script SdkTrays.fontdef
+14:39:21: Parsing script cz.overlay
+14:39:21: Texture: sdk_button_down.png: Loading 1 faces(PF_A8R8G8B8,128x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x32x1.
+14:39:21: Texture: tuku_quxiao_release.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:21: Texture: paizhao_xuanliankuang.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+14:39:21: Texture: sdk_button_over.png: Loading 1 faces(PF_A8R8G8B8,128x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x32x1.
+14:39:21: Texture: tuku_zuoanniu_release.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+14:39:21: Texture: paizhao_sanjiao_release.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+14:39:21: Texture: model3__baseball_press.png: Loading 1 faces(PF_A8R8G8B8,32x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x128x1.
+14:39:21: Parsing script SdkTrays.overlay
+14:39:21: Bad element attribute line: '# you can offset the image to change the cursor "hotspot"' for element SdkTrays/Cursor in overlay 
+14:39:21: Texture: sdk_cursor.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
+14:39:21: Texture: sdk_tray.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+14:39:21: Texture: sdk_button_up.png: Loading 1 faces(PF_A8R8G8B8,128x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x32x1.
+14:39:21: Texture: sdk_text_box.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
+14:39:21: Texture: sdk_mini_tray.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
+14:39:21: Texture: sdk_track.png: Loading 1 faces(PF_A8R8G8B8,16x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,16x32x1.
+14:39:21: Texture: sdk_handle.png: Loading 1 faces(PF_A8R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,16x16x1.
+14:39:21: Texture: sdk_mini_text_box.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
+14:39:21: Texture: sdk_label.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
+14:39:21: Texture: sdk_separator.png: Loading 1 faces(PF_A8R8G8B8,64x16x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x16x1.
+14:39:21: D3D9 : ***** Dimensions altered by the render system
+14:39:21: D3D9 : ***** Source image dimensions : 135x72
+14:39:21: D3D9 : ***** Texture dimensions : 256x128
+14:39:21: Texture: sdk_logo.png: Loading 1 faces(PF_A8R8G8B8,135x72x1) with 3 generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+14:39:21: D3D9 : ***** Dimensions altered by the render system
+14:39:21: D3D9 : ***** Source image dimensions : 64x48
+14:39:21: D3D9 : ***** Texture dimensions : 64x64
+14:39:21: Texture: sdk_shade.png: Loading 1 faces(PF_A8R8G8B8,64x48x1) with 3 generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+14:39:21: Texture: sdk_frame.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
+14:39:21: Texture: sdk_mini_text_box_over.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
+14:39:21: Texture: sdk_pulse.png: Loading 1 faces(PF_R8G8B8,8x1x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,8x1x1.
+14:39:21: Finished parsing scripts for resource group sdktrays
+14:39:22: D3D9 : ***** Dimensions altered by the render system
+14:39:22: D3D9 : ***** Source image dimensions : 1024x768
+14:39:22: D3D9 : ***** Texture dimensions : 1024x1024
+14:39:22: Texture: play_background.png: Loading 1 faces(PF_R8G8B8,1024x768x1) with 3 generated mipmaps from Image. Internal format is PF_X8R8G8B8,1024x1024x1.
+14:39:22: Texture: play_play_release.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+14:39:22: Texture: play_facebook_release.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:22: Texture: play_twitter_release.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:22: Texture: play_play_press.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+14:39:22: D3D9 : ***** Dimensions altered by the render system
+14:39:22: D3D9 : ***** Source image dimensions : 1024x768
+14:39:22: D3D9 : ***** Texture dimensions : 1024x1024
+14:39:22: Texture: jieshu_background.png: Loading 1 faces(PF_R8G8B8,1024x768x1) with 3 generated mipmaps from Image. Internal format is PF_X8R8G8B8,1024x1024x1.
+14:39:23: Texture: moshi_stage.png: Loading 1 faces(PF_A8R8G8B8,256x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x64x1.
+14:39:23: Texture: moshi_leftright.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+14:39:23: Texture: moshi_updown.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+14:39:23: Texture: moshi_smile.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+14:39:23: Texture: moshi_fanhui_press.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:23: Creating resource group UserFace
+14:39:23: Added resource location 'Media/CameraGame/UserFace' of type 'FileSystem' to resource group 'UserFace'
+14:39:23: Initialising resource group UserFace
+14:39:23: Parsing scripts for resource group UserFace
+14:39:23: Finished parsing scripts for resource group UserFace
+14:39:23: Texture: paizhao_paizhao_release.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+14:39:23: Texture: moshi_fanhui_release.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:23: Texture: tuku_delete_0.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+14:39:23: Texture: face_front_6.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+14:39:23: OGRE EXCEPTION(5:ItemIdentityException): Child with name SelectHeadSliderGallery/cz/SliderGallery/button/4 not found. in OverlayContainer::getChild at ..\..\OgreMain\src\OgreOverlayContainer.cpp (line 178)
+14:39:23: Texture: InterfaceModel_duck.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+14:39:23: Texture: InterfaceModel_hema.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+14:39:23: Texture: InterfaceModel_laishu.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+14:39:24: Mesh: Loading face_shou.mesh.
+14:39:24: Skeleton: Loading head.skeleton
+14:39:24: WARNING: face_shou.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+14:39:24: Texture: face_front_1.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+14:39:24: Texture: lian_kouqiang.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+14:39:24: Mesh: Loading hema.mesh.
+14:39:24: WARNING: hema.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+14:39:25: Texture: hema.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
+14:39:25: Mesh: Loading face_pang.mesh.
+14:39:25: WARNING: face_pang.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+14:39:25: Texture: suspend_continue.png: Loading 1 faces(PF_A8R8G8B8,256x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x64x1.
+14:39:25: Texture: suspend_RETURN.png: Loading 1 faces(PF_A8R8G8B8,256x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x64x1.
+14:39:25: Mesh: Loading zidan.mesh.
+14:39:25: WARNING: zidan.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+14:39:25: Texture: zidan.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
+14:39:25: Texture: face.png: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+14:39:26: Texture: youxi_zhanting_release.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:26: Texture: model3__xuetiao_1.png: Loading 1 faces(PF_A8R8G8B8,32x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x512x1.
+14:39:26: Texture: model3__xuetiao.png: Loading 1 faces(PF_A8R8G8B8,32x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x512x1.
+14:39:26: OGRE EXCEPTION(5:ItemIdentityException): Child with name WarModeThree_ItemSlectSlider/cz/Select/Arms/button/6 not found. in OverlayContainer::getChild at ..\..\OgreMain\src\OgreOverlayContainer.cpp (line 178)
+14:39:26: Texture: model3__egg_press.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+14:39:26: Texture: model3__brick_press.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:26: Texture: model3__shoes_press.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:26: Texture: model3__knife_press.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:28: Mesh: Loading jidan.mesh.
+14:39:28: WARNING: jidan.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+14:39:28: Texture: jidan.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
+14:39:29: Texture: youxi_zhanting_press.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:30: OGRE EXCEPTION(5:ItemIdentityException): Child with name SelectHeadSliderGallery/cz/SliderGallery/button/4 not found. in OverlayContainer::getChild at ..\..\OgreMain\src\OgreOverlayContainer.cpp (line 178)
+14:39:32: Mesh: Loading duck.mesh.
+14:39:32: WARNING: duck.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+14:39:32: Texture: duck.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
+14:39:32: Texture: youxi_fangxiang.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+14:39:32: Texture: youxi_gongji_release.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:32: Texture: youxi_zhunxin.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:32: Texture: youxi_shengmingzhi.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+14:39:32: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource jieshu_wenzikuang_1.png in resource group sdktrays or any other group. in ResourceGroupManager::openResource at ..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+14:39:32: Error loading texture jieshu_wenzikuang_1.png. Texture layer will be blank. Loading the texture failed with the following exception: OGRE EXCEPTION(6:FileNotFoundException): Cannot locate resource jieshu_wenzikuang_1.png in resource group sdktrays or any other group. in ResourceGroupManager::openResource at ..\..\OgreMain\src\OgreResourceGroupManager.cpp (line 753)
+14:39:32: Texture: jieshu_return.png: Loading 1 faces(PF_A8R8G8B8,512x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x128x1.
+14:39:32: Texture: jieshu_replay.png: Loading 1 faces(PF_A8R8G8B8,512x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x128x1.
+14:39:32: Texture: jieshu_score.png: Loading 1 faces(PF_A8R8G8B8,256x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x64x1.
+14:39:32: Mesh: Loading puffer.mesh.
+14:39:32: Skeleton: Loading puffer.skeleton
+14:39:32: WARNING: puffer.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+14:39:33: Texture: puffer.png: Loading 1 faces(PF_A8R8G8B8,1024x1024x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
+14:39:37: Texture: youxi_gongji_press.png: Loading 1 faces(PF_A8R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,128x128x1.
+14:39:46: DefaultWorkQueue('Root') shutting down on thread main.
+14:39:46: *-*-* OGRE Shutdown
+14:39:46: Unregistering ResourceManager for type Compositor
+14:39:46: Unregistering ResourceManager for type Font
+14:39:46: Unregistering ResourceManager for type Skeleton
+14:39:46: Unregistering ResourceManager for type Mesh
+14:39:46: Unregistering ResourceManager for type HighLevelGpuProgram
+14:39:46: Uninstalling plugin: Octree & Terrain Scene Manager
+14:39:46: Plugin successfully uninstalled
+14:39:46: Unloading library Plugin_OctreeSceneManager
+14:39:46: Uninstalling plugin: ParticleFX
+14:39:46: Plugin successfully uninstalled
+14:39:46: Unloading library Plugin_ParticleFX
+14:39:46: Uninstalling plugin: D3D9 RenderSystem
+14:39:46: D3D9 : Shutting down cleanly.
+14:39:46: Unregistering ResourceManager for type Texture
+14:39:46: Unregistering ResourceManager for type GpuProgram
+14:39:46: D3D9 : Direct3D9 Rendering Subsystem destroyed.
+14:39:46: Plugin successfully uninstalled
+14:39:46: Unloading library RenderSystem_Direct3D9
+14:39:46: Unregistering ResourceManager for type Material

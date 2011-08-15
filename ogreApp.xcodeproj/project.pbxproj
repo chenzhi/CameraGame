@@ -1,0 +1,1169 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		21222E5913C7F78600992E9C /* Accelerometer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 21222E5013C7F78600992E9C /* Accelerometer.mm */; };
+		21222E5A13C7F78600992E9C /* FileSystemLayerImpl_iPhone.mm in Sources */ = {isa = PBXBuildFile; fileRef = 21222E5113C7F78600992E9C /* FileSystemLayerImpl_iPhone.mm */; };
+		21222E5B13C7F78600992E9C /* inputListen.mm in Sources */ = {isa = PBXBuildFile; fileRef = 21222E5413C7F78600992E9C /* inputListen.mm */; };
+		21222E5C13C7F78600992E9C /* ofxiPhoneVideoGrabber.mm in Sources */ = {isa = PBXBuildFile; fileRef = 21222E5613C7F78600992E9C /* ofxiPhoneVideoGrabber.mm */; };
+		21222E5D13C7F78600992E9C /* UITouch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 21222E5813C7F78600992E9C /* UITouch.mm */; };
+		7701CF6413B1B69200D39C17 /* CaptureFaceGS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7701CF6213B1B69200D39C17 /* CaptureFaceGS.cpp */; };
+		7701CF6813B1C0F600D39C17 /* stateMachine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7701CF6613B1C0F600D39C17 /* stateMachine.cpp */; };
+		7701CF6B13B1DA2100D39C17 /* WarGS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7701CF6913B1DA2100D39C17 /* WarGS.cpp */; };
+		770323FD13CDF94000EBB43F /* Widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 770323FB13CDF94000EBB43F /* Widget.cpp */; };
+		771FA83C13AB1884001C73C8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771FA83B13AB1884001C73C8 /* CoreVideo.framework */; };
+		771FA83E13AB18DC001C73C8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771FA83D13AB18DC001C73C8 /* CoreMedia.framework */; };
+		771FA84013AB19A3001C73C8 /* Media in Resources */ = {isa = PBXBuildFile; fileRef = 771FA83F13AB19A3001C73C8 /* Media */; };
+		771FA90113AB2561001C73C8 /* libboost_date_time.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 771FA8FF13AB2560001C73C8 /* libboost_date_time.a */; };
+		771FA90213AB2562001C73C8 /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 771FA90013AB2560001C73C8 /* libboost_thread.a */; };
+		773945BC13AB028B001E735C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773945BB13AB028B001E735C /* AVFoundation.framework */; };
+		773A266413CE00A900B8261C /* UI_GamePlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 773A266213CE00A900B8261C /* UI_GamePlay.cpp */; };
+		77435C6E13CDFBBC00940850 /* GS_GamePlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77435C6D13CDFBBC00940850 /* GS_GamePlay.cpp */; };
+		7755CC3213CEBCEB00E9B78A /* GSSelectMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7755CC2E13CEBCEB00E9B78A /* GSSelectMode.cpp */; };
+		7755CC3313CEBCEB00E9B78A /* UISelectMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7755CC3013CEBCEB00E9B78A /* UISelectMode.cpp */; };
+		7755CC3713CEBD1600E9B78A /* UISelectUser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */; };
+		7775627413B03582003849ED /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7775627013B03582003849ED /* Bullet.cpp */; };
+		7788FA5B13E6BEA500993B56 /* UIWarModeThree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7788FA5313E6BEA500993B56 /* UIWarModeThree.cpp */; };
+		7788FA5C13E6BEA500993B56 /* WarItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7788FA5513E6BEA500993B56 /* WarItem.cpp */; };
+		7788FA5D13E6BEA500993B56 /* WarItemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7788FA5713E6BEA500993B56 /* WarItemManager.cpp */; };
+		7788FA5E13E6BEA500993B56 /* WarModeThree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7788FA5913E6BEA500993B56 /* WarModeThree.cpp */; };
+		778A6F3913DD753000EFE6EA /* UserInformation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778A6F3713DD753000EFE6EA /* UserInformation.cpp */; };
+		778A6F3C13DD754100EFE6EA /* UIWarTwo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778A6F3A13DD754100EFE6EA /* UIWarTwo.cpp */; };
+		778A6F4013DD755900EFE6EA /* Tool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778A6F3E13DD755900EFE6EA /* Tool.cpp */; };
+		778F9E1D13B8337700E1706D /* enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 778F9E1B13B8337700E1706D /* enemy.cpp */; };
+		77910B9013AA0D0300ACEE73 /* ogre.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8D13AA0D0300ACEE73 /* ogre.cfg */; };
+		77910B9113AA0D0300ACEE73 /* plugins.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8E13AA0D0300ACEE73 /* plugins.cfg */; };
+		77910B9213AA0D0300ACEE73 /* resources.cfg in Resources */ = {isa = PBXBuildFile; fileRef = 77910B8F13AA0D0300ACEE73 /* resources.cfg */; };
+		779B6D9213D7B67C006E2BE4 /* UISelectFaceMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779B6D8E13D7B67C006E2BE4 /* UISelectFaceMode.cpp */; };
+		779B6D9313D7B67C006E2BE4 /* UISelectHead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779B6D9013D7B67C006E2BE4 /* UISelectHead.cpp */; };
+		779D145A13DEDE7B00E9C5B2 /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779D145213DEDE7B00E9C5B2 /* EventManager.cpp */; };
+		779D145B13DEDE7B00E9C5B2 /* Friend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779D145413DEDE7B00E9C5B2 /* Friend.cpp */; };
+		779D145C13DEDE7B00E9C5B2 /* WarManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779D145613DEDE7B00E9C5B2 /* WarManager.cpp */; };
+		779D145D13DEDE7B00E9C5B2 /* WarMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779D145813DEDE7B00E9C5B2 /* WarMode.cpp */; };
+		779F91F513C5546F009A65D4 /* UIBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779F91F313C5546F009A65D4 /* UIBase.cpp */; };
+		779F91FA13C56420009A65D4 /* UICaptureFace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779F91F813C56420009A65D4 /* UICaptureFace.cpp */; };
+		779F91FD13C5A71F009A65D4 /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 779F91FB13C5A71F009A65D4 /* UIManager.cpp */; };
+		77A8B4F813B1770600D40305 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A8B4F713B1770600D40305 /* CoreMotion.framework */; };
+		77A8B4FF13B19A7E00D40305 /* GameState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77A8B4FE13B19A7E00D40305 /* GameState.cpp */; };
+		77C17B5913AED3A90067B857 /* ofPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77C17B5713AED3A90067B857 /* ofPoint.cpp */; };
+		77DD6AA413DFFD7000278BBA /* UIWarPause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77DD6AA013DFFD7000278BBA /* UIWarPause.cpp */; };
+		77DD6AA513DFFD7000278BBA /* UIWarTwoBalance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77DD6AA213DFFD7000278BBA /* UIWarTwoBalance.cpp */; };
+		77F4287413CDF1D200C3478E /* SdkTrays.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77F4287213CDF1D200C3478E /* SdkTrays.cpp */; };
+		77FCF58B13D904C00048CCE3 /* EnemyQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */; };
+		77FF16C213F2CB2F00A5B7C5 /* GS_Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77FF16C013F2CB2F00A5B7C5 /* GS_Test.cpp */; };
+		8896C17F13A88233000DA13C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C17E13A88233000DA13C /* UIKit.framework */; };
+		8896C18113A88233000DA13C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18013A88233000DA13C /* Foundation.framework */; };
+		8896C18313A88233000DA13C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8896C18213A88233000DA13C /* CoreGraphics.framework */; };
+		8896C18F13A88233000DA13C /* ogreAppAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8896C18E13A88233000DA13C /* ogreAppAppDelegate.mm */; };
+		8896C19513A88233000DA13C /* ogreAppViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8896C19413A88233000DA13C /* ogreAppViewController.mm */; };
+		8896C1A213A8869C000DA13C /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8896C1A013A8869C000DA13C /* Application.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		21222E4F13C7F78600992E9C /* Accelerometer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accelerometer.h; sourceTree = "<group>"; };
+		21222E5013C7F78600992E9C /* Accelerometer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Accelerometer.mm; sourceTree = "<group>"; };
+		21222E5113C7F78600992E9C /* FileSystemLayerImpl_iPhone.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FileSystemLayerImpl_iPhone.mm; sourceTree = "<group>"; };
+		21222E5213C7F78600992E9C /* FileSystemLayerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemLayerImpl.h; sourceTree = "<group>"; };
+		21222E5313C7F78600992E9C /* inputListen.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = inputListen.h; sourceTree = "<group>"; };
+		21222E5413C7F78600992E9C /* inputListen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = inputListen.mm; sourceTree = "<group>"; };
+		21222E5513C7F78600992E9C /* ofxiPhoneVideoGrabber.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = ofxiPhoneVideoGrabber.h; sourceTree = "<group>"; };
+		21222E5613C7F78600992E9C /* ofxiPhoneVideoGrabber.mm */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxiPhoneVideoGrabber.mm; sourceTree = "<group>"; };
+		21222E5713C7F78600992E9C /* UITouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouch.h; sourceTree = "<group>"; };
+		21222E5813C7F78600992E9C /* UITouch.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UITouch.mm; sourceTree = "<group>"; };
+		21222E5F13C7F96900992E9C /* pch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pch.h; path = vs/pch.h; sourceTree = "<group>"; };
+		7701CF6213B1B69200D39C17 /* CaptureFaceGS.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = CaptureFaceGS.cpp; sourceTree = "<group>"; };
+		7701CF6313B1B69200D39C17 /* CaptureFaceGS.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = CaptureFaceGS.h; sourceTree = "<group>"; };
+		7701CF6513B1BC3400D39C17 /* state.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = state.h; sourceTree = "<group>"; };
+		7701CF6613B1C0F600D39C17 /* stateMachine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stateMachine.cpp; sourceTree = "<group>"; };
+		7701CF6713B1C0F600D39C17 /* stateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stateMachine.h; sourceTree = "<group>"; };
+		7701CF6913B1DA2100D39C17 /* WarGS.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = WarGS.cpp; sourceTree = "<group>"; };
+		7701CF6A13B1DA2100D39C17 /* WarGS.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = WarGS.h; sourceTree = "<group>"; };
+		770323FB13CDF94000EBB43F /* Widget.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = Widget.cpp; sourceTree = "<group>"; };
+		770323FC13CDF94000EBB43F /* Widget.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Widget.h; sourceTree = "<group>"; };
+		771FA83B13AB1884001C73C8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		771FA83D13AB18DC001C73C8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		771FA83F13AB19A3001C73C8 /* Media */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Media; sourceTree = "<group>"; };
+		771FA8FF13AB2560001C73C8 /* libboost_date_time.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_date_time.a; path = "../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_date_time.a"; sourceTree = "<group>"; };
+		771FA90013AB2560001C73C8 /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = "../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_thread.a"; sourceTree = "<group>"; };
+		773945BB13AB028B001E735C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		773A266213CE00A900B8261C /* UI_GamePlay.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UI_GamePlay.cpp; sourceTree = "<group>"; };
+		773A266313CE00A900B8261C /* UI_GamePlay.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UI_GamePlay.h; sourceTree = "<group>"; };
+		77435C6A13CDFB6600940850 /* GS_GamePlay.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = GS_GamePlay.h; sourceTree = "<group>"; };
+		77435C6D13CDFBBC00940850 /* GS_GamePlay.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = GS_GamePlay.cpp; sourceTree = "<group>"; };
+		7755CC2E13CEBCEB00E9B78A /* GSSelectMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = GSSelectMode.cpp; sourceTree = "<group>"; };
+		7755CC2F13CEBCEB00E9B78A /* GSSelectMode.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = GSSelectMode.h; sourceTree = "<group>"; };
+		7755CC3013CEBCEB00E9B78A /* UISelectMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UISelectMode.cpp; sourceTree = "<group>"; };
+		7755CC3113CEBCEB00E9B78A /* UISelectMode.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UISelectMode.h; sourceTree = "<group>"; };
+		7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UISelectUser.cpp; sourceTree = "<group>"; };
+		7755CC3613CEBD1600E9B78A /* UISelectUser.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UISelectUser.h; sourceTree = "<group>"; };
+		7775627013B03582003849ED /* Bullet.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Bullet.cpp; sourceTree = "<group>"; };
+		7775627113B03582003849ED /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
+		7788FA5313E6BEA500993B56 /* UIWarModeThree.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UIWarModeThree.cpp; sourceTree = "<group>"; };
+		7788FA5413E6BEA500993B56 /* UIWarModeThree.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIWarModeThree.h; sourceTree = "<group>"; };
+		7788FA5513E6BEA500993B56 /* WarItem.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = WarItem.cpp; sourceTree = "<group>"; };
+		7788FA5613E6BEA500993B56 /* WarItem.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = WarItem.h; sourceTree = "<group>"; };
+		7788FA5713E6BEA500993B56 /* WarItemManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = WarItemManager.cpp; sourceTree = "<group>"; };
+		7788FA5813E6BEA500993B56 /* WarItemManager.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = WarItemManager.h; sourceTree = "<group>"; };
+		7788FA5913E6BEA500993B56 /* WarModeThree.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = WarModeThree.cpp; sourceTree = "<group>"; };
+		7788FA5A13E6BEA500993B56 /* WarModeThree.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = WarModeThree.h; sourceTree = "<group>"; };
+		778A6F3713DD753000EFE6EA /* UserInformation.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = UserInformation.cpp; sourceTree = "<group>"; };
+		778A6F3813DD753000EFE6EA /* UserInformation.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UserInformation.h; sourceTree = "<group>"; };
+		778A6F3A13DD754100EFE6EA /* UIWarTwo.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UIWarTwo.cpp; sourceTree = "<group>"; };
+		778A6F3B13DD754100EFE6EA /* UIWarTwo.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIWarTwo.h; sourceTree = "<group>"; };
+		778A6F3E13DD755900EFE6EA /* Tool.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = Tool.cpp; sourceTree = "<group>"; };
+		778A6F3F13DD755900EFE6EA /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		778F9E1B13B8337700E1706D /* enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = enemy.cpp; sourceTree = "<group>"; };
+		778F9E1C13B8337700E1706D /* enemy.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = enemy.h; sourceTree = "<group>"; };
+		77910B8D13AA0D0300ACEE73 /* ogre.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ogre.cfg; path = Resources/ogre.cfg; sourceTree = "<group>"; };
+		77910B8E13AA0D0300ACEE73 /* plugins.cfg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plugins.cfg; path = Resources/plugins.cfg; sourceTree = "<group>"; };
+		77910B8F13AA0D0300ACEE73 /* resources.cfg */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = text; name = resources.cfg; path = Resources/resources.cfg; sourceTree = "<group>"; };
+		77979F4013AAE3920040265C /* FileSystemLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileSystemLayer.h; sourceTree = "<group>"; };
+		779B6D8E13D7B67C006E2BE4 /* UISelectFaceMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UISelectFaceMode.cpp; sourceTree = "<group>"; };
+		779B6D8F13D7B67C006E2BE4 /* UISelectFaceMode.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UISelectFaceMode.h; sourceTree = "<group>"; };
+		779B6D9013D7B67C006E2BE4 /* UISelectHead.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UISelectHead.cpp; sourceTree = "<group>"; };
+		779B6D9113D7B67C006E2BE4 /* UISelectHead.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UISelectHead.h; sourceTree = "<group>"; };
+		779D145213DEDE7B00E9C5B2 /* EventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EventManager.cpp; sourceTree = "<group>"; };
+		779D145313DEDE7B00E9C5B2 /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManager.h; sourceTree = "<group>"; };
+		779D145413DEDE7B00E9C5B2 /* Friend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Friend.cpp; sourceTree = "<group>"; };
+		779D145513DEDE7B00E9C5B2 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		779D145613DEDE7B00E9C5B2 /* WarManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = WarManager.cpp; sourceTree = "<group>"; };
+		779D145713DEDE7B00E9C5B2 /* WarManager.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = WarManager.h; sourceTree = "<group>"; };
+		779D145813DEDE7B00E9C5B2 /* WarMode.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = WarMode.cpp; sourceTree = "<group>"; };
+		779D145913DEDE7B00E9C5B2 /* WarMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarMode.h; sourceTree = "<group>"; };
+		779F91F313C5546F009A65D4 /* UIBase.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UIBase.cpp; sourceTree = SOURCE_ROOT; };
+		779F91F413C5546F009A65D4 /* UIBase.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIBase.h; sourceTree = "<group>"; };
+		779F91F713C5580D009A65D4 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		779F91F813C56420009A65D4 /* UICaptureFace.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UICaptureFace.cpp; sourceTree = "<group>"; };
+		779F91F913C56420009A65D4 /* UICaptureFace.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UICaptureFace.h; sourceTree = "<group>"; };
+		779F91FB13C5A71F009A65D4 /* UIManager.cpp */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.cpp.cpp; path = UIManager.cpp; sourceTree = "<group>"; };
+		779F91FC13C5A71F009A65D4 /* UIManager.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIManager.h; sourceTree = "<group>"; };
+		77A2646C13B2CCF300894A24 /* SdkTrays.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = SdkTrays.h; sourceTree = "<group>"; };
+		77A8B4F713B1770600D40305 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		77A8B4FD13B1991200D40305 /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
+		77A8B4FE13B19A7E00D40305 /* GameState.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = GameState.cpp; sourceTree = "<group>"; };
+		77C17B5713AED3A90067B857 /* ofPoint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofPoint.cpp; sourceTree = "<group>"; };
+		77C17B5813AED3A90067B857 /* ofPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofPoint.h; sourceTree = "<group>"; };
+		77DD6AA013DFFD7000278BBA /* UIWarPause.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UIWarPause.cpp; sourceTree = "<group>"; };
+		77DD6AA113DFFD7000278BBA /* UIWarPause.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIWarPause.h; sourceTree = "<group>"; };
+		77DD6AA213DFFD7000278BBA /* UIWarTwoBalance.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UIWarTwoBalance.cpp; sourceTree = "<group>"; };
+		77DD6AA313DFFD7000278BBA /* UIWarTwoBalance.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIWarTwoBalance.h; sourceTree = "<group>"; };
+		77F4287213CDF1D200C3478E /* SdkTrays.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SdkTrays.cpp; sourceTree = "<group>"; };
+		77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = EnemyQueue.cpp; sourceTree = "<group>"; };
+		77FCF58813D904C00048CCE3 /* EnemyQueue.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = EnemyQueue.h; sourceTree = "<group>"; };
+		77FF16C013F2CB2F00A5B7C5 /* GS_Test.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = GS_Test.cpp; sourceTree = "<group>"; };
+		77FF16C113F2CB2F00A5B7C5 /* GS_Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GS_Test.h; sourceTree = "<group>"; };
+		8896C17A13A88232000DA13C /* ogreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ogreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8896C17E13A88233000DA13C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8896C18013A88233000DA13C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8896C18213A88233000DA13C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8896C18613A88233000DA13C /* ogreApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ogreApp-Info.plist"; sourceTree = "<group>"; };
+		8896C18A13A88233000DA13C /* ogreApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ogreApp-Prefix.pch"; sourceTree = "<group>"; };
+		8896C18D13A88233000DA13C /* ogreAppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ogreAppAppDelegate.h; sourceTree = "<group>"; };
+		8896C18E13A88233000DA13C /* ogreAppAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ogreAppAppDelegate.mm; sourceTree = "<group>"; };
+		8896C19313A88233000DA13C /* ogreAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ogreAppViewController.h; sourceTree = "<group>"; };
+		8896C19413A88233000DA13C /* ogreAppViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ogreAppViewController.mm; sourceTree = "<group>"; };
+		8896C1A013A8869C000DA13C /* Application.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = Application.cpp; sourceTree = "<group>"; };
+		8896C1A113A8869C000DA13C /* Application.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
+		88CBFD4113A8B0E600EBCDB6 /* OgreStaticPluginLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OgreStaticPluginLoader.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8896C17713A88232000DA13C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77A8B4F813B1770600D40305 /* CoreMotion.framework in Frameworks */,
+				771FA90113AB2561001C73C8 /* libboost_date_time.a in Frameworks */,
+				771FA90213AB2562001C73C8 /* libboost_thread.a in Frameworks */,
+				771FA83E13AB18DC001C73C8 /* CoreMedia.framework in Frameworks */,
+				771FA83C13AB1884001C73C8 /* CoreVideo.framework in Frameworks */,
+				773945BC13AB028B001E735C /* AVFoundation.framework in Frameworks */,
+				8896C17F13A88233000DA13C /* UIKit.framework in Frameworks */,
+				8896C18113A88233000DA13C /* Foundation.framework in Frameworks */,
+				8896C18313A88233000DA13C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7701CF6013B1B66700D39C17 /* gameState */ = {
+			isa = PBXGroup;
+			children = (
+				77FF16BE13F2CB0E00A5B7C5 /* TestGame */,
+				77FCF58513D904870048CCE3 /* War */,
+				7755CC3413CEBCF200E9B78A /* SelectFace */,
+				7755CC2C13CEBCC400E9B78A /* SelectMode */,
+				77F4286513CDF14100C3478E /* GamePlay */,
+				77A8B4FE13B19A7E00D40305 /* GameState.cpp */,
+				77A8B4FD13B1991200D40305 /* GameState.h */,
+				7701CF6613B1C0F600D39C17 /* stateMachine.cpp */,
+				7701CF6713B1C0F600D39C17 /* stateMachine.h */,
+				7701CF6513B1BC3400D39C17 /* state.h */,
+			);
+			name = gameState;
+			sourceTree = "<group>";
+		};
+		7755CC2C13CEBCC400E9B78A /* SelectMode */ = {
+			isa = PBXGroup;
+			children = (
+				7755CC2E13CEBCEB00E9B78A /* GSSelectMode.cpp */,
+				7755CC2F13CEBCEB00E9B78A /* GSSelectMode.h */,
+				7755CC3013CEBCEB00E9B78A /* UISelectMode.cpp */,
+				7755CC3113CEBCEB00E9B78A /* UISelectMode.h */,
+			);
+			name = SelectMode;
+			sourceTree = "<group>";
+		};
+		7755CC3413CEBCF200E9B78A /* SelectFace */ = {
+			isa = PBXGroup;
+			children = (
+				779B6D8E13D7B67C006E2BE4 /* UISelectFaceMode.cpp */,
+				779B6D8F13D7B67C006E2BE4 /* UISelectFaceMode.h */,
+				779B6D9013D7B67C006E2BE4 /* UISelectHead.cpp */,
+				779B6D9113D7B67C006E2BE4 /* UISelectHead.h */,
+				7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */,
+				7755CC3613CEBD1600E9B78A /* UISelectUser.h */,
+				779F91F813C56420009A65D4 /* UICaptureFace.cpp */,
+				779F91F913C56420009A65D4 /* UICaptureFace.h */,
+				7701CF6213B1B69200D39C17 /* CaptureFaceGS.cpp */,
+				7701CF6313B1B69200D39C17 /* CaptureFaceGS.h */,
+			);
+			name = SelectFace;
+			sourceTree = "<group>";
+		};
+		778A6F3D13DD754B00EFE6EA /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				778A6F3E13DD755900EFE6EA /* Tool.cpp */,
+				778A6F3F13DD755900EFE6EA /* Tool.h */,
+			);
+			name = Tool;
+			sourceTree = "<group>";
+		};
+		779F91F113C5540C009A65D4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				770323FB13CDF94000EBB43F /* Widget.cpp */,
+				770323FC13CDF94000EBB43F /* Widget.h */,
+				77A2646C13B2CCF300894A24 /* SdkTrays.h */,
+				77F4287213CDF1D200C3478E /* SdkTrays.cpp */,
+				779F91F313C5546F009A65D4 /* UIBase.cpp */,
+				779F91F413C5546F009A65D4 /* UIBase.h */,
+				779F91FB13C5A71F009A65D4 /* UIManager.cpp */,
+				779F91FC13C5A71F009A65D4 /* UIManager.h */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		779F91F613C557FB009A65D4 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				778A6F3713DD753000EFE6EA /* UserInformation.cpp */,
+				778A6F3813DD753000EFE6EA /* UserInformation.h */,
+				779F91F713C5580D009A65D4 /* Config.h */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		77BDDF2113B46A0600818C67 /* collisionManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = collisionManager;
+			sourceTree = "<group>";
+		};
+		77F4286513CDF14100C3478E /* GamePlay */ = {
+			isa = PBXGroup;
+			children = (
+				773A266213CE00A900B8261C /* UI_GamePlay.cpp */,
+				773A266313CE00A900B8261C /* UI_GamePlay.h */,
+				77435C6D13CDFBBC00940850 /* GS_GamePlay.cpp */,
+				77435C6A13CDFB6600940850 /* GS_GamePlay.h */,
+			);
+			name = GamePlay;
+			sourceTree = "<group>";
+		};
+		77FCF58513D904870048CCE3 /* War */ = {
+			isa = PBXGroup;
+			children = (
+				7788FA5313E6BEA500993B56 /* UIWarModeThree.cpp */,
+				7788FA5413E6BEA500993B56 /* UIWarModeThree.h */,
+				7788FA5513E6BEA500993B56 /* WarItem.cpp */,
+				7788FA5613E6BEA500993B56 /* WarItem.h */,
+				7788FA5713E6BEA500993B56 /* WarItemManager.cpp */,
+				7788FA5813E6BEA500993B56 /* WarItemManager.h */,
+				7788FA5913E6BEA500993B56 /* WarModeThree.cpp */,
+				7788FA5A13E6BEA500993B56 /* WarModeThree.h */,
+				77DD6AA013DFFD7000278BBA /* UIWarPause.cpp */,
+				77DD6AA113DFFD7000278BBA /* UIWarPause.h */,
+				77DD6AA213DFFD7000278BBA /* UIWarTwoBalance.cpp */,
+				77DD6AA313DFFD7000278BBA /* UIWarTwoBalance.h */,
+				779D145213DEDE7B00E9C5B2 /* EventManager.cpp */,
+				779D145313DEDE7B00E9C5B2 /* EventManager.h */,
+				779D145413DEDE7B00E9C5B2 /* Friend.cpp */,
+				779D145513DEDE7B00E9C5B2 /* Friend.h */,
+				779D145613DEDE7B00E9C5B2 /* WarManager.cpp */,
+				779D145713DEDE7B00E9C5B2 /* WarManager.h */,
+				779D145813DEDE7B00E9C5B2 /* WarMode.cpp */,
+				779D145913DEDE7B00E9C5B2 /* WarMode.h */,
+				778A6F3A13DD754100EFE6EA /* UIWarTwo.cpp */,
+				778A6F3B13DD754100EFE6EA /* UIWarTwo.h */,
+				77FCF58713D904C00048CCE3 /* EnemyQueue.cpp */,
+				77FCF58813D904C00048CCE3 /* EnemyQueue.h */,
+				778F9E1B13B8337700E1706D /* enemy.cpp */,
+				778F9E1C13B8337700E1706D /* enemy.h */,
+				7775627013B03582003849ED /* Bullet.cpp */,
+				7775627113B03582003849ED /* Bullet.h */,
+				7701CF6913B1DA2100D39C17 /* WarGS.cpp */,
+				7701CF6A13B1DA2100D39C17 /* WarGS.h */,
+			);
+			name = War;
+			sourceTree = "<group>";
+		};
+		77FF16BE13F2CB0E00A5B7C5 /* TestGame */ = {
+			isa = PBXGroup;
+			children = (
+				77FF16C013F2CB2F00A5B7C5 /* GS_Test.cpp */,
+				77FF16C113F2CB2F00A5B7C5 /* GS_Test.h */,
+			);
+			name = TestGame;
+			sourceTree = "<group>";
+		};
+		8896C16F13A88232000DA13C = {
+			isa = PBXGroup;
+			children = (
+				778A6F3D13DD754B00EFE6EA /* Tool */,
+				779F91F613C557FB009A65D4 /* Config */,
+				779F91F113C5540C009A65D4 /* UI */,
+				77BDDF2113B46A0600818C67 /* collisionManager */,
+				7701CF6013B1B66700D39C17 /* gameState */,
+				88CBFD3E13A8ABA600EBCDB6 /* Resources */,
+				8896C1A313A88DAD000DA13C /* source */,
+				8896C18413A88233000DA13C /* ogreApp */,
+				8896C17D13A88233000DA13C /* Frameworks */,
+				8896C17B13A88232000DA13C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8896C17B13A88232000DA13C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8896C17A13A88232000DA13C /* ogreApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8896C17D13A88233000DA13C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77A8B4F713B1770600D40305 /* CoreMotion.framework */,
+				771FA83D13AB18DC001C73C8 /* CoreMedia.framework */,
+				771FA8FF13AB2560001C73C8 /* libboost_date_time.a */,
+				771FA90013AB2560001C73C8 /* libboost_thread.a */,
+				771FA83B13AB1884001C73C8 /* CoreVideo.framework */,
+				773945BB13AB028B001E735C /* AVFoundation.framework */,
+				8896C17E13A88233000DA13C /* UIKit.framework */,
+				8896C18013A88233000DA13C /* Foundation.framework */,
+				8896C18213A88233000DA13C /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8896C18413A88233000DA13C /* ogreApp */ = {
+			isa = PBXGroup;
+			children = (
+				21222E4F13C7F78600992E9C /* Accelerometer.h */,
+				21222E5013C7F78600992E9C /* Accelerometer.mm */,
+				21222E5113C7F78600992E9C /* FileSystemLayerImpl_iPhone.mm */,
+				21222E5213C7F78600992E9C /* FileSystemLayerImpl.h */,
+				21222E5313C7F78600992E9C /* inputListen.h */,
+				21222E5413C7F78600992E9C /* inputListen.mm */,
+				21222E5513C7F78600992E9C /* ofxiPhoneVideoGrabber.h */,
+				21222E5613C7F78600992E9C /* ofxiPhoneVideoGrabber.mm */,
+				21222E5713C7F78600992E9C /* UITouch.h */,
+				21222E5813C7F78600992E9C /* UITouch.mm */,
+				8896C18D13A88233000DA13C /* ogreAppAppDelegate.h */,
+				8896C18E13A88233000DA13C /* ogreAppAppDelegate.mm */,
+				8896C19313A88233000DA13C /* ogreAppViewController.h */,
+				8896C19413A88233000DA13C /* ogreAppViewController.mm */,
+				8896C18513A88233000DA13C /* Supporting Files */,
+			);
+			path = ogreApp;
+			sourceTree = "<group>";
+		};
+		8896C18513A88233000DA13C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8896C18613A88233000DA13C /* ogreApp-Info.plist */,
+				8896C18A13A88233000DA13C /* ogreApp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8896C1A313A88DAD000DA13C /* source */ = {
+			isa = PBXGroup;
+			children = (
+				21222E5F13C7F96900992E9C /* pch.h */,
+				77C17B5713AED3A90067B857 /* ofPoint.cpp */,
+				77C17B5813AED3A90067B857 /* ofPoint.h */,
+				77979F4013AAE3920040265C /* FileSystemLayer.h */,
+				88CBFD4113A8B0E600EBCDB6 /* OgreStaticPluginLoader.h */,
+				8896C1A013A8869C000DA13C /* Application.cpp */,
+				8896C1A113A8869C000DA13C /* Application.h */,
+			);
+			name = source;
+			sourceTree = "<group>";
+		};
+		88CBFD3E13A8ABA600EBCDB6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				771FA83F13AB19A3001C73C8 /* Media */,
+				77910B8D13AA0D0300ACEE73 /* ogre.cfg */,
+				77910B8E13AA0D0300ACEE73 /* plugins.cfg */,
+				77910B8F13AA0D0300ACEE73 /* resources.cfg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8896C17913A88232000DA13C /* ogreApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8896C19B13A88233000DA13C /* Build configuration list for PBXNativeTarget "ogreApp" */;
+			buildPhases = (
+				8896C17613A88232000DA13C /* Sources */,
+				8896C17713A88232000DA13C /* Frameworks */,
+				8896C17813A88232000DA13C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ogreApp;
+			productName = ogreApp;
+			productReference = 8896C17A13A88232000DA13C /* ogreApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8896C17113A88232000DA13C /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 8896C17413A88232000DA13C /* Build configuration list for PBXProject "ogreApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8896C16F13A88232000DA13C;
+			productRefGroup = 8896C17B13A88232000DA13C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8896C17913A88232000DA13C /* ogreApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8896C17813A88232000DA13C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77910B9013AA0D0300ACEE73 /* ogre.cfg in Resources */,
+				77910B9113AA0D0300ACEE73 /* plugins.cfg in Resources */,
+				77910B9213AA0D0300ACEE73 /* resources.cfg in Resources */,
+				771FA84013AB19A3001C73C8 /* Media in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8896C17613A88232000DA13C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8896C18F13A88233000DA13C /* ogreAppAppDelegate.mm in Sources */,
+				8896C19513A88233000DA13C /* ogreAppViewController.mm in Sources */,
+				8896C1A213A8869C000DA13C /* Application.cpp in Sources */,
+				77C17B5913AED3A90067B857 /* ofPoint.cpp in Sources */,
+				7775627413B03582003849ED /* Bullet.cpp in Sources */,
+				77A8B4FF13B19A7E00D40305 /* GameState.cpp in Sources */,
+				7701CF6413B1B69200D39C17 /* CaptureFaceGS.cpp in Sources */,
+				7701CF6813B1C0F600D39C17 /* stateMachine.cpp in Sources */,
+				7701CF6B13B1DA2100D39C17 /* WarGS.cpp in Sources */,
+				778F9E1D13B8337700E1706D /* enemy.cpp in Sources */,
+				779F91F513C5546F009A65D4 /* UIBase.cpp in Sources */,
+				779F91FA13C56420009A65D4 /* UICaptureFace.cpp in Sources */,
+				779F91FD13C5A71F009A65D4 /* UIManager.cpp in Sources */,
+				21222E5913C7F78600992E9C /* Accelerometer.mm in Sources */,
+				21222E5A13C7F78600992E9C /* FileSystemLayerImpl_iPhone.mm in Sources */,
+				21222E5B13C7F78600992E9C /* inputListen.mm in Sources */,
+				21222E5C13C7F78600992E9C /* ofxiPhoneVideoGrabber.mm in Sources */,
+				21222E5D13C7F78600992E9C /* UITouch.mm in Sources */,
+				77F4287413CDF1D200C3478E /* SdkTrays.cpp in Sources */,
+				770323FD13CDF94000EBB43F /* Widget.cpp in Sources */,
+				77435C6E13CDFBBC00940850 /* GS_GamePlay.cpp in Sources */,
+				773A266413CE00A900B8261C /* UI_GamePlay.cpp in Sources */,
+				7755CC3213CEBCEB00E9B78A /* GSSelectMode.cpp in Sources */,
+				7755CC3313CEBCEB00E9B78A /* UISelectMode.cpp in Sources */,
+				7755CC3713CEBD1600E9B78A /* UISelectUser.cpp in Sources */,
+				779B6D9213D7B67C006E2BE4 /* UISelectFaceMode.cpp in Sources */,
+				779B6D9313D7B67C006E2BE4 /* UISelectHead.cpp in Sources */,
+				77FCF58B13D904C00048CCE3 /* EnemyQueue.cpp in Sources */,
+				778A6F3913DD753000EFE6EA /* UserInformation.cpp in Sources */,
+				778A6F3C13DD754100EFE6EA /* UIWarTwo.cpp in Sources */,
+				778A6F4013DD755900EFE6EA /* Tool.cpp in Sources */,
+				779D145A13DEDE7B00E9C5B2 /* EventManager.cpp in Sources */,
+				779D145B13DEDE7B00E9C5B2 /* Friend.cpp in Sources */,
+				779D145C13DEDE7B00E9C5B2 /* WarManager.cpp in Sources */,
+				779D145D13DEDE7B00E9C5B2 /* WarMode.cpp in Sources */,
+				77DD6AA413DFFD7000278BBA /* UIWarPause.cpp in Sources */,
+				77DD6AA513DFFD7000278BBA /* UIWarTwoBalance.cpp in Sources */,
+				7788FA5B13E6BEA500993B56 /* UIWarModeThree.cpp in Sources */,
+				7788FA5C13E6BEA500993B56 /* WarItem.cpp in Sources */,
+				7788FA5D13E6BEA500993B56 /* WarItemManager.cpp in Sources */,
+				7788FA5E13E6BEA500993B56 /* WarModeThree.cpp in Sources */,
+				77FF16C213F2CB2F00A5B7C5 /* GS_Test.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		77C17BC713AF3CBA0067B857 /* DeviceDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: workroom zero (9N3UP734RR)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				SDKROOT = iphoneos;
+			};
+			name = DeviceDebug;
+		};
+		77C17BC813AF3CBA0067B857 /* DeviceDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinqi Pang (2FKSK3PN69)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jinqi Pang (2FKSK3PN69)";
+				COMPRESS_PNG_FILES = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_SUFFIX = "";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ogreApp/ogreApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					BOOST_ALL_NO_LIB,
+					USE_RTSHADER_SYSTEM,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/iPhone",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/include/freetype",
+					/usr/X11R6/include,
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/include/OIS",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Samples/Common/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/RTShaderSystem/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/BSPSceneManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/CgProgramManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/OctreeSceneManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/OctreeZone/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/ParticleFX/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/PCZSceneManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/Direct3D9/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/Direct3D10/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/Direct3D11/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GLES/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/src/GLSL/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/src/atifs/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/src/nvparse",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Samples/Browser/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/Samples/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Paging/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Terrain/include",
+					"\"$(SRCROOT)/Bullet/src\"",
+					"\"$(SRCROOT)/../../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/**",
+				);
+				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Release",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib",
+				);
+				OTHER_CFLAGS = "-pthread";
+				OTHER_CPLUSPLUSFLAGS = "-pthread";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					UIKit,
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libOgreMainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libPlugin_OctreeSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libPlugin_BSPSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libPlugin_ParticleFXStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libPlugin_PCZSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libPlugin_OctreeZoneStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libOgreRTShaderSystemStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libOgreTerrainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libOgrePagingStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libRenderSystem_GLESStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libOIS.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libSample_BezierPatch.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libSample_CameraTrack.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libSample_ParticleFX.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libPlugin_BSPSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libPlugin_ParticleFXStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libPlugin_OctreeZoneStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libPlugin_PCZSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libOgreRTShaderSystemStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libOgreTerrainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libOgrePagingStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libRenderSystem_GLESStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Device/libOgreMainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Release/libfreetype.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Release/libFreeImage.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Release/libzzip.a",
+					/usr/lib/libz.dylib,
+					"-framework",
+					OpenGLES,
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_thread.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_date_time.a",
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "23437BA4-291C-43E3-8FAB-9D3BF957DD3F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "23437BA4-291C-43E3-8FAB-9D3BF957DD3F";
+				TARGETED_DEVICE_FAMILY = 1;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = DeviceDebug;
+		};
+		77C17BC913AF3CC60067B857 /* SimuatorDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				SDKROOT = iphoneos;
+			};
+			name = SimuatorDebug;
+		};
+		77C17BCA13AF3CC60067B857 /* SimuatorDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinqi Pang (2FKSK3PN69)";
+				COMPRESS_PNG_FILES = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_SUFFIX = "";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ogreApp/ogreApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					BOOST_ALL_NO_LIB,
+					USE_RTSHADER_SYSTEM,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/iPhone",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/include/freetype",
+					/usr/X11R6/include,
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/include/OIS",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Samples/Common/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/RTShaderSystem/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/BSPSceneManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/CgProgramManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/OctreeSceneManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/OctreeZone/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/ParticleFX/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/PCZSceneManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/Direct3D9/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/Direct3D10/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/Direct3D11/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GLES/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/src/GLSL/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/src/atifs/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/src/nvparse",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Samples/Browser/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/Samples/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Paging/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Terrain/include",
+					"\"$(SRCROOT)/Bullet/src\"",
+					"\"$(SRCROOT)/../../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/**",
+				);
+				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib",
+				);
+				OTHER_CFLAGS = "-pthread";
+				OTHER_CPLUSPLUSFLAGS = "-pthread";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					UIKit,
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgreMainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_OctreeSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_BSPSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_ParticleFXStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_PCZSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_OctreeZoneStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgreRTShaderSystemStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgreTerrainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgrePagingStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libRenderSystem_GLESStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_BSPSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_ParticleFXStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_OctreeZoneStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_PCZSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgreRTShaderSystemStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgreTerrainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgrePagingStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libRenderSystem_GLESStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgreMainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Debug/libfreetype.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libFreeImage.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libzzip.a",
+					/usr/lib/libz.dylib,
+					"-framework",
+					OpenGLES,
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_thread.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_date_time.a",
+				);
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-framework",
+					Foundation,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					UIKit,
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgreMainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_OctreeSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_BSPSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_ParticleFXStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_PCZSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_OctreeZoneStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgreRTShaderSystemStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgreTerrainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgrePagingStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libRenderSystem_GLESStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_BSPSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_ParticleFXStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_OctreeZoneStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libPlugin_PCZSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgreRTShaderSystemStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgreTerrainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgrePagingStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libRenderSystem_GLESStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Simulator/libOgreMainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Debug/libfreetype.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libFreeImage.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libzzip.a",
+					/usr/lib/libz.dylib,
+					"-framework",
+					OpenGLES,
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_thread.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_date_time.a",
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "23437BA4-291C-43E3-8FAB-9D3BF957DD3F";
+				TARGETED_DEVICE_FAMILY = 1;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = SimuatorDebug;
+		};
+		8896C19913A88233000DA13C /* SimuatorRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: workroom zero (9N3UP734RR)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				SDKROOT = iphoneos;
+			};
+			name = SimuatorRelease;
+		};
+		8896C19A13A88233000DA13C /* DeviceRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: workroom zero (9N3UP734RR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: workroom zero (9N3UP734RR)";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "";
+				PROVISIONING_PROFILE = "D0220F6D-0DBA-4E95-8868-AC0A68477EA1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FFB16AAE-80EB-4952-9646-D0D877519575";
+				SDKROOT = iphoneos;
+			};
+			name = DeviceRelease;
+		};
+		8896C19C13A88233000DA13C /* SimuatorRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinqi Pang (2FKSK3PN69)";
+				COMPRESS_PNG_FILES = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_SUFFIX = "";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ogreApp/ogreApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/iPhone",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/include/freetype",
+					/usr/X11R6/include,
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/include/OIS",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Samples/Common/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/RTShaderSystem/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/BSPSceneManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/CgProgramManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/OctreeSceneManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/OctreeZone/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/ParticleFX/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/PCZSceneManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/Direct3D9/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/Direct3D10/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/Direct3D11/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GLES/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/src/GLSL/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/src/atifs/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/src/nvparse",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Samples/Browser/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/Samples/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Paging/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Terrain/include",
+					"\"$(SRCROOT)/Bullet/src\"",
+					"\"$(SRCROOT)/../../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/**",
+				);
+				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/$(CONFIGURATION)",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib",
+				);
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-pthread",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"-pthread",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					UIKit,
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libOgreMainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libPlugin_OctreeSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libPlugin_BSPSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libPlugin_ParticleFXStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libPlugin_PCZSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libPlugin_OctreeZoneStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libOgreRTShaderSystemStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libOgreTerrainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libOgrePagingStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libRenderSystem_GLESStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libPlugin_BSPSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libPlugin_ParticleFXStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libPlugin_OctreeZoneStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libPlugin_PCZSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libOgreRTShaderSystemStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libOgreTerrainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libOgrePagingStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libRenderSystem_GLESStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Release/Simulator/libOgreMainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Debug/libfreetype.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libFreeImage.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libzzip.a",
+					/usr/lib/libz.dylib,
+					"-framework",
+					OpenGLES,
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_thread.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_date_time.a",
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "23437BA4-291C-43E3-8FAB-9D3BF957DD3F";
+				TARGETED_DEVICE_FAMILY = 1;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = SimuatorRelease;
+		};
+		8896C19D13A88233000DA13C /* DeviceRelease */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jinqi Pang (2FKSK3PN69)";
+				COMPRESS_PNG_FILES = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXECUTABLE_SUFFIX = "";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ogreApp/ogreApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/iPhone",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/include/freetype",
+					/usr/X11R6/include,
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/include/OIS",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Samples/Common/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/RTShaderSystem/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/BSPSceneManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/CgProgramManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/OctreeSceneManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/OctreeZone/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/ParticleFX/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/PlugIns/PCZSceneManager/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/Direct3D9/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/Direct3D10/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/Direct3D11/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GLES/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/src/GLSL/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/src/atifs/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/RenderSystems/GL/src/nvparse",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Samples/Browser/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/Samples/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Paging/include",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/Components/Terrain/include",
+					"\"$(SRCROOT)/Bullet/src\"",
+					"\"$(SRCROOT)/../../../sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/**",
+				);
+				INFOPLIST_FILE = "ogreApp/ogreApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = (
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Debug",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib",
+				);
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-pthread",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNDEBUG",
+					"-pthread",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					QuartzCore,
+					"-framework",
+					UIKit,
+					"-Wl,-search_paths_first",
+					"-Wl,-headerpad_max_install_names",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libOgreMainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libPlugin_OctreeSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libPlugin_BSPSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libPlugin_ParticleFXStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libPlugin_PCZSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libPlugin_OctreeZoneStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libOgreRTShaderSystemStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libOgreTerrainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libOgrePagingStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libRenderSystem_GLESStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libOIS.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libSample_BezierPatch.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libSample_CameraTrack.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libSample_ParticleFX.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libPlugin_BSPSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libPlugin_ParticleFXStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libPlugin_OctreeZoneStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libPlugin_PCZSceneManagerStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libOgreRTShaderSystemStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libOgreTerrainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libOgrePagingStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libRenderSystem_GLESStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/build/lib/Debug/Device/libOgreMainStatic.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/Debug/libfreetype.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libFreeImage.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libzzip.a",
+					/usr/lib/libz.dylib,
+					"-framework",
+					OpenGLES,
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_thread.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/libboost_date_time.a",
+					"/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/iPhoneDependencies/lib/debug/libOIS.a",
+				);
+				OTHER_REZFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "23437BA4-291C-43E3-8FAB-9D3BF957DD3F";
+				TARGETED_DEVICE_FAMILY = 1;
+				USE_HEADERMAP = NO;
+				VALIDATE_PRODUCT = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = DeviceRelease;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8896C17413A88232000DA13C /* Build configuration list for PBXProject "ogreApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8896C19913A88233000DA13C /* SimuatorRelease */,
+				77C17BC913AF3CC60067B857 /* SimuatorDebug */,
+				77C17BC713AF3CBA0067B857 /* DeviceDebug */,
+				8896C19A13A88233000DA13C /* DeviceRelease */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = SimuatorDebug;
+		};
+		8896C19B13A88233000DA13C /* Build configuration list for PBXNativeTarget "ogreApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8896C19C13A88233000DA13C /* SimuatorRelease */,
+				77C17BCA13AF3CC60067B857 /* SimuatorDebug */,
+				77C17BC813AF3CBA0067B857 /* DeviceDebug */,
+				8896C19D13A88233000DA13C /* DeviceRelease */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = SimuatorDebug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8896C17113A88232000DA13C /* Project object */;
+}

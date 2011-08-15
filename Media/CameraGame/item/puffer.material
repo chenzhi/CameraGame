@@ -1,0 +1,17 @@
+material puffer_puffer_A
+{
+	set_texture_alias diffuseMap puffer.png
+	technique
+	{
+		pass
+		{
+			diffuse 0.588235 0.588235 0.588235
+			texture_unit diffuseMap
+			{
+				tex_coord_set 0
+				texture puffer.png
+			}
+		}
+	}
+}
+

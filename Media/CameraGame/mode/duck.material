@@ -1,0 +1,17 @@
+material duck_duck_A
+{
+	set_texture_alias diffuseMap duck.png
+	technique
+	{
+		pass
+		{
+			diffuse 0.588 0.588 0.588
+			texture_unit diffuseMap
+			{
+				tex_coord_set 0
+				texture duck.png
+			}
+		}
+	}
+}
+
