@@ -42,6 +42,7 @@ void UIWarModeTwo::init()
 
 	///指示哪里有敌人出现的旋转按钮
 	m_pRotateImage=new RotateImage("WarModeTwo_Enemey_Dir","youxi_fangxiang.png");
+	//m_pRotateImage->setWidth(40);
 	registerWidget(m_pRotateImage);
 
 

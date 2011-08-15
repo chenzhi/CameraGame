@@ -17,6 +17,7 @@ FaceModeDataSource::FaceModeDataSource()
     m_ElementCollect.push_back(std::make_pair("InterfaceModel_laishu.png","mouse.mesh"));
 	m_ElementCollect.push_back(std::make_pair("InterfaceModel_xiaoji.png","xiaoji.mesh"));
 	m_ElementCollect.push_back(std::make_pair("InterfaceModel_xiaolu.png","deer.mesh"));
+	m_ElementCollect.push_back(std::make_pair("InterfaceModel_xiaolu.png","head_tu.mesh"));
 	
 }
 
@@ -96,7 +97,7 @@ void  UISelectHead::init()
 	//pScenNode->attachObject(pHead);
 
 
-	StaticImage* pImage=new StaticImage("SelectHeadBackGround","tuku_background.png");
+	StaticImage* pImage=new StaticImage("SelectHeadBackGround","jieshu_background.png");
 	registerWidget(pImage);
 	Ogre::OverlayElement* pElment=pImage->getOverlayElement();
 	pImage->setMetricsMode(Ogre::GMM_RELATIVE);

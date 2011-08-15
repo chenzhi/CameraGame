@@ -24,7 +24,9 @@ void UIWarPause::init()
 {
 	UIBase::init();
 
+	int width=400;
 	///按钮背景就
+	/*//
 	StaticImage* pStateImage=new StaticImage("UIWarPause_background","jieshu_wenzikuang_1.png");
 	registerWidget(pStateImage);
 	int width=400;
@@ -32,7 +34,7 @@ void UIWarPause::init()
 	pStateImage->setHeight(width);
 	pStateImage->setLeft(width*-0.5f);
 	pStateImage->setTop(width*-0.5f);
-
+    //*/
 
 	///续继按钮
      m_pContinue=new ImageButton("UIWarPause_continueButton","suspend_continue.png","suspend_continue.png");

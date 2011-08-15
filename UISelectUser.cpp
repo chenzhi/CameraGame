@@ -32,7 +32,7 @@ void  UISelectUser::init()
 
 
 	///±³¾°
-	StaticImage* pImage=new StaticImage("SelectUserBackGround","tuku_background.png");
+	StaticImage* pImage=new StaticImage("SelectUserBackGround","jieshu_background.png");
 	registerWidget(pImage);
 	Ogre::OverlayElement* pElment=pImage->getOverlayElement();
 	pElment->setMetricsMode(Ogre::GMM_RELATIVE);

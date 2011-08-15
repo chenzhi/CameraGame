@@ -481,7 +481,7 @@ void UISelectFaceMode::initBackEntity()
 
 	Ogre::MaterialPtr pBackGroundMaterial=Ogre::MaterialManager::getSingleton().create("UISelectFaceModeBackGround", "General");
 	Ogre::Pass*pPass=pBackGroundMaterial->getTechnique(0)->getPass(0);
-	pPass->createTextureUnitState()->setTextureName("tuku_background.png");
+	pPass->createTextureUnitState()->setTextureName("jieshu_background.png");
 
 
 	m_BackGround->getSubEntity(0)->setMaterialName(pBackGroundMaterial->getName());

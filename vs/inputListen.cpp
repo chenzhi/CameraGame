@@ -168,7 +168,7 @@ bool  InputListen::mouseMoved(const OIS::MouseEvent &arg)
 	if(mMouse->getMouseState().buttonDown(OIS::MB_Right))
 	{
 
-		m_GyroscopeData.y+=arg.state.X.rel*0.001f;
+		m_GyroscopeData.y-=arg.state.X.rel*0.001f;
 
 		m_GyroscopeData.z+=arg.state.Y.rel*0.001f;
 

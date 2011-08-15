@@ -17,8 +17,8 @@ material face_pang_kouqiang_B
 
 material face_pang_lian_A
 {
-	//set_texture_alias faceMap xieyin.png
-	set_texture_alias diffuseMap face_front_1.png
+	set_texture_alias faceMap gunzi_1.png
+	set_texture_alias diffuseMap face_fron0.png
 	technique
 	{
 		pass
@@ -27,13 +27,13 @@ material face_pang_lian_A
 			texture_unit diffuseMap
 			{
 				tex_coord_set 0
-				texture face_front_1.png
+				texture face_fron0.png
 			}
 			texture_unit faceMap
 			{
 				tex_coord_set 1
 				colour_op alpha_blend
-				
+				texture gunzi_1.png
 			}
 		}
 	}

@@ -272,7 +272,7 @@ void WarItemManager::initItemTypeInformation()
 
 	Item.m_ItemType=WIT_BRICK;
 	Item.m_MeshName="banzhuan.mesh";
-	Item.m_Texture="banzhuan.png";
+	Item.m_Texture="banzhuan_1.png";
 	Item.m_Power=2.0f;
 	m_ItemInformation.push_back(Item);
 
@@ -287,7 +287,7 @@ void WarItemManager::initItemTypeInformation()
 
 	Item.m_ItemType=WIT_SHOE;
 	Item.m_MeshName="xiezi.mesh";
-	Item.m_Texture="xiezi.png";
+	Item.m_Texture="xieyin_1.png";
 	Item.m_Power=1.0f;
 	m_ItemInformation.push_back(Item);
 
