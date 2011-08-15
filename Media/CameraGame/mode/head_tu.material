@@ -1,0 +1,17 @@
+material head_tu_head_tu_A
+{
+	set_texture_alias diffuseMap tou1_uv.png
+	technique
+	{
+		pass
+		{
+			diffuse 0.588235 0.588235 0.588235
+			texture_unit diffuseMap
+			{
+				tex_coord_set 0
+				texture tou1_uv.png
+			}
+		}
+	}
+}
+
