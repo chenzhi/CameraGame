@@ -471,8 +471,8 @@ m_pNextButton(NULL)
 
 	Ogre::OverlayElement* pPreElement=pContainer->getChild(getName()+"/"+templateName+"/PreviousButton");
 	m_pPrevisouButton=new ImageButton(pPreElement,"tuku_zuoanniu_release.png","tuku_zuoanniu_press.png");
-	m_pPrevisouButton->setWidth(63);//zxt_modify
-	m_pPrevisouButton->setHeight(63);
+	m_pPrevisouButton->setWidth(65);//zxt_modify
+	m_pPrevisouButton->setHeight(65);
 	m_pPrevisouButton->setLeft(30);
 	m_pPrevisouButton->setTop(-20);
 	m_pPrevisouButton->_assignListener(this);

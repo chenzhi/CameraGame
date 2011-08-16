@@ -52,8 +52,8 @@ void  UISelectUser::init()
 	pElment->setHorizontalAlignment(Ogre::GHA_LEFT);
 	m_ToCaptureButton->setWidth(65);//zxt_modify
 	m_ToCaptureButton->setHeight(65);
-	m_ToCaptureButton->setLeft(25);
-	m_ToCaptureButton->setTop(-15);
+	m_ToCaptureButton->setLeft(30);
+	m_ToCaptureButton->setTop(-20);
 
 	///·µ»Ø°´Å¥
 
