@@ -13,15 +13,14 @@ FaceModeDataSource::FaceModeDataSource()
 {
 
 	m_ElementCollect.push_back(std::make_pair("InterfaceModel_duck.png","duck.mesh"));
-	m_ElementCollect.push_back(std::make_pair("InterfaceModel_hema.png","hema.mesh"));
-    m_ElementCollect.push_back(std::make_pair("InterfaceModel_laishu.png","mouse.mesh"));
+	m_ElementCollect.push_back(std::make_pair("xuanmoxing_xuanzekuang_hema.png","hema.mesh"));
+    m_ElementCollect.push_back(std::make_pair("xuanmoxing_xuanzekuang_laoshu.png","mouse.mesh"));
 	m_ElementCollect.push_back(std::make_pair("InterfaceModel_xiaoji.png","xiaoji.mesh"));
-	m_ElementCollect.push_back(std::make_pair("InterfaceModel_xiaolu.png","deer.mesh"));
+	m_ElementCollect.push_back(std::make_pair("InterfaceModel_xiaolu.png","deer.mesh"));/*InterfaceModel_xiaoji*/
 	m_ElementCollect.push_back(std::make_pair("InterfaceModel_xiaolu.png","head_tu.mesh"));
-	
 }
 
-
+ 
 FaceModeDataSource::~FaceModeDataSource()
 {
 
@@ -43,7 +42,7 @@ bool  FaceModeDataSource::getElementTexture(unsigned int index,Ogre::String& tex
 	if(index>=m_ElementCollect.size())
 		return false;
 
-	textureName=m_ElementCollect[index].first;
+	textureName=m_ElementCollect[index].first;//获取贴图名
 	return true;
 
 }
@@ -57,7 +56,7 @@ bool FaceModeDataSource::getElementUserData(unsigned index,Ogre::String& element
 	if(index>=m_ElementCollect.size())
 		return false;
 
-	elementData=m_ElementCollect[index].second;
+	elementData=m_ElementCollect[index].second;//获取用户数据
 	return true;
 
 }
@@ -108,8 +107,6 @@ void  UISelectHead::init()
 	pImage->setTop(0.0f);
 	pImage->setHeight(1.0f);
 
-
-
 	SliderGallery* pSliderGallery=new SliderGallery("SelectHeadSliderGallery",new FaceModeDataSource(),"cz/SliderGallery");
 	registerWidget(pSliderGallery);
 	pSliderGallery->getOverlayElement()->setHorizontalAlignment(Ogre::GHA_LEFT);
@@ -117,7 +114,8 @@ void  UISelectHead::init()
 
 
 
-	m_pReturnButton=new ImageButton("SelectHeadReturn","moshi_fanhui_press.png","moshi_fanhui_release.png");
+
+	m_pReturnButton=new ImageButton("SelectHeadReturn","moshi_fanhui_release.png","moshi_fanhui_press.png");
 	m_pReturnButton->setHorizontalAlignment(Ogre::GHA_LEFT);
 	m_pReturnButton->setLeft(10);
 	m_pReturnButton->setVerticalAlignment(Ogre::GVA_BOTTOM);

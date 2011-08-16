@@ -43,12 +43,14 @@ void UIGamePlay::init()
 
    ImageButton* pPlayButton=new ImageButton("GamePlayer_PlayerButton","play_play_release.png","play_play_press.png");
    registerWidget(pPlayButton);
-   float width=256;
-   float height=200;
+   float width=300;
+   //float width=400;
+   float height=128;
+   //float height=200;
    pPlayButton->setHeight(height);
    pPlayButton->setWidth(width);
    pPlayButton->setLeft(width*(-0.5f));
-   pPlayButton->setTop(50.0f);
+   pPlayButton->setTop(160.0f);
   // pPlayButton->setTop(height*(-0.5f));
 
 
@@ -60,7 +62,7 @@ void UIGamePlay::init()
    pPlayFaceBook->setVerticalAlignment(Ogre::GVA_BOTTOM);
    pPlayFaceBook->setWidth(80);
    pPlayFaceBook->setHeight(80);
-   pPlayFaceBook->setLeft(-110);
+   pPlayFaceBook->setLeft(-130);
    pPlayFaceBook->setTop(-228);
 
 
@@ -74,7 +76,7 @@ void UIGamePlay::init()
 
    pPlayTwitterBook->setWidth(80);
    pPlayTwitterBook->setHeight(80);
-   pPlayTwitterBook->setLeft(-110);
+   pPlayTwitterBook->setLeft(-130);
    pPlayTwitterBook->setTop(-128);
 
   

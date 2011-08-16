@@ -73,10 +73,10 @@ void UICaptureFace::init()
 	m_pToUserFace=new ImageButton("ToCaptureFace","paizhao_sanjiao_release.png","paizhao_sanjiao_press.png");
 	registerWidget(m_pToUserFace);
 	m_pToUserFace->setHorizontalAlignment(Ogre::GHA_RIGHT);
-	m_pToUserFace->setLeft(-m_pToUserFace->getWidth()-100);
-	m_pToUserFace->setTop(-64);
-
-
+	m_pToUserFace->setLeft(/*-m_pToUserFace->getWidth()*/-95);
+	m_pToUserFace->setTop(-40);
+	m_pToUserFace->setWidth(60);
+	m_pToUserFace->setHeight(60);
 	///ÅÄÕÕï§Å¥
 	m_pCaptureButton=new ImageButton("CaptureFaceButton","paizhao_paizhao_release.png","paizhao_paizhao_press.png");
 	registerWidget(m_pCaptureButton);
@@ -94,10 +94,11 @@ void UICaptureFace::init()
 	m_pGoBackButton->setHorizontalAlignment(Ogre::GHA_LEFT);
 	m_pGoBackButton->setLeft(10);
 	m_pGoBackButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
-	m_pGoBackButton->setTop(-128);
+	m_pGoBackButton->setTop(-110);
 	m_pGoBackButton->setWidth(80);
 	m_pGoBackButton->setHeight(80);
-
+    
+    
 
 	
 	return ;

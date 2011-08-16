@@ -24,7 +24,7 @@ void UIWarPause::init()
 {
 	UIBase::init();
 
-	int width=400;
+	int width=450;
 	///按钮背景就
 	/*//
 	StaticImage* pStateImage=new StaticImage("UIWarPause_background","jieshu_wenzikuang_1.png");
@@ -45,7 +45,8 @@ void UIWarPause::init()
 	m_pContinue->setLeft(-width*0.5f);
     m_pContinue->setHeight(height);
 	m_pContinue->setTop(-height*2.0f);
-
+	m_pContinue->setWidth(450);
+	m_pContinue->setHeight(100);
 
 	//返回按钮
 	m_pReturn=new ImageButton("UIWarPause_returnButton","suspend_RETURN.png","suspend_RETURN.png");
@@ -54,6 +55,8 @@ void UIWarPause::init()
 	m_pReturn->setLeft(-width*0.5f);
 	m_pReturn->setHeight(height);
 	m_pReturn->setTop(height*2.0f);
+	m_pReturn->setWidth(450);
+	m_pReturn->setHeight(100);
 
 
 

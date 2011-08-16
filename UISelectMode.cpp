@@ -44,11 +44,11 @@ void UISelectMode::init()
 	registerWidget(pImage);
 	pImage->setVerticalAlignment(Ogre::GVA_TOP);
 	pImage->setTop(100);
-	int width=256;
-	int height=128;
+	int width=300;
+	int height=65;
 	pImage->setWidth(width);
+	pImage->setHeight(height);
 	pImage->setLeft(width*-0.5f);
-
 
 
 	
@@ -60,20 +60,22 @@ void UISelectMode::init()
 	pPlayButton->setHorizontalAlignment(Ogre::GHA_LEFT);
 	width=pPlayButton->getWidth();
 	height=pPlayButton->getHeight();
-	pPlayButton->setLeft(100);
-	pPlayButton->setTop(height*(-0.5f));
-
+	pPlayButton->setLeft(-5);
+	pPlayButton->setTop(height*(-0.9f));
+	pPlayButton->setWidth(350);
+	pPlayButton->setHeight(310);
 
 
 	///模式2按钮
 	pPlayButton=new ImageButton("SelectMode_2","moshi_updown.png","moshi_updown.png");
 	registerWidget(pPlayButton);
-	pPlayButton->setHorizontalAlignment(Ogre::GHA_CENTER);
+	//pPlayButton->setHorizontalAlignment(Ogre::GHA_CENTER);
 	width=pPlayButton->getWidth();
 	height=pPlayButton->getHeight();
-	pPlayButton->setLeft(width*(-0.5f));
-	pPlayButton->setTop(height*(-0.5f));
-
+	pPlayButton->setLeft(-width-45.0f);
+	pPlayButton->setTop(height*(-0.9f));
+	pPlayButton->setWidth(350);
+	pPlayButton->setHeight(310);
 
 
 
@@ -83,22 +85,24 @@ void UISelectMode::init()
 	pPlayButton->setHorizontalAlignment(Ogre::GHA_RIGHT);
 	width=pPlayButton->getWidth();
 	height=pPlayButton->getHeight();
-	pPlayButton->setLeft(-width-100.0f);
-	pPlayButton->setTop(height*(-0.5f));
-	
+	pPlayButton->setLeft(-width-210.0f);
+	pPlayButton->setTop(height*(-0.9f));
+	pPlayButton->setWidth(350);
+	pPlayButton->setHeight(310);
+
 
 
 
 
 
 	///返回按钮
-	Widget* pReturnButton=new ImageButton("SelectMode_return","moshi_fanhui_press.png","moshi_fanhui_release.png");
+	Widget* pReturnButton=new ImageButton("SelectMode_return","moshi_fanhui_release.png","moshi_fanhui_press.png");
 	pReturnButton->setHorizontalAlignment(Ogre::GHA_LEFT);
 	pReturnButton->setWidth(80);
 	pReturnButton->setHeight(80);
 	pReturnButton->setLeft(10);
 	pReturnButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
-	pReturnButton->setTop(-128);
+	pReturnButton->setTop(-100);
 	registerWidget(pReturnButton);
 
 

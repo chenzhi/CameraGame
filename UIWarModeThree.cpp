@@ -45,8 +45,8 @@ void UIWarModeThree::init()
 	m_pPauseButton->setVerticalAlignment(Ogre::GVA_TOP);
 	m_pPauseButton->setLeft(32);
 	m_pPauseButton->setTop(32);
-	m_pPauseButton->setWidth(64);
-	m_pPauseButton->setHeight(64);
+	m_pPauseButton->setWidth(80);
+	m_pPauseButton->setHeight(80);
 
 
 

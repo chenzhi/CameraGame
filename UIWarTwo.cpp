@@ -53,8 +53,8 @@ void UIWarModeTwo::init()
 	m_PauseButton->setVerticalAlignment(Ogre::GVA_TOP);
 	m_PauseButton->setLeft(32);
 	m_PauseButton->setTop(32);
-	m_PauseButton->setWidth(64);
-	m_PauseButton->setHeight(64);
+	m_PauseButton->setWidth(80);
+	m_PauseButton->setHeight(80);
 
 	
 	///¿ªÇ¹°´Å¥
@@ -82,10 +82,10 @@ void UIWarModeTwo::init()
 		pImage->setHorizontalAlignment(Ogre::GHA_RIGHT);
 		pImage->setVerticalAlignment(Ogre::GVA_TOP);
 
-		pImage->setWidth(64);
-		pImage->setHeight(64);
+		pImage->setWidth(50);
+		pImage->setHeight(40);
 		pImage->setLeft(startleft+(i)*64);
-		pImage->setTop(64);
+		pImage->setTop(40);
 		m_LifeCollect.push_back(pImage);
 
 	}

@@ -71,10 +71,10 @@ template container Panel(cz/SliderGallery)
                 metrics_mode pixels
                  horz_align left
                  vert_align center
-                 left 129
-                top  -64
-                width 128
-                height 128
+                 left 102
+                top  -120
+                width 260
+                height 240
 
              }
 
@@ -85,10 +85,10 @@ template container Panel(cz/SliderGallery)
                  horz_align left
                  vert_align center
 
-                left 352
-                top  -128
-                width 256
-                height 256
+                left 308
+                top  -160
+                width 350
+                height 330
 
              }
 
@@ -99,10 +99,10 @@ template container Panel(cz/SliderGallery)
                 horz_align left
                 vert_align center
 
-                left 704
-                top  -64
-                width 128
-                height 128
+                left 600
+                top  -120
+                width 260
+                height 240
 
              }
 

@@ -296,7 +296,7 @@ void UISelectFaceMode::init()
 
 	 ///返回按钮
 	 ///返回上一层按钮
-	 m_pReturnButton=new ImageButton("UISelectFaceModeButton,","moshi_fanhui_release.png","moshi_fanhui_press.png");
+	 m_pReturnButton=new ImageButton("UISelectFaceModeReturnButton,","moshi_fanhui_release.png","moshi_fanhui_press.png");
 	 registerWidget(m_pReturnButton);
 	 m_pReturnButton->setHorizontalAlignment(Ogre::GHA_LEFT);
 	 m_pReturnButton->setLeft(10);
@@ -432,6 +432,7 @@ void UISelectFaceMode::initAllFaceMode()
 //---------------------------------------------------------------------
 void UISelectFaceMode::update(float time)
 {
+	UIBase::update(time);
 
 	FaceModeCollect::iterator it=m_FaceModeCollect.begin();
 	FaceModeCollect::iterator itend=m_FaceModeCollect.end();
