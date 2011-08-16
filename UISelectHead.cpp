@@ -119,7 +119,7 @@ void  UISelectHead::init()
 	m_pReturnButton->setHorizontalAlignment(Ogre::GHA_LEFT);
 	m_pReturnButton->setLeft(10);
 	m_pReturnButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
-	m_pReturnButton->setTop(-128);
+	m_pReturnButton->setTop(-100);
 	m_pReturnButton->setWidth(80);
 	m_pReturnButton->setHeight(80);
 	registerWidget(m_pReturnButton);

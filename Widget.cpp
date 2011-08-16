@@ -471,10 +471,17 @@ m_pNextButton(NULL)
 
 	Ogre::OverlayElement* pPreElement=pContainer->getChild(getName()+"/"+templateName+"/PreviousButton");
 	m_pPrevisouButton=new ImageButton(pPreElement,"tuku_zuoanniu_release.png","tuku_zuoanniu_press.png");
+	m_pPrevisouButton->setWidth(63);//zxt_modify
+	m_pPrevisouButton->setHeight(63);
+	m_pPrevisouButton->setLeft(30);
+	m_pPrevisouButton->setTop(-20);
 	m_pPrevisouButton->_assignListener(this);
 
     Ogre::OverlayElement* pNewxElement =pContainer->getChild(getName()+"/"+templateName+"/NextButton");
 	m_pNextButton = new ImageButton(pNewxElement,"paizhao_sanjiao_release.png","paizhao_sanjiao_press.png");
+	m_pNextButton->setWidth(63);//zxt_modify
+	m_pNextButton->setHeight(63);
+	m_pNextButton->setTop(-20);
     m_pNextButton->_assignListener(this);
 
    int Srollindex=1;

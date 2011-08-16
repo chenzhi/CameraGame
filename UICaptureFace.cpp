@@ -94,7 +94,7 @@ void UICaptureFace::init()
 	m_pGoBackButton->setHorizontalAlignment(Ogre::GHA_LEFT);
 	m_pGoBackButton->setLeft(10);
 	m_pGoBackButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
-	m_pGoBackButton->setTop(-110);
+	m_pGoBackButton->setTop(-100);
 	m_pGoBackButton->setWidth(80);
 	m_pGoBackButton->setHeight(80);
     

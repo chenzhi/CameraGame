@@ -50,10 +50,10 @@ void  UISelectUser::init()
 	m_ToCaptureButton->_assignListener(this);
 	pElment=m_ToCaptureButton->getOverlayElement();
 	pElment->setHorizontalAlignment(Ogre::GHA_LEFT);
-	m_ToCaptureButton->setWidth(80);
-	m_ToCaptureButton->setHeight(80);
-	
-
+	m_ToCaptureButton->setWidth(65);//zxt_modify
+	m_ToCaptureButton->setHeight(65);
+	m_ToCaptureButton->setLeft(25);
+	m_ToCaptureButton->setTop(-15);
 
 	///·µ»Ø°´Å¥
 
@@ -63,7 +63,7 @@ void  UISelectUser::init()
 	m_pReturnButton->setHorizontalAlignment(Ogre::GHA_LEFT);
 	m_pReturnButton->setLeft(10);
 	m_pReturnButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
-	m_pReturnButton->setTop(-128);
+	m_pReturnButton->setTop(-100);
 	m_pReturnButton->setWidth(80);
 	m_pReturnButton->setHeight(80);
     
