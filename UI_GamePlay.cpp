@@ -55,7 +55,7 @@ void UIGamePlay::init()
 
 
 
-   //faceBool°´Å¥
+   //faceBoolï¿½ï¿½Å¥
    ImageButton* pPlayFaceBook=new ImageButton("GamePlayer_FaceBookButton","play_facebook_release.png","play_facebook_press.png");
    registerWidget(pPlayFaceBook);
    pPlayFaceBook->setHorizontalAlignment(Ogre::GHA_RIGHT);

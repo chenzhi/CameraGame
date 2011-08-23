@@ -1,4 +1,4 @@
-ï»¿#pragma once
+#pragma once
 
 
 #include "state.h"
@@ -16,17 +16,17 @@ public:
     
 	
     /*
-     *çŠ¶æ€å¼€å§‹å‡½æ•°,
+     *×´Ì¬¿ªÊ¼º¯Êı,
      */
 	virtual void  begin( );
     
 	/*
-     *çŠ¶æ€ç»“æŸå‡½æ•°
+     *×´Ì¬½áÊøº¯Êı
      */
 	virtual void  end( );
     
     
-	/**æ›´æ–°å‡½æ•°*/
+	/**¸üĞÂº¯Êı*/
 	virtual StateType update(float time);
 	
     

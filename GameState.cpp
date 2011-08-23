@@ -19,7 +19,7 @@ GameState::~GameState()
 }
 
 
-/*çŠ¶æ€å¼€å§‹å‡½æ•°,
+/*×´Ì¬¿ªÊ¼º¯Êı,
  */
 void  GameState::begin( )
 {
@@ -28,7 +28,7 @@ void  GameState::begin( )
 }
 
 /*
- *çŠ¶æ€ç»“æŸå‡½æ•°
+ *×´Ì¬½áÊøº¯Êı
  */
 void  GameState::end( )
 {

@@ -14,3 +14,21 @@ material jidan_jidan_A
 	}
 }
 
+=======
+material jidan_jidan_A
+{
+	technique
+	{
+		pass
+		{
+			diffuse 0.588235 0.588235 0.588235
+			texture_unit diffuseMap
+			{
+				tex_coord_set 0
+				texture jidan.png
+			}
+		}
+	}
+}
+
+>>>>>>> ae44b686e40af873961f9f67adef8c05ce8182d0

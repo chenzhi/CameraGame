@@ -3,7 +3,7 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-24.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 
 
@@ -12,7 +12,7 @@
 
 #include "btBulletDynamicsCommon.h"
 
-/// ç®€å•å°è£…bulletåº“æ–‡
+/// ¼òµ¥·â×°bullet¿âÎÄ
 
 class CollisionManager : public Ogre::Singleton<CollisionManager>
 {
@@ -24,25 +24,25 @@ public:
     ~CollisionManager();
     
     
-    /**åˆ›å»ºä¸€ä¸ªåˆšä½“ç‰©ä½“
-       *@param radius åŠå¾„
-       *@param mass é‡é‡
-       *@param ç»‘å®šçš„ogreå®ä½“
+    /**´´½¨Ò»¸ö¸ÕÌåÎïÌå
+       *@param radius °ë¾¶
+       *@param mass ÖØÁ¿
+       *@param °ó¶¨µÄogreÊµÌå
        */
     btRigidBody* createRigidBody(float radius,float mass,Ogre::SceneNode* pNode);
     
     
     
-    ///åˆå§‹åŒ–
+    ///³õÊ¼»¯
     void init();
     
-    ///æ¶ˆæ¯æ‰€æœ‰çš„ç‰©ç†ç‰©ä½“
+    ///Ïû»ÙËùÓĞµÄÎïÀíÎïÌå
     void destroy();
     
-    ///æ¯å¸§æ›´æ–°
+    ///Ã¿Ö¡¸üĞÂ
     void update(float time);
     
-    ///è®¾ç½®é‡åŠ›
+    ///ÉèÖÃÖØÁ¦
     void setGravity(float x,float y, float z);
     
     

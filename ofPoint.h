@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  *  ofPoint.h
  *  Accelerometer

@@ -3,7 +3,7 @@
 //  ogreApp
 //
 //  Created by thcz on 11-6-24.
-//  Copyright 2011å¹´ __MyCompanyName__. All rights reserved.
+//  Copyright 2011Äê __MyCompanyName__. All rights reserved.
 //
 #include "pch.h"
 #include "CollisionManager.h"
@@ -48,7 +48,7 @@ void CollisionManager::init()
 }
 
 
-///è®¾ç½®é‡åŠ›
+///ÉèÖÃÖØÁ¦
 void CollisionManager::setGravity(float x,float y, float z)
 {
     m_pDynamicsWorld->setGravity(btVector3(x,y,z));
