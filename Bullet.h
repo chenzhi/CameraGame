@@ -15,7 +15,7 @@
 class Bullet
 {
     
-    friend class WarManager;
+   // friend class WarManager;
     protected:
     
     public:
@@ -52,6 +52,16 @@ class Bullet
 
 	/**返回上一帧时间度的射线和长度*/
 	bool getFrameRay(Ogre::Ray& ray,float& lenght);
+
+
+
+	/**设置击中标记,计算反射*/
+	void hitTarget();
+
+
+	/**设置子弹的方向*/
+	void setBulletDir(const Ogre::Vector3& dir){m_Dir=dir;}
+
     
     protected:
     
@@ -60,10 +70,6 @@ class Bullet
     
     /**重置*/
     void reset();
-
-	
-    
-    
 protected:  
     
     /**判断是否击中目标
@@ -92,9 +98,9 @@ protected:
    // Ogre::RaySceneQuery*  m_pRayQuery;
     
     BulletState      m_State;
-
 	Ogre::Ray        m_ray;
 	float            m_raylenght;
+	
     
     
        

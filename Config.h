@@ -31,15 +31,12 @@ const  static std::string g_EnemyFormat="Media/EnemyFormat.cfg";///敌人阵型文件
 
 #ifdef _DEBUG
 
-const  static std::string g_UIPath="../../../Media/CameraGame/UI/";
 const  static std::string g_UserFacePath="../../../Media/CameraGame/UserFace";
-const  static std::string g_EnemyFormat="../../../Media/EnemyFormat.cfg";
 
 #else
 
-const  static std::string g_UIPath=         "Media/CameraGame/UI/";
 const  static std::string g_UserFacePath=   "Media/CameraGame/UserFace";
-const  static std::string g_EnemyFormat=    "Media/EnemyFormat.cfg";
+
 
 #endif
 

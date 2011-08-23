@@ -80,7 +80,7 @@ protected:
     Ogre::SceneNode* m_pCameraNode;
 
 
-	WarModeCollect m_WarModeCollect;
+//	WarModeCollect m_WarModeCollect;
 	WarMode*       m_ActiveWarMode;
 	
 

@@ -129,6 +129,8 @@ void  EnemyQueue::updateCollision(Bullet* pBullet)
 		if((*it)->intersectRay(ray,lenght))
 		{
 		  (*it)->onHit(ray.getPoint(lenght),pBullet);
+
+		  pBullet->hitTarget();
 		  
 		   return ;
 		}
@@ -143,9 +145,12 @@ void  EnemyQueue::updateCollision(Bullet* pBullet)
 		if((*it)->intersectRay(ray,lenght))
 		{
 			(*it)->onHit(ray.getPoint(lenght),pBullet);
+			  pBullet->hitTarget();
+
 			return ;
 		}
 	}
+
 
 
 

@@ -8,6 +8,9 @@
 *************************************/
 
 #include "WarManager.h"
+#include "inputListen.h"
+
+
 
 class GameState;
 
@@ -46,6 +49,9 @@ public:
 	bool    isEnd()const{return m_end;}
 
 
+	/**更新重力计数据，控制摄像头运动*/
+	virtual void updateAccelerometer(){return ;}
+
 
 protected:
 
@@ -72,23 +78,24 @@ protected:
 class UIWarModeTwo;
 class Enemy;
 class UIBase;
+
+///阵型类
+typedef std::vector<Ogre::Vector3> Vector3Collect;
+class EnemyFormat
+{
+public:
+	Vector3Collect m_EnemyCollect;
+	Vector3Collect m_FriendCollect;
+
+};
+
+typedef std::vector<EnemyFormat> EnemyFormatCollect;
+
+
+
 class WarModeTwo :public WarMode ,public WarListener
 {
 public:
-
-	///阵型类
-	typedef std::vector<Ogre::Vector3> Vector3Collect;
-	class EnemyFormat
-	{
-	public:
-		Vector3Collect m_EnemyCollect;
-		Vector3Collect m_FriendCollect;
-		
-	};
-
-	typedef std::vector<EnemyFormat> EnemyFormatCollect;
-
-
 
 
 public:
@@ -153,6 +160,8 @@ protected:
 	void   _createEnemyQueue();
 
 
+	/**更新重力计数据，控制摄像头运动*/
+	virtual void updateAccelerometer();
 
 
 protected:

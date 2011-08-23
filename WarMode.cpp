@@ -7,6 +7,7 @@
 #include "Config.h"
 #include "WarManager.h"
 #include "UIWarTwoBalance.h"
+#include "inputListen.h"
 
 
 //--------------------------------------------------------
@@ -200,10 +201,42 @@ void   WarModeTwo::_createEnemyQueue()
 
 }
 
+//-----------------------------------------------------------------------
+void WarModeTwo::updateAccelerometer()
+{
+
+	Ogre::SceneNode* pCameraNode=Application::getSingleton().getMainCameraNode();
+
+	Ogre::Vector3 gyrco=InputListen::getSingleton().getGyroscopeData();
+	float yawtem=gyrco.y;
+	float pitch=gyrco.z;
+
+	pitch+=Ogre::Math::PI*0.5f;
+
+	if(pCameraNode!=NULL )
+	{
+		pCameraNode->resetOrientation();
+		pCameraNode->pitch(Ogre::Radian(-pitch));
+		pCameraNode->yaw(Ogre::Radian(yawtem),Ogre::Node::TS_WORLD);
+
+	}
+
+	return ;
+}
+
 
 //-----------------------------------------------------------------------
 void WarModeTwo::initEmemyFormat()
 {
+
+	Ogre::DataStreamPtr pDataStream=Ogre::ResourceGroupManager::getSingleton().openResource("EnemyFormatMode2.cfg","General");
+
+
+	if(pDataStream.isNull())
+	{
+		OGRE_EXCEPT(0,"can't find warmode1 enemyFormat file","WarModeOne::initEmemyFormat()");
+	}
+
 
 
 	m_EnemyFormatCollect.clear();
@@ -217,7 +250,7 @@ void WarModeTwo::initEmemyFormat()
 	cf.load(pFileSystem->getConfigFilePath(g_EnemyFormat));
 
 #else 
-	cf.load(g_EnemyFormat);
+	cf.load(pDataStream);
 
 #endif
 

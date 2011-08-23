@@ -35,65 +35,7 @@ void UIBase::init()
 	m_pParentOverlay =Ogre::OverlayManager::getSingleton().create(m_Name);
 	m_pParentOverlay->show();
 
-	return ;
-
-
- 
-    m_pParentOverlay=Ogre::OverlayManager::getSingleton().getByName(m_Name);
-    
-	Ogre::String temPath;
-
-
-    ///如果没有找到直接读相应文件
-    if(m_pParentOverlay==NULL)
-    {
-
-#if OGRE_PLATFORM ==OGRE_PLATFORM_IPHONE
-        
-        temPath=Ogre::macBundlePath();
-       // Ogre::LogManager::getSingleton().logMessage(macPath);
-        temPath+="/";
-        temPath+=g_UIPath;
-#else if  OGRE_PLATFORM ==OGRE_PLATFORM_WIN32
-
-		temPath=g_UIPath;
-
-#endif
-        //Ogre::DataStreamPtr  pDataStream=Ogre::Root::getSingleton().createFileStream(macPath);
-        ///先把文件加入资源组后才能打开
-        Ogre::ResourceGroupManager::getSingletonPtr()->addResourceLocation(temPath,"FileSystem",m_Name);
-        
-        temPath+=m_Name;
-        temPath+=".overlay";
-        Ogre::DataStreamPtr  pDataStream=Ogre::ResourceGroupManager::getSingletonPtr()->openResource(temPath,m_Name);
-        Ogre::OverlayManager::getSingleton().parseScript(pDataStream,"General");
-        
-        m_pParentOverlay=Ogre::OverlayManager::getSingleton().getByName(m_Name);
-        
-        if(m_pParentOverlay==NULL)
-        {
-            Ogre::String error="UIBase::init Failed , can not find overlay file ";
-            Ogre::LogManager::getSingleton().logMessage(error);
-            //throw(error.c_str());
-            //OGRE_EXCEPT(Ogre::Exception::ERR_FILE_NOT_FOUND, error, "UIBase::init");
-        }
-        
-        
-        /*
-        Ogre::OverlayManager::OverlayMapIterator it=Ogre::OverlayManager::getSingleton().getOverlayIterator();    
-        while (it.hasMoreElements())
-        {
-            Ogre::Overlay* pOverlay= it.getNext();
-            Ogre::String name=pOverlay->getName();
-            Ogre::LogManager::getSingleton().logMessage(name);
-        }
-        
-        //*/
-        
-    }
-    
-      
-    return ;
+     return ;
     
 }
 

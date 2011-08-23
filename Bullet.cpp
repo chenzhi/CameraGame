@@ -15,7 +15,7 @@
 //-----------------------------------------------------------------------
 Bullet::Bullet(Ogre::SceneManager* pSceneMrg)
 :m_pEntity(NULL),m_pNode(NULL),m_Gravity(0.0f,-0.98f*0.5f,0.0f),m_OrigiPosition(0.0f,0.0f,0.0f),
-m_Dir(0.0f,0.0f,-1.0f),m_Force(10),m_LiftTime(0.5f),m_CurrentTime(0),m_State(BS_NONE),m_Speed(1.0f),
+m_Dir(0.0f,0.0f,-1.0f),m_Force(10),m_LiftTime(1.5f),m_CurrentTime(0),m_State(BS_NONE),m_Speed(0.1f),
 m_pSceneMrg(pSceneMrg)
 {
     //Ogre::SceneManager* pSceneMrg= Application::getSingleton().getMainSceneManager();
@@ -39,6 +39,26 @@ m_pSceneMrg(pSceneMrg)
 Bullet::~Bullet()
 {
     destroy();
+}
+
+
+/**设置击中标记,计算反射*/
+void Bullet::hitTarget()
+{
+
+	//反射公式R r = R i - 2 N (R i . N)
+	//                    2(n.l)n - l
+
+	Ogre::Vector3 vn(0.0f,0.0f,1.0f);
+
+	Ogre::Vector3 r;
+	r=(2.0f*(-m_Dir).dotProduct(vn))*vn+m_Dir;
+    r.normalise();
+	m_Force*=0.65f;
+	//m_Speed*=0.5f;
+	//r*=0.001f;
+	setBulletDir(r);
+	return ;
 }
 
 
@@ -154,6 +174,9 @@ void Bullet::reset()
     m_State=BS_NONE;
     m_CurrentTime=0.0f;
     m_pNode->setVisible(false);
+	m_Speed=0.1f;
+	m_Force=10.0f;
+
 
 }
 

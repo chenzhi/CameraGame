@@ -397,6 +397,14 @@
 					>
 				</File>
 				<File
+					RelativePath="..\UIWarone.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\UIWarone.h"
+					>
+				</File>
+				<File
 					RelativePath="..\UIWarPause.cpp"
 					>
 				</File>
@@ -458,6 +466,14 @@
 				</File>
 				<File
 					RelativePath="..\WarMode.h"
+					>
+				</File>
+				<File
+					RelativePath="..\WarModeOne.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\WarModeOne.h"
 					>
 				</File>
 				<File

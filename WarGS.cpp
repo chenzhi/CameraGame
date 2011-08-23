@@ -16,7 +16,7 @@
 #include "UIWarPause.h"
 #include "Config.h"
 #include "WarModeThree.h"
-
+#include "WarModeOne.h"
 
 
 
@@ -179,27 +179,21 @@ void WarGS::initVideoTeture()
 //-------------------------------------------------------------------------
 void WarGS::updateAccelerometer()
 {
+
+	if(m_ActiveWarMode!=NULL)
+	{
+		m_ActiveWarMode->updateAccelerometer();
+	}
+
+	return ;
+
     if(g_userInformation.getWarMode()>0)
     {
          m_pCameraNode->resetOrientation();
         return ;
     }
-    
-    Ogre::Vector3 gyrco=InputListen::getSingleton().getGyroscopeData();
-    float yawtem=gyrco.y;
-    float pitch=gyrco.z;
-    
-    pitch+=Ogre::Math::PI*0.5f;
 
-    if(m_pCameraNode!=NULL )
-    {
-        m_pCameraNode->resetOrientation();
-        m_pCameraNode->pitch(Ogre::Radian(-pitch));
-        m_pCameraNode->yaw(Ogre::Radian(yawtem),Ogre::Node::TS_WORLD);
-        
-    }
 
-    return ;
  
 }
 
@@ -225,20 +219,28 @@ void WarGS::destroyUI()
 void WarGS::initWarMode()
 {
 
-	WarMode* pMode=new WarModeTwo(this);
-	m_WarModeCollect.push_back(pMode);
+	//WarMode* pMode=new WarModeTwo(this);
+	//m_WarModeCollect.push_back(pMode);
 
-	pMode=new WarModeThree(this);
-	m_WarModeCollect.push_back(pMode);
+	//pMode=new WarModeThree(this);
+	//m_WarModeCollect.push_back(pMode);
 
 	unsigned int selectMode=g_userInformation.getWarMode();
-
-	if(selectMode>=m_WarModeCollect.size())
+	if(selectMode==0)
 	{
-		selectMode=m_WarModeCollect.size()-1;
+		m_ActiveWarMode=new WarModeOne(this);
+		
+	}else if(selectMode==1)
+	{
+		m_ActiveWarMode=new WarModeTwo(this);
+
+	}else
+	{
+
+       m_ActiveWarMode=new WarModeThree(this);
 	}
 
-	m_ActiveWarMode=m_WarModeCollect[selectMode];
+	
 	m_ActiveWarMode->start();
 
 	return ;
@@ -252,6 +254,7 @@ void WarGS::destroyWarMode()
 		m_ActiveWarMode->end();
 	}
 
+	/*
 	WarModeCollect::iterator it=   m_WarModeCollect.begin();
 	WarModeCollect::iterator itend=m_WarModeCollect.end();
 
@@ -259,9 +262,10 @@ void WarGS::destroyWarMode()
 	{
 	   SafeDelete(*it);
 	}
-	
-	m_ActiveWarMode=NULL;
-	m_WarModeCollect.clear();
+	//*/
+	SafeDelete(m_ActiveWarMode);
+
+	//m_WarModeCollect.clear();
 	return ;
 
 }
