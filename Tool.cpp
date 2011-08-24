@@ -280,6 +280,56 @@ bool  Tools::getScreenSnapshot(Ogre::TexturePtr pTexture)
 }
 
 
+void  Tools::parseTime(unsigned int t,unsigned int& hourcs,unsigned int& minutes,unsigned int& seconds)
+{
+	//时间转换功能
+	hourcs = t / 3600000;
+	t = t - ( hourcs * 3600000 );
+
+	minutes = t / 60000;
+	t = t - ( minutes * 60000 );
+
+	seconds = t / 1000;
+	//t = t - ( seconds * 1000 );
+
+}
+
+
+
+int Tools::getValueByBit(int value , int bit)
+{
+	if (bit == 1)
+	{
+		return value % 10;
+	}
+	if (bit == 2)
+	{
+		return (value / 10) % 10;
+	}
+	if (bit == 3)
+	{
+		return (value / 100) % 10;
+	}
+	if (bit == 4)
+	{
+		return (value / 1000) % 10;
+	}
+	if (bit == 5)
+	{
+		return (value / 10000) % 10;
+	}
+	if (bit == 6)
+	{
+		return (value / 100000) % 10;
+	}
+	if (bit == 7)
+	{
+		return (value / 1000000) % 10;
+	}
+	return 0;
+}
+
+
 
 
 //--------------------------------------------------------

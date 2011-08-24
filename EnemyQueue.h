@@ -52,6 +52,11 @@ public:
 	/**获取世界坐标外框盒*/
 	Ogre::AxisAlignedBox getWordBox();
 
+	/**获取生命周期*/
+	float getLeftTime()const{return m_leftTime;}
+
+	/**设置生命周期*/
+	void  setLeftTime(float time){m_leftTime=time;}
 
 	
 
@@ -103,9 +108,10 @@ protected:
 	EnemyCollect             m_ElemyCollect; ///需要打击的对象列表
 	EnemyCollect             m_FriendCollect;///不能打击的对像列表
 
-	EQST                   m_State;
-	float                  m_loveTime;       ///示爱时间
+	EQST                       m_State;
+	float                      m_currentLeftTime;       ///当前生命值
 	Ogre::Vector3              m_LevelPoint;      ///飞到幕后的目标点
+	float                      m_leftTime;        ///生命周期
     
 
 

@@ -185,6 +185,9 @@ protected:
 	float                m_HurtTime;///受伤的时间
 
 	float                m_AniFade;///动作过渡时间
+
+
+	Ogre::Entity*        m_pMouthEntity;
     
     
     

@@ -1,0 +1,56 @@
+<scene formatVersion="0.1" author="oiram">
+	<nodes>
+		<node name="face_pang">
+			<entity name="face_pang" meshFile="face_pang.mesh"/>
+		</node>
+		<node name="xiaoji">
+			<entity name="xiaoji" meshFile="xiaoji.mesh"/>
+		</node>
+		<node name="hema">
+			<entity name="hema" meshFile="hema.mesh"/>
+		</node>
+		<node name="face_shou">
+			<entity name="face_shou" meshFile="face_shou.mesh"/>
+		</node>
+		<node name="deer">
+			<entity name="deer" meshFile="deer.mesh"/>
+		</node>
+		<node name="duck">
+			<entity name="duck" meshFile="duck.mesh"/>
+		</node>
+		<node name="mouse">
+			<entity name="mouse" meshFile="mouse.mesh"/>
+		</node>
+		<node name="head_tu">
+			<entity name="head_tu" meshFile="head_tu.mesh"/>
+		</node>
+		<node name="mouth">
+			<entity name="mouth" meshFile="mouth.mesh"/>
+		</node>
+	</nodes>
+	<light name="Omni01" type="point" visible="true" castShadows="true">
+		<position x="0.0190977" y="3.16524" z="-1.25644"/>
+		<rotation qx="-0" qy="-0" qz="-0" qw="1"/>
+		<scale x="1" y="1" z="1"/>
+		<colourDiffuse x="1" y="1" z="1"/>
+	</light>
+	<light name="Spot01" type="spot" visible="true" castShadows="false">
+		<position x="-1.60036" y="0.500538" z="3.60397"/>
+		<rotation qx="-0.641568" qy="0.177015" qz="-0.155578" qw="0.729967"/>
+		<scale x="1" y="1" z="1"/>
+		<colourDiffuse x="1" y="1" z="1"/>
+	</light>
+	<light name="FDirect01" type="directional" visible="true" castShadows="false">
+		<position x="2.40971" y="-0.00867218" z="0.859758"/>
+		<rotation qx="-0.169465" qy="0.0946493" qz="0.683362" qw="0.703804"/>
+		<scale x="1" y="1" z="1"/>
+		<colourDiffuse x="1" y="1" z="1"/>
+	</light>
+	<light name="FDirect02" type="directional" visible="true" castShadows="false">
+		<position x="-1.04922" y="0" z="-2.36929"/>
+		<rotation qx="0.666584" qy="-0.0647693" qz="-0.0583186" qw="0.740317"/>
+		<scale x="1" y="1" z="1"/>
+		<colourDiffuse x="1" y="1" z="1"/>
+	</light>
+</scene>
+

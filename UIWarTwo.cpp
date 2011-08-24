@@ -100,6 +100,15 @@ void UIWarModeTwo::init()
 //-----------------------------------------------------
 void UIWarModeTwo::updateEnemyDir()
 {
+
+	///如果比赛结束就不更新
+	if(WarManager::getSingleton().isGameEnd())
+	{
+	    m_pRotateImage->hide();
+		return ;
+	}
+
+
 	if(m_pEnemy==NULL)
 	{
 		m_pRotateImage->hide();

@@ -21,7 +21,7 @@ int Enemy::m_EntityIndex=0;
 //------------------------------------------
 Enemy::Enemy(const Ogre::String& meshName,const Ogre::String& headMesh,const Ogre::Vector3& pos, Ogre::SceneNode* pParent)
 :m_pEntity(NULL),m_pNode(NULL),m_pSceneMrg(pParent->getCreator()),m_pAniSate(NULL),m_LifeValue(30),m_State(ES_NORMAL),m_Rotate(0),
-m_pHeadEnity(NULL),m_HurtTime(0.0f),m_Trans(0.0f,0.0f,0.0f),m_AniFade(0.0f)
+m_pHeadEnity(NULL),m_HurtTime(0.0f),m_Trans(0.0f,0.0f,0.0f),m_AniFade(0.0f),m_pMouthEntity(NULL)
 {
 
 	m_pEntity=m_pSceneMrg->createEntity("Enemy"+Ogre::StringConverter::toString(m_EntityIndex++),meshName);
@@ -37,11 +37,27 @@ m_pHeadEnity(NULL),m_HurtTime(0.0f),m_Trans(0.0f,0.0f,0.0f),m_AniFade(0.0f)
         assert(m_pHeadEnity);
 		m_pNode->attachObject(m_pHeadEnity);
 		m_pHeadEnity->shareSkeletonInstanceWith(m_pEntity);
+
+
+		///加载嘴部模形，用于检查是否击中嘴部
+
+		m_pMouthEntity=m_pSceneMrg->createEntity("mouth.mesh");
+		m_pMouthEntity->shareSkeletonInstanceWith(m_pEntity);
+		m_pNode->attachObject(m_pMouthEntity);
+		
+
+
 	}
 
 	m_pEntity->setQueryFlags(EnemyMask);
 	m_pAniSate=NULL;
 	m_pMaterial=m_pEntity->getSubEntity(0)->getMaterial();
+
+
+
+	//m_pMouthEntity=m
+
+
 
 
 	///播放休闲动作
@@ -277,8 +293,28 @@ bool Enemy::intersectRay(const Ogre::Ray& ray,float length)
 	{
 		return false;
 	}
+
+	///如果最外层击中，再判断是否击中嘴部
 	if(nearPoint<length || farPoint<length)
 	{
+		if(m_pMouthEntity!=NULL)
+		{
+
+			const Ogre::AxisAlignedBox& MouthBox=m_pMouthEntity->getWorldBoundingBox();
+			float mouthNear(0.0f),mouthFar(0.0f);
+			bool intersect=	Ogre::Math::intersects(ray,MouthBox,&mouthNear,&mouthFar);
+			if(intersect&&(nearPoint<length || farPoint<length))
+			{
+				///表示击中嘴部播放张嘴动作。
+				playAnimation("hanqiu",true,0.5f);
+
+				return true;
+
+			}
+
+
+		}
+
 		return true;
 	}
 

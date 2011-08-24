@@ -1,0 +1,10 @@
+material mouth_A
+{
+	technique
+	{
+		pass
+		{
+		}
+	}
+}
+

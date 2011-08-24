@@ -9,7 +9,7 @@
 
 //-----------------------------------------------------------------
 EnemyQueue::EnemyQueue(const Ogre::Vector3& pos,const  PositionList&EnemyList,const PositionList& FriendList )
-:m_pSceneMrg(NULL),m_pRootNode(NULL),m_State(EQ_NORMAl),m_loveTime(0.0f)
+:m_pSceneMrg(NULL),m_pRootNode(NULL),m_State(EQ_NORMAl),m_currentLeftTime(0.0f),m_leftTime(3.0f)
 {
 
 	m_pSceneMrg=Application::getSingleton().getMainSceneManager();
@@ -276,7 +276,7 @@ void EnemyQueue::notifyEnemyHit(Enemy* pEnemy)
 		m_LevelPoint.y=Ogre::Math::RangeRandom(-3.0f,3.0f);
 		m_LevelPoint.z=Ogre::Math::RangeRandom(-10.0f,0.0f);
         m_LevelPoint.normalise();
-		m_loveTime=0.0f;
+		m_currentLeftTime=0.0f;
 		return ;
 
 
@@ -292,7 +292,7 @@ void EnemyQueue::notifyEnemyHit(Enemy* pEnemy)
 		}
 
 		m_State=EQ_KILLALLENEMY;
-		m_loveTime=0.0f;
+		m_currentLeftTime=0.0f;
 
 	}
 
@@ -346,8 +346,8 @@ void EnemyQueue::updateThankState(float time)
 {
 
 	///示爱后三秒原地消失眠
-    m_loveTime+=time;
-	if(m_loveTime>3.0f)
+    m_currentLeftTime+=time;
+	if(m_currentLeftTime>m_leftTime)
 	{
 
 	m_State=EQ_DISACTIVE;
@@ -380,8 +380,8 @@ void EnemyQueue::updateLevelState(float time)
 
 
 	///三秒后消失
-	m_loveTime+=time;
-	if(m_loveTime>3.0f)
+	m_currentLeftTime+=time;
+	if(m_currentLeftTime>3.0f)
 	{
 		m_State=EQ_DISACTIVE;
 		///通知杀敌失败
@@ -396,8 +396,8 @@ void EnemyQueue::updateLevelState(float time)
 //------------------------------------------------------------------
 void EnemyQueue::updateNormal(float time)
 {
-    m_loveTime+=time;
-    if(m_loveTime>=3.0f)
+    m_currentLeftTime+=time;
+    if(m_currentLeftTime>=m_leftTime)
     {
         m_State=EQ_KILLFRIEND;
         
@@ -406,7 +406,7 @@ void EnemyQueue::updateNormal(float time)
 		m_LevelPoint.y=Ogre::Math::RangeRandom(-3.0f,3.0f);
 		m_LevelPoint.z=Ogre::Math::RangeRandom(-10.0f,0.0f);
         m_LevelPoint.normalise();
-		m_loveTime=0.0f;
+		m_currentLeftTime=0.0f;
 		return ;
     }
     

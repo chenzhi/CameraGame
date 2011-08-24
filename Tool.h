@@ -67,7 +67,18 @@ public:
     
     
 
+	 /**把一个毫秒单位转成小时、分、秒格式
+	 *@param t 毫秒
+	 */
+	static void  parseTime(unsigned int t,unsigned int& hourcs,unsigned int& minutes,unsigned int& seconds);
+
     
-    
+	/**
+	* Desc:  获得一个数的指定位的值
+	* @param value ：数值
+	* @param bit ：要指定的位数，个位就是1，十位就是2，百位就是3....
+	* return : 返回指定位的值
+	*/
+	 static int getValueByBit(int value , int bit);
     
 };

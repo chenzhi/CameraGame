@@ -23,11 +23,11 @@ template<> WarManager* Ogre::Singleton<WarManager>::ms_Singleton=NULL;
 
 //---------------------------------------------------
 WarManager::WarManager()
-:m_pSceneMrg(NULL),m_GameBegan(false)
+:m_pSceneMrg(NULL),m_Flag(0)
 {
     
     m_pSceneMrg=Application::getSingleton().getMainSceneManager();
-    init();
+
 }
 
 //---------------------------------------------------
@@ -45,6 +45,9 @@ WarManager::~WarManager()
 //---------------------------------------------------
 void WarManager::init()
 {
+
+	destroyAllBullet();
+
     for(int i=0; i<10; ++i)
     {
         m_BulletCollect.push_back(new Bullet(m_pSceneMrg));
@@ -97,10 +100,19 @@ void WarManager::fire(const Ogre::Vector3& pos,const Ogre::Vector3& dir)
 void WarManager::update(float time)
 {
     
-    if(m_GameBegan==false)
-    {
-        return ;
-    }
+	///如果已经结束就消息
+	if(hasFlag(F_EndWar))
+	{
+		_endWar();
+		return ;
+	}
+  
+	//如果在战争中。
+	if(hasFlag(F_InWar)==false)
+		return ;
+
+
+
 
     ///更新所有的子弹
     size_t size=m_BulletCollect.size();
@@ -284,14 +296,16 @@ void  WarManager::hasEnemyDeath(Enemy* pEnemy)
 bool WarManager::isGameEnd()
 {
     
-    return !m_GameBegan;
+    return !hasFlag(F_InWar);
     
 }
 
 //-------------------------------------------------
 void WarManager::startWar()
 {
-    m_GameBegan=true;
+
+    addFlag(F_InWar);
+	init();
 
     return ;
 }
@@ -299,8 +313,10 @@ void WarManager::startWar()
 //------------------------------------------------
 void WarManager::endWar()
 {
-    m_GameBegan=false;
 
+	addFlag(F_EndWar);
+    removeFlag(F_InWar);
+ 
     return ;
 }
 
@@ -347,13 +363,17 @@ void WarManager::notifyEnemyQueuLost(EnemyQueue* pEnemyQueue)
 }
 
 //---------------------------------------------------------
-EnemyQueue* WarManager::createEnemyQueue(float xangle,float yangle,const std::vector<Ogre::Vector3>& enemyList,
-										 const std::vector<Ogre::Vector3>& friendList)
+
+EnemyQueue* WarManager::createEnemyQueue(float minxangle,float maxxangle,float minyangle,float maxyangle,float mindis,float maxdis,
+							  const  std::vector<Ogre::Vector3>& enemyList,
+							 const std::vector<Ogre::Vector3>& friendList)
+
 {
 	Ogre::Camera* pCamera=Application::getSingleton().getMainCamera();
 
-	 xangle=Ogre::Math::RangeRandom(-xangle,xangle);
-	 yangle=Ogre::Math::RangeRandom(-yangle,yangle);
+	float xangle=Ogre::Math::RangeRandom(minxangle,maxxangle);
+	float yangle=Ogre::Math::RangeRandom(minyangle,maxyangle);
+	float zdis=  Ogre::Math::RangeRandom(mindis,maxdis);
 
 
 	 Ogre::Radian xRadian=Ogre::Degree(xangle);
@@ -366,19 +386,10 @@ EnemyQueue* WarManager::createEnemyQueue(float xangle,float yangle,const std::ve
 
 	 Ogre::Vector3 pos(x,y,z);
 	 pos.normalise();
-	 pos.x*=5.0f;
-	 pos.y*=5.0f;
-	 pos.z=Ogre::Math::RangeRandom(0.0f,-8.0f);
-    
+	 pos*=zdis;
 
-	 //PositionList Enemylist;
-  //   Enemylist.push_back(Ogre::Vector3(2.0f,0.0f,0.0f));
-	 //Enemylist.push_back(Ogre::Vector3(-2.0f,0.0f,0.0f));
-
-	 //PositionList FriendList;
-	 //FriendList.push_back(Ogre::Vector3(0.0f,0.0f,0.0f));
-
-
+	 pos+=pCamera->getParentSceneNode()->getPosition();
+	
 	 EnemyQueue* pQueue=new EnemyQueue(pos,enemyList,friendList);
      m_EnemyQueueCollect.push_back(pQueue);
 

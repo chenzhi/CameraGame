@@ -57,6 +57,15 @@ typedef std::vector<WarListener*>WarListenerCollect;
 
 class WarManager :public Ogre::Singleton<WarManager>
 {
+
+public:
+	enum Flag
+	{
+		F_InWar=1<<1,//在战斗中
+		F_EndWar=1<<2,//结束战斗
+	};
+
+
 public:
     
     /**
@@ -92,11 +101,18 @@ public:
     
 
 	/**在指定的范围内随机创建一个目标队列
-	*@param xangle 摄像机x轴左右xangle角度范围以内,角度值
-	*@param yangle 摄像机y轴上下yangle角度范围以内
+	*@param minxangle   x轴最小出现角度
+	*@param maxxangle   x轴最大出现角度
+	*@param minyangle   y轴最小出现角度
+	*@param maxyangle   y轴最大出现角度
+	*@param mindis      z轴最近
+	*@param maxdis      z轴最远
+	*@param enemylist   敌人信息
+	*@param friendlist  友人信息
 	%@return 返回创建的目标队列。失败返回NULL
 	*/
-	EnemyQueue* createEnemyQueue(float xangle,float yangle,const std::vector<Ogre::Vector3>& enemyList,
+	EnemyQueue* createEnemyQueue(float minxangle,float maxxangle,float minyangle,float maxyangle,float mindis,float maxdis,
+		const std::vector<Ogre::Vector3>& enemyList,
 		const std::vector<Ogre::Vector3>& friendList);
 
 
@@ -143,6 +159,27 @@ public:
     
     ///通过ogre entityName获取到enemy指针
     Enemy* getEnemyByEntityName(const std::string& name) const ;
+
+
+	///实际的战争结束
+	void _endWar()
+	{
+		removeFlag(F_EndWar);
+		destroyAllBullet();
+		destroyAllEnemy();
+		destroyAllEnemyQueue();
+
+	}
+
+
+
+
+	/**设置属性*/
+	void    setFlag(Flag flag){m_Flag=flag;}
+	void    addFlag(Flag roleFlag){m_Flag|=roleFlag;}
+	void    removeFlag(Flag roleFlag){m_Flag&=~roleFlag;}
+	unsigned int  getFlag()const {return m_Flag;}
+	bool    hasFlag(Flag flag) const   {return (m_Flag&flag)!=0;}
 
 
 protected:
@@ -204,10 +241,9 @@ protected:
 	EnemyQueueCollect  m_DeleteEnemyQueueCollect;
     
     Ogre::SceneManager*   m_pSceneMrg;
-    bool                  m_GameBegan;
-
-
 	WarListenerCollect    m_listenerCollect;  ///临听器容器
+
+	unsigned int          m_Flag;            //设置标记
     
 };
 

@@ -8,15 +8,17 @@
 #include "WarManager.h"
 #include "UIWarTwoBalance.h"
 #include "inputListen.h"
-
+#include "EnemyQueue.h"
 
 //--------------------------------------------------------
 WarModeTwo::WarModeTwo(GameState* pGameState)
 :WarMode(pGameState),m_pSceneMrg(NULL),m_KillCount(0),m_LostCount(0),
-m_pUIBalance(NULL)
+m_pUIBalance(NULL),m_Minx(-90.0f),m_Maxx(90.0f),
+m_Miny(-60.0f),m_Maxy(60.0f),m_Minz(1.5f),m_Maxz(5.0f),m_EnemyLeftTime(3.0f)
 {
 	m_pSceneMrg=Application::getSingleton().getMainSceneManager();
 
+	initUI();
 
 }
 
@@ -24,22 +26,20 @@ m_pUIBalance(NULL)
 //--------------------------------------------------------
 WarModeTwo::~WarModeTwo()
 {
+	destroyUI();
 }
 
 
 //--------------------------------------------------------
 void WarModeTwo::start()
 {
-	
 
-
-	initUI();
-
-	
-	
 	///重置杀死人数
 	m_KillCount=0;
 	m_LostCount=0;
+
+	///得置摄像机位置
+	Application::getSingleton().getMainCamera()->getParentSceneNode()->resetOrientation();
 
 	///初始化所有的阵列
 	initEmemyFormat();
@@ -48,7 +48,6 @@ void WarModeTwo::start()
 	WarManager::getSingleton().startWar();
 
 	createEnemyQueue();
-	
 
 
 }
@@ -57,7 +56,7 @@ void WarModeTwo::start()
 void WarModeTwo::end()
 {
 
-	destroyUI();
+	
 	WarManager::getSingleton().removeListener(this);
 	//WarManager::getSingleton().destroyAllEnemyQueue();
 
@@ -79,7 +78,7 @@ void WarModeTwo::update(float time)
 void WarModeTwo::beginTouch(int x,int y)
 {
 
-	
+
 
 
 }
@@ -132,12 +131,12 @@ void WarModeTwo::destroyUI()
 //----------------------------------------------------------------
 void  WarModeTwo::onKillEnemyQueue(EnemyQueue* pEnemyQueue)
 {
-    m_pUI->onKillEnemyQueue(pEnemyQueue);
+	m_pUI->onKillEnemyQueue(pEnemyQueue);
 	++m_KillCount;
 
 	///继续创建新的队列
 
-   	createEnemyQueue();
+	createEnemyQueue();
 
 
 
@@ -150,14 +149,14 @@ void  WarModeTwo::onLostEnemyQueue(EnemyQueue* pEnemyQueue)
 	++m_LostCount;
 	///如果大于三个逃跑游戏结束。
 
-	/*/
+	//*/
 	if(m_LostCount>=3)
 	{
-		///结束比赛
-		WarManager::getSingleton().endWar();
-		///显示结算界面
-		m_pUIBalance->setVisible(true);
-        m_pUI->setVisible(false);
+	///结束比赛
+	WarManager::getSingleton().endWar();
+	///显示结算界面
+	m_pUIBalance->setVisible(true);
+	m_pUI->setVisible(false);
 
 	}///继续创建新的队列
 	else  //*/
@@ -174,7 +173,7 @@ void  WarModeTwo::onLostEnemyQueue(EnemyQueue* pEnemyQueue)
 void WarModeTwo::onCrateEnemyQueue(EnemyQueue* pEnemyQueue)
 {
 
-		m_pUI->onCrateEnemyQueue(pEnemyQueue);
+	m_pUI->onCrateEnemyQueue(pEnemyQueue);
 }
 
 
@@ -192,8 +191,9 @@ void   WarModeTwo::_createEnemyQueue()
 		createindex=::rand()%m_EnemyFormatCollect.size();
 	}
 
-	WarManager::getSingleton().createEnemyQueue(90,60,m_EnemyFormatCollect[createindex].m_EnemyCollect,
+	EnemyQueue* pQueue= WarManager::getSingleton().createEnemyQueue(m_Minx,m_Maxx,m_Miny,m_Maxy,m_Minz,m_Maxz,m_EnemyFormatCollect[createindex].m_EnemyCollect,
 		m_EnemyFormatCollect[createindex].m_FriendCollect);
+	pQueue->setLeftTime(m_EnemyLeftTime);
 
 
 	m_needCreate=false;
@@ -263,7 +263,7 @@ void WarModeTwo::initEmemyFormat()
 	while (seci.hasMoreElements())
 	{
 		sec = seci.peekNextKey();
-		
+
 		Ogre::ConfigFile::SettingsMultiMap* settings = seci.getNext();
 		Ogre::ConfigFile::SettingsMultiMap::iterator i;
 		if(settings->empty())
@@ -276,15 +276,50 @@ void WarModeTwo::initEmemyFormat()
 		{
 			type = i->first;
 			arch = i->second;
-			Ogre::Vector3 Pos=Ogre::StringConverter::parseVector3(arch);
-			if(type=="Enemy")
-			{	
-			 m_EnemyFormatCollect.back().m_EnemyCollect.push_back(Pos);
-			}else if(type=="Friend")
-			{
-            m_EnemyFormatCollect.back().m_FriendCollect.push_back(Pos);
-			}
 
+
+			///如果是设置范围大小的
+			if(sec=="Enemylimits")
+			{
+				if(type=="Minx")
+				{
+					m_Minx=Ogre::StringConverter::parseReal(arch);
+				}else if(type=="Maxx")
+				{
+					m_Maxx=Ogre::StringConverter::parseReal(arch);
+				}else if(type=="Miny")
+				{
+					m_Miny=Ogre::StringConverter::parseReal(arch);
+				}else if(type=="Maxy")
+				{
+					m_Maxy=Ogre::StringConverter::parseReal(arch);
+				}else if(type=="Minz")
+				{
+					m_Minz=Ogre::StringConverter::parseReal(arch);
+				}else if(type=="Maxz")
+				{
+					m_Maxz=Ogre::StringConverter::parseReal(arch);
+				}else if(type=="LeftTime")
+				{
+					m_EnemyLeftTime=Ogre::StringConverter::parseReal(arch);
+				}
+
+
+
+			}else
+			{
+
+
+				Ogre::Vector3 Pos=Ogre::StringConverter::parseVector3(arch);
+				if(type=="Enemy")
+				{	
+					m_EnemyFormatCollect.back().m_EnemyCollect.push_back(Pos);
+				}else if(type=="Friend")
+				{
+					m_EnemyFormatCollect.back().m_FriendCollect.push_back(Pos);
+				}
+
+			}
 		}
 
 

@@ -6,7 +6,7 @@
 
 class GameState;
 class WarManager;
-
+class UIWarone;
 
 class WarModeOne :public WarMode, public WarListener
 {
@@ -65,7 +65,7 @@ protected:
 protected:
 
 
-	WarManager*    m_pWarItemManager;//
+	WarManager*    m_pWarManager;//
 
 	Ogre::SceneManager*   m_pSceneMrg;
            
@@ -77,9 +77,20 @@ protected:
 
 	bool                 m_needCreate;///是否需要创建一个队列
 	unsigned int         m_CreateIndex; ///当前创建的第几个队列;
+	UIWarone*            m_pUI;
+	UIBase*              m_pUIBalance;
 
-	UIBase*              m_pUI;
+	float                m_Minx;        ///最小x轴向角度
+	float                m_Maxx;
+	float                m_Miny;
+	float                m_Maxy;
+	float                m_Minz;
+	float                m_Maxz;      
 
+	unsigned int            m_KillCount;///本次杀死了多少敌人
+	unsigned int            m_LostCount;///有多少人跑了
+	float                m_EnemyLeftTime; ///敌人生命周期
+	
 	
 
 };

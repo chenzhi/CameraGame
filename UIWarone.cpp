@@ -3,12 +3,13 @@
 #include "Widget.h"
 #include "UIWarPause.h"
 #include  "Application.h"
-
+#include "Tool.h"
 
 
 //-----------------------------------------------------------------
 UIWarone::UIWarone()
-:UIBase("UIWarone",""),m_PauseButton(NULL),m_FirePoint(NULL)
+:UIBase("UIWarone",""),m_PauseButton(NULL),m_FirePoint(NULL),m_HundredTime(NULL),
+m_TenTime(NULL),m_DigitTime(NULL)
 {
 
 
@@ -47,6 +48,34 @@ void UIWarone::init()
 	m_FirePoint->setTop(m_FirePoint->getHeight()*(-0.5f));
 
 
+    ///创建记时图标
+	m_HundredTime=new StaticImage("WarModeone_Hundred","jieshu_shuzi_0.png");
+	m_HundredTime->setVerticalAlignment(Ogre::GVA_TOP);
+	m_HundredTime->setHorizontalAlignment(Ogre::GHA_RIGHT);
+	m_HundredTime->setWidth(64);
+	m_HundredTime->setHeight(64);
+	m_HundredTime->setLeft(-64*3);
+	registerWidget(m_HundredTime);
+	//m_TenTime;
+
+	m_TenTime=new StaticImage("WarModeone_Ten","jieshu_shuzi_0.png");
+	m_TenTime->setVerticalAlignment(Ogre::GVA_TOP);
+	m_TenTime->setHorizontalAlignment(Ogre::GHA_RIGHT);
+	m_TenTime->setWidth(64);
+	m_TenTime->setHeight(64);
+	m_TenTime->setLeft(-64*2);
+	registerWidget(m_TenTime);
+	//m_DigitTime;
+	m_DigitTime=new StaticImage("WarModeone_Digit","jieshu_shuzi_0.png");
+	m_DigitTime->setVerticalAlignment(Ogre::GVA_TOP);
+	m_DigitTime->setHorizontalAlignment(Ogre::GHA_RIGHT);
+	m_DigitTime->setWidth(64);
+	m_DigitTime->setHeight(64);
+	m_DigitTime->setLeft(-64);
+	registerWidget(m_DigitTime);
+
+	
+
 
 
 
@@ -57,6 +86,33 @@ void UIWarone::init()
 
 }
 
+//-----------------------------------------------------------------
+void UIWarone::setTime(int time)
+{
+	unsigned int second=0;
+	unsigned int minute=0;
+	unsigned int hource=0;
+
+	second=Tools::getValueByBit(time,1);
+	minute=Tools::getValueByBit(time,2);
+	hource=Tools::getValueByBit(time,3);
+
+
+	//Tools::parseTime(time*1000,hource,minute,second);
+
+	Ogre::String textureName="jieshu_shuzi_";
+
+
+	m_HundredTime->setImage(textureName+Ogre::StringConverter::toString(hource)+".png");
+	m_TenTime->setImage(textureName+Ogre::StringConverter::toString(minute)+".png");
+	m_DigitTime->setImage(textureName+Ogre::StringConverter::toString(second)+".png");
+
+
+
+
+	return;
+
+}
 
 //-----------------------------------------------------------------
 void UIWarone::buttonHit(Widget* button)

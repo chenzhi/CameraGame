@@ -31,7 +31,6 @@ material face_pang_lian_A
 			}
 			texture_unit faceMap
 			{
-				tex_coord_set 1
 				colour_op alpha_blend
 				texture gunzi_1.png
 			}

@@ -15,22 +15,3 @@ material mouse_mouse_A
 	}
 }
 
-=======
-material mouse_mouse_A
-{
-	set_texture_alias diffuseMap mouse.png
-	technique
-	{
-		pass
-		{
-			diffuse 0.588 0.588 0.588
-			texture_unit diffuseMap
-			{
-				tex_coord_set 0
-				texture mouse.png
-			}
-		}
-	}
-}
-
->>>>>>> ae44b686e40af873961f9f67adef8c05ce8182d0

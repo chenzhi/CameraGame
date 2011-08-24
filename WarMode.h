@@ -180,7 +180,14 @@ protected:
 	bool                    m_needCreate;
 
 
-	
+	float                m_Minx;        ///最小x轴向角度
+	float                m_Maxx;
+	float                m_Miny;
+	float                m_Maxy;
+	float                m_Minz;
+	float                m_Maxz;        
+	float                m_EnemyLeftTime; ///敌人生命周期
+
 
 
 };
