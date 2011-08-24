@@ -12,6 +12,7 @@
  工具类，一般都是静态函数，完成一些通用功能 
 */
 
+#include "rapidxml.hpp"
 
 
 class Tools
@@ -80,5 +81,36 @@ public:
 	* return : 返回指定位的值
 	*/
 	 static int getValueByBit(int value , int bit);
+
+
+
+	 static Ogre::String getAttrib(rapidxml::xml_node<>* XMLNode, const Ogre::String &attrib, const Ogre::String &defaultValue)
+	 {
+		 if(XMLNode->first_attribute(attrib.c_str()))
+			 return XMLNode->first_attribute(attrib.c_str())->value();
+		 else
+			 return defaultValue;
+	 }
+
+	 static float  getAttribReal(rapidxml::xml_node<>* XMLNode, const Ogre::String &attrib,float  defaultValue)
+	 {
+		 if(XMLNode->first_attribute(attrib.c_str()))
+			 return Ogre::StringConverter::parseReal(XMLNode->first_attribute(attrib.c_str())->value());
+		 else
+			 return defaultValue;
+	 }
+
+	 static bool getAttribBool(rapidxml::xml_node<>* XMLNode, const Ogre::String &attrib, bool defaultValue)
+	 {
+		 if(!XMLNode->first_attribute(attrib.c_str()))
+			 return defaultValue;
+
+		 if(Ogre::String(XMLNode->first_attribute(attrib.c_str())->value()) == "true")
+			 return true;
+
+		 return false;
+	 }
+
+
     
 };

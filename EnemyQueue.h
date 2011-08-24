@@ -27,7 +27,6 @@ public:
       EQ_NORMAl,//正常状态
 	  EQ_KILLALLENEMY,///所有敌人被打死
 	  EQ_KILLFRIEND,//杀死了友人。
-
 	  EQ_DISACTIVE,//非活动状态
 	};
 

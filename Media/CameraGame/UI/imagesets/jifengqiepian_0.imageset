@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<!-- D3DFORMAT: 21 -->
+<Imageset Name="jifengqiepian0_21" Imagefile="jifengqiepian0_21.png" NativeHorzRes="1024" NativeVertRes="768" AutoScaled="false">
+	<Image Name="jifen_completed " XPos="0" YPos="0" Width="561" Height="80" />
+	<Image Name="suspend_paused " XPos="561" YPos="0" Width="394" Height="80" />
+	<Image Name="moshi1_6" XPos="0" YPos="80" Width="105" Height="116" />
+	<Image Name="moshi1_0" XPos="105" YPos="80" Width="105" Height="116" />
+	<Image Name="moshi1_9" XPos="210" YPos="80" Width="105" Height="116" />
+	<Image Name="moshi1_4" XPos="315" YPos="80" Width="105" Height="115" />
+	<Image Name="moshi1_8" XPos="420" YPos="80" Width="104" Height="116" />
+	<Image Name="moshi1_5" XPos="524" YPos="80" Width="103" Height="115" />
+	<Image Name="moshi1_3" XPos="627" YPos="80" Width="102" Height="116" />
+	<Image Name="moshi1_2" XPos="729" YPos="80" Width="102" Height="116" />
+	<Image Name="moshi1_7" XPos="831" YPos="80" Width="100" Height="115" />
+	<Image Name="moshi1_1" XPos="931" YPos="80" Width="79" Height="116" />
+	<Image Name="jifen_continue" XPos="0" YPos="196" Width="243" Height="33" />
+	<Image Name="suspend_continue " XPos="243" YPos="196" Width="243" Height="33" />
+	<Image Name="suspend_return " XPos="486" YPos="196" Width="187" Height="33" />
+	<Image Name="jifen_replay" XPos="673" YPos="196" Width="183" Height="33" />
+	<Image Name="suspend_replay " XPos="0" YPos="229" Width="183" Height="33" />
+	<Image Name="jifen_score" XPos="856" YPos="196" Width="165" Height="36" />
+	<Image Name="score1" XPos="183" YPos="229" Width="129" Height="30" />
+	<Image Name="jifen_shuzi_2.png" XPos="955" YPos="0" Width="41" Height="35" />
+	<Image Name="jieshu_shuzi_5.png" XPos="955" YPos="35" Width="41" Height="35" />
+	<Image Name="jifen_shuzi_7.png" XPos="312" YPos="229" Width="41" Height="35" />
+	<Image Name="jifen_shuzi_9.png" XPos="353" YPos="229" Width="40" Height="35" />
+	<Image Name="jieshu_shuzi_3.png" XPos="393" YPos="229" Width="40" Height="35" />
+	<Image Name="jifen_shuzi_0 " XPos="433" YPos="229" Width="40" Height="35" />
+	<Image Name="jifen_shuzi_4 .png" XPos="473" YPos="229" Width="40" Height="35" />
+	<Image Name="jifen_shuzi_6.png" XPos="513" YPos="229" Width="40" Height="35" />
+	<Image Name="jifen_shuzi_8.png" XPos="553" YPos="229" Width="40" Height="35" />
+	<Image Name="gongyongxiaoziti_5" XPos="593" YPos="229" Width="30" Height="31" />
+	<Image Name="gongyongxiaoziti_2" XPos="623" YPos="229" Width="30" Height="31" />
+	<Image Name="gongyongxiaoziti_7" XPos="653" YPos="229" Width="30" Height="31" />
+	<Image Name="gongyongxiaoziti_6" XPos="683" YPos="229" Width="29" Height="31" />
+	<Image Name="gongyongxiaoziti_4" XPos="712" YPos="229" Width="29" Height="31" />
+	<Image Name="gongyongxiaoziti_3" XPos="741" YPos="229" Width="29" Height="31" />
+	<Image Name="gongyongxiaoziti_1" XPos="770" YPos="229" Width="29" Height="31" />
+	<Image Name="gongyongxiaoziti_9" XPos="799" YPos="229" Width="29" Height="31" />
+	<Image Name="gongyongxiaoziti_8" XPos="828" YPos="232" Width="29" Height="31" />
+	<Image Name="gongyongxiaoziti_0" XPos="857" YPos="232" Width="29" Height="31" />
+	<Image Name="jifen_maohao .png" XPos="996" YPos="0" Width="12" Height="25" />
+	<Image Name="maohao1" XPos="1008" YPos="0" Width="11" Height="21" />
+</Imageset>

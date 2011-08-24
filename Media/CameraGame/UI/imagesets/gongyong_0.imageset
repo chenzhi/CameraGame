@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<!-- D3DFORMAT: 21 -->
+<Imageset Name="gongyong0_21" Imagefile="gongyong0_21.png" NativeHorzRes="1024" NativeVertRes="768" AutoScaled="false">
+	<Image Name="beijing" XPos="0" YPos="0" Width="1024" Height="768" />
+	<Image Name="beijing2" XPos="1024" YPos="0" Width="1024" Height="768" />
+	<Image Name="kankuang" XPos="0" YPos="768" Width="319" Height="130" />
+	<Image Name="fanhui" XPos="319" YPos="768" Width="104" Height="105" />
+	<Image Name="zanting" XPos="423" YPos="768" Width="104" Height="105" />
+</Imageset>

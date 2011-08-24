@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="DefaultWindow" Name="SelectMode" >
+        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Window Type="AdvanceLook/StaticImage" Name="SelectMode/background" >
+            <Property Name="OrzImageNormal" Value="set:CameraPlayer0_22 image:play_background" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="SelectMode/return" >
+            <Property Name="OrzImageNormal" Value="set:selectMode0_21 image:moshi_fanhui_release" />
+            <Property Name="OrzImagePushed" Value="set:selectMode0_21 image:moshi_fanhui_press" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0328125,0},{0.833985,0},{0.129753,0},{0.968429,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="SelectMode/mode1" >
+            <Property Name="OrzImageNormal" Value="set:selectMode0_21 image:moshi_updown" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.378971,0},{0.291556,0},{0.629233,0},{0.609168,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="SelectMode/mode2" >
+            <Property Name="OrzImageNormal" Value="set:selectMode0_21 image:moshi_leftright" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0783857,0},{0.291556,0},{0.328647,0},{0.609168,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="SelectMode/mode3" >
+            <Property Name="OrzImageNormal" Value="set:selectMode0_21 image:moshi_updown" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.655012,0},{0.291556,0},{0.905273,0},{0.609168,0}}" />
+        </Window>
+    </Window>
+</GUILayout>

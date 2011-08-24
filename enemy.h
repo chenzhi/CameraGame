@@ -40,6 +40,7 @@ public:
     {
         ES_NORMAL, ///出现，未受伤时状态
         ES_DODGE, ////已经变打中，找飞的状态
+		ES_RUNAWALY,///逃路状态
         ES_DEATH, ///死亡状态
     };
     

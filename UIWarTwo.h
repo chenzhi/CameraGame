@@ -65,6 +65,8 @@ protected:
 	 /**按钮回调事件*/
 	 virtual void buttonHit(Widget* button);
 
+	 /**开始触摸,*/
+	 virtual void onBeginTouch(int x,int y);
 
 
 

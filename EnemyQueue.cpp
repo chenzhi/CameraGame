@@ -145,9 +145,11 @@ void  EnemyQueue::updateCollision(Bullet* pBullet)
 		if((*it)->intersectRay(ray,lenght))
 		{
 			(*it)->onHit(ray.getPoint(lenght),pBullet);
-			  pBullet->hitTarget();
-
-			return ;
+			 pBullet->hitTarget();
+              
+			 ///通中打中一个队友
+			 WarManager::getSingleton().notifyHitFriend(*it);
+			 return ;
 		}
 	}
 
@@ -364,8 +366,9 @@ void EnemyQueue::updateThankState(float time)
 //--------------------------------------------------------------------------
 void EnemyQueue::updateLevelState(float time)
 {
-	///逃离屏幕飞到实影后面。
 
+
+	///逃离屏幕飞到实影后面,先旋转再逃跑.
 	Ogre::Vector3 trans=m_LevelPoint*time*10.0f;
 	//m_pRootNode->translate(trans,Ogre::Node::TS_WORLD);
 

@@ -92,6 +92,9 @@ void UIWarModeTwo::init()
 	
 
 
+	
+	m_PauseButton=static_cast<ImageButton*>(getWidgetByName("WarModeTwo_PauseButton"));
+
 
 }
 
@@ -162,13 +165,11 @@ void UIWarModeTwo::updateEnemyDir()
 //----------------------------------------------------------------
 void  UIWarModeTwo::buttonHit(Widget* button)
 {
-	if(button==m_pFireButton)
-	{
-		WarManager::getSingleton().fire();
-	}else if(button==m_PauseButton)///如果是暂停
+	
+	if(button==m_PauseButton)///如果是暂停
 	{
 
-		UIWarPause* pPauseUI= static_cast<UIWarPause*>(Application::getSingleton().getUIByName("UIWarPause"));
+		UIWarPause* pPauseUI= static_cast<UIWarPause*>(Application::getSingleton().getUIByName("zantingjiemian"));
 		
 		std::vector<UIBase*>showList;
 		showList.push_back(this);
@@ -179,8 +180,21 @@ void  UIWarModeTwo::buttonHit(Widget* button)
 
 
 	}
-
 }
+
+
+//-------------------------------------------------------------------
+ void UIWarModeTwo::onBeginTouch(int x,int y)
+ {
+
+	 ///如果点击到了暂停按钮就忽略
+	 if(m_PauseButton->isCursorOver(m_PauseButton->getOverlayElement(),Ogre::Vector2(x,y),4))
+	 {
+		 return ;
+	 }
+	 WarManager::getSingleton().fire();
+	 return ;
+ }
 
 
 

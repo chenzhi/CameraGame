@@ -18,6 +18,8 @@
 
 
 class Ogre::OverlayElement;
+class Image;
+
 
 /**
 图片按钮
@@ -32,14 +34,15 @@ public:
 	*@name                控件名
 	*@param normalTexture 正常装态下的图片
 	*@param pressTexture  手指按下的图片
+	*@param useImage      是否使用imageset.
 	*/
-	ImageButton( const Ogre::String& name,const Ogre::String& normalTexture,const Ogre::String& pressTexture);
+	ImageButton( const Ogre::String& name,const Ogre::String& normalTexture,const Ogre::String& pressTexture,bool UseImageset=false);
 
 	virtual ~ImageButton();
 
 	/**内部构造函数，
 	*/
-	ImageButton(Ogre::OverlayElement* pElement,const Ogre::String& normalTexture,const Ogre::String& pressTexture);
+	ImageButton(Ogre::OverlayElement* pElement,const Ogre::String& normalTexture,const Ogre::String& pressTexture,bool UseImageset=false);
 
 
 	///鼠标事件
@@ -47,11 +50,6 @@ public:
 
 	///鼠标事件
 	virtual void _cursorReleased(const Ogre::Vector2& cursorPos) ;
-    
-    
-    void setNormalTexture(const Ogre::String& textureName);
-    
-    void setPressTexture(const Ogre::String& texturename);
 
 protected:
 
@@ -73,6 +71,9 @@ protected:
 	 Ogre::MaterialPtr      m_pMaterial;
 	 ButtonState            m_State;
 
+	 Image*               m_pNormalImage;
+	 Image*               m_pPressImage;
+
 
 
 };
@@ -92,8 +93,9 @@ public:
 	
 	/**构造函数
 	*@param  textureName 贴图文件名
+	*@param useImageset 是否使用imageset 
 	*/
-	StaticImage(const Ogre::String& name, const Ogre::String& textureName);
+	StaticImage(const Ogre::String& name, const Ogre::String& textureName,bool useImageset=false);
 
 
     virtual	~StaticImage();
@@ -105,6 +107,7 @@ public:
 protected:
 
 	Ogre::MaterialPtr m_pMaterial;
+
 
 
 };

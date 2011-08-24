@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<!-- D3DFORMAT: 21 -->
+<Imageset Name="photoLib0_21" Imagefile="photoLib0_21.png" NativeHorzRes="1024" NativeVertRes="768" AutoScaled="false">
+	<Image Name="tuku_zhunxin" XPos="0" YPos="0" Width="512" Height="512" />
+	<Image Name="tuku_beijingkuang_1" XPos="512" YPos="0" Width="256" Height="512" />
+	<Image Name="tuku_delete" XPos="768" YPos="0" Width="256" Height="128" />
+	<Image Name="tuku_quxiao_press" XPos="768" YPos="128" Width="128" Height="128" />
+	<Image Name="tuku_quxiao_release" XPos="896" YPos="128" Width="128" Height="128" />
+	<Image Name="tuku_zuoanniu_press" XPos="768" YPos="256" Width="64" Height="64" />
+	<Image Name="tuku_zuoanniu_release" XPos="832" YPos="256" Width="64" Height="64" />
+</Imageset>

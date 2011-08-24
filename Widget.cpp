@@ -1,12 +1,12 @@
 
 #include "pch.h"
 #include "Widget.h"
-
+#include "UIImagesetManager.h"
 
 
 //-------------------------------------------------------------------------------------------
-ImageButton::ImageButton(const Ogre::String& name,const Ogre::String& normalTexture,const Ogre::String& pressTexture)
-:m_NormalTexture(normalTexture),m_PressTexture(pressTexture),m_State(BS_UP)
+ImageButton::ImageButton(const Ogre::String& name,const Ogre::String& normalTexture,const Ogre::String& pressTexture,bool UseImageset)
+:m_NormalTexture(normalTexture),m_PressTexture(pressTexture),m_State(BS_UP),m_pNormalImage(NULL),m_pPressImage(NULL)
 {
 
 	mElement = Ogre::OverlayManager::getSingleton().createOverlayElementFromTemplate("cz/ImageButton", "Panel", name);
@@ -18,17 +18,25 @@ ImageButton::ImageButton(const Ogre::String& name,const Ogre::String& normalText
 	}
 	mElement->setMaterialName(m_pMaterial->getName());
 
-	Ogre::TextureUnitState* pTextureState=m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0);
+	//Ogre::TextureUnitState* pTextureState=m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0);
+
+	if(UseImageset)
+	{
+		m_pNormalImage=UIImagesetManager::getSingleton().getImageByName(normalTexture);
+		m_pPressImage=UIImagesetManager::getSingleton().getImageByName(pressTexture);
+
+	}
+	
 
 	 resetPosAndSize();
 
-	updateState();
+	  updateState();
 
 }
 
 
-ImageButton::ImageButton(Ogre::OverlayElement* pElement,const Ogre::String& normalTexture,const Ogre::String& pressTexture)
-:m_NormalTexture(normalTexture),m_PressTexture(pressTexture),m_State(BS_UP)
+ImageButton::ImageButton(Ogre::OverlayElement* pElement,const Ogre::String& normalTexture,const Ogre::String& pressTexture,bool UseImageset)
+:m_NormalTexture(normalTexture),m_PressTexture(pressTexture),m_State(BS_UP),m_pNormalImage(NULL),m_pPressImage(NULL)
 {
    assert(pElement);
    mElement=pElement;
@@ -36,8 +44,19 @@ ImageButton::ImageButton(Ogre::OverlayElement* pElement,const Ogre::String& norm
    m_pMaterial=mElement->getMaterial();
    m_pMaterial=m_pMaterial->clone(mElement->getName());
 
+
+   if(UseImageset)
+   { 
+	   m_pNormalImage=UIImagesetManager::getSingleton().getImageByName(normalTexture);
+	   m_pPressImage=UIImagesetManager::getSingleton().getImageByName(pressTexture);
+
+   }
+   
+
    resetPosAndSize();
    updateState();
+
+  
 
 }
 
@@ -108,34 +127,37 @@ void ImageButton::updateState()
 
 	if(m_State==BS_UP)
 	{
-		m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(m_NormalTexture);
+		if(m_pNormalImage==NULL)
+		{
+         m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(m_NormalTexture);
+		}else
+		{
+			m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(m_pNormalImage->getParent()->getTextureName());
+			const Ogre::Vector4& uv=m_pNormalImage->getUV();		
+			static_cast<Ogre::PanelOverlayElement*>(mElement)->setUV(uv.x,uv.y,uv.z,uv.w);
+
+		}
+		
+
 		setScale(1.0f);
 	
-	}else
-    {
-		m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(m_PressTexture);
+	}else if(m_State==BS_DOWN)
+	{
+		if(m_pPressImage==NULL)
+		{
+			m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(m_PressTexture);
+		}else
+		{
+			const Ogre::Vector4& uv=m_pPressImage->getUV();		
+			static_cast<Ogre::PanelOverlayElement*>(mElement)->setUV(uv.x,uv.y,uv.z,uv.w);
+			m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(m_pPressImage->getParent()->getTextureName());
+
+		}
+
 		setScale(1.2f);
 
 	}
 
-}
-
-//-------------------------------------------------------------------------------------------
-void ImageButton::setNormalTexture(const Ogre::String& textureName)
-{
-    m_NormalTexture=textureName;
-    updateState();
-    
-
-}
-
-
-//-------------------------------------------------------------------------------------------
-void ImageButton::setPressTexture(const Ogre::String& texturename)
-{
-    m_PressTexture=texturename;
-    updateState();
-    
 }
 
 
@@ -143,7 +165,7 @@ void ImageButton::setPressTexture(const Ogre::String& texturename)
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 //-------------------------------------------------------------------------------------------
-StaticImage::StaticImage(const Ogre::String& name,const Ogre::String& textureName)
+StaticImage::StaticImage(const Ogre::String& name,const Ogre::String& textureName,bool useImageset)
 {
 
 	mElement = Ogre::OverlayManager::getSingleton().createOverlayElementFromTemplate("cz/ImageButton", "Panel", name);
@@ -154,10 +176,33 @@ StaticImage::StaticImage(const Ogre::String& name,const Ogre::String& textureNam
 		m_pMaterial=mElement->getMaterial()->clone(name);
 	}
 
-	 resetPosAndSize();
+	resetPosAndSize();
 	mElement->setMaterialName(m_pMaterial->getName());
 
-	setImage(textureName);
+
+
+	if(useImageset)
+	{
+		Image* pImage=UIImagesetManager::getSingleton().getImageByName(textureName);
+		if(pImage!=NULL)
+		{
+
+			Ogre::PanelOverlayElement* pPanel=static_cast<Ogre::PanelOverlayElement*>(mElement);
+			const Ogre::Vector4& uv=pImage->getUV();
+			pPanel->setUV(uv.x,uv.y,uv.z,uv.w);
+			setImage(pImage->getParent()->getTextureName());
+		}
+
+	}else
+	{
+		setImage(textureName);
+
+	}
+	
+
+
+
+	
 
 }
 
@@ -471,17 +516,10 @@ m_pNextButton(NULL)
 
 	Ogre::OverlayElement* pPreElement=pContainer->getChild(getName()+"/"+templateName+"/PreviousButton");
 	m_pPrevisouButton=new ImageButton(pPreElement,"tuku_zuoanniu_release.png","tuku_zuoanniu_press.png");
-	m_pPrevisouButton->setWidth(65);//zxt_modify
-	m_pPrevisouButton->setHeight(65);
-	m_pPrevisouButton->setLeft(30);
-	m_pPrevisouButton->setTop(-20);
 	m_pPrevisouButton->_assignListener(this);
 
     Ogre::OverlayElement* pNewxElement =pContainer->getChild(getName()+"/"+templateName+"/NextButton");
 	m_pNextButton = new ImageButton(pNewxElement,"paizhao_sanjiao_release.png","paizhao_sanjiao_press.png");
-	m_pNextButton->setWidth(63);//zxt_modify
-	m_pNextButton->setHeight(63);
-	m_pNextButton->setTop(-20);
     m_pNextButton->_assignListener(this);
 
    int Srollindex=1;

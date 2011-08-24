@@ -149,6 +149,9 @@ protected:
 	///创建新敌人
 	virtual void onCrateEnemyQueue(EnemyQueue* pEnemyQueue);
 
+	/**打中一个不应打中的目标*/
+	virtual void onHitFriend(Enemy* pEnemy);
+
 
 	void createEnemyQueue()
 	{
@@ -165,6 +168,9 @@ protected:
 
 
 protected:
+
+
+
 
 	//Enemy* m_pEnemy;
 

@@ -4,10 +4,11 @@
 
 
 #include "UIBase.h"
+#include "UILLayout.h"
 
 class WarMode;
 
-class UIWarTowModeBalance :public UIBase
+class UIWarTowModeBalance :public UILayout
 {
 
 public:
@@ -17,7 +18,7 @@ public:
 	~UIWarTowModeBalance();
 
 
-	void init();
+	//void init();
 	
 protected:
 

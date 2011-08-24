@@ -6,11 +6,11 @@
 
 
 #include "UIBase.h"
-
+#include "UILLayout.h"
 
 class Widget;
 
-class UIGamePlay :public UIBase
+class UIGamePlay :public UILayout
 {
 public:
 
@@ -22,7 +22,7 @@ public:
 
 
 	/**≥ı ºªØ*/
-	virtual void init();
+	//virtual void init();
 
 	//virtual void update(float time);
 

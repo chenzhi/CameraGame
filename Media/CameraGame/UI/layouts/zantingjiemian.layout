@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="DefaultWindow" Name="zantingjiemian" >
+        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Window Type="AdvanceLook/StaticImage" Name="zantingjiemian/zantingbeijin2" >
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:beijing2" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/StaticImage" Name="zantingjiemian/zantingpaused" >
+            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:suspend_paused " />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="ClippedByParent" Value="False" />
+            <Property Name="UnifiedAreaRect" Value="{{0.311458,0},{0.107813,0},{0.677083,0},{0.262499,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="zantingjiemian/zantinglansekuang" >
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:kankuang" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.347916,0},{0.30625,0},{0.648958,0},{0.490626,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="zantingjiemian/zantinglansekuang2" >
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:kankuang" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.347916,0},{0.5,0},{0.648958,0},{0.684377,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="zantingjiemian/zantinglansekuang3" >
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:kankuang" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.347916,0},{0.693749,0},{0.648958,0},{0.878126,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="zantingjiemian/zantingyingyue" >
+            <Property Name="OrzImageNormal" Value="set:play0_21 image:play_shengyin_release" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0385418,0},{0.801563,0},{0.142709,0},{0.950002,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="zantingjiemian/zantingyingxiao" >
+            <Property Name="OrzImageNormal" Value="set:play0_21 image:play_yinyue_release" />
+            <Property Name="OrzImagePushed" Value="set:play0_21 image:play_yinyue_release" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0385418,0},{0.623437,0},{0.142709,0},{0.771876,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="zantingjiemian/zantingcontinue" >
+            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:suspend_continue " />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.373959,0},{0.3625,0},{0.623958,0},{0.420312,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="zantingjiemian/zantingreturn" >
+            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:suspend_return " />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.373958,0},{0.564062,0},{0.623958,0},{0.621874,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="zantingjiemian/zantingreplay" >
+            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:suspend_replay " />
+            <Property Name="OrzImagePushed" Value="set:jifengqiepian0_21 image:suspend_replay " />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.373958,0},{0.760936,0},{0.623958,0},{0.818748,0}}" />
+        </Window>
+    </Window>
+</GUILayout>

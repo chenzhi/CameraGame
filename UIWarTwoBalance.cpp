@@ -6,7 +6,7 @@
 
 //-------------------------------------------------------------
 UIWarTowModeBalance::UIWarTowModeBalance(WarMode* pMode)
-:UIBase("UIWarTowModeBalance",""),m_pWarMode(pMode)
+:UILayout("jifengjiemian"),m_pWarMode(pMode)
 {
 
 	assert(m_pWarMode);
@@ -24,6 +24,7 @@ UIWarTowModeBalance::~UIWarTowModeBalance()
 
 
 //-------------------------------------------------------------
+/*/
 void UIWarTowModeBalance::init()
 {
 
@@ -83,7 +84,7 @@ void UIWarTowModeBalance::init()
 
 
 }
-
+//*/
 
 //-------------------------------------------------------------
 void UIWarTowModeBalance::destroy()
@@ -100,17 +101,22 @@ void UIWarTowModeBalance::buttonHit(Widget* pbutton)
      if(pbutton==NULL)
 		 return ;
 
-	 if(pbutton->getName()=="returnButton")//返回到模式选择
+	 if(pbutton->getName()=="jifengjiemian/jifenglankuang")//返回到模式选择
 	 {
 
 		 Application::getSingleton().getCurrentActive()->setNextStateType(ST_SELECTMODE);
+		  setVisible(false);
 
-	 }else if(pbutton->getName()=="replayButton")///如果是重玩。
+
+	 }else if(pbutton->getName()=="jifengjiemian/jifenglankuang2")///如果是重玩。
 	 {
          m_pWarMode->start();
+		  setVisible(false);
 	 }
 
+	 return ;
 
-	 setVisible(false);
+
+	
 
 }

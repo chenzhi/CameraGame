@@ -176,6 +176,12 @@ void WarModeTwo::onCrateEnemyQueue(EnemyQueue* pEnemyQueue)
 	m_pUI->onCrateEnemyQueue(pEnemyQueue);
 }
 
+//----------------------------------------------------------------
+void  WarModeTwo::onHitFriend(Enemy* pEnemy)
+{
+	return ;
+
+}
 
 //-----------------------------------------------------------------------
 void   WarModeTwo::_createEnemyQueue()

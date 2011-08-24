@@ -363,6 +363,25 @@ void WarManager::notifyEnemyQueuLost(EnemyQueue* pEnemyQueue)
 }
 
 //---------------------------------------------------------
+/**内部函数，通知打中了不应打中的目标*/
+void WarManager::notifyHitFriend(Enemy* pEnemy)
+{
+
+	WarListenerCollect::iterator it=m_listenerCollect.begin();
+	WarListenerCollect::iterator itend=m_listenerCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		(*it)->onHitFriend(pEnemy);
+	}
+	return ;
+
+
+
+}
+
+
+//---------------------------------------------------------
 
 EnemyQueue* WarManager::createEnemyQueue(float minxangle,float maxxangle,float minyangle,float maxyangle,float mindis,float maxdis,
 							  const  std::vector<Ogre::Vector3>& enemyList,

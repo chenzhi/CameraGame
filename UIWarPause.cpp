@@ -6,7 +6,7 @@
 
 //-----------------------------------------------------------------
 UIWarPause::UIWarPause()
-:UIBase("UIWarPause",""),m_pReturn(NULL),m_pContinue(NULL)
+:UILayout("zantingjiemian"),m_pReturn(NULL),m_pContinue(NULL)
 {
 
 
@@ -20,13 +20,13 @@ UIWarPause::~UIWarPause()
 }
 
 //-----------------------------------------------------------------
+/*
 void UIWarPause::init()
 {
 	UIBase::init();
 
 	int width=450;
 	///按钮背景就
-	/*//
 	StaticImage* pStateImage=new StaticImage("UIWarPause_background","jieshu_wenzikuang_1.png");
 	registerWidget(pStateImage);
 	int width=400;
@@ -34,7 +34,7 @@ void UIWarPause::init()
 	pStateImage->setHeight(width);
 	pStateImage->setLeft(width*-0.5f);
 	pStateImage->setTop(width*-0.5f);
-    //*/
+  
 
 	///续继按钮
      m_pContinue=new ImageButton("UIWarPause_continueButton","suspend_continue.png","suspend_continue.png");
@@ -58,13 +58,9 @@ void UIWarPause::init()
 	m_pReturn->setWidth(450);
 	m_pReturn->setHeight(100);
 
-
-
-
-
-
-
 }
+//*/
+
 
 //-----------------------------------------------------------------
 void UIWarPause::buttonHit(Widget* button)
@@ -72,17 +68,18 @@ void UIWarPause::buttonHit(Widget* button)
 	if(button==NULL)
 		return ;
 
-	if(button==m_pContinue)
+	if(button->getName()=="zantingjiemian/zantinglansekuang")
 	{
 		//UIBase* pUI=Application::getSingleton().getUIByName("UIWarModeTwo");
 	//	pUI->setVisible(true);
 		setVisible(false);
 
-	}else if(button==m_pReturn)
+	}else if(button->getName()=="zantingjiemian/zantinglansekuang2")
 	{
 		setVisible(false);
 		Application::getSingleton().getCurrentActive()->setNextStateType(ST_SELECTMODE);
 	}
+
 
 
 

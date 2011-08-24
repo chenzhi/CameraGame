@@ -161,8 +161,8 @@
 			Ogre::OverlayManager& om = Ogre::OverlayManager::getSingleton();
             Ogre::Real l = element->_getDerivedLeft() * om.getViewportWidth();
             Ogre::Real t = element->_getDerivedTop() * om.getViewportHeight();
-            Ogre::Real r = l + element->getWidth();
-            Ogre::Real b = t + element->getHeight();
+            Ogre::Real r = l + element->_getWidth()* om.getViewportWidth();
+            Ogre::Real b = t + element->_getHeight()* om.getViewportHeight();
 
 			return (cursorPos.x >= l + voidBorder && cursorPos.x <= r - voidBorder &&
 				cursorPos.y >= t + voidBorder && cursorPos.y <= b - voidBorder);
@@ -370,6 +370,7 @@
 			mElement->setTop(center.y);
 			mElement->setWidth(newSize.x);
 			mElement->setHeight(newSize.y);
+
 			return ;        
 
 		}

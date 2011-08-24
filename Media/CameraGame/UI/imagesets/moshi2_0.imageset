@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<!-- D3DFORMAT: 21 -->
+<Imageset Name="moshi20_21" Imagefile="moshi20_21.png" NativeHorzRes="1024" NativeVertRes="768" AutoScaled="false">
+	<Image Name="moshi2_kongjianliangfeng" XPos="0" YPos="0" Width="393" Height="402" />
+	<Image Name="moshi2_kongjianlianfeng" XPos="393" YPos="0" Width="222" Height="171" />
+	<Image Name="moshi2_shengm" XPos="615" YPos="0" Width="63" Height="66" />
+</Imageset>

@@ -26,11 +26,12 @@
 
 #include "stateMachine.h"
 #include "UIManager.h"
-
+#include "UIImagesetManager.h"
 
 class ofxiPhoneVideoGrabber;
 class SdkTrayManager;
 class InputListen;
+
 
 
 class Application :public Ogre::Singleton<Application>, public StateMachine , public UIManager
@@ -210,6 +211,9 @@ protected:
     
 
 	bool                     m_Pause;/// «∑Ò‘›Õ£
+
+
+	UIImagesetManager*       m_pImagesetMrg;
   
     
 };

@@ -197,10 +197,30 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="资源文件"
+			Name="Effect"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+			<File
+				RelativePath="..\Active.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ActiveContainer.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\ActiveContainer.h"
+				>
+			</File>
+			<File
+				RelativePath="..\EffectManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\EffectManager.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Application"
@@ -502,6 +522,10 @@
 			Name="UI"
 			>
 			<File
+				RelativePath="..\CollisionManager.h"
+				>
+			</File>
+			<File
 				RelativePath="..\SdkTrays.cpp"
 				>
 			</File>
@@ -515,6 +539,38 @@
 			</File>
 			<File
 				RelativePath="..\UIBase.h"
+				>
+			</File>
+			<File
+				RelativePath="..\UIImage.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\UIImage.h"
+				>
+			</File>
+			<File
+				RelativePath="..\UIImageSet.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\UIIMageSet.h"
+				>
+			</File>
+			<File
+				RelativePath="..\UIImagesetManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\UIImagesetManager.h"
+				>
+			</File>
+			<File
+				RelativePath="..\UILayout.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\UILLayout.h"
 				>
 			</File>
 			<File

@@ -49,6 +49,11 @@ public:
 	///创建一个新的敌人队列
 	virtual void onCrateEnemyQueue(EnemyQueue* pEnemyQueue)=0;
 
+
+	/**打中一个不应打中的目标*/
+	virtual void onHitFriend(Enemy* pEnemy){};
+
+
 };
 
 
@@ -138,6 +143,10 @@ public:
 	*内部函数不需要主动调用
 	*/
 	void notifyEnemyQueuLost(EnemyQueue* pEnemyQueue);
+
+
+	/**内部函数，通知打中了不应打中的目标*/
+	void notifyHitFriend(Enemy* pEnemy);
 
     
 public:

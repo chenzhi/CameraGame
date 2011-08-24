@@ -9,7 +9,7 @@
 
 //-----------------------------------------------------------
 UIGamePlay::UIGamePlay()
-:UIBase("UIGamePlay","")
+:UILayout("playlogo")
 {
 	
 }
@@ -25,6 +25,7 @@ UIGamePlay::~UIGamePlay()
 
 
 //-----------------------------------------------------------
+/*
 void UIGamePlay::init()
 {
 
@@ -55,7 +56,7 @@ void UIGamePlay::init()
 
 
 
-   //faceBool��ť
+   /
    ImageButton* pPlayFaceBook=new ImageButton("GamePlayer_FaceBookButton","play_facebook_release.png","play_facebook_press.png");
    registerWidget(pPlayFaceBook);
    pPlayFaceBook->setHorizontalAlignment(Ogre::GHA_RIGHT);
@@ -78,19 +79,16 @@ void UIGamePlay::init()
    pPlayTwitterBook->setHeight(80);
    pPlayTwitterBook->setLeft(-130);
    pPlayTwitterBook->setTop(-128);
-
-  
-
-
-
 }
+
+//*/
 
 
 //-----------------------------------------------------------
 void UIGamePlay::buttonHit(Widget* button)
 {
 
-	if(button->getName()=="GamePlayer_PlayerButton")
+	if(button->getName()=="play/playlanseanniu")
 	{
 
 		Application::getSingleton().getCurrentActive()->setNextStateType(ST_SELECTMODE);

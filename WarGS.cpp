@@ -18,7 +18,7 @@
 #include "WarModeThree.h"
 #include "WarModeOne.h"
 
-
+#include "UIImagesetManager.h"
 
 
 //------------------------------------
@@ -200,6 +200,11 @@ void WarGS::updateAccelerometer()
 
 void WarGS::intiUI()
 {
+
+	///³õÊ¼»¯imageset
+	//UIImagesetManager::getSingleton().createImageset("jifengqiepian_0.imageset","UI");
+
+
 	m_pUIPause=new UIWarPause();
 	m_pUIPause->init();
 	m_pUIPause->setVisible(false);

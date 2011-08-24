@@ -5,9 +5,9 @@
 #pragma once
 
 #include "UIBase.h"
+#include "UILLayout.h"
 
-
-class UIWarPause :public	UIBase
+class UIWarPause :public UILayout
 {
 
 public:
@@ -18,7 +18,7 @@ public:
 	~UIWarPause();
 
 
-	void init();
+//	void init();
 
 
 	/**设置是否可见*/

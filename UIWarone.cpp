@@ -119,8 +119,8 @@ void UIWarone::buttonHit(Widget* button)
 {
 	///如果点击暂停按钮
 	if(button==m_PauseButton)
-	{
-		UIWarPause* pPauseUI= static_cast<UIWarPause*>(Application::getSingleton().getUIByName("UIWarPause"));
+	{                                                                                          
+		UIWarPause* pPauseUI= static_cast<UIWarPause*>(Application::getSingleton().getUIByName("zantingjiemian"));
 
 		std::vector<UIBase*>showList;
 		showList.push_back(this);

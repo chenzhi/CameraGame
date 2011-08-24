@@ -3,7 +3,7 @@
 #include "GS_GamePlay.h"
 #include "UI_GamePlay.h"
 #include "Application.h"
-
+#include "UIImagesetManager.h"
 
 
 //-------------------------------------------------------------
@@ -27,7 +27,13 @@ GSGamePlay::~GSGamePlay()
 void  GSGamePlay::begin( )
 {
 	GameState::begin();
+	
+	UIImagesetManager::getSingleton().createImageset("gongyong_0.imageset","UI");
 
+	UIImagesetManager::getSingleton().createImageset("play_0.imageset","UI");
+
+	UIImagesetManager::getSingleton().createImageset("jifengqiepian_0.imageset","UI");
+                                                    
 	initUI();
 
 }
@@ -38,6 +44,8 @@ void  GSGamePlay::end( )
 {
 	GameState::end();
 	destroyUI();
+
+	UIImagesetManager::getSingleton().destroyImagetset("play0_21");
 
 }
 

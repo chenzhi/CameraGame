@@ -206,6 +206,7 @@ void Enemy::death()
 //---------------------------------------------------
 void Enemy::updateNormal(float time)
 {
+
 	return ;
 }
 
@@ -219,6 +220,9 @@ void Enemy::updateDodge(float time)
 	float ra=m_Rotate*0.3f*time;
 	m_pNode->rotate(Ogre::Vector3(0,0,1), Ogre::Radian(ra));
 	m_Rotate-=ra;
+
+
+
 
 
 	////移动
@@ -305,8 +309,15 @@ bool Enemy::intersectRay(const Ogre::Ray& ray,float length)
 			bool intersect=	Ogre::Math::intersects(ray,MouthBox,&mouthNear,&mouthFar);
 			if(intersect&&(nearPoint<length || farPoint<length))
 			{
-				///表示击中嘴部播放张嘴动作。
+				///表示击中嘴部播放张嘴动作。并把子弹隐藏，在嘴上放一个子弹。
+				
 				playAnimation("hanqiu",true,0.5f);
+
+				//
+
+				//m_pEntity->attachObjectToBone("");
+
+
 
 				return true;
 

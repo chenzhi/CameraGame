@@ -31,7 +31,7 @@ namespace Ogre
 
 Application::Application()
 :m_pRoot(NULL ),m_pRenderWindow(NULL),m_pViewPort(NULL),m_pCamera(NULL),
-m_pSceneManager(NULL),m_Pause(false)
+m_pSceneManager(NULL),m_Pause(false),m_pImagesetMrg(NULL)
 {
 
 
@@ -203,6 +203,8 @@ bool Application::initOgreRender()
     
     m_pUIManager =new SdkTrayManager("MainUI",m_pRenderWindow);
     m_pUIManager->showFrameStats(TL_BOTTOMLEFT);
+
+	m_pImagesetMrg=new UIImagesetManager();
     
     
 #ifdef __arm__
@@ -266,6 +268,9 @@ void Application::destroyOgreRender()
 #endif
 
     delete m_pUIManager;
+
+	SafeDelete(m_pImagesetMrg);
+
    // mStaticPluginLoader.unload();
     OGRE_DELETE m_pRoot;
     

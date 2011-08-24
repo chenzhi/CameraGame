@@ -171,7 +171,7 @@ void UIWarModeThree::buttonHit(Widget* pbutton)
 	///如果是返回按钮。
 	if(pbutton==m_pPauseButton)
 	{
-		UIWarPause* pPauseUI= static_cast<UIWarPause*>(Application::getSingleton().getUIByName("UIWarPause"));
+		UIWarPause* pPauseUI= static_cast<UIWarPause*>(Application::getSingleton().getUIByName("zantingjiemian"));
 		if(pPauseUI!=NULL)
 		{
 			std::vector<UIBase*>showList;
