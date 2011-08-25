@@ -180,7 +180,7 @@ void UISelectHead::buttonHit(Widget* pWidget)
      	}else///返回到选择用户的界面
 		{
 
-			UIBase* pUI=Application::getSingletonPtr()->getUIByName("UISelectUser");
+			UIBase* pUI=Application::getSingletonPtr()->getUIByName("tukumoshi");
 			pUI->setVisible(true);
 		}
 		setVisible(false);

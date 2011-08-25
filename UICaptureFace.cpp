@@ -162,7 +162,7 @@ void UICaptureFace::buttonHit(Widget* button)
      if(WidgetName=="zhaoxiang/")
 	 {
 
-		 UIBase* pSelectUser=Application::getSingleton().getUIByName("UISelectUser");
+		 UIBase* pSelectUser=Application::getSingleton().getUIByName("tukumoshi");
 		 assert(pSelectUser);
 		 setVisible(false);
 		 pSelectUser->setVisible(true);

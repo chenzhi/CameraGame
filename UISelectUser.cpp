@@ -10,7 +10,7 @@
 
 
 UISelectUser::UISelectUser()
-:UIBase("UISelectUser",""),m_ToCaptureButton(NULL),m_pReturnButton(NULL),m_NeedUpdate(false)
+:UILayout("tukumoshi"),m_ToCaptureButton(NULL),m_pReturnButton(NULL),m_NeedUpdate(false)
 {
 
 
@@ -28,9 +28,31 @@ UISelectUser::~UISelectUser()
 void  UISelectUser::init()
 {
 
-	UIBase::init();
+	UILayout::init();
+
+	Widget* pWidget=getWidgetByName("toukujiemian/toukuhonglian");
+	m_FaceMaskCollect.push_back(pWidget);
 
 
+	pWidget=getWidgetByName("toukujiemian/ltoukuanlian");
+	m_FaceMaskCollect.push_back(pWidget);
+	
+
+	pWidget=getWidgetByName("toukujiemian/toukujulian");
+	m_FaceMaskCollect.push_back(pWidget);
+
+
+	pWidget=getWidgetByName("toukujiemian/toukuyinglan");
+	m_FaceMaskCollect.push_back(pWidget);
+
+
+	pWidget=getWidgetByName("toukujiemian/toukulvlian");
+	m_FaceMaskCollect.push_back(pWidget);
+
+
+	return ;
+
+	/*
 	///背景
 	StaticImage* pImage=new StaticImage("SelectUserBackGround","jieshu_background.png");
 	registerWidget(pImage);
@@ -78,10 +100,8 @@ void  UISelectUser::init()
    pDeleteImage->setWidth(256);
    pDeleteImage->setTop(-pDeleteImage->getHeight()-20);
    pDeleteImage->setLeft(-pDeleteImage->getWidth()*0.5f);
-
-
-
-	return ;
+    //*/
+	
 }
 
 
@@ -89,7 +109,7 @@ void  UISelectUser::init()
 //-----------------------------------------------
 void UISelectUser::update(float time)
 {
-	UIBase::update(time);
+	UILayout::update(time);
 
 	if(m_NeedUpdate)
 	{
@@ -132,22 +152,54 @@ void  UISelectUser::setUserList(Ogre::StringVectorPtr pUserList)
 		userSize=5;
 	}
 
+	size_t maskSize=m_FaceMaskCollect.size();
+	for(size_t i=0;i<maskSize;++i)
+	{
+	   this->unregisterWidget(m_FaceMaskCollect[i]);
+	}
+
+	
+
 	for(int i=0;i<userSize;++i)
 	{
 		//Ogre::String buttonName="UserFace_"+Ogre::StringConverter::toString(i);
+
+
+		Widget* pMaskFace=m_FaceMaskCollect[i];
+		float left=pMaskFace->getLeft();
+		float width=pMaskFace->getWidth();
+		float top=pMaskFace->getTop();
+		float height=pMaskFace->getHeight();
+
+
+
 		Ogre::String imageName=m_UserList->at(i);
 		TimeImageButton* pButton=new TimeImageButton(imageName, imageName);
-		registerWidget(pButton);
-		m_UserButtonCollect.push_back(pButton);
-		pButton->setHorizontalAlignment(Ogre::GHA_LEFT);
-		pButton->setTop(pButton->getHeight()*-0.5f);
-		int width= pButton->getWidth();
-		width+=20;//加下空隙
-		pButton->setLeft(200+width*i);
 
+		m_UserButtonCollect.push_back(pButton);
+
+		pButton->setHorizontalAlignment(Ogre::GHA_LEFT);
+		pButton->setVerticalAlignment(Ogre::GVA_TOP);
+		pButton->setMetricsMode(Ogre::GMM_RELATIVE);
+
+		pButton->setTop(top);
+		pButton->setWidth(width);
+		pButton->setLeft(left);
+		pButton->setHeight(height);
+
+		registerWidget(pButton);
+		
+
+	
 	}
 
 
+
+	
+	for(size_t i=0;i<maskSize;++i)
+	{
+		registerWidget(m_FaceMaskCollect[i]);
+	}
 
 
 	return ;
@@ -236,8 +288,9 @@ void UISelectUser::buttonHit(Widget* pbutton)
 		return ;
 
 
+	const Ogre::String WidgetName=pbutton->getName();
 	//如果是跳到拍照按钮
-	if(pbutton==m_ToCaptureButton)
+	if(WidgetName=="toukujiemian/toukudajiantouzuo")
 	{
 		setVisible(false);
 

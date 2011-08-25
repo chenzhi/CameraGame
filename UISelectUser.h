@@ -4,11 +4,14 @@
 
 
 #include "UIBase.h"
+#include "UILLayout.h"
+
+
 
 
 class ImageButton;
 class TimeImageButton;
-class UISelectUser :public UIBase
+class UISelectUser :public UILayout
 {
 
 public:
@@ -62,6 +65,13 @@ protected:
 
 	typedef std::vector<TimeImageButton*> ImageButtonCollect;
 	ImageButtonCollect  m_UserButtonCollect;
+
+
+
+	std::vector<Widget*>              m_FaceMaskCollect;///脸的遮罩层
+
+
+
 
 	///返回到捕人脸按钮
 	ImageButton* m_ToCaptureButton;

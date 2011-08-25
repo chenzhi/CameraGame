@@ -102,6 +102,10 @@ public:
 	Widget* getWidgetByName(const Ogre::String& anem);
 
 
+	/**把一个指定的控件向*/
+	//void    moveWidgetBack(Widget* pWidget);
+
+
 	/**设置属性*/
 	void    setFlag(Flag flag){m_Flag=flag;}
 	void    addFlag(Flag roleFlag){m_Flag|=roleFlag;}
