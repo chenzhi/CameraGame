@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!-- D3DFORMAT: 21 -->
+<Imageset Name="moshi30_21" Imagefile="moshi30_21.png" NativeHorzRes="1024" NativeVertRes="768" AutoScaled="false">
+	<Image Name="moshi3_baozha" XPos="0" YPos="0" Width="352" Height="422" />
+	<Image Name="moshi3_nengliangtiao2" XPos="352" YPos="0" Width="93" Height="433" />
+	<Image Name="moshi3_wunengliangtiao2" XPos="445" YPos="0" Width="93" Height="433" />
+	<Image Name="zhaoxiangji" XPos="538" YPos="0" Width="161" Height="169" />
+	<Image Name="miaozhuangjing" XPos="699" YPos="0" Width="154" Height="157" />
+	<Image Name="moshi3_touxie" XPos="853" YPos="0" Width="116" Height="109" />
+	<Image Name="gongjijian" XPos="853" YPos="109" Width="110" Height="111" />
+	<Image Name="moshi3_zhuantou" XPos="699" YPos="157" Width="113" Height="103" />
+	<Image Name="moshi3_dao" XPos="538" YPos="169" Width="101" Height="110" />
+	<Image Name="moshi3_gunzi" XPos="812" YPos="220" Width="93" Height="112" />
+	<Image Name="moshi3_dan" XPos="905" YPos="220" Width="73" Height="93" />
+	<Image Name="moshi3_jiantouyou1" XPos="969" YPos="0" Width="52" Height="75" />
+	<Image Name="moshi3_jiantouzuo1" XPos="969" YPos="75" Width="52" Height="75" />
+</Imageset>
