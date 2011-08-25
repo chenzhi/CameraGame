@@ -32,25 +32,20 @@
             <Property Name="UnifiedAreaRect" Value="{{0.866667,0},{0.575,0},{0.976042,0},{0.739064,0}}" />
         </Window>
         <Window Type="AdvanceLook/Button" Name="play/playyingyue" >
-            <Property Name="OrzImageNormal" Value="set:play0_21 image:play_yinyue_release" />
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:play_yinyue_release" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.0229167,0},{0.575,0},{0.130209,0},{0.740626,0}}" />
         </Window>
         <Window Type="AdvanceLook/Button" Name="play/playyingxiao" >
-            <Property Name="OrzImageNormal" Value="set:play0_21 image:play_shengyin_release" />
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:play_shengyin_release" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.0229167,0},{0.353042,0},{0.130209,0},{0.518668,0}}" />
-        </Window>
-        <Window Type="AdvanceLook/Button" Name="play/playlanseanniu" >
-            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:kankuang" />
-            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.347917,0},{0.726562,0},{0.679166,0},{0.931249,0}}" />
         </Window>
         <Window Type="AdvanceLook/Button" Name="play/playanniu" >
             <Property Name="Font" Value="default" />
             <Property Name="OrzImageNormal" Value="set:play0_21 image:play_play_press" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.43125,0},{0.776562,0},{0.596876,0},{0.860939,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.347917,0},{0.726562,0},{0.679166,0},{0.931249,0}}" />
         </Window>
     </Window>
 </GUILayout>

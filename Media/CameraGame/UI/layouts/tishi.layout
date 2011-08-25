@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="DefaultWindow" Name="tishijiejiemian" >
+        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Window Type="AdvanceLook/Button" Name="tishijiejiemian/tishizantingjian" >
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:zanting" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0250003,0},{0.0347718,0},{0.132292,0},{0.192233,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/StaticImage" Name="tishijiejiemian/tishixiaoscore" >
+            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:score1" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.665625,0},{0.0314329,0},{0.796875,0},{0.0759255,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/StaticImage" Name="tishijiejiemian/jifengmaohao" >
+            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:maohao1" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.8125,0},{0.047962,0},{0.823958,0},{0.0759255,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="tishijiejiemian/tishixiaoshuzi9" >
+            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:gongyongxiaoziti_9" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.828125,0},{0.0314342,0},{0.859374,0},{0.0759255,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="tishijiejiemian/tishixiaoshuzi5" >
+            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:gongyongxiaoziti_5" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.859376,0},{0.0314342,0},{0.890625,0},{0.0759255,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="tishijiejiemian/tishixiaoshuzi8" >
+            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:gongyongxiaoziti_8" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.889583,0},{0.0314342,0},{0.920832,0},{0.0759255,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="tishijiejiemian/tishixiaoshuzi0" >
+            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:gongyongxiaoziti_0" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.919792,0},{0.0314342,0},{0.951041,0},{0.0759255,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="tishijiejiemian/tishixiaoshuzi00" >
+            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:gongyongxiaoziti_0" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.951041,0},{0.0314342,0},{0.982291,0},{0.0759255,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="tishijiejiemian/tishiyouxijiantou" >
+            <Property Name="OrzImageNormal" Value="set:tishi0_21 image:tishi_tishijiantou" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.535417,0},{0.102685,0},{0.69375,0},{0.207799,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/StaticImage" Name="tishijiejiemian/tishimiaozhunjing" >
+            <Property Name="OrzImageNormal" Value="set:moshi30_21 image:miaozhuangjing" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.415625,0},{0.35495,0},{0.579167,0},{0.583791,0}}" />
+        </Window>
+    </Window>
+</GUILayout>

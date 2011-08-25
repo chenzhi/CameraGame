@@ -5,5 +5,7 @@
 	<Image Name="beijing2" XPos="1024" YPos="0" Width="1024" Height="768" />
 	<Image Name="kankuang" XPos="0" YPos="768" Width="319" Height="130" />
 	<Image Name="fanhui" XPos="319" YPos="768" Width="104" Height="105" />
-	<Image Name="zanting" XPos="423" YPos="768" Width="104" Height="105" />
+	<Image Name="play_shengyin_release" XPos="423" YPos="768" Width="104" Height="105" />
+	<Image Name="play_yinyue_release" XPos="527" YPos="768" Width="104" Height="105" />
+	<Image Name="zanting" XPos="631" YPos="768" Width="104" Height="105" />
 </Imageset>

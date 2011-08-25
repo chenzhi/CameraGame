@@ -101,14 +101,14 @@ void UIWarTowModeBalance::buttonHit(Widget* pbutton)
      if(pbutton==NULL)
 		 return ;
 
-	 if(pbutton->getName()=="jifengjiemian/jifenglankuang")//返回到模式选择
+	 if(pbutton->getName()=="jifengjiemian/jifengconutinue")//返回到模式选择
 	 {
 
 		 Application::getSingleton().getCurrentActive()->setNextStateType(ST_SELECTMODE);
 		  setVisible(false);
 
 
-	 }else if(pbutton->getName()=="jifengjiemian/jifenglankuang2")///如果是重玩。
+	 }else if(pbutton->getName()=="jifengjiemian/jifengreplay")///如果是重玩。
 	 {
          m_pWarMode->start();
 		  setVisible(false);

@@ -68,13 +68,13 @@ void UIWarPause::buttonHit(Widget* button)
 	if(button==NULL)
 		return ;
 
-	if(button->getName()=="zantingjiemian/zantinglansekuang")
+	if(button->getName()=="zantingjiemian/zantingcontinue")
 	{
 		//UIBase* pUI=Application::getSingleton().getUIByName("UIWarModeTwo");
 	//	pUI->setVisible(true);
 		setVisible(false);
 
-	}else if(button->getName()=="zantingjiemian/zantinglansekuang2")
+	}else if(button->getName()=="zantingjiemian/zantingreturn")
 	{
 		setVisible(false);
 		Application::getSingleton().getCurrentActive()->setNextStateType(ST_SELECTMODE);

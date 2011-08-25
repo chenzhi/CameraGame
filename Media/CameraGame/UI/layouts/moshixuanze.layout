@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="DefaultWindow" Name="moshixuanze" >
+        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Window Type="AdvanceLook/StaticImage" Name="moshixuanze/moshixuanzebeijing" >
+            <Property Name="Font" Value="default" />
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:beijing" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshixuanze/moshixuanzefanhui" >
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:fanhui" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0239583,0},{0.804445,0},{0.132292,0},{0.966946,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshixuanze/moshixuanzelanlvyuan" >
+            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:moshixuanze_lanlv" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0687501,0},{0.296876,0},{0.333335,0},{0.690624,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshixuanze/moshixuanzelanyuan" >
+            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:moshixuanze_lanyuan" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.372916,0},{0.296876,0},{0.6375,0},{0.690624,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshixuanze/moshixuanzehuangyuan" >
+            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:moshixuanze_huangyuan" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.680209,0},{0.296876,0},{0.944793,0},{0.690624,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/StaticImage" Name="moshixuanze/moshixuanzeselectastage" >
+            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:moshixuanze_selectastage" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.25625,0},{0.0375,0},{0.766667,0},{0.1375,0}}" />
+        </Window>
+    </Window>
+</GUILayout>

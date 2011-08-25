@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="DefaultWindow" Name="zhaoxiang" >
+        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Window Type="AdvanceLook/Button" Name="zhaoxiang/zhaoxiangfanhui" >
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:fanhui" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0239583,0},{0.803125,0},{0.132291,0},{0.970312,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="zhaoxiang/zhaoxiangpaizhaojian" >
+            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:zhaoxiangji" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.422917,0},{0.73595,0},{0.5875,0},{0.987636,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="zhaoxiang/zhaoxiangjifull" >
+            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:zhaoxiang_full" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.4125,0},{0.651563,0},{0.619791,0},{0.748437,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/StaticImage" Name="zhaoxiang/zhaoxiangjixiaolian" >
+            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:paizhao_xuanliankuang" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.314584,0},{0.104734,0},{0.676041,0},{0.634753,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/StaticImage" Name="zhaoxiang/zhaoxiangaligntheeyesandmouthwiththeguides" >
+            <Property Name="Font" Value="default" />
+            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:zhaoxiang_aligntheyesmouthwiththeguides" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.157291,0},{0.0392079,0},{0.872917,0},{0.100145,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="zhaoxiang/" >
+            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:jiantouyou" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.916667,0},{0.390978,0},{0.992709,0},{0.537218,0}}" />
+        </Window>
+    </Window>
+</GUILayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="DefaultWindow" Name="moshi3" >
+        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Window Type="AdvanceLook/StaticImage" Name="moshi3/moshi3touxiangbaozha" >
+            <Property Name="OrzImageNormal" Value="set:moshi30_21 image:moshi3_baozha" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.321875,0},{0.08125,0},{0.687499,0},{0.745312,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshi3/moshi3zhuantou" >
+            <Property Name="OrzImageNormal" Value="set:moshi30_21 image:moshi3_zhuantou" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.153125,0},{0.829687,0},{0.267708,0},{0.99375,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshi3/moshi3gunzi" >
+            <Property Name="OrzImageNormal" Value="set:moshi30_21 image:moshi3_gunzi" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.313541,0},{0.81875,0},{0.4125,0},{1.00625,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshi3/moshi3jidan" >
+            <Property Name="OrzImageNormal" Value="set:moshi30_21 image:moshi3_dan" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.447917,0},{0.848437,0},{0.529167,0},{1.00156,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshi3/moshi3dao" >
+            <Property Name="OrzImageNormal" Value="set:moshi30_21 image:moshi3_dao" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.56875,0},{0.815625,0},{0.678125,0},{0.992187,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshi3/moshi3tuoxie" >
+            <Property Name="OrzImageNormal" Value="set:moshi30_21 image:moshi3_touxie" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.722917,0},{0.820312,0},{0.842708,0},{0.9875,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshi3/moshi3xiaojiantouzuo" >
+            <Property Name="OrzImageNormal" Value="set:moshi30_21 image:moshi3_jiantouzuo1" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0614584,0},{0.829687,0},{0.121875,0},{0.951562,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshi3/moshi3xiaojiantouyou" >
+            <Property Name="OrzImageNormal" Value="set:moshi30_21 image:moshi3_jiantouyou1" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.877084,0},{0.829687,0},{0.9375,0},{0.951562,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshi3/moshi3zanting" >
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:zanting" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0239583,0},{0.0343751,0},{0.132292,0},{0.2,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/StaticImage" Name="moshi3/moshi3nengliangtiao1" >
+            <Property Name="OrzImageNormal" Value="set:moshi30_21 image:moshi3_wunengliangtiao2" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.860417,0},{0.114062,0},{0.966667,0},{0.8,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/StaticImage" Name="moshi3/moshi3nengliangtiao2" >
+            <Property Name="OrzImageNormal" Value="set:moshi30_21 image:moshi3_nengliangtiao2" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.857292,0},{0.109375,0},{0.970833,0},{0.801562,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="moshi3/moshi3zhaoxiangji" >
+            <Property Name="Font" Value="default" />
+            <Property Name="OrzImageNormal" Value="set:moshi30_21 image:zhaoxiangji" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.8125,0},{0.00636739,0},{0.980209,0},{0.268866,0}}" />
+        </Window>
+    </Window>
+</GUILayout>

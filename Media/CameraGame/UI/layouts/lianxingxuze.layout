@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="DefaultWindow" Name="lianxingxuanze" >
+        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+ <Window Type="AdvanceLook/StaticImage" Name="lianxingxuanze/lianxingxuanzebeijing" >
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:beijing" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/Button" Name="lianxingxuanze/lianxingxuanzefanhui" >
+            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:fanhui" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.021875,0},{0.8,0},{0.132291,0},{0.96875,0}}" />
+        </Window>
+        <Window Type="AdvanceLook/StaticImage" Name="lianxingxuanze/lianxingxuanzeselectafacetoplaywith" >
+            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:selectafacetoplaywith" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.182292,0},{0.0609375,0},{0.816665,0},{0.139062,0}}" />
+        </Window>
+       
+    </Window>
+</GUILayout>

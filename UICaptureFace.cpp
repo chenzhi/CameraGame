@@ -159,7 +159,7 @@ void UICaptureFace::buttonHit(Widget* button)
 {
 	const Ogre::String WidgetName=button->getName();
 
-     if(WidgetName=="zhaoxiang/zhaoxiangzanting")
+     if(WidgetName=="zhaoxiang/")
 	 {
 
 		 UIBase* pSelectUser=Application::getSingleton().getUIByName("UISelectUser");
