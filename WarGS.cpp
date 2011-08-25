@@ -202,8 +202,12 @@ void WarGS::intiUI()
 {
 
 	///³õÊ¼»¯imageset
-	//UIImagesetManager::getSingleton().createImageset("jifengqiepian_0.imageset","UI");
+	UIImagesetManager::getSingleton().createImageset("moshi3_0.imageset","UI");
 
+	UIImagesetManager::getSingleton().createImageset("moshi2_0.imageset","UI");
+
+
+	
 
 	m_pUIPause=new UIWarPause();
 	m_pUIPause->init();

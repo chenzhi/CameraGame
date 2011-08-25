@@ -29,7 +29,7 @@ UIImagesetManager::~UIImagesetManager()
 //-------------------------------------------------------------
 bool UIImagesetManager::createImageset(const Ogre::String& fileName,const Ogre::String& resourceGroup)
 {
-	UIImageSet* pset=getImagesetByName(fileName);
+	UIImageSet* pset=getImagesetByFileName(fileName);
 
 	if(pset!=NULL)
 		return false;
@@ -67,10 +67,25 @@ UIImageSet* UIImagesetManager::getImagesetByName(const Ogre::String& name) const
 	}
 	return NULL;
 
-	return NULL;
-
 }
 
+
+//-------------------------------------------------------------
+
+UIImageSet*  UIImagesetManager::getImagesetByFileName(const Ogre::String& name) const
+{
+
+	ImagesetCollect::const_iterator it=m_ImagesetCollect.begin();
+	ImagesetCollect::const_iterator endit=m_ImagesetCollect.end();
+
+
+	for(;it!=endit;++it)
+	{
+		if((*it)->getFileName()==name)
+			return *it;
+	}
+	return NULL;
+}
 
 //-------------------------------------------------------------
 void  UIImagesetManager::destroyImagetset(const Ogre::String& name)

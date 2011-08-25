@@ -215,22 +215,36 @@ StaticImage::~StaticImage()
 }
 
 //-------------------------------------------------------------------------------------------
-void StaticImage::setImage(const Ogre::String& textureName)
+void StaticImage::setImage(const Ogre::String& textureName,bool userImageset)
 {
 
-	/*Ogre::TexturePtr ptexture=Ogre::TextureManager::getSingleton().getByName(textureName);
-	assert(ptexture.isNull()==false);
-
-	int width=ptexture->getWidth();
-	int height=ptexture->getHeight();
-
-	mElement->setWidth(width);
-	*/
-
-	if(m_pMaterial.isNull()==false)
+	if(userImageset==false)
 	{
-		m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(textureName);
+		if(m_pMaterial.isNull()==false)
+		{
+			m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(textureName);
+		}
+
+
+	}else
+	{
+
+		Image* pImage=UIImagesetManager::getSingleton().getImageByName(textureName);
+		if(pImage!=NULL)
+		{
+			Ogre::PanelOverlayElement* pPanel=static_cast<Ogre::PanelOverlayElement*>(mElement);
+			const Ogre::Vector4& uv=pImage->getUV();
+			pPanel->setUV(uv.x,uv.y,uv.z,uv.w);
+
+			if(m_pMaterial.isNull()==false)
+			{
+				m_pMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureName(pImage->getParent()->getTextureName());
+			}
+
+			
+		}
 	}
+
 
 
 }

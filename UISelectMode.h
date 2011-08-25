@@ -2,11 +2,11 @@
 #pragma  once
 
 #include "UIBase.h"
+#include "UILLayout.h"
 
 
 
-
-class UISelectMode :public UIBase
+class UISelectMode :public UILayout
 {
 
 
@@ -20,7 +20,7 @@ public:
 
 
 	/**≥ı ºªØ*/
-	virtual void init();
+	//virtual void init();
 
 
 

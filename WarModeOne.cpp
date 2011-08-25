@@ -51,6 +51,9 @@ void WarModeOne::start()
 	m_KillCount=0;
 	m_LostCount=0;
 
+	m_pUI->setVisible(true);
+	m_pUIBalance->setVisible(false);
+
 }
 
 
@@ -73,6 +76,7 @@ void WarModeOne::update(float time)
 		if(WarManager::getSingleton().isGameEnd()==false)
 		{
 			WarManager::getSingleton().endWar();
+			m_pUI->setVisible(false);
 			m_pUIBalance->setVisible(true);
 		}
 		

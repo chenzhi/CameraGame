@@ -33,6 +33,12 @@ void  GSGamePlay::begin( )
 	UIImagesetManager::getSingleton().createImageset("play_0.imageset","UI");
 
 	UIImagesetManager::getSingleton().createImageset("jifengqiepian_0.imageset","UI");
+
+	UIImagesetManager::getSingleton().createImageset("moshixuanze_0.imageset","UI");
+
+	UIImagesetManager::getSingleton().createImageset("xiaoliankuang_0.imageset","UI");
+
+
                                                     
 	initUI();
 

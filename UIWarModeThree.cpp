@@ -8,8 +8,8 @@
 
 //------------------------------------------------------------
 UIWarModeThree::UIWarModeThree(WarModeThree* pWarMode)
-:UIBase("UIWarModeThree",""),m_pWarMode(pWarMode),
-m_pPauseButton(NULL),m_pSnapshotButton(NULL),m_pItemSelectSlider(NULL),m_pPowerBackground(NULL),
+:UILayout("moshi3"),m_pWarMode(pWarMode),
+m_pSnapshotButton(NULL),m_pItemSelectSlider(NULL),m_pPowerBackground(NULL),
 m_ItemType(WIT_EGG)
 {
 
@@ -33,23 +33,27 @@ UIWarModeThree::~UIWarModeThree()
 //------------------------------------------------------------
 void UIWarModeThree::init()
 {
-	UIBase::init();
+	UILayout::init();
+
+
+	m_pPowerImage=static_cast<StaticImage*>(getWidgetByName("moshi3/moshi3nengliangtiao2"));
+
+
+	Widget* pWidget=getWidgetByName("moshi3/moshi3touxiangbaozha");
+	if(pWidget!=NULL)
+	{
+		pWidget->hide();
+	}
+
+
+	return; 
 
 
 
 	///暂停按钮
 
 	///暂停按钮
-	m_pPauseButton=new ImageButton("WarModeThree_PauseButton","youxi_zhanting_release.png","youxi_zhanting_press.png");	registerWidget(m_pPauseButton);
-	m_pPauseButton->setHorizontalAlignment(Ogre::GHA_LEFT);
-	m_pPauseButton->setVerticalAlignment(Ogre::GVA_TOP);
-	m_pPauseButton->setLeft(32);
-	m_pPauseButton->setTop(32);
-	m_pPauseButton->setWidth(80);
-	m_pPauseButton->setHeight(80);
-
-
-
+	
 	///能量槽背景图
 	m_pPowerBackground=new StaticImage("WarModeThree_PowerBackground","model3__xuetiao_1.png");
 	registerWidget(m_pPowerBackground);
@@ -105,6 +109,8 @@ void  UIWarModeThree::setPowerPercent(float percent)
 {
 	percent=std::max(0.0f,percent);
 	percent=std::min(1.0f,percent);
+
+	return ;
 
 	int height=m_pPowerBackground->getHeight();
     int top=m_pPowerBackground->getTop();
@@ -168,8 +174,10 @@ void UIWarModeThree::buttonHit(Widget* pbutton)
 	if(pbutton==NULL)
 		return ;
 
+	const Ogre::String& WidgetName=pbutton->getName();
+	
 	///如果是返回按钮。
-	if(pbutton==m_pPauseButton)
+	if(WidgetName=="moshi3/moshi3zanting")
 	{
 		UIWarPause* pPauseUI= static_cast<UIWarPause*>(Application::getSingleton().getUIByName("zantingjiemian"));
 		if(pPauseUI!=NULL)
@@ -183,7 +191,7 @@ void UIWarModeThree::buttonHit(Widget* pbutton)
 
 		return ;
 
-	}else if(pbutton==m_pSnapshotButton)///如果是快照保存快照到用户的象册文件夹下
+	}else if(WidgetName=="moshi3/moshi3zhaoxiangji")///如果是快照保存快照到用户的象册文件夹下
     {
         
       if(Tools::getScreenSnapshot(m_pSnapshotTexture))

@@ -69,7 +69,7 @@ bool FaceModeDataSource::getElementUserData(unsigned index,Ogre::String& element
 
 //---------------------------------------------------------------
 UISelectHead:: UISelectHead()
-:UIBase("UISelectHead",""),m_pReturnButton(NULL)
+:UILayout("toutaoxuanzejiemian"),m_pReturnButton(NULL)
 {
 
 
@@ -77,7 +77,7 @@ UISelectHead:: UISelectHead()
 
 
 //---------------------------------------------------------------
- UISelectHead::~ UISelectHead()
+ UISelectHead::~UISelectHead()
 {
 
 
@@ -85,6 +85,7 @@ UISelectHead:: UISelectHead()
 
 
 //---------------------------------------------------------------
+ /*
 void  UISelectHead::init()
 {
 
@@ -152,14 +153,20 @@ void  UISelectHead::sliderGalleryhit(SrollButton* pbutton)
 
 }
 
+//*/
+
 void UISelectHead::buttonHit(Widget* pWidget)
 {
 	if(pWidget==NULL)
 		return ;
 
+	const Ogre::String& widgetName=pWidget->getName();
+
+	///
+
 
 	//返回按钮，回到选择人物界面
-	if(pWidget==m_pReturnButton)
+	if(widgetName=="toutaoxuanze/toutaofanhui")
 	{
 
 		Ogre::StringVectorPtr pUserList=Tools::getUserFaceFileList();
@@ -167,7 +174,7 @@ void UISelectHead::buttonHit(Widget* pWidget)
 		if(pUserList.isNull()||pUserList->empty())///如果没有信息就返回到捕脸界面
 		{
 		   
-			UIBase* pUI=Application::getSingletonPtr()->getUIByName("CaptureFaceUI");
+			UIBase* pUI=Application::getSingletonPtr()->getUIByName("zhaoxiang");
 		    pUI->setVisible(true);
 	
      	}else///返回到选择用户的界面
@@ -176,10 +183,40 @@ void UISelectHead::buttonHit(Widget* pWidget)
 			UIBase* pUI=Application::getSingletonPtr()->getUIByName("UISelectUser");
 			pUI->setVisible(true);
 		}
-         setVisible(false);
+		setVisible(false);
 
 		return ;
 
+	}else if(widgetName=="toutaoxuanze/juyuan")
+	{
+		g_userInformation.setHeadMode("duck.mesh");
+
+	}else if(widgetName=="toutaoxuanze/danlanyuan")
+	{
+		g_userInformation.setHeadMode("hema.mesh");
+	}else if(widgetName=="toutaoxuanze/hongyuan")
+	{
+		g_userInformation.setHeadMode("mouse.mesh");
+	}else if(widgetName=="toutaoxuanze/lanlvyuan")
+	{	g_userInformation.setHeadMode("xiaoji.mesh");
+
+	}else if(widgetName=="toutaoxuanze/lanyuan")
+	{	
+		g_userInformation.setHeadMode("deer.mesh");
+
+	}else if(widgetName=="toutaoxuanze/huangyuan")
+	{	
+		g_userInformation.setHeadMode("head_tu.mesh");
+
 	}
+
+
+	///选择了头套进入选择脸型界面
+	setVisible(false);
+	UIBase* pSelectFace=Application::getSingleton().getUIByName("UISelectFaceMode");
+	pSelectFace->setVisible(true);
+
+
+	return ;
 
 }

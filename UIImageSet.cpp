@@ -4,6 +4,7 @@
 
 
 UIImageSet::UIImageSet(const Ogre::String& fileName,const Ogre::String& resourceGroup)
+:m_FileName(fileName)
 {
 
 	rapidxml::xml_document<> XMLDoc;    // character type defaults to char

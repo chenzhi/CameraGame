@@ -10,6 +10,7 @@
 
 #include "UIBase.h"
 #include "WarManager.h"
+#include "UILLayout.h"
 
 
 class RotateImage;
@@ -18,7 +19,7 @@ class StaticImage;
 class Widget;
 class EnemyQueue;
 
-class UIWarModeTwo :public UIBase
+class UIWarModeTwo :public UILayout
 {
 
 public:
@@ -72,9 +73,9 @@ protected:
 
 
 
-	  ImageButton* m_PauseButton;  ///暂停按钮
-	  ImageButton* m_pFireButton;  ///开火按钮
-	  StaticImage* m_FirePoint;    ///中间准心
+	 ImageButton* m_PauseButton;  ///暂停按钮
+	//  ImageButton* m_pFireButton;  ///开火按钮
+	 // StaticImage* m_FirePoint;    ///中间准心
       RotateImage* m_pRotateImage;//指向敌人的方向
 
 	  EnemyQueue*  m_pEnemy;

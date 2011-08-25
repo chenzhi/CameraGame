@@ -241,7 +241,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 	{
 		setVisible(false);
 
-		UIBase* pCaptureFace= Application::getSingleton().getUIByName("CaptureFaceUI");
+		UIBase* pCaptureFace= Application::getSingleton().getUIByName("zhaoxiang");
 		assert(pCaptureFace);
 		pCaptureFace->setVisible(true);
 		return ;
@@ -282,7 +282,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 			{
 				setVisible(false);
 				g_userInformation.setUserImage(username);
-				UIBase* pSelectFaceMode= Application::getSingleton().getUIByName("UISelectHead");
+				UIBase* pSelectFaceMode= Application::getSingleton().getUIByName("toutaoxuanzejiemian");
 				pSelectFaceMode->setVisible(true);
 
 			}

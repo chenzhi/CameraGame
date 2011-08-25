@@ -8,7 +8,7 @@
 
 //-----------------------------------------------------------------
 UIWarone::UIWarone()
-:UIBase("UIWarone",""),m_PauseButton(NULL),m_FirePoint(NULL),m_HundredTime(NULL),
+:UILayout("moshi1")/*,m_PauseButton(NULL),m_FirePoint(NULL)*/,m_HundredTime(NULL),
 m_TenTime(NULL),m_DigitTime(NULL)
 {
 
@@ -24,11 +24,19 @@ UIWarone::~UIWarone()
 }
 
 //-----------------------------------------------------------------
+
 void UIWarone::init()
 {
-	UIBase::init();
+	UILayout::init();
+	m_TenTime=static_cast<StaticImage*>(getWidgetByName("moshi1/moshi1shijianshuzi5"));
+	m_DigitTime=static_cast<StaticImage*>(getWidgetByName("moshi1/moshi1shijianshuzi9"));
+
+	
+
+	return ;
 
 	///暂停按钮
+	/*/
 	m_PauseButton=new ImageButton("WarModeone_PauseButton","youxi_zhanting_release.png","youxi_zhanting_press.png");
 	registerWidget(m_PauseButton);
 	m_PauseButton->setHorizontalAlignment(Ogre::GHA_LEFT);
@@ -74,17 +82,12 @@ void UIWarone::init()
 	m_DigitTime->setLeft(-64);
 	registerWidget(m_DigitTime);
 
-	
 
-
-
-
-
-
-
+//*/
 
 
 }
+//*/
 
 //-----------------------------------------------------------------
 void UIWarone::setTime(int time)
@@ -100,12 +103,12 @@ void UIWarone::setTime(int time)
 
 	//Tools::parseTime(time*1000,hource,minute,second);
 
-	Ogre::String textureName="jieshu_shuzi_";
+	Ogre::String textureName="set:jifengqiepian0_21 image:moshi1_";
 
 
-	m_HundredTime->setImage(textureName+Ogre::StringConverter::toString(hource)+".png");
-	m_TenTime->setImage(textureName+Ogre::StringConverter::toString(minute)+".png");
-	m_DigitTime->setImage(textureName+Ogre::StringConverter::toString(second)+".png");
+	//m_HundredTime->setImage(textureName+Ogre::StringConverter::toString(hource)+".png");
+	m_TenTime->setImage(textureName+Ogre::StringConverter::toString(minute),true);
+	m_DigitTime->setImage(textureName+Ogre::StringConverter::toString(second),true);
 
 
 
@@ -118,7 +121,7 @@ void UIWarone::setTime(int time)
 void UIWarone::buttonHit(Widget* button)
 {
 	///如果点击暂停按钮
-	if(button==m_PauseButton)
+	if(button->getName()=="moshi1/moshi1zantingjian")
 	{                                                                                          
 		UIWarPause* pPauseUI= static_cast<UIWarPause*>(Application::getSingleton().getUIByName("zantingjiemian"));
 

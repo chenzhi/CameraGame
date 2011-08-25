@@ -6,6 +6,7 @@
 #include "UIBase.h"
 #include "Widget.h"
 #include "WarItem.h"
+#include "UILLayout.h"
 
 
 class WarModeThree;
@@ -84,7 +85,7 @@ protected:
 
 
 
-class UIWarModeThree : public UIBase
+class UIWarModeThree : public UILayout
 {
 
 public:
@@ -127,7 +128,7 @@ protected:
 
 	WarModeThree*        m_pWarMode;    ///对应的战斗模式
 
-	Widget*              m_pPauseButton;//暂停按钮
+
 	StaticImage*         m_pPowerBackground;///能量槽背景
 	StaticImage*         m_pPowerImage;     ///能量槽图片
 
@@ -135,8 +136,6 @@ protected:
 	SliderGallery*       m_pItemSelectSlider;///选择道具滚动控件
 
 	WarItemType          m_ItemType;         ///道具类型
-
-
 	Ogre::TexturePtr     m_pSnapshotTexture;  ///屏幕截图   
 
 

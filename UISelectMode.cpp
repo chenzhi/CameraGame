@@ -7,7 +7,7 @@
 
 
 UISelectMode::UISelectMode()
-:UIBase("UISelectMode","")
+:UILayout("moshixuanze")
 {
 
 
@@ -25,6 +25,7 @@ UISelectMode::~UISelectMode()
 
 
 /**初始化*/
+/*
 void UISelectMode::init()
 {
 	UIBase::init();
@@ -113,12 +114,15 @@ void UISelectMode::init()
 	return ;
 }
 
+//*/
+
+
 void UISelectMode::buttonHit(Widget* button)
 {
 	const  Ogre::String&  name=button->getName();
 
 	///如果是返回按钮
-	if(name=="SelectMode_return")
+	if(name=="moshixuanze/moshixuanzefanhui")
 	{
 		Application::getSingleton().getCurrentActive()->setNextStateType(ST_GAMEPLAY);
 		return ;
@@ -126,14 +130,14 @@ void UISelectMode::buttonHit(Widget* button)
 	}
 
 
-	if(name=="SelectMode_1")
+	if(name=="moshixuanze/moshixuanzelanlvyuan")
 	{
      g_userInformation.setWarMode(0);
 
-	}else if(name=="SelectMode_2")
+	}else if(name=="moshixuanze/moshixuanzelanyuan")
 	{
         g_userInformation.setWarMode(1);
-	}else if(name=="SelectMode_3")
+	}else if(name=="moshixuanze/moshixuanzehuangyuan")
 	{
 
     g_userInformation.setWarMode(2);

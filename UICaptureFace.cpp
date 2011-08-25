@@ -15,7 +15,8 @@
 
 
 UICaptureFace::UICaptureFace()
-:UIBase("CaptureFaceUI",""),m_pToUserFace(NULL),m_pGoBackButton(NULL),m_pCaptureButton(NULL)
+:UILayout("zhaoxiang")/*,m_pToUserFace(NULL),m_pGoBackButton(NULL),m_pCaptureButton(NULL)*/
+,m_UserCount(0),m_pCaptureButton(NULL),m_pFullWidget(NULL)
 {
     
 }
@@ -35,7 +36,7 @@ void UICaptureFace::init()
 
 
 
-	UIBase::init();
+	UILayout::init();
 
 #ifdef	__arm__
 	//const Ogre::String& CameraImage=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture()->getName();
@@ -53,8 +54,14 @@ void UICaptureFace::init()
 
 #endif
 
-	
 
+	m_pCaptureButton=getWidgetByName("zhaoxiang/zhaoxiangpaizhaojian");
+	m_pFullWidget=getWidgetByName("zhaoxiang/zhaoxiangjifull");
+
+	return ;
+
+	
+/*
 
 
 	///创建脸部校正图片
@@ -73,7 +80,7 @@ void UICaptureFace::init()
 	m_pToUserFace=new ImageButton("ToCaptureFace","paizhao_sanjiao_release.png","paizhao_sanjiao_press.png");
 	registerWidget(m_pToUserFace);
 	m_pToUserFace->setHorizontalAlignment(Ogre::GHA_RIGHT);
-	m_pToUserFace->setLeft(/*-m_pToUserFace->getWidth()*/-95);
+	m_pToUserFace->setLeft(-95);
 	m_pToUserFace->setTop(-40);
 	m_pToUserFace->setWidth(60);
 	m_pToUserFace->setHeight(60);
@@ -99,7 +106,7 @@ void UICaptureFace::init()
 	m_pGoBackButton->setHeight(80);
     
     
-
+//*/
 	
 	return ;
 
@@ -123,6 +130,21 @@ void  UICaptureFace::setVisible(bool b)
 #endif
 
 
+	if(m_UserCount>6)
+	{
+		m_pFullWidget->show();
+		m_pCaptureButton->hide();
+
+	}else
+	{
+
+		m_pCaptureButton->show();
+		m_pFullWidget->hide();
+	}
+
+
+
+
 }
 
 
@@ -135,7 +157,9 @@ void UICaptureFace::setUserCount(unsigned int count)
 ///-------------------------------------------------------------
 void UICaptureFace::buttonHit(Widget* button)
 {
-     if(button==m_pToUserFace)
+	const Ogre::String WidgetName=button->getName();
+
+     if(WidgetName=="zhaoxiang/zhaoxiangzanting")
 	 {
 
 		 UIBase* pSelectUser=Application::getSingleton().getUIByName("UISelectUser");
@@ -143,16 +167,16 @@ void UICaptureFace::buttonHit(Widget* button)
 		 setVisible(false);
 		 pSelectUser->setVisible(true);
 
-	 }else if(button==m_pGoBackButton)//返回到模式选择
+	 }else if(WidgetName=="zhaoxiang/zhaoxiangfanhui")//返回到模式选择
 	 {
 		 Application::getSingleton().getCurrentActive()->setNextStateType(ST_SELECTMODE);
 		 return ;
 
 
-	 }else if(button==m_pCaptureButton)///拍照并保存
+	 }else if(WidgetName=="zhaoxiang/zhaoxiangpaizhaojian")///拍照并保存
 	 {
       
-		 UIBase* pSelectHead=Application::getSingletonPtr()->getUIByName("UISelectHead");
+		 UIBase* pSelectHead=Application::getSingletonPtr()->getUIByName("toutaoxuanzejiemian");
 
 	//	
 #ifdef __arm__

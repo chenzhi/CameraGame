@@ -1,10 +1,11 @@
 #include "UIBase.h"
+#include "UILLayout.h"
 
 
 class Widget;
 class StaticImage;
 
-class UIWarone :public UIBase
+class UIWarone :public UILayout
 {
 
 public:
@@ -34,8 +35,9 @@ protected:
 
 protected:
 
-	Widget*        m_PauseButton;     ///暂停按钮
-	Widget*        m_FirePoint;       ///准心图标
+//	Widget*        m_PauseButton;     ///暂停按钮
+	//Widget*        m_FirePoint;       ///准心图标
+
 	StaticImage*        m_HundredTime;     ///百秒
 	StaticImage*        m_TenTime;          ///十秒
 	StaticImage*        m_DigitTime;        ///个位数秒

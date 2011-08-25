@@ -29,7 +29,11 @@ protected:
 	~UIImageSet();
 public:
 
+
 	/**返回imageset的文件名*/
+	const Ogre::String& getFileName()const {return m_FileName;}
+
+	/**返回imageset的名*/
 	const Ogre::String& getName()const;
 
 	/**获取对应的帖图文件名*/
@@ -77,6 +81,8 @@ protected:
 	/**@}*/
 
 	Ogre::String      m_Name;
+
+	Ogre::String      m_FileName;    ///对应的image文件名
 
 	Ogre::String      m_TextureName;///对应的图片名
 

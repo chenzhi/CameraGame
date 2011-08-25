@@ -513,7 +513,7 @@ void UISelectFaceMode::buttonHit(Widget* pButton)
 	{
 		///返回到选脸界面
 		setVisible(false);
-		UIBase* pSelectFaceImage=Application::getSingleton().getUIByName("UISelectHead");
+		UIBase* pSelectFaceImage=Application::getSingleton().getUIByName("toutaoxuanzejiemian");
 		assert(pSelectFaceImage);
 		pSelectFaceImage->setVisible(true);
 	}

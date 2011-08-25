@@ -8,6 +8,7 @@
 
 #include "UIBase.h"
 #include "Widget.h"
+#include "UILLayout.h"
 
 
 
@@ -60,7 +61,7 @@ protected:
 
 
 
-class UISelectHead :public UIBase
+class UISelectHead :public UILayout
 {
 
 
@@ -69,23 +70,18 @@ public:
 
 	 UISelectHead();
 
-	~ UISelectHead();
-
-
-
-
-
+	 ~UISelectHead();
 
 
 protected:
 
 
 	/**初始化*/
-	virtual void init();
+	//virtual void init();
 
 
 	/**点击滚动按钮回调函数*/
-	 virtual void sliderGalleryhit(SrollButton* pbutton);
+	// virtual void sliderGalleryhit(SrollButton* pbutton);
 
 
 

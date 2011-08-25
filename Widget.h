@@ -101,7 +101,7 @@ public:
     virtual	~StaticImage();
 
 
-	void setImage(const Ogre::String& textureName);
+	void setImage(const Ogre::String& textureName,bool userImageset=false);
 
 
 protected:

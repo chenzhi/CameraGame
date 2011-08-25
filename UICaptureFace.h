@@ -10,13 +10,13 @@
 *****************************************/
 
 #include "UIBase.h"
-
+#include "UILLayout.h"
 
 
 class ImageButton;
 
 
-class UICaptureFace :public UIBase
+class UICaptureFace :public UILayout
 {
     
 public:
@@ -55,14 +55,23 @@ protected:
 
   ///返回到
 
-	ImageButton* m_pToUserFace;///跳到用户选择按钮
+//	ImageButton* m_pToUserFace;///跳到用户选择按钮
 
-	ImageButton* m_pGoBackButton;///返回按钮
+	//ImageButton* m_pGoBackButton;///返回按钮
 
-	ImageButton* m_pCaptureButton;///拍照按钮
+	Widget* m_pCaptureButton;///拍照按钮
 
 
 	///当前已经保存了多少个用户
 	unsigned int  m_UserCount;
+
+
+	Widget*       m_pFullWidget;
+
+      
+
+
+
+
     
 };

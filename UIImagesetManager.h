@@ -34,6 +34,10 @@ public:
 	UIImageSet* getImagesetByName(const Ogre::String& name)const  ;
 
 
+	/**返回指定名字的imageset*/
+	UIImageSet* getImagesetByFileName(const Ogre::String& name) const;
+
+
 
 	/**销毁指定imageset*/
 	void  destroyImagetset(const Ogre::String& name);

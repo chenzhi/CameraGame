@@ -10,7 +10,7 @@
 
 //-----------------------------------------------------------------
 UIWarModeTwo::UIWarModeTwo()
-:UIBase("UIWarModeTwo",""),m_pRotateImage(NULL),m_PauseButton(NULL),m_pEnemy(NULL)
+:UILayout("moshi2"),m_pRotateImage(NULL),m_pEnemy(NULL),m_PauseButton(NULL)
 {
 
 }
@@ -37,7 +37,7 @@ void  UIWarModeTwo::update(float time)
 //-----------------------------------------------------------------
 void UIWarModeTwo::init()
 {
-	UIBase::init();
+	UILayout::init();
 
 
 	///指示哪里有敌人出现的旋转按钮
@@ -45,6 +45,23 @@ void UIWarModeTwo::init()
 	//m_pRotateImage->setWidth(40);
 	registerWidget(m_pRotateImage);
 
+
+	m_PauseButton=static_cast<ImageButton*>(getWidgetByName("moshi2/moshi2zantingjian"));
+
+	Widget* pWidget=getWidgetByName("moshi2/moshi2shengming1");
+    assert(pWidget);
+	m_LifeCollect.push_back(pWidget);
+
+	pWidget=getWidgetByName("moshi2/moshi2shengming2");
+	assert(pWidget);
+	m_LifeCollect.push_back(pWidget);
+
+	pWidget=getWidgetByName("moshi2/moshi2shengming3");
+	assert(pWidget);
+	m_LifeCollect.push_back(pWidget);
+
+
+	/*
 
 	///暂停按钮
 	m_PauseButton=new ImageButton("WarModeTwo_PauseButton","youxi_zhanting_release.png","youxi_zhanting_press.png");
@@ -89,11 +106,10 @@ void UIWarModeTwo::init()
 		m_LifeCollect.push_back(pImage);
 
 	}
-	
 
 
+	*/
 	
-	m_PauseButton=static_cast<ImageButton*>(getWidgetByName("WarModeTwo_PauseButton"));
 
 
 }
