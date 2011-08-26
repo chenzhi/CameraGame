@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<!-- D3DFORMAT: 21 -->
+<Imageset Name="xiaoliankuang0_21" Imagefile="xiaoliankuang0_21.png" NativeHorzRes="1024" NativeVertRes="768" AutoScaled="false">
+	<Image Name="paizhao_xuanliankuang" XPos="0" YPos="0" Width="512" Height="512" />
+</Imageset>

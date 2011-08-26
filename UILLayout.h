@@ -15,7 +15,7 @@ public:
 	UILayout(const Ogre::String& fileName);
 
 
-	~UILayout();
+	virtual ~UILayout();
 
 
 	virtual void init();

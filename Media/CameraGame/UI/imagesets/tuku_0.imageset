@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<!-- D3DFORMAT: 21 -->
+<Imageset Name="tuku0_21" Imagefile="tuku0_21.png" NativeHorzRes="1024" NativeVertRes="768" AutoScaled="false">
+	<Image Name="tuku_honglian" XPos="0" YPos="0" Width="228" Height="275" />
+	<Image Name="tuku_julian" XPos="228" YPos="0" Width="228" Height="275" />
+	<Image Name="tuku_lanlian" XPos="456" YPos="0" Width="228" Height="275" />
+	<Image Name="tuku_lvlian" XPos="684" YPos="0" Width="228" Height="274" />
+	<Image Name="tuku_yinglian" XPos="684" YPos="274" Width="228" Height="274" />
+</Imageset>

@@ -7,19 +7,19 @@
         <Window Type="AdvanceLook/StaticImage" Name="toukujiemian/toukubeijing" >
             <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:beijing" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{-0.00104167,0},{0,0},{0.998958,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
         </Window>
         <Window Type="AdvanceLook/StaticImage" Name="toukujiemian/toukuhonglian" >
             <Property Name="Font" Value="default" />
-            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:tuku_honglian" />
+            <Property Name="OrzImageNormal" Value="set:tuku0_21 image:tuku_honglian" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.075,0},{0.186736,0},{0.297916,0},{0.562497,0}}" />
         </Window>
         <Window Type="AdvanceLook/StaticImage" Name="toukujiemian/ltoukuanlian" >
             <Property Name="Font" Value="default" />
-            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:tuku_lanlian" />
+            <Property Name="OrzImageNormal" Value="set:tuku0_21 image:tuku_lanlian" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.378124,0},{0.179011,0},{0.60104,0},{0.554771,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.378124,0},{0.179011,0},{0.60104,0},{0.554772,0}}" />
         </Window>
         <Window Type="AdvanceLook/StaticImage" Name="toukujiemian/toukuhongcha" >
             <Property Name="Font" Value="default" />
@@ -29,9 +29,9 @@
         </Window>
         <Window Type="AdvanceLook/StaticImage" Name="toukujiemian/toukujulian" >
             <Property Name="Font" Value="default" />
-            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:tuku_julian" />
+            <Property Name="OrzImageNormal" Value="set:tuku0_21 image:tuku_julian" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.691667,0},{0.185175,0},{0.914583,0},{0.560934,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.691667,0},{0.185175,0},{0.914583,0},{0.560936,0}}" />
         </Window>
         <Window Type="AdvanceLook/StaticImage" Name="toukujiemian/toukushouzhi" >
             <Property Name="Font" Value="default" />
@@ -47,15 +47,15 @@
         </Window>
         <Window Type="AdvanceLook/StaticImage" Name="toukujiemian/toukulvlian" >
             <Property Name="Font" Value="default" />
-            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:tuku_lvlian" />
+            <Property Name="OrzImageNormal" Value="set:tuku0_21 image:tuku_lvlian" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.55104,0},{0.573617,0},{0.773956,0},{0.949377,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.554165,0},{0.573617,0},{0.777081,0},{0.949378,0}}" />
         </Window>
         <Window Type="AdvanceLook/StaticImage" Name="toukujiemian/toukuyinglan" >
             <Property Name="Font" Value="default" />
-            <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:tuku_yinglian" />
+            <Property Name="OrzImageNormal" Value="set:tuku0_21 image:tuku_yinglian" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.227083,0},{0.573617,0},{0.45,0},{0.949377,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.228125,0},{0.573617,0},{0.451041,0},{0.949378,0}}" />
         </Window>
         <Window Type="AdvanceLook/Button" Name="toukujiemian/toukufanhui" >
             <Property Name="Font" Value="default" />
@@ -73,7 +73,7 @@
             <Property Name="Font" Value="default" />
             <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:tuku_facegallery" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.260417,0},{0.0536302,0},{0.72396,0},{0.154757,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.260417,0},{0.0536302,0},{0.72396,0},{0.153194,0}}" />
         </Window>
     </Window>
 </GUILayout>

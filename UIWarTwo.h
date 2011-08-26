@@ -34,7 +34,7 @@ public:
 	 void init();
 
 
-	 /**每帧更新*/
+	 /**每帧更新数*/
 	 virtual void update(float time);
 
 

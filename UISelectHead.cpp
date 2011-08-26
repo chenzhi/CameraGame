@@ -69,7 +69,7 @@ bool FaceModeDataSource::getElementUserData(unsigned index,Ogre::String& element
 
 //---------------------------------------------------------------
 UISelectHead:: UISelectHead()
-:UILayout("toutaoxuanzejiemian"),m_pReturnButton(NULL)
+:UILayout("toutaoxuanzejiemian")
 {
 
 
@@ -154,13 +154,12 @@ void  UISelectHead::sliderGalleryhit(SrollButton* pbutton)
 }
 
 //*/
-
-void UISelectHead::buttonHit(Widget* pWidget)
+void UISelectHead::buttonHit(Widget* button)
 {
-	if(pWidget==NULL)
+	if(button==NULL)
 		return ;
 
-	const Ogre::String& widgetName=pWidget->getName();
+	const Ogre::String& widgetName=button->getName();
 
 	///
 
@@ -193,27 +192,30 @@ void UISelectHead::buttonHit(Widget* pWidget)
 
 	}else if(widgetName=="toutaoxuanze/danlanyuan")
 	{
-		g_userInformation.setHeadMode("hema.mesh");
+		g_userInformation.setHeadMode("deer.mesh");
+		
 	}else if(widgetName=="toutaoxuanze/hongyuan")
 	{
-		g_userInformation.setHeadMode("mouse.mesh");
+		g_userInformation.setHeadMode("xiaoji.mesh");
+		
 	}else if(widgetName=="toutaoxuanze/lanlvyuan")
-	{	g_userInformation.setHeadMode("xiaoji.mesh");
+	{	
+			g_userInformation.setHeadMode("hema.mesh");
 
 	}else if(widgetName=="toutaoxuanze/lanyuan")
 	{	
-		g_userInformation.setHeadMode("deer.mesh");
+           g_userInformation.setHeadMode("head_tu.mesh");
 
 	}else if(widgetName=="toutaoxuanze/huangyuan")
 	{	
-		g_userInformation.setHeadMode("head_tu.mesh");
-
+		   g_userInformation.setHeadMode("mouse.mesh");	
+		
 	}
 
 
 	///选择了头套进入选择脸型界面
 	setVisible(false);
-	UIBase* pSelectFace=Application::getSingleton().getUIByName("UISelectFaceMode");
+	UIBase* pSelectFace=Application::getSingleton().getUIByName("lianxingxuze");
 	pSelectFace->setVisible(true);
 
 

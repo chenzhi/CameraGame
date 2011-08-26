@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "Config.h"
 #include "Widget.h"
+#include "UILLayout.h"
 
 /**************************************************************/
 
@@ -15,6 +16,9 @@ UserSelectMode::UserSelectMode(const Ogre::String& faceMesh,const Ogre::String&h
 
 	m_pFaceEntity=pSceneMrg->createEntity(faceMesh);
 	m_pHeadEntity=pSceneMrg->createEntity(headMesh);
+
+	m_pFaceEntity->setRenderQueueGroup(Ogre::RENDER_QUEUE_MAX);
+	m_pHeadEntity->setRenderQueueGroup(Ogre::RENDER_QUEUE_MAX);
 
 	if(m_pFaceEntity->hasSkeleton()&&m_pHeadEntity->hasSkeleton())
 	{
@@ -247,11 +251,6 @@ void UserSelectMode::updateOrientation()
 
 	Ogre::Vector3 right=dir.crossProduct(up);
 
-	//m_pNode->setDirection(dir,Ogre::Node::TS_WORLD);
-
-	//Ogre::Quaternion qu(right,up,dir);
-	//m_pNode->setOrientation(qu);
-
 	m_pNode->lookAt(camPos,Ogre::Node::TS_WORLD,Ogre::Vector3::UNIT_Z);
 
 	return ;
@@ -268,7 +267,7 @@ void UserSelectMode::updateOrientation()
 
 //----------------------------------------------------------
 UISelectFaceMode::UISelectFaceMode()
-:UIBase("UISelectFaceMode",""),m_BackGround(NULL),m_pReturnButton(NULL)
+:UILayout("lianxingxuze")
 {
 
 
@@ -281,12 +280,13 @@ UISelectFaceMode::~UISelectFaceMode()
 
 
    destroyAllFaceMode();
-   destroyBackEnetiy();
+ 
 
 }
 
 
 //----------------------------------------------------------
+/*
 void UISelectFaceMode::init()
 {
      UIBase::init();
@@ -309,6 +309,7 @@ void UISelectFaceMode::init()
 	return ;
 
 }
+//*/
 
 
 //----------------------------------------------------------
@@ -325,7 +326,9 @@ void  UISelectFaceMode::setVisible(bool b)
 
 	setUserSelctModeVisible(b);
 
-	m_BackGround->setVisible(b);
+	return ;
+
+
 
 }
 
@@ -432,7 +435,7 @@ void UISelectFaceMode::initAllFaceMode()
 //---------------------------------------------------------------------
 void UISelectFaceMode::update(float time)
 {
-	UIBase::update(time);
+	UILayout::update(time);
 
 	FaceModeCollect::iterator it=m_FaceModeCollect.begin();
 	FaceModeCollect::iterator itend=m_FaceModeCollect.end();
@@ -446,6 +449,7 @@ void UISelectFaceMode::update(float time)
 
 
 ///初始背景
+/*
 void UISelectFaceMode::initBackEntity()
 {
 
@@ -455,7 +459,7 @@ void UISelectFaceMode::initBackEntity()
 
 	Ogre::SceneNode* m_pCameraNode=Application::getSingleton().getMainCamera()->getParentSceneNode();
 
-	float distance=20.0f;
+	float distance=1.0f;
 	float width=0,height=0;
 	Ogre::Vector3 camPos=m_pCameraNode->getPosition();
 	float fovy= Application::getSingleton().getMainCamera()->getFOVy().valueRadians()*0.5f;
@@ -468,9 +472,30 @@ void UISelectFaceMode::initBackEntity()
 	float texheight=512;
 
 
+	float v=1.0f;
+	float u=1.0f;
+
+	UIImageSet * pImageset=UIImagesetManager::getSingleton().getImagesetByName("gongyong0_21");
+	if(pImageset!=NULL)
+	{
+       Image* pImage=pImageset->getImageByName("beijing");
+	   if(pImage!=NULL)
+	   {
+		   const Ogre::Vector4& uv=pImage->getUV();
+		   v=uv.w;
+		   u=uv.z;
+	   }
+      
+
+	}
+	
+
+
+
+
 	Ogre::Plane plane(Ogre::Vector3(0.0f,0.0f,1.0f),Ogre::Vector3(0.0f,0.0f,0.0f));
 	Ogre::MeshPtr pMesh= Ogre::MeshManager::getSingleton().
-		createPlane("backVideo", "General", plane,1,1,1,1,false,1);
+		createPlane("backVideo", "General", plane,1,1,1,1,false,1,0.5f,0.75f);
 
 
 	Ogre::SceneManager* pSceneMrg=Application::getSingleton().getMainSceneManager();
@@ -482,16 +507,16 @@ void UISelectFaceMode::initBackEntity()
 
 	Ogre::MaterialPtr pBackGroundMaterial=Ogre::MaterialManager::getSingleton().create("UISelectFaceModeBackGround", "General");
 	Ogre::Pass*pPass=pBackGroundMaterial->getTechnique(0)->getPass(0);
-	pPass->createTextureUnitState()->setTextureName("jieshu_background.png");
-
-
+	pPass->createTextureUnitState()->setTextureName(pImageset->getTextureName());
 	m_BackGround->getSubEntity(0)->setMaterialName(pBackGroundMaterial->getName());
 
 
 
 }
+//*/
 
 ///消毁背景
+/*
 void UISelectFaceMode::destroyBackEnetiy()
 {
 
@@ -503,13 +528,15 @@ void UISelectFaceMode::destroyBackEnetiy()
 
 
 }
+//*/
 
 ///鼠标事件
 void UISelectFaceMode::buttonHit(Widget* pButton)
 {
 	if(pButton==NULL)
 		return ;
-	if(pButton==m_pReturnButton)
+
+	if(pButton->getName()=="lianxingxuanze/lianxingxuanzefanhui")
 	{
 		///返回到选脸界面
 		setVisible(false);

@@ -86,15 +86,12 @@ protected:
 
 
 	 ///点击按钮回调事件
-     void  buttonHit(Widget* pWidget);
+
+	virtual void buttonHit(Widget* button);
 
 
 
 protected:
-
-
-
-	Widget* m_pReturnButton;
 
 
 

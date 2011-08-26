@@ -390,6 +390,7 @@ EnemyQueue* WarManager::createEnemyQueue(float minxangle,float maxxangle,float m
 {
 	Ogre::Camera* pCamera=Application::getSingleton().getMainCamera();
 
+	
 	float xangle=Ogre::Math::RangeRandom(minxangle,maxxangle);
 	float yangle=Ogre::Math::RangeRandom(minyangle,maxyangle);
 	float zdis=  Ogre::Math::RangeRandom(mindis,maxdis);

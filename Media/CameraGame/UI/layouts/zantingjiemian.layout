@@ -23,7 +23,7 @@
         </Window>
         <Window Type="AdvanceLook/Button" Name="zantingjiemian/zantingyingxiao" >
             <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:play_shengyin_release" />
-            <Property Name="OrzImagePushed" Value="set:gongyong0_21 image:play_shengyin_release" />
+            <Property Name="OrzImagePushed" Value="set:play0_21 image:play_yinyue_release" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.0239583,0},{0.572309,0},{0.13125,0},{0.729771,0}}" />
         </Window>
@@ -39,7 +39,7 @@
         </Window>
         <Window Type="AdvanceLook/Button" Name="zantingjiemian/zantingreplay" >
             <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:jifen_replay" />
-            <Property Name="OrzImagePushed" Value="set:jifengqiepian0_21 image:jifen_replay" />
+            <Property Name="OrzImagePushed" Value="set:jifengqiepian0_21 image:suspend_replay " />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.334374,0},{0.645629,0},{0.666666,0},{0.840531,0}}" />
         </Window>

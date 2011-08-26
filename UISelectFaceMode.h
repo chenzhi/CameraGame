@@ -6,7 +6,7 @@
 
 
 #include "UIBase.h"
-
+#include "UILLayout.h"
 
 
 ///用户选择脸和头套类
@@ -127,7 +127,7 @@ protected:
 
 
 
-class UISelectFaceMode :public UIBase
+class UISelectFaceMode:public UILayout
 {
 
 
@@ -145,7 +145,7 @@ public:
 
 protected:
 
-	void init();
+	//void init();
 
 
 	/**设置是否可见*/
@@ -173,10 +173,10 @@ protected:
 
 
 	///初始背景
-	void initBackEntity();
+	//void initBackEntity();
 
 	///消毁背景
-	void destroyBackEnetiy();
+	//void destroyBackEnetiy();
 
 
 	///鼠标事件
@@ -192,9 +192,9 @@ protected:
 
 	UserFaceDataSource                m_FaceModeSource;
 
-	Ogre::Entity*                     m_BackGround;
+	//Ogre::Entity*                     m_BackGround;
 
-	Widget*                           m_pReturnButton;
+//	Widget*                           m_pReturnButton;
 	
 
 	

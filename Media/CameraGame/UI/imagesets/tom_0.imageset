@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<!-- D3DFORMAT: 21 -->
+<Imageset Name="tom0_21" Imagefile="tom0_21.png" NativeHorzRes="1024" NativeVertRes="768" AutoScaled="false">
+	<Image Name="xuanzejiemianheiping" XPos="0" YPos="0" Width="768" Height="1024" />
+	<Image Name="xuanzejiemiananniuer" XPos="768" YPos="0" Width="504" Height="155" />
+	<Image Name="xuanzejiemiananniuyi" XPos="1272" YPos="0" Width="504" Height="155" />
+	<Image Name="touxiang" XPos="768" YPos="155" Width="289" Height="249" />
+	<Image Name="nanniu7" XPos="1776" YPos="0" Width="126" Height="126" />
+	<Image Name="anniu" XPos="1902" YPos="0" Width="86" Height="88" />
+	<Image Name="anniu2" XPos="1902" YPos="88" Width="86" Height="88" />
+	<Image Name="anniu3" XPos="1776" YPos="126" Width="86" Height="88" />
+	<Image Name="nanniu4" XPos="1057" YPos="155" Width="86" Height="88" />
+	<Image Name="nanniu8" XPos="1143" YPos="155" Width="86" Height="88" />
+</Imageset>

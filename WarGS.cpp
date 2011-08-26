@@ -207,6 +207,8 @@ void WarGS::intiUI()
 	UIImagesetManager::getSingleton().createImageset("moshi2_0.imageset","UI");
 
 
+
+
 	
 
 	m_pUIPause=new UIWarPause();

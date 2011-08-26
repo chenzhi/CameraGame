@@ -10,7 +10,7 @@
 
 //----------------------------------------------------------------------------
 WarModeOne::WarModeOne(GameState* pGameState)
-:WarMode(pGameState),m_pWarManager(NULL),m_pSceneMrg(NULL),m_GameLeft(10.0f),
+:WarMode(pGameState),m_pWarManager(NULL),m_pSceneMrg(NULL),m_GameLeft(60.0f),
 m_CurrentTime(0.0f),m_needCreate(false),m_pUI(NULL),m_Minx(-90.0f),m_Maxx(90.0f),
 m_Miny(-60.0f),m_Maxy(60.0f),m_Minz(1.5f),m_Maxz(5.0f),m_KillCount(0),m_LostCount(0),
 m_EnemyLeftTime(3.0f),m_pUIBalance(NULL)
@@ -200,9 +200,12 @@ void  WarModeOne::initEnemyFormat()
 
 
 
+		if(sec.find("Format")!=Ogre::String::npos)
+		{
 
 		EnemyFormat enemyFormat;
 		m_EnemyFormatCollect.push_back(enemyFormat);
+		}
 
 		for (i = settings->begin(); i != settings->end(); i++)
 		{

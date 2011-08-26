@@ -4,12 +4,6 @@
     <Window Type="DefaultWindow" Name="jifengjiemian" >
         <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
         <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{0.997917,0},{1,0}}" />
-        <Window Type="AdvanceLook/StaticImage" Name="jifengjiemian/jifengbeijing" >
-            <Property Name="Font" Value="default" />
-            <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:beijing2" />
-            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
-        </Window>
         <Window Type="AdvanceLook/StaticImage" Name="jifengjiemian/jifengcompleted" >
             <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:jifen_completed " />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
@@ -47,7 +41,7 @@
             <Property Name="UnifiedAreaRect" Value="{{0.629644,0},{0.901562,0},{0.67192,0},{0.959374,0}}" />
         </Window>
         <Window Type="AdvanceLook/Button" Name="jifengjiemian/jifengconutinue" >
-            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:jifen_continue" />
+            <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:suspend_return" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.334447,0},{0.320312,0},{0.66785,0},{0.526875,0}}" />
         </Window>

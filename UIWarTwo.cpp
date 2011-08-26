@@ -25,10 +25,12 @@ UIWarModeTwo::~UIWarModeTwo()
 
 
 //-----------------------------------------------------------------
+
+
 void  UIWarModeTwo::update(float time)
  {
 
-	 UIBase::update(time);
+	 UILayout::update(time);
 
 	 updateEnemyDir();
  }
@@ -146,6 +148,8 @@ void UIWarModeTwo::updateEnemyDir()
 	if(pCamera->isVisible(box))
 	{
 		m_pRotateImage->hide();
+
+		//m_pRotateImage->show();
 		return ;
 	}else
 	{
@@ -172,8 +176,10 @@ void UIWarModeTwo::updateEnemyDir()
 	m_pRotateImage->setOrientation(Radian.valueRadians());
 	float y=Ogre::Math::Sin(Radian);
 	float x=Ogre::Math::Cos(Radian);
-	m_pRotateImage->setLeft(x*200);
-	m_pRotateImage->setTop(-y*200);
+
+	float dis=220;
+	m_pRotateImage->setLeft(x*dis);
+	m_pRotateImage->setTop(-y*dis);
 
 	
 }
@@ -202,6 +208,7 @@ void  UIWarModeTwo::buttonHit(Widget* button)
 //-------------------------------------------------------------------
  void UIWarModeTwo::onBeginTouch(int x,int y)
  {
+	 UILayout::onBeginTouch(x,y);
 
 	 ///如果点击到了暂停按钮就忽略
 	 if(m_PauseButton->isCursorOver(m_PauseButton->getOverlayElement(),Ogre::Vector2(x,y),4))

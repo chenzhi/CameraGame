@@ -299,7 +299,7 @@ void UISelectUser::buttonHit(Widget* pbutton)
 		pCaptureFace->setVisible(true);
 		return ;
 
-	}else if(pbutton==m_pReturnButton)//如果是返回按钮
+	}else if(WidgetName=="toukujiemian/toukufanhui")//如果是返回按钮
 	{
 		Application::getSingleton().getCurrentActive()->setNextStateType(ST_SELECTMODE);
 		return ;

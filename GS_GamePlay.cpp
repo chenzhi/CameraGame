@@ -38,6 +38,7 @@ void  GSGamePlay::begin( )
 
 	UIImagesetManager::getSingleton().createImageset("xiaoliankuang_0.imageset","UI");
 
+	UIImagesetManager::getSingleton().createImageset("tuku_0.imageset","UI");
 
                                                     
 	initUI();

@@ -38,8 +38,6 @@ void WarModeTwo::start()
 	m_KillCount=0;
 	m_LostCount=0;
 
-	///得置摄像机位置
-	Application::getSingleton().getMainCamera()->getParentSceneNode()->resetOrientation();
 
 	///初始化所有的阵列
 	initEmemyFormat();
@@ -48,6 +46,14 @@ void WarModeTwo::start()
 	WarManager::getSingleton().startWar();
 
 	createEnemyQueue();
+
+	m_pUIBalance->setVisible(false);
+	m_pUI->setVisible(true);
+	m_pUI->reset();
+
+
+	///得置摄像机位置
+	Application::getSingleton().getMainCamera()->getParentSceneNode()->resetOrientation();
 
 
 }
@@ -275,9 +281,13 @@ void WarModeTwo::initEmemyFormat()
 		if(settings->empty())
 			continue;
 
-		EnemyFormat enemyFormat;
-		m_EnemyFormatCollect.push_back(enemyFormat);
+		if(sec.find("Format")!=Ogre::String::npos)
+		{
+			EnemyFormat enemyFormat;
+			m_EnemyFormatCollect.push_back(enemyFormat);
 
+		}
+	
 		for (i = settings->begin(); i != settings->end(); i++)
 		{
 			type = i->first;

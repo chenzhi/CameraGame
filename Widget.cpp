@@ -261,10 +261,10 @@ TimeImageButton::TimeImageButton(const Ogre::String&name,const Ogre::String& ima
 
 	mElement = Ogre::OverlayManager::getSingleton().createOverlayElementFromTemplate("cz/TimeImageButton", "Panel", name);
 
-	m_pBackgroundMaterial=Ogre::MaterialManager::getSingleton().getByName(name);
+	m_pBackgroundMaterial=Ogre::MaterialManager::getSingleton().getByName(name+"/backgruond");
 	if(m_pBackgroundMaterial.isNull())
 	{
-		m_pBackgroundMaterial=mElement->getMaterial()->clone(name+"backgruond");
+		m_pBackgroundMaterial=mElement->getMaterial()->clone(name+"/backgruond");
 	}
 
 	mElement->setMaterialName(m_pBackgroundMaterial->getName());
@@ -274,18 +274,18 @@ TimeImageButton::TimeImageButton(const Ogre::String&name,const Ogre::String& ima
 	Ogre::PanelOverlayElement* pBackground=static_cast<Ogre::PanelOverlayElement*>(mElement);
 	m_pDeleteElement=pBackground->getChild(getName()+"/DeleteImage");
 	m_pDeleteElement->hide();
-	m_pDeleteMaterial=m_pDeleteElement->getMaterial();
-	m_pDeleteMaterial=m_pDeleteMaterial->clone(name+"deleteButton");
-	m_pDeleteElement->setMaterialName(m_pDeleteMaterial->getName());
+	//m_pDeleteMaterial=m_pDeleteElement->getMaterial();
+	//m_pDeleteMaterial=m_pDeleteMaterial->clone(name+"deleteButton");
+	//m_pDeleteElement->setMaterialName(m_pDeleteMaterial->getName());
 
-	//Ogre::String deleteMaterial=name+"deleate";
-	//m_pDeleteMaterial=Ogre::MaterialManager::getSingleton().getByName(deleteMaterial);
-	//if(m_pDeleteMaterial.isNull())
-	//{
-	//	m_pDeleteMaterial=mElement->getMaterial()->clone(deleteMaterial);
-	//}
+	Ogre::String deleteMaterial=name+"/deleteButton";
+	m_pDeleteMaterial=Ogre::MaterialManager::getSingleton().getByName(deleteMaterial);
+	if(m_pDeleteMaterial.isNull())
+	{
+		m_pDeleteMaterial=m_pDeleteElement->getMaterial()->clone(deleteMaterial);
+	}
 
-	//m_pDeleteMaterial
+
      resetPosAndSize();
 
 }
@@ -296,6 +296,8 @@ TimeImageButton::~TimeImageButton()
 {
 
 	Ogre::MaterialManager::getSingleton().remove(m_pBackgroundMaterial->getHandle());
+	Ogre::MaterialManager::getSingleton().remove(m_pDeleteMaterial->getHandle());
+
 
 
 }
@@ -417,7 +419,7 @@ void TimeImageButton::rotateButton(float time)
 		}
 
 		pTextureState->setTextureRotate(Ogre::Radian(m_RotateRadian));
-		pDeleteState->setTextureRotate(Ogre::Radian(m_RotateRadian));
+		pDeleteState->setTextureRotate(Ogre::Radian(-m_RotateRadian*10));
     }
     
 }

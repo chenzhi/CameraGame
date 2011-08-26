@@ -26,8 +26,9 @@ template container Panel(cz/TimeImageButton)
 	{
         metrics_mode pixels
         material cz/TimeImageButton/DeleteButton
-        left   103
-        top    -25
+        
+        left   100
+        top    55
         width  50
         height 50
 
@@ -40,7 +41,7 @@ template container Panel(cz/CaptureFace/StaticImage)
 {
 	metrics_mode relative
 	material cz/CaptureFaceImage/mat
-      uv_coords 0 0.2968 0.9375 1.0
+      uv_coords 0 0.1 0.9375 1.0
 	horz_align left
       vert_align top
       left  0
