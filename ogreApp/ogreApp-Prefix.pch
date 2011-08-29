@@ -22,8 +22,6 @@
 #include "Ogre.h"
 
 //#include "macUtils.h"
-
-=======
 //
 // Prefix header for all source files of the 'ogreApp' target in the 'ogreApp' project
 //
@@ -47,7 +45,4 @@
 
 #include "Ogre.h"
 
-//#include "macUtils.h"
-
->>>>>>> ae44b686e40af873961f9f67adef8c05ce8182d0
-#include "/cz/sdk/iphone/ogre_iphone/ogre_src_v1-7-3/OgreMain/include/iPhone/macUtils.h"
+#include "iPhone/macUtils.h"

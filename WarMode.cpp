@@ -7,7 +7,7 @@
 #include "Config.h"
 #include "WarManager.h"
 #include "UIWarTwoBalance.h"
-#include "inputListen.h"
+#include "ogreapp/inputListen.h"
 #include "EnemyQueue.h"
 
 //--------------------------------------------------------

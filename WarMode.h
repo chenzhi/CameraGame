@@ -8,7 +8,7 @@
 *************************************/
 
 #include "WarManager.h"
-#include "inputListen.h"
+#include "ogreapp/inputListen.h"
 
 
 
