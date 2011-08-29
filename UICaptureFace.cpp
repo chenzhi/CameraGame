@@ -40,8 +40,18 @@ void UICaptureFace::init()
 
 #ifdef	__arm__
 	//const Ogre::String& CameraImage=ofxiPhoneVideoGrabber::getSingleton().getOgreTexture()->getName();
+    
+    
+    ///为了保证摄像在最后面。先把所有控件移出，再加入。
+    
+    
+    
+    
 	CameraVideoImage* pCameraImage=new CameraVideoImage("CameraCapterImage");
 	registerWidget(pCameraImage);
+    
+    moveWidgetBack(pCameraImage);
+    
     /*
 	pCameraImage->setHorizontalAlignment(Ogre::GHA_LEFT);
 	pCameraImage->setVerticalAlignment(Ogre::GVA_TOP);

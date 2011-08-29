@@ -102,8 +102,11 @@ public:
 	Widget* getWidgetByName(const Ogre::String& anem);
 
 
-	/**把一个指定的控件向*/
-	//void    moveWidgetBack(Widget* pWidget);
+	/**把一个指定的控件移到最后层*/
+	void    moveWidgetBack(Widget* pWidget);
+    
+    /**把一个指定的控件移到最前层*/
+    void    moveWidgetFront(Widget* pWidget);
 
 
 	/**设置属性*/

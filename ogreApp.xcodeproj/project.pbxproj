@@ -119,7 +119,7 @@
 		7755CC3113CEBCEB00E9B78A /* UISelectMode.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UISelectMode.h; sourceTree = "<group>"; };
 		7755CC3513CEBD1600E9B78A /* UISelectUser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UISelectUser.cpp; sourceTree = "<group>"; };
 		7755CC3613CEBD1600E9B78A /* UISelectUser.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UISelectUser.h; sourceTree = "<group>"; };
-		7775627013B03582003849ED /* Bullet.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Bullet.cpp; sourceTree = "<group>"; };
+		7775627013B03582003849ED /* Bullet.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = Bullet.cpp; sourceTree = "<group>"; };
 		7775627113B03582003849ED /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
 		7788FA5313E6BEA500993B56 /* UIWarModeThree.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 2147486000; path = UIWarModeThree.cpp; sourceTree = "<group>"; };
 		7788FA5413E6BEA500993B56 /* UIWarModeThree.h */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = UIWarModeThree.h; sourceTree = "<group>"; };

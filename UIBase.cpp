@@ -370,5 +370,64 @@ void  UIBase::update(float time)
 		removeFlag(F_HIDE);
 
 	}
+}
 
+
+
+//-----------------------------------------------------
+void    UIBase::moveWidgetBack(Widget* pWidget)
+{
+    
+    if(pWidget==NULL)
+    {
+        return ;
+    }
+    
+    ///如果不是他的子控件
+    if(getWidgetByName(pWidget->getName())!=pWidget)
+    {
+        return ;       
+    }
+    
+    std::vector<Widget*> temWidget=m_WidgetCollect;
+    size_t size=temWidget.size();
+    for(size_t i=0;i<size;++i)
+    {
+        unregisterWidget(temWidget[i]);
+    }
+    registerWidget(pWidget);
+    
+    for(size_t i=0;i<size;++i)
+    {
+        if(temWidget[i]!=pWidget)
+        {
+         registerWidget(temWidget[i]);
+        }
+    }
+
+    return ;
+    
+ 
+    
+}
+
+//-----------------------------------------------------
+void    UIBase::moveWidgetFront(Widget* pWidget)
+{
+    
+    if(pWidget==NULL)
+    {
+        return ;
+    }
+    
+    ///如果不是他的子控件
+    if(getWidgetByName(pWidget->getName())!=pWidget)
+    {
+        return ;       
+    }
+    
+    unregisterWidget(pWidget);
+    registerWidget(pWidget);
+
+    
 }

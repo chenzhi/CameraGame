@@ -46,6 +46,11 @@ void WarModeTwo::start()
 	WarManager::getSingleton().startWar();
 
 	createEnemyQueue();
+    
+    m_pUIBalance->setVisible(false);
+	m_pUI->setVisible(true);
+	m_pUI->reset();
+
 
 	m_pUIBalance->setVisible(false);
 	m_pUI->setVisible(true);
@@ -255,16 +260,9 @@ void WarModeTwo::initEmemyFormat()
 
 
 	Ogre::ConfigFile cf;
-
-#if OGRE_PLATFORM == OGRE_PLATFORM_IPHONE
-
-	OgreBites::FileSystemLayerImpl* pFileSystem=Application::getSingleton().getFileSystem();
-	cf.load(pFileSystem->getConfigFilePath(g_EnemyFormat));
-
-#else 
+    
 	cf.load(pDataStream);
 
-#endif
 
 
 	///循环取出所有的队列和位置信息
