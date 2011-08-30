@@ -17,7 +17,7 @@ typedef std::vector<Enemy*> EnemyCollect;///
 
 
 
-class EnemyQueue : public CEventManager
+class EnemyQueue : public CEventManager ,public ActiveContainer
 {
 
 public:
@@ -39,7 +39,7 @@ public:
 
 
 	/**每帧循环*/
-	void update(float time);
+    virtual	void   update(float time);
 
 	/**获取队列所在的世界节点*/
 	Ogre::SceneNode* getSceneNode()const {return m_pRootNode;}

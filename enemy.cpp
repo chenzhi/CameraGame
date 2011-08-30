@@ -160,8 +160,9 @@ void Enemy::setVisible(bool b)
 
 
 //------------------------------------------
-void Enemy::update(float time)
+void   Enemy::update(float time)
 {
+	
 
 
 	updateAnimation(time);
@@ -177,9 +178,7 @@ void Enemy::update(float time)
 		updateDeath(time);
 	}
 
-
-
-	return ;
+	return  ;
 }
 
 //------------------------------------------

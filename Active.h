@@ -6,22 +6,65 @@
 
 #pragma  once 
 
+/**动作监听类*/
+class ActiveListen
+{
+public:
+
+	virtual void onBegin(){}
+
+	virtual void onEnd(){}
+
+
+
+};
+
+
+
+
+
+
+
 class Active
 {
 
 public:
 
-	Active(){}
+	Active()
+		:m_pListen(NULL){}
 
 	virtual ~Active(){}
 
-	virtual void  begin(){}
+	/**开始动作*/
+	virtual void  begin()
+	{
+		if(m_pListen!=NULL)
+		{
+			m_pListen->onBegin();
+		}
+	}
 
+	 /**每帧更新,返回false表示完成*/
 	virtual bool   update(float time){ return true;}
 
-	virtual void  end(){}
+	/**结束动作*/
+	virtual void  end()
+	{
+		if(m_pListen!=NULL)
+		{
+			m_pListen->onEnd();
+		}
+	}
+
+	void  setListen(ActiveListen* pListen)
+	{
+		m_pListen=pListen;
+	}
 
 protected:
+	
+
+	ActiveListen*      m_pListen;
 
 
 };
@@ -37,17 +80,33 @@ class ActiveQueue :public Active
 {
 public:
 
-	ActiveQueue();
+	ActiveQueue(){}
 
     virtual 	~ActiveQueue();
 
+	/**在最后面加入一个动作*/
+	void         addActive(Active* pActive);
 
+
+	/**开始动作*/
+	virtual void  begin();
+
+    /**每帧更新*/
+	virtual bool   update(float time);
+
+	/**结束动作*/
+	virtual void  end();
+
+	
 protected:
 
+	/**删除所有动作*/
+	void  destroyAllActive();
 
 
-	ActitveVector m_ActiveVector;
+	ActitveVector           m_ActiveVector;   ///动作列表
 
+	ActitveVector::iterator m_CurrentIterator;//当前活动的动作
 
 };
 
@@ -60,20 +119,77 @@ protected:
 
 
 
-
-///旋转动作
-class RotateActive :public Active
+/**********************************************************
+///从当前朝向旋转到哪个朝向
+***********************************************************/
+class RotateToActive :public Active
 {
 public:
 
-	RotateActive();
+	/**构造函数
+	*@param pTarget 需要转旋的结节点
+	*@param quat    转到的目标朝向
+	*@param time    完成需要的总时间
+	*/
+	RotateToActive(Ogre::SceneNode* pTarget,const Ogre::Quaternion& quat,float time);
 
-	~RotateActive();
+
+	~RotateToActive();
+
+
+	/**开始动作*/
+	virtual void  begin();
+
+	/**每帧更新*/
+	virtual bool   update(float time);
+
+	/**结束动作*/
+	virtual void  end();
 
 
 
 protected:
 
+	Ogre::SceneNode*           m_pTarget;              ///旋转目标
+	Ogre::Quaternion           m_pTargetQuater;        ///目标朝向
+	Ogre::Quaternion           m_OrignQuater;          ///当前朝向
+	float                      m_LeftTime;             ///完成总时间
+	float                      m_CurrentTime;          ///当前时间
 
+
+};
+
+
+
+/******************************************************************
+从当前位置位移到指定的目标点
+*****************************************************************/
+class MoveToActive :public Active
+{
+
+public:
+
+	MoveToActive(Ogre::SceneNode* pTarget,const Ogre::Vector3& TargetPosition,float time );
+
+	~MoveToActive(){}
+
+	/**开始动作*/
+	virtual void  begin();
+
+	/**每帧更新*/
+	virtual bool   update(float time);
+
+	/**结束动作*/
+	virtual void  end();
+
+
+
+protected:
+
+	Ogre::SceneNode*           m_pTarget;              ///旋转目标
+	Ogre::Vector3              m_TargetPosition;        ///目标朝向
+	Ogre::Vector3              m_OrignPosition;          ///当前朝向
+	float                      m_LeftTime;             ///完成总时间
+	float                      m_CurrentTime;          ///当前时间
 
 };

@@ -202,6 +202,10 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 			<File
+				RelativePath="..\Active.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\Active.h"
 				>
 			</File>
@@ -211,6 +215,14 @@
 			</File>
 			<File
 				RelativePath="..\ActiveContainer.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ActiveContainerManager.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\ActiveContainerManager.h"
 				>
 			</File>
 			<File

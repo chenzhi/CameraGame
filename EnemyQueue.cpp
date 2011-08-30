@@ -72,7 +72,7 @@ EnemyQueue::~EnemyQueue()
 //-----------------------------------------------------------------
 void EnemyQueue::update(float time)
 {
-
+	
 	EnemyCollect::iterator it=m_ElemyCollect.begin();
 	EnemyCollect::iterator endit=m_ElemyCollect.end();
 	for(;it!=endit;++it)

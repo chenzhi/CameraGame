@@ -28,6 +28,7 @@
 #include "UIManager.h"
 #include "UIImagesetManager.h"
 
+
 class ofxiPhoneVideoGrabber;
 class SdkTrayManager;
 class InputListen;
