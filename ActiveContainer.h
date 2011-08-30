@@ -3,6 +3,7 @@
 
 
 #include "Active.h"
+#include "ActiveContainerManager.h"
 
 class Active;
 
@@ -21,7 +22,8 @@ public:
 	{
 		if(m_pCurrentActive!=NULL)
 		{
-			m_pCurrentActive->end();
+			ActiveContainerManager::getSingleton().removeContainer(this);
+			//m_pCurrentActive->end();
 			SafeDelete(m_pCurrentActive);
 		}
 	}
@@ -29,28 +31,36 @@ public:
 	/**执行动作*/
 	void runActive(Active* pActive)
 	{
-		if(m_pCurrentActive!=NULL)
-		{
-			m_pCurrentActive->end();
-			SafeDelete(m_pCurrentActive);
-			m_pCurrentActive->begin();
+		assert(m_pCurrentActive==NULL);
+		assert(pActive);
+		m_pCurrentActive=pActive;
+		ActiveContainerManager::getSingleton().addContainer(this);
 
-		}
+	
 	}
 
-	void update(float time)
+	/**返回false表示完成*/
+	bool  updateActive(float time)
 	{
-		if(m_pCurrentActive!=NULL)
-		{
-			if(m_pCurrentActive->update(time)==false)
-			{
-				m_pCurrentActive->end();
-				SafeDelete(m_pCurrentActive);
-			};
-
-		}
+		return m_pCurrentActive->update(time);
 	}
 
+
+	void begin()
+	{
+		m_pCurrentActive->begin();
+	}
+
+	void end()
+	{
+		m_pCurrentActive->end();
+		SafeDelete(m_pCurrentActive);
+	}
+
+	bool hasActive()const 
+	{
+		return m_pCurrentActive!=NULL;
+	}
 
 
 protected:
@@ -59,6 +69,9 @@ protected:
 
 
 };
+
+
+
 
 
 

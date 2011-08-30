@@ -287,6 +287,10 @@ void  WarModeOne::_createEnemyQueue()
 		m_EnemyFormatCollect[createindex].m_FriendCollect);
 	pQueue->setLeftTime(m_EnemyLeftTime);
 
+
+	Active* pActive=new MoveToActive(pQueue->getSceneNode(),Ogre::Vector3(0.0f,0.0f,-10.0f),1.5f);
+	pQueue->runActive(pActive);
+
 	++m_CreateIndex;
 	m_needCreate=false;
 	return ;

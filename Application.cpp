@@ -9,6 +9,7 @@
 #include "pch.h"
 #include "ogreapp/inputListen.h"
 #include "Application.h"
+#include "ActiveContainerManager.h"
 #include  "CaptureFaceGS.h"
 #include "GameState.h"
 #include  "WarGS.h"
@@ -17,6 +18,7 @@
 #include "GSSelectMode.h"
 #include "Tool.h"
 #include "GS_Test.h"
+
 
 
 
@@ -89,7 +91,7 @@ void Application::init()
 	 initInputDevice();
     
     //´´½¨Ä¿Â¼
-    initGamePath();
+     initGamePath();
     
      initState();
 }
@@ -205,6 +207,8 @@ bool Application::initOgreRender()
     m_pUIManager->showFrameStats(TL_BOTTOMLEFT);
 
 	m_pImagesetMrg=new UIImagesetManager();
+
+	new ActiveContainerManager();
     
     
 #ifdef __arm__
@@ -269,6 +273,8 @@ void Application::destroyOgreRender()
 
     delete m_pUIManager;
 
+	delete ActiveContainerManager::getSingletonPtr();
+
 	SafeDelete(m_pImagesetMrg);
 
    // mStaticPluginLoader.unload();
@@ -290,6 +296,9 @@ void Application::update(float time)
 	}
 
 	UIManager::update(time);
+
+
+	ActiveContainerManager::getSingleton().update(time);
     
     //updateVideo();
 

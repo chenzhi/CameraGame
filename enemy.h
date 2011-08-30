@@ -10,6 +10,7 @@
 #pragma once
 
 #include "EventManager.h"
+#include "ActiveContainer.h"
 
 
 class Bullet;
@@ -31,7 +32,7 @@ enum EnemyEvent
 
 
 
-class Enemy :public CEventManager
+class Enemy :public CEventManager ,public ActiveContainer
 {
     
 public:
@@ -71,7 +72,7 @@ public:
     
     
     ///
-    virtual void update(float time);
+    virtual void   update(float time);
     
     
     
