@@ -126,11 +126,13 @@ void  EnemyQueue::updateCollision(Bullet* pBullet)
 	EnemyCollect::iterator endit=m_ElemyCollect.end();
 	for(;it!=endit;++it)
 	{
-		if((*it)->intersectRay(ray,lenght))
+		bool hitMouth=false;
+		if((*it)->getState()==Enemy::ES_NORMAL&& (*it)->intersectRay(ray,lenght,hitMouth,pBullet))
 		{
-		  (*it)->onHit(ray.getPoint(lenght),pBullet);
-
+		  (*it)->onHit(ray.getPoint(lenght),pBullet,hitMouth);
 		  pBullet->hitTarget();
+		  ///广播打中一个目标
+		  WarManager::getSingleton().notifyKillEnemy(*it,hitMouth,pBullet);
 		  
 		   return ;
 		}
@@ -142,9 +144,10 @@ void  EnemyQueue::updateCollision(Bullet* pBullet)
 	endit=m_FriendCollect.end();
 	for(;it!=endit;++it)
 	{
-		if((*it)->intersectRay(ray,lenght))
+		bool hitMouth=false;
+		if((*it)->getState()==Enemy::ES_NORMAL&&(*it)->intersectRay(ray,lenght,hitMouth,pBullet))
 		{
-			(*it)->onHit(ray.getPoint(lenght),pBullet);
+			(*it)->onHit(ray.getPoint(lenght),pBullet,hitMouth);
 			 pBullet->hitTarget();
               
 			 ///通中打中一个队友

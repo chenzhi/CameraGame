@@ -28,7 +28,7 @@ m_pSceneMrg(pSceneMrg)
     m_pNode->attachObject(m_pEntity);
     
     ///默认不显示
-    m_pNode->setVisible(false);
+    setVisible(false);
   //  m_pNode->setScale(Ogre::Vector3(0.003f,0.003f,0.003f));
     
     
@@ -39,6 +39,17 @@ m_pSceneMrg(pSceneMrg)
 Bullet::~Bullet()
 {
     destroy();
+}
+
+
+void  Bullet::setVisible(bool b)
+{
+	if(m_pNode)
+	{
+        m_pNode->setVisible(b);
+	}
+	
+
 }
 
 
@@ -58,6 +69,10 @@ void Bullet::hitTarget()
 	//m_Speed*=0.5f;
 	//r*=0.001f;
 	setBulletDir(r);
+
+
+    m_State=BS_REFLECT;
+
 	return ;
 }
 
@@ -84,6 +99,8 @@ bool  Bullet::update(float time)
     
     ///重力加动力的向量是子弹发行的方向
     float temForce=m_Force*((m_LiftTime-m_CurrentTime)/m_LiftTime);
+
+
     Ogre::Vector3 power=m_Dir*temForce;
     power+=m_Gravity;
     
@@ -137,8 +154,9 @@ void Bullet::shoot(const Ogre::Vector3& position, const Ogre::Vector3& dir)
     m_State=BS_SHOOT;
     m_OrigiPosition=position;
     m_Dir=-dir;
+	m_Dir.normalise();
     
-    m_pNode->setVisible(true);
+    setVisible(true);
     m_pNode->setPosition(position);
     
        
@@ -173,7 +191,7 @@ void Bullet::reset()
 {
     m_State=BS_NONE;
     m_CurrentTime=0.0f;
-    m_pNode->setVisible(false);
+    setVisible(false);
 	m_Speed=0.1f;
 	m_Force=10.0f;
 

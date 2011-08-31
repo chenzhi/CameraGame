@@ -90,6 +90,7 @@ void WarManager::fire(const Ogre::Vector3& pos,const Ogre::Vector3& dir)
     if(pBullet!=NULL)
     {
         pBullet->shoot(pos, dir);
+	    notifyFire(pBullet);
     }
     
     return ;
@@ -121,7 +122,7 @@ void WarManager::update(float time)
     for(size_t i=0;i<size;++i)
     {
 		///如果子弹是发射状态就做碰撞检测
-        if(m_BulletCollect[i]->update(time))
+		if(m_BulletCollect[i]->update(time)&&m_BulletCollect[i]->getState()==Bullet::BS_SHOOT)
 		{
 			intersectEnemyQueue(m_BulletCollect[i]);
 
@@ -379,7 +380,36 @@ void WarManager::notifyHitFriend(Enemy* pEnemy)
 
 
 }
+//----------------------------------------------------------------
+void WarManager::notifyFire(Bullet* pBullet)
+{
 
+	WarListenerCollect::iterator it=m_listenerCollect.begin();
+	WarListenerCollect::iterator itend=m_listenerCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		(*it)->onfire(pBullet);
+	}
+
+}
+
+
+
+//----------------------------------------------------------------
+void WarManager::notifyKillEnemy(Enemy* pEnemy,bool hitMouth,Bullet* pBullet)
+{
+
+	WarListenerCollect::iterator it=m_listenerCollect.begin();
+	WarListenerCollect::iterator itend=m_listenerCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		(*it)->onHitEnemy(pEnemy,hitMouth,pBullet);
+	}
+	return ;	
+
+}
 
 //---------------------------------------------------------
 

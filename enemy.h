@@ -43,7 +43,8 @@ public:
         ES_DODGE, ////已经变打中，找飞的状态
 		ES_RUNAWALY,///逃路状态
         ES_DEATH, ///死亡状态
-    };
+		ES_SWALLOWBALL,  ///吞球
+    }; 
     
     
     
@@ -64,7 +65,7 @@ public:
      *@param hitPos 打中的点
      *@param pBullet 打中的子弹
      */
-    virtual void onHit(const Ogre::Vector3& hitPos,Bullet* pBullet );
+    virtual void onHit(const Ogre::Vector3& hitPos,Bullet* pBullet ,bool hitMouth);
     
     
     ///
@@ -114,8 +115,9 @@ public:
     *@param ray 用来做碰撞的射线
 	*@param length 如果碰撞点长度限制
 	*@return 如果和射线相交返回真，未击中返回假
+	*@hitMouth 返回真表示击中嘴吧
 	*/
-	virtual bool intersectRay(const Ogre::Ray& ray,float length);
+	virtual bool intersectRay(const Ogre::Ray& ray,float length,bool& hitMouth,Bullet* pBullet);
 
 
 	/**注册一个事件监听
@@ -157,6 +159,11 @@ protected:
     
     ///
     void updateDeath(float time);
+
+	void updateSwallowBall(float time);
+
+	/**当击中嘴时*/
+	void onHitMouth(Bullet* pBullet);
     
     
     
@@ -189,7 +196,8 @@ protected:
 	float                m_AniFade;///动作过渡时间
 
 
-	Ogre::Entity*        m_pMouthEntity;
+	Ogre::Entity*        m_pMouthEntity; ///确定嘴巴位置的模型
+	Ogre::Entity*        m_pSwallow;     ///挂在嘴上的小球
     
     
     

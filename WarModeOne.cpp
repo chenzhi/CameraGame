@@ -13,7 +13,7 @@ WarModeOne::WarModeOne(GameState* pGameState)
 :WarMode(pGameState),m_pWarManager(NULL),m_pSceneMrg(NULL),m_GameLeft(60.0f),
 m_CurrentTime(0.0f),m_needCreate(false),m_pUI(NULL),m_Minx(-90.0f),m_Maxx(90.0f),
 m_Miny(-60.0f),m_Maxy(60.0f),m_Minz(1.5f),m_Maxz(5.0f),m_KillCount(0),m_LostCount(0),
-m_EnemyLeftTime(3.0f),m_pUIBalance(NULL)
+m_EnemyLeftTime(3.0f),m_pUIBalance(NULL),m_Score(0),m_ContinualKill(0),m_CreateIndex(0)
 {
 
    initUI();
@@ -50,9 +50,15 @@ void WarModeOne::start()
 
 	m_KillCount=0;
 	m_LostCount=0;
+    m_CreateIndex=0;
+	m_Score=0;
+	m_pFireBulletCollect.clear();
+
 
 	m_pUI->setVisible(true);
 	m_pUIBalance->setVisible(false);
+    m_pUI->reset();
+	m_ContinualKill=0;
 
 }
 
@@ -78,6 +84,7 @@ void WarModeOne::update(float time)
 			WarManager::getSingleton().endWar();
 			m_pUI->setVisible(false);
 			m_pUIBalance->setVisible(true);
+			m_pUIBalance->setScore(m_Score);
 		}
 		
 
@@ -230,6 +237,9 @@ void  WarModeOne::initEnemyFormat()
 				}else if(type=="LeftTime")
 				{
 					m_EnemyLeftTime=Ogre::StringConverter::parseReal(arch);
+				}else if(type=="gametime")
+				{
+					m_GameLeft=Ogre::StringConverter::parseReal(arch);
 				}
 
 
@@ -281,9 +291,11 @@ void  WarModeOne::_createEnemyQueue()
 		m_EnemyFormatCollect[createindex].m_FriendCollect);
 	pQueue->setLeftTime(m_EnemyLeftTime);
 
+	
 
-	Active* pActive=new MoveToActive(pQueue->getSceneNode(),Ogre::Vector3(0.0f,0.0f,-10.0f),1.5f);
-	pQueue->runActive(pActive);
+
+	//Active* pActive=new MoveToActive(pQueue->getSceneNode(),Ogre::Vector3(0.0f,0.0f,-10.0f),1.5f);
+	//pQueue->runActive(pActive);
 
 	++m_CreateIndex;
 	m_needCreate=false;
@@ -296,7 +308,9 @@ void WarModeOne::onKillEnemyQueue(EnemyQueue* pEnemyQueue)
 {
 	m_needCreate=true;
 	++m_KillCount;
-
+  
+	m_pUI->onKillEnemyQueue(pEnemyQueue);
+   
 }
 
 //----------------------------------------------------------------------------
@@ -304,11 +318,55 @@ void WarModeOne::onLostEnemyQueue(EnemyQueue* pEnemyQueue)
 {
    ++m_LostCount;
 	m_needCreate=true;
+    m_ContinualKill=0;
+	m_pUI->onLostEnemyQueue(pEnemyQueue);
 }
+
+
+
+//----------------------------------------------------------------------------
+void WarModeOne::onCrateEnemyQueue(EnemyQueue* pEnemyQueue)
+{
+	m_pUI->onCrateEnemyQueue(pEnemyQueue);
+}
+
+
 
 //----------------------------------------------------------------------------
 void WarModeOne::beginTouch(int x,int y)
 {
 
 	WarManager::getSingleton().fire();
+}
+
+
+//---------------------------------------------------
+void  WarModeOne::onHitEnemy(Enemy* pEnemy,bool hitMouth,Bullet* pBullet)
+{
+	if(m_pFireBulletCollect.empty()==false&&pBullet==m_pFireBulletCollect[0]&&m_pFireBulletCollect.size()<10)
+	{
+		++m_ContinualKill;
+		m_pFireBulletCollect.erase(m_pFireBulletCollect.begin());
+	}else
+	{
+		m_ContinualKill=1;
+		m_pFireBulletCollect.clear();
+	}
+
+	int Score=50;
+	if(hitMouth==true)
+	{
+		Score=100;
+	}
+		m_Score+=Score*m_ContinualKill;
+	 m_pUI->setScore(m_Score);
+
+}
+
+//---------------------------------------------------------
+void WarModeOne::onfire(Bullet* pBullet)
+{
+	m_pFireBulletCollect.push_back(pBullet);
+
+	return ;
 }

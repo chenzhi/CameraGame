@@ -54,6 +54,16 @@ public:
 	virtual void onHitFriend(Enemy* pEnemy){};
 
 
+	/**打中一个敌人
+	*@param hitMouth 是否打中嘴部
+	*/
+	virtual void onHitEnemy(Enemy* pEnemy,bool hitMouth,Bullet* pBullet){}
+
+	/**开火广播
+	*/
+	virtual void onfire(Bullet* pBullet){}
+
+
 };
 
 
@@ -147,6 +157,18 @@ public:
 
 	/**内部函数，通知打中了不应打中的目标*/
 	void notifyHitFriend(Enemy* pEnemy);
+
+	/**内部函数，通知杀死一个敌人
+	*@param  hitMouth 是否是击中嘴吧
+	*@param  pBullet 打中的子弹
+	*/
+	void notifyKillEnemy(Enemy* pEnemy,bool hitMouth,Bullet* pBullet);
+
+
+	/**通知开火
+	*/
+	void notifyFire(Bullet* pBullet);
+
 
     
 public:

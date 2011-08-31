@@ -7,6 +7,7 @@
 #include "UILLayout.h"
 
 class WarMode;
+class StaticImage;
 
 class UIWarTowModeBalance :public UILayout
 {
@@ -18,7 +19,13 @@ public:
 	~UIWarTowModeBalance();
 
 
-	//void init();
+	/**设置分数*/
+	void setScore(unsigned int    score);
+
+	void init();
+
+	/**重置分数为0*/
+	void resetScore();
 	
 protected:
 
@@ -37,5 +44,6 @@ protected:
 
 	WarMode* m_pWarMode;
 
+	StaticImage* m_Score[5];
 
 };

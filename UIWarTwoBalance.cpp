@@ -3,6 +3,8 @@
 #include "Widget.h"
 #include "WarMode.h"
 #include "Application.h"
+#include "Tool.h"
+
 
 //-------------------------------------------------------------
 UIWarTowModeBalance::UIWarTowModeBalance(WarMode* pMode)
@@ -10,6 +12,7 @@ UIWarTowModeBalance::UIWarTowModeBalance(WarMode* pMode)
 {
 
 	assert(m_pWarMode);
+	memset(m_Score,0,5);
 
 }
 
@@ -22,6 +25,54 @@ UIWarTowModeBalance::~UIWarTowModeBalance()
 
 }
 
+//--------------------------------------------------------------------
+void UIWarTowModeBalance::init()
+{
+	UILayout::init();
+
+	m_Score[0]=static_cast<StaticImage*>(getWidgetByName("jifengjiemian/jifengxiaoshuzi00"));
+	m_Score[1]=static_cast<StaticImage*>(getWidgetByName("jifengjiemian/jifengshuzi0"));
+	m_Score[2]=static_cast<StaticImage*>(getWidgetByName("jifengjiemian/jifengshuzi8"));
+	m_Score[3]=static_cast<StaticImage*>(getWidgetByName("jifengjiemian/jifengshuzi3"));
+	m_Score[4]=static_cast<StaticImage*>(getWidgetByName("jifengjiemian/jifengshuzi9"));
+
+	resetScore();
+	
+	return ;
+
+}
+
+
+//----------------------------------------------------
+void UIWarTowModeBalance::resetScore()
+{
+
+	for(int i=0;i<5;++i)
+	{
+		m_Score[i]->setImage("set:jifengqiepian0_21 image:gongyongxiaoziti_0",true);
+	}
+}
+
+void UIWarTowModeBalance::setScore(unsigned int    score)
+{
+
+	Ogre::String textureName="set:jifengqiepian0_21 image:gongyongxiaoziti_";
+	int temValue=Tools::getValueByBit(score,1);
+	m_Score[0]->setImage(textureName+Ogre::StringConverter::toString(temValue),true);
+
+	temValue=Tools::getValueByBit(score,2);
+	m_Score[1]->setImage(textureName+Ogre::StringConverter::toString(temValue),true);
+
+	temValue=Tools::getValueByBit(score,3);
+	m_Score[2]->setImage(textureName+Ogre::StringConverter::toString(temValue),true);
+
+	temValue=Tools::getValueByBit(score,4);
+	m_Score[3]->setImage(textureName+Ogre::StringConverter::toString(temValue),true);
+
+	temValue=Tools::getValueByBit(score,5);
+	m_Score[4]->setImage(textureName+Ogre::StringConverter::toString(temValue),true);
+
+}
 
 //-------------------------------------------------------------
 /*/

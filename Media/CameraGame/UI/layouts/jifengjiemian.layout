@@ -19,22 +19,22 @@
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.469937,0},{0.923437,0},{0.48403,0},{0.959374,0}}" />
         </Window>
-        <Window Type="AdvanceLook/Button" Name="jifengjiemian/jifengshuzi9" >
+        <Window Type="AdvanceLook/StaticImage" Name="jifengjiemian/jifengshuzi9" >
             <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:jifen_shuzi_9" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.495198,0},{0.901562,0},{0.537474,0},{0.959374,0}}" />
         </Window>
-        <Window Type="AdvanceLook/Button" Name="jifengjiemian/jifengshuzi3" >
+        <Window Type="AdvanceLook/StaticImage" Name="jifengjiemian/jifengshuzi3" >
             <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:jifen_shuzi_3" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.539039,0},{0.901562,0},{0.581315,0},{0.959374,0}}" />
         </Window>
-        <Window Type="AdvanceLook/Button" Name="jifengjiemian/jifengshuzi8" >
+        <Window Type="AdvanceLook/StaticImage" Name="jifengjiemian/jifengshuzi8" >
             <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:jifen_shuzi_8" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.586013,0},{0.901562,0},{0.628289,0},{0.959374,0}}" />
         </Window>
-        <Window Type="AdvanceLook/Button" Name="jifengjiemian/jifengshuzi0" >
+        <Window Type="AdvanceLook/StaticImage" Name="jifengjiemian/jifengshuzi0" >
             <Property Name="OrzImageHover" Value="set:jifengqiepian0_21 image:jifen_shuzi_0" />
             <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:jifen_shuzi_0" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
@@ -50,7 +50,7 @@
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.333403,0},{0.603123,0},{0.666806,0},{0.809686,0}}" />
         </Window>
-        <Window Type="AdvanceLook/Button" Name="jifengjiemian/jifengxiaoshuzi00" >
+        <Window Type="AdvanceLook/StaticImage" Name="jifengjiemian/jifengxiaoshuzi00" >
             <Property Name="OrzImageNormal" Value="set:jifengqiepian0_21 image:jifen_shuzi_0" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
             <Property Name="UnifiedAreaRect" Value="{{0.67286,0},{0.9,0},{0.715136,0},{0.957812,0}}" />

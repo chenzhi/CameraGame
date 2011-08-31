@@ -15,13 +15,15 @@
 #include "enemy.h"
 #include  "WarManager.h"
 #include "Config.h"
+#include "Bullet.h"
+
 
 int Enemy::m_EntityIndex=0;
 
 //------------------------------------------
 Enemy::Enemy(const Ogre::String& meshName,const Ogre::String& headMesh,const Ogre::Vector3& pos, Ogre::SceneNode* pParent)
 :m_pEntity(NULL),m_pNode(NULL),m_pSceneMrg(pParent->getCreator()),m_pAniSate(NULL),m_LifeValue(30),m_State(ES_NORMAL),m_Rotate(0),
-m_pHeadEnity(NULL),m_HurtTime(0.0f),m_Trans(0.0f,0.0f,0.0f),m_AniFade(0.0f),m_pMouthEntity(NULL)
+m_pHeadEnity(NULL),m_HurtTime(0.0f),m_Trans(0.0f,0.0f,0.0f),m_AniFade(0.0f),m_pMouthEntity(NULL),m_pSwallow(NULL)
 {
 
 	m_pEntity=m_pSceneMrg->createEntity("Enemy"+Ogre::StringConverter::toString(m_EntityIndex++),meshName);
@@ -44,6 +46,7 @@ m_pHeadEnity(NULL),m_HurtTime(0.0f),m_Trans(0.0f,0.0f,0.0f),m_AniFade(0.0f),m_pM
 		m_pMouthEntity=m_pSceneMrg->createEntity("mouth.mesh");
 		m_pMouthEntity->shareSkeletonInstanceWith(m_pEntity);
 		m_pNode->attachObject(m_pMouthEntity);
+		m_pMouthEntity->setVisible(false);
 		
 
 
@@ -77,18 +80,23 @@ Enemy::~Enemy()
 }
 
 //------------------------------------------
-void Enemy::onHit(const Ogre::Vector3& hitPos,Bullet* pBullet )
+void Enemy::onHit(const Ogre::Vector3& hitPos,Bullet* pBullet,bool hitMouth )
 {
 
 	///如果是死亡或变打中的状态直接返回
 	if(m_State==ES_DODGE||m_State==ES_DEATH)
 		return ;
 
-	
 
-	
+	if(hitMouth)
+	{
+		m_State=ES_SWALLOWBALL;
 
-	m_State=ES_DODGE;
+	}else
+	{
+       m_State=ES_DODGE;
+	}
+
 	m_HurtTime=0.0f;
 
 	///被击中了播放被击中动画
@@ -134,6 +142,13 @@ void Enemy::destroy()
 
 		}
 
+	   if(m_pSwallow!=NULL)
+	   {
+		   m_pSwallow->detachObjectFromBone(m_pEntity);
+		   m_pSceneMrg->destroyEntity(m_pSwallow);
+		   m_pSwallow=NULL;
+	   }
+
 		if(m_pEntity!=NULL)
 		{
 			m_pSceneMrg->destroyEntity(m_pEntity);
@@ -176,6 +191,9 @@ void   Enemy::update(float time)
 	}else if(m_State==ES_DEATH)
 	{
 		updateDeath(time);
+	}else if(m_State==ES_SWALLOWBALL)
+	{
+		updateSwallowBall(time);
 	}
 
 	return  ;
@@ -221,18 +239,14 @@ void Enemy::updateDodge(float time)
 	m_Rotate-=ra;
 
 
-
-
-
 	////移动
 	Ogre::Vector3 tr=m_Trans*0.3f*time;
 	//m_pNode->translate(tr,Ogre::Node::TS_WORLD);
 	m_Trans-=tr;
 
-
 	float speed=1.0f;
-	Ogre::Vector3 gravity(0,-1,0);
-	gravity=gravity*speed*time;
+	Ogre::Vector3 gravity(0,-3,0);
+	gravity=gravity*speed*time*(m_HurtTime+1);
 	gravity+=tr;
 	m_pNode->translate(gravity,Ogre::Node::TS_WORLD);
 	Ogre::Vector3 pos=m_pNode->_getDerivedPosition();
@@ -255,6 +269,50 @@ void Enemy::updateDeath(float time)
 	return ;
 }
 
+
+
+void Enemy::onHitMouth(Bullet* pBullet)
+{
+
+
+	m_State=ES_SWALLOWBALL;
+	playAnimation("hanqiu",true,0.5f);
+	pBullet->setVisible(false);
+
+	///把子弹挂到嘴上
+	if(m_pSwallow==NULL)
+	{
+       m_pSwallow=m_pSceneMrg->createEntity("zidan.mesh");
+	}
+	m_pEntity->attachObjectToBone("Bone10",m_pSwallow,Ogre::Quaternion::IDENTITY,Ogre::Vector3(0.02f,0.0f,0.0f));
+	
+
+	///把播放粒子爆炸效果
+
+
+
+}
+
+
+void Enemy::updateSwallowBall(float time)
+{
+
+	m_HurtTime+=time;
+	///如果受作超过三秒就死亡
+	if(m_HurtTime>=3.0f)
+	{
+		death();
+	}
+
+
+	
+
+
+	//
+
+
+}
+
 //-----------------------------------------------------
 void Enemy::reset(const Ogre::Vector3& pos)
 {
@@ -274,6 +332,11 @@ void Enemy::reset(const Ogre::Vector3& pos)
 		m_pAniSate->setTimePosition(0);
 	}
 
+	if(m_pSwallow!=NULL)
+	{
+		m_pSwallow->detachObjectFromBone(m_pEntity);
+	}
+
 	m_LifeValue=100;
 	m_State=ES_NORMAL;
 	m_Rotate=0;
@@ -285,8 +348,9 @@ void Enemy::reset(const Ogre::Vector3& pos)
 
 
 //--------------------------------------------------------------
-bool Enemy::intersectRay(const Ogre::Ray& ray,float length)
+bool Enemy::intersectRay(const Ogre::Ray& ray,float length,bool& hitMouth,Bullet* pBullet)
 {
+	hitMouth=false;
 
 	///先对最外面的外框盒做一个检查，如果有相应再对里面每一个对像再做检查
 	const Ogre::AxisAlignedBox& box=m_pNode->_getWorldAABB();
@@ -309,15 +373,8 @@ bool Enemy::intersectRay(const Ogre::Ray& ray,float length)
 			if(intersect&&(nearPoint<length || farPoint<length))
 			{
 				///表示击中嘴部播放张嘴动作。并把子弹隐藏，在嘴上放一个子弹。
-				
-				playAnimation("hanqiu",true,0.5f);
-
-				//
-
-				//m_pEntity->attachObjectToBone("");
-
-
-
+				hitMouth=true;
+				onHitMouth(pBullet);
 				return true;
 
 			}

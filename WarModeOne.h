@@ -7,6 +7,7 @@
 class GameState;
 class WarManager;
 class UIWarone;
+class UIWarTowModeBalance;
 
 class WarModeOne :public WarMode, public WarListener
 {
@@ -27,6 +28,7 @@ public:
 	/**每帧更新*/
 	virtual void update(float time);
 
+	
 
 
 protected:
@@ -59,8 +61,12 @@ protected:
 	///敌人逃跑
 	virtual void onLostEnemyQueue(EnemyQueue* pEnemyQueue);
 
-	virtual void onCrateEnemyQueue(EnemyQueue* pEnemyQueue){}
+	virtual void onCrateEnemyQueue(EnemyQueue* pEnemyQueue);
 
+
+	virtual void onHitEnemy(Enemy* pEnemy,bool hitMouth,Bullet* pBullet);
+
+	virtual void onfire(Bullet* pBullet);
 
 protected:
 
@@ -78,7 +84,7 @@ protected:
 	bool                 m_needCreate;///是否需要创建一个队列
 	unsigned int         m_CreateIndex; ///当前创建的第几个队列;
 	UIWarone*            m_pUI;
-	UIBase*              m_pUIBalance;
+	UIWarTowModeBalance*              m_pUIBalance;
 
 	float                m_Minx;        ///最小x轴向角度
 	float                m_Maxx;
@@ -87,9 +93,14 @@ protected:
 	float                m_Minz;
 	float                m_Maxz;      
 
-	unsigned int            m_KillCount;///本次杀死了多少敌人
-	unsigned int            m_LostCount;///有多少人跑了
+	unsigned int         m_KillCount;///本次杀死了多少敌人
+	unsigned int         m_LostCount;///有多少人跑了
 	float                m_EnemyLeftTime; ///敌人生命周期
+
+	unsigned int                  m_Score;          ///积分
+	unsigned int                  m_ContinualKill;  ///连续杀敌
+	BulletCollect                  m_pFireBulletCollect;   ///最近一次发射的子弹
+	               
 	
 	
 

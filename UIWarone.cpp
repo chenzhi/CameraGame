@@ -4,14 +4,18 @@
 #include "UIWarPause.h"
 #include  "Application.h"
 #include "Tool.h"
+#include "WarManager.h"
+#include "EnemyQueue.h"
+#include "Tool.h"
 
 
 //-----------------------------------------------------------------
 UIWarone::UIWarone()
 :UILayout("moshi1")/*,m_PauseButton(NULL),m_FirePoint(NULL)*/,m_HundredTime(NULL),
-m_TenTime(NULL),m_DigitTime(NULL)
+m_TenTime(NULL),m_DigitTime(NULL),m_pRotateImage(NULL),m_pEnemy(NULL)
 {
 
+	memset(m_ScoreImage,0,5);
 
 }
 
@@ -23,6 +27,15 @@ UIWarone::~UIWarone()
 
 }
 
+//---------------------------------------------------------------------
+void  UIWarone::update(float time)
+{
+	UILayout::update(time);
+	updateEnemyDir();
+}
+
+
+
 //-----------------------------------------------------------------
 
 void UIWarone::init()
@@ -32,6 +45,19 @@ void UIWarone::init()
 	m_DigitTime=static_cast<StaticImage*>(getWidgetByName("moshi1/moshi1shijianshuzi9"));
 
 	
+
+
+	///指示哪里有敌人出现的旋转按钮
+	m_pRotateImage=new RotateImage("WarModeone_Enemey_Dir","youxi_fangxiang.png");
+	registerWidget(m_pRotateImage);
+
+
+	m_ScoreImage[0]=static_cast<StaticImage*>(getWidgetByName("moshi1/moshi1xiaoshuzi0."));
+	m_ScoreImage[1]=static_cast<StaticImage*>(getWidgetByName("moshi1/moshi1xiaoshuzi0"));
+	m_ScoreImage[2]=static_cast<StaticImage*>(getWidgetByName("moshi1/moshi1xiaoshuzi8"));
+	m_ScoreImage[3]=static_cast<StaticImage*>(getWidgetByName("moshi1/moshi1xiaoshuzi5"));
+	m_ScoreImage[4]=static_cast<StaticImage*>(getWidgetByName("moshi1/moshi1xiaoshuzi9"));
+
 
 	return ;
 
@@ -132,5 +158,137 @@ void UIWarone::buttonHit(Widget* button)
 		setVisible(false);
 
 	}
+
+}
+
+
+//-----------------------------------------------------
+void UIWarone::updateEnemyDir()
+{
+
+	///如果比赛结束就不更新
+	if(WarManager::getSingleton().isGameEnd())
+	{
+		m_pRotateImage->hide();
+		return ;
+	}
+
+
+	if(m_pEnemy==NULL)
+	{
+		m_pRotateImage->hide();
+		return ;
+	}
+
+	///如果这个点在屏幕上出现了就隐藏箭头
+	Ogre::Camera* pCamera=Application::getSingleton().getMainCamera();
+
+	const Ogre::Matrix4& viewMat=pCamera->getViewMatrix();
+	Ogre::Vector3 pos=m_pEnemy->getSceneNode()->getPosition();
+	pos=viewMat*pos;
+
+	Ogre::AxisAlignedBox box=m_pEnemy->getWordBox();
+
+	if(pCamera->isVisible(box))
+	{
+		m_pRotateImage->hide();
+
+		//m_pRotateImage->show();
+		return ;
+	}else
+	{
+		m_pRotateImage->show();
+	}
+
+
+
+	float  ang= (Ogre::Math::ATan(pos.y/pos.x)).valueDegrees();
+
+	///第三像限
+	if(pos.x<0&&pos.y>0)
+	{
+
+		ang=90.0f+(90+ang);
+
+	}else if(pos.x<0&&pos.y<0)//第四像限
+	{
+
+		ang=180.0f+ang;
+	}
+	Ogre::Radian Radian=Ogre::Degree(ang);
+
+	m_pRotateImage->setOrientation(Radian.valueRadians());
+	float y=Ogre::Math::Sin(Radian);
+	float x=Ogre::Math::Cos(Radian);
+
+	float dis=220;
+	m_pRotateImage->setLeft(x*dis);
+	m_pRotateImage->setTop(-y*dis);
+
+
+}
+
+
+//----------------------------------------------------------------
+void  UIWarone::onKillEnemyQueue(EnemyQueue* pEnemyQueue)
+{
+
+	m_pEnemy=NULL;
+	return ;
+}
+
+//----------------------------------------------------------------
+void  UIWarone::onLostEnemyQueue(EnemyQueue* pEnemyQueue)
+{
+	///减少显示一个生合图标
+
+	m_pEnemy=NULL;
+
+	return ;
+}
+
+//----------------------------------------------------------------
+void UIWarone::onCrateEnemyQueue(EnemyQueue* pEnemyQueue)
+{
+	m_pEnemy=pEnemyQueue;
+}
+
+
+//----------------------------------------------------------------
+void UIWarone::setScore(unsigned int    score)
+{
+	Ogre::String textureName="set:jifengqiepian0_21 image:gongyongxiaoziti_";
+	int temValue=Tools::getValueByBit(score,1);
+	m_ScoreImage[0]->setImage(textureName+Ogre::StringConverter::toString(temValue),true);
+
+	temValue=Tools::getValueByBit(score,2);
+	m_ScoreImage[1]->setImage(textureName+Ogre::StringConverter::toString(temValue),true);
+
+	temValue=Tools::getValueByBit(score,3);
+	m_ScoreImage[2]->setImage(textureName+Ogre::StringConverter::toString(temValue),true);
+
+	temValue=Tools::getValueByBit(score,4);
+	m_ScoreImage[3]->setImage(textureName+Ogre::StringConverter::toString(temValue),true);
+
+	temValue=Tools::getValueByBit(score,5);
+	m_ScoreImage[4]->setImage(textureName+Ogre::StringConverter::toString(temValue),true);
+
+
+	return ;
+
+}
+
+//---------------------------------------------------
+void UIWarone::reset()
+{
+
+	Ogre::String textureName="set:jifengqiepian0_21 image:gongyongxiaoziti_0";
+	for(int i=0;i<5;++i)
+	{
+     m_ScoreImage[i]->setImage(textureName,true);
+	}
+	
+
+
 
 }

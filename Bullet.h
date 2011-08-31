@@ -22,8 +22,9 @@ class Bullet
     
     enum BulletState
     {
-      BS_NONE,
-      BS_SHOOT,
+      BS_NONE,    //隐藏状态
+      BS_SHOOT,  //发射状态
+	  BS_REFLECT,//击中后反弹状态
     };
 
     
@@ -61,6 +62,10 @@ class Bullet
 
 	/**设置子弹的方向*/
 	void setBulletDir(const Ogre::Vector3& dir){m_Dir=dir;}
+
+
+	/**设置是否可见*/
+	void setVisible(bool b);
 
     
     protected:
