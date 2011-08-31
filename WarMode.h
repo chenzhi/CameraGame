@@ -78,6 +78,7 @@ protected:
 class UIWarModeTwo;
 class Enemy;
 class UIBase;
+class UIWarTowModeBalance;
 
 ///阵型类
 typedef std::vector<Ogre::Vector3> Vector3Collect;
@@ -153,6 +154,12 @@ protected:
 	virtual void onHitFriend(Enemy* pEnemy);
 
 
+	virtual void onHitEnemy(Enemy* pEnemy,bool hitMouth,Bullet* pBullet);
+
+	virtual void onfire(Bullet* pBullet);
+
+
+
 	void createEnemyQueue()
 	{
 		m_needCreate=true;
@@ -175,7 +182,7 @@ protected:
 	//Enemy* m_pEnemy;
 
 	UIWarModeTwo*           m_pUI;///比赛的ui界面
-	UIBase*                 m_pUIBalance;///结算界面
+	UIWarTowModeBalance*                 m_pUIBalance;///结算界面
 	Ogre::SceneManager*     m_pSceneMrg;
 	unsigned int            m_KillCount;///本次杀死了多少敌人
 	unsigned int            m_LostCount;///有多少人跑了
@@ -194,6 +201,11 @@ protected:
 	float                m_Maxz;        
 	float                m_EnemyLeftTime; ///敌人生命周期
 
+
+
+	unsigned int         m_Score;         //计分
+	unsigned int         m_ContinualKill;  //
+   	BulletCollect                  m_pFireBulletCollect;   ///最近一次发射的子弹
 
 
 };

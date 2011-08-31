@@ -192,7 +192,7 @@ void UISelectHead::buttonHit(Widget* button)
 
 	}else if(widgetName=="toutaoxuanze/danlanyuan")
 	{
-		g_userInformation.setHeadMode("deer.mesh");
+		g_userInformation.setHeadMode("head_tu.mesh");	
 		
 	}else if(widgetName=="toutaoxuanze/hongyuan")
 	{
@@ -203,9 +203,9 @@ void UISelectHead::buttonHit(Widget* button)
 			g_userInformation.setHeadMode("hema.mesh");
 
 	}else if(widgetName=="toutaoxuanze/lanyuan")
-	{	
-           g_userInformation.setHeadMode("head_tu.mesh");
-
+	{
+			g_userInformation.setHeadMode("deer.mesh");
+ 
 	}else if(widgetName=="toutaoxuanze/huangyuan")
 	{	
 		   g_userInformation.setHeadMode("mouse.mesh");	

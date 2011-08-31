@@ -14,7 +14,8 @@
 WarModeTwo::WarModeTwo(GameState* pGameState)
 :WarMode(pGameState),m_pSceneMrg(NULL),m_KillCount(0),m_LostCount(0),
 m_pUIBalance(NULL),m_Minx(-90.0f),m_Maxx(90.0f),
-m_Miny(-60.0f),m_Maxy(60.0f),m_Minz(1.5f),m_Maxz(5.0f),m_EnemyLeftTime(3.0f)
+m_Miny(-60.0f),m_Maxy(60.0f),m_Minz(1.5f),m_Maxz(5.0f),m_EnemyLeftTime(3.0f),
+m_Score(0),m_ContinualKill(0)
 {
 	m_pSceneMrg=Application::getSingleton().getMainSceneManager();
 
@@ -37,6 +38,9 @@ void WarModeTwo::start()
 	///重置杀死人数
 	m_KillCount=0;
 	m_LostCount=0;
+	m_ContinualKill=0;
+	m_Score=0;
+	m_pFireBulletCollect.clear();
 
 
 	///初始化所有的阵列
@@ -167,7 +171,9 @@ void  WarModeTwo::onLostEnemyQueue(EnemyQueue* pEnemyQueue)
 	WarManager::getSingleton().endWar();
 	///显示结算界面
 	m_pUIBalance->setVisible(true);
+	m_pUIBalance->setVisible(m_Score);
 	m_pUI->setVisible(false);
+	
 
 	}///继续创建新的队列
 	else  //*/
@@ -193,6 +199,40 @@ void  WarModeTwo::onHitFriend(Enemy* pEnemy)
 	return ;
 
 }
+
+void WarModeTwo::onHitEnemy(Enemy* pEnemy,bool hitMouth,Bullet* pBullet)
+{
+
+	if(m_pFireBulletCollect.empty()==false&&pBullet==m_pFireBulletCollect[0]&&m_pFireBulletCollect.size()<10)
+	{
+		++m_ContinualKill;
+		m_pFireBulletCollect.erase(m_pFireBulletCollect.begin());
+	}else
+	{
+		m_ContinualKill=1;
+		m_pFireBulletCollect.clear();
+	}
+
+	int Score=50;
+	if(hitMouth==true)
+	{
+		Score=100;
+	}
+	m_Score+=Score*m_ContinualKill;
+	m_pUI->setScore(m_Score);
+
+
+}
+
+void WarModeTwo::onfire(Bullet* pBullet)
+{
+
+ m_pFireBulletCollect.push_back(pBullet);
+ return; 
+
+}
+
+
 
 //-----------------------------------------------------------------------
 void   WarModeTwo::_createEnemyQueue()

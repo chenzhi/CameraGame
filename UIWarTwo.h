@@ -60,6 +60,9 @@ public:
 	 ///重置状态在游戏开始时调用
 	 void reset();
 
+	 /**设置显示的数字*/
+	 void setScore(unsigned int score);
+
 
 protected:
 
@@ -82,6 +85,8 @@ protected:
 
 	  typedef std::vector<Widget*> WidgetCollect;
 	  WidgetCollect  m_LifeCollect;
+
+	  StaticImage*        m_ScoreImage[5];
 
 
 };

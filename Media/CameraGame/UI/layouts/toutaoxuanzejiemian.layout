@@ -13,37 +13,37 @@
         <Window Type="AdvanceLook/Button" Name="toutaoxuanze/hongyuan" >
             <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:toutao_hongseyuan" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.645834,0},{0.0290425,0},{0.891668,0},{0.379218,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.681251,0},{0.0571675,0},{0.865626,0},{0.455781,0}}" />
         </Window>
         <Window Type="AdvanceLook/Button" Name="toutaoxuanze/lanyuan" >
             <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:toutao_lanseyuan" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.379166,0},{0.430546,0},{0.625,0},{0.780722,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.411458,0},{0.480546,0},{0.596875,0},{0.863534,0}}" />
         </Window>
         <Window Type="AdvanceLook/Button" Name="toutaoxuanze/huangyuan" >
             <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:toutao_huangseyuan" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.645834,0},{0.430546,0},{0.891668,0},{0.780722,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.667709,0},{0.511796,0},{0.913543,0},{0.861972,0}}" />
         </Window>
         <Window Type="AdvanceLook/Button" Name="toutaoxuanze/juyuan" >
             <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:toutao_jueseyuan" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.101042,0},{0.0305461,0},{0.346876,0},{0.380722,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.1375,0},{0.0649211,0},{0.323959,0},{0.457285,0}}" />
         </Window>
         <Window Type="AdvanceLook/Button" Name="toutaoxuanze/lanlvyuan" >
             <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:toutao_lanlvyuan" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.102084,0},{0.430546,0},{0.347918,0},{0.780722,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.144792,0},{0.511796,0},{0.328126,0},{0.86666,0}}" />
         </Window>
         <Window Type="AdvanceLook/Button" Name="toutaoxuanze/danlanyuan" >
             <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:toutao_danlanseyuan" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.373957,0},{0.0305463,0},{0.619791,0},{0.380722,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.412499,0},{0.0461713,0},{0.629166,0},{0.457285,0}}" />
         </Window>
         <Window Type="AdvanceLook/Button" Name="toutaoxuanze/toutaofanhui" >
             <Property Name="OrzImageNormal" Value="set:gongyong0_21 image:fanhui" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.0239586,0},{0.772337,0},{0.130209,0},{0.931302,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0395836,0},{0.814525,0},{0.145834,0},{0.97349,0}}" />
         </Window>
     </Window>
 </GUILayout>
