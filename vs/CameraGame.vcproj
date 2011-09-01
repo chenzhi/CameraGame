@@ -554,6 +554,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\UIDebug.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\UIDebug.h"
+				>
+			</File>
+			<File
 				RelativePath="..\UIImage.cpp"
 				>
 			</File>

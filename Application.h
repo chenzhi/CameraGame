@@ -32,6 +32,7 @@
 class ofxiPhoneVideoGrabber;
 class SdkTrayManager;
 class InputListen;
+class UIDebug;
 
 
 
@@ -208,9 +209,8 @@ protected:
     
     InputListen*            m_pInputListen;
 
-    SdkTrayManager*           m_pUIManager;
-    
-
+	UIDebug*                  m_pDebugPanel;///debug√Ê∞Â
+ 
 	bool                     m_Pause;/// «∑Ò‘›Õ£
 
 

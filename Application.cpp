@@ -18,7 +18,7 @@
 #include "GSSelectMode.h"
 #include "Tool.h"
 #include "GS_Test.h"
-
+#include "UIDebug.h"
 
 
 
@@ -203,8 +203,12 @@ bool Application::initOgreRender()
     initScene();
     
     
-    m_pUIManager =new SdkTrayManager("MainUI",m_pRenderWindow);
-    m_pUIManager->showFrameStats(TL_BOTTOMLEFT);
+   // m_pUIManager =new SdkTrayManager("MainUI",m_pRenderWindow);
+   // m_pUIManager->showFrameStats(TL_BOTTOMLEFT);
+
+	m_pDebugPanel= new UIDebug();
+	m_pDebugPanel->init();
+	registerUI(m_pDebugPanel);
 
 	m_pImagesetMrg=new UIImagesetManager();
 
@@ -271,7 +275,7 @@ void Application::destroyOgreRender()
     delete m_pFileSystem;
 #endif
 
-    delete m_pUIManager;
+   // delete m_pUIManager;
 
 	delete ActiveContainerManager::getSingletonPtr();
 
@@ -304,7 +308,7 @@ void Application::update(float time)
 
      m_pInputListen->Captuer();
 
-    m_pUIManager->frameRenderingQueued();
+    //m_pUIManager->frameRenderingQueued();
       
     m_pRoot->renderOneFrame(time);
     
