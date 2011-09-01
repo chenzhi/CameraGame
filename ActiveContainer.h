@@ -62,6 +62,16 @@ public:
 		return m_pCurrentActive!=NULL;
 	}
 
+	void  stopAndRemoveActive()
+	{
+		if(m_pCurrentActive!=NULL)
+		{
+				ActiveContainerManager::getSingleton().removeContainer(this);
+				SafeDelete(m_pCurrentActive);
+		}
+
+	}
+
 
 protected:
 

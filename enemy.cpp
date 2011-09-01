@@ -105,10 +105,6 @@ void Enemy::onHit(const Ogre::Vector3& hitPos,Bullet* pBullet,bool hitMouth )
 	}
 
 	
-
-
-
-
 	m_HurtTime=0.0f;
 
 	///被击中了播放被击中动画
@@ -133,6 +129,12 @@ void Enemy::onHit(const Ogre::Vector3& hitPos,Bullet* pBullet,bool hitMouth )
 
 	m_Trans=m_Trans+dir;
 
+
+	///如果有动作状态就直接去掉
+	if(hasActive())
+	{
+		stopAndRemoveActive();
+	}
 
 	///如果被击中未成亡进入躲避状态
 	fireMessage(EE_Hit,this);///广播被击中
@@ -249,7 +251,7 @@ void Enemy::updateDodge(float time)
 	m_HurtTime+=time;
 
 	///旋转速度为每秒
-	float ra=m_Rotate*0.3f*time;
+	float ra=m_Rotate*time;
 	m_pNode->rotate(Ogre::Vector3(0,0,1), Ogre::Radian(ra));
 	m_Rotate-=ra;
 
@@ -312,7 +314,7 @@ void Enemy::onHitMouth(Bullet* pBullet)
 {
 
 
-	m_State=ES_SWALLOWBALL;
+	
 	playAnimation("hanqiu",true,0.5f);
 	pBullet->setVisible(false);
 
@@ -387,6 +389,9 @@ void Enemy::reset(const Ogre::Vector3& pos)
 //--------------------------------------------------------------
 bool Enemy::intersectRay(const Ogre::Ray& ray,float length,bool& hitMouth,Bullet* pBullet)
 {
+	if(m_State!=ES_NORMAL)
+		return false;
+
 	hitMouth=false;
 
 	///先对最外面的外框盒做一个检查，如果有相应再对里面每一个对像再做检查

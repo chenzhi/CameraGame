@@ -293,6 +293,7 @@ void EnemyQueue::notifyEnemyHit(Enemy* pEnemy)
 		for(;it!=endit;++it)
 		{
 			(*it)->playAnimation(g_idleAni,true,1.0f);
+			
 		}
 
 		m_State=EQ_KILLALLENEMY;
