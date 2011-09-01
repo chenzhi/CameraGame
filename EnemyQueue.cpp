@@ -104,7 +104,6 @@ void EnemyQueue::update(float time)
 	///如果所有敌人被打死，队友示爱后消息
 	 if(m_State==EQ_KILLALLENEMY)
 	 {
-
 		 updateThankState(time);
 	 }
 
@@ -315,7 +314,7 @@ bool  EnemyQueue::hasFriendKilled()
 	EnemyCollect::iterator endit=m_FriendCollect.end();
 	for(;it!=endit;++it)
 	{
-		if((*it)->getState()==Enemy::ES_DODGE)
+		if((*it)->getState()>Enemy::ES_NORMAL)
 		{
 			return true;
 		}
@@ -335,7 +334,7 @@ bool  EnemyQueue::isEnemyAllKilled()
 	EnemyCollect::iterator endit=m_ElemyCollect.end();
 	for(;it!=endit;++it)
 	{
-		if((*it)->getState()!=Enemy::ES_DODGE)
+		if((*it)->getState()==Enemy::ES_NORMAL)
 		{
 			return false;
 		}
