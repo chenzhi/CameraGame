@@ -2,7 +2,8 @@
 #include "ActiveContainerManager.h"
 #include "ActiveContainer.h"
 
-ActiveContainerManager* Ogre::Singleton<ActiveContainerManager>::ms_Singleton=NULL;
+template<> ActiveContainerManager*
+Ogre::Singleton<ActiveContainerManager>::ms_Singleton=NULL;
 
 
 //------------------------------------------------------------------

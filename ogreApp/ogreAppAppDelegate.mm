@@ -31,7 +31,7 @@
 
 -(void) go
 {
-    NSAutoreleasePool* pool=[[NSAutoreleasePool alloc] init];
+   // NSAutoreleasePool* pool=[[NSAutoreleasePool alloc] init];
     try
     {
         m_Application=new Application();
@@ -64,7 +64,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:)
                                                  name:UIDeviceOrientationDidChangeNotification object:nil];
     
-    [pool release];
+   // [pool release];
 }
 
 

@@ -49,9 +49,7 @@ void UICaptureFace::init()
     
 	CameraVideoImage* pCameraImage=new CameraVideoImage("CameraCapterImage");
 	registerWidget(pCameraImage);
-    
     moveWidgetBack(pCameraImage);
-    
     /*
 	pCameraImage->setHorizontalAlignment(Ogre::GHA_LEFT);
 	pCameraImage->setVerticalAlignment(Ogre::GVA_TOP);
@@ -60,7 +58,7 @@ void UICaptureFace::init()
 	pCameraImage->setTop(0);
 	pCameraImage->setWidth(1.0f);
 	pCameraImage->setHeight(1.0f);
-    //*/
+    */
 
 #endif
 
