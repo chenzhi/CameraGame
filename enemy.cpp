@@ -508,3 +508,17 @@ bool Enemy::setHitEffectTextureName(const Ogre::String& textureName)
 	pTextureState->setTextureName(textureName);
 	return true;
 }
+
+//--------------------------------------------------------------------------------
+void Enemy::startRunAway(const Ogre::Vector3& targetPos,float time)
+{
+
+	///选旋转y轴180度。再移动到目标点
+	ActiveQueue* pActiveQueue= new ActiveQueue();
+	pActiveQueue->addActive(new RotateActive(m_pNode,Ogre::Vector3::UNIT_Y,Ogre::Radian(Ogre::Math::PI),0.5f));
+
+	pActiveQueue->addActive(new MoveActive(m_pNode,Ogre::Vector3::UNIT_Z,Ogre::Node::TS_LOCAL,10.0f,1.0f));
+
+	this->runActive(pActiveQueue);
+
+}

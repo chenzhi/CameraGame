@@ -376,12 +376,12 @@ void EnemyQueue::updateLevelState(float time)
 
 	///三秒之后通知
 
-	EnemyCollect::iterator it=m_ElemyCollect.begin();
+	/*EnemyCollect::iterator it=m_ElemyCollect.begin();
 	EnemyCollect::iterator itend=m_ElemyCollect.end();
 	for(;it!=itend;++it)
 	{
 		(*it)->getSceneNode()->translate(trans,Ogre::Node::TS_WORLD);
-	}
+	}*/
 
 
 	///三秒后消失
@@ -412,6 +412,17 @@ void EnemyQueue::updateNormal(float time)
 		m_LevelPoint.z=Ogre::Math::RangeRandom(-10.0f,0.0f);
         m_LevelPoint.normalise();
 		m_currentLeftTime=0.0f;
+
+
+		///给每一个敌人加入一个动作
+		size_t size=m_ElemyCollect.size();
+		for(size_t i=0;i<size;++i)
+		{
+			m_ElemyCollect[i]->startRunAway(m_LevelPoint,1.5f);
+		}
+
+
+
 		return ;
     }
     

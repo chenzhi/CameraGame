@@ -206,9 +206,7 @@ bool Application::initOgreRender()
    // m_pUIManager =new SdkTrayManager("MainUI",m_pRenderWindow);
    // m_pUIManager->showFrameStats(TL_BOTTOMLEFT);
 
-	m_pDebugPanel= new UIDebug();
-	m_pDebugPanel->init();
-	registerUI(m_pDebugPanel);
+
 
 	m_pImagesetMrg=new UIImagesetManager();
 
@@ -217,6 +215,12 @@ bool Application::initOgreRender()
     
 #ifdef __arm__
     new ofxiPhoneVideoGrabber(480,320);
+
+	m_pDebugPanel= new UIDebug();
+	m_pDebugPanel->init();
+	registerUI(m_pDebugPanel);
+
+
 #endif
 
     return true;

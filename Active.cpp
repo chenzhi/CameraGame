@@ -29,7 +29,7 @@ void  ActiveQueue::begin()
 
 	Active::begin();
 	///动作队列不能为空
-	assert(m_ActiveVector.empty());
+	assert(m_ActiveVector.empty()==false);
 	m_CurrentIterator=m_ActiveVector.begin();
 	(*m_CurrentIterator)->begin();
  
@@ -80,6 +80,65 @@ void  ActiveQueue::destroyAllActive()
 	m_ActiveVector.clear();
     
 }
+
+
+
+
+/**********************************************************
+///从当前朝向旋转到哪个朝向
+***********************************************************/
+RotateActive::RotateActive(Ogre::Node* pNode,const Ogre::Vector3& axis,Ogre::Radian radian,float time)
+:m_pNode(pNode),m_Axis(axis),m_radian(radian),m_leftTime(time),m_currentTime(0.0f)
+{
+
+	assert(m_pNode);
+}
+
+
+//-----------------------------------------------------------------
+RotateActive::~RotateActive()
+{
+
+}
+
+
+//-----------------------------------------------------------------
+void  RotateActive::begin()
+{
+	m_orginQuaternion=m_pNode->getOrientation();
+	m_currentTime=0.0f;
+
+}
+
+//-----------------------------------------------------------------
+bool   RotateActive::update(float time)
+{
+	m_currentTime+=time;
+	float temPre=m_currentTime/m_leftTime;
+	m_pNode->setOrientation(m_orginQuaternion);
+	m_pNode->rotate(m_Axis,m_radian*temPre);
+
+	if(m_currentTime>=m_leftTime)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+//-----------------------------------------------------------------
+void  RotateActive::end()
+{
+	m_pNode->setOrientation(m_orginQuaternion);
+	m_pNode->rotate(m_Axis,m_radian);
+
+}
+
+
+
+
+
+
 
 
 
@@ -139,6 +198,63 @@ void  RotateToActive::end()
 	m_pTarget->setOrientation(m_pTargetQuater);
 	Active::end();
 	return ;
+
+}
+
+
+
+/***************************************************************
+从当前的位置向指定的方向移动指定的距离
+****************************************************************/
+MoveActive::MoveActive(Ogre::Node* pNode,const Ogre::Vector3& dir,Ogre::Node::TransformSpace Space, float length,float time)
+:m_pNode(pNode),m_Dir(dir),m_Space(Space),m_length(length),m_lefttime(time),m_currentTime(0.0f)
+{
+
+	assert(m_pNode);
+ 
+
+
+}
+
+//--------------------------------------------------------------
+MoveActive::~MoveActive()
+{
+
+}
+
+//--------------------------------------------------------------
+void  MoveActive::begin()
+{
+
+	 m_OrginPos=m_pNode->getPosition();
+	 m_currentTime=0.0f;
+
+}
+
+//--------------------------------------------------------------
+bool   MoveActive::update(float time)
+{
+	m_currentTime+=time;
+
+	float temPer=m_currentTime/m_lefttime;
+	m_pNode->setPosition(m_OrginPos);
+	m_pNode->translate(m_Dir*m_length*temPer,m_Space);
+
+	if(m_currentTime>=m_length)
+	{
+		return false;
+	}
+
+	 return true;
+
+}
+
+
+//--------------------------------------------------------------
+void  MoveActive::end()
+{
+	m_pNode->setPosition(m_OrginPos);
+	m_pNode->translate(m_Dir*m_length,m_Space);
 
 }
 

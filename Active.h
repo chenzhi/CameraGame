@@ -116,6 +116,45 @@ protected:
 
 
 
+/********************************************************
+从当前朝向旋转多少度
+***********************************************************/
+class RotateActive :public Active
+{
+public:
+	/**构造函数
+	*@param axis 旋转轴
+	*@param radian 需要旋转多少弧度
+	*@param time   完成的时间
+	*/
+	RotateActive(Ogre::Node* pNode,const Ogre::Vector3& axis,Ogre::Radian radian,float time);
+
+
+	~RotateActive();
+
+
+	/**开始动作*/
+	virtual void  begin();
+
+	/**每帧更新*/
+	virtual bool   update(float time);
+
+	/**结束动作*/
+	virtual void  end();
+
+protected:
+
+	Ogre::Node*            m_pNode;    ///节点
+	Ogre::Vector3          m_Axis;       ///旋转轴
+	Ogre::Radian           m_radian;     //旋转弧度
+	float                  m_leftTime;///完成时间
+	float                  m_currentTime;//当时前完成时间
+	Ogre::Quaternion       m_orginQuaternion;///开始的朝向
+
+
+};
+
+
 
 
 
@@ -158,6 +197,56 @@ protected:
 
 
 };
+
+
+
+/***************************************************************
+从当前的位置向指定的方向移动指定的距离
+****************************************************************/
+
+class MoveActive :public Active
+{
+public:
+
+	/**构造函数
+	*@param pNode 需要位移的节点
+	*@param dir   移动的方向
+	*@param  space  移动的相对坐标
+	*@param  lenght  移动多远
+	*@param  time    移动的总时间
+	*/
+	MoveActive(Ogre::Node* pNode,const Ogre::Vector3& dir,Ogre::Node::TransformSpace Space ,float length,float time);
+
+
+
+	~MoveActive();
+
+
+	/**开始动作*/
+	virtual void  begin();
+
+	/**每帧更新*/
+	virtual bool   update(float time);
+
+	/**结束动作*/
+	virtual void  end();
+
+
+
+protected:
+
+	Ogre::Node*                  m_pNode;
+	Ogre::Vector3                m_Dir;
+	Ogre::Node::TransformSpace   m_Space;
+	float                             m_length;
+	float                             m_lefttime;
+	float                             m_currentTime;
+	Ogre::Vector3                     m_OrginPos;
+
+
+
+};
+
 
 
 

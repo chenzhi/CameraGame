@@ -145,6 +145,10 @@ public:
 	/**ÉèÖÃhitÌùÍ¼*/
 	bool  setHitEffectTextureName(const Ogre::String& textureName); 
 
+
+	/**¿ªÊ¼ÌÓÅÜ*/
+	void startRunAway(const Ogre::Vector3& targetPos,float time);
+
 protected:
     
     ///ËÀÍö
@@ -172,6 +176,9 @@ protected:
 	void onHitFriend();
 
 	void updateSmoke(float time);
+
+
+
     
     
     

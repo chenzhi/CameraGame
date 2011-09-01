@@ -167,7 +167,7 @@ void  WarModeTwo::onLostEnemyQueue(EnemyQueue* pEnemyQueue)
 	WarManager::getSingleton().endWar();
 	///显示结算界面
 	m_pUIBalance->setVisible(true);
-	m_pUIBalance->setVisible(m_Score);
+	m_pUIBalance->setScore(m_Score);
 	m_pUI->setVisible(false);
 	
 
