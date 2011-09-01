@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8896C17913A88232000DA13C"
-               BuildableName = "ogreApp.app"
+               BuildableName = "CameraGame.app"
                BlueprintName = "ogreApp"
                ReferencedContainer = "container:ogreApp.xcodeproj">
             </BuildableReference>
@@ -41,7 +41,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8896C17913A88232000DA13C"
-            BuildableName = "ogreApp.app"
+            BuildableName = "CameraGame.app"
             BlueprintName = "ogreApp"
             ReferencedContainer = "container:ogreApp.xcodeproj">
          </BuildableReference>
@@ -60,7 +60,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8896C17913A88232000DA13C"
-            BuildableName = "ogreApp.app"
+            BuildableName = "CameraGame.app"
             BlueprintName = "ogreApp"
             ReferencedContainer = "container:ogreApp.xcodeproj">
          </BuildableReference>
