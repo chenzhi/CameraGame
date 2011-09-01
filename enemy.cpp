@@ -84,7 +84,7 @@ void Enemy::onHit(const Ogre::Vector3& hitPos,Bullet* pBullet,bool hitMouth )
 {
 
 	///如果是死亡或变打中的状态直接返回
-	if(m_State==ES_DODGE||m_State==ES_DEATH)
+	if(m_State>ES_NORMAL)
 		return ;
 
 
