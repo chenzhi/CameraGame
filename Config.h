@@ -54,3 +54,6 @@ static UserInformation g_userInformation;
 
 ///不能被击打目标的脸型
 static const   Ogre::String  m_FriendFaceImage="";
+
+
+static const   Ogre::String  g_idleAni="daiji";//所有人物待机动作

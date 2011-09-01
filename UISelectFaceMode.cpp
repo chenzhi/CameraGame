@@ -39,7 +39,7 @@ UserSelectMode::UserSelectMode(const Ogre::String& faceMesh,const Ogre::String&h
 	m_pNode->attachObject(m_pHeadEntity);
 
 
-	m_pAnimation=m_pFaceEntity->getAnimationState("shiai");
+	m_pAnimation=m_pFaceEntity->getAnimationState(g_idleAni);
 	if(m_pAnimation!=NULL)
 	{
 		m_pAnimation->setLoop(true);

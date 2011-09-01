@@ -7,6 +7,7 @@
 #include "WarItemManager.h"
 #include "enemy.h"
 #include "WarItem.h"
+#include "Config.h"
 
 //----------------------------------------------------------------
 WarModeThree::WarModeThree(GameState* pGameState)
@@ -39,7 +40,7 @@ void WarModeThree::start()
 
 
 	///初始化表情列表
-	m_AnimationCollect.push_back("shiai");
+	m_AnimationCollect.push_back(g_idleAni);
 	m_AnimationCollect.push_back("diantou");
 	m_AnimationCollect.push_back("tiaomei");
 	m_AnimationCollect.push_back("gusaibang");

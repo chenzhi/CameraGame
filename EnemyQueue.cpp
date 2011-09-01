@@ -292,7 +292,7 @@ void EnemyQueue::notifyEnemyHit(Enemy* pEnemy)
 		EnemyCollect::iterator endit=m_FriendCollect.end();
 		for(;it!=endit;++it)
 		{
-			(*it)->playAnimation("shiai",true,1.0f);
+			(*it)->playAnimation(g_idleAni,true,1.0f);
 		}
 
 		m_State=EQ_KILLALLENEMY;

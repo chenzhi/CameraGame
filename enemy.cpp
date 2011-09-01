@@ -64,7 +64,7 @@ m_pHeadEnity(NULL),m_HurtTime(0.0f),m_Trans(0.0f,0.0f,0.0f),m_AniFade(0.0f),m_pM
 
 
 	///播放休闲动作
-   playAnimation("shiai",true,0);
+   playAnimation(g_idleAni,true,0);
 
   
 
@@ -96,6 +96,18 @@ void Enemy::onHit(const Ogre::Vector3& hitPos,Bullet* pBullet,bool hitMouth )
 	{
        m_State=ES_DODGE;
 	}
+
+	///如果是没有头套就是河豚打中后会进入放黑烟的效果
+	if(m_pHeadEnity==NULL)
+	{
+		m_State=ES_SMOKE;
+		onHitFriend();
+	}
+
+	
+
+
+
 
 	m_HurtTime=0.0f;
 
@@ -194,6 +206,9 @@ void   Enemy::update(float time)
 	}else if(m_State==ES_SWALLOWBALL)
 	{
 		updateSwallowBall(time);
+	}else if(m_State==ES_SMOKE)
+	{
+		updateSmoke(time);
 	}
 
 	return  ;
@@ -270,7 +285,29 @@ void Enemy::updateDeath(float time)
 }
 
 
+//------------------------------------------------------------
+void  Enemy::onHitFriend()
+{
 
+	playAnimation("aida",false,0.5f);
+
+}
+
+
+
+//------------------------------------------------------------
+void  Enemy::updateSmoke(float time)
+{
+	m_HurtTime+=time;
+	///如果受作超过三秒就死亡
+	if(m_HurtTime>=3.0f)
+	{
+		death();
+	}
+
+}
+
+//------------------------------------------------------------
 void Enemy::onHitMouth(Bullet* pBullet)
 {
 

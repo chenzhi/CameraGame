@@ -56,10 +56,6 @@ void WarModeTwo::start()
 	m_pUI->reset();
 
 
-	m_pUIBalance->setVisible(false);
-	m_pUI->setVisible(true);
-	m_pUI->reset();
-
 
 	///µÃÖÃÉãÏñ»úÎ»ÖÃ
 	Application::getSingleton().getMainCamera()->getParentSceneNode()->resetOrientation();
