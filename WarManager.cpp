@@ -340,31 +340,35 @@ Enemy* WarManager::getDeathEnemy()
 
 
 //---------------------------------------------------------
-void WarManager::notifyEnemyQueuDeath(EnemyQueue* pEnemyQueue)
+void WarManager::notifyKillEnemyQueu(EnemyQueue* pEnemyQueue)
 {
 	fireKillEnemyQueue(pEnemyQueue);
-	///创建一个新的队列
-
-	m_DeleteEnemyQueueCollect.push_back(pEnemyQueue);
-
 	return ;
 
 }
+
+/*
+//---------------------------------------------------------
+void WarManager::notifyEnemyEndLefttime(EnemyQueue* pEnemyQueue)
+{
+	///创建一个新的队列
+	//fireKillEnemyQueue(pEnemyQueue);
+
+	m_DeleteEnemyQueueCollect.push_back(pEnemyQueue);
+
+}
+//*/
 
 //---------------------------------------------------------
 void WarManager::notifyEnemyQueuLost(EnemyQueue* pEnemyQueue)
 {
 	fireLostEnemyQueue(pEnemyQueue);
 	
-	///如果有三个以上的敌人
-	m_DeleteEnemyQueueCollect.push_back(pEnemyQueue);
-
 	return ;
 
 }
 
 //---------------------------------------------------------
-/**内部函数，通知打中了不应打中的目标*/
 void WarManager::notifyHitFriend(Enemy* pEnemy)
 {
 
@@ -378,19 +382,6 @@ void WarManager::notifyHitFriend(Enemy* pEnemy)
 	return ;
 
 
-
-}
-//----------------------------------------------------------------
-void WarManager::notifyFire(Bullet* pBullet)
-{
-
-	WarListenerCollect::iterator it=m_listenerCollect.begin();
-	WarListenerCollect::iterator itend=m_listenerCollect.end();
-
-	for(;it!=itend;++it)
-	{
-		(*it)->onfire(pBullet);
-	}
 
 }
 
@@ -410,6 +401,22 @@ void WarManager::notifyKillEnemy(Enemy* pEnemy,bool hitMouth,Bullet* pBullet)
 	return ;	
 
 }
+
+
+//----------------------------------------------------------------
+void WarManager::notifyFire(Bullet* pBullet)
+{
+
+	WarListenerCollect::iterator it=m_listenerCollect.begin();
+	WarListenerCollect::iterator itend=m_listenerCollect.end();
+
+	for(;it!=itend;++it)
+	{
+		(*it)->onfire(pBullet);
+	}
+
+}
+
 
 //---------------------------------------------------------
 
@@ -454,33 +461,57 @@ void  WarManager::updateEnemyQueue(float time)
 {
 
 	///先把需要删除的都删除
-	if(m_DeleteEnemyQueueCollect.empty()==false)
+	EnemyQueueCollect::iterator deleteIt=m_DeleteEnemyQueueCollect.begin();
+	EnemyQueueCollect::iterator deleteEndIt=m_DeleteEnemyQueueCollect.end();
+	for(;deleteIt!=deleteEndIt;++deleteIt)
 	{
-		EnemyQueueCollect::iterator deleteIt=m_DeleteEnemyQueueCollect.begin();
-		EnemyQueueCollect::iterator deleteEndIt=m_DeleteEnemyQueueCollect.end();
-		for(;deleteIt!=deleteEndIt;++deleteIt)
+		/*
+		EnemyQueueCollect::iterator temIt=std::find(m_EnemyQueueCollect.begin(),m_EnemyQueueCollect.end(),(*deleteIt));
+		if(temIt!=m_EnemyQueueCollect.end())
 		{
-			EnemyQueueCollect::iterator temIt=std::find(m_EnemyQueueCollect.begin(),m_EnemyQueueCollect.end(),(*deleteIt));
-			if(temIt!=m_EnemyQueueCollect.end())
-			{
-				delete (*temIt);
-				m_EnemyQueueCollect.erase(temIt);
-				
-			}
+		delete (*temIt);
+		m_EnemyQueueCollect.erase(temIt);
 
 		}
-		m_DeleteEnemyQueueCollect.clear();
+		//*/
 
+		delete(*deleteIt);
 	}
 
+	m_DeleteEnemyQueueCollect.clear();
 
+	
 
 	EnemyQueueCollect::iterator it=m_EnemyQueueCollect.begin();
 	EnemyQueueCollect::iterator endit=m_EnemyQueueCollect.end();
 	for(;it!=endit;++it)
 	{
-		(*it)->update(time);
+		///已经死了的加入了到删除队列
+		if((*it)->update(time)==EnemyQueue::EQ_DISACTIVE)
+		{
+			m_DeleteEnemyQueueCollect.push_back(*it);
+		}
+
 	}
+
+
+	///从更新队列中移除
+	deleteIt=m_DeleteEnemyQueueCollect.begin();
+	deleteEndIt=m_DeleteEnemyQueueCollect.end();
+	for(;deleteIt!=deleteEndIt;++deleteIt)
+	{
+
+		EnemyQueueCollect::iterator temIt=std::find(m_EnemyQueueCollect.begin(),m_EnemyQueueCollect.end(),(*deleteIt));
+		if(temIt!=m_EnemyQueueCollect.end())
+		{
+			m_EnemyQueueCollect.erase(temIt);
+
+		}
+	}
+
+	//
+
+
 
 	return ;
 

@@ -242,6 +242,7 @@ void  UIWarModeTwo::onLostEnemyQueue(EnemyQueue* pEnemyQueue)
 {
 	///减少显示一个生合图标
 
+	m_pEnemy=NULL;
 	WidgetCollect::iterator it=	m_LifeCollect.begin();
 	WidgetCollect::iterator itend=	m_LifeCollect.end();
 
@@ -253,11 +254,6 @@ void  UIWarModeTwo::onLostEnemyQueue(EnemyQueue* pEnemyQueue)
 			return ;
 		}
 	}
-
-	m_pEnemy=NULL;
-
-
-
 	return ;
 }
 

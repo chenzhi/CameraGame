@@ -44,7 +44,6 @@ public:
 		ES_RUNAWALY,///逃路状态
         ES_DEATH, ///死亡状态
 		ES_SWALLOWBALL,  ///吞球
-
 		ES_SMOKE,      ///河豚被打后吐烟状态
 
     }; 
@@ -147,7 +146,11 @@ public:
 
 
 	/**开始逃跑*/
-	void startRunAway(const Ogre::Vector3& targetPos,float time);
+	void startRunAway(float time,bool leftRotate);
+
+
+	/**当击中嘴时*/
+	void onHitMouth(Bullet* pBullet);
 
 protected:
     
@@ -169,8 +172,6 @@ protected:
 
 	void updateSwallowBall(float time);
 
-	/**当击中嘴时*/
-	void onHitMouth(Bullet* pBullet);
 
 	/**更新打中河豚后的吐雾和放大效果*/
 	void onHitFriend();

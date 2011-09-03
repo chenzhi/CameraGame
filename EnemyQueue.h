@@ -24,10 +24,11 @@ public:
 
 	enum EQST
 	{
-      EQ_NORMAl,//正常状态
-	  EQ_KILLALLENEMY,///所有敌人被打死
-	  EQ_KILLFRIEND,//杀死了友人。
-	  EQ_DISACTIVE,//非活动状态
+      EQ_NORMAl,         //正常状态
+	//  EQ_LOVE,             //示爱
+	  EQ_RUNAWAY,          //逃跑
+	  EQ_SWALLOWBALL,      ///含球
+	  EQ_DISACTIVE,      //生命周期结束
 	};
 
 
@@ -39,7 +40,7 @@ public:
 
 
 	/**每帧循环*/
-    virtual	void   update(float time);
+    EQST   update(float time);
 
 	/**获取队列所在的世界节点*/
 	Ogre::SceneNode* getSceneNode()const {return m_pRootNode;}
@@ -61,9 +62,15 @@ public:
 
 protected:
 
+	/**开始逃跑*/
+	void startRunaway();
+
+	/**开始示爱*/
+	void startLove();
+
+
 	/**更新感谢状态后消息*/
 	void updateThankState(float time);
-
 
 
 	/**更新逃跑状态*/
@@ -73,6 +80,12 @@ protected:
     void updateNormal(float time);
 
 	
+	/**更新示爱*/
+	void updateLove(float time);
+
+	/**更新含球状态*/
+	void updateSwallowBall(float time);
+
 	/**判断是否和射线碰撞
     *@param ray 用来做碰撞的射线
 	*@param length 如果碰撞点长度限制
@@ -91,10 +104,16 @@ protected:
 
 
 	/**是否有队友对像被打死*/
-	bool  hasFriendKilled();
+	bool  hasFriendKilled() const ;
 
 	/**所有敌人是否都被打死*/
-	bool  isEnemyAllKilled();
+	bool  isEnemyAllKilled() const ;
+
+	/**是否所有敌人都被击中*/
+	bool  isHitAllEnemy() const ;
+             
+	/**是否有含球状的的目标*/
+	bool  hasSwallowBallEnemy()const;
 
 
 protected:
@@ -109,7 +128,7 @@ protected:
 
 	EQST                       m_State;
 	float                      m_currentLeftTime;       ///当前生命值
-	Ogre::Vector3              m_LevelPoint;      ///飞到幕后的目标点
+	//Ogre::Vector3              m_LevelPoint;      ///飞到幕后的目标点
 	float                      m_leftTime;        ///生命周期
     
 

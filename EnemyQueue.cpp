@@ -24,7 +24,6 @@ EnemyQueue::EnemyQueue(const Ogre::Vector3& pos,const  PositionList&EnemyList,co
 		const Ogre::String& headMesh=g_userInformation.getHeadMode();
 		Enemy* pEnemy=new Enemy(faceMesh,headMesh,EnemyList[i],m_pRootNode);
 		pEnemy->registerEvent(EE_Hit,&EnemyQueue::notifyEnemyHit,this);
-
 		m_ElemyCollect.push_back(pEnemy);
 
 	}
@@ -34,7 +33,6 @@ EnemyQueue::EnemyQueue(const Ogre::Vector3& pos,const  PositionList&EnemyList,co
 	{
 
 		Enemy* pEnemy=new Enemy("puffer.mesh","",FriendList[i],m_pRootNode);
-
 		pEnemy->registerEvent(EE_Hit,&EnemyQueue::notifyEnemyHit,this);
 		m_FriendCollect.push_back(pEnemy);
 
@@ -70,7 +68,7 @@ EnemyQueue::~EnemyQueue()
 
 
 //-----------------------------------------------------------------
-void EnemyQueue::update(float time)
+EnemyQueue::EQST EnemyQueue::update(float time)
 {
 	
 	EnemyCollect::iterator it=m_ElemyCollect.begin();
@@ -90,22 +88,16 @@ void EnemyQueue::update(float time)
     if(m_State==EQ_NORMAl)
     {
         updateNormal(time);
-        return ;
-    }
-
-	
-   ///如果有队员变打死飞到背景外层
-     if(m_State==EQ_KILLFRIEND)
-	 {
+    
+    }else   if(m_State==EQ_RUNAWAY)     //生命周期到了，开始逃跑
+	{
 		 updateLevelState(time);
+	}else if(m_State==EQ_SWALLOWBALL)
+	{
+		updateSwallowBall(time);
+	}
 
-	 }
-
-	///如果所有敌人被打死，队友示爱后消息
-	 if(m_State==EQ_KILLALLENEMY)
-	 {
-		 updateThankState(time);
-	 }
+	return m_State;
 
 
 }
@@ -126,14 +118,23 @@ void  EnemyQueue::updateCollision(Bullet* pBullet)
 	for(;it!=endit;++it)
 	{
 		bool hitMouth=false;
-		if((*it)->getState()==Enemy::ES_NORMAL&& (*it)->intersectRay(ray,lenght,hitMouth,pBullet))
+		if((*it)->intersectRay(ray,lenght,hitMouth,pBullet))
 		{
-		  (*it)->onHit(ray.getPoint(lenght),pBullet,hitMouth);
-		  pBullet->hitTarget();
-		  ///广播打中一个目标
-		  WarManager::getSingleton().notifyKillEnemy(*it,hitMouth,pBullet);
-		  
-		   return ;
+			if((*it)->getState()==Enemy::ES_NORMAL)
+			{
+				(*it)->onHit(ray.getPoint(lenght),pBullet,hitMouth);
+
+				if(hitMouth)
+				{
+					(*it)->onHitMouth(pBullet);
+				}
+
+				///广播打中一个目标
+				WarManager::getSingleton().notifyKillEnemy(*it,hitMouth,pBullet);
+
+			}
+			pBullet->hitTarget();
+			return ;
 		}
 	}
 
@@ -271,36 +272,24 @@ void EnemyQueue::destroy()
 void EnemyQueue::notifyEnemyHit(Enemy* pEnemy)
 {
 	
-	if(hasFriendKilled())
+	if(hasFriendKilled()) //如果打中人质,就开始逃跑
 	{
-		m_State=EQ_KILLFRIEND;
-
+		m_State=EQ_RUNAWAY;
 		///确定逃离的方向
-		m_LevelPoint.x=Ogre::Math::RangeRandom(-3.0f,3.0f);
-		m_LevelPoint.y=Ogre::Math::RangeRandom(-3.0f,3.0f);
-		m_LevelPoint.z=Ogre::Math::RangeRandom(-10.0f,0.0f);
-        m_LevelPoint.normalise();
 		m_currentLeftTime=0.0f;
+		startRunaway();
+		WarManager::getSingleton().notifyEnemyQueuLost(this);
 		return ;
 
-
-	}else if(isEnemyAllKilled())
+	}else if(isHitAllEnemy())///如果所有的目标点都被打中了
 	{
-
-		///播放示爱动作 
-		EnemyCollect::iterator it=m_FriendCollect.begin();
-		EnemyCollect::iterator endit=m_FriendCollect.end();
-		for(;it!=endit;++it)
-		{
-			(*it)->playAnimation(g_idleAni,true,1.0f);
-			
-		}
-
-		m_State=EQ_KILLALLENEMY;
+	    startLove();
+		m_State=EQ_SWALLOWBALL;
 		m_currentLeftTime=0.0f;
+		WarManager::getSingleton().notifyKillEnemyQueu(this);
+		return ;       
 
 	}
-
 
 	return ;
 
@@ -308,11 +297,11 @@ void EnemyQueue::notifyEnemyHit(Enemy* pEnemy)
 
 
 //--------------------------------------------------------------------------
-bool  EnemyQueue::hasFriendKilled()
+bool  EnemyQueue::hasFriendKilled() const 
 {
 	///如果生命周期到了。或者
-	EnemyCollect::iterator it=m_FriendCollect.begin();
-	EnemyCollect::iterator endit=m_FriendCollect.end();
+	EnemyCollect::const_iterator it=m_FriendCollect.begin();
+	EnemyCollect::const_iterator endit=m_FriendCollect.end();
 	for(;it!=endit;++it)
 	{
 		if((*it)->getState()>Enemy::ES_NORMAL)
@@ -326,13 +315,30 @@ bool  EnemyQueue::hasFriendKilled()
 }
 
 
-//--------------------------------------------------------------------------
-bool  EnemyQueue::isEnemyAllKilled()
+/**是否有含球状的的目标*/
+bool  EnemyQueue::hasSwallowBallEnemy()const
 {
+	EnemyCollect::const_iterator it=m_ElemyCollect.begin();
+	EnemyCollect::const_iterator endit=m_ElemyCollect.end();
+	for(;it!=endit;++it)
+	{
+		if((*it)->getState()==Enemy::ES_SWALLOWBALL)
+		{
+			return true;
+		}
+	}
 
-///如果敌人队列里的对像全死了。表示整队被打死
-	EnemyCollect::iterator it=m_ElemyCollect.begin();
-	EnemyCollect::iterator endit=m_ElemyCollect.end();
+	return false;
+
+
+}
+
+
+//--------------------------------------------------------------------------
+bool   EnemyQueue::isHitAllEnemy() const 
+{
+	EnemyCollect::const_iterator it=m_ElemyCollect.begin();
+	EnemyCollect::const_iterator endit=m_ElemyCollect.end();
 	for(;it!=endit;++it)
 	{
 		if((*it)->getState()==Enemy::ES_NORMAL)
@@ -345,19 +351,72 @@ bool  EnemyQueue::isEnemyAllKilled()
 
 }
 
+//--------------------------------------------------------------------------
+bool  EnemyQueue::isEnemyAllKilled() const 
+{
+
+///如果敌人队列里的对像全死了。表示整队被打死
+	EnemyCollect::const_iterator it=m_ElemyCollect.begin();
+	EnemyCollect::const_iterator endit=m_ElemyCollect.end();
+	for(;it!=endit;++it)
+	{
+		if((*it)->getState()==Enemy::ES_NORMAL||(*it)->getState()==Enemy::ES_SWALLOWBALL)
+		{
+			return false;
+		}
+	}
+
+	return true;
+
+}
+
+
+void EnemyQueue::startLove()
+{
+	///播放示爱动作 
+	EnemyCollect::iterator it=m_FriendCollect.begin();
+	EnemyCollect::iterator endit=m_FriendCollect.end();
+	for(;it!=endit;++it)
+	{
+		if((*it)->getState()==Enemy::ES_NORMAL) ///所有未被打中的目标示爱
+		{
+			(*it)->playAnimation(g_idleAni,true,1.0f);
+		}
+
+	}
+
+	return ;
+}
+
+///-------------------------------------------------------------------------
+void EnemyQueue::startRunaway()
+{
+
+	bool leftRotate=false;
+	size_t size=m_ElemyCollect.size();
+	for(size_t i=0;i<size;++i)
+	{
+		if(m_ElemyCollect[i]->getState()==Enemy::ES_NORMAL&&m_ElemyCollect[i]->hasActive()==false)
+		{
+			m_ElemyCollect[i]->startRunAway(1.5f,leftRotate);
+			leftRotate=!leftRotate;
+		}
+
+	}
+	return ;
+}
+
 
 //--------------------------------------------------------------------------
 void EnemyQueue::updateThankState(float time)
 {
 
 	///示爱后三秒原地消失眠
-    m_currentLeftTime+=time;
-	if(m_currentLeftTime>m_leftTime)
+	m_currentLeftTime+=time;
+	if(m_currentLeftTime>3.0)
 	{
-
-	m_State=EQ_DISACTIVE;
-	WarManager::getSingleton().notifyEnemyQueuDeath(this);
-	///通知杀死一队敌人
+		m_State=EQ_DISACTIVE;
+		///通知杀死一队敌人
 	}
 
 
@@ -370,33 +429,46 @@ void EnemyQueue::updateThankState(float time)
 void EnemyQueue::updateLevelState(float time)
 {
 
-
-	///逃离屏幕飞到实影后面,先旋转再逃跑.
-	Ogre::Vector3 trans=m_LevelPoint*time*10.0f;
-	//m_pRootNode->translate(trans,Ogre::Node::TS_WORLD);
-
-	///三秒之后通知
-
-	/*EnemyCollect::iterator it=m_ElemyCollect.begin();
-	EnemyCollect::iterator itend=m_ElemyCollect.end();
-	for(;it!=itend;++it)
-	{
-		(*it)->getSceneNode()->translate(trans,Ogre::Node::TS_WORLD);
-	}*/
-
-
 	///三秒后消失
 	m_currentLeftTime+=time;
 	if(m_currentLeftTime>3.0f)
 	{
 		m_State=EQ_DISACTIVE;
-		///通知杀敌失败
-    	WarManager::getSingleton().notifyEnemyQueuLost(this);
+
+		if(isHitAllEnemy()==false&&hasFriendKilled()==false)
+		{
+			WarManager::getSingleton().notifyEnemyQueuLost(this);
+		}
+
 	}
 
 
 	return ;
 
+}
+
+
+//------------------------------------------------------------------
+void  EnemyQueue::updateLove(float time)
+{
+
+	return ;
+
+}
+
+//------------------------------------------------------------------
+void EnemyQueue::updateSwallowBall(float time)
+{
+	///三秒后消失
+	m_currentLeftTime+=time;
+	if(m_currentLeftTime>3.0f)
+	{
+		m_State=EQ_DISACTIVE;
+	}
+
+
+
+	return ;
 }
 
 //------------------------------------------------------------------
@@ -405,25 +477,9 @@ void EnemyQueue::updateNormal(float time)
     m_currentLeftTime+=time;
     if(m_currentLeftTime>=m_leftTime)
     {
-        m_State=EQ_KILLFRIEND;
-        
-		///确定逃离的方向
-		m_LevelPoint.x=Ogre::Math::RangeRandom(-3.0f,3.0f);
-		m_LevelPoint.y=Ogre::Math::RangeRandom(-3.0f,3.0f);
-		m_LevelPoint.z=Ogre::Math::RangeRandom(-10.0f,0.0f);
-        m_LevelPoint.normalise();
+        m_State=EQ_RUNAWAY;
 		m_currentLeftTime=0.0f;
-
-
-		///给每一个敌人加入一个动作
-		size_t size=m_ElemyCollect.size();
-		for(size_t i=0;i<size;++i)
-		{
-			m_ElemyCollect[i]->startRunAway(m_LevelPoint,1.5f);
-		}
-
-
-
+		startRunaway();
 		return ;
     }
     

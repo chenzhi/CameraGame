@@ -389,9 +389,7 @@ void Enemy::reset(const Ogre::Vector3& pos)
 //--------------------------------------------------------------
 bool Enemy::intersectRay(const Ogre::Ray& ray,float length,bool& hitMouth,Bullet* pBullet)
 {
-	if(m_State!=ES_NORMAL)
-		return false;
-
+	
 	hitMouth=false;
 
 	///先对最外面的外框盒做一个检查，如果有相应再对里面每一个对像再做检查
@@ -416,7 +414,6 @@ bool Enemy::intersectRay(const Ogre::Ray& ray,float length,bool& hitMouth,Bullet
 			{
 				///表示击中嘴部播放张嘴动作。并把子弹隐藏，在嘴上放一个子弹。
 				hitMouth=true;
-				onHitMouth(pBullet);
 				return true;
 
 			}
@@ -515,12 +512,12 @@ bool Enemy::setHitEffectTextureName(const Ogre::String& textureName)
 }
 
 //--------------------------------------------------------------------------------
-void Enemy::startRunAway(const Ogre::Vector3& targetPos,float time)
+void Enemy::startRunAway(float time,bool leftRotate)
 {
 
 	///选旋转y轴180度。再移动到目标点
 	ActiveQueue* pActiveQueue= new ActiveQueue();
-	pActiveQueue->addActive(new RotateActive(m_pNode,Ogre::Vector3::UNIT_Y,Ogre::Radian(Ogre::Math::PI),0.5f));
+	pActiveQueue->addActive(new RotateActive(m_pNode,Ogre::Vector3::UNIT_Y,leftRotate?Ogre::Radian(Ogre::Math::PI):-Ogre::Radian(Ogre::Math::PI),0.5f));
 
 	pActiveQueue->addActive(new MoveActive(m_pNode,Ogre::Vector3::UNIT_Z,Ogre::Node::TS_LOCAL,10.0f,1.0f));
 

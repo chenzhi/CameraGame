@@ -146,13 +146,17 @@ public:
 	/**回调函数一队敌人死亡
 	*内部通知函数不需要主动调用
 	*/
-	void notifyEnemyQueuDeath(EnemyQueue* pEnemyQueue);
+	void notifyKillEnemyQueu(EnemyQueue* pEnemyQueue);
 
 
 	/**内部通知函数。敌人逃跑
 	*内部函数不需要主动调用
 	*/
 	void notifyEnemyQueuLost(EnemyQueue* pEnemyQueue);
+
+
+	/**队列生命周期到了。*/
+	//void notifyEnemyEndLefttime(EnemyQueue* pEnemyQueue);
 
 
 	/**内部函数，通知打中了不应打中的目标*/
