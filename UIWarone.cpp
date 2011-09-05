@@ -40,9 +40,9 @@ void  UIWarone::update(float time)
 
 void UIWarone::init()
 {
-	UILayout::init();
-	m_TenTime=static_cast<StaticImage*>(getWidgetByName("moshi1/moshi1shijianshuzi5"));
-	m_DigitTime=static_cast<StaticImage*>(getWidgetByName("moshi1/moshi1shijianshuzi9"));
+	UILayout::init();                                    
+	m_TenTime=static_cast<StaticImage*>(getWidgetByName("moshi1/shijian"));
+	m_DigitTime=static_cast<StaticImage*>(getWidgetByName("moshi1/shijian2"));
 
 	
 

@@ -252,7 +252,8 @@ void Enemy::updateDodge(float time)
 
 	///旋转速度为每秒
 	float ra=m_Rotate*time;
-	m_pNode->rotate(Ogre::Vector3(0,0,1), Ogre::Radian(ra));
+	m_pNode->rotate(Ogre::Vector3(0.0f,1.0f,0.0f), Ogre::Radian(ra),Ogre::Node::TS_WORLD);
+	m_pNode->rotate(Ogre::Vector3(0.0f,0.0f,1.0f), Ogre::Radian(ra*0.5f),Ogre::Node::TS_WORLD);
 	m_Rotate-=ra;
 
 

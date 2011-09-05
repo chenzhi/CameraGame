@@ -106,6 +106,9 @@ protected:
 	/**是否有队友对像被打死*/
 	bool  hasFriendKilled() const ;
 
+	/**获取有多少个被死的队员*/
+	unsigned int getKillFriendCount() const ;
+
 	/**所有敌人是否都被打死*/
 	bool  isEnemyAllKilled() const ;
 

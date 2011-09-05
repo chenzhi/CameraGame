@@ -272,7 +272,7 @@ void EnemyQueue::destroy()
 void EnemyQueue::notifyEnemyHit(Enemy* pEnemy)
 {
 	
-	if(hasFriendKilled()) //如果打中人质,就开始逃跑
+	if(hasFriendKilled()&&getKillFriendCount()==1) //如果打中人质,就开始逃跑,只计算第一个被打中的
 	{
 		m_State=EQ_RUNAWAY;
 		///确定逃离的方向
@@ -293,6 +293,24 @@ void EnemyQueue::notifyEnemyHit(Enemy* pEnemy)
 
 	return ;
 
+}
+
+
+unsigned int EnemyQueue::getKillFriendCount() const 
+{
+	unsigned int count=0;
+	///如果生命周期到了。或者
+	EnemyCollect::const_iterator it=m_FriendCollect.begin();
+	EnemyCollect::const_iterator endit=m_FriendCollect.end();
+	for(;it!=endit;++it)
+	{
+		if((*it)->getState()>Enemy::ES_NORMAL)
+		{
+			++count;
+		}
+	}
+ 
+	return count;
 }
 
 
