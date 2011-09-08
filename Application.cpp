@@ -483,20 +483,17 @@ void Application::transformInputCoordinate(int&x, int &y)
     int absX =x*2;
     int absY =y*2;
     
-
-
-    //int relX = state.X.rel;
-   // int relY = state.Y.rel;
-    
     switch (m_pRenderWindow->getViewport(0)->getOrientationMode())
     {
         case Ogre::OR_DEGREE_0:
+			x=absX;
+			y=absY;
+
             break;
         case Ogre::OR_DEGREE_90:
              x = w - absY;
              y = absX;
-   
-            break;
+              break;
         case Ogre::OR_DEGREE_180:
             x = w - absX;
             y = h - absY;
