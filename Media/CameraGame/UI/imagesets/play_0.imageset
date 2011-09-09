@@ -3,7 +3,8 @@
 <Imageset Name="play0_21" Imagefile="play0_21.png" NativeHorzRes="1024" NativeVertRes="768" AutoScaled="false">
 	<Image Name="play_background" XPos="0" YPos="0" Width="659" Height="464" />
 	<Image Name="play_play_press" XPos="659" YPos="0" Width="319" Height="130" />
-	<Image Name="play_facebook_press" XPos="659" YPos="130" Width="104" Height="105" />
-	<Image Name="play_facebook_release" XPos="763" YPos="130" Width="104" Height="105" />
-	<Image Name="play_shezhi_release" XPos="867" YPos="130" Width="104" Height="105" />
+	<Image Name="play_di" XPos="659" YPos="130" Width="86" Height="318" />
+	<Image Name="play_facebook_press" XPos="745" YPos="130" Width="104" Height="105" />
+	<Image Name="play_facebook_release" XPos="849" YPos="130" Width="104" Height="105" />
+	<Image Name="play_shezhi_release" XPos="745" YPos="235" Width="104" Height="105" />
 </Imageset>

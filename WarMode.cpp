@@ -55,8 +55,6 @@ void WarModeTwo::start()
 	m_pUI->setVisible(true);
 	m_pUI->reset();
 
-
-
 	///µÃÖÃÉãÏñ»úÎ»ÖÃ
 	Application::getSingleton().getMainCamera()->getParentSceneNode()->resetOrientation();
 
@@ -269,9 +267,8 @@ void WarModeTwo::updateAccelerometer()
 	if(pCameraNode!=NULL )
 	{
 		pCameraNode->resetOrientation();
-		pCameraNode->pitch(Ogre::Radian(-pitch));
 		pCameraNode->yaw(Ogre::Radian(yawtem),Ogre::Node::TS_WORLD);
-
+		pCameraNode->pitch(Ogre::Radian(-pitch));
 	}
 
 	return ;

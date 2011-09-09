@@ -178,6 +178,8 @@ protected:
 
 	void updateSmoke(float time);
 
+	/**更新面向摄像机*/
+	void updateOrientation();
 
 
     

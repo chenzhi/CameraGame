@@ -16,7 +16,7 @@
 #include  "WarManager.h"
 #include "Config.h"
 #include "Bullet.h"
-
+#include "Application.h"
 
 int Enemy::m_EntityIndex=0;
 
@@ -199,6 +199,8 @@ void   Enemy::update(float time)
 	if(m_State==ES_NORMAL)
 	{
 		updateNormal(time);
+		//updateOrientation();
+
 	}else if(m_State==ES_DODGE)
 	{
 		updateDodge(time);
@@ -308,6 +310,17 @@ void  Enemy::updateSmoke(float time)
 		death();
 	}
 
+}
+
+
+//------------------------------------------------------------
+void Enemy::updateOrientation()
+{
+	Ogre::Vector3 camPosition=Application::getSingleton().getMainCameraNode()->getPosition();
+	Ogre::Vector3 dir=camPosition-m_pNode->getPosition();
+	dir.normalise();
+	m_pNode->lookAt(camPosition,Ogre::Node::TS_WORLD,Ogre::Vector3::UNIT_Z);
+	return  ;
 }
 
 //------------------------------------------------------------

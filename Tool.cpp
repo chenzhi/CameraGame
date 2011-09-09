@@ -27,8 +27,6 @@ Ogre::StringVectorPtr Tools::getUserFaceFileList()
 	{
 		pResourceManager->createResourceGroup(groupName);
 		pResourceManager->addResourceLocation(userFacePath,"FileSystem",groupName);
-
-		
 		pResourceManager->initialiseResourceGroup(groupName);
 		//pResourceManager->loadResourceGroup(groupName);
 	}

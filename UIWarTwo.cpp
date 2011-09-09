@@ -71,55 +71,6 @@ void UIWarModeTwo::init()
 	m_ScoreImage[4]=static_cast<StaticImage*>(getWidgetByName("moshi2/moshi2xiaoshuzi9"));
 
 
-	/*
-
-	///暂停按钮
-	m_PauseButton=new ImageButton("WarModeTwo_PauseButton","youxi_zhanting_release.png","youxi_zhanting_press.png");
-	registerWidget(m_PauseButton);
-	m_PauseButton->setHorizontalAlignment(Ogre::GHA_LEFT);
-	m_PauseButton->setVerticalAlignment(Ogre::GVA_TOP);
-	m_PauseButton->setLeft(32);
-	m_PauseButton->setTop(32);
-	m_PauseButton->setWidth(80);
-	m_PauseButton->setHeight(80);
-
-	
-	///开枪按钮
-    m_pFireButton =new ImageButton("WarModeTwo_FirButton","youxi_gongji_release.png","youxi_gongji_press.png");
-	registerWidget(m_pFireButton);
-	m_pFireButton->setHorizontalAlignment(Ogre::GHA_RIGHT);
-	m_pFireButton->setVerticalAlignment(Ogre::GVA_BOTTOM);
-	m_pFireButton->setLeft(-m_pFireButton->getWidth());
-	m_pFireButton->setTop(-m_pFireButton->getHeight());
-
-
-	///准心
-	m_FirePoint=new StaticImage("WarModeTwo_FirePoint","youxi_zhunxin.png");
-	registerWidget(m_FirePoint);
-	m_FirePoint->setLeft(m_FirePoint->getWidth()*(-0.5f));
-	m_FirePoint->setTop(m_FirePoint->getHeight()*(-0.5f));
-
-
-	///初始化三个生命显示
-	int startleft=-64*3;
-	for(int i=0;i<3;++i)
-	{
-		StaticImage* pImage=new StaticImage("WarModeTwo_Lift_"+Ogre::StringConverter::toString(i),"youxi_shengmingzhi.png");
-		registerWidget(pImage);
-		pImage->setHorizontalAlignment(Ogre::GHA_RIGHT);
-		pImage->setVerticalAlignment(Ogre::GVA_TOP);
-
-		pImage->setWidth(50);
-		pImage->setHeight(40);
-		pImage->setLeft(startleft+(i)*64);
-		pImage->setTop(40);
-		m_LifeCollect.push_back(pImage);
-
-	}
-
-
-	*/
-	
 
 
 }

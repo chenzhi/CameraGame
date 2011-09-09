@@ -56,7 +56,7 @@ public:
 	float getLeftTime()const{return m_leftTime;}
 
 	/**设置生命周期*/
-	void  setLeftTime(float time){m_leftTime=time;}
+	void  setLeftTime(float time){return ;m_leftTime=time;}
 
 	
 
@@ -118,6 +118,9 @@ protected:
 	/**是否有含球状的的目标*/
 	bool  hasSwallowBallEnemy()const;
 
+
+	/**更新敌人朝向一直朝向摄像机*/
+	void updateOrientation();
 
 protected:
 

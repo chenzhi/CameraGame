@@ -6,19 +6,20 @@
 	<Image Name="moshixuanze_lanyuan" XPos="609" YPos="0" Width="269" Height="259" />
 	<Image Name="moshixuanze_huangyuan" XPos="878" YPos="0" Width="268" Height="259" />
 	<Image Name="toutao_danlanseyuan" XPos="1146" YPos="0" Width="220" Height="276" />
-	<Image Name="toutao_huangseyuan" XPos="1366" YPos="0" Width="240" Height="229" />
-	<Image Name="toutao_hongseyuan" XPos="1606" YPos="0" Width="189" Height="275" />
-	<Image Name="toutao_jueseyuan" XPos="1795" YPos="0" Width="189" Height="266" />
-	<Image Name="toutao_lanseyuan" XPos="1366" YPos="229" Width="189" Height="262" />
-	<Image Name="toutao_lanlvyuan" XPos="609" YPos="259" Width="189" Height="241" />
-	<Image Name="moshixuanze_selectastage" XPos="1555" YPos="275" Width="491" Height="65" />
-	<Image Name="tuku_facegallery" XPos="798" YPos="276" Width="448" Height="66" />
-	<Image Name="selectafacetoplaywith" XPos="798" YPos="491" Width="613" Height="48" />
-	<Image Name="zhaoxiangji" XPos="338" YPos="261" Width="163" Height="171" />
-	<Image Name="zhaoxiang_aligntheyesmouthwiththeguides" XPos="0" YPos="500" Width="691" Height="38" />
-	<Image Name="zhaoxiang_full" XPos="0" YPos="338" Width="203" Height="60" />
-	<Image Name="tuku_shouzhi" XPos="501" YPos="261" Width="96" Height="94" />
-	<Image Name="jiantouyou" XPos="1246" YPos="276" Width="66" Height="96" />
-	<Image Name="jiantouzuo" XPos="203" YPos="338" Width="66" Height="96" />
-	<Image Name="tuku_cha" XPos="1984" YPos="0" Width="62" Height="62" />
+	<Image Name="moshixuanze_colletwall" XPos="1366" YPos="0" Width="482" Height="124" />
+	<Image Name="toutao_huangseyuan" XPos="1366" YPos="124" Width="240" Height="229" />
+	<Image Name="moshixuanze_selectastage" XPos="338" YPos="261" Width="543" Height="98" />
+	<Image Name="toutao_hongseyuan" XPos="1848" YPos="0" Width="189" Height="275" />
+	<Image Name="toutao_jueseyuan" XPos="1606" YPos="124" Width="189" Height="266" />
+	<Image Name="toutao_lanseyuan" XPos="881" YPos="259" Width="189" Height="262" />
+	<Image Name="toutao_lanlvyuan" XPos="1795" YPos="275" Width="189" Height="241" />
+	<Image Name="tuku_facegallery" XPos="1070" YPos="353" Width="448" Height="66" />
+	<Image Name="selectafacetoplaywith" XPos="0" YPos="359" Width="613" Height="48" />
+	<Image Name="zhaoxiangji" XPos="613" YPos="359" Width="163" Height="171" />
+	<Image Name="zhaoxiang_aligntheyesmouthwiththeguides" XPos="1070" YPos="419" Width="691" Height="38" />
+	<Image Name="zhaoxiang_full" XPos="1070" YPos="276" Width="203" Height="60" />
+	<Image Name="tuku_shouzhi" XPos="776" YPos="359" Width="96" Height="94" />
+	<Image Name="jiantouyou" XPos="0" YPos="407" Width="66" Height="96" />
+	<Image Name="jiantouzuo" XPos="66" YPos="407" Width="66" Height="96" />
+	<Image Name="tuku_cha" XPos="1984" YPos="275" Width="62" Height="62" />
 </Imageset>

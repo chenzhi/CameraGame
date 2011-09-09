@@ -9,12 +9,13 @@
 
 //-----------------------------------------------------------------
 EnemyQueue::EnemyQueue(const Ogre::Vector3& pos,const  PositionList&EnemyList,const PositionList& FriendList )
-:m_pSceneMrg(NULL),m_pRootNode(NULL),m_State(EQ_NORMAl),m_currentLeftTime(0.0f),m_leftTime(3.0f)
+:m_pSceneMrg(NULL),m_pRootNode(NULL),m_State(EQ_NORMAl),m_currentLeftTime(0.0f),m_leftTime(30.0f)
 {
 
 	m_pSceneMrg=Application::getSingleton().getMainSceneManager();
 	m_pRootNode=m_pSceneMrg->getRootSceneNode()->createChildSceneNode();
     m_pRootNode->setPosition(pos);
+
 	//m_pRootNode->showBoundingBox(true);
 
 	size_t size=EnemyList.size();
@@ -39,19 +40,6 @@ EnemyQueue::EnemyQueue(const Ogre::Vector3& pos,const  PositionList&EnemyList,co
 	}
 
 
-    ///面向摄像机
-    
-
-    
-	Ogre::Camera* pCamera=Application::getSingleton().getMainCamera();
-	Ogre::Vector3 camPos= pCamera->getParentNode()->getPosition();
-	m_pRootNode->lookAt(camPos,Ogre::Node::TS_WORLD,Ogre::Vector3::UNIT_Z);
-    
-
-	
-
-
-
 }
 
 
@@ -66,11 +54,37 @@ EnemyQueue::~EnemyQueue()
 }
 
 
+//----------------------------------------------------------------
+void EnemyQueue::updateOrientation()
+{
+
+	Ogre::Vector3 camPosition=Application::getSingleton().getMainCameraNode()->getPosition();
+	Ogre::Vector3 dir=camPosition-m_pRootNode->getPosition();
+	dir.normalise();
+	m_pRootNode->lookAt(camPosition,Ogre::Node::TS_WORLD,Ogre::Vector3::UNIT_Z);
+	return ;
+
+
+	Ogre::Vector3 right=dir.crossProduct(Ogre::Vector3::UNIT_Y);
+	right.normalise();
+	Ogre::Vector3 up=right.crossProduct(dir);
+	up.normalise();
+	Ogre::Quaternion qua;
+	qua.FromAxes(right,up,dir);
+	m_pRootNode->setOrientation(qua);
+	return ;
+
+
+}
+
+
 
 //-----------------------------------------------------------------
 EnemyQueue::EQST EnemyQueue::update(float time)
 {
 	
+	
+
 	EnemyCollect::iterator it=m_ElemyCollect.begin();
 	EnemyCollect::iterator endit=m_ElemyCollect.end();
 	for(;it!=endit;++it)
@@ -88,6 +102,8 @@ EnemyQueue::EQST EnemyQueue::update(float time)
     if(m_State==EQ_NORMAl)
     {
         updateNormal(time);
+	   updateOrientation();
+
     
     }else   if(m_State==EQ_RUNAWAY)     //生命周期到了，开始逃跑
 	{

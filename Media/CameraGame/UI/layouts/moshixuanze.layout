@@ -33,7 +33,7 @@
         <Window Type="AdvanceLook/StaticImage" Name="moshixuanze/moshixuanzeselectastage" >
             <Property Name="OrzImageNormal" Value="set:moshixuanze0_21 image:moshixuanze_selectastage" />
             <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-            <Property Name="UnifiedAreaRect" Value="{{0.25625,0},{0.0375,0},{0.766667,0},{0.1375,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.23125,0},{0.0218994,0},{0.792709,0},{0.168701,0}}" />
         </Window>
     </Window>
 </GUILayout>
