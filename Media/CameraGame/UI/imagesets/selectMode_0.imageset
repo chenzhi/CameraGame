@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<!-- D3DFORMAT: 21 -->
+<Imageset Name="selectMode0_21" Imagefile="selectMode0_21.png" NativeHorzRes="1024" NativeVertRes="768" AutoScaled="false">
+	<Image Name="moshi_leftright" XPos="0" YPos="0" Width="512" Height="512" />
+	<Image Name="moshi_smile" XPos="512" YPos="0" Width="512" Height="512" />
+	<Image Name="moshi_updown" XPos="0" YPos="512" Width="512" Height="512" />
+	<Image Name="moshi_stage" XPos="512" YPos="512" Width="256" Height="64" />
+	<Image Name="moshi_fanhui_press" XPos="768" YPos="512" Width="128" Height="128" />
+	<Image Name="moshi_fanhui_release" XPos="896" YPos="512" Width="128" Height="128" />
+</Imageset>
